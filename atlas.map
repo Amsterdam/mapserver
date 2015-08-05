@@ -1,0 +1,124 @@
+MAP
+
+NAME "ATLAS"
+SIZE 400 400
+STATUS ON
+EXTENT 10426 306846 278027 621877
+UNITS METERS 
+#FONTSET "../etc/fonts.txt"
+
+PROJECTION
+  "init=epsg:28992"
+END
+
+OUTPUTFORMAT
+  NAME "geojson"
+  DRIVER "OGR/GEOJSON"
+  MIMETYPE "application/json; subtype=geojson; charset=utf-8"
+  FORMATOPTION "LCO:COORDINATE_PRECISION=7"
+  FORMATOPTION "STORAGE=stream"
+  FORMATOPTION "FORM=simple"
+END
+
+
+WEB
+  METADATA
+    "wms_title" "BAG"
+    "ows_enable_request" "*"
+    "ows_srs" "EPSG:28992 EPSG:4326 EPSG:3857"
+    "wms_extent" "10426 306846 278027 621877"
+    "wms_feature_info_mime_type" "application/json"
+    "wms_format" "image/png"
+    "wfs_encoding" "UTF-8"
+    "wfs_getfeature_formatlist" "gml,geojson"
+
+  END
+  IMAGEPATH "/srv/mapserver/tmp_img/"
+  IMAGEURL "/ms_tmp/"
+  BROWSEFORMAT "image/svg+xml"
+  TEMPLATE "/srv/mapserver/infobody.html"
+END
+
+
+
+LAYER
+  INCLUDE "connection.map"
+  DATA "geometrie FROM public.atlas_ligplaats USING srid=28992"
+  NAME "bag_ligplaats"
+  TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+  METADATA
+    gml_include_items "all"
+    wfs_enable_request '*'
+    wfs_title 'Ligplaatsen'
+    wfs_srs 'EPSG:4326 EPSG:28992 EPSG:3857'
+    wfs_getfeature_formatlist "gml,geojson"
+  END
+  PROJECTION
+    "init=epsg:28992"
+  END
+  TYPE POLYGON
+    STATUS ON
+    CLASS
+    STYLE
+      COLOR 218 188 134
+      OUTLINECOLOR 51 51 255
+      WIDTH 0.5
+      SYMBOL 0
+    END
+  END
+END
+
+
+LAYER
+  INCLUDE "connection.map"
+  DATA "geometrie FROM public.atlas_standplaats USING srid=28992"
+  NAME "bag_standplaats"
+  TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+  METADATA
+    gml_include_items "all"
+    wfs_enable_request '*'
+    wfs_title 'Standplaatsen'
+    wfs_srs 'EPSG:4326 EPSG:28992 EPSG:3857'
+    wfs_getfeature_formatlist "gml,geojson"
+  END
+  TYPE POLYGON
+    STATUS ON
+    CLASS
+    STYLE
+      COLOR 218 188 134
+      OUTLINECOLOR 189 91 11
+      WIDTH 0.5
+      SYMBOL 0
+    END
+  END
+END
+
+
+LAYER
+  INCLUDE "connection.map"
+  DATA "geometrie FROM public.atlas_pand USING srid=28992"
+  NAME "bag_pand"
+  TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+  METADATA
+    gml_include_items "all"
+    wfs_enable_request '*'
+    wfs_title 'Panden'
+    wfs_srs 'EPSG:4326 EPSG:28992 EPSG:3857'
+    wfs_getfeature_formatlist "gml,geojson"
+  END
+  TYPE POLYGON
+    STATUS ON
+    CLASS
+    STYLE
+      COLOR 255 204  204
+      OUTLINECOLOR 51 51 51
+      WIDTH 0.5
+      SYMBOL 0
+    END
+  END
+END
+
+
+
+END
+
