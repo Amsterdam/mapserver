@@ -1,4 +1,4 @@
-atlas_map
+Atlas map
 =========
 
 MapServer configuratie voor Atlas. 
