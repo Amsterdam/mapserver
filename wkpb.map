@@ -1,5 +1,11 @@
 MAP
 
+CONFIG "MS_ERRORFILE" "/srv/mapserver/ms_error.txt"
+DEBUG 5
+
+TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+
+
 NAME "KADASTER"
 SIZE 400 400
 STATUS ON
@@ -46,6 +52,7 @@ LAYER
   INCLUDE "connection.map"
   DATA "geometrie FROM public.atlas_geo_wkpb USING srid=28992 USING unique rowid"
   NAME "atlas_geo_wkpb_labels"
+  TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   PROJECTION
     "init=epsg:28992"
   END
@@ -176,15 +183,15 @@ LAYER
     END
   END
 
-  CLASS
-    NAME "Splitsingsvergunningstelsel"
-    EXPRESSION /HS/
-    STYLE
-      COLOR 255 0 0
-      OUTLINECOLOR 114 133 132
-      WIDTH 1
-    END
-  END
+  #CLASS
+  #  NAME "Splitsingsvergunningstelsel"
+  #  EXPRESSION /HS/
+  #  STYLE
+  #    COLOR 255 0 0
+  #    OUTLINECOLOR 114 133 132
+  #    WIDTH 1
+  #  END
+  #END
 
   CLASS
     NAME "(voorlopige) aanwijzing WVG"
