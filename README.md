@@ -24,6 +24,6 @@ Kopieer `connection-example.map` naar `connection.map` en geef de juiste credent
 
 Draai
 
-	$ docker-compose up 
+	$ docker-compose up -d
 
 En de kaart server is te bereiken op http://${DOCKER_HOST}:8989/cgi-bin/mapserv?map=/srv/mapserver/atlas.map .
