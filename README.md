@@ -26,4 +26,7 @@ Draai
 
 	$ docker-compose up -d
 
-Test: bijvoorbeeld de kaartserver in wkpb.map: <http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities> .
+Test
+---- 
+bijvoorbeeld de kaartserver in wkpb.map: 
+<http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities> .
