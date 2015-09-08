@@ -43,7 +43,7 @@ END
 # gemeente
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_lkigemeente USING srid=28992"
+  DATA "geometrie FROM public.geo_lki_gemeente USING srid=28992"
   NAME "atlas_lkigemeente"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA
@@ -84,7 +84,7 @@ END
 # kadastrale gemeente
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_lkikadastralegemeente USING srid=28992"
+  DATA "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992"
   NAME "atlas_lkikadastralegemeente"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA
@@ -124,7 +124,7 @@ END
 # sectie
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_lkisectie USING srid=28992"
+  DATA "geometrie FROM public.geo_lki_sectie USING srid=28992"
   NAME "atlas_lkisectie"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA
@@ -164,7 +164,7 @@ END
 # kadastraal perceel
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_lkikadastraalobject USING srid=28992"
+  DATA "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992"
   NAME "atlas_lkikadastraalobject"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA

@@ -43,7 +43,7 @@ END
 
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_ligplaats USING srid=28992"
+  DATA "geometrie FROM public.geo_bag_ligplaats USING srid=28992"
   NAME "bag_ligplaats"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA
@@ -71,7 +71,7 @@ END
 
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_standplaats USING srid=28992"
+  DATA "geometrie FROM public.geo_bag_standplaats USING srid=28992"
   NAME "bag_standplaats"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA
@@ -96,7 +96,7 @@ END
 
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_pand USING srid=28992"
+  DATA "geometrie FROM public.geo_bag_pand USING srid=28992"
   NAME "bag_pand"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   METADATA

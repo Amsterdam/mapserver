@@ -47,7 +47,7 @@ END
 # wkpb labels
 LAYER
   INCLUDE "connection.map"
-  DATA "geometrie FROM public.atlas_geo_wkpb USING srid=28992 USING UNIQUE id"
+  DATA "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
   NAME "atlas_geo_wkpb_labels"
   TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
   PROJECTION
