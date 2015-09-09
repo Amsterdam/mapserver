@@ -26,4 +26,10 @@ Draai
 
 	$ docker-compose up -d
 
-En de kaart server is te bereiken op http://${DOCKER_HOST}:8989/cgi-bin/mapserv?map=/srv/mapserver/atlas.map .
+Test
+---- 
+bijvoorbeeld de kaartserver in wkpb.map:
+
+
+* capabilities: <http://{$DOCKER_HOST}:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities> .
+* 1 feature opvragen: <http://{$DOCKER_HOST}:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&version=1.1.0&request=getfeature&typename=ligplaats&maxfeatures=1>
