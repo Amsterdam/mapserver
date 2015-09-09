@@ -1,0 +1,147 @@
+#==============================================================================
+#
+# bag.map
+# doel: serveren van BAG.
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Rob Kromwijk          07-09-2015    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "BAG"
+  INCLUDE "header.map"
+
+
+
+  WEB
+    METADATA
+      "ows_title"    "BAG"
+      "ows_abstract" "BAG objecten met een geografische component, waarvan Amsterdam de bronhouder is"
+    END
+  END
+
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+  
+  
+  # LAYER OPENBARE RUIMTEN
+  # LAYER VERBLIJFSOBJECTEN  
+  
+  LAYER
+    NAME            "pand"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_bag_pand USING srid=28992"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2500
+    
+    METADATA
+      "ows_title"           "pand"
+      "ows_abstract"        "BAG panden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          236 230 220
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "ligplaats"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_bag_ligplaats USING srid=28992"
+    TYPE            POLYGON
+    #MINSCALEDENOM   100
+    #MAXSCALEDENOM   2500
+    
+    METADATA
+      "ows_title"           "ligplaats"
+      "ows_abstract"        "BAG ligplaatsen van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          200 200 240
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------     
+  
+  
+  LAYER
+    NAME            "standplaats"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_bag_standplaats USING srid=28992"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2500
+    
+    METADATA
+      "ows_title"           "standplaats"
+      "ows_abstract"        "BAG standplaatsen van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          244 238 252
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------     
+  
+  
+  LAYER
+    NAME            "verblijfsobject"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_bag_verblijfsobject USING srid=28992"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   1000
+    
+    METADATA
+      "ows_title"           "verblijfsobject"
+      "ows_abstract"        "BAG verblijfsobjecten van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+
+    
+  END
+  
+
+
+#=============================================================================
+END
+
