@@ -1,7 +1,7 @@
 #==============================================================================
 #
 # bag.map
-# doel: serveren van BAG.
+# doel: serveren van BAG
 #
 #==============================================================================
 #
@@ -31,13 +31,12 @@ MAP
   #============================================================================= 
   
   
-  # LAYER OPENBARE RUIMTEN
-  # LAYER VERBLIJFSOBJECTEN  
+  # TE DOEN: LAYER OPENBARE RUIMTE
   
   LAYER
     NAME            "pand"
     INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_bag_pand USING srid=28992"
+    DATA            "geometrie FROM public.geo_bag_pand USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2500
@@ -66,10 +65,10 @@ MAP
   LAYER
     NAME            "ligplaats"
     INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_bag_ligplaats USING srid=28992"
+    DATA            "geometrie FROM public.geo_bag_ligplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    #MINSCALEDENOM   100
-    #MAXSCALEDENOM   2500
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2500
     
     METADATA
       "ows_title"           "ligplaats"
@@ -95,7 +94,7 @@ MAP
   LAYER
     NAME            "standplaats"
     INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_bag_standplaats USING srid=28992"
+    DATA            "geometrie FROM public.geo_bag_standplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2500
@@ -124,7 +123,7 @@ MAP
   LAYER
     NAME            "verblijfsobject"
     INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_bag_verblijfsobject USING srid=28992"
+    DATA            "geometrie FROM public.geo_bag_verblijfsobject USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1000
@@ -135,8 +134,6 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-
-
     
   END
   
@@ -144,4 +141,3 @@ MAP
 
 #=============================================================================
 END
-
