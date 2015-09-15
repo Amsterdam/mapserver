@@ -1,0 +1,222 @@
+#==============================================================================
+#
+# gbka.map
+# doel: serveren van GBKA
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Rob Kromwijk          15-09-2015    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "GBKA"
+  INCLUDE "header.map"
+
+
+  WEB
+    METADATA
+      "ows_title"    "GBKA"
+      "ows_abstract" "GBKA cartografie"
+    END
+  END
+
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+  
+  LAYER
+    NAME            "waterdeel"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "waterdeel"
+      "ows_abstract"        "GBKA waterdelen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_waterdeel"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "panden"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "panden"
+      "ows_abstract"        "GBKA panden van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_panden"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "sporen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "sporen"
+      "ows_abstract"        "GBKA sporen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_sporen"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "overig"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "overig"
+      "ows_abstract"        "GBKA overig van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_overig"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "terrein"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "terrein"
+      "ows_abstract"        "GBKA terrein van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_terrein"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "water"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "water"
+      "ows_abstract"        "GBKA water van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_water"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "gebouwen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "gebouwen"
+      "ows_abstract"        "GBKA gebouwen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_gebouwen"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "treinsporen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "treinsporen"
+      "ows_abstract"        "GBKA treinsporen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_treinsporen"
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "teksten"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "teksten"
+      "ows_abstract"        "GBKA teksten van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "GBK_teksten_01,GBK_teksten_02,GBK_teksten_03"
+    END
+    
+  END
+  
+  
+  
+
+#============================================================================= 
+END
