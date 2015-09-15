@@ -29,88 +29,7 @@ MAP
   #=============================================================================
   # LAYERS
   #============================================================================= 
-   
-  LAYER
-    NAME            "burgerlijke_gemeente"
-    INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   500000
-    
-    METADATA
-      "ows_title"           "burgerlijke_gemeente"
-      "ows_abstract"        "Burgerlijke gemeentegrenzen"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      STYLE
-        OUTLINECOLOR   0 130 130
-        WIDTH          3
-      END
-    END
-    
-  END
   
-  #-----------------------------------------------------------------------------   
-
-
-  LAYER
-    NAME            "kadastrale_gemeente"
-    INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   500000
-    
-    METADATA
-      "ows_title"           "kadastrale_gemeente"
-      "ows_abstract"        "Kadastrale gemeentegrenzen"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      STYLE
-        OUTLINECOLOR   0 130 130
-        WIDTH          2
-      END
-    END
-    
-  END
-
-  #-----------------------------------------------------------------------------   
-  
-
-  LAYER
-    NAME            "kadastrale_sectie"
-    INCLUDE         "connection.map"
-    DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   500000
-    
-    METADATA
-      "ows_title"           "kadastrale_sectie"
-      "ows_abstract"        "Kadastrale secties"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      STYLE
-        OUTLINECOLOR   0 130 130
-        WIDTH          2
-      END
-    END
-    
-  END
-  
-  #-----------------------------------------------------------------------------   
-  
-
   LAYER
     NAME            "kadastraal_object"
     INCLUDE         "connection.map"
@@ -134,16 +53,97 @@ MAP
     END
     
   END
+  
+  #-----------------------------------------------------------------------------  
+  
+  
+  LAYER
+    NAME            "kadastrale_sectie"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   500000
+    
+    METADATA
+      "ows_title"           "kadastrale_sectie"
+      "ows_abstract"        "Kadastrale secties"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
 
+    CLASS
+      STYLE
+        OUTLINECOLOR   0 220 220
+        WIDTH          2
+      END
+    END
+    
+  END
+  
   #-----------------------------------------------------------------------------   
   
   
+  LAYER
+    NAME            "kadastrale_gemeente"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   500000
+    
+    METADATA
+      "ows_title"           "kadastrale_gemeente"
+      "ows_abstract"        "Kadastrale gemeentegrenzen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        OUTLINECOLOR   0 160 160
+        WIDTH          2
+      END
+    END
+    
+  END
+
+  #-----------------------------------------------------------------------------  
+
+
+  LAYER
+    NAME            "burgerlijke_gemeente"
+    INCLUDE         "connection.map"
+    DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   500000
+    
+    METADATA
+      "ows_title"           "burgerlijke_gemeente"
+      "ows_abstract"        "Burgerlijke gemeentegrenzen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        OUTLINECOLOR   0 100 100
+        WIDTH          3
+      END
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------   
+
+
   LAYER
     NAME            "burgerlijke_gemeente_label"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   25000
+    MINSCALEDENOM   250
     MAXSCALEDENOM   500000
     
     METADATA
@@ -159,7 +159,7 @@ MAP
       LABEL
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
-        FONT           "Ubuntu-MI"
+        FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           16
         POSITION       AUTO
@@ -170,14 +170,14 @@ MAP
   END
   
   #-----------------------------------------------------------------------------   
-
-
+ 
+ 
   LAYER
     NAME            "kadastrale_gemeente_label"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   25000
+    MINSCALEDENOM   250
     MAXSCALEDENOM   500000
     
     METADATA
@@ -193,7 +193,7 @@ MAP
       LABEL
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
-        FONT           "Ubuntu-MI"
+        FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
         POSITION       AUTO
@@ -211,7 +211,7 @@ MAP
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   25000
+    MINSCALEDENOM   2500
     MAXSCALEDENOM   500000
     
     METADATA
@@ -227,7 +227,7 @@ MAP
       LABEL
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
-        FONT           "Ubuntu-MI"
+        FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
         POSITION       AUTO
@@ -239,14 +239,13 @@ MAP
   
   #-----------------------------------------------------------------------------   
   
-
   LAYER
     NAME            "kadastraal_object_label"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   1000
+    MAXSCALEDENOM   2500
     
     METADATA
       "ows_title"           "kadastraal_object_label"
@@ -261,7 +260,7 @@ MAP
       LABEL
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
-        FONT           "Ubuntu-MI"
+        FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           6
         POSITION       AUTO
@@ -275,4 +274,3 @@ MAP
 
 #=============================================================================
 END
-
