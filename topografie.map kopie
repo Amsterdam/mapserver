@@ -1,0 +1,2455 @@
+#==============================================================================
+#
+# topografie.map
+#
+#==============================================================================
+#
+# naam                  datum          versie    wijziging
+# ------------------    ----------     ------    ------------------------------
+# Caja van der Woude    18-12-2013     1.0       initiele creatie
+# Rob Kromwijk          12-08-2014     1.1       aanpassing tbv non-ka server
+#
+#==============================================================================
+
+
+
+MAP
+
+  #=============================================================================
+  # MAP: algemeen
+  #=============================================================================  
+  
+  NAME        "Topografie Amsterdam"
+  EXTENT      100000 450000 150000 500000
+  UNITS       meters
+  MAXSIZE     4000
+  
+  # ONTWIKKEL
+    FONTSET     "//swappams0498/geodata/fonts/fonts.list"
+    SHAPEPATH   "//swappams0498/geodata/topografie"
+    CONFIG      "PROJ_LIB" "D:/ms4w/proj/nad/"
+  
+  # ACCEPTATIE
+    #FONTSET     "//win0143vm/geodata/fonts/fonts.list"
+    #SHAPEPATH   "//win0143vm/geodata/topografie"
+  
+  # PRODUCTIE
+    #FONTSET     "//win0139vm/geodata/fonts/fonts.list"
+    #SHAPEPATH   "//win0139vm/geodata/topografie"
+
+
+
+  #=============================================================================
+  # MAP: algemeen uitvoer
+  #=============================================================================    
+  
+  IMAGETYPE   png_afb
+  SIZE        256 256
+  
+  WEB
+    IMAGEPATH "/ms4w/tmp/ms_tmp/"
+    IMAGEURL  "/ms_tmp/"
+    METADATA
+
+      "ows_enable_request"           "*"
+      "ows_title"                    "Topografie Amsterdam"
+      "ows_srs"                      "EPSG:28992 EPSG:54004 EPSG:4326 EPSG:3857"
+      "ows_feature_info_mime_type"   "text/xml"
+	  
+	  # ONTWIKKEL
+        "ows_onlineresource"         "http://127.0.0.1:8080/cgi-bin/topografie?"
+	  
+	  # ACCEPTATIE
+        #"ows_onlineresource"         "http://acc.diva.asp4all.nl/cgi-bin/topografie?"
+	  
+	  # PRODUCTIE
+        #"ows_onlineresource"         "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+
+    END
+    
+  END
+  
+  PROJECTION
+    "init=epsg:28992" 
+  END
+  
+
+  #-------------------------------------------------------------------
+  # OUTPUTFORMATs
+  #   standaard zijn bekend: gif, png, png24, jpeg, wbmp, swf, GTiff
+  #-------------------------------------------------------------------  
+
+  OUTPUTFORMAT
+   NAME         png_afb
+   DRIVER       "AGG/PNG"
+   MIMETYPE     "image/png"
+   IMAGEMODE    RGB
+   EXTENSION    "png"
+   FORMATOPTION "INTERLACE=OFF"
+   FORMATOPTION "QUANTIZE_FORCE=ON"
+   #FORMATOPTION "QUANTIZE_NEW=ON"
+   #FORMATOPTION "PALETTE_FORCE=ON"
+  END
+
+  OUTPUTFORMAT
+   NAME         gif_afb
+   DRIVER       "GD/GIF"
+   MIMETYPE     "image/gif"
+   IMAGEMODE    PC256
+   EXTENSION    "gif"
+   FORMATOPTION "INTERLACE=OFF"
+  END
+  
+
+
+  
+ 
+# ****************************************************************************
+# VLAKKEN
+# ****************************************************************************
+
+  # KBK125_omg_vlakken
+  #===========================================================================
+  LAYER
+    NAME           "KBK125_omg_vlakken"
+    GROUP          "topovlakken"
+    DATA           "KBK125_omg_vlakken"    
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       75001
+    MAXSCALE       100001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END     
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK125_omg_vlakken"
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "agrarisch"
+      EXPRESSION   ('[NAAM]' = 'agrarisch')
+      STYLE
+        ANTIALIAS  true
+        COLOR      230 255 225
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "industrie"
+      EXPRESSION   ('[NAAM]' = 'industrie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 235 235
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "stadsgroen"
+      EXPRESSION   ('[NAAM]' = 'stadsgroen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      209 236 197
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "water"
+      EXPRESSION   ('[NAAM]' = 'water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      215 231 251
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bebouwing"
+      EXPRESSION   ('[NAAM]' = 'bebouwing')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+
+  END
+
+  
+  
+  # KBK125_omg_vlakken_snelweg
+  #===========================================================================
+  LAYER
+    NAME           "KBK125_omg_vlakken_snelweg"
+    GROUP          "topovlakken"
+    DATA           "KBK125_omg_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       75001
+    MAXSCALE       100001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END         
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK125_omg_vlakken_snelweg"
+    END    
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "snelweg"
+      EXPRESSION   ('[NAAM]' = 'snelweg')
+      STYLE
+        ANTIALIAS  true
+        COLOR      250 211 102
+      END
+    END
+
+  END 
+
+  
+  
+  # KBK125_vlakken
+  #===========================================================================
+  LAYER
+    NAME           "KBK125_vlakken"
+    GROUP          "topovlakken"
+    DATA           "KBK125_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       75001
+    MAXSCALE       100001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END             
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK125_vlakken"
+    END      
+
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "agrarisch"
+      EXPRESSION   ('[NAAM]' = 'agrarisch')
+      STYLE
+        ANTIALIAS  true
+        COLOR      230 255 225
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "industrie"
+      EXPRESSION   ('[NAAM]' = 'industrie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 235 235
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "stadsgroen"
+      EXPRESSION   ('[NAAM]' = 'stadsgroen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      209 236 197
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "water"
+      EXPRESSION   ('[NAAM]' = 'water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      215 231 251
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bebouwing"
+      EXPRESSION   ('[NAAM]' = 'bebouwing')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+
+  END
+
+  
+
+  # KBK125_vlakken_snelweg
+  #===========================================================================
+  LAYER
+    NAME           "KBK125_vlakken_snelweg"
+    GROUP          "topovlakken"
+    DATA           "KBK125_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       75001
+    MAXSCALE       100001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK125_vlakken_snelweg"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "snelweg"
+      EXPRESSION   ('[NAAM]' = 'snelweg')
+      STYLE
+        ANTIALIAS  true
+        COLOR      250 211 102
+      END
+    END
+
+  END
+
+
+
+# ****************************************************************************
+
+  # KBK50_vlakken
+  #===========================================================================
+  LAYER
+    NAME           "KBK50_vlakken"
+    GROUP          "topovlakken"
+    DATA           "KBK50_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       22501
+    MAXSCALE       75001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK50_vlakken"
+    END      
+
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "industrie"
+      EXPRESSION   ('[NAAM]' = 'industrie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 235 235
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "agrarisch"
+      EXPRESSION   ('[NAAM]' = 'agrarisch')
+      STYLE
+        ANTIALIAS  true
+        COLOR      230 255 225
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "stadsgroen"
+      EXPRESSION   ('[NAAM]' = 'stadsgroen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      209 236 197
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "water"
+      EXPRESSION   ('[NAAM]' = 'water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      215 231 251
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bebouwing"
+      EXPRESSION   ('[NAAM]' = 'bebouwing')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+
+  END
+
+
+
+  # KBK50_vlakken_snelweg
+  #===========================================================================
+  LAYER
+    NAME           "KBK50_vlakken_snelweg"
+    GROUP          "topovlakken"
+    DATA           "KBK50_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       22501
+    MAXSCALE       75001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK50_vlakken_snelweg"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "snelweg"
+      EXPRESSION   ('[NAAM]' = 'snelweg')
+      STYLE
+        ANTIALIAS  true
+        COLOR      250 211 102
+      END
+    END
+
+  END
+
+
+
+# ****************************************************************************  
+
+  # KBK25_vlakken
+  #===========================================================================
+  LAYER
+    NAME           "KBK25_vlakken"
+    GROUP          "topovlakken"
+    DATA           "KBK25_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       8001
+    MAXSCALE       22501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK25_vlakken"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "industrie"
+      EXPRESSION   ('[NAAM]' = 'industrie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 235 235
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "agrarisch"
+      EXPRESSION   ('[NAAM]' = 'agrarisch')
+      STYLE
+        ANTIALIAS  true
+        COLOR      230 255 225
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "stadsgroen"
+      EXPRESSION   ('[NAAM]' = 'stadsgroen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      209 236 197
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "water"
+      EXPRESSION   ('[NAAM]' = 'water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      215 231 251
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kassen"
+      EXPRESSION   ('[NAAM]' = 'kassen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      254 240 222
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bebouwing"
+      EXPRESSION   ('[NAAM]' = 'bebouwing')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+
+  END
+
+  
+  
+  # KBK25_vlakken_snelweg
+  #===========================================================================
+  LAYER
+    NAME           "KBK25_vlakken_snelweg"
+    GROUP          "topovlakken"
+    DATA           "KBK25_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       8001
+    MAXSCALE       22501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK25_vlakken_snelweg"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "snelweg"
+      EXPRESSION   ('[NAAM]' = 'snelweg')
+      STYLE
+        ANTIALIAS  true
+        COLOR      250 211 102
+      END
+    END
+
+  END
+
+
+
+# ****************************************************************************
+
+  # KBK10_vlakken
+  #===========================================================================
+  LAYER
+    NAME           "KBK10_vlakken"
+    GROUP          "topovlakken"
+    DATA           "KBK10_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       2501
+    MAXSCALE       8001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK10_vlakken"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "binnenterrein"
+      EXPRESSION   ('[NAAM]' = 'binnenterrein')
+      STYLE
+        ANTIALIAS  true
+        COLOR      255 255 255
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bestemming-industrie"
+      EXPRESSION   ('[NAAM]' = 'best-ind')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 235 235
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "braak"
+      EXPRESSION   ('[NAAM]' = 'bestemming')
+      STYLE
+        ANTIALIAS  true
+        COLOR      253 247 239
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "industrie"
+      EXPRESSION   ('[NAAM]' = 'industrie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 235 235
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "binnentuin"
+      EXPRESSION   ('[NAAM]' = 'binnentuin')
+      STYLE
+        ANTIALIAS  true
+        COLOR      209 236 197
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "stadsgroen"
+      EXPRESSION   ('[NAAM]' = 'stadsgroen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      209 236 197
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "water"
+      EXPRESSION   ('[NAAM]' = 'water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      215 231 251
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kassen"
+      EXPRESSION   ('[NAAM]' = 'kassen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      254 240 222
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bebouwing"
+      EXPRESSION   ('[NAAM]' = 'bebouwing')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "agrarisch"
+      EXPRESSION   ('[NAAM]' = 'agrarisch')
+      STYLE
+        ANTIALIAS  true
+        COLOR      230 255 225
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "diep_water"
+      EXPRESSION   ('[NAAM]' = 'diep-water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      215 231 251
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bos"
+      EXPRESSION   ('[NAAM]' = 'bos')
+      STYLE
+        ANTIALIAS  true
+        COLOR      204 222 193
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "speelplaats"
+      EXPRESSION   ('[NAAM]' = 'speelplaats')
+      STYLE
+        ANTIALIAS  true
+        COLOR      229 246 205
+      END
+    END
+
+  END
+
+  
+  
+  # KBK10_vlakken_sport
+  #===========================================================================
+  LAYER
+    NAME           "KBK10_vlakken_sport"
+    GROUP          "topovlakken"
+    DATA           "KBK10_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       2501
+    MAXSCALE       8001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK10_vlakken_sport"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "sport"
+      EXPRESSION   ('[NAAM]' = 'sport')
+      STYLE
+        ANTIALIAS  true
+        COLOR      229 246 205
+      END
+    END
+
+  END
+
+  
+  
+  # KBK10_vlakken_snelweg
+  #===========================================================================
+  LAYER
+    NAME           "KBK10_vlakken_snelweg"
+    GROUP          "topovlakken"
+    DATA           "KBK10_vlakken"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       2501
+    MAXSCALE       8001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "KBK10_vlakken_snelweg"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "snelweg"
+      EXPRESSION   ('[NAAM]' = 'snelweg')
+      STYLE
+        ANTIALIAS  true
+        COLOR      250 211 102
+      END
+    END
+
+  END
+
+
+  
+# ****************************************************************************
+
+  # gbk_waterdelen
+  #===========================================================================
+  LAYER
+    NAME           "GBK_waterdeel"
+    GROUP          "topovlakken"
+    DATA           "GBK_waterdeel"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "GBK_waterdeel"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "waterdeel"
+      STYLE
+        COLOR      215 231 251
+      END
+    END  
+ 
+ END  
+ 
+ 
+ 
+  # gbk_panden
+  #===========================================================================
+  LAYER
+    NAME           "GBK_panden"
+    GROUP          "topovlakken"
+    DATA           "GBK_pand"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topovlakken"
+     "ows_title"          "GBK_panden"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "hoofdgebouw"
+      EXPRESSION   ('[NAAM]' = 'Hoofdgebouwdeel')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bijgebouw"
+      EXPRESSION   ('[NAAM]' = 'Bijgebouwdeel')
+      STYLE
+        ANTIALIAS  true
+        COLOR      245 240 230
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "overbouw"
+      EXPRESSION   ('[NAAM]' = 'Overbouw')
+      STYLE
+        ANTIALIAS  true
+        COLOR      235 230 220
+      END
+    END
+  
+    #-----------------------------------------
+    CLASS
+      NAME         "ligplaats"
+      EXPRESSION   ('[NAAM]' = 'Ligplaats')
+      STYLE
+        ANTIALIAS  true
+        COLOR      200 200 240
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "standplaats"
+      EXPRESSION   ('[NAAM]' = 'Standplaats')
+      STYLE
+        ANTIALIAS  true
+        COLOR      244 238 255
+      END
+    END
+    
+  END
+  
+  
+
+
+
+# ****************************************************************************
+# LIJNEN TOPOGRAFIE
+# ****************************************************************************
+
+  # KBK125_omg_lijnen
+  #===========================================================================
+  LAYER
+    NAME           "KBK125_omg_lijnen"
+    GROUP          "topolijnen"
+    DATA           "KBK125_omg_lijnen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       75001
+    MAXSCALE       100001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK125_omg_lijnen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie_streeplijn_omg"
+      EXPRESSION   ('[NAAM]' = 'topografie_streeplijn')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    12 4 END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie_omg"
+      EXPRESSION   ('[NAAM]' = 'topografie')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        ANTIALIAS  true
+      END
+    END
+    
+  END
+
+  
+  
+  # KBK125_lijnen
+  #===========================================================================
+  LAYER
+    NAME           "KBK125_lijnen"
+    GROUP          "topolijnen"
+    DATA           "KBK125_lijnen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       75001
+    MAXSCALE       100001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK125_lijnen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie_streeplijn"
+      EXPRESSION   ('[NAAM]' = 'topografie_streeplijn')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    12 4 END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie"
+      EXPRESSION   ('[NAAM]' = 'topografie')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        ANTIALIAS  true
+      END
+    END
+
+  END
+
+
+
+# ****************************************************************************
+
+  # KBK50_lijnen
+  #===========================================================================
+  LAYER
+    NAME           "KBK50_lijnen"
+    GROUP          "topolijnen"
+    DATA           "KBK50_lijnen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       22501
+    MAXSCALE       75001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK50_lijnen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie"
+      EXPRESSION   (('[NAAM]' = 'topografie'))
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "waterloop_breed"
+      EXPRESSION   (('[NAAM]' = 'waterloop_breed'))
+      STYLE
+        COLOR      215 231 251
+        WIDTH      1
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "waterloop_smal"
+      EXPRESSION   (('[NAAM]' = 'waterloop_smal'))
+      STYLE
+        COLOR      215 231 251
+        WIDTH      0.6
+        ANTIALIAS  true
+      END
+    END
+
+    #-----------------------------------------
+    CLASS
+      NAME         "snelweg"
+      EXPRESSION   (('[NAAM]' = 'snelweg'))
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      4
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      250 211 102
+        WIDTH      3
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "wegen"
+      EXPRESSION   (('[NAAM]' = 'busbaan') OR ('[NAAM]' = 'hoofdweg') OR ('[NAAM]' = 'regioweg'))
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      3
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      255 255 255
+       WIDTH       2
+      END
+    END
+    
+  END
+  
+    
+  
+  # KBK50_sporen
+  #===========================================================================
+  LAYER
+    NAME           "KBK50_sporen"
+    GROUP          "topolijnen"
+    DATA           "KBK50_lijnen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       22501
+    MAXSCALE       75001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK50_sporen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "sporen_boven"
+      EXPRESSION   ('[NAAM]' = 'sporen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      2
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      1
+        PATTERN    10 8  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "sporen_onder"
+      EXPRESSION   ('[NAAM]' = 'sporen')
+      STYLE
+        COLOR      140 140 140
+        WIDTH      2
+        PATTERN    10 8  END
+        ANTIALIAS  true
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      1
+        PATTERN    10 8  END        
+        ANTIALIAS  true
+      END
+    END
+
+  END
+
+
+
+# ****************************************************************************
+
+  # KBK25_lijnen
+  #===========================================================================
+  LAYER
+    NAME           "KBK25_lijnen"
+    GROUP          "topolijnen"
+    DATA           "KBK25_lijnen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       8001
+    MAXSCALE       22501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK25_lijnen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie"
+      EXPRESSION   ('[NAAM]' = 'topografie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bestemming"
+      EXPRESSION   ('[NAAM]' = 'bestemming')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      1
+        PATTERN    3 5  END
+        ANTIALIAS  true
+      END
+    END
+
+  END
+
+  
+  
+  # KBK25_sporen
+  #===========================================================================
+  LAYER
+    NAME           "KBK25_sporen"
+    GROUP          "topolijnen"
+    DATA           "KBK25_sporen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       8001
+    MAXSCALE       22501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK25_sporen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "GVB_O-B"
+      EXPRESSION   ('[NAAM]' = 'GVBmetro')
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH       3
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH       2
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      1
+        PATTERN    8 8  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "GVB_ond"
+      EXPRESSION   ('[NAAM]' = 'GVBondergronds')
+      STYLE
+        COLOR      220 170 230
+        WIDTH      1
+        PATTERN    8 8  END
+        ANTIALIAS  true
+      END
+   END
+    
+  END
+
+  
+  
+  # KBK25_NSsporen
+  #===========================================================================
+  LAYER
+    NAME           "KBK25_NSsporen"
+    GROUP          "topolijnen"
+    DATA           "KBK25_sporen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       8001
+    MAXSCALE       22501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK25_NSsporen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "NSgoederen_10-15"
+      EXPRESSION   ('[NAAM]' = 'NSgoederen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH       2
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "NSpersonen_OB_10-15"
+      EXPRESSION   ('[NAAM]' = 'NSpersonen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH       3
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH       2
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      1
+        PATTERN    8 8  END
+        ANTIALIAS  true
+      END
+    END
+    
+  END
+
+
+
+# ****************************************************************************
+
+  # KBK10_lijnen
+  #===========================================================================
+  LAYER
+    NAME           "KBK10_lijnen"
+    GROUP          "topolijnen"
+    DATA           "KBK10_lijnen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       2501
+    MAXSCALE       8001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK10_lijnen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie"
+      EXPRESSION   ('[NAAM]' = 'topografie')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bruggen"
+      EXPRESSION   ('[NAAM]' = 'bruggen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "topografie_streeplijn"
+      EXPRESSION   ('[NAAM]' = 'topografie_dash')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    8 8  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "onverhard"
+      EXPRESSION   ('[NAAM]' = 'onverhardeweg')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    16 8  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "talud"
+      EXPRESSION   ('[NAAM]' = 'talud')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+  END
+
+
+
+  # KBK10_sporen
+  #===========================================================================
+  LAYER
+    NAME           "KBK10_sporen"
+    GROUP          "topolijnen"
+    DATA           "KBK10_sporen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       2501
+    MAXSCALE       8001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "KBK10_sporen"
+    END      
+
+    #-----------------------------------------
+    CLASS
+      NAME         "GVBtram2-5"
+      EXPRESSION   ('[NAAM]' = 'GVBtram')
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "NSgoederen"
+      EXPRESSION   ('[NAAM]' = 'NSgoederen')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "NSpersonen_enk"
+      EXPRESSION   ('[NAAM]' = 'NSpersonen_enk')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      2
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      1
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      0.6
+        PATTERN    12 12  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "NSpersonen_dub"
+      EXPRESSION   ('[NAAM]' = 'NSpersonen_dub')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      2
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      1
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      0.6
+        PATTERN    12 12  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "GVBmetro_enk"
+      EXPRESSION   ('[NAAM]' = 'GVBmetro_enk')
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "GVBmetro_dub"
+      EXPRESSION   ('[NAAM]' = 'GVBmetro_dub')
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH      2
+      END
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH      1
+      END
+      STYLE
+        COLOR      255 255 255
+        WIDTH      0.6
+        PATTERN    12 12  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "GVBmetro_ond"
+      EXPRESSION   ('[NAAM]' = 'GVBmetro_ond')
+      STYLE
+        COLOR      220 170 230
+        WIDTH      1
+        PATTERN    12 12  END
+        ANTIALIAS  true
+      END
+    END
+
+  END
+
+
+  
+# ****************************************************************************
+
+  # gbk_sporen
+  #===========================================================================
+  LAYER
+    NAME           "GBK_sporen"
+    GROUP          "topolijnen"
+    DATA           "GBK_rails"
+    TYPE           line
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "GBK_sporen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "tramspoor_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Tramrails_onzichtb')
+      STYLE
+        COLOR      220 170 230
+        WIDTH      0.6
+        PATTERN    10 12  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "tramspoor"
+      EXPRESSION   ('[NAAM]' = 'Tramrails')
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "metrospoor_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Metrorails_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      220 170 230
+        PATTERN    10 12  END
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "metrospoor"
+      EXPRESSION   ('[NAAM]' = 'Metrorails')
+      STYLE
+        ANTIALIAS  true
+         COLOR     220 170 230
+        WIDTH      1
+      END
+    END
+    
+  END
+
+
+
+  # gbk_overig
+  #===========================================================================
+  LAYER
+    NAME           "GBK_overig"
+    GROUP          "topolijnen"
+    DATA           "GBK_overig"
+    TYPE           line
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "GBK_overig"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kunstobject"
+      EXPRESSION   ('[NAAM]' = 'Kunstobject')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "steiger_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Steiger_onzichtb')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    5 4  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "steiger"
+      EXPRESSION   ('[NAAM]' = 'Steiger')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "openbaar_toilet"
+      EXPRESSION   ('[NAAM]' = 'Openbaar_toilet')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "abri"
+      EXPRESSION   ('[NAAM]' = 'Abri')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "schuilobject"
+      EXPRESSION   ('[NAAM]' = 'Schuilobject')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bordes"
+      EXPRESSION   ('[NAAM]' = 'Bordes')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "traptrede"
+      EXPRESSION   ('[NAAM]' = 'Traptrede')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "trap"
+      EXPRESSION   ('[NAAM]' = 'Trap')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "hek"
+      EXPRESSION   ('[NAAM]' = 'Hek')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    6 4 1 4  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "muur<35cm"
+      EXPRESSION   ('[NAAM]' = 'Muur<35cm')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "muur>35cm_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Muur>35cm_onzichtb')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    3 5  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "muur>35cm"
+      EXPRESSION   ('[NAAM]' = 'Muur>35cm')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH       0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "muur<35cm_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Muur<35cm_onzichtb')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    3 5  END
+        ANTIALIAS  true
+      END
+    END
+    
+  END
+
+
+
+  # gbk_terrein
+  #===========================================================================
+  LAYER
+    NAME           "GBK_terrein"
+    GROUP          "topolijnen"
+    DATA           "GBK_terrein"
+    TYPE           line
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "GBK_terrein"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "talud"
+      EXPRESSION   ('[NAAM]' = 'Talud')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "taludgrens"
+      EXPRESSION   ('[NAAM]' = 'Taludlijn')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    10 12  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_terrein_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Kant_terrein_onzichtb')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    5 5  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_terrein"
+      EXPRESSION   ('[NAAM]' = 'Kant_terrein')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_spoorbaan_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Kant_spoorbaan_onzichtb')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    6 6  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_spoorbaan"
+      EXPRESSION   ('[NAAM]' = 'Kant_spoorbaan')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_weg_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Kant_weg_onzichtb')
+      STYLE
+        COLOR      170 170 170
+        WIDTH      0.6
+        PATTERN    5 4  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_weg"
+      EXPRESSION   ('[NAAM]' = 'Kant_weg')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+  END
+  
+  
+
+  # gbk_water
+  #===========================================================================
+  LAYER
+    NAME           "GBK_water"
+    GROUP          "topolijnen"
+    DATA           "GBK_water"
+    TYPE           line
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "GBK_water"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_water_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Kant_water_onzichtb')
+      STYLE
+        COLOR      70 120 190
+        WIDTH      0.5
+        PATTERN    8 5  END
+        ANTIALIAS  true
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kant_water"
+      EXPRESSION   ('[NAAM]' = 'Kant_water')
+      STYLE
+        ANTIALIAS  true
+        COLOR      70 120 190
+        WIDTH      0.5
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kademuur_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Kademuur_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      70 120 190
+        PATTERN    8 5  END
+        WIDTH      0.5
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "kademuur"
+      EXPRESSION   ('[NAAM]' = 'Kademuur')
+      STYLE
+        ANTIALIAS  true
+        COLOR      70 120 190
+        WIDTH      0.5
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "walbescherming_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Walbescherming_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      70 120 190
+        PATTERN    8 5  END
+        WIDTH      0.5
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "walbescherming"
+      EXPRESSION   ('[NAAM]' = 'Walbescherming')
+      STYLE
+        ANTIALIAS  true
+        COLOR      70 120 190
+        WIDTH      0.5
+      END
+    END
+    
+  END
+
+
+
+  # gbk_gebouwen
+  #===========================================================================
+  LAYER
+    NAME           "GBK_gebouwen"
+    GROUP          "topolijnen"
+    DATA           "GBK_gebouwen"
+    TYPE           line
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "GBK_gebouwen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "pilaar_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Pilaar_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        PATTERN    3 5  END
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "pilaar"
+      EXPRESSION   ('[NAAM]' = 'Pilaar')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "luifel"
+      EXPRESSION   ('[NAAM]' = 'Luifel')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        PATTERN    5 4  END
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "tussenmuur"
+      EXPRESSION   ('[NAAM]' = 'Tussenmuur')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        PATTERN    3 5  END
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "scheidingsmuur"
+      EXPRESSION   ('[NAAM]' = 'Scheidingsmuur')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bijgebouwgevel_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Bijgebouwgevel_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      120 120 120
+        PATTERN    3 5  END
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "hoofdgebouwgevel_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Hoofdgebouwgevel_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      120 120 120
+        PATTERN    3 5  END
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "ligplaatsgrens"
+      EXPRESSION   ('[NAAM]' = 'Ligplaats')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "standplaatsgrens"
+      EXPRESSION   ('[NAAM]' = 'Standplaats')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "overbouw"
+      EXPRESSION   ('[NAAM]' = 'Overbouw')
+      STYLE
+        ANTIALIAS  true
+        COLOR      170 170 170
+        PATTERN    8 5  END
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "bijgebouw"
+      EXPRESSION   ('[NAAM]' = 'Bijgebouwgevel')
+      STYLE
+        ANTIALIAS  true
+        COLOR      120 120 120
+        WIDTH      0.6
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "hoofdgebouwgevel"
+      EXPRESSION   ('[NAAM]' = 'Hoofdgebouwgevel')
+      STYLE
+        ANTIALIAS  true
+        COLOR      120 120 120
+        WIDTH      0.6
+      END
+    END
+
+  END
+
+  
+  
+  # gbk_treinsporen
+  #===========================================================================
+  LAYER
+    NAME           "GBK_treinsporen"
+    GROUP          "topolijnen"
+    DATA           "GBK_rails"
+    TYPE           line
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       2501
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topolijnen"
+     "ows_title"          "GBK_treinsporen"
+    END      
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "treinspoor_onzichtbaar"
+      EXPRESSION   ('[NAAM]' = 'Treinrails_onzichtb')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      1
+      END
+    END
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "treinspoor"
+      EXPRESSION   ('[NAAM]' = 'Treinrails')
+      STYLE
+        ANTIALIAS  true
+        COLOR      140 140 140
+        WIDTH      1
+      END
+    END
+
+  END
+
+
+  
+  
+
+# ****************************************************************************
+# TEKSTEN TOPOGRAFIE
+# ****************************************************************************
+
+  # KBK25_teksten
+  #===========================================================================  
+    LAYER
+      NAME           "KBK25_teksten"
+      GROUP          "topoteksten"
+      DATA           "KBK25_teksten"
+      TYPE           polygon
+      STATUS         off
+      MINSCALE       5001
+      MAXSCALE       20001
+      TRANSPARENCY   alpha
+      DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+      METADATA
+       "ows_group_title"    "topoteksten"
+       "ows_title"          "KBK25_teksten_groot"
+      END       
+
+
+      #-----------------------------------------
+      CLASS
+        NAME         "KBK25_tekst"
+        STYLE
+          COLOR        120 120 120
+          OUTLINECOLOR 120 120 120
+          WIDTH        0.75
+          ANTIALIAS    true
+        END
+      END
+            
+  END  
+
+
+
+# ****************************************************************************
+
+  # KBK10_teksten
+  #===========================================================================
+  LAYER
+    NAME           "KBK10_teksten"
+    GROUP          "topoteksten"
+    DATA           "KBK10_teksten"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       2001
+    MAXSCALE       5001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topoteksten"
+     "ows_title"          "KBK10_teksten"
+    END     
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "KST_tekst"
+      STYLE
+        COLOR        120 120 120
+        OUTLINECOLOR 120 120 120
+        WIDTH        0.5
+        ANTIALIAS    true
+      END
+    END
+    
+END 
+
+
+
+# ****************************************************************************
+
+  # gbk_tekst groot
+  #===========================================================================
+  LAYER
+    NAME           "GBK_teksten"
+    GROUP          "topoteksten"
+    DATA           "GBK_tekst_groot"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       1001
+    MAXSCALE       2001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topoteksten"
+     "ows_title"          "GBK_teksten"
+    END     
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "straatnaam"
+      EXPRESSION   ('[NAAM]' = 'Straatnaam')
+      STYLE
+        COLOR        120 120 120
+        OUTLINECOLOR 120 120 120
+        WIDTH        0.75
+        ANTIALIAS    true
+      END
+    END
+
+    #-----------------------------------------
+    CLASS
+      NAME         "waterloopnaam"
+      EXPRESSION   ('[NAAM]' = 'Waternaam')
+      STYLE
+        COLOR        150 180 220
+        OUTLINECOLOR 150 180 220
+        WIDTH        0.5
+        ANTIALIAS    true
+      END
+    END
+    
+  END
+  
+  
+    
+  # gbk_tekst straat en waternamen
+  #===========================================================================
+  LAYER
+    NAME           "GBK_teksten"
+    GROUP          "topoteksten"
+    DATA           "GBK_tekst"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       1001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topoteksten"
+     "ows_title"          "GBK_teksten"
+    END     
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "straatnaam"
+      EXPRESSION   ('[NAAM]' = 'Straatnaam')
+      STYLE
+        COLOR        120 120 120
+        OUTLINECOLOR 120 120 120
+        WIDTH        0.75
+        ANTIALIAS    true
+      END
+    END
+
+    #-----------------------------------------
+    CLASS
+      NAME         "waterloopnaam"
+      EXPRESSION   ('[NAAM]' = 'Waternaam')
+      STYLE
+        COLOR        150 180 220
+        OUTLINECOLOR 150 180 220
+        WIDTH        0.5
+        ANTIALIAS    true
+      END
+    END
+    
+  END
+  
+  
+  
+# ****************************************************************************
+
+  # gbk_tekst huisnummers
+  #===========================================================================
+  LAYER
+    NAME           "GBK_teksten"
+    GROUP          "topoteksten"
+    DATA           "GBK_tekst"
+    TYPE           polygon
+    STATUS         off
+    MINSCALE       1
+    MAXSCALE       1001
+    TRANSPARENCY   alpha
+    DUMP           true
+    TEMPLATE       "dummy"
+    PROJECTION
+     "init=epsg:28992" 
+    END 
+    METADATA
+     "ows_group_title"    "topoteksten"
+     "ows_title"          "GBK_teksten"
+    END     
+    
+    #-----------------------------------------
+    CLASS
+      NAME         "huisnummer"
+      EXPRESSION   ('[NAAM]' = 'Huisnummer')
+      STYLE
+        COLOR        120 120 120
+        OUTLINECOLOR 120 120 120
+        WIDTH        0.5
+        ANTIALIAS    true
+      END
+    END    
+
+        #-----------------------------------------
+    CLASS
+      NAME         "beschrijving"
+      EXPRESSION   ('[NAAM]' = 'Beschrijving')
+      STYLE
+        COLOR        120 120 120
+        OUTLINECOLOR 120 120 120
+        WIDTH        0.5
+        ANTIALIAS    true
+      END
+    END 
+    
+  END
+
+  
+    
+# ****************************************************************************
+END

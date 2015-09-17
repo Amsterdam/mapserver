@@ -1,0 +1,162 @@
+#==============================================================================
+#
+# kbka10.map
+# doel: serveren van KBKA10, cartografische levering
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Rob Kromwijk          17-09-2015    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "KBKA10"
+  INCLUDE "header.map"
+
+
+  WEB
+    METADATA
+      "ows_title"    "KBKA10"
+      "ows_abstract" "KBKA 10:000 cartografie"
+    END
+  END
+
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+  
+  # TE DOEN:
+  #   WMS LAYERS VERVANGEN DOOR DATAPUNT BRONNEN
+  
+  
+  LAYER
+    NAME            "vlakken"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "vlakken"
+      "ows_abstract"        "KBKA10 vlakken van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK10_vlakken"
+    END
+    
+  END  
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "vlakken_sport"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "vlakken_sport"
+      "ows_abstract"        "KBKA10 vlakken sport van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK10_vlakken_sport"
+    END
+    
+  END  
+  
+  #-----------------------------------------------------------------------------    
+  
+  
+  LAYER
+    NAME            "vlakken_snelweg"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "vlakken_snelweg"
+      "ows_abstract"        "KBKA10 vlakken snelweg van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK10_vlakken_snelweg"
+    END
+    
+  END   
+  
+  #-----------------------------------------------------------------------------    
+   
+  
+  LAYER
+    NAME            "lijnen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "lijnen"
+      "ows_abstract"        "KBKA10 lijnen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK10_lijnen"
+    END
+    
+  END  
+  
+  #-----------------------------------------------------------------------------   
+   
+  
+  LAYER
+    NAME            "sporen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "sporen"
+      "ows_abstract"        "KBKA10 sporen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK10_sporen"
+    END
+    
+  END  
+  
+  #-----------------------------------------------------------------------------    
+    
+  
+  LAYER
+    NAME            "teksten"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "teksten"
+      "ows_abstract"        "KBKA10 teksten van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK10_teksten"
+    END
+    
+  END  
+  
+
+
+#============================================================================= 
+END

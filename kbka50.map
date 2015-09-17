@@ -1,0 +1,119 @@
+#==============================================================================
+#
+# kbka50.map
+# doel: serveren van KBKA50, cartografische levering
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Rob Kromwijk          17-09-2015    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "KBKA50"
+  INCLUDE "header.map"
+
+
+  WEB
+    METADATA
+      "ows_title"    "KBKA50"
+      "ows_abstract" "KBKA 50:000 cartografie"
+    END
+  END
+
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+  
+  # TE DOEN:
+  #   WMS LAYERS VERVANGEN DOOR DATAPUNT BRONNEN
+
+  LAYER
+    NAME            "vlakken"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "vlakken"
+      "ows_abstract"        "KBKA50 vlakken van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK50_vlakken"
+    END
+    
+  END  
+  
+  #-----------------------------------------------------------------------------   
+
+
+  LAYER
+    NAME            "vlakken_snelweg"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "vlakken_snelweg"
+      "ows_abstract"        "KBKA50 vlakken snelweg van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK50_vlakken_snelweg"
+    END
+    
+  END  
+  
+  #-----------------------------------------------------------------------------   
+
+
+  LAYER
+    NAME            "lijnen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "lijnen"
+      "ows_abstract"        "KBKA50 lijnen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK50_lijnen"
+    END
+    
+  END  
+  
+  #----------------------------------------------------------------------------- 
+
+
+  LAYER
+    NAME            "sporen"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+    
+    METADATA
+      "ows_title"           "sporen"
+      "ows_abstract"        "KBKA50 sporen van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "KBK50_sporen"
+    END
+    
+  END  
+  
+
+
+#============================================================================= 
+END
