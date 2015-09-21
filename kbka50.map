@@ -19,7 +19,7 @@ MAP
   WEB
     METADATA
       "ows_title"    "KBKA50"
-      "ows_abstract" "KBKA 50:000 cartografie"
+      "ows_abstract" "KBKA 50:000 cartografische weergave"
     END
   END
 
@@ -33,13 +33,13 @@ MAP
   #   WMS LAYERS VERVANGEN DOOR DATAPUNT BRONNEN
 
   LAYER
-    NAME            "vlakken"
+    NAME            "vlak"
     CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
     CONNECTIONTYPE  WMS
     TYPE            RASTER
     
     METADATA
-      "ows_title"           "vlakken"
+      "ows_title"           "vlak"
       "ows_abstract"        "KBKA50 vlakken van de gemeente Amsterdam"
       "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
       "wms_server_version"  "1.1.1"
@@ -54,13 +54,13 @@ MAP
 
 
   LAYER
-    NAME            "vlakken_snelweg"
+    NAME            "vlak_snelweg"
     CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
     CONNECTIONTYPE  WMS
     TYPE            RASTER
     
     METADATA
-      "ows_title"           "vlakken_snelweg"
+      "ows_title"           "vlak_snelweg"
       "ows_abstract"        "KBKA50 vlakken snelweg van de gemeente Amsterdam"
       "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
       "wms_server_version"  "1.1.1"
@@ -75,13 +75,13 @@ MAP
 
 
   LAYER
-    NAME            "lijnen"
+    NAME            "lijn"
     CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
     CONNECTIONTYPE  WMS
     TYPE            RASTER
     
     METADATA
-      "ows_title"           "lijnen"
+      "ows_title"           "lijn"
       "ows_abstract"        "KBKA50 lijnen van de gemeente Amsterdam"
       "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
       "wms_server_version"  "1.1.1"
@@ -96,13 +96,13 @@ MAP
 
 
   LAYER
-    NAME            "sporen"
+    NAME            "spoor"
     CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
     CONNECTIONTYPE  WMS
     TYPE            RASTER
     
     METADATA
-      "ows_title"           "sporen"
+      "ows_title"           "spoor"
       "ows_abstract"        "KBKA50 sporen van de gemeente Amsterdam"
       "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
       "wms_server_version"  "1.1.1"
