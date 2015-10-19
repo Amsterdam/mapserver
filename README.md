@@ -24,12 +24,32 @@ Kopieer `connection-example.map` naar `connection.map` en geef de juiste credent
 
 Draai
 
+    cd atlas/git/atlas_map
 	$ docker-compose up -d
+
+
+WMS services
+--------
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wms&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wms&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/gbka.map&service=wms&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka10.map&service=wms&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka50.map&service=wms&request=getcapabilities
+
+
+WFS services
+--------
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities
+http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wfs&request=getcapabilities
+
 
 Test
 ---- 
-bijvoorbeeld de kaartserver in wkpb.map:
+bijvoorbeeld de kaartserver in bag.map:
 
-
-* capabilities: <http://{$DOCKER_HOST}:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities> .
-* 1 feature opvragen: <http://{$DOCKER_HOST}:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&version=1.1.0&request=getfeature&typename=ligplaats&maxfeatures=1>
+* wms capabilities:   < http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getcapabilities >
+* kaart opvragen :    < http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getmap&version=1.3.0&layers=ligplaats&width=500&height=500&crs=epsg:28992&bbox=122000,487000,122250,487250&format=image/png >
+* wfs capabilities:   < http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&request=getcapabilities >
+* 1 feature opvragen: < http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&version=1.1.0&request=getfeature&typename=ligplaats&maxfeatures=1 >
