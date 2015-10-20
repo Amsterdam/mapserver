@@ -29,20 +29,30 @@ Draai
 
 
 WMS services
---------
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wms&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wms&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/gbka.map&service=wms&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka10.map&service=wms&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka50.map&service=wms&request=getcapabilities
+------------
+BAG:    http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getcapabilities
+WKPB:   http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wms&request=getcapabilities
+LKI:    http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wms&request=getcapabilities
+GBKA:   http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/gbka.map&service=wms&request=getcapabilities
+KBKA10: http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka10.map&service=wms&request=getcapabilities
+KBKA50: http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka50.map&service=wms&request=getcapabilities
+GBD:    
 
 
 WFS services
---------
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities
-http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wfs&request=getcapabilities
+------------
+BAG:  http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&request=getcapabilities
+WKPB: http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wfs&request=getcapabilities
+LKI:  http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wfs&request=getcapabilities
+GBD:
+
+
+TMS services
+------------
+Topo
+Lufo
+LKI kot
+
 
 
 Test
