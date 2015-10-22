@@ -8,6 +8,7 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # Rob Kromwijk          09-09-2015    schepping
+# Rob Kromwijk          21-10-2015    group toegevoegd
 #
 #==============================================================================
 
@@ -32,6 +33,7 @@ MAP
   
   LAYER
     NAME            "kadastraal_object"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -44,6 +46,7 @@ MAP
     
     METADATA
       "ows_title"           "kadastraal_object"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Kadastrale objecten"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -63,6 +66,7 @@ MAP
   
   LAYER
     NAME            "kadastrale_sectie"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -75,6 +79,7 @@ MAP
     
     METADATA
       "ows_title"           "kadastrale_sectie"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Kadastrale secties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -94,6 +99,7 @@ MAP
   
   LAYER
     NAME            "kadastrale_gemeente"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -106,6 +112,7 @@ MAP
     
     METADATA
       "ows_title"           "kadastrale_gemeente"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Kadastrale gemeentegrenzen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -125,6 +132,7 @@ MAP
 
   LAYER
     NAME            "burgerlijke_gemeente"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -137,6 +145,7 @@ MAP
     
     METADATA
       "ows_title"           "burgerlijke_gemeente"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Burgerlijke gemeentegrenzen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -152,10 +161,12 @@ MAP
   END
   
   #-----------------------------------------------------------------------------   
+  #-----------------------------------------------------------------------------
 
 
   LAYER
     NAME            "burgerlijke_gemeente_label"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -167,6 +178,7 @@ MAP
     
     METADATA
       "ows_title"           "burgerlijke_gemeente_label"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Label van burgerlijke gemeentegrenzen"
     END
     
@@ -191,6 +203,7 @@ MAP
  
   LAYER
     NAME            "kadastrale_gemeente_label"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -202,6 +215,7 @@ MAP
     
     METADATA
       "ows_title"           "kadastrale_gemeente_label"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Labels van kadastrale gemeentegrenzen"
     END
 
@@ -226,6 +240,7 @@ MAP
 
   LAYER
     NAME            "kadastrale_sectie_label"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -237,6 +252,7 @@ MAP
     
     METADATA
       "ows_title"           "kadastrale_sectie_label"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Labels van kadastrale secties"
     END
 
@@ -260,6 +276,7 @@ MAP
   
   LAYER
     NAME            "kadastraal_object_label"
+    GROUP           "kadaster"
     INCLUDE         "connection.map"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -271,6 +288,7 @@ MAP
     
     METADATA
       "ows_title"           "kadastraal_object_label"
+      "ows_group_title"     "kadaster"
       "ows_abstract"        "Labels van kadastrale objecten"
     END
 
