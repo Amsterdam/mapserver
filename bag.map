@@ -8,12 +8,13 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # Rob Kromwijk          07-09-2015    schepping
+# Rob Kromwijk          21-10-2015    group toegevoegd
 #
 #==============================================================================
 
 MAP
   NAME "BAG"
-  INCLUDE "header.map"
+  INCLUDE "header.inc"
 
 
   WEB
@@ -34,7 +35,8 @@ MAP
   
   LAYER
     NAME            "pand"
-    INCLUDE         "connection.map"
+    GROUP           "bag"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_pand USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -46,6 +48,7 @@ MAP
     
     METADATA
       "ows_title"           "pand"
+      "ows_group_title"     "bag"
       "ows_abstract"        "BAG panden van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -67,7 +70,8 @@ MAP
   
   LAYER
     NAME            "ligplaats"
-    INCLUDE         "connection.map"
+    GROUP           "bag"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_ligplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -79,6 +83,7 @@ MAP
     
     METADATA
       "ows_title"           "ligplaats"
+      "ows_group_title"     "bag"
       "ows_abstract"        "BAG ligplaatsen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -100,11 +105,12 @@ MAP
   
   LAYER
     NAME            "standplaats"
-    INCLUDE         "connection.map"
+    GROUP           "bag"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_standplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2500
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   5000
     TEMPLATE     "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -112,6 +118,7 @@ MAP
     
     METADATA
       "ows_title"           "standplaats"
+      "ows_group_title"     "bag"
       "ows_abstract"        "BAG standplaatsen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -133,7 +140,8 @@ MAP
   
   LAYER
     NAME            "verblijfsobject"
-    INCLUDE         "connection.map"
+    GROUP           "bag"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_verblijfsobject USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -145,6 +153,7 @@ MAP
     
     METADATA
       "ows_title"           "verblijfsobject"
+      "ows_group_title"     "bag"
       "ows_abstract"        "BAG verblijfsobjecten van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"

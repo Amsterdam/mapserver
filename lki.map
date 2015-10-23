@@ -14,7 +14,7 @@
 
 MAP
   NAME "LKI"
-  INCLUDE "header.map"
+  INCLUDE "header.inc"
 
 
 
@@ -34,11 +34,11 @@ MAP
   LAYER
     NAME            "kadastraal_object"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2500
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   5000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -67,7 +67,7 @@ MAP
   LAYER
     NAME            "kadastrale_sectie"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   2500
@@ -100,7 +100,7 @@ MAP
   LAYER
     NAME            "kadastrale_gemeente"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   2500
@@ -133,11 +133,11 @@ MAP
   LAYER
     NAME            "burgerlijke_gemeente"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   2500
-    MAXSCALEDENOM   500000
+    MAXSCALEDENOM   100000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -167,11 +167,11 @@ MAP
   LAYER
     NAME            "burgerlijke_gemeente_label"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   250
-    MAXSCALEDENOM   500000
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   100000
     PROJECTION
     "init=epsg:28992" 
     END
@@ -182,15 +182,30 @@ MAP
       "ows_abstract"        "Label van burgerlijke gemeentegrenzen"
     END
     
-    LABELITEM "gemeentenaam"
+    LABELITEM          "gemeentenaam"
 
     CLASS
       LABEL
+        MINSCALEDENOM  2500
+        MAXSCALEDENOM  50000
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
-        SIZE           16
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  50000
+        MAXSCALEDENOM  100000
+        COLOR          0 130 130
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           11
         POSITION       AUTO
         PARTIALS       FALSE
       END
@@ -204,11 +219,11 @@ MAP
   LAYER
     NAME            "kadastrale_gemeente_label"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   250
-    MAXSCALEDENOM   500000
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   100000
     PROJECTION
     "init=epsg:28992" 
     END
@@ -219,15 +234,30 @@ MAP
       "ows_abstract"        "Labels van kadastrale gemeentegrenzen"
     END
 
-    LABELITEM "code"
+    LABELITEM          "code"
 
     CLASS
       LABEL
+        MINSCALEDENOM  2500
+        MAXSCALEDENOM  50000
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  50000
+        MAXSCALEDENOM  100000
+        COLOR          0 130 130
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
       END
@@ -241,11 +271,11 @@ MAP
   LAYER
     NAME            "kadastrale_sectie_label"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   2500
-    MAXSCALEDENOM   500000
+    MAXSCALEDENOM   100000
     PROJECTION
     "init=epsg:28992" 
     END
@@ -260,11 +290,26 @@ MAP
 
     CLASS
       LABEL
-        COLOR          0 130 130
+        MINSCALEDENOM  2500
+        MAXSCALEDENOM  50000
+        COLOR          0 220 220
         OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  50000
+        MAXSCALEDENOM  100000
+        COLOR          0 220 220
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
       END
@@ -277,11 +322,11 @@ MAP
   LAYER
     NAME            "kadastraal_object_label"
     GROUP           "kadaster"
-    INCLUDE         "connection.map"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2500
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992" 
     END
@@ -296,8 +341,23 @@ MAP
 
     CLASS
       LABEL
+        MINSCALEDENOM  500
+        MAXSCALEDENOM  2500
         COLOR          0 130 130
         OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  2500
+        MAXSCALEDENOM  5000
+        COLOR          0 130 130
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           6

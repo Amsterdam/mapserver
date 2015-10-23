@@ -8,12 +8,13 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # Rob Kromwijk          09-09-2015    schepping
+# Rob Kromwijk          21-10-2015    group toegevoegd
 #
 #==============================================================================
 
 MAP
   NAME "WKPB"
-  INCLUDE "header.map"
+  INCLUDE "header.inc"
 
 
 
@@ -32,7 +33,8 @@ MAP
 
   LAYER
     NAME            "beperking"
-    INCLUDE         "connection.map"
+    GROUP           "wkpb"
+    INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -45,6 +47,7 @@ MAP
     
     METADATA
       "ows_title"           "beperking"
+      "ows_group_title"     "wkpb"
       "ows_abstract"        "WKPB beperkingen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
