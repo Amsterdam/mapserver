@@ -40,7 +40,7 @@ MAP
     DATA            "geometrie FROM public.geo_bag_pand USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   2500
+    MAXSCALEDENOM   2501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -75,7 +75,7 @@ MAP
     DATA            "geometrie FROM public.geo_bag_ligplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   2500
+    MAXSCALEDENOM   2501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -109,8 +109,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_standplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
-    MAXSCALEDENOM   5000
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2501
     TEMPLATE     "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -145,7 +145,7 @@ MAP
     DATA            "geometrie FROM public.geo_bag_verblijfsobject USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   1000
+    MAXSCALEDENOM   1001
     TEMPLATE     "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
