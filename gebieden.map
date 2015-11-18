@@ -163,10 +163,10 @@ MAP
   
   
   LAYER
-    NAME            "grootstedelijk_project"
+    NAME            "grootstedelijkgebied"
     GROUP           "gebieden"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_grootstedelijkproject USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   500
     MAXSCALEDENOM   100001
@@ -176,8 +176,8 @@ MAP
     END
     
     METADATA
-      "ows_title"           "grootstedelijk_project"
-      "ows_abstract"        "Grootstedelijke projecten van de gemeente Amsterdam"
+      "ows_title"           "grootstedelijkgebied"
+      "ows_abstract"        "Grootstedelijke Gebieden van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -484,7 +484,7 @@ MAP
 
 
   LAYER
-    NAME            "grootstedelijk_project_label"
+    NAME            "grootstedelijkgebied_label"
     GROUP           "gebieden"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
@@ -497,8 +497,8 @@ MAP
     END
     
     METADATA
-      "ows_title"           "grootstedelijk_project_label"
-      "ows_abstract"        "Labels van grootstedelijke projecten van de gemeente Amsterdam"
+      "ows_title"           "grootstedelijkgebied_label"
+      "ows_abstract"        "Labels van grootstedelijke gebieden van de gemeente Amsterdam"
     END
 
     CLASS
