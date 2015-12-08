@@ -37,8 +37,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
-    MAXSCALEDENOM   5000
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -54,7 +54,7 @@ MAP
 
     CLASS
       STYLE
-        OUTLINECOLOR   0 130 130
+        OUTLINECOLOR   0 140 140
         WIDTH          1
       END
     END
@@ -70,8 +70,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   2500
-    MAXSCALEDENOM   500000
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -87,7 +87,7 @@ MAP
 
     CLASS
       STYLE
-        OUTLINECOLOR   0 220 220
+        OUTLINECOLOR   0 180 180
         WIDTH          2
       END
     END
@@ -103,8 +103,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   2500
-    MAXSCALEDENOM   500000
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -120,7 +120,7 @@ MAP
 
     CLASS
       STYLE
-        OUTLINECOLOR   0 160 160
+        OUTLINECOLOR   0 140 140
         WIDTH          2
       END
     END
@@ -136,8 +136,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   2500
-    MAXSCALEDENOM   100000
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -170,8 +170,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   2500
-    MAXSCALEDENOM   100000
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
     END
@@ -186,9 +186,9 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  2500
+        MINSCALEDENOM  500
         MAXSCALEDENOM  50000
-        COLOR          0 130 130
+        COLOR          0 100 100
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -199,8 +199,8 @@ MAP
       END
       LABEL
         MINSCALEDENOM  50000
-        MAXSCALEDENOM  100000
-        COLOR          0 130 130
+        MAXSCALEDENOM  100001
+        COLOR          0 100 100
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -222,8 +222,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   2500
-    MAXSCALEDENOM   100000
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
     END
@@ -238,9 +238,9 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  2500
+        MINSCALEDENOM  500
         MAXSCALEDENOM  50000
-        COLOR          0 130 130
+        COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -251,8 +251,8 @@ MAP
       END
       LABEL
         MINSCALEDENOM  50000
-        MAXSCALEDENOM  100000
-        COLOR          0 130 130
+        MAXSCALEDENOM  100001
+        COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -274,8 +274,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   2500
-    MAXSCALEDENOM   100000
+    MINSCALEDENOM   500
+    MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
     END
@@ -290,9 +290,9 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  2500
+        MINSCALEDENOM  500
         MAXSCALEDENOM  50000
-        COLOR          0 220 220
+        COLOR          0 180 180
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -303,8 +303,8 @@ MAP
       END
       LABEL
         MINSCALEDENOM  50000
-        MAXSCALEDENOM  100000
-        COLOR          0 220 220
+        MAXSCALEDENOM  100001
+        COLOR          0 180 180
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -325,8 +325,8 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
-    MAXSCALEDENOM   5000
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2501
     PROJECTION
     "init=epsg:28992" 
     END
@@ -341,9 +341,9 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  500
-        MAXSCALEDENOM  2500
-        COLOR          0 130 130
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1000
+        COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -353,9 +353,9 @@ MAP
         PARTIALS       FALSE
       END
       LABEL
-        MINSCALEDENOM  2500
-        MAXSCALEDENOM  5000
-        COLOR          0 130 130
+        MINSCALEDENOM  1000
+        MAXSCALEDENOM  2501
+        COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
