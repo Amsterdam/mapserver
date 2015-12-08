@@ -70,7 +70,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -103,7 +103,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -136,7 +136,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -170,7 +170,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -222,7 +222,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -274,7 +274,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
