@@ -52,12 +52,82 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
+    
+    CLASSITEM "opr_type"
 
     CLASS
+      NAME       "Weg"
+      EXPRESSION /01/
+      STYLE
+        ANTIALIAS      true
+        COLOR          200 200 200
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME       "Water"
+      EXPRESSION /02/
+      STYLE
+        ANTIALIAS      true
+        COLOR          100 200 255
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME       "Spoorbaan"
+      EXPRESSION /03/
+      STYLE
+        ANTIALIAS      true
+        COLOR          150 150 1500
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME       "Terrein"
+      EXPRESSION /04/
+      STYLE
+        ANTIALIAS      true
+        COLOR          100 255 100
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME       "Kunstwerk"
+      EXPRESSION /05/
+      STYLE
+        ANTIALIAS      true
+        COLOR          255 175 100
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+    
+    CLASS
+      NAME       "Landschappelijk gebied"
+      EXPRESSION /06/
       STYLE
         ANTIALIAS      true
         COLOR          200 100 255
-        OUTLINECOLOR   150 50 200
+        OUTLINECOLOR   172 172 172
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME       "Administratief gebied"
+      EXPRESSION /07/
+      STYLE
+        ANTIALIAS      true
+        COLOR          255 255 100
+        OUTLINECOLOR   172 172 172
         WIDTH          1
       END
     END
