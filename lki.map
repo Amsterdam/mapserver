@@ -70,7 +70,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -103,7 +103,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -136,7 +136,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -170,7 +170,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -186,7 +186,7 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  50000
         COLOR          0 100 100
         OUTLINECOLOR   255 255 255
@@ -222,7 +222,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -238,7 +238,7 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  50000
         COLOR          0 140 140
         OUTLINECOLOR   255 255 255
@@ -274,7 +274,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   500
+    MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -290,7 +290,7 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  50000
         COLOR          0 180 180
         OUTLINECOLOR   255 255 255
