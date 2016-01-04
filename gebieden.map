@@ -8,6 +8,7 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # Rob Kromwijk          21-10-2015    schepping
+# Rob Kromwijk          04-01-2016    aanpassing zoomniveaus labels
 #
 #==============================================================================
 
@@ -56,6 +57,39 @@ MAP
        OUTLINECOLOR 200 0 0
        WIDTH        2
       END 
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "gebiedsgerichtwerken"
+    GROUP           "gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   40001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "gebiedsgerichtwerken"
+      "ows_abstract"        "Gebiedsgerichtwerken gebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        OUTLINECOLOR   40 150 10
+        WIDTH          2
+      END
     END
     
   END
@@ -194,40 +228,7 @@ MAP
   
   #-----------------------------------------------------------------------------   
   
-  
-  LAYER
-    NAME            "gebiedsgerichtwerken"
-    GROUP           "gebieden"
-    INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   40001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992" 
-    END
     
-    METADATA
-      "ows_title"           "gebiedsgerichtwerken"
-      "ows_abstract"        "Gebiedsgerichtwerken gebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        OUTLINECOLOR   40 150 10
-        WIDTH          2
-      END
-    END
-    
-  END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
   LAYER
     NAME            "unesco"
     GROUP           "gebieden"
@@ -300,7 +301,7 @@ MAP
     CLASS
       TEXT             '[naam] ([code])'
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  50001
         COLOR          200 0 0
         OUTLINECOLOR   255 255 255
@@ -320,6 +321,57 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           11
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "gebiedsgerichtwerken_label"
+    GROUP           "gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   40001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "gebiedsgerichtwerken_label"
+      "ows_abstract"        "Labels van gebiedsgerichtwerken gebieden van de gemeente Amsterdam"
+    END
+
+    CLASS
+      TEXT             '[naam] ([code])'
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  10001
+        COLOR          40 150 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  10001
+        MAXSCALEDENOM  40001
+        COLOR          40 150 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
       END
@@ -351,7 +403,7 @@ MAP
     CLASS
       TEXT             '[naam] ([vollcode])'
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  10001
         COLOR          200 200 0
         OUTLINECOLOR   255 255 255
@@ -402,7 +454,7 @@ MAP
     CLASS
       TEXT             '[naam] ([code])'
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         COLOR          255 155 0
         OUTLINECOLOR   255 255 255
@@ -453,8 +505,8 @@ MAP
     CLASS
       TEXT             '[code]'
       LABEL
-        MINSCALEDENOM  500
-        MAXSCALEDENOM  2500
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  2501
         COLOR          0 150 255
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -465,7 +517,7 @@ MAP
         PARTIALS       FALSE
       END
       LABEL
-        MINSCALEDENOM  2500
+        MINSCALEDENOM  2501
         MAXSCALEDENOM  5001
         COLOR          0 150 255
         OUTLINECOLOR   255 255 255
@@ -504,7 +556,7 @@ MAP
     CLASS
       TEXT             '[naam]'
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  50001
         COLOR          150 40 255
         OUTLINECOLOR   255 255 255
@@ -519,57 +571,6 @@ MAP
         MINSCALEDENOM  50001
         MAXSCALEDENOM  100001
         COLOR          150 40 255
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
-  END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
-  LAYER
-    NAME            "gebiedsgerichtwerken_label"
-    GROUP           "gebieden"
-    INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   500
-    MAXSCALEDENOM   40001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992" 
-    END
-    
-    METADATA
-      "ows_title"           "gebiedsgerichtwerken_label"
-      "ows_abstract"        "Labels van gebiedsgerichtwerken gebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[naam] ([code])'
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  10001
-        COLOR          40 150 10
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  10001
-        MAXSCALEDENOM  40001
-        COLOR          40 150 10
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -606,7 +607,7 @@ MAP
     CLASS
       TEXT             '[naam]'
       LABEL
-        MINSCALEDENOM  500
+        MINSCALEDENOM  100
         MAXSCALEDENOM  10001
         COLOR          255 140 40
         OUTLINECOLOR   255 255 255
