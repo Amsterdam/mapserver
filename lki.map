@@ -9,6 +9,7 @@
 # ------------------    ----------    -----------------------------------------
 # Rob Kromwijk          09-09-2015    schepping
 # Rob Kromwijk          21-10-2015    group toegevoegd
+# Rob Kromwijk          04-01-2016    aanpassing zoomniveaus labels
 #
 #==============================================================================
 
@@ -32,43 +33,10 @@ MAP
   #============================================================================= 
   
   LAYER
-    NAME            "kadastraal_object"
+    NAME            "burgerlijke_gemeente"
     GROUP           "kadaster"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2501
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992" 
-    END
-    
-    METADATA
-      "ows_title"           "kadastraal_object"
-      "ows_group_title"     "kadaster"
-      "ows_abstract"        "Kadastrale objecten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      STYLE
-        OUTLINECOLOR   0 140 140
-        WIDTH          1
-      END
-    END
-    
-  END
-  
-  #-----------------------------------------------------------------------------  
-  
-  
-  LAYER
-    NAME            "kadastrale_sectie"
-    GROUP           "kadaster"
-    INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -78,23 +46,23 @@ MAP
     END
     
     METADATA
-      "ows_title"           "kadastrale_sectie"
+      "ows_title"           "burgerlijke_gemeente"
       "ows_group_title"     "kadaster"
-      "ows_abstract"        "Kadastrale secties"
+      "ows_abstract"        "Burgerlijke gemeentegrenzen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
       STYLE
-        OUTLINECOLOR   0 180 180
-        WIDTH          2
+        OUTLINECOLOR   0 100 100
+        WIDTH          3
       END
     END
     
   END
   
-  #-----------------------------------------------------------------------------   
+  #-----------------------------------------------------------------------------  
   
   
   LAYER
@@ -128,37 +96,71 @@ MAP
   END
 
   #-----------------------------------------------------------------------------  
-
-
+   
   LAYER
-    NAME            "burgerlijke_gemeente"
+    NAME            "kadastrale_sectie"
     GROUP           "kadaster"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
+    MAXSCALEDENOM   40001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
     END
     
     METADATA
-      "ows_title"           "burgerlijke_gemeente"
+      "ows_title"           "kadastrale_sectie"
       "ows_group_title"     "kadaster"
-      "ows_abstract"        "Burgerlijke gemeentegrenzen"
+      "ows_abstract"        "Kadastrale secties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
       STYLE
-        OUTLINECOLOR   0 100 100
-        WIDTH          3
+        OUTLINECOLOR   0 180 180
+        WIDTH          2
       END
     END
     
   END
+  
+  #-----------------------------------------------------------------------------   
+  
+  
+  LAYER
+    NAME            "kadastraal_object"
+    GROUP           "kadaster"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   2501
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "kadastraal_object"
+      "ows_group_title"     "kadaster"
+      "ows_abstract"        "Kadastrale objecten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        OUTLINECOLOR   0 140 140
+        WIDTH          1
+      END
+    END
+    
+  END
+
+
   
   #-----------------------------------------------------------------------------   
   #-----------------------------------------------------------------------------
@@ -170,7 +172,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
+    MINSCALEDENOM   20000
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -186,8 +188,8 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50000
+        MINSCALEDENOM  20000
+        MAXSCALEDENOM  50001
         COLOR          0 100 100
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -198,7 +200,7 @@ MAP
         PARTIALS       FALSE
       END
       LABEL
-        MINSCALEDENOM  50000
+        MINSCALEDENOM  50001
         MAXSCALEDENOM  100001
         COLOR          0 100 100
         OUTLINECOLOR   255 255 255
@@ -222,7 +224,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
+    MINSCALEDENOM   2501
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -238,8 +240,8 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50000
+        MINSCALEDENOM  2501
+        MAXSCALEDENOM  50001
         COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -250,7 +252,7 @@ MAP
         PARTIALS       FALSE
       END
       LABEL
-        MINSCALEDENOM  50000
+        MINSCALEDENOM  50001
         MAXSCALEDENOM  100001
         COLOR          0 140 140
         OUTLINECOLOR   255 255 255
@@ -274,7 +276,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
+    MINSCALEDENOM   2501
     MAXSCALEDENOM   100001
     PROJECTION
     "init=epsg:28992" 
@@ -290,8 +292,8 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50000
+        MINSCALEDENOM  2501
+        MAXSCALEDENOM  50001
         COLOR          0 180 180
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -302,7 +304,7 @@ MAP
         PARTIALS       FALSE
       END
       LABEL
-        MINSCALEDENOM  50000
+        MINSCALEDENOM  50001
         MAXSCALEDENOM  100001
         COLOR          0 180 180
         OUTLINECOLOR   255 255 255
@@ -326,7 +328,7 @@ MAP
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   2501
+    MAXSCALEDENOM   1001
     PROJECTION
     "init=epsg:28992" 
     END
@@ -342,25 +344,13 @@ MAP
     CLASS
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  1000
+        MAXSCALEDENOM  1001
         COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  1000
-        MAXSCALEDENOM  2501
-        COLOR          0 140 140
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           6
         POSITION       AUTO
         PARTIALS       FALSE
       END
