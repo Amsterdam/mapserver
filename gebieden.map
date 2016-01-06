@@ -292,7 +292,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_stadsdeel USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
+    MINSCALEDENOM   15000
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -308,7 +308,7 @@ MAP
     CLASS
       TEXT             '[naam] ([code])'
       LABEL
-        MINSCALEDENOM  20000
+        MINSCALEDENOM  15000
         MAXSCALEDENOM  50001
         COLOR          200 0 0
         OUTLINECOLOR   255 255 255
@@ -344,7 +344,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   5000
+    MINSCALEDENOM   4000
     MAXSCALEDENOM   40001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -360,7 +360,7 @@ MAP
     CLASS
       TEXT             '[naam] ([code])'
       LABEL
-        MINSCALEDENOM  5000
+        MINSCALEDENOM  4000
         MAXSCALEDENOM  10001
         COLOR          40 150 10
         OUTLINECOLOR   255 255 255
@@ -397,7 +397,7 @@ MAP
     DATA            "geometrie FROM public.geo_bag_buurtcombinatie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   5000
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -425,7 +425,7 @@ MAP
       END
       LABEL
         MINSCALEDENOM  10001
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  15001
         COLOR          255 150 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -449,7 +449,7 @@ MAP
     DATA            "geometrie FROM public.geo_bag_buurt USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    MAXSCALEDENOM   8001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992" 
@@ -465,7 +465,7 @@ MAP
       TEXT             '[naam] ([code])'
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  6001
         COLOR          255 200 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -476,8 +476,8 @@ MAP
         PARTIALS       FALSE
       END
       LABEL
-        MINSCALEDENOM  5001
-        MAXSCALEDENOM  10001
+        MINSCALEDENOM  6001
+        MAXSCALEDENOM  8001
         COLOR          255 200 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -552,7 +552,7 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   5000
+    MINSCALEDENOM   4000
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -568,7 +568,7 @@ MAP
     CLASS
       TEXT             '[naam]'
       LABEL
-        MINSCALEDENOM  5000
+        MINSCALEDENOM  4000
         MAXSCALEDENOM  50001
         COLOR          150 40 255
         OUTLINECOLOR   255 255 255
