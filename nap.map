@@ -51,7 +51,7 @@ MAP
 
     CLASS
       STYLE
-        SYMBOL         'stip'
+        SYMBOL         'vierkant'
         COLOR          255 225 255
         OUTLINECOLOR   0 0 0
         WIDTH          1
@@ -65,7 +65,7 @@ MAP
 
   LAYER
     NAME            "peilmerk_hoogte"
-    GROUP           "peilmerk"
+    GROUP           "peilmerk_hoogte"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -78,7 +78,7 @@ MAP
 
     METADATA
       "ows_title"           "peilmerk_hoogte"
-      "ows_group_title"     "peilmerk"
+      "ows_group_title"     "peilmerk_hoogte"
       "ows_abstract"        "NAP Peilmerk hoogte"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -177,7 +177,7 @@ MAP
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
+    MAXSCALEDENOM   15001
     PROJECTION
       "init=epsg:28992"
     END
@@ -193,8 +193,8 @@ MAP
     CLASS
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  50000
-        COLOR          0 140 140
+        MAXSCALEDENOM  8000
+        COLOR          0 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -202,12 +202,12 @@ MAP
         SIZE           10
         POSITION       AUTO
         PARTIALS       FALSE
-        OFFSET         10 10
+        OFFSET         -10 10
       END
       LABEL
-        MINSCALEDENOM  50000
-        MAXSCALEDENOM  100001
-        COLOR          0 140 140
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        COLOR          0 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -215,7 +215,7 @@ MAP
         SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
-        OFFSET         10 10
+        OFFSET         -10 10
       END
     END
 
