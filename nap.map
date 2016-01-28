@@ -35,7 +35,7 @@ MAP
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15000
+    MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -70,7 +70,7 @@ MAP
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15000
+    MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -96,7 +96,7 @@ MAP
 
     CLASS
       NAME "-1,5 tot -0,5"
-      EXPRESSION (('[hoogte]' >= -1.5) AND ('[hoogte]' < -0.5)
+      EXPRESSION (('[hoogte]' >= -1.5) AND ('[hoogte]' < -0.5))
       STYLE
         COLOR          116 182 173
         OUTLINECOLOR   0 0 0
@@ -106,7 +106,7 @@ MAP
 
     CLASS
       NAME "-0,5 tot 0"
-      EXPRESSION (('[hoogte]' >= -0.5) AND ('[hoogte]' < 0)
+      EXPRESSION (('[hoogte]' >= -0.5) AND ('[hoogte]' < 0))
       STYLE
         COLOR          183 225 167
         OUTLINECOLOR   0 0 0
@@ -116,7 +116,7 @@ MAP
 
     CLASS
       NAME "0 tot 1"
-      EXPRESSION (('[hoogte]' >= 0) AND ('[hoogte]' < 1)
+      EXPRESSION (('[hoogte]' >= 0) AND ('[hoogte]' < 1))
       STYLE
         COLOR          231 245 183
         OUTLINECOLOR   0 0 0
@@ -126,7 +126,7 @@ MAP
 
     CLASS
       NAME "1 tot 1,5"
-      EXPRESSION (('[hoogte]' >= 1) AND ('[hoogte]' < 1.5)
+      EXPRESSION (('[hoogte]' >= 1) AND ('[hoogte]' < 1.5))
       STYLE
         COLOR          254 231 164
         OUTLINECOLOR   0 0 0
@@ -136,7 +136,7 @@ MAP
 
     CLASS
       NAME "1,5 tot 2"
-      EXPRESSION (('[hoogte]' >= 1,5) AND ('[hoogte]' < 2)
+      EXPRESSION (('[hoogte]' >= 1,5) AND ('[hoogte]' < 2))
       STYLE
         COLOR          253 185 110
         OUTLINECOLOR   0 0 0
@@ -146,7 +146,7 @@ MAP
 
     CLASS
       NAME "2 tot 3,5"
-      EXPRESSION (('[hoogte]' >= 2) AND ('[hoogte]' < 3.5)
+      EXPRESSION (('[hoogte]' >= 2) AND ('[hoogte]' < 3.5))
       STYLE
         COLOR          236 110 67
         OUTLINECOLOR   0 0 0
@@ -156,7 +156,7 @@ MAP
 
     CLASS
       NAME "groter dan 3,5"
-      EXPRESSION (('[hoogte]' >= 3.5)
+      EXPRESSION ('[hoogte]' >= 3.5)
       STYLE
         COLOR          215 25 28
         OUTLINECOLOR   0 0 0
