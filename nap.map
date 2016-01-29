@@ -88,11 +88,22 @@ MAP
       NAME "kleiner dan -1,5"
       EXPRESSION ([hoogte] < -1.5)
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'vierkant'
-        SIZE           5
-        COLOR          43 131 186
+        SIZE           2
         OUTLINECOLOR   0 0 0
         WIDTH          2
+        COLOR          43 131 186
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          43 131 186
       END
     END
 
@@ -100,11 +111,22 @@ MAP
       NAME "-1,5 tot -0,5"
       EXPRESSION (([hoogte] >= -1.5) AND ([hoogte] < -0.5))
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'vierkant'
-        SIZE           5
-        COLOR          116 182 173
+        SIZE           2
         OUTLINECOLOR   0 0 0
         WIDTH          2
+        COLOR          116 182 173
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          116 182 173
       END
     END
 
@@ -112,11 +134,22 @@ MAP
       NAME "-0,5 tot 0"
       EXPRESSION (([hoogte] >= -0.5) AND ([hoogte] < 0))
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'vierkant'
-        SIZE           5
-        COLOR          183 225 167
+        SIZE           2
         OUTLINECOLOR   0 0 0
         WIDTH          2
+        COLOR          183 225 167
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          183 225 167
       END
     END
 
@@ -124,11 +157,22 @@ MAP
       NAME "0 tot 1"
       EXPRESSION (([hoogte] >= 0) AND ([hoogte] < 1))
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'vierkant'
-        SIZE           5
-        COLOR          231 245 183
+        SIZE           2
         OUTLINECOLOR   0 0 0
         WIDTH          2
+        COLOR          231 245 183
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          231 245 183
       END
     END
 
@@ -136,8 +180,19 @@ MAP
       NAME "1 tot 1,5"
       EXPRESSION (([hoogte] >= 1) AND ([hoogte] < 1.5))
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'vierkant'
-        SIZE           5
+        SIZE           2
+        COLOR          254 231 164
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
         COLOR          254 231 164
         OUTLINECOLOR   0 0 0
         WIDTH          2
@@ -148,8 +203,19 @@ MAP
       NAME "1,5 tot 2"
       EXPRESSION (([hoogte] >= 1.5) AND ([hoogte] < 2))
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'vierkant'
-        SIZE           5
+        SIZE           2
+        COLOR          253 185 110
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
         COLOR          253 185 110
         OUTLINECOLOR   0 0 0
         WIDTH          2
@@ -160,8 +226,19 @@ MAP
       NAME "2 tot 3,5"
       EXPRESSION (([hoogte] >= 2) AND ([hoogte] < 3.5))
       STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   8000
         SYMBOL         'vierkant'
-        SIZE           5
+        SIZE           2
+        COLOR          236 110 67
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
         COLOR          236 110 67
         OUTLINECOLOR   0 0 0
         WIDTH          2
@@ -172,8 +249,19 @@ MAP
       NAME "groter dan 3,5"
       EXPRESSION ([hoogte] >= 3.5)
       STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   8000
         SYMBOL         'vierkant'
-        SIZE           5
+        SIZE           2
+        COLOR          215 25 28
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           4
         COLOR          215 25 28
         OUTLINECOLOR   0 0 0
         WIDTH          2
