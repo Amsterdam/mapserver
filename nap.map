@@ -30,7 +30,7 @@ MAP
 
   LAYER
     NAME            "peilmerk"
-    GROUP           "peilmerk"
+    GROUP           "nap"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -43,7 +43,7 @@ MAP
 
     METADATA
       "ows_title"           "peilmerk"
-      "ows_group_title"     "peilmerk"
+      "ows_group_title"     "nap"
       "ows_abstract"        "NAP Peilmerk"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -56,7 +56,7 @@ MAP
         SYMBOL         'vierkant'
         COLOR          255 128 0
         OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         SIZE           10
       END
       STYLE
@@ -311,7 +311,7 @@ MAP
         MAXSCALEDENOM  8000
         COLOR          255 255 255
         OUTLINECOLOR   255 128 0
-        OUTLINEWIDTH   3
+        OUTLINEWIDTH   2
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
