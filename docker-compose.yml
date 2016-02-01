@@ -1,8 +1,21 @@
+database:
+  image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
+  ports:
+    - "5403:5432"
+  environment:
+    POSTGRES_PASSWORD: insecure
+
 map:
-  image: pamtrak06/mapserver6.4.1-ubuntu14.04
+  build: .
   ports:
     - "8989:80"
-  volumes:
-    - .:/srv/mapserver/
-
-
+  links:
+    - "database:atlas_db"
+    - "database:nap_db"
+  environment:
+    ATLAS_DB_NAME: atlas
+    ATLAS_DB_USER: postgres
+    ATLAS_DB_PASSWORD: insecure
+    NAP_DB_NAME: nap
+    NAP_DB_USER: postgres
+    NAP_DB_PASSWORD: insecure
