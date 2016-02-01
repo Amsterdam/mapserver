@@ -43,9 +43,42 @@ MAP
     METADATA
       "ows_title"           "lufo2015"
       "ows_group_title"     "lufo"
-      "ows_abstract"        "Luchtfoto's van het grondgebied van de gemeente Amsterdam"
+      "ows_abstract"        "Luchtfoto's van 2015 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  LAYER
+    NAME            "lufo2014"
+    GROUP           "lufo"
+    TILEINDEX       "/srv/mapserver/lufo/2014/imagery.shp"
+    TILEITEM        "location"
+    TYPE            RASTER
+    PROJECTION
+      "init=epsg:28992"
     END
 
+    METADATA
+      "ows_title"           "lufo2014"
+      "ows_group_title"     "lufo"
+      "ows_abstract"        "Luchtfoto's van 2014 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  LAYER
+    NAME            "lufo2013"
+    GROUP           "lufo"
+    TILEINDEX       "/srv/mapserver/lufo/2013/imagery.shp"
+    TILEITEM        "location"
+    TYPE            RASTER
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo2013"
+      "ows_group_title"     "lufo"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
   END
 
 
