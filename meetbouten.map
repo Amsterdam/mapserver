@@ -15,14 +15,12 @@ MAP
   NAME "MEETBOUTEN"
   INCLUDE "header.inc"
 
-
   WEB
     METADATA
       "ows_title"    "MEETBOUTEN"
       "ows_abstract" "MEETBOUTEN gegevens van het grondgebied van de gemeente Amsterdam"
     END
   END
-
 
   #=============================================================================
   # LAYERS
@@ -53,52 +51,52 @@ MAP
       NAME "Actueel"
       EXPRESSION ([status] = 'A')
       STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SYMBOL         'stip'
+        SIZE           10
         COLOR          150 0 200
         OUTLINECOLOR   0 0 0
         WIDTH          2
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SIZE           10
       END
     END
     CLASS
       NAME "Actueel"
       EXPRESSION ([status] = 'A')
       STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
         SYMBOL         'stip'
+        SIZE           12
         COLOR          150 0 200
         OUTLINECOLOR   0 0 0
         WIDTH          2
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SIZE           12
       END
     END
     CLASS
       NAME "Vervallen"
       EXPRESSION ([status] = 'V')
       STYLE
-        SYMBOL         'stip'
-        COLOR          150 0 200
-        OUTLINECOLOR   255 0 0
-        WIDTH          2
         MINSCALEDENOM  100
         MAXSCALEDENOM  8000
+        SYMBOL         'stip'
         SIZE           10
+        COLOR          150 0 200
+        OUTLINECOLOR   255 0 0
+        WIDTH          2
       END
     END
     CLASS
       NAME "Vervallen"
       EXPRESSION ([status] = 'V')
       STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
         SYMBOL         'stip'
+        SIZE           12
         COLOR          150 0 200
         OUTLINECOLOR   255 0 0
         WIDTH          2
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SIZE           12
       END
     END
   END
@@ -112,7 +110,7 @@ MAP
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
+    MAXSCALEDENOM   15001
     PROJECTION
       "init=epsg:28992"
     END
@@ -150,7 +148,7 @@ MAP
         SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
-        OFFSET         -60 10
+        OFFSET         -50 10
       END
     END
   END
@@ -164,7 +162,7 @@ MAP
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15000
+    MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -391,7 +389,7 @@ MAP
 
   LAYER
     NAME            "referentiepunt"
-    GROUP           "meetbouten_referenties"
+    GROUP           "referenties"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -404,7 +402,7 @@ MAP
 
     METADATA
       "ows_title"           "meetbout_referentiepunt"
-      "ows_group_title"     "meetbouten_referenties"
+      "ows_group_title"     "referenties"
       "ows_abstract"        "Meetbout"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -438,19 +436,19 @@ MAP
 
   LAYER
     NAME            "referentiepunt_label"
-    GROUP           "meetbouten_referenties"
+    GROUP           "referenties"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
+    MAXSCALEDENOM   15001
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "meetbout_referentiepunt_label"
-      "ows_group_title"     "meetbouten_referenties"
+      "ows_title"           "referentiepunt_label"
+      "ows_group_title"     "referenties"
       "ows_abstract"        "Labels van meetbouten referenties"
     END
 
@@ -481,7 +479,7 @@ MAP
         SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
-        OFFSET         -60 10
+        OFFSET         -50 10
       END
     END
   END

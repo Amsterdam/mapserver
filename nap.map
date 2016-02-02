@@ -15,14 +15,12 @@ MAP
   NAME "NAP"
   INCLUDE "header.inc"
 
-
   WEB
     METADATA
       "ows_title"    "NAP"
       "ows_abstract" "NAP gegevens van het grondgebied van de gemeente Amsterdam"
     END
   END
-
 
   #=============================================================================
   # LAYERS
@@ -69,9 +67,61 @@ MAP
         WIDTH          1
       END
     END
-
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "peilmerk_label"
+    GROUP           "NAP"
+    INCLUDE         "connection_nap.inc"
+    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   15001
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "peilmerk_label"
+      "wms_group_title"     "NAP"
+      "wms_abstract"        "Labels van NAP peilmerken"
+    END
+
+    LABELITEM          "id"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        COLOR          240 130 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   2
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+      LABEL
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        COLOR          240 130 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -50 10
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
 
   LAYER
@@ -278,63 +328,6 @@ MAP
     END
 
   END
-
-
-  #-----------------------------------------------------------------------------
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "peilmerk_label"
-    GROUP           "NAP"
-    INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wms_title"           "peilmerk_label"
-      "wms_group_title"     "NAP"
-      "wms_abstract"        "Labels van NAP peilmerken"
-    END
-
-    LABELITEM          "id"
-
-    CLASS
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        COLOR          240 130 10
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   2
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-      LABEL
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        COLOR          240 130 10
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -50 10
-      END
-    END
-
-  END
-
-
 
 #=============================================================================
 END
