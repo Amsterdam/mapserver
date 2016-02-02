@@ -32,7 +32,7 @@ MAP
     NAME            "meetbout"
     GROUP           "meetbouten"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id" # TODO
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -43,8 +43,8 @@ MAP
 
     METADATA
       "ows_title"           "meetbout"
-      "ows_group_title"     "meetbout"
-      "ows_abstract"        "Meetbout"
+      "ows_group_title"     "meetbouten"
+      "ows_abstract"        "Meetbout in Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -57,6 +57,34 @@ MAP
         COLOR          150 0 200
         OUTLINECOLOR   0 0 0
         WIDTH          2
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SIZE           10
+      END
+    END
+    CLASS
+      STYLE
+        NAME "Actueel"
+        EXPRESSION ('[status]' = 'A')
+        SYMBOL         'stip'
+        COLOR          150 0 200
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SIZE           12
+      END
+    END
+    CLASS
+      STYLE
+        NAME "Vervallen"
+        EXPRESSION ('[status]' = 'V')
+        SYMBOL         'stip'
+        COLOR          150 0 200
+        OUTLINECOLOR   255 0 0
+        WIDTH          2
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SIZE           10
       END
     END
@@ -68,7 +96,9 @@ MAP
         COLOR          150 0 200
         OUTLINECOLOR   255 0 0
         WIDTH          2
-        SIZE           10
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SIZE           12
       END
     END
   END
@@ -79,7 +109,7 @@ MAP
     NAME            "meetbout_label"
     GROUP           "meetbouten"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_nap_meetbout USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -126,13 +156,244 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "meetbout_zaksnelheid"
+    GROUP           "meetbouten_zaksnelheid"
+    INCLUDE         "connection_nap.inc"
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   15000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "meetbout_zaksnelheid"
+      "ows_group_title"     "meetbouten_zaksnelheid"
+      "ows_abstract"        "Meetbouten zaksnelheid"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "minder dan -1"
+      EXPRESSION ([zakkingssnelheid] < -1)
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          43 131 186
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          43 131 186
+      END
+    END
+
+    CLASS
+      NAME "-1 tot 0"
+      EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          116 182 173
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          116 182 173
+      END
+    END
+
+    CLASS
+      NAME "0 tot 1"
+      EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          183 225 167
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          183 225 167
+      END
+    END
+
+    CLASS
+      NAME "1 tot 1,5"
+      EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          231 245 183
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          231 245 183
+      END
+    END
+
+    CLASS
+      NAME "1,5 tot 2"
+      EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          254 231 164
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          254 231 164
+      END
+    END
+
+    CLASS
+      NAME "2 tot 2,5"
+      EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          253 185 110
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          253 185 110
+      END
+    END
+
+    CLASS
+      NAME "2,5 tot 3"
+      EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          236 110 67
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          236 110 67
+      END
+    END
+
+    CLASS
+      NAME "3 tot 4"
+      EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          215 25 28
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          215 25 28
+      END
+    END
+
+    CLASS
+      NAME "meer dan 4"
+      EXPRESSION ([zakkingssnelheid] > 4)
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          171 19 22
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           14
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+        COLOR          171 19 22
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "meetbout_referentiepunt"
+    NAME            "referentiepunt"
     GROUP           "meetbouten_referenties"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id" # TODO
+    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -151,24 +412,24 @@ MAP
 
     CLASS
       STYLE
-        NAME "Actueel"
-        EXPRESSION ('[status]' = 'A')
         SYMBOL         'stip'
         COLOR          150 0 200
         OUTLINECOLOR   0 0 0
         WIDTH          2
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
         SIZE           10
       END
     END
     CLASS
       STYLE
-        NAME "Vervallen"
-        EXPRESSION ('[status]' = 'V')
         SYMBOL         'stip'
         COLOR          150 0 200
         OUTLINECOLOR   255 0 0
         WIDTH          2
-        SIZE           10
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SIZE           12
       END
     END
   END
@@ -176,10 +437,10 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "meetbout_referentiepunt_label"
+    NAME            "referentiepunt_label"
     GROUP           "meetbouten_referenties"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_nap_meetbout USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -221,215 +482,6 @@ MAP
         POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         -60 10
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "meetbout_zaksnelheid"
-    GROUP           "meetbouten_zaksnelheid"
-    INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_nap_meetbouten USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   15000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "meetbout_zaksnelheid"
-      "ows_group_title"     "meetbouten_zaksnelheid"
-      "ows_abstract"        "Meetbouten zaksnelheid"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "kleiner dan 0"
-      EXPRESSION ([meting] < -1.5)
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          43 131 186
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          43 131 186
-      END
-    END
-
-    CLASS
-      NAME "0 tot 1"
-      EXPRESSION (([meting] >= 0) AND ([meting] < 1))
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          183 225 167
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          183 225 167
-      END
-    END
-
-    CLASS
-      NAME "1 tot 1,5"
-      EXPRESSION (([meting] >= 1) AND ([meting] < 1.5))
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          231 245 183
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          231 245 183
-      END
-    END
-
-    CLASS
-      NAME "1,5 tot 2"
-      EXPRESSION (([meting] >= 1,5) AND ([meting] < 2))
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          254 231 164
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          254 231 164
-      END
-    END
-
-    CLASS
-      NAME "2 tot 2,5"
-      EXPRESSION (([meting] >= 2) AND ([meting] < 2,5))
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          253 185 110
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          253 185 110
-      END
-    END
-
-    CLASS
-      NAME "2,5 tot 3"
-      EXPRESSION (([meting] >= 2,5) AND ([meting] < 3))
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          236 110 67
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          236 110 67
-      END
-    END
-
-    CLASS
-      NAME "3 tot 4"
-      EXPRESSION (([meting] >= 3) AND ([meting] < 4))
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          215 25 28
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          215 25 28
-      END
-    END
-
-    CLASS
-      NAME "meer dan 4"
-      EXPRESSION ([meting] > 4)
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        SYMBOL         'vierkant'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          171 19 22
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          171 19 22
       END
     END
   END
