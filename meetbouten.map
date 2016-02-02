@@ -59,10 +59,6 @@ MAP
         OUTLINECOLOR   0 0 0
         WIDTH          2
       END
-    END
-    CLASS
-      NAME "Actueel"
-      EXPRESSION ([status] = 'A')
       STYLE
         MINSCALEDENOM  8000
         MAXSCALEDENOM  15001
@@ -85,10 +81,6 @@ MAP
         OUTLINECOLOR   255 0 0
         WIDTH          2
       END
-    END
-    CLASS
-      NAME "Vervallen"
-      EXPRESSION ([status] = 'V')
       STYLE
         MINSCALEDENOM  8000
         MAXSCALEDENOM  15001
@@ -172,8 +164,6 @@ MAP
       "ows_title"           "meetbout_zaksnelheid"
       "ows_group_title"     "meetbouten_zaksnelheid"
       "ows_abstract"        "Meetbouten zaksnelheid"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
     END
 
     CLASS
