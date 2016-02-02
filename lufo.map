@@ -81,6 +81,40 @@ MAP
     END
   END
 
+  LAYER
+    NAME            "lufo2012"
+    GROUP           "lufo"
+    TILEINDEX       "/srv/mapserver/lufo/2012/imagery.shp"
+    TILEITEM        "location"
+    TYPE            RASTER
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo2012"
+      "ows_group_title"     "lufo"
+      "ows_abstract"        "Luchtfoto's van 2012 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  LAYER
+    NAME            "lufo2011"
+    GROUP           "lufo"
+    TILEINDEX       "/srv/mapserver/lufo/2011/imagery.shp"
+    TILEITEM        "location"
+    TYPE            RASTER
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo2011"
+      "ows_group_title"     "lufo"
+      "ows_abstract"        "Luchtfoto's van 2011 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
 
 #=============================================================================
 END
