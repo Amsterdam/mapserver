@@ -8,7 +8,7 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # S. Zaat               28-01-2016    schepping
-# S. Preeker            28-01-2016    bekeken
+# S. Preeker            04-02-2016    bekeken
 #
 #==============================================================================
 
@@ -145,152 +145,152 @@ MAP
   #-----------------------------------------------------------------------------
 
 
-#  LAYER
-#    NAME            "meetbout_zaksnelheid"
-#    GROUP           "meetbouten_zaksnelheid"
-#    INCLUDE         "connection_nap.inc"
-#    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
-#    TYPE            POINT
-#    MINSCALEDENOM   100
-#    MAXSCALEDENOM   5001
-#    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
-#
-#    METADATA
-#      "ows_title"           "meetbout_zaksnelheid"
-#      "ows_group_title"     "meetbouten_zaksnelheid"
-#      "ows_abstract"        "Meetbouten zaksnelheid"
-#    END
-#
-#    CLASS
-#      NAME "minder dan -1"
-#      EXPRESSION ([zakkingssnelheid] < -1)
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          43 131 186
-#      END
-#    END
-#
-#    CLASS
-#      NAME "-1 tot 0"
-#      EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          116 182 173
-#      END
-#    END
-#
-#    CLASS
-#      NAME "0 tot 1"
-#      EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          183 225 167
-#      END
-#    END
-#
-#    CLASS
-#      NAME "1 tot 1,5"
-#      EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          231 245 183
-#      END
-#    END
-#
-#    CLASS
-#      NAME "1,5 tot 2"
-#      EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          254 231 164
-#      END
-#    END
-#
-#    CLASS
-#      NAME "2 tot 2,5"
-#      EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          253 185 110
-#      END
-#    END
-#
-#    CLASS
-#      NAME "2,5 tot 3"
-#      EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          236 110 67
-#      END
-#    END
-#
-#    CLASS
-#      NAME "3 tot 4"
-#      EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          215 25 28
-#      END
-#    END
-#
-#    CLASS
-#      NAME "meer dan 4"
-#      EXPRESSION ([zakkingssnelheid] > 4)
-#      STYLE
-#        MINSCALEDENOM  100
-#        MAXSCALEDENOM  5001
-#        SYMBOL         'stip'
-#        SIZE           10
-#        OUTLINECOLOR   0 0 0
-#        WIDTH          1
-#        COLOR          171 19 22
-#      END
-#    END
-#
-#  END
+  LAYER
+    NAME            "meetbout_zaksnelheid"
+    GROUP           "meetbouten_zaksnelheid"
+    INCLUDE         "connection_nap.inc"
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   5001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "meetbout_zaksnelheid"
+      "ows_group_title"     "meetbouten_zaksnelheid"
+      "ows_abstract"        "Meetbouten zaksnelheid"
+    END
+
+    CLASS
+      NAME "minder dan -1"
+      EXPRESSION ([zakkingssnelheid] < -1)
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          43 131 186
+      END
+    END
+
+    CLASS
+      NAME "-1 tot 0"
+      EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          116 182 173
+      END
+    END
+
+    CLASS
+      NAME "0 tot 1"
+      EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          183 225 167
+      END
+    END
+
+    CLASS
+      NAME "1 tot 1,5"
+      EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          231 245 183
+      END
+    END
+
+    CLASS
+      NAME "1,5 tot 2"
+      EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          254 231 164
+      END
+    END
+
+    CLASS
+      NAME "2 tot 2,5"
+      EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          253 185 110
+      END
+    END
+
+    CLASS
+      NAME "2,5 tot 3"
+      EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          236 110 67
+      END
+    END
+
+    CLASS
+      NAME "3 tot 4"
+      EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          215 25 28
+      END
+    END
+
+    CLASS
+      NAME "meer dan 4"
+      EXPRESSION ([zakkingssnelheid] > 4)
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          171 19 22
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
