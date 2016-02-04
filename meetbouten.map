@@ -8,6 +8,7 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # S. Zaat               28-01-2016    schepping
+# S. Preeker            28-01-2016    bekeken
 #
 #==============================================================================
 
@@ -24,7 +25,7 @@ MAP
 
   #=============================================================================
   # LAYERS
-  #============================================================================= 
+  #=============================================================================
 
   LAYER
     NAME            "meetbout"
@@ -50,7 +51,7 @@ MAP
     CLASS
       NAME "Actueel"
       EXPRESSION ([status] == 'A')
-      
+
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -60,13 +61,13 @@ MAP
         OUTLINECOLOR   0 200 0
         WIDTH          1
       END
-      
+
     END
-    
+
     CLASS
       NAME "Vervallen"
       EXPRESSION ([status] == 'V')
-      
+
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -76,13 +77,13 @@ MAP
         OUTLINECOLOR   200 0 0
         WIDTH          1
       END
-      
+
     END
-    
+
   END
 
   #-----------------------------------------------------------------------------
-  
+
 
   LAYER
     NAME            "meetbout_label"
@@ -103,11 +104,11 @@ MAP
     END
 
     LABELITEM          "id"
-    
+
     CLASS
       NAME "Actueel"
       EXPRESSION ([status] == 'A')
-      
+
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
@@ -121,13 +122,13 @@ MAP
         PARTIALS       FALSE
         OFFSET         -60 10
       END
-      
+
     END
-    
+
     CLASS
       NAME "Vervallen"
       EXPRESSION ([status] == 'V')
-      
+
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
@@ -141,13 +142,13 @@ MAP
         PARTIALS       FALSE
         OFFSET         -60 10
       END
-      
+
     END
-    
-    
-    
-    
-    
+
+
+
+
+
   END
 
   #-----------------------------------------------------------------------------
@@ -297,7 +298,7 @@ MAP
         COLOR          171 19 22
       END
     END
-    
+
   END
 
   #-----------------------------------------------------------------------------
@@ -361,7 +362,7 @@ MAP
     LABELITEM          "id"
 
     CLASS
-    
+
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
@@ -375,9 +376,9 @@ MAP
         PARTIALS       FALSE
         OFFSET         -60 10
       END
-      
+
     END
-    
+
   END
 
 #=============================================================================
