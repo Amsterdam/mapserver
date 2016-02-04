@@ -50,7 +50,7 @@ MAP
 
     CLASS
       NAME "Actueel"
-      EXPRESSION ([status] eq A)
+      EXPRESSION ("[status]" eq "A")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -64,7 +64,7 @@ MAP
 
     CLASS
       NAME "Vervallen"
-      EXPRESSION ([status] eq V)
+      EXPRESSION ("[status]" eq "V")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -82,7 +82,7 @@ MAP
 
   LAYER
     NAME            "meetbout_label"
-    GROUP           "meetbouten"
+    GROUP           "meetbouten_status"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -102,7 +102,7 @@ MAP
 
     CLASS
       NAME "Actueel"
-      EXPRESSION ([status] eq "A")
+      EXPRESSION ("[status]" eq "A")
 
       LABEL
         MINSCALEDENOM  100
@@ -122,7 +122,7 @@ MAP
 
     CLASS
       NAME "Vervallen"
-      EXPRESSION ([status] eq "V")
+      EXPRESSION ("[status]" eq "V")
 
       LABEL
         MINSCALEDENOM  100
@@ -137,9 +137,7 @@ MAP
         PARTIALS       FALSE
         OFFSET         -60 10
       END
-
     END
-
   END
 
   #-----------------------------------------------------------------------------
@@ -292,7 +290,6 @@ MAP
 
   END
 
-  #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
 
   LAYER
