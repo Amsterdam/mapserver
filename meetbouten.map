@@ -51,35 +51,30 @@ MAP
     CLASS
       NAME "Actueel"
       EXPRESSION ([status] eq A)
-
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          255 255 255
+        COLOR          155 155 155
         OUTLINECOLOR   0 200 0
         WIDTH          1
       END
-
     END
 
     CLASS
       NAME "Vervallen"
       EXPRESSION ([status] eq V)
-
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          255 255 255
         OUTLINECOLOR   200 0 0
         WIDTH          1
+        COLOR          155 155 155
       END
-
     END
-
   END
 
   #-----------------------------------------------------------------------------
@@ -107,7 +102,7 @@ MAP
 
     CLASS
       NAME "Actueel"
-      EXPRESSION ([status] eq A)
+      EXPRESSION ([status] eq "A")
 
       LABEL
         MINSCALEDENOM  100
@@ -127,7 +122,7 @@ MAP
 
     CLASS
       NAME "Vervallen"
-      EXPRESSION ([status] eq V)
+      EXPRESSION ([status] eq "V")
 
       LABEL
         MINSCALEDENOM  100
