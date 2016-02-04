@@ -12,13 +12,13 @@
 #==============================================================================
 
 MAP
-  NAME "MEETBOUTEN"
+  NAME "Meetbouten"
   INCLUDE "header.inc"
 
   WEB
     METADATA
-      "ows_title"    "MEETBOUTEN"
-      "ows_abstract" "MEETBOUTEN gegevens van het grondgebied van de gemeente Amsterdam"
+      "ows_title"    "Meetbouten"
+      "ows_abstract" "Meetboutgegevens van het grondgebied van de gemeente Amsterdam"
     END
   END
 
@@ -33,7 +33,7 @@ MAP
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    MAXSCALEDENOM   5001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -49,51 +49,40 @@ MAP
 
     CLASS
       NAME "Actueel"
-      EXPRESSION ([status] = 'A')
+      EXPRESSION ([status] == 'A')
+      
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          150 0 200
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        COLOR          255 255 255
+        OUTLINECOLOR   0 200 0
+        WIDTH          1
       END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           12
-        COLOR          150 0 200
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
-      END
+      
     END
+    
     CLASS
       NAME "Vervallen"
-      EXPRESSION ([status] = 'V')
+      EXPRESSION ([status] == 'V')
+      
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          150 0 200
-        OUTLINECOLOR   255 0 0
-        WIDTH          2
+        COLOR          255 255 255
+        OUTLINECOLOR   200 0 0
+        WIDTH          1
       END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           12
-        COLOR          150 0 200
-        OUTLINECOLOR   255 0 0
-        WIDTH          2
-      END
+      
     END
+    
   END
 
   #-----------------------------------------------------------------------------
+  
 
   LAYER
     NAME            "meetbout_label"
@@ -102,7 +91,7 @@ MAP
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    MAXSCALEDENOM   1001
     PROJECTION
       "init=epsg:28992"
     END
@@ -114,12 +103,15 @@ MAP
     END
 
     LABELITEM          "id"
-
+    
     CLASS
+      NAME "Actueel"
+      EXPRESSION ([status] == 'A')
+      
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
-        COLOR          0 0 0
+        MAXSCALEDENOM  1000
+        COLOR          165 50 210
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -129,23 +121,37 @@ MAP
         PARTIALS       FALSE
         OFFSET         -60 10
       END
+      
+    END
+    
+    CLASS
+      NAME "Vervallen"
+      EXPRESSION ([status] == 'V')
+      
       LABEL
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        COLOR          0 0 0
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1000
+        COLOR          165 50 210
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
+        FONT           "Ubuntu-MI"
         TYPE           truetype
-        SIZE           8
+        SIZE           10
         POSITION       AUTO
         PARTIALS       FALSE
-        OFFSET         -50 10
+        OFFSET         -60 10
       END
+      
     END
+    
+    
+    
+    
+    
   END
 
   #-----------------------------------------------------------------------------
+
 
   LAYER
     NAME            "meetbout_zaksnelheid"
@@ -154,7 +160,7 @@ MAP
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    MAXSCALEDENOM   5001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -171,20 +177,11 @@ MAP
       EXPRESSION ([zakkingssnelheid] < -1)
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          43 131 186
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          43 131 186
       END
     END
@@ -194,20 +191,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          116 182 173
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          116 182 173
       END
     END
@@ -217,20 +205,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          183 225 167
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          183 225 167
       END
     END
@@ -240,20 +219,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          231 245 183
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          231 245 183
       END
     END
@@ -263,20 +233,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          254 231 164
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          254 231 164
       END
     END
@@ -286,20 +247,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          253 185 110
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          253 185 110
       END
     END
@@ -309,20 +261,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          236 110 67
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          236 110 67
       END
     END
@@ -332,20 +275,11 @@ MAP
       EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          215 25 28
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          215 25 28
       END
     END
@@ -355,23 +289,15 @@ MAP
       EXPRESSION ([zakkingssnelheid] > 4)
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        WIDTH          2
-        COLOR          171 19 22
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'stip'
-        SIZE           14
-        OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         COLOR          171 19 22
       END
     END
+    
   END
 
   #-----------------------------------------------------------------------------
@@ -384,7 +310,7 @@ MAP
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    MAXSCALEDENOM   5001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -400,26 +326,16 @@ MAP
 
     CLASS
       STYLE
-        SYMBOL         'stip'
+        SYMBOL         'driehoek'
         COLOR          150 0 200
         OUTLINECOLOR   0 0 0
-        WIDTH          2
+        WIDTH          1
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  5001
         SIZE           10
       END
     END
-    CLASS
-      STYLE
-        SYMBOL         'stip'
-        COLOR          150 0 200
-        OUTLINECOLOR   255 0 0
-        WIDTH          2
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SIZE           12
-      END
-    END
+
   END
 
   #-----------------------------------------------------------------------------
@@ -445,9 +361,10 @@ MAP
     LABELITEM          "id"
 
     CLASS
+    
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
+        MAXSCALEDENOM  1000
         COLOR          0 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -458,20 +375,9 @@ MAP
         PARTIALS       FALSE
         OFFSET         -60 10
       END
-      LABEL
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -50 10
-      END
+      
     END
+    
   END
 
 #=============================================================================
