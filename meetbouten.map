@@ -28,8 +28,8 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "meetbouten"
-    GROUP           "meetbouten_status"
+    NAME            "meetbouten_status"
+    GROUP           "meetbouten"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -41,8 +41,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "meetbouten"
-      "ows_group_title"     "meetbouten status"
+      "ows_title"           "meetbouten_staus"
+      "ows_group_title"     "meetbouten"
       "ows_abstract"        "Meetbout in Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -81,8 +81,8 @@ MAP
 
 
   LAYER
-    NAME            "meetbouten"
-    GROUP           "meetbouten_status"
+    NAME            "meetbouten_labels"
+    GROUP           "meetbouten"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -93,8 +93,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "meetbouten"
-      "ows_group_title"     "meetbouten status"
+      "ows_title"           "meetbouten_labels"
+      "ows_group_title"     "meetbouten"
       "ows_abstract"        "Labels van meetbouten"
     END
 
@@ -107,7 +107,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR          165 50 210
+        COLOR   0 200 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -127,7 +127,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR          165 50 210
+        COLOR   200 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-MI"
@@ -293,8 +293,8 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "referentiepunten"
-    GROUP           "referenties"
+    NAME            "referentiepunt"
+    GROUP           "referentiepunten"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -306,8 +306,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "meetbout_referentiepunt"
-      "ows_group_title"     "referenties"
+      "ows_title"           "referentiepunt"
+      "ows_group_title"     "referentiepunten"
       "ows_abstract"        "Meetbouten"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -331,8 +331,8 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "referentiepunten"
-    GROUP           "referenties"
+    NAME            "referentiepunt_label"
+    GROUP           "referentiepunten"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -343,8 +343,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "referentiepunten"
-      "ows_group_title"     "referenties"
+      "ows_title"           "referentiepunt_label"
+      "ows_group_title"     "referentiepunten"
       "ows_abstract"        "Labels van meetbouten referenties"
     END
 
