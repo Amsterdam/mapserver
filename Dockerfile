@@ -23,6 +23,7 @@ COPY docker/docker-entrypoint.sh /bin
 COPY . /srv/mapserver/
 
 EXPOSE 80
+VOLUME /srv/mapserver/lufo
 
 CMD /bin/docker-entrypoint.sh
 
