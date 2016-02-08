@@ -28,7 +28,7 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "meetbout"
+    NAME            "meetbouten"
     GROUP           "meetbouten_status"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
@@ -41,7 +41,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "meetbout"
+      "ows_title"           "meetbouten"
       "ows_group_title"     "meetbouten status"
       "ows_abstract"        "Meetbout in Amsterdam"
       "gml_featureid"       "ID"
@@ -56,7 +56,7 @@ MAP
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          255 255 255
+        COLOR          0 200 0
         OUTLINECOLOR   0 200 0
         WIDTH          3
       END
@@ -71,8 +71,8 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   200 0 0
+        COLOR          200 0 0
         WIDTH          3
-        COLOR          255 255 255
       END
     END
   END
@@ -81,7 +81,7 @@ MAP
 
 
   LAYER
-    NAME            "meetbout_label"
+    NAME            "meetbouten"
     GROUP           "meetbouten_status"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
@@ -93,7 +93,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "meetbout_label"
+      "ows_title"           "meetbouten"
       "ows_group_title"     "meetbouten status"
       "ows_abstract"        "Labels van meetbouten"
     END
@@ -267,7 +267,7 @@ MAP
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
-        SIZE           14
+        SIZE           10
         OUTLINECOLOR   0 0 0
         WIDTH          1
         COLOR          215 25 28
@@ -281,7 +281,7 @@ MAP
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
-        SIZE           14
+        SIZE           10
         OUTLINECOLOR   0 0 0
         WIDTH          1
         COLOR          171 19 22
@@ -293,7 +293,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "referentiepunt"
+    NAME            "referentiepunten"
     GROUP           "referenties"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
@@ -308,7 +308,7 @@ MAP
     METADATA
       "ows_title"           "meetbout_referentiepunt"
       "ows_group_title"     "referenties"
-      "ows_abstract"        "Meetbout"
+      "ows_abstract"        "Meetbouten"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -331,7 +331,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "referentiepunt_label"
+    NAME            "referentiepunten"
     GROUP           "referenties"
     INCLUDE         "connection_nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
@@ -343,7 +343,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "referentiepunt_label"
+      "ows_title"           "referentiepunten"
       "ows_group_title"     "referenties"
       "ows_abstract"        "Labels van meetbouten referenties"
     END
