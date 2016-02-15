@@ -3,26 +3,26 @@
 # see http://mapserver.org/input/raster.html
 # aanroepen voorbeeld:
 # 
-# ./luforecept-rd.sh /map/lufo/2015
+# ./luforecept-rd.sh <source dir of tiffs> <destination dir of result>
 #
 # Dit script wordt gedaan op een directory waarbinnen in de subdir “tiffsrc” de ruwe GeoTIFF bestanden staan.
 # Het resultaat wordt geplaatst in de subdir “tiffdst” die moet bestaan.
 # de bestanden uit
-# /map/lufo/2015/tiffsrc bewerkt en geplaatst in
-# /srv/mapserver/lufo/2015/.
+# /media/externaldrive/lufo/2015/tiffsrc <source dir of tiffs> bewerkt en geplaatst in
+# /srv/mapserver/lufo/2015/ <destination dir of result>.
 
 
 DIR=$1
 cd $DIR
 
-SRC_TIFF_FILES=`/bin/ls tiffsrc/*.tif`
+SRC_TIFF_FILES=`/bin/ls *.tif`
 for SRC_TIFF_FILE in $SRC_TIFF_FILES
 
 do
 echo "START $SRC_TIFF_FILE"
 # basis file naam
 BASE_NAME=`echo $SRC_TIFF_FILE | cut -d/ -f2 | cut -d'.' -f1`
-DEST_TIFF_FILE=/srv/mapserver/lufo/2015/${BASE_NAME}.tif
+DEST_TIFF_FILE=$2/${BASE_NAME}.tif
 /bin/rm -f $DEST_TIFF_FILE
 
 echo "gdal_translate $SRC_TIFF_FILE $DEST_TIFF_FILE"
@@ -44,7 +44,7 @@ done
 
 # Maak een Esri Shape-bestand als index op de definitieve locatie van de GeoTIFFs.
 
-gdaltindex imagery.shp /srv/mapserver/lufo/2015/*.tif
+gdaltindex imagery.shp $2/*.tif
 
 # Plaats Esri shape-bestand bij de lufo's in de map
 # Paden in de toekomst snel wijzigen?
