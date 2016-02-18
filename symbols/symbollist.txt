@@ -16,7 +16,7 @@ SYMBOLSET
 
 
 SYMBOL
-  NAME      'stip'
+  NAME      "stip"
   TYPE      ellipse
   POINTS
     1 1
@@ -25,7 +25,7 @@ SYMBOL
 END
 
 SYMBOL
-  NAME      'vierkant'
+  NAME      "vierkant"
   TYPE      vector
   POINTS
     0 0
@@ -38,7 +38,7 @@ SYMBOL
 END
 
 SYMBOL
-  NAME      'driehoek'
+  NAME      "driehoek"
   TYPE      vector
   POINTS
     0 0
@@ -59,12 +59,57 @@ SYMBOL
     1 1
     0 1
     0 0
-#    -99 -99
+    -99 -99
     1 1
     2 1
     2 2
     1 2
     1 1
+  END
+END
+
+SYMBOL
+  NAME "hatchsymbol"
+  TYPE hatch
+END
+
+SYMBOL
+  NAME "linelinesymbol"
+  TYPE vector
+  FILLED true
+  POINTS
+    # Full line
+    0 3
+    12 3
+    12 4
+    0 4
+    0 3
+    # Half line
+    1 7
+    6 7
+    6 8
+    1 8
+    1 7
+    -99 -99
+    # Half line
+    7 7
+    11 7
+    11 8
+    7 8
+    7 7
+    -99 -99
+    # Half line
+    1 11
+    6 11
+    6 12
+    1 12
+    1 11
+    -99 -99
+    7 11
+    11 11
+    11 12
+    7 12
+    7 11
   END
 END
 
