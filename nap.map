@@ -330,4 +330,43 @@ MAP
   END
 
 #=============================================================================
+
+LAYER
+  NAME            "peilmerk_wfs"
+  STATUS          ON
+  INCLUDE         "connection_nap.inc"
+  DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+  TYPE            POINT
+  CONNECTIONTYPE  WFS
+  METADATA
+    "wfs_typename" "peilmerk"
+    "wfs_version" "1.0.0"
+    "wfs_connectiontimeout" "60"
+    "wfs_maxfeatures" "100"
+    "wfs_filter" "<PropertyIsGreaterThan><PropertyName>POPULATION</PropertyName>
+                  <Literal>10000000</Literal></PropertyIsGreaterThan>"
+  END
+  PROJECTION
+    "init=epsg:28992"
+  END
+
+  CLASS
+    STYLE
+      SYMBOL         'vierkant'
+      SIZE           10
+      COLOR          240 130 10
+      OUTLINECOLOR   0 0 0
+      WIDTH          1
+    END
+    STYLE
+      SYMBOL         'vierkant'
+      SIZE           12
+      COLOR          240 130 10
+      OUTLINECOLOR   0 0 0
+      WIDTH          1
+    END
+  END
+END
+
+#=============================================================================
 END
