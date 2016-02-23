@@ -11,6 +11,9 @@ NAP_DB_HOST=${NAP_DB_PORT_5432_TCP_ADDR:-nap_db.service.consul}
 NAP_DB_PORT=${NAP_DB_PORT_5432_TCP_PORT:-5432}
 NAP_DB_USER=${NAP_DB_USER:-${NAP_DB_NAME}}
 
+MILIEU_DB_HOST=${MILIEU_DB_PORT_5432_TCP_ADDR:-milieu_db.service.consul}
+MILIEU_DB_PORT=${MILIEU_DB_PORT_5432_TCP_PORT:-5432}
+MILIEU_DB_USER=${MILIEU_DB_USER:-${MILIEU_DB_NAME}}
 
 echo Creating configuration files
 
@@ -24,6 +27,10 @@ CONNECTIONTYPE postgis
 CONNECTION "host=${NAP_DB_HOST} dbname=${NAP_DB_NAME} user=${NAP_DB_USER} password=${NAP_DB_PASSWORD} port=${NAP_DB_PORT}"
 EOF
 
+cat > /srv/mapserver/connection_milieu.inc <<EOF
+CONNECTIONTYPE postgis
+CONNECTION "host=${MILIEU_DB_HOST} dbname=${MILIEU_DB_NAME} user=${MILIEU_DB_USER} password=${MILIEU_DB_PASSWORD} port=${MILIEU_DB_PORT}"
+EOF
 
 echo Starting server
 apachectl -D FOREGROUND
