@@ -378,12 +378,15 @@ LAYER
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
   TYPE            POINT
-  CONNECTIONTYPE  WFS
   METADATA
     "wfs_typename"          "meetbout"
     "wfs_version"           "1.0.0"
     "wfs_connectiontimeout" "60"
     "wfs_maxfeatures"       "100"
+    "wfs_enable_request"    "*"
+    "ows_title"             "referentiepunt"
+    "ows_group_title"       "meetbouten_referentiepunt"
+    "ows_abstract"          "Referentiepunt"
   END
   PROJECTION
     "init=epsg:28992"
@@ -398,12 +401,12 @@ LAYER
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
   TYPE            POINT
-  CONNECTIONTYPE  WFS
   METADATA
     "wfs_typename"          "referentiepunt"
     "wfs_version"           "1.0.0"
     "wfs_connectiontimeout" "60"
     "wfs_maxfeatures"       "100"
+    "wfs_enable_request"    "*"
     "gml_include_items"     "all"
     "gml_default_items"     "all"
     "ows_title"             "referentiepunt"

@@ -337,12 +337,12 @@ LAYER
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
   TYPE            POINT
-  CONNECTIONTYPE  WFS
   METADATA
     "wfs_typename"          "peilmerk"
     "wfs_version"           "1.0.0"
     "wfs_connectiontimeout" "60"
     "wfs_maxfeatures"       "100"
+    "wfs_enable_request"    "*"
     "gml_include_items"     "all"
     "gml_default_items"     "all"
     "ows_title"             "peilmerk"
