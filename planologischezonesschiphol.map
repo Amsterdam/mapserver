@@ -1,0 +1,287 @@
+#==============================================================================
+#
+# planologischezonesschiphol.map
+# doel: serveren van Planologische zones Schiphol
+#
+#==============================================================================
+
+MAP
+  NAME                      "planologischezonesschiphol"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Planologische zones Schiphol"
+      "ows_abstract"        "Planologische zones Schiphol"
+    END
+  END
+
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+  LAYER
+    NAME                    "hoogtebeperkingschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_hoogte_polygon_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Hoogtebeperkende vlakken Schiphol"
+      "ows_abstract"        "Hoogtebeperkende vlakken Schiphol"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASSITEM               "type"
+
+    CLASS
+      NAME                  "Horizontaal vlak 0 m"
+      EXPRESSION            "horizontaal vlak 0 m"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff0000"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Horizontaal vlak 20 m"
+      EXPRESSION            "horizontaal vlak 20 m"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff4d19"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#dc2e00"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Horizontaal vlak 45 m"
+      EXPRESSION            "horizontaal vlak 45 m"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ffb900"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#b9b900"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Horizontaal vlak 150 m"
+      EXPRESSION            "horizontaal vlak 150 m"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#276aff"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#276aff"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Hellend vlak 0-3.5 m (helling 0.2 graden)"
+      EXPRESSION            "hellend vlak 0-3.5 m (helling 0.2 graden)"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#651500"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#651500"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Hellend vlak 3.5-100 m (helling 0.9 graden)"
+      EXPRESSION            "hellend vlak 3.5-100 m (helling 0.9 graden)"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#dc0000"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#ffa8a8"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Hellend vlak 0-45 m (helling 0.9 graden)"
+      EXPRESSION            "hellend vlak 0-45 m (helling 0.9 graden)"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff75ff"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#ffa8a8"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Hellend vlak 0-150 m (helling 2% (0-60 m) en helling 2.5% (60-150 m))"
+      EXPRESSION            "hellend vlak 0-150 m (helling 2% (0-60 m) en helling 2.5% (60-150 m))"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#009745"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#00cb5d"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Hellend vlak 45-145 m (helling 5%)"
+      EXPRESSION            "hellend vlak 45-145 m (helling 5%)"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#004500"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#004500"
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Hellend vlak 0-150 m (helling 2%)"
+      EXPRESSION            "hellend vlak 0-150 m (helling 2%)"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#65ff65"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#00ff00"
+        WIDTH               1
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "geluidszoneschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_geluidzone USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Planologische geluidszone Schiphol"
+      "ows_abstract"        "Planologische geluidszone Schiphol"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "geo_id"
+
+    CLASS
+      NAME                  "Geluidzone Schiphol (nr. 4 'beperking gebouwen')"
+      EXPRESSION            "4"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#552700"
+        SIZE                4
+      END
+    END
+
+    CLASS
+      NAME                  "20 Ke contour"
+      EXPRESSION            "57"
+      STYLE
+        OUTLINECOLOR        "#552700"
+        WIDTH               1
+        PATTERN 4 2 END
+      END
+    END
+
+    CLASS
+      NAME                  "Binnen bebouwd gebied VROM"
+      EXPRESSION            "54"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff0000"
+        SIZE                4
+      END
+    END
+
+    CLASS
+      NAME                  "Binnen rode contour provincie Noord-Holland"
+      EXPRESSION            "55"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff9775"
+        SIZE                4
+      END
+    END
+
+    CLASS
+      NAME                  "Binnen VROM én binnen provincie Noord-Holland"
+      EXPRESSION            "56"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#dc6500"
+        SIZE                4
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME                    "vogelvrijwaringsgebiedschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.schiphol_vogelvrijwaringsgebied USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Vogelvrijwaringsgebied Schiphol"
+      "ows_abstract"        "Vogelvrijwaringsgebied Schiphol"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Vogelvrijwaringsgebied Schiphol"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#55c5ff"
+        SIZE                4
+      END
+    END
+
+  END
+
+#=============================================================================
+END
