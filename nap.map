@@ -337,6 +337,7 @@ LAYER
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
   TYPE            POINT
+  CONNECTIONTYPE  WFS
   METADATA
     "wfs_typename"          "peilmerk"
     "wfs_version"           "1.0.0"

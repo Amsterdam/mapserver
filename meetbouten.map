@@ -378,6 +378,7 @@ LAYER
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
   TYPE            POINT
+  CONNECTIONTYPE  WFS
   METADATA
     "wfs_typename"          "meetbout"
     "wfs_version"           "1.0.0"
@@ -403,6 +404,7 @@ LAYER
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
   TYPE            POINT
+  CONNECTIONTYPE  WFS
   METADATA
     "wfs_typename"          "referentiepunt"
     "wfs_version"           "1.0.0"
