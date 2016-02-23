@@ -1,0 +1,203 @@
+#==============================================================================
+#
+# planologischegeluidszones.map
+# doel: serveren van planologische geluidszones
+#
+#==============================================================================
+
+MAP
+  NAME                      "planologischegeluidszones"
+  INCLUDE                   "header.inc"
+
+
+
+  WEB
+    METADATA
+      "ows_title"           "Planologische geluidszones"
+      "ows_abstract"        "Planologische geluidszones"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+  LAYER
+    NAME                    "spoorwegen"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_geluidzones_spoorwegen USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Spoorwegen"
+      "ows_abstract"        "Planologische geluidszone spoorwegen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Geluidszone spoorwegen"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff7500"
+        SIZE                4
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "metro"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_geluidzones_metro USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Metro"
+      "ows_abstract"        "Planologische geluidszone metro"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Geluidszone metro"
+      STYLE
+        SYMBOL              "chess2"
+        COLOR               "#0040dc"
+        SIZE                4
+      END
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#0040dc"
+        SIZE                2
+        WIDTH               1
+        ANGLE               90
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "gezoneerdindustrieterrein"
+    GROUP                   "industrie"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_geluidzones_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Industrie"
+      "ows_abstract"        "Planologische geluidszone industrie"
+      "wms_group_title"     "Industrie"
+      "wms_group_abstract"  "Planologische geluidszone industrie"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Gezoneerd industrieterrein"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffff00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffff00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               135
+      END
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               1
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "geluidzoneindustrieterrein"
+    GROUP                   "industrie"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzones_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Geluidzone industrieterrein"
+      "ows_abstract"        "Geluidzone industrieterrein"
+      "wms_group_title"     "Industrie"
+      "wms_group_abstract"  "Planologische geluidszone industrie"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    CLASS
+      NAME                  "Geluidzone industrieterrein"
+      STYLE
+        OUTLINECOLOR        "#0add0a"
+        WIDTH               4
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "indicatievecontour55dbindustrieterrein"
+    GROUP                   "industrie"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzones_industrie WHERE type = '55 dB (A) contour industrieterrein (indicatief)') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "55 dB (A) contour industrieterrein (indicatief)"
+      "ows_abstract"        "55 dB (A) contour industrieterrein (indicatief)"
+      "wms_group_title"     "Industrie"
+      "wms_group_abstract"  "Planologische geluidszone industrie"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+  
+    CLASS
+      NAME                  "55 dB (A) contour industrieterrein (indicatief)"
+      STYLE
+        OUTLINECOLOR        "#ff6200"
+        WIDTH               4
+        PATTERN
+          15 15
+        END
+      END
+    END
+
+  END 
+  
+#=============================================================================
+END
