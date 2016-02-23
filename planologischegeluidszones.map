@@ -25,7 +25,7 @@ MAP
   LAYER
     NAME                    "spoorwegen"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_geluidzones_spoorwegen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_geluidzone_spoorwegen USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -55,7 +55,7 @@ MAP
   LAYER
     NAME                    "metro"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_geluidzones_metro USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_geluidzone_metro USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -93,7 +93,7 @@ MAP
     NAME                    "gezoneerdindustrieterrein"
     GROUP                   "industrie"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_geluidzones_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_geluidzone_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -139,7 +139,7 @@ MAP
     NAME                    "geluidzoneindustrieterrein"
     GROUP                   "industrie"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzones_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -170,7 +170,7 @@ MAP
     NAME                    "indicatievecontour55dbindustrieterrein"
     GROUP                   "industrie"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzones_industrie WHERE type = '55 dB (A) contour industrieterrein (indicatief)') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = '55 dB (A) contour industrieterrein (indicatief)') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
