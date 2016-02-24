@@ -330,31 +330,4 @@ MAP
   END
 
 #=============================================================================
-
-LAYER
-  NAME            "peilmerk_wfs"
-  STATUS          ON
-  INCLUDE         "connection_nap.inc"
-  DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
-  TYPE            POINT
-  CONNECTIONTYPE  WFS
-  METADATA
-    "wfs_typename"          "peilmerk"
-    "wfs_version"           "1.0.0"
-    "wfs_connectiontimeout" "60"
-    "wfs_maxfeatures"       "100"
-    "wfs_enable_request"    "*"
-    "wfs_srs"               "EPSG:28992 EPSG:4326 EPSG:3857"
-    "gml_include_items"     "all"
-    "gml_default_items"     "all"
-    "ows_title"             "peilmerk"
-    "ows_group_title"       "nap_peilmerk"
-    "ows_abstract"          "Peilmerken"
-  END
-  PROJECTION
-    "init=epsg:28992"
-  END
-END
-
-#=============================================================================
 END
