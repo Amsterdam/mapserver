@@ -378,12 +378,13 @@ MAP
 #=============================================================================
 
 LAYER
-  NAME            "meetbout"
+  NAME            "meetbout_wfs"
   STATUS          ON
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
   TYPE            POINT
   METADATA
+    "wfs_typename"          "meetbout_wfs"
     "wfs_version"           "1.0.0"
     "wfs_connectiontimeout" "60"
     "wfs_maxfeatures"       "100"
@@ -399,12 +400,13 @@ END
 #=============================================================================
 
 LAYER
-  NAME            "referentiepunt"
+  NAME            "referentiepunt_wfs"
   STATUS          ON
   INCLUDE         "connection_nap.inc"
   DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
   TYPE            POINT
   METADATA
+    "wfs_typename"          "referentiepunt_wfs"
     "wfs_version"           "1.0.0"
     "wfs_connectiontimeout" "60"
     "wfs_maxfeatures"       "100"
