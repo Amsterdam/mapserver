@@ -736,36 +736,36 @@ MAP
 #  END
 
   #-----------------------------------------------------------------------------
-#  Source: dmb_aardgas_leiding.csv
-#  LAYER
-#    NAME                    "risicozonesaardgasleiding"
-#    GROUP                   "risicozones"
-#    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM public.aardgasleiding USING srid=28992 USING UNIQUE id"
-#    TYPE                    LINE
-#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
 
-#    METADATA
-#      "ows_title"           "Aardgasleiding"
-#      "ows_abstract"        "Aardgasleiding"
-#      "wms_group_title"     "Risicozones infrastructuur"
-#      "wms_group_abstract"  "Risicozones infrastructuur"
-#      "gml_featureid"       "ID"
-#      "gml_include_items"   "all"
-#    END
+  LAYER
+    NAME                    "risicozonesaardgasleiding"
+    GROUP                   "risicozones"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleidingen USING srid=28992 USING UNIQUE id"
+    TYPE                    LINE
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#    CLASS
-#      NAME                  "Aardgasleiding"
-#      STYLE
-#        COLOR               "#ff0000"
-#        WIDTH               3
-#      END
-#    END
-#
-#  END
+    METADATA
+      "ows_title"           "Aardgasleiding"
+      "ows_abstract"        "Aardgasleiding"
+      "wms_group_title"     "Risicozones infrastructuur"
+      "wms_group_abstract"  "Risicozones infrastructuur"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Aardgasleiding"
+      STYLE
+        COLOR               "#ff0000"
+        WIDTH               3
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
 
