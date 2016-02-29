@@ -16,7 +16,7 @@ RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu trust
 		mapserver-bin=6.4.* \
 	&& apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && a2enmod actions cgid headers alias
+    && a2enmod actions cgid headers alias rewrite
 
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin

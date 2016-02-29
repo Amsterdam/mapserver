@@ -1,0 +1,216 @@
+#==============================================================================
+#
+# bodem.map
+# doel: serveren van bodeminformatie
+#
+#==============================================================================
+
+MAP
+  NAME                      "bodeminformatie"
+  INCLUDE                   "header.inc"
+
+
+  WEB
+    METADATA
+      "ows_title"           "Bodeminformatie"
+      "ows_abstract"        "Bodeminformatie van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+
+  LAYER
+    NAME                    "grondmonsters"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_bodeminformatie_grondmonster USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MAXSCALEDENOM           10000
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Grondmonsters"
+      "ows_abstract"        "Grondmonsters"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "eindoordeel"
+
+    CLASS
+      NAME                  "Niet verontreinigd"
+      EXPRESSION            (('[eindoordeel]' = "-") OR ('[eindoordeel]' = ""))
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#0075ff"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "Licht verontreinigd"
+      EXPRESSION            ">S"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#007500"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "Matig verontreinigd"
+      EXPRESSION            ">T"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#ffff00"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "Sterk verontreinigd"
+      EXPRESSION            ">I"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#d50000"
+        SIZE                15
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "grondwatermonsters"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_bodeminformatie_grondwatermonster USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Grondwatermonsters"
+      "ows_abstract"        "Grondwatermonsters"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "eindoordeel"
+
+    CLASS
+      NAME                  "Niet verontreinigd"
+      EXPRESSION            (('[eindoordeel]' = "-") OR ('[eindoordeel]' = ""))
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#0075ff"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "Licht verontreinigd"
+      EXPRESSION            ">S"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#007500"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "Matig verontreinigd"
+      EXPRESSION            ">T"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#ffff00"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "Sterk verontreinigd"
+      EXPRESSION            ">I"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#d50000"
+        SIZE                15
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "asbest"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_bodeminformatie_asbest USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MAXSCALEDENOM           10000
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Asbest in grond"
+      "ows_abstract"        "Asbest in grond"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "concentratie"
+
+    CLASS
+      NAME                  "-10 - 0 mg/kg"
+      EXPRESSION            ([concentratie] < 0)
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#0075b9"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "0,1 - 10 mg/kg"
+      EXPRESSION            (([concentratie] >= 0.1) && ([concentratie] < 10.1))
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#8d8dff"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "10,1 - 100 mg/kg"
+      EXPRESSION            (([concentratie] >= 10.1) && ([concentratie] < 100.1))
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#7500ff"
+        SIZE                15
+      END
+    END
+
+    CLASS
+      NAME                  "> 100,1 mg/kg"
+      EXPRESSION            ([concentratie] >= 100.1)
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#6c0000"
+        SIZE                15
+      END
+    END
+
+  END
+
+#=============================================================================
+END

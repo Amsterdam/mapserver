@@ -1,0 +1,1013 @@
+#==============================================================================
+#
+# externeveiligheid.map
+# doel: serveren van kaartlagen binnen het thema Externe veiligheid
+#
+#==============================================================================
+
+MAP
+  NAME                      "externeveiligheid"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Externe veiligheid"
+      "ows_abstract"        "Externe veiligheid"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+  LAYER
+    NAME                    "lpgstationcontouren"
+    GROUP                   "lpgstations"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgstation_polygon_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+#    MINSCALEDENOM          100
+#    MAXSCALEDENOM          15000
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Omtrek LPG-station"
+      "ows_abstract"        "Omtrek LPG-station"
+      "wms_group_title"     "LPG-stations"
+      "wms_group_abstract"  "LPG-stations"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff0000"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME                    "lpgstationslocaties"
+    GROUP                   "lpgstations"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgstation_point_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+#    MINSCALEDENOM          100
+#    MAXSCALEDENOM          15000
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Locatie LPG-station"
+      "ows_abstract"        "Locatie LPG-station"
+      "wms_group_title"     "LPG-stations"
+      "wms_group_abstract"  "LPG-stations"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Locatie LPG-station"
+      STYLE
+        SYMBOL              "vierkant"
+        COLOR               255 0 0
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+        SIZE                5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgvulpuntinvloedsgebied"
+    GROUP                   "lpgvulpunten"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgvulpunt_polygon_layer WHERE type = 'Invloedsgebied groepsrisico') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Invloedsgebied groepsrisico"
+      "ows_abstract"        "Invloedsgebied groepsrisico"
+      "wms_group_title"     "LPG-vulpunt"
+      "wms_group_abstract"  "LPG-vulpunt"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Invloedsgebied groepsrisico"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#0000ff"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#0000ff"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgvulpuntplaatsgebondenrisico106"
+    GROUP                   "lpgvulpunten"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgvulpunt_polygon_layer WHERE type = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Plaatsgebonden risico 10-6"
+      "ows_abstract"        "Plaatsgebonden risico 10-6"
+      "wms_group_title"     "LPG-vulpunt"
+      "wms_group_abstract"  "LPG-vulpunt"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Plaatsgebonden risico 10-6"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ff0000"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgvulpuntplaatsgebondenrisico105"
+    GROUP                   "lpgvulpunten"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgvulpunt_polygon_layer WHERE type = 'Plaatsgebonden risico 10-5') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Plaatsgebonden risico 10-5"
+      "ows_abstract"        "Plaatsgebonden risico 10-5"
+      "wms_group_title"     "LPG-vulpunt"
+      "wms_group_abstract"  "LPG-vulpunt"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Plaatsgebonden risico 10-5"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ff0000"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ff0000"
+        SIZE                5
+        WIDTH               2
+        ANGLE               135
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgvulpuntlocaties"
+    GROUP                   "lpgvulpunten"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgvulpunt_point_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Locatie LPG-vulpunt"
+      "ows_abstract"        "Locatie LPG-vulpunt"
+      "wms_group_title"     "LPG-vulpunt"
+      "wms_group_abstract"  "LPG-vulpunt"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#ff0000"
+        OUTLINECOLOR        "#000000"
+        WIDTH               1
+        SIZE                10
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgafleverzuilplaatsgebondenrisico"
+    GROUP                   "lpgafleverzuilen"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgafleverzuil_polygon_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Plaatsgebonden risico (15 m)"
+      "ows_abstract"        "Plaatsgebonden risico (15 m)"
+      "wms_group_title"     "LPG-afleverzuil"
+      "wms_group_abstract"  "LPG-afleverzuil"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Plaatsgebonden risico (15 m)"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#00ff00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#00ff00"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgafleverzuillocaties"
+    GROUP                   "lpgafleverzuilen"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgafleverzuil_point_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Locatie LPG-afleverzuil"
+      "ows_abstract"        "Locatie LPG-afleverzuil"
+      "wms_group_title"     "LPG-afleverzuil"
+      "wms_group_abstract"  "LPG-afleverzuil"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Locatie LPG-afleverzuil"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#00ff00"
+        OUTLINECOLOR        "#000000"
+        WIDTH               1
+        SIZE                10
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgtankinvloedsgebied"
+    GROUP                   "lpgtanks"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgtank WHERE kleur = '11796735') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Invloedsgebied groepsrisico"
+      "ows_abstract"        "Invloedsgebied groepsrisico"
+      "wms_group_title"     "LPG-tank"
+      "wms_group_abstract"  "LPG-tank"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Invloedsgebied groepsrisico"
+      STYLE
+        OUTLINECOLOR        "#0000ff"
+        WIDTH               2
+        PATTERN
+          5 5
+        END
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgtankplaatsgebondenrisico"
+    GROUP                   "lpgtanks"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgtank WHERE kleur IN ('65535', '16711680')) AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Plaatsgebondenrisico (25/120 m)"
+      "ows_abstract"        "Plaatsgebondenrisico (25/120 m)"
+      "wms_group_title"     "LPG-tank"
+      "wms_group_abstract"  "LPG-tank"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Plaatsgebondenrisico (25/120 m)"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffff00"
+        SIZE                5
+        WIDTH               1
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lpgtankligging"
+    GROUP                   "lpgtanks"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgtank WHERE kleur = '0') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Ligging LPG-tank"
+      "ows_abstract"        "Ligging LPG-opslagtank"
+      "wms_group_title"     "LPG-tank"
+      "wms_group_abstract"  "LPG-tank"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Ligging LPG-tank"
+      STYLE
+        COLOR               "#ffff00"
+        OUTLINECOLOR        "#000000"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "overigerisicobedrijfscontouren"
+    GROUP                   "overigerisicobedrijven"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bedrijf USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Omtrek overigerisicobedrijf"
+      "ows_abstract"        "Omtrek overigerisicobedrijf"
+      "wms_group_title"     "Overige risicobedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Bedrijf"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#0000ff"
+        SIZE                5
+        WIDTH               2
+        ANGLE               135
+      END
+      STYLE
+        OUTLINECOLOR        "#0000ff"
+        WIDTH               1
+      END
+    END
+
+#  END
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_veilig_bedr_punten.csv
+#  LAYER
+#    NAME                    "overigerisicobedrijfslocaties"
+#    GROUP                   "overigerisicobedrijven"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM public.gevaarlijkebedrijven USING srid=28992 USING UNIQUE id"
+#    TYPE                    POINT
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+
+#    METADATA
+#      "ows_title"           "Locatie overigerisicobedrijf"
+#      "ows_abstract"        "Locatie overigerisicoberdijf"
+#      "wms_group_title"     "Overige risicobedrijven"
+#      "wms_group_bstract"   "Overige risicobedrijven"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "Bedrijf"
+#      STYLE
+#        SYMBOL              "vierkant"
+#        COLOR               255 0 0
+#        OUTLINECOLOR        0 0 0
+#        WIDTH               1
+#        SIZE                5
+#      END
+#    END
+
+#  END
+
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_veilig_contouren.csv
+#  LAYER
+#    NAME                    "overigerisicobedrijfinvloedsgebied"
+#    GROUP                   "overigerisicobedrijven"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM (SELECT * FROM public.veiligheidscontourenindustrie WHERE type_contour = 'Invloedsgebied') AS foo USING srid=28992 USING UNIQUE id"
+#    TYPE                    POLYGON
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+    
+#    METADATA
+#      "ows_title"           "Invloedsgebied groepsrisico"
+#      "ows_abstract"        "Invloedsgebied groepsrisico"
+#      "wms_group_title"     "Overige risicobedrijven"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "Invloedsgebied"
+#      STYLE
+#        SYMBOL              "hatchsymbol"
+#        COLOR               "#0000ff"
+#        SIZE                5
+#        WIDTH               2
+#        ANGLE               45
+#      END
+#      STYLE
+#        OUTLINECOLOR        "#0000ff"
+#        WIDTH               2
+#      END
+#    END
+
+#  END
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_veilig_contouren.csv
+#  LAYER
+#    NAME                    "overigerisicobedrijfplaatsgebondenrisico106"
+#    GROUP                   "overigerisicobedrijven"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM (SELECT * FROM public.veiligheidscontourenindustrie WHERE type_contour = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
+#    TYPE                    POLYGON
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+    
+#    METADATA
+#      "ows_title"           "Plaatsgebonden risico 10-6"
+#      "ows_abstract"        "Plaatsgebonden risico 10-6"
+#      "wms_group_title"     "Overige risicobedrijven"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "Plaatsgebonden risico 10-6"
+#      STYLE
+#        SYMBOL              "hatchsymbol"
+#        COLOR               "#ff0000"
+#        SIZE                5
+#        WIDTH               2
+#        ANGLE               45
+#      END
+#      STYLE
+#        OUTLINECOLOR        "#ff0000"
+#        WIDTH               2
+#      END
+#    END
+
+#  END
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_aardgas_zakelijk.csv
+#  LAYER
+#    NAME                    "risicozonesbelemmeringenstrook"
+#    GROUP                   "risicozones"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM public.aardgaszakelijk USING srid=28992 USING UNIQUE id"
+#    TYPE                    POLYGON
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+
+#    METADATA
+#      "ows_title"           "Belemmeringenstrook"
+#      "ows_abstract"        "Belemmeringenstrook"
+#      "wms_group_title"     "Risicozones infrastructuur"
+#      "wms_group_abstract"  "Risicozones infrastructuur"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "Belemmeringenstrook"
+#      STYLE
+#        SYMBOL              "chess"
+#        COLOR               "#0000ff"
+#        SIZE                4
+#      END
+#      STYLE
+#        OUTLINECOLOR        "#0000ff"
+#        WIDTH               1
+#      END
+#    END
+
+#  END
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_aardgas_1let.csv
+#  LAYER
+#    NAME                    "risicozonesaardgas1let"
+#    GROUP                   "risicozones"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM public.aardgas1let USING srid=28992 USING UNIQUE id"
+#    TYPE                    POLYGON
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+
+#    METADATA
+#      "ows_title"           "1% Letaliteitsafstand"
+#      "ows_abstract"        "1% Letaliteitsafstand"
+#      "wms_group_title"     "Risicozones infrastructuur"
+#      "wms_group_abstract"  "Risicozones infrastructuur"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "1% Letaliteitsafstand"
+#      STYLE
+#        SYMBOL              "hatchsymbol"
+#        COLOR               "#005586"
+#        SIZE                5
+#        WIDTH               2
+#        ANGLE               45
+#      END
+#      STYLE
+#        OUTLINECOLOR        "#005586"
+#        WIDTH               2
+#      END
+#    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_aardgas_100let.csv
+#  LAYER
+#    NAME                    "risicozonesaardgas100let"
+#    GROUP                   "risicozones"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM public.aardgas100let USING srid=28992 USING UNIQUE id"
+#    TYPE                    POLYGON
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+
+#    METADATA
+#      "ows_title"           "100% Letaliteitsafstand"
+#      "ows_abstract"        "100% Letaliteitsafstand"
+#      "wms_group_title"     "Risicozones infrastructuur"
+#      "wms_group_abstract"  "Risicozones infrastructuur"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "100% Letaliteitsafstand"
+#      STYLE
+#        SYMBOL              "hatchsymbol"
+#        COLOR               "#008bdc"
+#        SIZE                5
+#        WIDTH               2
+#        ANGLE               45
+#       END
+#      STYLE
+#        OUTLINECOLOR        "#008bdc"
+#        WIDTH               2
+#      END
+#    END
+
+#  END
+
+  #-----------------------------------------------------------------------------
+#  Source: dmb_aardgas_pr10_6.csv
+#  LAYER
+#    NAME                    "risicozonesaardgaspr106"
+#    GROUP                   "risicozones"
+#    INCLUDE                 "connection_milieu.inc"
+#    DATA                    "geometrie FROM public.aardgaspr106 USING srid=28992 USING UNIQUE id"
+#    TYPE                    POLYGON
+#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+
+#    METADATA
+#      "ows_title"           "Plaatsgebonden risico 10-6"
+#      "ows_abstract"        "Plaatsgebonden risico 10-6"
+#      "wms_group_title"     "Risicozones infrastructuur"
+#      "wms_group_abstract"  "Risicozones infrastructuur"
+#      "gml_featureid"       "ID"
+#      "gml_include_items"   "all"
+#    END
+
+#    CLASS
+#      NAME                  "Plaatsgebonden risico 10-6"
+#      STYLE
+#        SYMBOL              "hatchsymbol"
+#        COLOR               "#ff0000"
+#        SIZE                5
+#        WIDTH               2
+#        ANGLE               45
+#      END
+#      STYLE
+#        OUTLINECOLOR        "#ff0000"
+#        WIDTH               2
+#      END
+#    END
+
+#  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "risicozonesaardgasleiding"
+    GROUP                   "risicozones"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleidingen USING srid=28992 USING UNIQUE id"
+    TYPE                    LINE
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Aardgasleiding"
+      "ows_abstract"        "Aardgasleiding"
+      "wms_group_title"     "Risicozones infrastructuur"
+      "wms_group_abstract"  "Risicozones infrastructuur"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Aardgasleiding"
+      STYLE
+        COLOR               "#ff0000"
+        WIDTH               3
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "risicozonesspoorweg"
+    GROUP                   "risicozones"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_spoorwegen USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    
+    METADATA
+      "ows_title"           "Risicozone spoorweg"
+      "ows_abstract"        "Risicocozone spoorweg"
+      "wms_group_title"     "Risicozones infrastructuur"
+      "wms_group_abstract"  "Risicozones infrastructuur"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Spoorwegen"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#cc99cc"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#cc99cc"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "risicozonesvaarweg"
+    GROUP                   "risicozones"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_vaarwegen USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    
+    METADATA
+      "ows_title"           "Risicozone vaarweg"
+      "ows_abstract"        "Risicozone vaarweg"
+      "wms_group_title"     "Risicozones infrastructuur"
+      "wms_group_abstract"  "Risicozones infrastructuur"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Vaarwegen"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#3399cc"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#3399cc"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "risicozonesweg"
+    GROUP                   "risicozones"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_wegen USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    
+    METADATA
+      "ows_title"           "Risicozone weg"
+      "ows_abstract"        "Risicozone weg"
+      "wms_group_title"     "Risicozones infrastructuur"
+      "wms_group_abstract"  "Risicozones infrastructuur"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Wegen"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#996600"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#996600"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "veiligheidspunten"
+    GROUP                   "veiligheidsafstanden"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_point_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Veiligheidspunten"
+      "ows_abstract"        "Veiligheidspunten"
+      "wms_group_title"     "Veiligheidsafstanden"
+      "wms_group_abstract"  "Veiligheidsafstanden"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "type"
+
+    CLASS
+      NAME                  "Vuurwerkopslag"
+      EXPRESSION            "Vuurwerkopslag"
+      STYLE
+        SYMBOL              "stip"
+        SIZE                15
+        COLOR               "#5b005b"
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "veiligheidscontouren"
+    GROUP                   "veiligheidsafstanden"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_polygon_layer USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    
+    METADATA
+      "ows_title"           "Veiligheidscontouren"
+      "ows_abstract"        "Veiligheidscontouren"
+      "wms_group_title"     "Veiligheidsafstanden"
+      "wms_group_abstract"  "Veiligheidsafstanden"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "type"
+
+    CLASS
+      NAME                  "Munitieopslag"
+      EXPRESSION            "Munitieopslag"
+      STYLE
+        COLOR               "#ff0000"
+      END
+    END
+
+    CLASS
+      NAME                  "Gasdrukregel- en meetstation"
+      EXPRESSION            "Gasdrukregel- en meetstation"
+      STYLE
+        COLOR               "#0000ff"
+      END
+    END
+
+    CLASS
+      NAME                  "Sluis"
+      EXPRESSION            "Sluis"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#004065"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#004065"
+        WIDTH               2
+      END
+    END
+
+    CLASS
+      NAME                  "Wachtplaats"
+      EXPRESSION            "Wachtplaats"
+      STYLE
+        SYMBOL              "linelinesymbol"
+        COLOR               "#ff0000"
+        SIZE                12
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
+
+    CLASS
+      NAME                  "Bunkerschip"
+      EXPRESSION            "Bunkerschip"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#007575"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#007575"
+        WIDTH               2
+      END
+    END
+
+  END
+
+
+#=============================================================================
+END
