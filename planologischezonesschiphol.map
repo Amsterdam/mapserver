@@ -25,7 +25,7 @@ MAP
   LAYER
     NAME                    "hoogtebeperkingschiphol"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_schiphol_hoogte_polygon_layer USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_schiphol_hoogtebeperkendevlakken_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -258,7 +258,7 @@ MAP
   LAYER
     NAME                    "vogelvrijwaringsgebiedschiphol"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.schiphol_vogelvrijwaringsgebied USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_schiphol_vogelvrijwaringsgebied USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
