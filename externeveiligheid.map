@@ -890,7 +890,7 @@ MAP
     NAME                    "veiligheidspunten"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_point_layer USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_point USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -926,7 +926,7 @@ MAP
     NAME                    "veiligheidscontouren"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_polygon_layer USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
