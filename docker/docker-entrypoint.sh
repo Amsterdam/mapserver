@@ -15,6 +15,11 @@ MILIEU_DB_HOST=${MILIEU_DB_PORT_5432_TCP_ADDR:-milieu_db.service.consul}
 MILIEU_DB_PORT=${MILIEU_DB_PORT_5432_TCP_PORT:-5432}
 MILIEU_DB_USER=${MILIEU_DB_USER:-${MILIEU_DB_NAME}}
 
+PANO_DB_HOST=${PANO_DB_PORT_5432_TCP_ADDR:-panorama_db.service.consul}
+PANO_DB_PORT=${PANO_DB_PORT_5432_TCP_PORT:-5432}
+PANO_DB_USER=${PANO_DB_USER:-${PANO_DB_NAME}}
+
+
 echo Creating configuration files
 
 cat > /srv/mapserver/connection.inc <<EOF
@@ -31,6 +36,12 @@ cat > /srv/mapserver/connection_milieu.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${MILIEU_DB_HOST} dbname=${MILIEU_DB_NAME} user=${MILIEU_DB_USER} password=${MILIEU_DB_PASSWORD} port=${MILIEU_DB_PORT}"
 EOF
+
+cat > /srv/mapserver/connection_panorama.inc <<EOF
+CONNECTIONTYPE postgis
+CONNECTION "host=${PANO_DB_HOST} dbname=${PANO_DB_NAME} user=${PANO_DB_USER} password=${PANO_DB_PASSWORD} port=${PANO_DB_PORT}"
+EOF
+
 
 echo Starting server
 apachectl -D FOREGROUND
