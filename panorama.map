@@ -1,0 +1,67 @@
+#==============================================================================
+#
+# panorama.map
+# doel: serveren van Panorama foto gegevens
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# S. Preeker            04-02-2016    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "Panorama"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Panorama"
+      "ows_abstract"        "Panorama foto gegevens van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "panorama_punt"
+    GROUP           "panorama"
+    INCLUDE         "connection_panorama.inc"
+    DATA            "geometrie FROM public.geo_rijlijnen_panoramafotopunt USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   15001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "panorama_foto_punt"
+      "ows_group_title"     "panorama"
+      "ows_abstract"        "panorama in Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Panoramapunt"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  15001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          200 255 255
+        OUTLINECOLOR   200 200 0
+        WIDTH          2
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+END
