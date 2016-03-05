@@ -1,0 +1,108 @@
+#==============================================================================
+#
+# panorama.map
+# doel: serveren van Panorama foto gegevens
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# S. Preeker            04-02-2016    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "Panorama"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Panorama"
+      "ows_abstract"        "Panorama foto gegevens van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "panorama_punt"
+    GROUP           "panorama"
+    INCLUDE         "connection_panorama.inc"
+    DATA            "geometrie FROM public.geo_rijlijnen_panoramafotopunt_point USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   5001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "panorama_foto_punt"
+      "ows_group_title"     "panorama"
+      "ows_abstract"        "panorama in Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Panoramapunt"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          255 255 255
+        OUTLINECOLOR   0 200 0
+        WIDTH          2
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "panorama_punt_labels"
+    GROUP           "panorama"
+    INCLUDE         "connection_panorama.inc"
+    DATA            "geometrie FROM public.geo_rijlijnen_panoramafotopunt_point USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   1001
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "panorama_labels"
+      "ows_group_title"     "panorama"
+      "ows_abstract"        "Labels van panorama punten"
+    END
+
+    LABELITEM          "geo_id"
+
+    CLASS
+      NAME "Geoid"
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1000
+        COLOR   0 200 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+
+  END
+  #-----------------------------------------------------------------------------
+
+END

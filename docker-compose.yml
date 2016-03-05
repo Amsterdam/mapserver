@@ -9,17 +9,28 @@ map:
   build: .
   ports:
     - "8989:80"
+
   links:
     - "database:atlas_db"
     - "database:nap_db"
     - "database:milieuthemas_db"
+
+  #external_links:
+  #  - "atlaspanorama_database_1:pano_db"
+
   environment:
     ATLAS_DB_NAME: atlas
     ATLAS_DB_USER: postgres
     ATLAS_DB_PASSWORD: insecure
+
     NAP_DB_NAME: nap
     NAP_DB_USER: postgres
     NAP_DB_PASSWORD: insecure
+
     MILIEUTHEMAS_DB_NAME: postgres
     MILIEUTHEMAS_DB_USER: postgres
     MILIEUTHEMAS_DB_PASSWORD: insecure
+
+    PANO_DB_NAME: postgres
+    PANO_DB_USER: postgres
+    PANO_DB_PASSWORD: insecure
