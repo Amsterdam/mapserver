@@ -14,9 +14,7 @@ map:
     - "database:atlas_db"
     - "database:nap_db"
     - "database:milieuthemas_db"
-
-  #external_links:
-  #  - "atlaspanorama_database_1:pano_db"
+    - "database:pano_db"
 
   environment:
     ATLAS_DB_NAME: atlas
@@ -27,10 +25,10 @@ map:
     NAP_DB_USER: postgres
     NAP_DB_PASSWORD: insecure
 
-    MILIEUTHEMAS_DB_NAME: postgres
+    MILIEUTHEMAS_DB_NAME: milieuthemas
     MILIEUTHEMAS_DB_USER: postgres
     MILIEUTHEMAS_DB_PASSWORD: insecure
 
-    PANO_DB_NAME: postgres
+    PANO_DB_NAME: pano
     PANO_DB_USER: postgres
     PANO_DB_PASSWORD: insecure
