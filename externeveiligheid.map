@@ -990,9 +990,29 @@ MAP
       END
     END
 
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "milieu_veiligheid_bunkerschepen"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon WHERE type = 'Bunkerschip') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    
+    METADATA
+      "ows_title"           "Bunkerschepen"
+      "ows_abstract"        "Veiligheidscontouren van bunkerschepen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
     CLASS
       NAME                  "Bunkerschip"
-      EXPRESSION            "Bunkerschip"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#007575"
