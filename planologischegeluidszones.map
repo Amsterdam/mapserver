@@ -93,7 +93,7 @@ MAP
     NAME                    "gezoneerdindustrieterrein"
     GROUP                   "industrie"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_geluidzone_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION

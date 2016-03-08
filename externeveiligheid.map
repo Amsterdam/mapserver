@@ -422,10 +422,13 @@ MAP
 
     CLASS
       NAME                  "Ligging LPG-tank"
+
       STYLE
+        SYMBOL              "stip"
         COLOR               "#ffff00"
         OUTLINECOLOR        "#000000"
-        WIDTH               2
+        WIDTH               1
+	SIZE                10
       END
     END
 
@@ -517,7 +520,7 @@ MAP
 #    PROJECTION
 #      "init=epsg:28992"
 #    END
-    
+
 #    METADATA
 #      "ows_title"           "Invloedsgebied groepsrisico"
 #      "ows_abstract"        "Invloedsgebied groepsrisico"
@@ -555,7 +558,7 @@ MAP
 #    PROJECTION
 #      "init=epsg:28992"
 #    END
-    
+
 #    METADATA
 #      "ows_title"           "Plaatsgebonden risico 10-6"
 #      "ows_abstract"        "Plaatsgebonden risico 10-6"
@@ -779,7 +782,7 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Risicozone spoorweg"
       "ows_abstract"        "Risicocozone spoorweg"
@@ -818,7 +821,7 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Risicozone vaarweg"
       "ows_abstract"        "Risicozone vaarweg"
@@ -857,7 +860,7 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Risicozone weg"
       "ows_abstract"        "Risicozone weg"
@@ -887,7 +890,78 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    "veiligheidspunten"
+    NAME                    "milieu_veiligheid_munitie"
+    GROUP                   "veiligheidsafstanden"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Veiligheidscontouren"
+      "ows_abstract"        "Veiligheidscontouren"
+      "wms_group_title"     "Veiligheidsafstanden"
+      "wms_group_abstract"  "Veiligheidsafstanden"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "type"
+
+    CLASS
+      NAME                  "Munitieopslag"
+      EXPRESSION            "Munitieopslag"
+      STYLE
+        COLOR               "#ff0000"
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "milieu_veiligheid_bunkerschepen"
+    GROUP                   "veiligheidsafstanden"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon WHERE type = 'Bunkerschip') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    
+    METADATA
+      "ows_title"           "Bunkerschepen"
+      "ows_abstract"        "Veiligheidscontouren van bunkerschepen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Bunkerschip"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#007575"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#007575"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "milieu_veiligheid_vuurwerk"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_point USING srid=28992 USING UNIQUE id"
@@ -923,19 +997,19 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    "veiligheidscontouren"
+    NAME                    "milieu_veiligheid_sluis"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_point USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
-      "ows_title"           "Veiligheidscontouren"
-      "ows_abstract"        "Veiligheidscontouren"
+      "ows_title"           "Veiligheidspunten"
+      "ows_abstract"        "Veiligheidspunten"
       "wms_group_title"     "Veiligheidsafstanden"
       "wms_group_abstract"  "Veiligheidsafstanden"
       "gml_featureid"       "ID"
@@ -943,22 +1017,6 @@ MAP
     END
 
     CLASSITEM               "type"
-
-    CLASS
-      NAME                  "Munitieopslag"
-      EXPRESSION            "Munitieopslag"
-      STYLE
-        COLOR               "#ff0000"
-      END
-    END
-
-    CLASS
-      NAME                  "Gasdrukregel- en meetstation"
-      EXPRESSION            "Gasdrukregel- en meetstation"
-      STYLE
-        COLOR               "#0000ff"
-      END
-    END
 
     CLASS
       NAME                  "Sluis"
@@ -976,6 +1034,64 @@ MAP
       END
     END
 
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "milieu_veiligheid_gasdrukregel_meetstation"
+    GROUP                   "veiligheidsafstanden"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_point USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Veiligheidspunten"
+      "ows_abstract"        "Veiligheidspunten"
+      "wms_group_title"     "Veiligheidsafstanden"
+      "wms_group_abstract"  "Veiligheidsafstanden"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "type"
+
+    CLASS
+      NAME                  "Gasdrukregel- en meetstation"
+      EXPRESSION            "Gasdrukregel- en meetstation"
+      STYLE
+        COLOR               "#0000ff"
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "milieu_veiligheid_wachtplaats"
+    GROUP                   "veiligheidsafstanden"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Veiligheidscontouren"
+      "ows_abstract"        "Veiligheidscontouren"
+      "wms_group_title"     "Veiligheidsafstanden"
+      "wms_group_abstract"  "Veiligheidsafstanden"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
     CLASS
       NAME                  "Wachtplaats"
       EXPRESSION            "Wachtplaats"
@@ -990,24 +1106,7 @@ MAP
       END
     END
 
-    CLASS
-      NAME                  "Bunkerschip"
-      EXPRESSION            "Bunkerschip"
-      STYLE
-        SYMBOL              "hatchsymbol"
-        COLOR               "#007575"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-      STYLE
-        OUTLINECOLOR        "#007575"
-        WIDTH               2
-      END
-    END
-
   END
-
 
 #=============================================================================
 END
