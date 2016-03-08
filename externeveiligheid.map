@@ -422,10 +422,13 @@ MAP
 
     CLASS
       NAME                  "Ligging LPG-tank"
+
       STYLE
+        SYMBOL              "stip"
         COLOR               "#ffff00"
         OUTLINECOLOR        "#000000"
-        WIDTH               2
+        WIDTH               1
+	SIZE                10
       END
     END
 
@@ -517,7 +520,7 @@ MAP
 #    PROJECTION
 #      "init=epsg:28992"
 #    END
-    
+
 #    METADATA
 #      "ows_title"           "Invloedsgebied groepsrisico"
 #      "ows_abstract"        "Invloedsgebied groepsrisico"
@@ -555,7 +558,7 @@ MAP
 #    PROJECTION
 #      "init=epsg:28992"
 #    END
-    
+
 #    METADATA
 #      "ows_title"           "Plaatsgebonden risico 10-6"
 #      "ows_abstract"        "Plaatsgebonden risico 10-6"
@@ -779,7 +782,7 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Risicozone spoorweg"
       "ows_abstract"        "Risicocozone spoorweg"
@@ -818,7 +821,7 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Risicozone vaarweg"
       "ows_abstract"        "Risicozone vaarweg"
@@ -857,7 +860,7 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Risicozone weg"
       "ows_abstract"        "Risicozone weg"
@@ -926,13 +929,13 @@ MAP
     NAME                    "veiligheidscontouren"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Veiligheidscontouren"
       "ows_abstract"        "Veiligheidscontouren"
