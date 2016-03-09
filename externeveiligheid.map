@@ -774,7 +774,7 @@ MAP
     NAME                    "risicozonesspoorweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'sw') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'sw') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -813,7 +813,7 @@ MAP
     NAME                    "risicozonesvaarweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'vw') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'vw') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -852,7 +852,7 @@ MAP
     NAME                    "risicozonesweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'wg') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'wg') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
