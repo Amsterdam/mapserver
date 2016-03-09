@@ -625,7 +625,7 @@ MAP
 #    NAME                    "risicozonesaardgas1let"
 #    GROUP                   "risicozones"
 #    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'l1') AS foo USING srid=28992 USING UNIQUE id"
+#    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'l1' AS foo USING srid=28992 USING UNIQUE id"
 #    TYPE                    POLYGON
 #    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
 #    PROJECTION
@@ -664,7 +664,7 @@ MAP
 #    NAME                    "risicozonesaardgas100let"
 #    GROUP                   "risicozones"
 #    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'la') AS foo USING srid=28992 USING UNIQUE id"
+#    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'la' AS foo USING srid=28992 USING UNIQUE id"
 #    TYPE                    POLYGON
 #    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
 #    PROJECTION
@@ -703,7 +703,7 @@ MAP
 #    NAME                    "risicozonesaardgaspr106"
 #    GROUP                   "risicozones"
 #    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'pr') AS foo USING srid=28992 USING UNIQUE id"
+#    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'pr' AS foo USING srid=28992 USING UNIQUE id"
 #    TYPE                    POLYGON
 #    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
 #    PROJECTION
@@ -774,7 +774,7 @@ MAP
     NAME                    "risicozonesspoorweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'sw') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'sw' USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -813,7 +813,7 @@ MAP
     NAME                    "risicozonesvaarweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'vw') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'vw' USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -852,7 +852,7 @@ MAP
     NAME                    "risicozonesweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'wg') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'wg' USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -891,7 +891,7 @@ MAP
     NAME                    "milieu_veiligheid_munitie"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -911,7 +911,9 @@ MAP
       NAME                  "Munitieopslag"
       EXPRESSION            "Munitieopslag"
       STYLE
-        COLOR               "#ff0000"
+        OUTLINECOLOR        "#000000"
+        WIDTH               2
+        COLOR               "#44ef0f"
       END
     END
 
@@ -1034,7 +1036,7 @@ MAP
     NAME                    "milieu_veiligheid_gasdrukregel_meetstation"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon WHERE type = 'Gasdrukregel- en meetstation') AS foo USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1048,9 +1050,14 @@ MAP
       "gml_include_items"   "all"
     END
 
+    CLASSITEM               "type"
+
     CLASS
       NAME                  "Gasdrukregel- en meetstation"
+      EXPRESSION            "Gasdrukregel- en meetstation"
       STYLE
+        OUTLINECOLOR        "#000000"
+        WIDTH               2
         COLOR               "#0000ff"
       END
     END
@@ -1063,7 +1070,7 @@ MAP
     NAME                    "milieu_veiligheid_wachtplaats"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING UNIQUE id"
+    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1076,6 +1083,8 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
+
+    CLASSITEM               "type"
 
     CLASS
       NAME                  "Wachtplaats"
