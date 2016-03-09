@@ -742,7 +742,7 @@ MAP
     NAME                    "risicozonesaardgasleiding"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleidingen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleiding USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -761,6 +761,7 @@ MAP
     CLASS
       NAME                  "Aardgasleiding"
       STYLE
+        OUTLINECOLOR        "#cc99cc"
         COLOR               "#ff0000"
         WIDTH               3
       END
@@ -774,7 +775,7 @@ MAP
     NAME                    "risicozonesspoorweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'sw' USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -790,8 +791,11 @@ MAP
       "gml_include_items"   "all"
     END
 
+    CLASSITEM               "type"
+
     CLASS
       NAME                  "Spoorwegen"
+      EXPRESSION            "sw"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#cc99cc"
@@ -813,7 +817,7 @@ MAP
     NAME                    "risicozonesvaarweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'vw' USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -829,8 +833,11 @@ MAP
       "gml_include_items"   "all"
     END
 
+    CLASSITEM               "type"
+
     CLASS
       NAME                  "Vaarwegen"
+      EXPRESSION            "vw"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#3399cc"
@@ -852,7 +859,7 @@ MAP
     NAME                    "risicozonesweg"
     GROUP                   "risicozones"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur WHERE type = 'wg' USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -868,8 +875,11 @@ MAP
       "gml_include_items"   "all"
     END
 
+    CLASSITEM               "type"
+
     CLASS
       NAME                  "Wegen"
+      EXPRESSION            "wg"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#996600"
