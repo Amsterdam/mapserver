@@ -1034,8 +1034,7 @@ MAP
     NAME                    "milieu_veiligheid_gasdrukregel_meetstation"
     GROUP                   "veiligheidsafstanden"
     INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
-    TYPE                    POLYGON
+    DATA                    "geometrie FROM (SELECT * FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon WHERE type = 'Gasdrukregel- en meetstation') AS foo USING srid=28992 USING     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -1048,11 +1047,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM               "type"
-
     CLASS
       NAME                  "Gasdrukregel- en meetstation"
-      EXPRESSION            "Gasdrukregel- en meetstation"
       STYLE
         COLOR               "#0000ff"
       END
