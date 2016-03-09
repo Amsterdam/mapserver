@@ -446,9 +446,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Omtrek overigerisicobedrijf"
-      "ows_abstract"        "Omtrek overigerisicobedrijf"
-      "wms_group_title"     "Overige risicobedrijven"
+      "ows_title"           "Omtrek overige risicobedrijven"
+      "ows_abstract"        "Omtrek overige risicobedrijven"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -468,42 +467,40 @@ MAP
       END
     END
 
-#  END
+  END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 #  Source: dmb_veilig_bedr_punten.csv
-#  LAYER
-#    NAME                    "overigerisicobedrijfslocaties"
-#    GROUP                   "overigerisicobedrijven"
-#    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bedrijf_point USING srid=28992 USING UNIQUE id"
-#    TYPE                    POINT
-#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
+  LAYER
+    NAME                    "overigerisicobedrijfslocaties"
+    GROUP                   "overigerisicobedrijven"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bedrijf_point USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#    METADATA
-#      "ows_title"           "Locatie overigerisicobedrijf"
-#      "ows_abstract"        "Locatie overigerisicoberdijf"
-#      "wms_group_title"     "Overige risicobedrijven"
-#      "wms_group_bstract"   "Overige risicobedrijven"
-#      "gml_featureid"       "ID"
-#      "gml_include_items"   "all"
-#    END
+    METADATA
+      "ows_title"           "Locatie overige risicobedrijven"
+      "ows_abstract"        "Locatie overige risicobedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
 
-#    CLASS
-#      NAME                  "Bedrijf"
-#      STYLE
-#        SYMBOL              "vierkant"
-#        COLOR               255 0 0
-#        OUTLINECOLOR        0 0 0
-#        WIDTH               1
-#        SIZE                5
-#      END
-#    END
+    CLASS
+      NAME                  "Bedrijf"
+      STYLE
+        SYMBOL              "vierkant"
+        COLOR               255 0 0
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+        SIZE                5
+      END
+    END
 
-#  END
+  END
 
 
   #-----------------------------------------------------------------------------
