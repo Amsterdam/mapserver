@@ -584,7 +584,7 @@ MAP
 
   LAYER
     NAME                    "risicozonesbelemmeringenstrook"
-    GROUP                   "risicozones"
+    GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'zk') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
@@ -621,7 +621,7 @@ MAP
 
   LAYER
     NAME                    "risicozonesaardgas1let"
-    GROUP                   "milieu_veiligheid_aardgasgebied"
+    GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'l1') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
@@ -660,7 +660,7 @@ MAP
 
   LAYER
     NAME                    "risicozonesaardgas100let"
-    GROUP                   "milieu_veiligheid_aardgasgebied"
+    GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'la') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
@@ -699,7 +699,7 @@ MAP
 
   LAYER
     NAME                    "risicozonesaardgaspr106"
-    GROUP                   "milieu_veiligheid_aardgasgebied"
+    GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'pr') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
@@ -737,7 +737,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    "risicozonesaardgasleiding"
+    NAME                    "milieu_veiligheid_aardgasbuisleidingen"
     GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleiding USING srid=28992 USING UNIQUE id"
