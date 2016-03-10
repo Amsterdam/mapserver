@@ -20,7 +20,7 @@ MAP
 
   #=============================================================================
   # LAYERS
-  #============================================================================= 
+  #=============================================================================
 
   LAYER
     NAME                    "spoorwegen"
@@ -29,9 +29,9 @@ MAP
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Spoorwegen"
       "ows_abstract"        "Planologische geluidszone spoorwegen"
@@ -59,9 +59,9 @@ MAP
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Metro"
       "ows_abstract"        "Planologische geluidszone metro"
@@ -91,15 +91,15 @@ MAP
 
   LAYER
     NAME                    "gezoneerdindustrieterrein"
-    GROUP                   "industrie"
+    GROUP                   "milieu_geluid_planologisch_industrie"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Industrie"
       "ows_abstract"        "Planologische geluidszone industrie"
@@ -137,15 +137,15 @@ MAP
 
   LAYER
     NAME                    "geluidzoneindustrieterrein"
-    GROUP                   "industrie"
+    GROUP                   "milieu_geluid_planologisch_industrie"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Geluidzone industrieterrein"
       "ows_abstract"        "Geluidzone industrieterrein"
@@ -168,15 +168,15 @@ MAP
 
   LAYER
     NAME                    "indicatievecontour55dbindustrieterrein"
-    GROUP                   "industrie"
+    GROUP                   "milieu_geluid_planologisch_industrie"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = '55 dB (A) contour industrieterrein (indicatief)') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "55 dB (A) contour industrieterrein (indicatief)"
       "ows_abstract"        "55 dB (A) contour industrieterrein (indicatief)"
@@ -185,7 +185,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-  
+
     CLASS
       NAME                  "55 dB (A) contour industrieterrein (indicatief)"
       STYLE
@@ -197,7 +197,7 @@ MAP
       END
     END
 
-  END 
-  
+  END
+
 #=============================================================================
 END
