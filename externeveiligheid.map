@@ -470,7 +470,43 @@ MAP
 
   END
 
-#-----------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "overigerisicobedrijfsbronnen"
+    GROUP                   "overigerisicobedrijven"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bron_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Omtrek overige risicobedrijven"
+      "ows_abstract"        "Omtrek overige risicobedrijven"
+      "wms_group_title"     "Overige risicobedrijven"
+      "wms_group_abstract"  "Overige risicobedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff0000"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
 #  Source: dmb_veilig_bedr_punten.csv
   LAYER
     NAME                    "overigerisicobedrijfslocaties"
@@ -486,6 +522,8 @@ MAP
     METADATA
       "ows_title"           "Locatie overige risicobedrijven"
       "ows_abstract"        "Locatie overige risicobedrijven"
+      "wms_group_title"     "Overige risicobedrijven"
+      "wms_group_abstract"  "Overige risicobedrijven"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -521,6 +559,7 @@ MAP
 #      "ows_title"           "Invloedsgebied groepsrisico"
 #      "ows_abstract"        "Invloedsgebied groepsrisico"
 #      "wms_group_title"     "Overige risicobedrijven"
+#      "wms_group_abstract"  "Overige risicobedrijven"
 #      "gml_featureid"       "ID"
 #      "gml_include_items"   "all"
 #    END
@@ -559,6 +598,7 @@ MAP
 #      "ows_title"           "Plaatsgebonden risico 10-6"
 #      "ows_abstract"        "Plaatsgebonden risico 10-6"
 #      "wms_group_title"     "Overige risicobedrijven"
+#      "wms_group_abstract"  "Overige risicobedrijven"
 #      "gml_featureid"       "ID"
 #      "gml_include_items"   "all"
 #    END
