@@ -510,7 +510,7 @@ MAP
 
   LAYER
     NAME                    "overigerisicobedrijfsbronnen"
-    GROUP                   "milieu_veiligheid_bron"
+    GROUP                   "overigerisicobedrijven"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bron_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
@@ -529,7 +529,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Bedrijf"
+      NAME                  "Bron"
       STYLE
         SYMBOL              "chess"
         COLOR               "#ff0000"
