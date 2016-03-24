@@ -434,7 +434,7 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
+  # Source: dmb_veilig_bedrijven.csv
   LAYER
     NAME                    "overigerisicobedrijfscontouren"
     GROUP                   "milieu_veiligheid_bedrijf"
@@ -471,44 +471,7 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "overigerisicobedrijfsbronnen"
-    GROUP                   "overigerisicobedrijven"
-    INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bron_polygon USING srid=28992 USING UNIQUE id"
-    TYPE                    POLYGON
-    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Omtrek overige risicobedrijven"
-      "ows_abstract"        "Omtrek overige risicobedrijven"
-      "wms_group_title"     "Overige risicobedrijven"
-      "wms_group_abstract"  "Overige risicobedrijven"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME                  "Bedrijf"
-      STYLE
-        SYMBOL              "chess"
-        COLOR               "#ff0000"
-        SIZE                4
-      END
-      STYLE
-        OUTLINECOLOR        "#ff0000"
-        WIDTH               2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-#  Source: dmb_veilig_bedr_punten.csv
+  #  Source: dmb_veilig_bedr_punten.csv
   LAYER
     NAME                    "overigerisicobedrijfslocaties"
     GROUP                   "milieu_veiligheid_bedrijf"
@@ -544,82 +507,119 @@ MAP
 
 
   #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "overigerisicobedrijfsbronnen"
+    GROUP                   "overigerisicobedrijven"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bron_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Omtrek overige risicobedrijven"
+      "ows_abstract"        "Omtrek overige risicobedrijven"
+      "wms_group_title"     "Overige risicobedrijven"
+      "wms_group_abstract"  "Overige risicobedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Bron"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#ff0000"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
+
+  END
+
+#-----------------------------------------------------------------------------
 #  Source: dmb_veilig_contouren.csv
-#  LAYER
-#    NAME                    "overigerisicobedrijfinvloedsgebied"
-#    GROUP                   "overigerisicobedrijven"
-#    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM (SELECT * FROM public.veiligheidscontourenindustrie WHERE type_contour = 'Invloedsgebied') AS foo USING srid=28992 USING UNIQUE id"
-#    TYPE                    POLYGON
-#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
+  LAYER
+    NAME                    "overigerisicobedrijfinvloedsgebied"
+    GROUP                   "overigerisicobedrijven"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_contour WHERE type_contour = 'Invloedsgebied') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#    METADATA
-#      "ows_title"           "Invloedsgebied groepsrisico"
-#      "ows_abstract"        "Invloedsgebied groepsrisico"
-#      "wms_group_title"     "Overige risicobedrijven"
-#      "wms_group_abstract"  "Overige risicobedrijven"
-#      "gml_featureid"       "ID"
-#      "gml_include_items"   "all"
-#    END
+    METADATA
+      "ows_title"           "Invloedsgebied groepsrisico"
+      "ows_abstract"        "Invloedsgebied groepsrisico"
+      "wms_group_title"     "Overige risicobedrijven"
+      "wms_group_abstract"  "Overige risicobedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
 
-#    CLASS
-#      NAME                  "Invloedsgebied"
-#      STYLE
-#        SYMBOL              "hatchsymbol"
-#        COLOR               "#0000ff"
-#        SIZE                5
-#        WIDTH               2
-#        ANGLE               45
-#      END
-#      STYLE
-#        OUTLINECOLOR        "#0000ff"
-#        WIDTH               2
-#      END
-#    END
+    CLASS
+      NAME                  "Invloedsgebied"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#0000ff"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#0000ff"
+        WIDTH               2
+      END
+    END
 
-#  END
+  END
 
   #-----------------------------------------------------------------------------
-#  Source: dmb_veilig_contouren.csv
-#  LAYER
-#    NAME                    "overigerisicobedrijfplaatsgebondenrisico106"
-#    GROUP                   "overigerisicobedrijven"
-#    INCLUDE                 "connection_milieu.inc"
-#    DATA                    "geometrie FROM (SELECT * FROM public.veiligheidscontourenindustrie WHERE type_contour = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
-#    TYPE                    POLYGON
-#    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
+  #  Source: dmb_veilig_contouren.csv
+  LAYER
+    NAME                    "overigerisicobedrijfplaatsgebondenrisico106"
+    GROUP                   "overigerisicobedrijven"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_contour WHERE type_contour = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#    METADATA
-#      "ows_title"           "Plaatsgebonden risico 10-6"
-#      "ows_abstract"        "Plaatsgebonden risico 10-6"
-#      "wms_group_title"     "Overige risicobedrijven"
-#      "wms_group_abstract"  "Overige risicobedrijven"
-#      "gml_featureid"       "ID"
-#      "gml_include_items"   "all"
-#    END
+    METADATA
+      "ows_title"           "Plaatsgebonden risico 10-6"
+      "ows_abstract"        "Plaatsgebonden risico 10-6"
+      "wms_group_title"     "Overige risicobedrijven"
+      "wms_group_abstract"  "Overige risicobedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
 
-#    CLASS
-#      NAME                  "Plaatsgebonden risico 10-6"
-#      STYLE
-#        SYMBOL              "hatchsymbol"
-#        COLOR               "#ff0000"
-#        SIZE                5
-#        WIDTH               2
-#        ANGLE               45
-#      END
-#      STYLE
-#        OUTLINECOLOR        "#ff0000"
-#        WIDTH               2
-#      END
-#    END
+    CLASS
+      NAME                  "Plaatsgebonden risico 10-6"
+      STYLE
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ff0000"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               2
+      END
+    END
 
-#  END
+  END
 
   #-----------------------------------------------------------------------------
 
