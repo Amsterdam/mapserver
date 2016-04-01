@@ -1,0 +1,317 @@
+#==============================================================================
+#
+# parkeervakken.map
+# doel: serveren van parkeervakken en reserveringen
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Stephan Preeker       1-4-2014      schepping
+#
+#==============================================================================
+
+MAP
+  NAME "PARKEERVAKKEN"
+  INCLUDE "header.inc"
+
+
+  WEB
+    METADATA
+      "ows_title"    "PARKEERVAKKEN"
+      "ows_abstract" "Parkeervakken met een geografische component, waarvan Amsterdam de bronhouder is"
+    END
+  END
+
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "alle_parkeervakken"
+    GROUP           "parkeervakken"
+    INCLUDE         "connection_parkeervakken.inc"
+    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   12501
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "alle_parkeervakken"
+      "ows_group_title"     "parkeervakken"
+      "ows_abstract"        "Parkeervakken in de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 210 150 50
+       WIDTH        2
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME            "parkeervakken_label"
+    GROUP           "parkeervakken"
+    INCLUDE         "connection_parkeervakken.inc"
+    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   1001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "parkeervakken_label"
+      "ows_group_title"     "parkeervakken"
+      "ows_abstract"        "Labels van parkeervakken van de gemeente Amsterdam"
+    END
+
+    CLASS
+      TEXT             '[id]'
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+  LAYER
+    NAME            "parkeervakken_reservering"
+    GROUP           "parkeervakken"
+    INCLUDE         "connection_parkeervakken.inc"
+    DATA            "geometrie FROM bv.geo_parkeervakken_reserveringen USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   11001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "parkeervakken_reservering"
+      "ows_group_title"     "parkeervakken"
+      "ows_abstract"        "Parkeervakken in Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Parkeerverbod"
+      EXPRESSION ("[e_type]" eq "E1")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   240 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Verbod stil te staan"
+      EXPRESSION ("[e_type]" eq "E2")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   230 0 0
+        COLOR          255 55 55
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Verbod (brom)fietsen plaatsen"
+      EXPRESSION ("[e_type]" eq "E3")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   220 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Parkeergelegenheid"
+      EXPRESSION ("[e_type]" eq "E4")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   0 200 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Taxistandplaats"
+      EXPRESSION ("[e_type]" eq "E5")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   220 220 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Gehandicaptenplaats"
+      EXPRESSION ("[e_type]" eq "E6")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        COLOR          0 255 255
+        OUTLINECOLOR   0 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Gehandicaptenplaats algemeen"
+      EXPRESSION ("[e_type]" eq "E6a")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        COLOR          0 255 255
+        COLOR          0 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Gehandicaptenplaats kenteken"
+      EXPRESSION ("[e_type]" eq "E6b")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        COLOR          0 255 255
+        OUTLINECOLOR   255 0 0
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Laden lossen"
+      EXPRESSION ("[e_type]" eq "E7")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        COLOR          200 200 200
+        OUTLINECOLOR   200 200 200
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Specifieke voertuigcategorie"
+      EXPRESSION ("[e_type]" eq "E8")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   200 100 100
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Vergunninghouders"
+      EXPRESSION ("[e_type]" eq "E9")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   200 0 0
+        COLOR          155 50 55
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Blauwe zone"
+      EXPRESSION ("[e_type]" eq "E10")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   0 0 255
+        COLOR          0 0 255
+        WIDTH          2
+      END
+    END
+
+
+    CLASS
+      NAME "Einde blauwe zone"
+      EXPRESSION ("[e_type]" eq "E11")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          0 0 155
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Park & Ride"
+      EXPRESSION ("[e_type]" eq "E12")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   0 155 155
+        COLOR          0 155 155
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Carpool"
+      EXPRESSION ("[e_type]" eq "E13")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   155 155 155
+        COLOR          155 155 155
+        WIDTH          2
+      END
+    END
+
+  END
+
+#=============================================================================
+END
+
