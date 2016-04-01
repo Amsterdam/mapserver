@@ -98,6 +98,62 @@ MAP
   END
 
   LAYER
+    NAME            "parkeervakken_reservering_label"
+    GROUP           "parkeervakken"
+    INCLUDE         "connection_parkeervakken.inc"
+    DATA            "geometrie FROM bv.geo_parkeervakken_reserveringen USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   11001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "parkeervakken_reservering_label"
+      "ows_group_title"     "parkeervakken"
+      "ows_abstract"        "Parkeervakken in Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      TEXT             '[opmerkingen]'
+      EXPRESSION ("[soort]" eq "FISCAAL")
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      TEXT             '[bord]'
+      EXPRESSION ("[soort]" eq "MULDER")
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+  END
+
+  LAYER
     NAME            "parkeervakken_reservering"
     GROUP           "parkeervakken"
     INCLUDE         "connection_parkeervakken.inc"
@@ -116,6 +172,19 @@ MAP
       "ows_abstract"        "Parkeervakken in Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "FISCAAL"
+      EXPRESSION ("[soort]" eq "FISCAAL")
+      STYLE
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   255 245 0
+        COLOR          255 245 0
+        WIDTH          2
+      END
     END
 
     CLASS
@@ -306,6 +375,19 @@ MAP
         SIZE           10
         OUTLINECOLOR   155 155 155
         COLOR          155 155 155
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "MULDER"
+      EXPRESSION ("[soort]" eq "MULDER")
+      STYLE
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   155 245 150
+        COLOR          155 245 150
         WIDTH          2
       END
     END
