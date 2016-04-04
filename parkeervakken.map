@@ -98,13 +98,49 @@ MAP
   END
 
   LAYER
+    NAME            "parkeervakken_bord"
+    GROUP           "parkeervakken"
+    INCLUDE         "connection_parkeervakken.inc"
+    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   9001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "parkeervakken_bord"
+      "ows_group_title"     "parkeervakken"
+      "ows_abstract"        "Labels van parkeervakken van de gemeente Amsterdam"
+    END
+
+    CLASS
+      TEXT             '[bord]'
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  9001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+  END
+
+  LAYER
     NAME            "parkeervakken_reservering_label"
     GROUP           "parkeervakken"
     INCLUDE         "connection_parkeervakken.inc"
     DATA            "geometrie FROM bv.geo_parkeervakken_reserveringen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   11001
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   2001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
@@ -116,40 +152,6 @@ MAP
       "ows_abstract"        "Parkeervakken in Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[opmerkingen]'
-      EXPRESSION ("[soort]" eq "FISCAAL")
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1001
-        COLOR          210 100 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      TEXT             '[bord]'
-      EXPRESSION ("[soort]" eq "MULDER")
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1001
-        COLOR          210 100 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
     END
   END
 
@@ -181,7 +183,7 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   255 245 0
+        OUTLINECOLOR   155 145 0
         COLOR          255 245 0
         WIDTH          2
       END
@@ -191,7 +193,7 @@ MAP
       NAME "Parkeerverbod"
       EXPRESSION ("[e_type]" eq "E1")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   240 0 0
@@ -204,11 +206,11 @@ MAP
       NAME "Verbod stil te staan"
       EXPRESSION ("[e_type]" eq "E2")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   230 0 0
-        COLOR          255 55 55
+        COLOR          255 155 155
         WIDTH          2
       END
     END
@@ -217,7 +219,7 @@ MAP
       NAME "Verbod (brom)fietsen plaatsen"
       EXPRESSION ("[e_type]" eq "E3")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   220 0 0
@@ -230,7 +232,7 @@ MAP
       NAME "Parkeergelegenheid"
       EXPRESSION ("[e_type]" eq "E4")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   0 200 0
@@ -243,7 +245,7 @@ MAP
       NAME "Taxistandplaats"
       EXPRESSION ("[e_type]" eq "E5")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   220 220 0
@@ -256,10 +258,10 @@ MAP
       NAME "Gehandicaptenplaats"
       EXPRESSION ("[e_type]" eq "E6")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         COLOR          0 255 255
-        OUTLINECOLOR   0 255 255
+        OUTLINECOLOR   255 255 255
         WIDTH          2
       END
     END
@@ -268,10 +270,10 @@ MAP
       NAME "Gehandicaptenplaats algemeen"
       EXPRESSION ("[e_type]" eq "E6a")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         COLOR          0 255 255
-        COLOR          0 255 255
+        OUTLINECOLOR   255 255 255
         WIDTH          2
       END
     END
@@ -280,7 +282,7 @@ MAP
       NAME "Gehandicaptenplaats kenteken"
       EXPRESSION ("[e_type]" eq "E6b")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         COLOR          0 255 255
         OUTLINECOLOR   255 0 0
@@ -292,10 +294,10 @@ MAP
       NAME "Laden lossen"
       EXPRESSION ("[e_type]" eq "E7")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         COLOR          200 200 200
-        OUTLINECOLOR   200 200 200
+        OUTLINECOLOR   50 50 50
         WIDTH          2
       END
     END
@@ -304,7 +306,7 @@ MAP
       NAME "Specifieke voertuigcategorie"
       EXPRESSION ("[e_type]" eq "E8")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   200 100 100
@@ -317,7 +319,7 @@ MAP
       NAME "Vergunninghouders"
       EXPRESSION ("[e_type]" eq "E9")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   200 0 0
@@ -330,11 +332,11 @@ MAP
       NAME "Blauwe zone"
       EXPRESSION ("[e_type]" eq "E10")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   0 0 255
-        COLOR          0 0 255
+        COLOR          100 100 255
         WIDTH          2
       END
     END
@@ -344,11 +346,11 @@ MAP
       NAME "Einde blauwe zone"
       EXPRESSION ("[e_type]" eq "E11")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   0 0 200
-        COLOR          0 0 155
+        COLOR          250 100 155
         WIDTH          2
       END
     END
@@ -357,11 +359,11 @@ MAP
       NAME "Park & Ride"
       EXPRESSION ("[e_type]" eq "E12")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   0 155 155
-        COLOR          0 155 155
+        COLOR          250 155 155
         WIDTH          2
       END
     END
@@ -370,11 +372,11 @@ MAP
       NAME "Carpool"
       EXPRESSION ("[e_type]" eq "E13")
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   155 155 155
-        COLOR          155 155 155
+        OUTLINECOLOR   115 115 115
+        COLOR          200 200 250
         WIDTH          2
       END
     END
@@ -387,7 +389,7 @@ MAP
         MAXSCALEDENOM  9001
         SIZE           10
         OUTLINECOLOR   155 245 150
-        COLOR          155 245 150
+        COLOR          255 245 250
         WIDTH          2
       END
     END
