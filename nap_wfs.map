@@ -1,0 +1,332 @@
+#==============================================================================
+#
+# nap.map
+# doel: serveren van NAP gegevens
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# S. Zaat               25-01-2016    schepping
+#
+#==============================================================================
+
+MAP
+  NAME "NAP"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"    "NAP"
+      "ows_abstract" "NAP gegevens van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+  LAYER
+    NAME            "peilmerk"
+    GROUP           "NAP"
+    INCLUDE         "connection_nap.inc"
+    DATA            "geometrie FROM public.geo_nap_peilmerk_mat USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   15001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "peilmerk"
+      "ows_group_title"     "NAP"
+      "ows_abstract"        "NAP peilmerken"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        COLOR          240 130 10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        COLOR          240 130 10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "peilmerk_label"
+    GROUP           "NAP"
+    INCLUDE         "connection_nap.inc"
+    DATA            "geometrie FROM public.geo_nap_peilmerk_mat USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   15001
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "peilmerk_label"
+      "wms_group_title"     "NAP"
+      "wms_abstract"        "Labels van NAP peilmerken"
+    END
+
+    LABELITEM          "id"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        COLOR          240 130 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   2
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+      LABEL
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        COLOR          240 130 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -50 10
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "peilmerk_hoogte"
+    GROUP           "NAP_hoogte"
+    INCLUDE         "connection_nap.inc"
+    DATA            "geometrie FROM public.geo_nap_peilmerk_mat USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   15001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "peilmerk_hoogte"
+      "wms_group_title"     "NAP_hoogte"
+      "wms_abstract"        "NAP Peilmerk hoogte"
+    END
+
+    CLASS
+      NAME "lager dan -1,5"
+      EXPRESSION ([hoogte] < -1.5)
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          43 131 186
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          43 131 186
+      END
+    END
+
+    CLASS
+      NAME "-1,5 tot -0,5"
+      EXPRESSION (([hoogte] >= -1.5) AND ([hoogte] < -0.5))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          116 182 173
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          116 182 173
+      END
+    END
+
+    CLASS
+      NAME "-0,5 tot 0"
+      EXPRESSION (([hoogte] >= -0.5) AND ([hoogte] < 0))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          183 225 167
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          183 225 167
+      END
+    END
+
+    CLASS
+      NAME "0 tot 1"
+      EXPRESSION (([hoogte] >= 0) AND ([hoogte] < 1))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          231 245 183
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+        COLOR          231 245 183
+      END
+    END
+
+    CLASS
+      NAME "1 tot 1,5"
+      EXPRESSION (([hoogte] >= 1) AND ([hoogte] < 1.5))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        COLOR          254 231 164
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        COLOR          254 231 164
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "1,5 tot 2"
+      EXPRESSION (([hoogte] >= 1.5) AND ([hoogte] < 2))
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        COLOR          253 185 110
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        COLOR          253 185 110
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "2 tot 3,5"
+      EXPRESSION (([hoogte] >= 2) AND ([hoogte] < 3.5))
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        COLOR          236 110 67
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        COLOR          236 110 67
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "hoger dan 3,5"
+      EXPRESSION ([hoogte] >= 3.5)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   8000
+        SYMBOL         'vierkant'
+        SIZE           10
+        COLOR          215 25 28
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM  8000
+        MAXSCALEDENOM  15001
+        SYMBOL         'vierkant'
+        SIZE           12
+        COLOR          215 25 28
+        OUTLINECOLOR   0 0 0
+        WIDTH          1
+      END
+    END
+
+  END
+
+#=============================================================================
+END
