@@ -25,7 +25,6 @@ MAP
   END
 
 
-
   #=============================================================================
   # LAYERS
   #============================================================================= 
@@ -36,67 +35,43 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_buurt_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   12501
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "buurt"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Buurten van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
 
-    CLASS
-      STYLE
-       ANTIALIAS    true
-       OUTLINECOLOR 210 150 50
-       WIDTH        2
-      END 
-    END
-    
   END
   
   #-----------------------------------------------------------------------------  
     
-  
   LAYER
     NAME            "buurtcombinatie"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_buurtcombinatie_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "buurtcombinatie"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Buurtcombinaties van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
 
-    CLASS
-      STYLE
-       ANTIALIAS    true
-       OUTLINECOLOR 210 100 50
-       WIDTH        2
-      END 
-    END
-    
   END
   
   #-----------------------------------------------------------------------------  
-  
   
   LAYER
     NAME            "gebiedsgerichtwerken"
@@ -104,33 +79,21 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "gebiedsgerichtwerken"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Gebiedsgerichtwerken gebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
 
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        OUTLINECOLOR   40 150 10
-        WIDTH          2
-      END
-    END
-    
   END
   
   #-----------------------------------------------------------------------------   
-  
   
   LAYER
     NAME            "stadsdeel"
@@ -138,33 +101,21 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_stadsdeel_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "stadsdeel"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Stadsdelen van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
 
-    CLASS
-      STYLE
-       ANTIALIAS    true
-       OUTLINECOLOR 210 50 50
-       WIDTH        2
-      END 
-    END
-    
   END
   
   #-----------------------------------------------------------------------------   
-
 
   LAYER
     NAME            "bouwblok"
@@ -172,33 +123,21 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_bouwblok_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   5001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "bouwblok"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Bouwblokken van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
 
-    CLASS
-      STYLE
-       ANTIALIAS    true
-       OUTLINECOLOR 0 150 255
-       WIDTH        2
-      END 
-    END
-    
   END
   
   #-----------------------------------------------------------------------------   
-  
   
   LAYER
     NAME            "grootstedelijkgebied"
@@ -206,84 +145,43 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "grootstedelijkgebied"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Grootstedelijke Gebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
 
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        OUTLINECOLOR   150 40 255
-        WIDTH          2
-      END
-    END
-    
   END
   
   #-----------------------------------------------------------------------------   
   
-    
   LAYER
     NAME            "unesco"
     GROUP           "gebieden"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_unesco_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
-    OPACITY         60
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "unesco"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Unesco werelderfgoedgrens van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
     END
     
-    CLASSITEM         naam
-    
-    CLASS
-      NAME            Kernzone
-      EXPRESSION      /Kernzone/
-      STYLE
-        COLOR          255 140 40
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-      END
-    END
-    
-    CLASS
-      NAME             Bufferzone
-      EXPRESSION       /Bufferzone/
-      STYLE
-        COLOR          255 200 150
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-      END
-    END
-
-    
   END
-  
-  
-  #-----------------------------------------------------------------------------   
-  #-----------------------------------------------------------------------------   
+
+  #-----------------------------------------------------------------------------
   
   LAYER
     NAME            "buurt_label"
@@ -291,103 +189,43 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_buurt_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "buurt_label"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Labels van buurten van de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
 
-    CLASS
-      TEXT             '[naam] ([code])'
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  6001
-        COLOR          210 150 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6001
-        MAXSCALEDENOM  8001
-        COLOR          210 150 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
   END
   
   #-----------------------------------------------------------------------------   
   
-
   LAYER
     NAME            "buurtcombinatie_label"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_buurtcombinatie_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   5000
-    MAXSCALEDENOM   15001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "buurtcombinatie_label"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Labels van buurtcombinaties van de gemeente Amsterdam"
-    END
-    
-    CLASS
-      TEXT             '[naam] ([vollcode])'
-      LABEL
-        MINSCALEDENOM  5000
-        MAXSCALEDENOM  10001
-        COLOR          210 100 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  10001
-        MAXSCALEDENOM  15001
-        COLOR          210 100 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
     
   END
   
   #-----------------------------------------------------------------------------   
-  
   
   LAYER
     NAME            "gebiedsgerichtwerken_label"
@@ -395,51 +233,21 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   4000
-    MAXSCALEDENOM   40001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "gebiedsgerichtwerken_label"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Labels van gebiedsgerichtwerken gebieden van de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
 
-    CLASS
-      TEXT             '[naam] ([code])'
-      LABEL
-        MINSCALEDENOM  4000
-        MAXSCALEDENOM  10001
-        COLOR          40 150 10
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  10001
-        MAXSCALEDENOM  40001
-        COLOR          40 150 10
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
   END
   
   #-----------------------------------------------------------------------------     
-
 
   LAYER
     NAME            "stadsdeel_label"
@@ -447,102 +255,41 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_stadsdeel_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   15000
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "stadsdeel_label"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Labels van stadsdelen van de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
-    
-    CLASS
-      TEXT             '[naam] ([code])'
-      LABEL
-        MINSCALEDENOM  15000
-        MAXSCALEDENOM  50001
-        COLOR          210 50 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  50001
-        MAXSCALEDENOM  100001
-        COLOR          210 50 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           11
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
+
   END
   
   #-----------------------------------------------------------------------------   
-  
-  
+
   LAYER
     NAME            "bouwblok_label"
     GROUP           "gebieden"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_bouwblok_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   5001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "bouwblok_label"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Labels van bouwblokken van de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
 
-    CLASS
-      TEXT             '[code]'
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  2501
-        COLOR          0 150 255
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  2501
-        MAXSCALEDENOM  5001
-        COLOR          0 150 255
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
-  END
-  
-  #-----------------------------------------------------------------------------   
+  #-----------------------------------------------------------------------------
 
 
   LAYER
@@ -551,102 +298,41 @@ MAP
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   4000
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "grootstedelijkgebied_label"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Labels van grootstedelijke gebieden van de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
 
-    CLASS
-      TEXT             '[naam]'
-      LABEL
-        MINSCALEDENOM  4000
-        MAXSCALEDENOM  50001
-        COLOR          150 40 255
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  50001
-        MAXSCALEDENOM  100001
-        COLOR          150 40 255
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
   END
   
   #-----------------------------------------------------------------------------   
-  
-  
+
   LAYER
     NAME            "unesco_label"
     GROUP           "gebieden"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_bag_unesco_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+        "init=epsg:28992"
     END
     
     METADATA
       "ows_title"           "unesco_label"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Labels van Unesco werelderfgoedgrens van de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
     END
 
-    CLASS
-      TEXT             '[naam]'
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  10001
-        COLOR          255 140 40
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  10001
-        MAXSCALEDENOM  20001
-        COLOR          255 140 40
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-    
   END
-
-
 
 #=============================================================================
 END
