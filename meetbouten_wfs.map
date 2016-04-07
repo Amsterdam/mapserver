@@ -31,7 +31,7 @@ MAP
     NAME            "meetbouten_status"
     GROUP           "meetbouten"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -84,7 +84,7 @@ MAP
     NAME            "meetbouten_labels"
     GROUP           "meetbouten"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -147,7 +147,7 @@ MAP
     NAME            "meetbout_zaksnelheid"
     GROUP           "meetbouten_zaksnelheid"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_meetbout_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -163,7 +163,7 @@ MAP
     END
 
     CLASS
-      NAME "minder dan -1 mm/jaar"
+      NAME "minder dan -1"
       EXPRESSION ([zakkingssnelheid] < -1)
       STYLE
         MINSCALEDENOM  100
@@ -177,7 +177,7 @@ MAP
     END
 
     CLASS
-      NAME "-1 tot 0 mm/jaar"
+      NAME "-1 tot 0"
       EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
       STYLE
         MINSCALEDENOM  100
@@ -191,7 +191,7 @@ MAP
     END
 
     CLASS
-      NAME "0 tot 1 mm/jaar"
+      NAME "0 tot 1"
       EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
       STYLE
         MINSCALEDENOM  100
@@ -205,7 +205,7 @@ MAP
     END
 
     CLASS
-      NAME "1 tot 1,5 mm/jaar"
+      NAME "1 tot 1,5"
       EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
       STYLE
         MINSCALEDENOM  100
@@ -219,7 +219,7 @@ MAP
     END
 
     CLASS
-      NAME "1,5 tot 2 mm/jaar"
+      NAME "1,5 tot 2"
       EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
       STYLE
         MINSCALEDENOM  100
@@ -233,7 +233,7 @@ MAP
     END
 
     CLASS
-      NAME "2 tot 2,5 mm/jaar"
+      NAME "2 tot 2,5"
       EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
       STYLE
         MINSCALEDENOM  100
@@ -247,7 +247,7 @@ MAP
     END
 
     CLASS
-      NAME "2,5 tot 3 mm/jaar"
+      NAME "2,5 tot 3"
       EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
       STYLE
         MINSCALEDENOM  100
@@ -261,7 +261,7 @@ MAP
     END
 
     CLASS
-      NAME "3 tot 4 mm/jaar"
+      NAME "3 tot 4"
       EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
       STYLE
         MINSCALEDENOM  100
@@ -275,7 +275,7 @@ MAP
     END
 
     CLASS
-      NAME "meer dan 4 mm/jaar"
+      NAME "meer dan 4"
       EXPRESSION ([zakkingssnelheid] > 4)
       STYLE
         MINSCALEDENOM  100
@@ -296,7 +296,7 @@ MAP
     NAME            "referentiepunt"
     GROUP           "referentiepunten"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -334,7 +334,7 @@ MAP
     NAME            "referentiepunt_label"
     GROUP           "referentiepunten"
     INCLUDE         "connection_nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001

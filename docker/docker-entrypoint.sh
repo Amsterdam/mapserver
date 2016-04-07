@@ -20,6 +20,13 @@ PANORAMA_DB_PORT=${PANORAMA_DB_PORT_5432_TCP_PORT:-5432}
 PANORAMA_DB_USER=${PANORAMA_DB_USER:-${PANORAMA_DB_NAME}}
 
 
+PARKEERVAKKEN_DB_HOST=${PARKEERVAKKEN_DB_PORT_5432_TCP_ADDR:-parkeervakken_db.service.consul}
+PARKEERVAKKEN_DB_PORT=${PARKEERVAKKEN_DB_PORT_5432_TCP_PORT:-5432}
+PARKEERVAKKEN_DB_USER=${PARKEERVAKKEN_DB_USER:-${PARKEERVAKKEN_DB_NAME}}
+
+
+
+
 echo Creating configuration files
 
 cat > /srv/mapserver/connection.inc <<EOF
@@ -41,6 +48,12 @@ cat > /srv/mapserver/connection_panorama.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=${PANORAMA_DB_PASSWORD} port=${PANORAMA_DB_PORT}"
 EOF
+
+cat > /srv/mapserver/connection_parkeervakken.inc <<EOF
+CONNECTIONTYPE postgis
+CONNECTION "host=${PARKEERVAKKEN_DB_HOST} dbname=${PARKEERVAKKEN_DB_NAME} user=${PARKEERVAKKEN_DB_USER} password=${PARKEERVAKKEN_DB_PASSWORD} port=${PARKEERVAKKEN_DB_PORT}"
+EOF
+
 
 
 echo Starting server
