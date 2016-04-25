@@ -1,6 +1,5 @@
-# Mapserver for Docker
 FROM ubuntu:14.04
-MAINTAINER datapunt@amsterdam.nl
+MAINTAINER datapunt.ois@amsterdam.nl
 
 ENV DEBIAN_FRONTEND noninteractive
 
