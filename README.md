@@ -32,21 +32,23 @@ De Postgres database is te bereiken op tcp://${DOCKER_HOST}:5403
 De laatste versie van de database kan opgehaald worden met:
 
 	$ docker exec $(docker-compose ps -q database) update-nap.sh
-	$ docker exec $(docker-compose ps -q database) update-atlas.sh
-
-
+	$ docker exec $(docker-compose ps -q database) update-milieuthemas.sh
+	$ docker exec $(docker-compose ps -q database) update-atlas.sh 
+	
 WMS services
 ------------
 
-| Set    | URL                                                                                                          |
-| ------ | ------------------------------------------------------------------------------------------------------------ |
-| BAG    | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getcapabilities    |
-| WKPB   | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wms&request=getcapabilities   |
-| LKI    | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wms&request=getcapabilities    |
-| GBKA   | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/gbka.map&service=wms&request=getcapabilities   |
-| KBKA10 | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka10.map&service=wms&request=getcapabilities |
-| KBKA50 | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka50.map&service=wms&request=getcapabilities |
-| NAP    | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/nap.map&service=wms&request=getcapabilities    |
+| Set    | URL                                                                                                            |
+| ------ | ---------------------------------------------------------------------------------------------------------------|
+| BAG    | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getcapabilities      |
+| WKPB   | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/wkpb.map&service=wms&request=getcapabilities     |
+| LKI    | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/lki.map&service=wms&request=getcapabilities      |
+| GBKA   | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/gbka.map&service=wms&request=getcapabilities     |
+| KBKA10 | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka10.map&service=wms&request=getcapabilities   |
+| KBKA50 | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/kbka50.map&service=wms&request=getcapabilities   |
+| NAP    | http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/nap.map&service=wms&request=getcapabilities      |
+| VLGH   | .../srv/mapserver/**externeveiligheid**.map&service=wms&request=getcapabilities                                |
+| GBIEDN | .../srv/mapserver/**gebieden**.map&service=wms&request=getcapabilities                                         |
 
 
 WFS services
