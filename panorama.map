@@ -30,10 +30,10 @@ MAP
     NAME            "panorama_punt"
     GROUP           "panorama"
     INCLUDE         "connection_panorama.inc"
-    DATA            "geometrie FROM public.geo_rijlijnen_panoramafotopunt USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_panoramas_panoramafotopunt USING srid=4326 USING UNIQUE id"
     TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    # MINSCALEDENOM   100
+    # MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
