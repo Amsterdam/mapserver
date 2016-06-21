@@ -27,6 +27,10 @@ BASISKAART_DB_HOST=${BASISKAART_DB_PORT_5432_TCP_ADDR:-basiskaart-read.service.c
 BASISKAART_DB_PORT=${BASISKAART_DB_PORT_5432_TCP_PORT:-5432}
 BASISKAART_DB_USER=${BASISKAART_DB_USER:-${BASISKAART_DB_NAME}}
 
+PARKEERVAKKEN_DB_HOST=${PK_DB_PORT_5432_TCP_ADDR:-parkeervakken_db.service.consul}
+PARKEERVAKKEN_DB_PORT=${PK_DB_PORT_5432_TCP_PORT:-5432}
+PARKEERVAKKEN_DB_USER=${PARKEERVAKKEN_DB_USER}
+
 
 echo Creating configuration files
 
@@ -47,7 +51,7 @@ EOF
 
 cat > /srv/mapserver/connection_panorama.inc <<EOF
 CONNECTIONTYPE postgis
-CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=${PANORAMA_DB_PASSWORD} port=${PANORAMA_DB_PORT}"
+CONNECTION "host=${PANORAMA_DB_PORT_5432_TCP_ADDR} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=${PANORAMA_DB_PASSWORD} port=${PANORAMA_DB_PORT_5432_TCP_PORT}"
 EOF
 
 cat > /srv/mapserver/connection_parkeervakken.inc <<EOF
@@ -62,3 +66,4 @@ EOF
 
 echo Starting server
 apachectl -D FOREGROUND
+

@@ -33,7 +33,7 @@ MAP
     DATA            "geometrie FROM public.geo_panoramas_panoramafotopunt USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    MAXSCALEDENOM   150001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
 
     PROJECTION
@@ -50,13 +50,28 @@ MAP
 
     CLASS
       STYLE
+	MINSCALEDENOM   100
+	MAXSCALEDENOM   8001
         SYMBOL         'stip'
         SIZE           10
         COLOR          250 155 155
         OUTLINECOLOR   200 200 10
         WIDTH          2
       END
+
+      STYLE
+	MINSCALEDENOM   8002
+	MAXSCALEDENOM   1808001
+        SYMBOL         'stip'
+        SIZE           2
+        COLOR          250 155 155
+        OUTLINECOLOR   200 200 10
+        WIDTH          2
+      END
+
+
     END
+
 
   END
 
@@ -69,7 +84,7 @@ MAP
     DATA            "geolocation FROM public.panoramas_traject USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   25001
+    MAXSCALEDENOM   250001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
 
     PROJECTION
@@ -86,13 +101,27 @@ MAP
 
     CLASS
       STYLE
+	MINSCALEDENOM   100
+	MAXSCALEDENOM   8001
         SYMBOL         'stip'
         SIZE           10
         COLOR          200 255 255
         OUTLINECOLOR   200 200 10
         WIDTH          2
       END
+
+      STYLE
+	MINSCALEDENOM   8002
+	MAXSCALEDENOM   1808001
+        SYMBOL         'stip'
+        SIZE           2
+        COLOR          200 255 255
+        OUTLINECOLOR   200 200 10
+        WIDTH          2
+      END
+
     END
   END
+
   #-----------------------------------------------------------------------------
 END
