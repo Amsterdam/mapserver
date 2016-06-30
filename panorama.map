@@ -27,7 +27,7 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "panorama_punt"
+    NAME            "panorama_opnamelocaties"
     GROUP           "panorama"
     INCLUDE         "connection_panorama.inc"
     DATA            "geometrie FROM public.geo_panoramas_panoramafotopunt USING srid=4326 USING UNIQUE id"
@@ -41,7 +41,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "panorama_foto_punt"
+      "ows_title"           "panorama_opnamelocaties"
       "ows_group_title"     "panorama"
       "ows_abstract"        "panorama fotos"
       "gml_featureid"       "ID"
@@ -84,7 +84,7 @@ MAP
     DATA            "geolocation FROM public.panoramas_traject USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   250001
+    MAXSCALEDENOM   50001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
 
     PROJECTION
@@ -92,7 +92,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "panorama_traject_punt"
+      "ows_title"           "panorama_traject"
       "ows_group_title"     "panorama"
       "ows_abstract"        "panorama traject"
       "gml_featureid"       "id"
@@ -124,4 +124,5 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
+
 END
