@@ -12,12 +12,12 @@
 #==============================================================================
 
 MAP
-  NAME "Panorama"
+  NAME "Panoramas"
   INCLUDE "header.inc"
 
   WEB
     METADATA
-      "ows_title"           "Panorama"
+      "ows_title"           "Panoramas"
       "ows_abstract"        "Panorama opnamelocaties en trajecten"
     END
   END
@@ -79,7 +79,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "panorama_traject"
+    NAME            "panorama_trajecten"
     GROUP           "panorama opnamelocaties"
     INCLUDE         "connection_panorama.inc"
     DATA            "geolocation FROM public.panoramas_traject USING srid=4326 USING UNIQUE id"
