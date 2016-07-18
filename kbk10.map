@@ -1294,6 +1294,25 @@ MAP
     END
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "tekst"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+
+    METADATA
+      "ows_title"           "teksten"
+      "ows_abstract"        "Teksten van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "topoteksten"
+    END
+
+  END
 
 #=============================================================================
 END
