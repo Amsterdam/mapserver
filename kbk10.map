@@ -58,13 +58,13 @@
 #==============================================================================
 
 MAP
-  NAME                      "basiskaart10-11"
+  NAME                      "kbk10"
   INCLUDE                   "header.inc"
 
   WEB
     METADATA
-      "ows_title"           "Basiskaart10-11"
-      "ows_abstract"        "Basiskaart10-11"
+      "ows_title"           "kbk10"
+      "ows_abstract"        "Kleinschalige Basiskaart 10k"
     END
   END
 
@@ -76,6 +76,7 @@ MAP
 
   LAYER
     NAME                    WDL_breed_water
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -98,6 +99,7 @@ MAP
 
   LAYER
     NAME                    WDL_haven
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -120,6 +122,7 @@ MAP
 
   LAYER
     NAME                    TRN_aanlegsteiger
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -146,6 +149,7 @@ MAP
 
   LAYER
     NAME                    TRN_basaltblokken_steenglooiing
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -168,6 +172,7 @@ MAP
 
   LAYER
     NAME                    TRN_grasland
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -190,6 +195,7 @@ MAP
 
   LAYER
     NAME                    TRN_akkerland
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -209,9 +215,10 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-  
+
   LAYER
     NAME                    TRN_overig
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -234,6 +241,7 @@ MAP
 
   LAYER
     NAME                    TRN_zand
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -256,6 +264,7 @@ MAP
 
   LAYER
     NAME                    WGL_startbaan_landingsbaan
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -278,6 +287,7 @@ MAP
 
   LAYER
     NAME                    TRN_spoorbaanlichaam
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -300,6 +310,7 @@ MAP
 
   LAYER
     NAME                    TRN_bos-loofbos
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -322,6 +333,7 @@ MAP
 
   LAYER
     NAME                    TRN_bos-naaldbos
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -344,6 +356,7 @@ MAP
 
   LAYER
     NAME                    TRN_bos-gemengd_bos
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -366,6 +379,7 @@ MAP
 
   LAYER
     NAME                    TRN_bos-griend
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -388,6 +402,7 @@ MAP
 
   LAYER
     NAME                    TRN_boomgaard
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -410,6 +425,7 @@ MAP
 
   LAYER
     NAME                    TRN_boomkwekerij
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -432,6 +448,7 @@ MAP
 
   LAYER
     NAME                    TRN_dodenakker
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -454,6 +471,7 @@ MAP
 
   LAYER
     NAME                    TRN_dodenakker_met_bos
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -476,6 +494,7 @@ MAP
 
   LAYER
     NAME                    TRN_fruitkwekerij
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -498,6 +517,7 @@ MAP
 
   LAYER
     NAME                    GBW_overdekt
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -518,6 +538,7 @@ MAP
 
   LAYER
     NAME                    GBW_gebouw
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -546,6 +567,7 @@ MAP
 
   LAYER
     NAME                    GBW_hoogbouw
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -574,6 +596,7 @@ MAP
 
   LAYER
     NAME                    GBW_kas_warenhuis
+    GROUP                   "vlakken"
     MAXSCALEDENOM           10000
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -596,6 +619,7 @@ MAP
 
   LAYER
     NAME                    TRN_binnentuin-case
+    GROUP                   "vlakken"
     MAXSCALEDENOM           8000
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -621,6 +645,7 @@ MAP
 
   LAYER
     NAME                    TRN_binnentuin-fill
+    GROUP                   "vlakken"
     MAXSCALEDENOM 8000
     MINSCALEDENOM 4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -643,6 +668,7 @@ MAP
 
   LAYER
     NAME                    WDL_waterbassin
+    GROUP                   "vlakken"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -665,6 +691,7 @@ MAP
 
   LAYER
     NAME                    WDL_smal_water_3_tot_6m
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -676,7 +703,7 @@ MAP
     CLASS
       # Zoom{16}
       MAXSCALEDENOM 12500
-      MINSCALEDENOM 4000  
+      MINSCALEDENOM 4000
       STYLE
         WIDTH 2
         COLOR "#95c6d5"
@@ -690,6 +717,7 @@ MAP
 
   LAYER
     NAME                    WDL_smal_water_tot_3m
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -701,7 +729,7 @@ MAP
     CLASS
       # Zoom{16}
       MAXSCALEDENOM 12500
-      MINSCALEDENOM 4000    
+      MINSCALEDENOM 4000
       STYLE
         WIDTH 1
         COLOR "#95c6d5"
@@ -715,6 +743,7 @@ MAP
 
   LAYER
     NAME                    WGL_voetveer
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -739,6 +768,7 @@ MAP
 
   LAYER
     NAME                    WGL_autoveer
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -763,6 +793,7 @@ MAP
 
   LAYER
     NAME                    IRT_aanlegsteiger_smal
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -788,6 +819,7 @@ MAP
 
   LAYER
     NAME                    WGL_smalle_weg-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -813,6 +845,7 @@ MAP
 
   LAYER
     NAME                    WGL_smalle_weg-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -838,6 +871,7 @@ MAP
 
   LAYER
     NAME                    SBL_metro_overdekt
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -867,6 +901,7 @@ MAP
 
   LAYER
     NAME                    SBL_tram_overdekt
+    GROUP                   "lijnen"
     MAXSCALEDENOM           8000
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -884,7 +919,7 @@ MAP
         PATTERN
             6
             6
-        END    
+        END
         COLOR "#fc7f7f"
         LINECAP BUTT
         LINEJOIN MITER
@@ -896,6 +931,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_overdekt_1sp-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -919,6 +955,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_overdekt_nsp-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -942,6 +979,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_overdekt_1sp-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -969,6 +1007,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_overdekt_nsp-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -996,6 +1035,7 @@ MAP
 
   LAYER
     NAME                    SBL_metro_nietoverdekt_1sp
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1021,6 +1061,7 @@ MAP
 
   LAYER
     NAME                    SBL_metro_nietoverdekt_nsp
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1046,6 +1087,7 @@ MAP
 
   LAYER
     NAME                    SBL_tram_nietoverdekt
+    GROUP                   "lijnen"
     MAXSCALEDENOM           8000
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1071,6 +1113,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_ongeelektrificeerd-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1094,6 +1137,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_ongeelektrificeerd-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1121,6 +1165,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_1sp-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1146,6 +1191,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_nsp-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1171,6 +1217,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_1sp-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1199,6 +1246,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_nsp-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1226,6 +1274,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg_lijn-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1262,6 +1311,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg_lijn-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
@@ -1298,6 +1348,7 @@ MAP
 
   LAYER
     NAME            "tekst"
+    GROUP           "teksten"
     CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
     CONNECTIONTYPE  WMS
     TYPE            RASTER
