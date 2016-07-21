@@ -16,28 +16,26 @@ DIR=$1
 cd $DIR
 
 SRC_TIFF_FILES=`/bin/ls *.tif`
-for SRC_TIFF_FILE in $SRC_TIFF_FILES
+for SRC_TIFF_FILE in $SRC_TIFF_FILES; do
+    echo "START $SRC_TIFF_FILE"
+    # basis file naam
+    BASE_NAME=`echo $SRC_TIFF_FILE | cut -d/ -f2 | cut -d'.' -f1`
+    DEST_TIFF_FILE=$2/${BASE_NAME}.tif
+    /bin/rm -f $DEST_TIFF_FILE
 
-do
-echo "START $SRC_TIFF_FILE"
-# basis file naam
-BASE_NAME=`echo $SRC_TIFF_FILE | cut -d/ -f2 | cut -d'.' -f1`
-DEST_TIFF_FILE=$2/${BASE_NAME}.tif
-/bin/rm -f $DEST_TIFF_FILE
+    echo "gdal_translate $SRC_TIFF_FILE $DEST_TIFF_FILE"
 
-echo "gdal_translate $SRC_TIFF_FILE $DEST_TIFF_FILE"
+    # De eerste stap comprimeert vaak tot minder dan 10% van de oorspronkelijk omvang en maakt interne tiles aan.
 
-# De eerste stap comprimeert vaak tot minder dan 10% van de oorspronkelijk omvang en maakt interne tiles aan.
+    gdal_translate -co TILED=YES -a_srs "+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.999908 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +towgs84=565.2369,50.0087,465.658,-0.406857330322398,0.350732676542563,-1.8703473836068,4.0812 +no_defs no_defs" -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR $SRC_TIFF_FILE $DEST_TIFF_FILE
 
-gdal_translate -co TILED=YES -a_srs "+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.999908 +x_0=155000 +y_0=463000 +ellps=bessel +units=m +towgs84=565.2369,50.0087,465.658,-0.406857330322398,0.350732676542563,-1.8703473836068,4.0812 +no_defs no_defs" -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR $SRC_TIFF_FILE $DEST_TIFF_FILE
+    # De tweede creëert gegeneraliseerde niveaus voor als je ver uitzoomt.
 
-# De tweede creëert gegeneraliseerde niveaus voor als je ver uitzoomt. 
+    echo "gdaladdo -$DEST_TIFF_FILE"
 
-echo "gdaladdo -$DEST_TIFF_FILE"
+    gdaladdo -ro -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR $DEST_TIFF_FILE 2 4 8 16 32 64 128
 
-gdaladdo -ro -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR $DEST_TIFF_FILE 2 4 8 16 32 64 128
-
-echo "END $BASE_NAME"
+    echo "END $BASE_NAME"
 done
 
 # GeoTIFF-directory is oorspronkelijk 121G. Na conversie met GDAL blijft hier 7G van over!
