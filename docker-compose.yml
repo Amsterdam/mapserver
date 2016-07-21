@@ -9,13 +9,13 @@ map:
   build: .
   ports:
     - "8989:80"
-
   links:
     - "database:atlas_db"
     - "database:nap_db"
     - "database:milieuthemas_db"
     - "database:panorama_db"
-
+    - "database:parkeervakken_db"
+    - "database:basiskaart_db"
   environment:
     ATLAS_DB_NAME: atlas
     ATLAS_DB_USER: postgres

@@ -43,13 +43,13 @@
 #==============================================================================
 
 MAP
-  NAME                      "basiskaart5-9"
+  NAME                      "kbk50"
   INCLUDE                   "header.inc"
 
   WEB
     METADATA
-      "ows_title"           "Basiskaart5-9"
-      "ows_abstract"        "Basiskaart5-9"
+      "ows_title"           "kbk50"
+      "ows_abstract"        "Kleinschalige Basiskaart 50k"
     END
   END
 
@@ -61,6 +61,7 @@ MAP
 
   LAYER
     NAME                    WDL_wateroppervlak
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -88,6 +89,7 @@ MAP
 
   LAYER
     NAME                    TRN_agrarisch
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -109,6 +111,7 @@ MAP
 
   LAYER
     NAME                    TRN_overig
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -138,6 +141,7 @@ MAP
 
   LAYER
     NAME                    TRN_zand
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -159,6 +163,7 @@ MAP
 
   LAYER
     NAME                    GBW_bebouwing
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -189,6 +194,7 @@ MAP
 
   LAYER
     NAME                    TRN_bedrijfsterrein_dienstverlening
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -218,6 +224,7 @@ MAP
 
   LAYER
     NAME                    GBW_kassen
+    GROUP                   "vlakken"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -240,6 +247,7 @@ MAP
 
   LAYER
     NAME                    TRN_bos_groen_sport
+    GROUP                   "vlakken"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -270,6 +278,7 @@ MAP
 
   LAYER
     NAME                    WDL_brede_waterloop
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -339,6 +348,7 @@ MAP
 
   LAYER
     NAME                    WDL_smalle_waterloop
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -408,6 +418,7 @@ MAP
 
   LAYER
     NAME                    "WGL_veerverbinding"
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -434,6 +445,7 @@ MAP
 
   LAYER
     NAME                    WGL_straat_in_tunnel
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -478,6 +490,7 @@ MAP
 
   LAYER
     NAME                    WGL_hoofdweg_in_tunnel-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -567,6 +580,7 @@ MAP
 
   LAYER
     NAME                    WGL_regionale_weg_in_tunnel-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -626,6 +640,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg_in_tunnel-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -715,6 +730,7 @@ MAP
 
   LAYER
     NAME                    WGL_regionale_weg_in_tunnel-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -784,6 +800,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg_in_tunnel-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -853,6 +870,7 @@ MAP
 
   LAYER
     NAME                    WGL_straat-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -878,6 +896,7 @@ MAP
 
   LAYER
     NAME                    WGL_hoofdweg-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -925,6 +944,7 @@ MAP
 
   LAYER
     NAME                    WGL_regionale_weg-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -972,6 +992,7 @@ MAP
 
   LAYER
     NAME                    WGL_straat-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1008,6 +1029,7 @@ MAP
 
   LAYER
     NAME                    WGL_hoofdweg-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1055,6 +1077,7 @@ MAP
 
   LAYER
     NAME                    WGL_regionale_weg-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1125,6 +1148,7 @@ MAP
 
   LAYER
     NAME                    SBL_metro_sneltram_in_tunnel
+    GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1154,6 +1178,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_in_tunnel
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1201,6 +1226,7 @@ MAP
 
   LAYER
     NAME                    SBL_metro_sneltram-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1226,6 +1252,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_ongeelektrificeerd-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1273,6 +1300,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein_ongeelektrificeerd-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1347,6 +1375,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein-line
+    GROUP                   "lijnen"
     MAXSCALEDENOM 100000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1394,6 +1423,7 @@ MAP
 
   LAYER
     NAME                    SBL_trein-dash
+    GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1468,6 +1498,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg-case
+    GROUP                   "lijnen"
     MAXSCALEDENOM 400000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1537,6 +1568,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg-fill
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1606,6 +1638,7 @@ MAP
 
   LAYER
     NAME                    WGL_autosnelweg-centerline
+    GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
@@ -1669,6 +1702,28 @@ MAP
         LINEJOIN MITER
       END
     END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "tekst"
+    GROUP           "teksten"
+    CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+    CONNECTIONTYPE  WMS
+    TYPE            RASTER
+
+    METADATA
+      "ows_title"           "teksten"
+      "ows_abstract"        "Teksten van de gemeente Amsterdam"
+      "wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
+      "wms_server_version"  "1.1.1"
+      "wms_formatlist"      "png_afb"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "topoteksten"
+    END
+
   END
 
 #=============================================================================

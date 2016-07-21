@@ -57,6 +57,7 @@ EOF
 cat > /srv/mapserver/connection_basiskaart.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${BASISKAART_DB_HOST} dbname=${BASISKAART_DB_NAME} user=${BASISKAART_DB_USER} password=${BASISKAART_DB_PASSWORD} port=${BASISKAART_DB_PORT}"
+PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
 echo Starting server
