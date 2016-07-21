@@ -1,0 +1,571 @@
+#==============================================================================
+#
+# basiskaart12-16.map
+# doel: serveren van kaartlagen ten behoeve van de basiskaart
+#       op zoomniveaus 12 t/m 16 van het Nederlandse tiling schema
+#       op zoomniveaus ?? van het Google Maps tiling schema
+#
+# Volgorde van aanroepen:
+# waterdeel
+# ondersteunendwaterdeel
+# steigers
+# onbegroeidterreindeel
+# begroeidterreindeel
+# tunneldeel
+# overbruggingsdeel
+# wegdeel-case
+# wegdeel-fill
+# ondersteunendwegdeel-case
+# ondersteunendwegdeel-fill
+# voetgangers-case
+# voetgangers-fill
+# pand
+# overigbouwwerk
+# kunstwerkdeel
+# gebouwinstallatie
+# scheiding
+# overigescheiding
+# vegetatieobject
+# spoor
+
+
+#==============================================================================
+
+MAP
+  NAME                      "basiskaart12-16"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "basiskaart12-16"
+      "ows_abstract"        "Grootschalige Basiskaart"
+    END
+  END
+
+  IMAGECOLOR                "#fefafa"
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME                    waterdeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_waterdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{17 18 19 20 21}
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#95c6d5"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    ondersteunendwaterdeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_ondersteunendWaterdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{17 18 19 20 21}
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#95c6d5"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    steigers
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM imgeo.bgt_kunstwerkdeel WHERE bgt_type = 'steiger') AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#f6f6f4"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac80"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    woonboten
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bag.woonboten USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#B4D3DB"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#A5CDD8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    onbegroeidterreindeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_onbegroeidterreindeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      EXPRESSION ("[bgt_fysiekvoorkomen]" = 'erf')
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#f9f9e7"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      EXPRESSION ("[bgt_fysiekvoorkomen]" != 'erf')
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#f6f6f4"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    begroeidterreindeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_BegroeidTerreindeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#dceacf"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    tunneldeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_tunneldeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac"
+        PATTERN
+          6
+          6
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    overbruggingsdeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_overbruggingsdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    wegdeel-case
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    wegdeel-fill
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ffffff"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    voetgangers-case
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    voetgangers-fill
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+#        COLOR "#f6f6f4"
+        COLOR "#ffffff"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    ondersteunendwegdeel-case
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_ondersteunendwegdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000    
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    ondersteunendwegdeel-fill
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_ondersteunendwegdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#f6f6f4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    pand
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_pand USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{=17}
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ebeae6"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{17 18 19 20 21 22}
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ebeae6"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    overigbouwwerk
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_overigbouwwerk USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ebeae6"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    gebouwinstallatie
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.imgeo_gebouwinstallatie USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ebeae6"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    kunstwerkdeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM imgeo.bgt_kunstwerkdeel WHERE bgt_type != 'steiger' AND relatievehoogteligging > -1) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ebeae6"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    scheiding
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_scheiding USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    overigescheiding
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.imgeo_overigescheiding USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    vegetatieobject
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.imgeo_vegetatieobject USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#dceacf"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    spoor
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM imgeo.bgt_spoor USING UNIQUE identificatie_lokaalid USING srid=28992"
+    TYPE LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+#=============================================================================
+
+END
