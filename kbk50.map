@@ -132,7 +132,7 @@ MAP
       MAXSCALEDENOM         400000
       MINSCALEDENOM         25000
       STYLE
-        COLOR               "#ebeae6"
+        COLOR               "#f6f6f4"
       END
     END
   END
@@ -183,7 +183,7 @@ MAP
       MAXSCALEDENOM 50000
       MINSCALEDENOM 12500
         WIDTH 0.7
-        OUTLINECOLOR "#c9c7c2"
+        OUTLINECOLOR "#ebeae6"
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -261,7 +261,7 @@ MAP
       MAXSCALEDENOM 100000
       MINSCALEDENOM 12500
       STYLE
-        COLOR "#dceacf"
+        COLOR "#a6d8a8"
       END
     END
     CLASS
@@ -269,7 +269,7 @@ MAP
       MAXSCALEDENOM 400000
       MINSCALEDENOM 100000
       STYLE
-        COLOR "#cfead0"
+        COLOR "#a6d8a8"
       END
     END
   END
@@ -890,6 +890,17 @@ MAP
         LINEJOIN MITER
       END
     END
+    CLASS
+      # Zoom{=14}
+      MAXSCALEDENOM 100000
+      MINSCALEDENOM 25000
+      STYLE
+        WIDTH 1.75
+        COLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -958,7 +969,7 @@ MAP
       MAXSCALEDENOM 25000
       MINSCALEDENOM 12500
       STYLE
-        WIDTH 6
+        WIDTH 5
         COLOR "#acacac"
         LINECAP BUTT
         LINEJOIN MITER
@@ -980,7 +991,7 @@ MAP
       MAXSCALEDENOM 100000
       MINSCALEDENOM 50000
       STYLE
-        WIDTH 3
+        WIDTH 2.5
         COLOR "#acacac"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1014,7 +1025,7 @@ MAP
     END
     CLASS
       # Zoom{=14}
-      MAXSCALEDENOM 50000
+      MAXSCALEDENOM 100000
       MINSCALEDENOM 25000
       STYLE
         WIDTH 0.75
@@ -1054,7 +1065,7 @@ MAP
       MAXSCALEDENOM 50000
       MINSCALEDENOM 25000
       STYLE
-        WIDTH 4
+        WIDTH 3
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1065,7 +1076,7 @@ MAP
       MAXSCALEDENOM 100000
       MINSCALEDENOM 50000
       STYLE
-        WIDTH 2
+        WIDTH 1
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1091,7 +1102,7 @@ MAP
       MAXSCALEDENOM 25000
       MINSCALEDENOM 12500
       STYLE
-        WIDTH 5
+        WIDTH 3.5
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1102,7 +1113,7 @@ MAP
       MAXSCALEDENOM 50000
       MINSCALEDENOM 25000
       STYLE
-        WIDTH 4
+        WIDTH 2
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1113,7 +1124,7 @@ MAP
       MAXSCALEDENOM 100000
       MINSCALEDENOM 50000
       STYLE
-        WIDTH 3
+        WIDTH 1.5
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1124,7 +1135,7 @@ MAP
       MAXSCALEDENOM 200000
       MINSCALEDENOM 100000
       STYLE
-        WIDTH 2
+        WIDTH 1
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1135,7 +1146,7 @@ MAP
       MAXSCALEDENOM 400000
       MINSCALEDENOM 200000
       STYLE
-        WIDTH 1.5
+        WIDTH 0.75
         COLOR "#ffffff"
         OPACITY 80
         LINECAP BUTT
@@ -1164,10 +1175,25 @@ MAP
       STYLE
         WIDTH 2
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{15}
+      MAXSCALEDENOM 25000
+      MINSCALEDENOM 12500
+      STYLE
+        WIDTH 2
+        PATTERN
+          8
+          8
+        END
+        COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -1194,6 +1220,10 @@ MAP
       STYLE
         WIDTH 2
         COLOR "#9d9d9d"
+        PATTERN
+          8
+          8
+        END
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -1205,6 +1235,10 @@ MAP
       STYLE
         WIDTH 2
         COLOR "#9d9d9d"
+        PATTERN
+          8
+          8
+        END
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -1216,6 +1250,57 @@ MAP
       STYLE
         WIDTH 2
         COLOR "#9d9d9d"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+	# wit
+    CLASS
+      # Zoom{=15}
+      MAXSCALEDENOM 25000
+      MINSCALEDENOM 12500
+      STYLE
+        WIDTH 2
+        COLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{=14}
+      MAXSCALEDENOM 50000
+      MINSCALEDENOM 25000
+      STYLE
+        WIDTH 2
+        COLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{=13}
+      MAXSCALEDENOM 100000
+      MINSCALEDENOM 50000
+      STYLE
+        WIDTH 2
+        COLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -1242,6 +1327,21 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{15}
+      MAXSCALEDENOM 25000
+      MINSCALEDENOM 12500
+      STYLE
+        WIDTH 2
+        COLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -1316,8 +1416,8 @@ MAP
       STYLE
         WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1331,8 +1431,8 @@ MAP
       STYLE
         WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1346,8 +1446,8 @@ MAP
       STYLE
         WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1361,8 +1461,8 @@ MAP
       STYLE
         WIDTH 2.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1439,8 +1539,8 @@ MAP
       STYLE
         WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1454,8 +1554,8 @@ MAP
       STYLE
         WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1469,8 +1569,8 @@ MAP
       STYLE
         WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1484,8 +1584,8 @@ MAP
       STYLE
         WIDTH 2.5
         PATTERN
-          6
-          6
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
