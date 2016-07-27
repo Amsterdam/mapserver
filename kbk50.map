@@ -261,7 +261,7 @@ MAP
       MAXSCALEDENOM 100000
       MINSCALEDENOM 12500
       STYLE
-        COLOR "#a6d8a8"
+        COLOR "#b8e0b9"
       END
     END
     CLASS
@@ -269,7 +269,7 @@ MAP
       MAXSCALEDENOM 400000
       MINSCALEDENOM 100000
       STYLE
-        COLOR "#a6d8a8"
+        COLOR "#b8e0b9"
       END
     END
   END
@@ -969,7 +969,7 @@ MAP
       MAXSCALEDENOM 25000
       MINSCALEDENOM 12500
       STYLE
-        WIDTH 5
+        WIDTH 4
         COLOR "#acacac"
         LINECAP BUTT
         LINEJOIN MITER
@@ -980,7 +980,7 @@ MAP
       MAXSCALEDENOM 50000
       MINSCALEDENOM 25000
       STYLE
-        WIDTH 4
+        WIDTH 3
         COLOR "#acacac"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1102,7 +1102,7 @@ MAP
       MAXSCALEDENOM 25000
       MINSCALEDENOM 12500
       STYLE
-        WIDTH 3.5
+        WIDTH 3
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1158,7 +1158,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    SBL_metro_sneltram_in_tunnel
+    NAME                    SBL_metro_sneltram_in_tunnel_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           12500
@@ -1183,6 +1183,21 @@ MAP
         LINEJOIN MITER
       END
     END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_sneltram_in_tunnel_line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           25000
+    MINSCALEDENOM           12500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk50.\"SBL_metro_sneltram_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
     CLASS
       # Zoom{15}
       MAXSCALEDENOM 25000
@@ -1203,7 +1218,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    SBL_trein_in_tunnel
+    NAME                    SBL_trein_in_tunnel_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
@@ -1259,7 +1274,21 @@ MAP
       END
     END
 
-	# wit
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_in_tunnel_line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
@@ -1310,7 +1339,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    SBL_metro_sneltram-line
+    NAME                    SBL_metro_sneltram-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           12500
@@ -1330,6 +1359,21 @@ MAP
         LINECAP BUTT
         LINEJOIN MITER
       END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_sneltram-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           25000
+    MINSCALEDENOM           12500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk50.\"SBL_metro_sneltram\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
     END
     CLASS
       # Zoom{15}
