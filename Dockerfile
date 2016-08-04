@@ -44,7 +44,6 @@ RUN cd /tmp && wget http://www.freedesktop.org/software/harfbuzz/release/harfbuz
 # Install Mapserver itself
 RUN git clone https://github.com/mapserver/mapserver/ /usr/local/src/mapserver
 
-
 # Compile Mapserver for Apache with 3D point support
 RUN mkdir /usr/local/src/mapserver/build && \
     cd /usr/local/src/mapserver/build && \
@@ -83,20 +82,18 @@ RUN mkdir /usr/local/src/mapserver/build && \
 # Apache 2
 RUN apt-get update && apt-get install -y apache2 apache2-dev curl
 
+# Enable these Apache modules
+RUN a2enmod actions cgi alias rewrite headers
+
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
-
-# Enable these Apache modules
-RUN a2enmod actions cgi alias rewrite headers
-
 # Link to cgi-bin executable
 RUN chmod o+x /usr/local/bin/mapserv
 RUN ln -s /usr/local/bin/mapserv /usr/lib/cgi-bin/mapserv
 RUN chmod 755 /usr/lib/cgi-bin
-
 
 COPY . /srv/mapserver/
 
@@ -106,4 +103,3 @@ VOLUME /srv/mapserver/lufo
 ENV HOST_IP `ifconfig | grep inet | grep Mask:255.255.255.0 | cut -d ' ' -f 12 | cut -d ':' -f 2`
 
 CMD /bin/docker-entrypoint.sh
-

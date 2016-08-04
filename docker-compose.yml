@@ -1,14 +1,14 @@
 database:
   image: admin.datapunt.amsterdam.nl:5000/atlas/postgres
   ports:
-    - "5403:5432"
+    - "5432"
   environment:
     POSTGRES_PASSWORD: insecure
 
 map:
   build: .
   ports:
-    - "8989:80"
+    - "80"
   links:
     - "database:atlas_db"
     - "database:nap_db"

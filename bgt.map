@@ -1,6 +1,6 @@
 #==============================================================================
 #
-# basiskaart12-16.map
+# bgt.map
 # doel: serveren van kaartlagen ten behoeve van de basiskaart
 #       op zoomniveaus 12 t/m 16 van het Nederlandse tiling schema
 #       op zoomniveaus ?? van het Google Maps tiling schema
@@ -32,12 +32,12 @@
 #==============================================================================
 
 MAP
-  NAME                      "basiskaart12-16"
+  NAME                      "bgt"
   INCLUDE                   "header.inc"
 
   WEB
     METADATA
-      "ows_title"           "basiskaart12-16"
+      "ows_title"           "bgt"
       "ows_abstract"        "Grootschalige Basiskaart"
     END
   END
@@ -50,9 +50,10 @@ MAP
 
   LAYER
     NAME                    waterdeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_waterdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_waterdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -70,9 +71,10 @@ MAP
 
   LAYER
     NAME                    ondersteunendwaterdeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_ondersteunendWaterdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_ondersteunendWaterdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -90,9 +92,10 @@ MAP
 
   LAYER
     NAME                    steigers
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM imgeo.bgt_kunstwerkdeel WHERE bgt_type = 'steiger') AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM imgeo.bgt_kunstwerkdeel WHERE bgt_type = 'steiger') AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -113,36 +116,38 @@ MAP
 
   #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    woonboten
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bag.woonboten USING srid=28992"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#B4D3DB"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#A5CDD8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+#  LAYER
+#    NAME                    woonboten
+#    GROUP                   "vlakken"
+#    MAXSCALEDENOM           4000
+#    INCLUDE                 "connection_basiskaart.inc"
+#    DATA                    "geometrie FROM bag.woonboten USING srid=28992"
+#    TYPE POLYGON
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+#    CLASS
+#      MAXSCALEDENOM 4000
+#      STYLE
+#        COLOR "#B4D3DB"
+#      END
+#      STYLE
+#        WIDTH 1
+#        OUTLINECOLOR "#A5CDD8"
+#        LINECAP BUTT
+#        LINEJOIN MITER
+#      END
+#    END
+#  END
 
   #-----------------------------------------------------------------------------
 
   LAYER
     NAME                    onbegroeidterreindeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_onbegroeidterreindeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_onbegroeidterreindeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -179,9 +184,10 @@ MAP
 
   LAYER
     NAME                    begroeidterreindeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_BegroeidTerreindeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_BegroeidTerreindeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -198,9 +204,10 @@ MAP
 
   LAYER
     NAME                    tunneldeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_tunneldeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_tunneldeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -224,9 +231,10 @@ MAP
 
   LAYER
     NAME                    overbruggingsdeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_overbruggingsdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_overbruggingsdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -246,9 +254,10 @@ MAP
 
   LAYER
     NAME                    wegdeel-case
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -268,9 +277,10 @@ MAP
 
   LAYER
     NAME                    wegdeel-fill
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -287,9 +297,10 @@ MAP
 
   LAYER
     NAME                    voetgangers-case
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -309,9 +320,10 @@ MAP
 
   LAYER
     NAME                    voetgangers-fill
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM imgeo.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -329,9 +341,10 @@ MAP
 
   LAYER
     NAME                    ondersteunendwegdeel-case
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_ondersteunendwegdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_ondersteunendwegdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -351,9 +364,10 @@ MAP
 
   LAYER
     NAME                    ondersteunendwegdeel-fill
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_ondersteunendwegdeel USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_ondersteunendwegdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -370,9 +384,10 @@ MAP
 
   LAYER
     NAME                    pand
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_pand USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_pand USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -409,9 +424,10 @@ MAP
 
   LAYER
     NAME                    overigbouwwerk
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_overigbouwwerk USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_overigbouwwerk USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -434,9 +450,10 @@ MAP
 
   LAYER
     NAME                    gebouwinstallatie
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.imgeo_gebouwinstallatie USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.imgeo_gebouwinstallatie USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -459,9 +476,10 @@ MAP
 
   LAYER
     NAME                    kunstwerkdeel
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM imgeo.bgt_kunstwerkdeel WHERE bgt_type != 'steiger' AND relatievehoogteligging > -1) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM imgeo.bgt_kunstwerkdeel WHERE bgt_type != 'steiger' AND relatievehoogteligging > -1) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -485,9 +503,10 @@ MAP
 
   LAYER
     NAME                    scheiding
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_scheiding USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_scheiding USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -507,9 +526,10 @@ MAP
 
   LAYER
     NAME                    overigescheiding
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.imgeo_overigescheiding USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.imgeo_overigescheiding USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -529,9 +549,10 @@ MAP
 
   LAYER
     NAME                    vegetatieobject
+    GROUP                   "vlakken"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.imgeo_vegetatieobject USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.imgeo_vegetatieobject USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -548,9 +569,10 @@ MAP
 
   LAYER
     NAME                    spoor
+    GROUP                   "lijnen"
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM imgeo.bgt_spoor USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM imgeo.bgt_spoor USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE LINE
     PROJECTION
       "init=epsg:28992"
