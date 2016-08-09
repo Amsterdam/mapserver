@@ -61,3 +61,6 @@ gdaltindex imagery.shp $2/*.tif
 
 # MapProxy configuratie as usual.. verwijzen naar de juiste WMS endpoint
 # Wel opslaan als JPG-bestanden: veel kleiner en mooier voor lufo's dan PNG-bestanden
+
+
+ls 2011/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2011/" $4}' | xargs gdaltindex 2011/remote-imagery.shp
