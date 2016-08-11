@@ -20,16 +20,19 @@ MAP
     MAXSCALEDENOM           400000
     MINSCALEDENOM           12500
     METADATA
+      "wms_title"           "kbk50"
+      "wms_group_title"     "basiskaart"
+      "wms_abstract"        "Basiskaart Amsterdam"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "vlakken,lijnen,teksten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
     END
   END
-  
+
   LAYER
     NAME                   "kbk10"
-    PROJECTION     
+    PROJECTION
       "init=epsg:28992"
     END
     TYPE                    RASTER
@@ -38,16 +41,19 @@ MAP
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     METADATA
+      "wms_title"           "kbk10"
+      "wms_group_title"     "basiskaart"
+      "wms_abstract"        "Basiskaart Amsterdam"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "vlakken,lijnen,teksten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
     END
   END
-  
+
   LAYER
     NAME                    "bgt"
-    PROJECTION     
+    PROJECTION
       "init=epsg:28992"
     END
     TYPE                    RASTER
@@ -57,10 +63,13 @@ MAP
     MAXSCALEDENOM           4000
     MINSCALEDENOM           0
     METADATA
-        "wms_srs"             "EPSG:28992"
-        "wms_name"            "vlakken,lijnen,teksten"
-        "wms_format"          "image/png"
-        "wms_server_version"  "1.1.1"
+      "wms_title"           "bgt"
+      "wms_group_title"     "basiskaart"
+      "wms_abstract"        "Basiskaart Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "vlakken,lijnen,teksten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
     END
   END
 END
