@@ -13,6 +13,8 @@
 # TRN_grasland
 # TRN_akkerland
 # TRN_overig
+# TRN_bedrijfsterrein
+# TRN_openbaar_groen
 # TRN_zand
 # WGL_startbaan_landingsbaan
 # TRN_spoorbaanlichaam
@@ -186,7 +188,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#cfead0"
+        COLOR "#dceacf"
       END
     END
   END
@@ -209,7 +211,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#cfead0"
+        COLOR "#dceacf"
       END
     END
   END
@@ -233,6 +235,52 @@ MAP
       MINSCALEDENOM 4000
       STYLE
         COLOR "#f6f6f4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bedrijfsterrein
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           12500
+    MINSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_bedrijfsterrein\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 12500
+      MINSCALEDENOM 4000
+      STYLE
+        COLOR "#f6f6f4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_openbaar_groen
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           12500
+    MINSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_openbaar_groen\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 12500
+      MINSCALEDENOM 4000
+      STYLE
+        COLOR "#f9f9e7"
       END
     END
   END
@@ -324,7 +372,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#dceacf"
+        COLOR "#cbe0b8"
       END
     END
   END
@@ -347,7 +395,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#dceacf"
+        COLOR "#cbe0b8"
       END
     END
   END
@@ -370,7 +418,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#dceacf"
+        COLOR "#cbe0b8"
       END
     END
   END
@@ -393,7 +441,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#dceacf"
+        COLOR "#cbe0b8"
       END
     END
   END
@@ -870,7 +918,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    SBL_metro_overdekt
+    NAME                    SBL_metro_overdekt_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
@@ -883,13 +931,73 @@ MAP
     CLASS
       # Zoom{16}
       MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#fc7f7f"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 4000
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#fc7f7f"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_overdekt_line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           12500
+    MINSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 4000
       STYLE
         WIDTH 2
-        OUTLINECOLOR "#fc7f7f"
+        OUTLINECOLOR "#ffffff"
         PATTERN
-          6
-          6
+          8
+          8
         END
         LINECAP BUTT
         LINEJOIN MITER
@@ -917,8 +1025,8 @@ MAP
       STYLE
         WIDTH 1
         PATTERN
-            6
-            6
+            8
+            8
         END
         COLOR "#fc7f7f"
         LINECAP BUTT
@@ -933,6 +1041,7 @@ MAP
     NAME                    SBL_trein_overdekt_1sp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+	MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -940,11 +1049,29 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	  MINSCALEDENOM 4000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
         LINECAP square
         LINEJOIN MITER
       END
@@ -957,6 +1084,7 @@ MAP
     NAME                    SBL_trein_overdekt_nsp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+	MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -964,11 +1092,29 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	  MINSCALEDENOM 4000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
         LINECAP square
         LINEJOIN MITER
       END
@@ -988,16 +1134,30 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
       STYLE
-        WIDTH 2.5
+        WIDTH 1.5
         OUTLINECOLOR "#ffffff"
         PATTERN
-          6
-          6
+            8
+            8
         END
-        LINECAP BUTT
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	  MINSCALEDENOM 4000
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+            8
+            8
+        END
+        LINECAP square
         LINEJOIN MITER
       END
     END
@@ -1015,17 +1175,32 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+	# wit
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
       STYLE
-        WIDTH 2.5
+        WIDTH 1.5
         OUTLINECOLOR "#ffffff"
         PATTERN
-          6
-          6
+            8
+            8
         END
-        LINECAP BUTT
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	  MINSCALEDENOM 4000
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+            8
+            8
+        END
+        LINECAP square
         LINEJOIN MITER
       END
     END
@@ -1034,7 +1209,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    SBL_metro_nietoverdekt_1sp
+    NAME                    SBL_metro_nietoverdekt_1sp_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
@@ -1047,9 +1222,20 @@ MAP
     CLASS
       # Zoom{16}
       MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 4000
       STYLE
-        WIDTH 2
+        WIDTH 3
         OUTLINECOLOR "#fc7f7f"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1060,7 +1246,52 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    SBL_metro_nietoverdekt_nsp
+    NAME                    SBL_metro_nietoverdekt_1sp_dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           12500
+    MINSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 4000
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_nietoverdekt_nsp_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
@@ -1073,10 +1304,66 @@ MAP
     CLASS
       # Zoom{16}
       MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 4000
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_nietoverdekt_nsp_dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           12500
+    MINSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      # Zoom{16}
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 4000
       STYLE
         WIDTH 2
-        COLOR "#fc7f7f"
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -1115,6 +1402,7 @@ MAP
     NAME                    SBL_trein_ongeelektrificeerd-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+	MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1122,8 +1410,18 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        COLOR "#9d9d9d"
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	  MINSCALEDENOM 4000
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1139,6 +1437,7 @@ MAP
     NAME                    SBL_trein_ongeelektrificeerd-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+	MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1146,13 +1445,27 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
       STYLE
-        WIDTH 2.5
+        WIDTH 1.5
         PATTERN
-          6
-          6
+          8
+          8
+        END
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	  MINSCALEDENOM 4000
+      STYLE
+        WIDTH 2
+        PATTERN
+          8
+          8
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1175,8 +1488,17 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15}
       MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 4000
       STYLE
         WIDTH 3
@@ -1201,8 +1523,17 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15}
       MAXSCALEDENOM 12500
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        LINECAP square
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 4000
       STYLE
         WIDTH 3
@@ -1219,6 +1550,7 @@ MAP
     NAME                    SBL_trein_nietoverdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+	MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1226,14 +1558,28 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
       STYLE
-        WIDTH 2.5
+        WIDTH 1.5
         OUTLINECOLOR "#ffffff"
         PATTERN
-          6
-          6
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 12500
+	  MINSCALEDENOM 4000
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
         END
         LINECAP BUTT
         LINEJOIN MITER
@@ -1248,6 +1594,7 @@ MAP
     NAME                    SBL_trein_nietoverdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+	MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1255,14 +1602,28 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+	  MINSCALEDENOM 8000
       STYLE
-        WIDTH 2.5
+        WIDTH 1.5
         OUTLINECOLOR "#ffffff"
         PATTERN
-          6
-          6
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 12500
+	  MINSCALEDENOM 4000
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
         END
         LINECAP BUTT
         LINEJOIN MITER
