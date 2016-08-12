@@ -58,7 +58,7 @@ MAP
     END
     TYPE                    RASTER
 #    CONNECTION              "https://map.datapunt.amsterdam.nl/maps/bgt"
-    CONNECTION              "http://www.diva.amsterdam.nl/cgi-bin/topografie"
+    CONNECTION              "http://www.diva.amsterdam.nl/cgi-bin/topografie?SLD=http://www.diva.amsterdam.nl/topografie_sld.xml""
     CONNECTIONTYPE          WMS
     MAXSCALEDENOM           4000
     MINSCALEDENOM           0
@@ -67,7 +67,7 @@ MAP
       "wms_group_title"     "basiskaart"
       "wms_abstract"        "Basiskaart Amsterdam"
       "wms_srs"             "EPSG:28992"
-      "wms_name"            "vlakken,lijnen,teksten"
+      "wms_name"            "topovlakken,topolijnen,topoteksten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
     END
