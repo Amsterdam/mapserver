@@ -98,7 +98,6 @@ RUN chmod 755 /usr/lib/cgi-bin
 COPY . /srv/mapserver/
 
 EXPOSE 80
-VOLUME /srv/mapserver/lufo
 
 ENV HOST_IP `ifconfig | grep inet | grep Mask:255.255.255.0 | cut -d ' ' -f 12 | cut -d ':' -f 2`
 
