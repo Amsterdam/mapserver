@@ -117,7 +117,7 @@ MAP
     NAME                    woonboten
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bag.woonboten USING srid=28992"
+    DATA                    "geometrie FROM bag.woonboten USING UNIQUE gid USING srid=28992"
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -127,7 +127,7 @@ MAP
       STYLE
         COLOR "#B4D3DB"
       END
-      STYLE
+      STYLE 
         WIDTH 1
         OUTLINECOLOR "#A5CDD8"
         LINECAP BUTT
@@ -565,6 +565,16 @@ MAP
       END
     END
   END
+
+  #-----------------------------------------------------------------------------
+
+  # Niet in BGT, maar wel in TOP10NL:
+  # Voetveer
+  # Autoveer
+  # Spoor (trein) - ProRail bronhouder
+  # Autosnelwegen - RWS bronhouder
+
+  #-----------------------------------------------------------------------------
 
 #=============================================================================
 
