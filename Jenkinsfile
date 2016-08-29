@@ -31,7 +31,7 @@ node {
 
     stage "Build develop image"
     tryStep "build", {
-        def image = docker.build("admin.datapunt.amsterdam.nl:5000/datapunt/mapserver:${env.BUILD_NUMBER}", "web")
+        def image = docker.build("admin.datapunt.amsterdam.nl:5000/datapunt/mapserver:${env.BUILD_NUMBER}")
         image.push()
         image.push("develop")
     }
