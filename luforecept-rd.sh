@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# see http://mapserver.org/input/raster.html
 # aanroepen voorbeeld:
 # 
 # ./luforecept-rd.sh <source dir of tiffs> <destination dir of result>
@@ -10,7 +9,6 @@
 # de bestanden uit
 # /media/externaldrive/lufo/2015/tiffsrc <source dir of tiffs> bewerkt en geplaatst in
 # /srv/mapserver/lufo/2015/ <destination dir of result>.
-
 
 DIR=$1
 cd $DIR
@@ -42,8 +40,6 @@ done
 
 # Maak een Esri Shape-bestand als index op de definitieve locatie van de GeoTIFFs.
 
-gdaltindex imagery.shp $2/*.tif
-
 # Plaats Esri shape-bestand bij de lufo's in de map
 # Paden in de toekomst snel wijzigen?
 # - converteer Esri Shape-bestand naar GeoJSON
@@ -63,8 +59,15 @@ gdaltindex imagery.shp $2/*.tif
 # Wel opslaan als JPG-bestanden: veel kleiner en mooier voor lufo's dan PNG-bestanden
 
 
-ls 2011/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2011/"$1}' | xargs gdaltindex 2011-imagery.shp
-ls 2012/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2012/"$1}' | xargs gdaltindex 2012-imagery.shp
-ls 2013/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2013/"$1}' | xargs gdaltindex 2013-imagery.shp
-ls 2014/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2014/"$1}' | xargs gdaltindex 2014-imagery.shp
-ls 2015/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2015/"$1}' | xargs gdaltindex 2015-imagery.shp
+#Steps to introduce a new year:
+#- Copy original full size tiff to laptop
+#- Run above script
+#- Upload resulting tiffs to objectstore
+#- Add settings to mapserver, mapproxy, objectstore
+#- Run script below
+#
+#    #ls 2016/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2016/"$1}' | xargs gdaltindex 2016-imagery.shp
+#
+#- Run tiling script on jenkins
+#- Upload tiles to objectstore
+#- Update frontend
