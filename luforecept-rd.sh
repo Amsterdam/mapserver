@@ -47,7 +47,7 @@ done
 # - converteer GeoJSON-bestand terug naar Esri Shape-bestand
 #
 # Maak een MapServer configuratie aan:
-# 
+#
 # LAYER
 #  NAME "lufo2015"
 #  TILEINDEX "/srv/mapserver/lufo/2015/imagery.shp"
@@ -60,14 +60,17 @@ done
 
 
 #Steps to introduce a new year:
-#- Copy original full size tiff to laptop
-#- Run above script
-#- Upload resulting tiffs to objectstore
-#- Add settings to mapserver, mapproxy, objectstore
-#- Run script below
+# Copy original full size tiff to laptop
+# Run above script
+# Upload resulting tiffs to objectstore
+# Add settings to mapserver, mapproxy, objectstore
+# Run script below
 #
-#    #ls 2016/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2016/"$1}' | xargs gdaltindex 2016-imagery.shp
+# ls 2016/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2016/"$1}' | xargs gdaltindex 2016-imagery.shp
 #
-#- Run tiling script on jenkins
-#- Upload tiles to objectstore
-#- Update frontend
+# For local files:
+# gdaltindex imagery.shp /srv/mapserver/lufo/2016/*.tif
+#
+# Run tiling script on jenkins
+# Upload tiles to objectstore
+# Update frontend
