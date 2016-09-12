@@ -1,0 +1,71 @@
+MAP
+  NAME "LUFO2013"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "LUFO'S 2013"
+      "ows_abstract"        "Luchtfoto's van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif .ovr"
+
+  #-------------------------------------------------------------------
+  # UITVOERFORMATEN
+  #-------------------------------------------------------------------
+
+  OUTPUTFORMAT
+    NAME "GTiff"
+    DRIVER GDAL/GTiff
+    MIMETYPE "image/tiff"
+    IMAGEMODE RGB
+    EXTENSION "tif"
+  END
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+  LAYER
+    NAME                    "lufo2013-smallscale"
+    GROUP                   "lufo2013"
+    DATA                    "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2013/overview-2013.tif"
+    TYPE                    RASTER
+    # Zoom 5 - 8 RD
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           25000
+    PROJECTION
+      "init=epsg:28992" 
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2013 kleinschalig"
+      "ows_group_title"     "lufo2013"
+      "ows_abstract"        "Kleinschalige luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2013-largescale"
+    GROUP                   "lufo2013"
+    TILEINDEX               "/srv/mapserver/luchtfoto/2013-imagery.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 8 - 16 RD
+    MAXSCALEDENOM           25000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2013 grootschalig"
+      "ows_group_title"     "lufo2013"
+      "ows_abstract"        "Grootschalige luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+#=============================================================================
+END
