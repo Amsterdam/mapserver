@@ -4,14 +4,13 @@
 # 
 # ./luforecept-rd.sh <source dir of tiffs> <destination dir of result>
 #
-# Dit script wordt gedaan op een directory waarbinnen in de subdir “tiffsrc” de ruwe GeoTIFF bestanden staan.
-# Het resultaat wordt geplaatst in de subdir “tiffdst” die moet bestaan.
-# de bestanden uit
-# /media/externaldrive/lufo/2015/tiffsrc <source dir of tiffs> bewerkt en geplaatst in
+# Dit script wordt gedaan op de bestanden uit
+# /media/externaldrive/lufo/2015/tiffsrc <source dir of tiffs> en plaatst deze in
 # /srv/mapserver/lufo/2015/ <destination dir of result>.
 
 DIR=$1
 cd $DIR
+YEAR=dir=$(basename $2)
 
 SRC_TIFF_FILES=`/bin/ls *.tif`
 for SRC_TIFF_FILE in $SRC_TIFF_FILES; do
@@ -38,6 +37,14 @@ done
 
 # GeoTIFF-directory is oorspronkelijk 121G. Na conversie met GDAL blijft hier 7G van over!
 
+# Now create composite as an overview image for small scale portrayal 
+
+gdalwarp -r lanczos -tr 15 15 *.tif overview-$YEAR.tif
+
+# Add external overviews too
+
+gdaladdo -ro -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR overview-$YEAR.tif 2 4 8 16 32 64 128
+
 # Maak een Esri Shape-bestand als index op de definitieve locatie van de GeoTIFFs.
 
 # Plaats Esri shape-bestand bij de lufo's in de map
@@ -46,25 +53,53 @@ done
 # - pas paden in het GeoJSON-bestand aan mbv texteditor
 # - converteer GeoJSON-bestand terug naar Esri Shape-bestand
 #
+
 # Maak een MapServer configuratie aan:
+
+# LAYER
+#  NAME          "lufo2012-smallscale"
+#  GROUP         "lufo2012"
+#  DATA           "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2012/overview-2012.tif"
+#  TYPE           RASTER
+#  MAXSCALEDENOM  400000
+#  MINSCALEDENOM  25000
+# END
 #
 # LAYER
-#  NAME "lufo2015"
-#  TILEINDEX "/srv/mapserver/lufo/2015/imagery.shp"
-#  TILEITEM "location"
-#  TYPE RASTER
+#  NAME           "lufo2012-largescale"
+#  GROUP          "lufo2012
+#  TILEINDEX      "/srv/mapserver/lufo/2012/imagery.shp"
+#  TILEITEM       "location"
+#  TYPE           RASTER
+#  MAXSCALEDENOM  25000
+# END
+
+# Add Cascading WMS to existing Mapserver configuration:
+
+# LAYER
+#  NAME                    "lufo2012"
+#  GROUP                   "lufo"
+#  CONNECTION              "http://map.datapunt.amsterdam.nl/maps/lufo2012"
+#  CONNECTIONTYPE          WMS
+#  TYPE                    RASTER
+#
+#  METADATA
+#    "wms_name"            "lufo2012"
+#    "wms_format"          "image/tiff"
+#    "wms_server_version"  "1.1.1"
+#  END
 # END
 
 # MapProxy configuratie as usual.. verwijzen naar de juiste WMS endpoint
 # Wel opslaan als JPG-bestanden: veel kleiner en mooier voor lufo's dan PNG-bestanden
 
 
-#Steps to introduce a new year:
+# Steps to introduce a new year:
 # Copy original full size tiff to laptop
 # Run above script
 # Upload resulting tiffs to objectstore
 # Add settings to mapserver, mapproxy, objectstore
-# Run script below
+# Run script below (don't include the overview-YYYY.tif only after)
 #
 # ls 2016/ | grep -e "\.tif$" | awk '{print "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2016/"$1}' | xargs gdaltindex 2016-imagery.shp
 #
