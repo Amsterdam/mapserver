@@ -16,6 +16,7 @@ map:
     - "database:panorama_db"
     - "database:parkeervakken_db"
     - "database:basiskaart_db"
+    - "database:handelsregister_db"
   environment:
     ATLAS_DB_NAME: atlas
     ATLAS_DB_USER: postgres
@@ -41,4 +42,7 @@ map:
     BASISKAART_DB_USER: postgres
     BASISKAART_DB_PASSWORD: insecure
 
-    CPL_VSIL_CURL_ALLOWED_EXTENSIONS: ".tif .ovr"
+    HANDELSREGISTER_DB_NAME: handelsregister
+    HANDELSREGISTER_DB_USER: postgres
+    HANDELSREGISTER_DB_PASSWORD: insecure
+

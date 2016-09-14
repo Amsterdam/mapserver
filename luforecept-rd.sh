@@ -110,4 +110,4 @@ gdaladdo -ro -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERV
 # Upload tiles to objectstore
 # Update frontend
 
-CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif .ovr" gdalinfo /vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2015/109850_481580.tif
+#CPL_VSIL_CURL_ALLOWED_EXTENSIONS=".tif .ovr" gdalinfo /vsicurl/https://acc.atlas.amsterdam.nl/luchtfotos/2015/109850_481580.tif
