@@ -30,7 +30,7 @@ for SRC_TIFF_FILE in $SRC_TIFF_FILES; do
 
     echo "gdaladdo -$DEST_TIFF_FILE"
 
-    gdaladdo -ro -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR $DEST_TIFF_FILE 2 4 8 16 32 64 128
+    gdaladdo -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERVIEW YCBCR --config INTERLEAVE_OVERVIEW PIXEL $DEST_TIFF_FILE 2 4 8 16 32 64 128
 
     echo "END $BASE_NAME"
 done
