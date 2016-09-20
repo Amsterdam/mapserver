@@ -106,6 +106,10 @@ gdaladdo -ro -r gauss --config COMPRESS_OVERVIEW JPEG --config PHOTOMETRIC_OVERV
 # For local files:
 # gdaltindex imagery.shp /srv/mapserver/lufo/2016/*.tif
 #
+# Then run Shptree to create a quadtree index of shape file:
+# shptree 2016-imagery.shp
+# 
+#
 # Run tiling script on jenkins
 # Upload tiles to objectstore
 # Update frontend
