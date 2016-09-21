@@ -1,0 +1,365 @@
+#==============================================================================
+#
+# meetbouten.map
+# doel: serveren van Meetbouten gegevens
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# S. Preeker 		20-09-2016    schepping
+#==============================================================================
+
+MAP
+  NAME "Handelsregister"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Handelsregister"
+      "ows_abstract"        "Vestigingen van bedrijfigheid gerelateerd aan de gemeente Amsterdam"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "Vestiging"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "vestigingen"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "vestiging locaties bezoek en post adressen gerelateerd aan Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    #CLASSITEM "locatie_type"
+
+    #CLASS
+    #  NAME "Bezoekadres"
+    #  EXPRESSION "B"
+    #  STYLE
+    #    MINSCALEDENOM  100
+    #    MAXSCALEDENOM  50001
+    #    SYMBOL         'stip'
+    #    SIZE           10
+    #    COLOR          255 255 255
+    #    OUTLINECOLOR   0 200 0
+    #    WIDTH          2
+    #  END
+    #END
+
+    #CLASS
+    #  NAME "Postadres"
+    #  EXPRESSION "P"
+    #  STYLE
+    #    MINSCALEDENOM  100
+    #    MAXSCALEDENOM  50001
+    #    SYMBOL         'stip'
+    #    SIZE           10
+    #    OUTLINECOLOR   200 0 0
+    #    COLOR          255 255 255
+    #    WIDTH          2
+    #  END
+    #END
+
+    CLASS
+      NAME "Vestiging"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   200 200 200
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "vestiging_namen"
+    GROUP           "vestigingen"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   1001
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "vestiging_namen"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Labels van vestigingen"
+    END
+
+    LABELITEM          "naam"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1000
+        COLOR   0 200 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  #LAYER
+  #  NAME            "meetbout_zaksnelheid"
+  #  GROUP           "meetbouten_zaksnelheid"
+  #  INCLUDE         "connection_nap.inc"
+  #  DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+  #  TYPE            POINT
+  #  MINSCALEDENOM   100
+  #  MAXSCALEDENOM   5001
+  #  TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+  #  PROJECTION
+  #    "init=epsg:28992"
+  #  END
+
+  #  METADATA
+  #    "ows_title"           "meetbout_zaksnelheid"
+  #    "ows_group_title"     "meetbouten_zaksnelheid"
+  #    "ows_abstract"        "Meetbouten zaksnelheid"
+  #  END
+
+  #  CLASS
+  #    NAME "minder dan -1 mm/jaar"
+  #    EXPRESSION ([zakkingssnelheid] < -1)
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          43 131 186
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "-1 tot 0 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          116 182 173
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "0 tot 1 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          183 225 167
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "1 tot 1,5 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          231 245 183
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "1,5 tot 2 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          254 231 164
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "2 tot 2,5 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          253 185 110
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "2,5 tot 3 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          236 110 67
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "3 tot 4 mm/jaar"
+  #    EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          215 25 28
+  #    END
+  #  END
+
+  #  CLASS
+  #    NAME "meer dan 4 mm/jaar"
+  #    EXPRESSION ([zakkingssnelheid] > 4)
+  #    STYLE
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SYMBOL         'stip'
+  #      SIZE           10
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      COLOR          171 19 22
+  #    END
+  #  END
+
+  #END
+
+  ##-----------------------------------------------------------------------------
+
+  #LAYER
+  #  NAME            "referentiepunt"
+  #  GROUP           "referentiepunten"
+  #  INCLUDE         "connection_nap.inc"
+  #  DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+  #  TYPE            POINT
+  #  MINSCALEDENOM   100
+  #  MAXSCALEDENOM   5001
+  #  TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+  #  PROJECTION
+  #    "init=epsg:28992"
+  #  END
+
+  #  METADATA
+  #    "ows_title"           "referentiepunt"
+  #    "ows_group_title"     "referentiepunten"
+  #    "ows_abstract"        "Meetbouten"
+  #    "gml_featureid"       "ID"
+  #    "gml_include_items"   "all"
+  #  END
+
+  #  CLASS
+  #    NAME "Referentiepunt"
+  #    STYLE
+  #      SYMBOL         'driehoek'
+  #      COLOR          150 0 200
+  #      OUTLINECOLOR   0 0 0
+  #      WIDTH          1
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  5001
+  #      SIZE           10
+  #    END
+  #  END
+
+  #END
+
+  ##-----------------------------------------------------------------------------
+
+  #LAYER
+  #  NAME            "referentiepunt_label"
+  #  GROUP           "referentiepunten"
+  #  INCLUDE         "connection_nap.inc"
+  #  DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+  #  TYPE            POINT
+  #  MINSCALEDENOM   100
+  #  MAXSCALEDENOM   15001
+  #  PROJECTION
+  #    "init=epsg:28992"
+  #  END
+
+  #  METADATA
+  #    "ows_title"           "referentiepunt_label"
+  #    "ows_group_title"     "referentiepunten"
+  #    "ows_abstract"        "Labels van meetbouten referenties"
+  #  END
+
+  #  LABELITEM          "id"
+
+  #  CLASS
+  #    NAME "Referentie label"
+  #    LABEL
+  #      MINSCALEDENOM  100
+  #      MAXSCALEDENOM  1000
+  #      COLOR          0 0 0
+  #      OUTLINECOLOR   255 255 255
+  #      OUTLINEWIDTH   3
+  #      FONT           "Ubuntu-M"
+  #      TYPE           truetype
+  #      SIZE           10
+  #      POSITION       AUTO
+  #      PARTIALS       FALSE
+  #      OFFSET         -60 10
+  #    END
+
+  #  END
+
+  END
+
+#=============================================================================
+END
