@@ -1,7 +1,7 @@
 #==============================================================================
 #
-# meetbouten.map
-# doel: serveren van Meetbouten gegevens
+# handelsregister.map
+# doel: serveren van handelsregister gegevens
 #
 #==============================================================================
 #
@@ -26,7 +26,7 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "Vestiging"
+    NAME            "alle_vestigingen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
@@ -34,47 +34,21 @@ MAP
     MINSCALEDENOM   100
     MAXSCALEDENOM   500001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "vestigingen"
+      "ows_title"           "Alle vestigingen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "vestiging locaties bezoek en post adressen gerelateerd aan Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
-    #CLASSITEM "locatie_type"
-
-    #CLASS
-    #  NAME "Bezoekadres"
-    #  EXPRESSION "B"
-    #  STYLE
-    #    MINSCALEDENOM  100
-    #    MAXSCALEDENOM  50001
-    #    SYMBOL         'stip'
-    #    SIZE           10
-    #    COLOR          255 255 255
-    #    OUTLINECOLOR   0 200 0
-    #    WIDTH          2
-    #  END
-    #END
-
-    #CLASS
-    #  NAME "Postadres"
-    #  EXPRESSION "P"
-    #  STYLE
-    #    MINSCALEDENOM  100
-    #    MAXSCALEDENOM  50001
-    #    SYMBOL         'stip'
-    #    SIZE           10
-    #    OUTLINECOLOR   200 0 0
-    #    COLOR          255 255 255
-    #    WIDTH          2
-    #  END
-    #END
 
     CLASS
       NAME "Vestiging"
@@ -83,24 +57,26 @@ MAP
         MAXSCALEDENOM  500001
         SYMBOL         'stip'
         SIZE           10
-        OUTLINECOLOR   200 200 200
+        OUTLINECOLOR   0 0 200
         COLOR          255 255 255
         WIDTH          2
       END
     END
   END
 
-  #-----------------------------------------------------------------------------
 
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "vestiging_namen"
-    GROUP           "vestigingen"
+    GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
     PROJECTION
       "init=epsg:28992"
     END
@@ -131,235 +107,372 @@ MAP
     END
   END
 
+
   #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "horeca"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-  #LAYER
-  #  NAME            "meetbout_zaksnelheid"
-  #  GROUP           "meetbouten_zaksnelheid"
-  #  INCLUDE         "connection_nap.inc"
-  #  DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
-  #  TYPE            POINT
-  #  MINSCALEDENOM   100
-  #  MAXSCALEDENOM   5001
-  #  TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-  #  PROJECTION
-  #    "init=epsg:28992"
-  #  END
+    METADATA
+      "ows_title"           "horeca"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "horeca binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
 
-  #  METADATA
-  #    "ows_title"           "meetbout_zaksnelheid"
-  #    "ows_group_title"     "meetbouten_zaksnelheid"
-  #    "ows_abstract"        "Meetbouten zaksnelheid"
-  #  END
 
-  #  CLASS
-  #    NAME "minder dan -1 mm/jaar"
-  #    EXPRESSION ([zakkingssnelheid] < -1)
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          43 131 186
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "-1 tot 0 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= -1) AND ([zakkingssnelheid] < 0))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          116 182 173
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "0 tot 1 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= 0) AND ([zakkingssnelheid] < 1))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          183 225 167
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "1 tot 1,5 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= 1) AND ([zakkingssnelheid] < 1.5))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          231 245 183
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "1,5 tot 2 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= 1.5) AND ([zakkingssnelheid] < 2))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          254 231 164
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "2 tot 2,5 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= 2) AND ([zakkingssnelheid] < 2.5))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          253 185 110
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "2,5 tot 3 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= 2.5) AND ([zakkingssnelheid] < 3))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          236 110 67
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "3 tot 4 mm/jaar"
-  #    EXPRESSION (([zakkingssnelheid] >= 3) AND ([zakkingssnelheid] < 4))
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          215 25 28
-  #    END
-  #  END
-
-  #  CLASS
-  #    NAME "meer dan 4 mm/jaar"
-  #    EXPRESSION ([zakkingssnelheid] > 4)
-  #    STYLE
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SYMBOL         'stip'
-  #      SIZE           10
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      COLOR          171 19 22
-  #    END
-  #  END
-
-  #END
-
-  ##-----------------------------------------------------------------------------
-
-  #LAYER
-  #  NAME            "referentiepunt"
-  #  GROUP           "referentiepunten"
-  #  INCLUDE         "connection_nap.inc"
-  #  DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
-  #  TYPE            POINT
-  #  MINSCALEDENOM   100
-  #  MAXSCALEDENOM   5001
-  #  TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-  #  PROJECTION
-  #    "init=epsg:28992"
-  #  END
-
-  #  METADATA
-  #    "ows_title"           "referentiepunt"
-  #    "ows_group_title"     "referentiepunten"
-  #    "ows_abstract"        "Meetbouten"
-  #    "gml_featureid"       "ID"
-  #    "gml_include_items"   "all"
-  #  END
-
-  #  CLASS
-  #    NAME "Referentiepunt"
-  #    STYLE
-  #      SYMBOL         'driehoek'
-  #      COLOR          150 0 200
-  #      OUTLINECOLOR   0 0 0
-  #      WIDTH          1
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  5001
-  #      SIZE           10
-  #    END
-  #  END
-
-  #END
-
-  ##-----------------------------------------------------------------------------
-
-  #LAYER
-  #  NAME            "referentiepunt_label"
-  #  GROUP           "referentiepunten"
-  #  INCLUDE         "connection_nap.inc"
-  #  DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
-  #  TYPE            POINT
-  #  MINSCALEDENOM   100
-  #  MAXSCALEDENOM   15001
-  #  PROJECTION
-  #    "init=epsg:28992"
-  #  END
-
-  #  METADATA
-  #    "ows_title"           "referentiepunt_label"
-  #    "ows_group_title"     "referentiepunten"
-  #    "ows_abstract"        "Labels van meetbouten referenties"
-  #  END
-
-  #  LABELITEM          "id"
-
-  #  CLASS
-  #    NAME "Referentie label"
-  #    LABEL
-  #      MINSCALEDENOM  100
-  #      MAXSCALEDENOM  1000
-  #      COLOR          0 0 0
-  #      OUTLINECOLOR   255 255 255
-  #      OUTLINEWIDTH   3
-  #      FONT           "Ubuntu-M"
-  #      TYPE           truetype
-  #      SIZE           10
-  #      POSITION       AUTO
-  #      PARTIALS       FALSE
-  #      OFFSET         -60 10
-  #    END
-
-  #  END
-
+    CLASS
+      NAME "Horeca"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          255 0 0
+        WIDTH          2
+      END
+    END
   END
 
-#=============================================================================
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "onderwijs"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_onderwijs USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "onderwijs"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "onderwijs binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Onderwijs"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          255 100 0
+        WIDTH          2
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "hotels"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_hotels USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "hotels"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Hotels binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Hotels"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          100 100 0
+        WIDTH          2
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kinderopvang"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_kinderopvang USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "kinderopvang"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Kinderopvang binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Kinderopvang"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          250 250 0
+        WIDTH          2
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "cultuur"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "cultuur"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Culturele instellingen binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Cultuur"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          140 255 70
+        WIDTH          2
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "religie"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_religies USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "religie"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Religieuze instellingen binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Religie"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          50 250 200
+        WIDTH          2
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "sport"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_sport USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "sport"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Sportvelden en clubs binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Sport"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          250 150 0
+        WIDTH          2
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "zorg"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zorg USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "zorg"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Zorginstellingen binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Zorg"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          150 250 0
+        WIDTH          2
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "gemeente"
+    GROUP           "Vestiging"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_gemeente USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   500001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "gemeente"
+      "ows_group_title"     "vestigingen"
+      "ows_abstract"        "Gemeente instellingen binnen Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+
+    CLASS
+      NAME "Gemeente"
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  500001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 200
+        COLOR          120 200 200
+        WIDTH          2
+      END
+    END
+  END
+
+
 END
