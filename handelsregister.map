@@ -111,13 +111,13 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Horeca"
+    NAME            "horeca"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   5001
+    MAXSCALEDENOM   20001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -138,7 +138,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "hotel-restaurant")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -152,7 +152,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "overige horeca")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -166,7 +166,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "kantine, catering")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -180,7 +180,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "cafetaria, snackbar, ijssalon")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -194,7 +194,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "café")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -208,7 +208,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "hotel, pension")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -222,7 +222,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "restaurant, café-restaurant")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
+        MAXSCALEDENOM  20001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -236,7 +236,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Financiele dienstverlening, verhuur van roerend en onroerend goed"
+    NAME            "financiele_dienstverlening_verhuur"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
@@ -306,7 +306,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Overige"
+    NAME            "overige"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
@@ -390,7 +390,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Cultuur Sport Recreatie"
+    NAME            "cultuur_sport_recreatie"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
@@ -474,7 +474,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Telecommunicatie"
+    NAME            "telecommunicatie"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
@@ -543,7 +543,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Persoonlijke dienstverlening"
+    NAME            "persoonlijke_dienstverlening"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
@@ -641,7 +641,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Landbouw"
+    NAME            "landbouw"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
@@ -753,7 +753,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Handel, vervoer en opslag"
+    NAME            "handel_vervoer_opslag"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
@@ -850,7 +850,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Zakelijke dienstverlening"
+    NAME            "zakelijke_dienstverlening"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
@@ -1030,7 +1030,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Productie, Installatie, Reparatie"
+    NAME            "productie_installatie_reparatie"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
@@ -1099,7 +1099,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Overheid Onderwijs Zorg"
+    NAME            "overheid_onderwijs_zorg"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
@@ -1169,7 +1169,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "Bouw"
+    NAME            "bouw"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
