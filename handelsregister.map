@@ -45,7 +45,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   2001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
@@ -67,7 +67,7 @@ MAP
       NAME "Vestiging"
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  2001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -130,7 +130,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   2001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -151,7 +151,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "hotel-restaurant")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -165,7 +165,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "overige horeca")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -179,7 +179,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "kantine, catering")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -193,7 +193,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "cafetaria, snackbar, ijssalon")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -207,7 +207,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "café")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -221,7 +221,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "hotel, pension")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -235,7 +235,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "restaurant, café-restaurant")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -255,7 +255,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -277,7 +277,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -291,7 +291,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "verhuur van roerende goederen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -305,7 +305,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "holdings, financiële dienstverlening en verzekeringen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -325,7 +325,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -347,7 +347,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "idieële organisaties")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -361,7 +361,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "belangenorganisaties")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -375,7 +375,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "hobbyclubs")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -389,7 +389,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "overige")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -409,7 +409,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -431,7 +431,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "sport")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -445,7 +445,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "musea, bibliotheken, kunstuitleen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -459,7 +459,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "kunst")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -473,7 +473,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "recreatie")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -493,7 +493,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -515,7 +515,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "activiteiten op het gebied van ict")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -529,7 +529,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "activiteiten  op gebied van film, tv, radio, audio")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -543,7 +543,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "telecommunicatie, uitgeverijen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -562,7 +562,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -584,7 +584,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "sauna, solaria")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -598,7 +598,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "schoonheidsverzorging")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -612,7 +612,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "uitvaart, crematoria")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -626,7 +626,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "kappers")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -640,7 +640,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "overige dienstverlening")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -660,7 +660,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -682,7 +682,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "teelt eenjarige gewassen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -696,7 +696,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "gemengd bedrijf")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -710,7 +710,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "fokken, houden dieren")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -724,7 +724,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "teelt sierplanten")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -738,7 +738,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "dienstverlening voor de land/tuinbouw")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -752,7 +752,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "teelt meerjarige gewassen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -772,7 +772,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -794,7 +794,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "vervoer")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -808,7 +808,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -822,7 +822,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "opslag")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -836,7 +836,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "dienstverlening vervoer")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -850,7 +850,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -869,7 +869,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -890,7 +890,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -904,7 +904,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "overige zakelijke dienstverlening")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -918,7 +918,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "reclame en marktonderzoek")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -932,7 +932,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "interieurarchitecten")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -946,7 +946,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "managementadvies, economisch advies")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -960,7 +960,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "technisch ontwerp, advies, keuring/research")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -974,7 +974,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "design")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -988,7 +988,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "public relationsbureaus")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1002,7 +1002,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "advocaten rechtskundige diensten, notarissen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1016,7 +1016,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "architecten")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1030,7 +1030,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "accountancy, administratie")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1049,7 +1049,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -1071,7 +1071,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "installatie (geen bouw)")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1085,7 +1085,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "reparatie (geen bouw)")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1099,7 +1099,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "productie")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1118,7 +1118,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -1140,7 +1140,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "onderwijs")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1154,7 +1154,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "gezondheids- en welzijnszorg")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1168,7 +1168,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "overheid")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1188,7 +1188,7 @@ MAP
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
-    MAXSCALEDENOM   20001
+    MAXSCALEDENOM   5001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -1210,7 +1210,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "bouw overig")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1224,7 +1224,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "bouwinstallatie")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1238,7 +1238,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "afwerking van gebouwen")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1252,7 +1252,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "dak- en overige gespecialiseerde bouw")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1266,7 +1266,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "grond, water, wegenbouw")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
@@ -1280,7 +1280,7 @@ MAP
       EXPRESSION ("[sbi_detailgroep]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf")
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  20001
+        MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 200
