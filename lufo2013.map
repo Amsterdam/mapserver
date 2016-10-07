@@ -9,7 +9,7 @@ MAP
     END
   END
 
-  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif .ovr"
+  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif"
   CONFIG "GDAL_DISABLE_READDIR_ON_OPEN"     "TRUE"
 
   #-------------------------------------------------------------------
@@ -29,42 +29,131 @@ MAP
   #============================================================================= 
 
   LAYER
-    NAME                    "lufo2013-smallscale"
+    NAME                    "lufo2013-5"
     GROUP                   "lufo2013"
-    DATA                    "/vsicurl/https://atlas.amsterdam.nl/luchtfotos/2013/overview-2013.tif"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2013-5.shp"
+    TILEITEM                "location"
     TYPE                    RASTER
-    # Zoom 5 - 8 RD
+    # Zoom 5 - 10 RD
     MAXSCALEDENOM           400000
-    MINSCALEDENOM           25000
+    MINSCALEDENOM           8000
     PROJECTION
       "init=epsg:28992" 
     END
 
     METADATA
-      "ows_title"           "lufo's 2013 kleinschalig"
+      "ows_title"           "lufo's 2013"
       "ows_group_title"     "lufo2013"
-      "ows_abstract"        "Kleinschalige luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
     END
   END
 
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    "lufo2013-largescale"
+    NAME                    "lufo2013-4"
     GROUP                   "lufo2013"
-    TILEINDEX               "/srv/mapserver/luchtfoto/2013-imagery.shp"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2013-4.shp"
     TILEITEM                "location"
     TYPE                    RASTER
-    # Zoom 8 - 16 RD
-    MAXSCALEDENOM           25000
+    # Zoom 11 RD
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "lufo's 2013 grootschalig"
+      "ows_title"           "lufo's 2013"
       "ows_group_title"     "lufo2013"
-      "ows_abstract"        "Grootschalige luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2013-3"
+    GROUP                   "lufo2013"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2013-3.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 12 RD
+    MAXSCALEDENOM           4000
+    MINSCALEDENOM           2000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2013"
+      "ows_group_title"     "lufo2013"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2013-2"
+    GROUP                   "lufo2013"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2013-2.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 13 RD
+    MAXSCALEDENOM           2000
+    MINSCALEDENOM           1000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2013"
+      "ows_group_title"     "lufo2013"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2013-1"
+    GROUP                   "lufo2013"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2013-1.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 14 RD
+    MAXSCALEDENOM           1000
+    MINSCALEDENOM           500
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2013"
+      "ows_group_title"     "lufo2013"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2013-0"
+    GROUP                   "lufo2013"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2013-0.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 15-17 RD
+    MAXSCALEDENOM           500
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2013"
+      "ows_group_title"     "lufo2013"
+      "ows_abstract"        "Luchtfoto's van 2013 van het grondgebied van de gemeente Amsterdam"
     END
   END
 

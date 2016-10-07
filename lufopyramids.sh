@@ -12,6 +12,7 @@
 # Usage:
 # -----------------------------------------
 # ./lufopyramids.sh <source dir of tiffs> <destination dir of result> <YYYY>
+# ./lufopyramids.sh /srv/lufo/2004 /srv/lufo 2004
 #
 # -----------------------------------------
 # Requirements:
@@ -21,6 +22,7 @@
 # -----------------------------------------
 
 SOURCEDIR=$1
+DESTDIR_ROOT=$2
 DESTDIR=$2/pyramid
 YEAR=$3
 
@@ -37,7 +39,7 @@ if [ -d $DESTDIR ] ; then
 fi
 
 mkdir -p $DESTDIR/0
-gdal_retile.py -v -r cubic -levels 5 -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR --optfile /tmp/list.txtd
+gdal_retile.py -v -r cubic -levels 5 -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR --optfile /tmp/list.txt
 
 # Put original resolution images in their own subdirectory
 
@@ -56,11 +58,13 @@ for i in $LEVELS; do
 
     gdaltindex $DESTDIR/imagery-$YEAR-$i.shp $DESTDIR/$i/*.tif
 
-    ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$YEAR-$i' SET location = '/vsicurl/https://atlas.amsterdam.nl/luchtfotos/' || SUBSTR(location,length('$DESTDIR/'),length(location))" imagery-$YEAR-$i.shp
+    ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$YEAR-$i' SET location = '/vsicurl/https://atlas.amsterdam.nl/luchtfotos/' || SUBSTR(location,length('$DESTDIR/'),length(location))" $DESTDIR/imagery-$YEAR-$i.shp
 
-    ogrinfo -sql "CREATE SPATIAL INDEX ON imagery-$YEAR-$i" imagery-$YEAR-$i.shp
+    ogrinfo -sql "CREATE SPATIAL INDEX ON imagery-$YEAR-$i" $DESTDIR/imagery-$YEAR-$i.shp
 
 done
+
+gdaltindex $DESTDIR_ROOT/imagery.shp $DESTDIR/0/*.tif
 
 # -----------------------------------------
 # Documentation:
