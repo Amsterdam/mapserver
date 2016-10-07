@@ -58,7 +58,7 @@ for i in $LEVELS; do
 
     gdaltindex $DESTDIR/imagery-$YEAR-$i.shp $DESTDIR/$i/*.tif
 
-    ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$YEAR-$i' SET location = '/vsicurl/https://atlas.amsterdam.nl/luchtfotos/' || SUBSTR(location,length('$DESTDIR/'),length(location))" $DESTDIR/imagery-$YEAR-$i.shp
+    ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$YEAR-$i' SET location = '/vsicurl/https://atlas.amsterdam.nl/luchtfotos/$YEAR/pyramid' || SUBSTR(location,length('$DESTDIR/'),length(location))" $DESTDIR/imagery-$YEAR-$i.shp
 
     ogrinfo -sql "CREATE SPATIAL INDEX ON imagery-$YEAR-$i" $DESTDIR/imagery-$YEAR-$i.shp
 
