@@ -18,7 +18,7 @@ MAP
   WEB
     METADATA
       "ows_title"           "Handelsregister"
-      "ows_abstract"        "Vestigingen van bedrijfigheid gerelateerd aan de gemeente Amsterdam"
+      "ows_abstract"        "Vestigingen in de gemeente Amsterdam uit het Handelsregister"
     END
   END
 
@@ -39,8 +39,8 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "alle_vestigingen"
-    GROUP           "Vestiging"
+    NAME            "vestiging"
+    GROUP           "vestigingen"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -54,9 +54,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Alle vestigingen"
+      "ows_title"           "vestiging"
       "ows_group_title"     "vestigingen"
-      "ows_abstract"        "vestiging locaties bezoek en post adressen gerelateerd aan Amsterdam"
+      "ows_abstract"        "Vestigingslocaties, bezoek- en postadressen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
@@ -64,7 +64,7 @@ MAP
 
 
     CLASS
-      NAME "Vestiging"
+      NAME "vestiging"
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -81,8 +81,8 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "vestiging_namen"
-    GROUP           "Vestiging"
+    NAME            "vestiging_label"
+    GROUP           "vestigingen"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -95,9 +95,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "vestiging_namen"
-      "ows_group_title"     "vestigingen"
-      "ows_abstract"        "Labels van vestigingen"
+      "ows_title"           "vestiging_label"
+      "ows_group_title"     "vestigingen_label"
+      "ows_abstract"        "Labels van vestigingslocaties, bezoek- en postadressen"
     END
 
     LABELITEM          "naam"
@@ -127,7 +127,7 @@ MAP
 
   LAYER
     NAME            "horeca"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -141,7 +141,7 @@ MAP
 
     METADATA
       "ows_title"           "Horeca"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Horeca vestigingen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -248,8 +248,8 @@ MAP
   END
 
   LAYER
-    NAME            "horeca_namen"
-    GROUP           "Vestiging"
+    NAME            "horeca_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -263,7 +263,7 @@ MAP
 
     METADATA
       "ows_title"           "horeca_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -291,7 +291,7 @@ MAP
 
   LAYER
     NAME            "financiele_dienstverlening_verhuur"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -304,8 +304,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Financiele dienstverlening en verhuur"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "financiele_dienstverlening_verhuur"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van financiele dienstverleners en verhuur van roerende en onroerende goederen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -313,7 +313,7 @@ MAP
     END
 
     CLASS
-      NAME "Holdings, Financiële dienstverlening en Verzekeringen"
+      NAME "holdings, financiële dienstverlening en verzekeringen"
       EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen")
       STYLE
         MINSCALEDENOM  100
@@ -327,7 +327,7 @@ MAP
     END
 
     CLASS
-      NAME "Holdings (geen financiële)"
+      NAME "holdings (geen financiële)"
       EXPRESSION ("[sbi_detail_group]" eq "holdings (geen financiële)")
       STYLE
         MINSCALEDENOM  100
@@ -341,7 +341,7 @@ MAP
     END
 
     CLASS
-      NAME "Verhuur van- en beheer/handel in onroerend goed"
+      NAME "verhuur van- en beheer/handel in onroerend goed"
       EXPRESSION ("[sbi_detail_group]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
         MINSCALEDENOM  100
@@ -355,7 +355,7 @@ MAP
     END
 
     CLASS
-      NAME "Verhuur van roerende goederen"
+      NAME "verhuur van roerende goederen"
       EXPRESSION ("[sbi_detail_group]" eq "verhuur van roerende goederen")
       STYLE
         MINSCALEDENOM  100
@@ -371,7 +371,7 @@ MAP
 
   LAYER
     NAME            "financiele_dienstverlening_verhuur_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur_na USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -385,7 +385,7 @@ MAP
 
     METADATA
       "ows_title"           "financiele_dienstverlening_verhuur_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -412,7 +412,7 @@ MAP
 
   LAYER
     NAME            "overige"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -426,7 +426,7 @@ MAP
 
     METADATA
       "ows_title"           "Overige"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van overige organisaties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -492,7 +492,7 @@ MAP
 
   LAYER
     NAME            "overige_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -506,7 +506,7 @@ MAP
 
     METADATA
       "ows_title"           "overige_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -534,7 +534,7 @@ MAP
 
   LAYER
     NAME            "cultuur_sport_recreatie"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -548,7 +548,7 @@ MAP
 
     METADATA
       "ows_title"           "Cultuur Sport Recreatie"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van cultuur, sport en recreatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -614,7 +614,7 @@ MAP
 
   LAYER
     NAME            "cultuur_sport_recreatie_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -628,7 +628,7 @@ MAP
 
     METADATA
       "ows_title"           "cultuur_sport_recreatie_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -656,7 +656,7 @@ MAP
 
   LAYER
     NAME            "telecommunicatie"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -670,7 +670,7 @@ MAP
 
     METADATA
       "ows_title"           "Telecommunicatie"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van telecommunicatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -736,7 +736,7 @@ MAP
 
   LAYER
     NAME            "telecommunicatie_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -750,7 +750,7 @@ MAP
 
     METADATA
       "ows_title"           "telecommunicatie_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -777,7 +777,7 @@ MAP
 
   LAYER
     NAME            "persoonlijke_dienstverlening"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -790,8 +790,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Persoonlijke dienstverlening"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "persoonlijke dienstverlening"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen persoonlijke dienstverlening"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -871,7 +871,7 @@ MAP
 
   LAYER
     NAME            "persoonlijke_dienstverlening_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -885,7 +885,7 @@ MAP
 
     METADATA
       "ows_title"           "persoonlijke_dienstverlening_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -913,7 +913,7 @@ MAP
 
   LAYER
     NAME            "landbouw"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -927,7 +927,7 @@ MAP
 
     METADATA
       "ows_title"           "Landbouw"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen landbouw organisaties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1021,7 +1021,7 @@ MAP
 
   LAYER
     NAME            "landbouw_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1035,7 +1035,7 @@ MAP
 
     METADATA
       "ows_title"           "landbouw_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1063,7 +1063,7 @@ MAP
 
   LAYER
     NAME            "handel_vervoer_opslag"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1077,7 +1077,7 @@ MAP
 
     METADATA
       "ows_title"           "Handel, vervoer en opslag"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1185,7 +1185,7 @@ MAP
 
   LAYER
     NAME            "handel_vervoer_opslag_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1199,7 +1199,7 @@ MAP
 
     METADATA
       "ows_title"           "handel_vervoer_opslag_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1226,7 +1226,7 @@ MAP
 
   LAYER
     NAME            "zakelijke_dienstverlening"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1240,7 +1240,7 @@ MAP
 
     METADATA
       "ows_title"           "Zakelijke dienstverlening"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
@@ -1402,7 +1402,7 @@ MAP
 
   LAYER
     NAME            "zakelijke_dienstverlening_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1416,7 +1416,7 @@ MAP
 
     METADATA
       "ows_title"           "zakelijke_dienstverlening_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1443,7 +1443,7 @@ MAP
 
   LAYER
     NAME            "productie_installatie_reparatie"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1457,7 +1457,7 @@ MAP
 
     METADATA
       "ows_title"           "Productie, Installatie, Reparatie"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1509,7 +1509,7 @@ MAP
 
   LAYER
     NAME            "productie_installatie_reparatie_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1523,7 +1523,7 @@ MAP
 
     METADATA
       "ows_title"           "productie_installatie_reparatie_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1550,7 +1550,7 @@ MAP
 
   LAYER
     NAME            "overheid_onderwijs_zorg"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1564,7 +1564,7 @@ MAP
 
     METADATA
       "ows_title"           "Overheid Onderwijs Zorg"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1616,7 +1616,7 @@ MAP
 
   LAYER
     NAME            "overheid_onderwijs_zorg_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1630,7 +1630,7 @@ MAP
 
     METADATA
       "ows_title"           "overheid_onderwijs_zorg_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1658,7 +1658,7 @@ MAP
 
   LAYER
     NAME            "bouw"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1672,7 +1672,7 @@ MAP
 
     METADATA
       "ows_title"           "Bouw"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Bouwbedrijven"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1766,7 +1766,7 @@ MAP
 
   LAYER
     NAME            "bouw_namen"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE geometrie"
     TYPE            POINT
@@ -1780,7 +1780,7 @@ MAP
 
     METADATA
       "ows_title"           "bouw_namen"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
