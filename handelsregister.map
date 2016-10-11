@@ -84,7 +84,7 @@ MAP
     NAME            "vestiging_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -95,7 +95,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Vestiging namen"
+      "ows_title"           "vestiging_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -251,7 +251,7 @@ MAP
     NAME            "horeca_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -262,7 +262,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Horeca namen"
+      "ows_title"           "horeca_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -353,13 +353,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Holdings (geen financiële)"
+      EXPRESSION ("[sbi_detail_group]" eq "holdings (geen financiële)")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          183 210 66
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
     NAME            "financiele_dienstverlening_verhuur_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur_na USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -370,7 +384,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Financiele Dienstverlening Verhuur Namen"
+      "ows_title"           "financiele_dienstverlening_verhuur_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -480,7 +494,7 @@ MAP
     NAME            "overige_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -491,7 +505,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Overige namen"
+      "ows_title"           "overige_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -602,7 +616,7 @@ MAP
     NAME            "cultuur_sport_recreatie_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -613,7 +627,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Cultuur, sport, recreatie namen"
+      "ows_title"           "cultuur_sport_recreatie_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -692,8 +706,8 @@ MAP
     END
 
     CLASS
-      NAME "Telecommunicatie, Uitgeverijen"
-      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie, uitgeverijen")
+      NAME "Telecommunicatie"
+      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -704,13 +718,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Uitgeverijen"
+      EXPRESSION ("[sbi_detail_group]" eq "uitgeverijen")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          183 210 66
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
     NAME            "telecommunicatie_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -721,7 +749,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Telecommunicatie namen"
+      "ows_title"           "telecommunicatie_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -845,7 +873,7 @@ MAP
     NAME            "persoonlijke_dienstverlening_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -856,7 +884,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Persoonlijke dienstverlening namen"
+      "ows_title"           "persoonlijke_dienstverlening_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -995,7 +1023,7 @@ MAP
     NAME            "landbouw_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1006,7 +1034,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Landbouw namen"
+      "ows_title"           "landbouw_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -1113,6 +1141,20 @@ MAP
     END
 
     CLASS
+      NAME "Handel en reparatie van auto's"
+      EXPRESSION ("[sbi_detail_group]" eq "handel en reparatie van auto s")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          25 166 132
+        WIDTH          1
+      END
+    END
+
+    CLASS
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
       EXPRESSION ("[sbi_detail_group]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
@@ -1125,13 +1167,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
+      EXPRESSION ("[sbi_detail_group]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          117 47 142
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
     NAME            "handel_vervoer_opslag_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1142,7 +1198,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Handel, vervoer en opslag namen"
+      "ows_title"           "handel_vervoer_opslag_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -1349,7 +1405,7 @@ MAP
     NAME            "zakelijke_dienstverlening_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1360,7 +1416,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Zakelijke dienstverlening namen"
+      "ows_title"           "zakelijke_dienstverlening_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -1456,7 +1512,7 @@ MAP
     NAME            "productie_installatie_reparatie_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1467,7 +1523,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Productie, installatie, reparatie namen"
+      "ows_title"           "productie_installatie_reparatie_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -1564,7 +1620,7 @@ MAP
     NAME            "overheid_onderwijs_zorg_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1575,7 +1631,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Overheid, onderwijs, zorg namen"
+      "ows_title"           "overheid_onderwijs_zorg_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
@@ -1714,7 +1770,7 @@ MAP
     NAME            "bouw_namen"
     GROUP           "Vestiging"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE geometrie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1725,7 +1781,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Bouw namen"
+      "ows_title"           "bouw_namen"
       "ows_group_title"     "vestigingen"
       "ows_abstract"        "Labels van vestigingen"
     END
