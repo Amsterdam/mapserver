@@ -29,22 +29,22 @@ MAP
 
   #=============================================================================
   # LAYERS
-  #============================================================================= 
-  
+  #=============================================================================
+
   LAYER
     NAME            "openbareruimte"
     GROUP           "bag"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_openbareruimte USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_bag_openbareruimte_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   40001
     OPACITY         50
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "openbareruimte"
       "ows_group_title"     "bag"
@@ -52,7 +52,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-    
+
     CLASSITEM "opr_type"
 
     CLASS
@@ -109,7 +109,7 @@ MAP
         WIDTH          1
       END
     END
-    
+
     CLASS
       NAME       "Landschappelijk gebied"
       EXPRESSION /06/
@@ -131,25 +131,25 @@ MAP
         WIDTH          1
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "pand"
     GROUP           "bag"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_pand USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_bag_pand_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "pand"
       "ows_group_title"     "bag"
@@ -166,25 +166,25 @@ MAP
         WIDTH          1
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "ligplaats"
     GROUP           "bag"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_ligplaats USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "ligplaats"
       "ows_group_title"     "bag"
@@ -201,25 +201,25 @@ MAP
         WIDTH          1
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------     
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "standplaats"
     GROUP           "bag"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_standplaats USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
     TEMPLATE     "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "standplaats"
       "ows_group_title"     "bag"
@@ -236,33 +236,33 @@ MAP
         WIDTH          1
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------     
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "verblijfsobject"
     GROUP           "bag"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_bag_verblijfsobject USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_bag_verblijfsobject_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
     TEMPLATE     "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "verblijfsobject"
       "ows_group_title"     "bag"
       "ows_abstract"        "BAG verblijfsobjecten van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-    END  
-    
+    END
+
     CLASS
       STYLE
         SYMBOL         'stip'
@@ -272,9 +272,9 @@ MAP
         SIZE           5
       END
     END
-    
+
   END
-  
+
 
 
 #=============================================================================
