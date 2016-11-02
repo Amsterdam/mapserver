@@ -1,0 +1,524 @@
+#==============================================================================
+#
+# kaartteksten.map
+# doel: serveren van kaartteksten ten behoeve van de basiskaart
+
+#==============================================================================
+
+MAP
+  NAME                      "kaartteksten"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "kaartteksten"
+      "ows_abstract"        "Kaartteksten op de referentiekaart"
+    END
+  END
+
+  IMAGECOLOR                "#fefafa"
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME                    waternamen
+    MAXSCALEDENOM           4000
+    TYPE                    POINT
+    DATA                    "geometrie FROM (SELECT geometrie, opr_label_tekst, (opr_label_hoek * -1) as hoek, identificatie_lokaalid FROM imgeo.bgt_openbareruimtelabel WHERE openbareruimtetype = 'Water') AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM         1000
+      LABEL
+        SIZE                14
+        COLOR               "#D8F6FF"
+        TEXT                '[opr_label_tekst]'
+        POSITION            cc
+        ANGLE               [hoek]
+        FONT                "Corbel-B"
+        TYPE                truetype
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         2000
+      MINSCALEDENOM         1000
+      LABEL
+        SIZE                10
+        COLOR               "#D8F6FF"
+        TEXT                '[opr_label_tekst]'
+        POSITION            cc
+        ANGLE               [hoek]
+        FONT                "Corbel-B"
+        TYPE                truetype
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         4000
+      MINSCALEDENOM         2000
+      LABEL
+        SIZE                8
+        COLOR               "#D8F6FF"
+        TEXT                '[opr_label_tekst]'
+        POSITION            cc
+        ANGLE               [hoek]
+        FONT                "Corbel-B"
+        TYPE                truetype
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    huisnummers
+    MAXSCALEDENOM           750
+    TYPE                    POINT
+    DATA                    "geom FROM (SELECT geom,hnr_label_tekst,(hnr_label_hoek * -1) AS hoek, identificatie_lokaalid FROM straatnamen_ams.huisnummers) AS data USING UNIQUE identificatie_lokaalid USING srid=3857"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:3857"
+    END
+    CLASS
+      MAXSCALEDENOM         250
+        LABEL
+        SIZE                14
+        COLOR               "#787878"
+        TEXT                '[hnr_label_tekst]'
+        POSITION            cc
+        ANGLE               [hoek]
+        FONT                "Corbel"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         500
+      MINSCALEDENOM         250
+      LABEL
+        SIZE                10
+        COLOR               "#787878"
+        TEXT                '[hnr_label_tekst]'
+        POSITION            cc
+        ANGLE               [hoek]
+        FONT                "Corbel"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         1000
+      MINSCALEDENOM         500
+      LABEL
+        SIZE                8
+        COLOR               "#999999"
+        TEXT                '[hnr_label_tekst]'
+        POSITION            cc
+        ANGLE               [hoek]
+        FONT                "Corbel"
+        TYPE                truetype
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    straatnamen
+    MAXSCALEDENOM           25000
+    TYPE                    LINE
+    DATA                    "geom FROM (SELECT geom,hoofdverkeersgebruik,lengte, typeweg, straatnaam, ogc_fid FROM straatnamen_ams.straatnamen WHERE hoofdverkeersgebruik NOT IN ('(1:voetgangers)','(1:fietsers, bromfietsers)') ORDER BY lengte ) AS data USING UNIQUE ogc_fid USING srid=3857"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:3857"
+    END
+    CLASS
+      MAXSCALEDENOM         250
+      LABEL
+        SIZE                20
+        COLOR               "#999999"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      512
+        BUFFER              32
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         1000
+      MINSCALEDENOM         250
+      LABEL
+        SIZE                14
+        COLOR               "#787878"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      512
+        BUFFER              16
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         2000
+      MINSCALEDENOM         1000
+      LABEL
+        SIZE                12
+        COLOR               "#787878"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      512
+        BUFFER              16
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         4000
+      MINSCALEDENOM         2000
+      LABEL
+        SIZE                10
+        COLOR               "#787878"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      256
+        BUFFER              8
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         8000
+      MINSCALEDENOM         4000
+      EXPRESSION            (([lengte] >= 500) OR ('[typeweg]' = '(1:regionale weg)'))
+      LABEL
+        SIZE                 10
+        COLOR               "#787878"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        PARTIALS            false
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      256
+        BUFFER              8
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         12500
+      MINSCALEDENOM         8000
+      EXPRESSION            ((([lengte] >= 500) OR ('[typeweg]' = '(1:regionale weg)'))  AND ('[typeweg]' != '(1:autosnelweg)'))
+      LABEL
+        SIZE                 10
+        COLOR               "#787878"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        PARTIALS            false
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      128
+        BUFFER              4
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         24000
+      MINSCALEDENOM         12500
+      EXPRESSION            ((([lengte] >= 1000) OR ('[typeweg]' = '(1:regionale weg)')) AND ('[typeweg]' != '(1:autosnelweg)'))
+      LABEL
+        SIZE                8
+        COLOR               "#787878"
+        TEXT                '[straatnaam]'
+        PARTIALS            false
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      256
+        BUFFER              4
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         25000
+      MINSCALEDENOM         5000
+      EXPRESSION            ('[typeweg]' = '(1:autosnelweg)')
+      LABEL
+        SIZE                10
+        COLOR               "#787878"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[straatnaam]'
+        PARTIALS            false
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        ANGLE               FOLLOW
+        PRIORITY            [lengte]
+        REPEATDISTANCE      512
+        BUFFER              8
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    parken
+    MAXSCALEDENOM           25000
+    TYPE                    POINT
+    DATA                    "geom FROM (SELECT upper(naamnl) as naam,geom,typefunctioneelgebied,ogc_fid FROM straatnamen_ams.functioneelgebied WHERE typefunctioneelgebied IN ('dierentuin, safaripark', 'park')) AS data USING UNIQUE ogc_fid using srid=3857"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:3857"
+    END
+    CLASS
+      MAXSCALEDENOM         2000
+      LABEL
+        SIZE                42
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         4000
+      MINSCALEDENOM         2000
+      LABEL
+        SIZE                20
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         8000
+      MINSCALEDENOM         4000
+      LABEL
+        SIZE                16
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         12500
+      MINSCALEDENOM         8000
+      LABEL
+        SIZE                12
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    waterloop
+    MAXSCALEDENOM           25000
+    TYPE                    POINT
+    DATA                    "geom FROM (SELECT * from straatnamen_ams.waterloop WHERE textstring != 'Jachthaven') as data using unique ogc_fid using srid=3857"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:3857"
+    END
+    CLASS
+      MAXSCALEDENOM         8000
+      MINSCALEDENOM         4000
+      LABEL
+        SIZE                16
+        COLOR               "#D8F6FF"
+        TEXT                '[textstring]'
+        ANGLE               [angle]
+        POSITION            cc
+        FONT                "Corbel-I"
+        TYPE                truetype
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         12500
+      MINSCALEDENOM         8000
+      LABEL
+        SIZE                12.201212789415656
+        COLOR               "#D8F6FF"
+        TEXT                '[textstring]'
+        ANGLE               [angle]
+        POSITION            cc
+        FONT                "Corbel-I"
+        TYPE                truetype
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         25000
+      MINSCALEDENOM         12500
+      LABEL
+        SIZE                10.6135611907387
+        COLOR               "#D8F6FF"
+        TEXT                '[textstring]'
+        ANGLE               [angle]
+        POSITION            cc
+        FONT                "Corbel-I"
+        TYPE                truetype
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    stations
+    MAXSCALEDENOM           25000
+    TYPE                    POINT
+    DATA                    "geom FROM (SELECT ogc_fid, geom, naam FROM straatnamen_ams.stations) AS data USING UNIQUE ogc_fid USING srid=3857"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:3857"
+    END
+    CLASS
+      MAXSCALEDENOM         4000
+      LABEL
+        SIZE                14
+        COLOR               "#666666"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        MAXLENGTH           0
+        WRAP                ' '
+        ALIGN               center
+      END
+    END
+    CLASS
+      # Zoom{=16}
+      MAXSCALEDENOM         12500
+      MINSCALEDENOM         4000
+      LABEL
+        SIZE                10
+        COLOR               "#666666"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT '[naam]'
+        POSITION cc
+        FONT "Corbel-B"
+        TYPE truetype
+        MAXLENGTH           0
+        WRAP                ' '
+        ALIGN               center
+        force               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         24000
+      MINSCALEDENOM         12500
+      LABEL
+        SIZE                8
+        COLOR               "#666666"
+        OUTLINECOLOR        "#ffffff"
+        OUTLINEWIDTH        2
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        MAXLENGTH           0
+        WRAP                ' '
+        ALIGN               center
+        force               true
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    plaatsnaam
+    TYPE                    POINT
+    DATA                    "geom3857 FROM (SELECT geom3857,ogc_fid,naamnl,typegebied from straatnamen_ams.plaats) as data using unique ogc_fid using srid=3857"
+    INCLUDE                 "connection_basiskaart.inc"
+    PROJECTION
+      "init=epsg:3857"
+    END
+    CLASS
+      MAXSCALEDENOM         12500
+      MINSCALEDENOM         8000
+      EXPRESSION            ('[typegebied]' = 'woonkern')
+      LABEL
+        SIZE                28
+        COLOR               "#666666cc"
+        TEXT                '[naamnl]'
+        FORCE               true
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         24000
+      MINSCALEDENOM         12500
+      EXPRESSION            ('[typegebied]' = 'woonkern')
+      LABEL
+        SIZE                18
+        COLOR               "#666666cc"
+        TEXT                '[naamnl]'
+        FORCE               true
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         96000
+      MINSCALEDENOM         24000
+      EXPRESSION            ('[typegebied]' = 'woonkern')
+      LABEL
+        SIZE                12
+        COLOR               "#666666cc"
+        TEXT                '[naamnl]'
+        POSITION            cc
+        FONT                "Corbel"
+        TYPE                truetype
+        BUFFER              8
+      END
+    END
+  END
+
+#=============================================================================
+
+END
