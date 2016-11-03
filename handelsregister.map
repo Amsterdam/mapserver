@@ -18,7 +18,7 @@ MAP
   WEB
     METADATA
       "ows_title"           "Handelsregister"
-      "ows_abstract"        "Vestigingen van bedrijfigheid gerelateerd aan de gemeente Amsterdam"
+      "ows_abstract"        "Vestigingen in de gemeente Amsterdam uit het Handelsregister"
     END
   END
 
@@ -39,8 +39,8 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "alle_vestigingen"
-    GROUP           "Vestiging"
+    NAME            "vestiging"
+    GROUP           "vestigingen"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -54,9 +54,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Alle vestigingen"
+      "ows_title"           "vestiging"
       "ows_group_title"     "vestigingen"
-      "ows_abstract"        "vestiging locaties bezoek en post adressen gerelateerd aan Amsterdam"
+      "ows_abstract"        "Vestigingslocaties, bezoek- en postadressen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
@@ -64,7 +64,7 @@ MAP
 
 
     CLASS
-      NAME "Vestiging"
+      NAME "vestiging"
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -81,10 +81,10 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "vestiging_namen"
-    GROUP           "Vestiging"
+    NAME            "vestiging_label"
+    GROUP           "vestigingen"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -95,9 +95,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Vestiging namen"
-      "ows_group_title"     "vestigingen"
-      "ows_abstract"        "Labels van vestigingen"
+      "ows_title"           "vestiging_label"
+      "ows_group_title"     "vestigingen_label"
+      "ows_abstract"        "Labels van vestigingslocaties, bezoek- en postadressen"
     END
 
     LABELITEM          "naam"
@@ -127,7 +127,7 @@ MAP
 
   LAYER
     NAME            "horeca"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -141,7 +141,7 @@ MAP
 
     METADATA
       "ows_title"           "Horeca"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Horeca vestigingen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -149,43 +149,15 @@ MAP
     END
 
     CLASS
-      NAME "Hotel-restaurant"
-      EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant")
+      NAME "Café"
+      EXPRESSION ("[sbi_detail_group]" eq "café")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Overige horeca"
-      EXPRESSION ("[sbi_detail_group]" eq "overige horeca")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Kantine, Catering"
-      EXPRESSION ("[sbi_detail_group]" eq "kantine, catering")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          23 164 84
         WIDTH          1
       END
     END
@@ -205,20 +177,6 @@ MAP
     END
 
     CLASS
-      NAME "Café"
-      EXPRESSION ("[sbi_detail_group]" eq "café")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          23 164 84
-        WIDTH          1
-      END
-    END
-
-    CLASS
       NAME "Hotel, Pension"
       EXPRESSION ("[sbi_detail_group]" eq "hotel, pension")
       STYLE
@@ -228,6 +186,34 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          25 166 132
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Hotel-restaurant"
+      EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          241 119 48
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Kantine, Catering"
+      EXPRESSION ("[sbi_detail_group]" eq "kantine, catering")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          254 239 53
         WIDTH          1
       END
     END
@@ -245,13 +231,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Overige horeca"
+      EXPRESSION ("[sbi_detail_group]" eq "overige horeca")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          250 178 49
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
-    NAME            "horeca_namen"
-    GROUP           "Vestiging"
+    NAME            "horeca_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -262,8 +262,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Horeca namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "horeca_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -291,7 +291,7 @@ MAP
 
   LAYER
     NAME            "financiele_dienstverlening_verhuur"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -304,8 +304,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Financiele dienstverlening en verhuur"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "financiele_dienstverlening_verhuur"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van financiele dienstverleners en verhuur van roerende en onroerende goederen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -313,7 +313,35 @@ MAP
     END
 
     CLASS
-      NAME "verhuur van- en beheer/handel in onroerend goed"
+      NAME "Holdings, financiële dienstverlening en verzekeringen"
+      EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          254 239 53
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Holdings (geen financiële)"
+      EXPRESSION ("[sbi_detail_group]" eq "holdings (geen financiële)")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          183 210 66
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Verhuur van- en beheer/handel in onroerend goed"
       EXPRESSION ("[sbi_detail_group]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
         MINSCALEDENOM  100
@@ -339,27 +367,13 @@ MAP
         WIDTH          1
       END
     END
-
-    CLASS
-      NAME "Holdings, Financiële dienstverlening en Verzekeringen"
-      EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
-        WIDTH          1
-      END
-    END
   END
 
   LAYER
-    NAME            "financiele_dienstverlening_verhuur_namen"
-    GROUP           "Vestiging"
+    NAME            "financiele_dienstverlening_verhuur_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur_na USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -370,8 +384,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Financiele Dienstverlening Verhuur Namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "financiele_dienstverlening_verhuur_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -398,7 +412,7 @@ MAP
 
   LAYER
     NAME            "overige"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -412,25 +426,11 @@ MAP
 
     METADATA
       "ows_title"           "Overige"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van overige organisaties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Idieële organisaties"
-      EXPRESSION ("[sbi_detail_group]" eq "idieële organisaties")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1
-      END
     END
 
     CLASS
@@ -462,6 +462,20 @@ MAP
     END
 
     CLASS
+      NAME "Idieële organisaties"
+      EXPRESSION ("[sbi_detail_group]" eq "idieële organisaties")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          241 119 48
+        WIDTH          1
+      END
+    END
+
+    CLASS
       NAME "Overige"
       EXPRESSION ("[sbi_detail_group]" eq "overige")
       STYLE
@@ -477,10 +491,10 @@ MAP
   END
 
   LAYER
-    NAME            "overige_namen"
-    GROUP           "Vestiging"
+    NAME            "overige_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -491,8 +505,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Overige namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "overige_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -520,7 +534,7 @@ MAP
 
   LAYER
     NAME            "cultuur_sport_recreatie"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -533,8 +547,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Cultuur Sport Recreatie"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "cultuur_sport_recreatie"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van cultuur, sport en recreatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -542,15 +556,15 @@ MAP
     END
 
     CLASS
-      NAME "Sport"
-      EXPRESSION ("[sbi_detail_group]" eq "sport")
+      NAME "Kunst"
+      EXPRESSION ("[sbi_detail_group]" eq "kunst")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
+        COLOR          254 239 53
         WIDTH          1
       END
     END
@@ -570,20 +584,6 @@ MAP
     END
 
     CLASS
-      NAME "Kunst"
-      EXPRESSION ("[sbi_detail_group]" eq "kunst")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
-        WIDTH          1
-      END
-    END
-
-    CLASS
       NAME "Recreatie"
       EXPRESSION ("[sbi_detail_group]" eq "recreatie")
       STYLE
@@ -596,13 +596,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Sport"
+      EXPRESSION ("[sbi_detail_group]" eq "sport")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          241 119 48
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
-    NAME            "cultuur_sport_recreatie_namen"
-    GROUP           "Vestiging"
+    NAME            "cultuur_sport_recreatie_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -613,8 +627,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Cultuur, sport, recreatie namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "cultuur_sport_recreatie_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -642,7 +656,7 @@ MAP
 
   LAYER
     NAME            "telecommunicatie"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -656,25 +670,11 @@ MAP
 
     METADATA
       "ows_title"           "Telecommunicatie"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van telecommunicatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Activiteiten op het gebied van ict"
-      EXPRESSION ("[sbi_detail_group]" eq "activiteiten op het gebied van ict")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1
-      END
     END
 
     CLASS
@@ -692,8 +692,22 @@ MAP
     END
 
     CLASS
-      NAME "Telecommunicatie, Uitgeverijen"
-      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie, uitgeverijen")
+      NAME "Activiteiten op het gebied van ict"
+      EXPRESSION ("[sbi_detail_group]" eq "activiteiten op het gebied van ict")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          241 119 48
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Telecommunicatie"
+      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -704,13 +718,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Uitgeverijen"
+      EXPRESSION ("[sbi_detail_group]" eq "uitgeverijen")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          183 210 66
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
-    NAME            "telecommunicatie_namen"
-    GROUP           "Vestiging"
+    NAME            "telecommunicatie_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -721,8 +749,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Telecommunicatie namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "telecommunicatie_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -749,7 +777,7 @@ MAP
 
   LAYER
     NAME            "persoonlijke_dienstverlening"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -762,8 +790,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Persoonlijke dienstverlening"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "persoonlijke dienstverlening"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen persoonlijke dienstverlening"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -771,7 +799,21 @@ MAP
     END
 
     CLASS
-      NAME "sauna, solariat"
+      NAME "Kappers"
+      EXPRESSION ("[sbi_detail_group]" eq "kappers")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          183 210 66
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Sauna, solariat"
       EXPRESSION ("[sbi_detail_group]" eq "sauna, solaria")
       STYLE
         MINSCALEDENOM  100
@@ -785,7 +827,7 @@ MAP
     END
 
     CLASS
-      NAME "schoonheidsverzorging"
+      NAME "Schoonheidsverzorging"
       EXPRESSION ("[sbi_detail_group]" eq "schoonheidsverzorging")
       STYLE
         MINSCALEDENOM  100
@@ -813,20 +855,6 @@ MAP
     END
 
     CLASS
-      NAME "Kappers"
-      EXPRESSION ("[sbi_detail_group]" eq "kappers")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
-        WIDTH          1
-      END
-    END
-
-    CLASS
       NAME "Overige dienstverlening"
       EXPRESSION ("[sbi_detail_group]" eq "overige dienstverlening")
       STYLE
@@ -842,10 +870,10 @@ MAP
   END
 
   LAYER
-    NAME            "persoonlijke_dienstverlening_namen"
-    GROUP           "Vestiging"
+    NAME            "persoonlijke_dienstverlening_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -856,8 +884,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Persoonlijke dienstverlening namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "persoonlijke_dienstverlening_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -885,7 +913,7 @@ MAP
 
   LAYER
     NAME            "landbouw"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -899,7 +927,7 @@ MAP
 
     METADATA
       "ows_title"           "Landbouw"
-      "ows_group_title"     "vestigingen"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen landbouw organisaties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -907,29 +935,15 @@ MAP
     END
 
     CLASS
-      NAME "Teelt eenjarige gewassen"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt eenjarige gewassen")
+      NAME "Dienstverlening voor de land/tuinbouw"
+      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening voor de land/tuinbouw")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Gemengd bedrijf"
-      EXPRESSION ("[sbi_detail_group]" eq "gemengd bedrijf")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
+        COLOR          23 164 84
         WIDTH          1
       END
     END
@@ -949,29 +963,29 @@ MAP
     END
 
     CLASS
-      NAME "Teelt sierplanten"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt sierplanten")
+      NAME "Gemengd bedrijf"
+      EXPRESSION ("[sbi_detail_group]" eq "gemengd bedrijf")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
+        COLOR          250 178 49
         WIDTH          1
       END
     END
 
     CLASS
-      NAME "Dienstverlening voor de land/tuinbouw"
-      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening voor de land/tuinbouw")
+      NAME "Teelt eenjarige gewassen"
+      EXPRESSION ("[sbi_detail_group]" eq "teelt eenjarige gewassen")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23 164 84
+        COLOR          241 119 48
         WIDTH          1
       END
     END
@@ -989,13 +1003,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Teelt sierplanten"
+      EXPRESSION ("[sbi_detail_group]" eq "teelt sierplanten")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          183 210 66
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
-    NAME            "landbouw_namen"
-    GROUP           "Vestiging"
+    NAME            "landbouw_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1006,8 +1034,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Landbouw namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "landbouw_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1035,7 +1063,7 @@ MAP
 
   LAYER
     NAME            "handel_vervoer_opslag"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1048,26 +1076,12 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Handel, vervoer en opslag"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "handel_vervoer_opslag"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Vervoer"
-      EXPRESSION ("[sbi_detail_group]" eq "vervoer")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1
-      END
     END
 
     CLASS
@@ -1080,20 +1094,6 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          250 178 49
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Opslag"
-      EXPRESSION ("[sbi_detail_group]" eq "opslag")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
         WIDTH          1
       END
     END
@@ -1125,13 +1125,69 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Handel en reparatie van auto's"
+      EXPRESSION ("[sbi_detail_group]" eq "handel en reparatie van auto s")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          25 166 132
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
+      EXPRESSION ("[sbi_detail_group]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          117 47 142
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Opslag"
+      EXPRESSION ("[sbi_detail_group]" eq "opslag")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          254 239 53
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Vervoer"
+      EXPRESSION ("[sbi_detail_group]" eq "vervoer")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          241 119 48
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
-    NAME            "handel_vervoer_opslag_namen"
-    GROUP           "Vestiging"
+    NAME            "handel_vervoer_opslag_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1142,8 +1198,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Handel, vervoer en opslag namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "handel_vervoer_opslag_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1170,7 +1226,7 @@ MAP
 
   LAYER
     NAME            "zakelijke_dienstverlening"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1183,11 +1239,39 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Zakelijke dienstverlening"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "zakelijke_dienstverlening"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME "Accountancy, administratie"
+      EXPRESSION ("[sbi_detail_group]" eq "accountancy, administratie")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          29 174 236
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Advocaten rechtskundige diensten, notarissen"
+      EXPRESSION ("[sbi_detail_group]" eq "advocaten rechtskundige diensten, notarissen")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          233 22 139
+        WIDTH          1
+      END
     END
 
     CLASS
@@ -1205,29 +1289,28 @@ MAP
     END
 
     CLASS
-      NAME "Overige zakelijke dienstverlening"
-      EXPRESSION ("[sbi_detail_group]" eq "overige zakelijke dienstverlening")
+      NAME "Architecten"
+      EXPRESSION ("[sbi_detail_group]" eq "architecten")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
+        COLOR          21 134 201
         WIDTH          1
       END
-    END
 
     CLASS
-      NAME "Reclame en Marktonderzoek"
-      EXPRESSION ("[sbi_detail_group]" eq "reclame en marktonderzoek")
+      NAME "Design"
+      EXPRESSION ("[sbi_detail_group]" eq "design")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          117 47 142
         WIDTH          1
       END
     END
@@ -1261,34 +1344,6 @@ MAP
     END
 
     CLASS
-      NAME "Technisch ontwerp, advies, keuring/research"
-      EXPRESSION ("[sbi_detail_group]" eq "technisch ontwerp, advies, keuring/research")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          25 166 132
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Design"
-      EXPRESSION ("[sbi_detail_group]" eq "design")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          117 47 142
-        WIDTH          1
-      END
-    END
-
-    CLASS
       NAME "Public relationsbureaus"
       EXPRESSION ("[sbi_detail_group]" eq "public relationsbureaus")
       STYLE
@@ -1303,53 +1358,53 @@ MAP
     END
 
     CLASS
-      NAME "Advocaten rechtskundige diensten, notarissen"
-      EXPRESSION ("[sbi_detail_group]" eq "advocaten rechtskundige diensten, notarissen")
+      NAME "Reclame en Marktonderzoek"
+      EXPRESSION ("[sbi_detail_group]" eq "reclame en marktonderzoek")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22 139
+        COLOR          254 239 53
         WIDTH          1
       END
     END
 
     CLASS
-      NAME "Architecten"
-      EXPRESSION ("[sbi_detail_group]" eq "architecten")
+      NAME "Technisch ontwerp, advies, keuring/research"
+      EXPRESSION ("[sbi_detail_group]" eq "technisch ontwerp, advies, keuring/research")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          21 134 201
+        COLOR          25 166 132
         WIDTH          1
       END
     END
 
     CLASS
-      NAME "Accountancy, administratie"
-      EXPRESSION ("[sbi_detail_group]" eq "accountancy, administratie")
+      NAME "Overige zakelijke dienstverlening"
+      EXPRESSION ("[sbi_detail_group]" eq "overige zakelijke dienstverlening")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          29 174 236
+        COLOR          250 178 49
         WIDTH          1
       END
     END
   END
 
   LAYER
-    NAME            "zakelijke_dienstverlening_namen"
-    GROUP           "Vestiging"
+    NAME            "zakelijke_dienstverlening_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1360,8 +1415,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Zakelijke dienstverlening namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "zakelijke_dienstverlening_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1388,7 +1443,7 @@ MAP
 
   LAYER
     NAME            "productie_installatie_reparatie"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1401,8 +1456,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Productie, Installatie, Reparatie"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "productie_installatie_reparatie"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1424,20 +1479,6 @@ MAP
     END
 
     CLASS
-      NAME "Reparatie (geen bouw)"
-      EXPRESSION ("[sbi_detail_group]" eq "reparatie (geen bouw)")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
-        WIDTH          1
-      END
-    END
-
-    CLASS
       NAME "Productie"
       EXPRESSION ("[sbi_detail_group]" eq "productie")
       STYLE
@@ -1450,13 +1491,27 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Reparatie (geen bouw)"
+      EXPRESSION ("[sbi_detail_group]" eq "reparatie (geen bouw)")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          250 178 49
+        WIDTH          1
+      END
+    END
   END
 
   LAYER
-    NAME            "productie_installatie_reparatie_namen"
-    GROUP           "Vestiging"
+    NAME            "productie_installatie_reparatie_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1467,8 +1522,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Productie, installatie, reparatie namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "productie_installatie_reparatie_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1495,7 +1550,7 @@ MAP
 
   LAYER
     NAME            "overheid_onderwijs_zorg"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1508,27 +1563,12 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Overheid Onderwijs Zorg"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "overheid_onderwijs_zorg"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
-    END
-
-
-    CLASS
-      NAME "Onderwijs"
-      EXPRESSION ("[sbi_detail_group]" eq "onderwijs")
-      STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1
-      END
     END
 
     CLASS
@@ -1541,6 +1581,20 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          250 178 49
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Onderwijs"
+      EXPRESSION ("[sbi_detail_group]" eq "onderwijs")
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          241 119 48
         WIDTH          1
       END
     END
@@ -1561,10 +1615,10 @@ MAP
   END
 
   LAYER
-    NAME            "overheid_onderwijs_zorg_namen"
-    GROUP           "Vestiging"
+    NAME            "overheid_onderwijs_zorg_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1575,8 +1629,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Overheid, onderwijs, zorg namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "overheid_onderwijs_zorg_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
@@ -1604,7 +1658,7 @@ MAP
 
   LAYER
     NAME            "bouw"
-    GROUP           "Vestiging"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -1617,8 +1671,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Bouw"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "bouw"
+      "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Bouwbedrijven"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -1626,15 +1680,15 @@ MAP
     END
 
     CLASS
-      NAME "Bouw overig"
-      EXPRESSION ("[sbi_detail_group]" eq "bouw overig")
+      NAME "Afwerking van gebouwen"
+      EXPRESSION ("[sbi_detail_group]" eq "afwerking van gebouwen")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
+        COLOR          254 239 53
         WIDTH          1
       END
     END
@@ -1654,15 +1708,15 @@ MAP
     END
 
     CLASS
-      NAME "Afwerking van gebouwen"
-      EXPRESSION ("[sbi_detail_group]" eq "afwerking van gebouwen")
+      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
+      EXPRESSION ("[sbi_detail_group]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          25 166 132
         WIDTH          1
       END
     END
@@ -1696,25 +1750,25 @@ MAP
     END
 
     CLASS
-      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
-      EXPRESSION ("[sbi_detail_group]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf")
+      NAME "Bouw overig"
+      EXPRESSION ("[sbi_detail_group]" eq "bouw overig")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          25 166 132
+        COLOR          241 119 48
         WIDTH          1
       END
     END
   END
 
   LAYER
-    NAME            "bouw_namen"
-    GROUP           "Vestiging"
+    NAME            "bouw_label"
+    GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE geometrie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -1725,8 +1779,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Bouw namen"
-      "ows_group_title"     "vestigingen"
+      "ows_title"           "bouw_label"
+      "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
 
