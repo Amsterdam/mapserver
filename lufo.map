@@ -233,6 +233,29 @@ MAP
     END
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2003"
+    GROUP                   "lufo"
+    CONNECTION              "http://map.datapunt.amsterdam.nl/maps/lufo2003"
+    CONNECTIONTYPE          WMS
+    TYPE                    RASTER
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo2003"
+      "ows_group_title"     "lufo"
+      "ows_abstract"        "Luchtfoto's van 2003 van het grondgebied van de gemeente Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "lufo2003"
+      "wms_format"          "image/tiff"
+      "wms_server_version"  "1.1.1"
+    END
+  END
+
 
     # --------------------- FOR LOCAL USE FOR TILING ----------------------
 
