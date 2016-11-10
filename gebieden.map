@@ -28,8 +28,8 @@ MAP
 
   #=============================================================================
   # LAYERS
-  #============================================================================= 
-  
+  #=============================================================================
+
   LAYER
     NAME            "buurt"
     GROUP           "bestuurlijke_gebieden"
@@ -40,9 +40,9 @@ MAP
     MAXSCALEDENOM   12501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "buurt"
       "ows_group_title"     "bestuurlijke_gebieden"
@@ -52,18 +52,19 @@ MAP
     END
 
     CLASS
+      Name          Buurt
       STYLE
        ANTIALIAS    true
        OUTLINECOLOR 210 150 50
        WIDTH        2
-      END 
+      END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------  
-    
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "buurtcombinatie"
     GROUP           "bestuurlijke_gebieden"
@@ -74,9 +75,9 @@ MAP
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "buurtcombinatie"
       "ows_group_title"     "bestuurlijke_gebieden"
@@ -86,18 +87,19 @@ MAP
     END
 
     CLASS
+      NAME          Buurtcombinatie
       STYLE
        ANTIALIAS    true
        OUTLINECOLOR 210 100 50
        WIDTH        2
-      END 
+      END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------  
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "gebiedsgerichtwerken"
     GROUP           "gebieden"
@@ -108,9 +110,9 @@ MAP
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "gebiedsgerichtwerken"
       "ows_group_title"     "gebieden"
@@ -126,12 +128,12 @@ MAP
         WIDTH          2
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "stadsdeel"
     GROUP           "bestuurlijke_gebieden"
@@ -142,9 +144,9 @@ MAP
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "stadsdeel"
       "ows_group_title"     "bestuurlijke_gebieden"
@@ -158,12 +160,12 @@ MAP
        ANTIALIAS    true
        OUTLINECOLOR 210 50 50
        WIDTH        2
-      END 
+      END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
+
+  #-----------------------------------------------------------------------------
 
 
   LAYER
@@ -176,9 +178,9 @@ MAP
     MAXSCALEDENOM   5001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "bouwblok"
       "ows_group_title"     "gebieden"
@@ -188,18 +190,19 @@ MAP
     END
 
     CLASS
+      Name          Bouwblok
       STYLE
        ANTIALIAS    true
        OUTLINECOLOR 0 150 255
        WIDTH        2
-      END 
+      END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "grootstedelijkgebied"
     GROUP           "gebieden"
@@ -210,9 +213,9 @@ MAP
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "grootstedelijkgebied"
       "ows_group_title"     "gebieden"
@@ -222,18 +225,19 @@ MAP
     END
 
     CLASS
+      NAME             Grootstedelijk
       STYLE
         ANTIALIAS      true
         OUTLINECOLOR   150 40 255
         WIDTH          2
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-    
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "unesco"
     GROUP           "gebieden"
@@ -245,9 +249,9 @@ MAP
     OPACITY         60
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "unesco"
       "ows_group_title"     "gebieden"
@@ -255,9 +259,9 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-    
+
     CLASSITEM         naam
-    
+
     CLASS
       NAME            Kernzone
       EXPRESSION      /Kernzone/
@@ -267,7 +271,7 @@ MAP
         WIDTH          1
       END
     END
-    
+
     CLASS
       NAME             Bufferzone
       EXPRESSION       /Bufferzone/
@@ -278,13 +282,13 @@ MAP
       END
     END
 
-    
+
   END
-  
-  
-  #-----------------------------------------------------------------------------   
-  #-----------------------------------------------------------------------------   
-  
+
+
+  #-----------------------------------------------------------------------------
+  #-----------------------------------------------------------------------------
+
   LAYER
     NAME            "buurt_label"
     GROUP           "bestuurlijke_gebieden"
@@ -295,9 +299,9 @@ MAP
     MAXSCALEDENOM   8001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "buurt_label"
       "ows_group_title"     "bestuurlijke_gebieden"
@@ -306,6 +310,7 @@ MAP
 
     CLASS
       TEXT             '[naam] ([code])'
+      NAME            "Bestuurlijk gebied"
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  6001
@@ -331,11 +336,11 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
+
+  #-----------------------------------------------------------------------------
+
 
   LAYER
     NAME            "buurtcombinatie_label"
@@ -347,17 +352,18 @@ MAP
     MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "buurtcombinatie_label"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Labels van buurtcombinaties van de gemeente Amsterdam"
     END
-    
+
     CLASS
       TEXT             '[naam] ([vollcode])'
+      NAME             Buurtcombinatie code
       LABEL
         MINSCALEDENOM  5000
         MAXSCALEDENOM  10001
@@ -383,12 +389,12 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "gebiedsgerichtwerken_label"
     GROUP           "gebieden"
@@ -399,9 +405,9 @@ MAP
     MAXSCALEDENOM   40001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "gebiedsgerichtwerken_label"
       "ows_group_title"     "gebieden"
@@ -410,6 +416,7 @@ MAP
 
     CLASS
       TEXT             '[naam] ([code])'
+      NAME             'Gebiedsgerichtwerken code'
       LABEL
         MINSCALEDENOM  4000
         MAXSCALEDENOM  10001
@@ -435,10 +442,10 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------     
+
+  #-----------------------------------------------------------------------------
 
 
   LAYER
@@ -451,17 +458,18 @@ MAP
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "stadsdeel_label"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Labels van stadsdelen van de gemeente Amsterdam"
     END
-    
+
     CLASS
       TEXT             '[naam] ([code])'
+      NAME             'Stadsdeel code'
       LABEL
         MINSCALEDENOM  15000
         MAXSCALEDENOM  50001
@@ -487,12 +495,12 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "bouwblok_label"
     GROUP           "gebieden"
@@ -503,9 +511,9 @@ MAP
     MAXSCALEDENOM   5001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "bouwblok_label"
       "ows_group_title"     "gebieden"
@@ -514,6 +522,7 @@ MAP
 
     CLASS
       TEXT             '[code]'
+      NAME             'Bouwblok code'
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  2501
@@ -539,10 +548,10 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
+
+  #-----------------------------------------------------------------------------
 
 
   LAYER
@@ -555,9 +564,9 @@ MAP
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "grootstedelijkgebied_label"
       "ows_group_title"     "gebieden"
@@ -566,6 +575,7 @@ MAP
 
     CLASS
       TEXT             '[naam]'
+      NAME             'Grootstedelijk'
       LABEL
         MINSCALEDENOM  4000
         MAXSCALEDENOM  50001
@@ -591,12 +601,12 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
-  
-  #-----------------------------------------------------------------------------   
-  
-  
+
+  #-----------------------------------------------------------------------------
+
+
   LAYER
     NAME            "unesco_label"
     GROUP           "gebieden"
@@ -607,9 +617,9 @@ MAP
     MAXSCALEDENOM   20001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+    "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "unesco_label"
       "ows_group_title"     "gebieden"
@@ -618,6 +628,7 @@ MAP
 
     CLASS
       TEXT             '[naam]'
+      NAME             'Unesco naam'
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  10001
@@ -643,7 +654,7 @@ MAP
         PARTIALS       FALSE
       END
     END
-    
+
   END
 
 
