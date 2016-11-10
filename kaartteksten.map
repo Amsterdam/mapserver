@@ -289,7 +289,7 @@ MAP
     NAME                    parken
     MAXSCALEDENOM           25000
     TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied WHERE typefunctioneelgebied IN ('dierentuin, safaripark', 'park')) AS data USING UNIQUE lokaalid using srid=28992"
+    DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied_punt) AS data USING UNIQUE lokaalid using srid=28992"
     INCLUDE                 "connection_basiskaarttekst.inc"
     PROJECTION
       "init=epsg:28992"
@@ -347,6 +347,69 @@ MAP
     END
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    dierentuinen
+    MAXSCALEDENOM           25000
+    TYPE                    POINT
+    DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied_vlak) AS data USING UNIQUE lokaalid using srid=28992"
+    INCLUDE                 "connection_basiskaarttekst.inc"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM         2000
+      LABEL
+        SIZE                42
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         4000
+      MINSCALEDENOM         2000
+      LABEL
+        SIZE                20
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         8000
+      MINSCALEDENOM         4000
+      LABEL
+        SIZE                16
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+    CLASS
+      MAXSCALEDENOM         12500
+      MINSCALEDENOM         8000
+      LABEL
+        SIZE                12
+        COLOR               "#787878cc"
+        TEXT                '[naam]'
+        POSITION            cc
+        FONT                "Corbel-B"
+        TYPE                truetype
+        FORCE               true
+      END
+    END
+  END
 
   #-----------------------------------------------------------------------------
 
