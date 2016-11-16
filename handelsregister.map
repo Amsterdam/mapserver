@@ -134,7 +134,7 @@ MAP
     NAME            "horeca"
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca WHERE locatie_type='B' USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -147,7 +147,7 @@ MAP
     METADATA
       "ows_title"           "Horeca"
       "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Horeca vestigingen"
+      "ows_abstract"        "Horeca vestigingen bezoek"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
@@ -257,7 +257,7 @@ MAP
     NAME            "horeca_label"
     GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam WHERE locatie_type='B' USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
