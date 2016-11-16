@@ -134,7 +134,8 @@ MAP
     NAME            "horeca"
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca as h WHERE h.locatie_type='B' USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    FILTER          "locatie_type='B'"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -257,7 +258,8 @@ MAP
     NAME            "horeca_label"
     GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam WHERE locatie_type='B' USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
+    FILTER          "locatie_type='B'"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
