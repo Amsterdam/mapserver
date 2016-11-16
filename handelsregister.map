@@ -134,7 +134,7 @@ MAP
     NAME            "horeca"
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca WHERE locatie_type='B' USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca as h WHERE h.locatie_type='B' USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
