@@ -135,7 +135,6 @@ MAP
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
-    FILTER          "locatie_type='B'"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -144,6 +143,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "Horeca"
@@ -275,7 +277,7 @@ MAP
     END
 
     FILTER             "B"
-    FILTERITEM         locatie_type
+    FILTERITEM         "locatie_type"
 
     LABELITEM          "naam"
 
@@ -321,6 +323,9 @@ MAP
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     CLASS
       NAME "Holdings, financiële dienstverlening en verzekeringen"
@@ -1084,6 +1089,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "handel_vervoer_opslag"
