@@ -259,7 +259,6 @@ MAP
     GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
-    FILTER          "locatie_type='B'"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -274,6 +273,9 @@ MAP
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
+
+    FILTER             "B"
+    FILTERITEM         locatie_type
 
     LABELITEM          "naam"
 
