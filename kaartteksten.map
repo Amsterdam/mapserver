@@ -79,7 +79,7 @@ MAP
     TYPE                    POINT
     DATA                    "geometrie FROM (SELECT geometrie,hnr_label_tekst,(hnr_label_hoek::numeric * -1) AS hoek, identificatie_lokaalid FROM teksten.bgt_nummeraanduidingreeks) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
     # Not yet available in default BGT delivery?
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
@@ -132,7 +132,7 @@ MAP
     MAXSCALEDENOM           25000
     TYPE                    LINE
     DATA                    "geometrie FROM (SELECT geometrie, hoofdverkeersgebruik, lengte, typeweg, straatnaam, ogc_fid FROM teksten.straatnamen WHERE hoofdverkeersgebruik NOT IN ('(1:voetgangers)','(1:fietsers, bromfietsers)') ORDER BY lengte ) AS data USING UNIQUE ogc_fid USING srid=28992"
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
@@ -290,7 +290,7 @@ MAP
     MAXSCALEDENOM           25000
     TYPE                    POINT
     DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied_punt) AS data USING UNIQUE lokaalid using srid=28992"
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
@@ -354,7 +354,7 @@ MAP
     MAXSCALEDENOM           25000
     TYPE                    POINT
     DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied_vlak) AS data USING UNIQUE lokaalid using srid=28992"
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
@@ -418,7 +418,7 @@ MAP
     MAXSCALEDENOM           25000
     TYPE                    POINT
     DATA                    "geometrie FROM (SELECT geometrie, textstring, ogc_fid, angle FROM teksten.waterloop WHERE textstring != 'Jachthaven') AS data USING UNIQUE ogc_fid USING srid=28992"
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
@@ -470,7 +470,7 @@ MAP
     MAXSCALEDENOM           25000
     TYPE                    POINT
     DATA                    "geometrie FROM (SELECT ogc_fid, geometrie, naam FROM teksten.stations) AS data USING UNIQUE ogc_fid USING srid=28992"
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
@@ -533,7 +533,7 @@ MAP
     NAME                    plaatsnaam
     TYPE                    POINT
     DATA                    "geometrie FROM (SELECT geometrie,lokaalid,naamnl,typegebied from teksten.plaats_vlak) AS data USING UNIQUE lokaalid USING srid=28992"
-    INCLUDE                 "connection_basiskaarttekst.inc"
+    INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
     END
