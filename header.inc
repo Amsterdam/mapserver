@@ -51,7 +51,7 @@
       "ows_feature_info_mime_type"   "application/json"
       "wms_format"                   "image/png"
       "wfs_encoding"                 "UTF-8"
-      "wfs_maxfeatures"              "500000"
+      "wfs_maxfeatures"              "900000"
       "wfs_getfeature_formatlist"    "gml,geojson"
 
       # verplicht om aan de OGC standaard te voldoen:
