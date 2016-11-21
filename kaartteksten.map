@@ -26,7 +26,7 @@ MAP
     NAME                    waternamen
     MAXSCALEDENOM           4000
     TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT geometrie, opr_label_tekst, (opr_label_hoek::numeric * -1) as hoek, identificatie_lokaalid FROM imgeo.bgt_openbareruimtelabel WHERE openbareruimtetype = 'Water') AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, opr_label_tekst, (opr_label_hoek::numeric * -1) as hoek, identificatie_lokaalid FROM bgt.bgt_openbareruimtelabel WHERE openbareruimtetype = 'Water') AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
     INCLUDE                 "connection_basiskaart.inc"
     PROJECTION
       "init=epsg:28992"
