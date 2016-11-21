@@ -144,10 +144,13 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "Horeca"
       "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Horeca vestigingen"
+      "ows_abstract"        "Horeca vestigingen bezoek"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
@@ -267,12 +270,14 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "horeca_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -317,6 +322,9 @@ MAP
       "gml_include_items"   "all"
       "wms_extent"          "100000 450000 150000 500000"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     CLASS
       NAME "Holdings, financiële dienstverlening en verzekeringen"
@@ -389,6 +397,9 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "financiele_dienstverlening_verhuur_label"
       "ows_group_title"     "vestigingen_cbs_label"
@@ -429,6 +440,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "Overige"
@@ -510,6 +524,9 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "overige_label"
       "ows_group_title"     "vestigingen_cbs_label"
@@ -551,6 +568,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "cultuur_sport_recreatie"
@@ -632,6 +652,9 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "cultuur_sport_recreatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
@@ -673,6 +696,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "Telecommunicatie"
@@ -754,6 +780,9 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "telecommunicatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
@@ -794,6 +823,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "persoonlijke dienstverlening"
@@ -888,6 +920,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "persoonlijke_dienstverlening_label"
@@ -1039,11 +1074,15 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "landbouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
+
 
     LABELITEM          "naam"
 
@@ -1080,6 +1119,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "handel_vervoer_opslag"
@@ -1203,12 +1245,14 @@ MAP
       "init=epsg:28992"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
     METADATA
       "ows_title"           "handel_vervoer_opslag_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -1243,6 +1287,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "zakelijke_dienstverlening"
@@ -1426,6 +1473,10 @@ MAP
       "ows_abstract"        "Labels van vestigingen"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
+
     LABELITEM          "naam"
 
     CLASS
@@ -1460,6 +1511,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "productie_installatie_reparatie"
@@ -1533,6 +1587,10 @@ MAP
       "ows_abstract"        "Labels van vestigingen"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
+
     LABELITEM          "naam"
 
     CLASS
@@ -1567,6 +1625,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "overheid_onderwijs_zorg"
@@ -1640,6 +1701,10 @@ MAP
       "ows_abstract"        "Labels van vestigingen"
     END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
+
     LABELITEM          "naam"
 
     CLASS
@@ -1675,6 +1740,9 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
 
     METADATA
       "ows_title"           "bouw"
@@ -1789,6 +1857,10 @@ MAP
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
+
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
 
     LABELITEM          "naam"
 
