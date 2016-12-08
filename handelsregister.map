@@ -792,6 +792,8 @@ MAP
     LABELITEM          "naam"
 
     CLASS
+      NAME "post"
+      EXPRESSION ("[locatie_type]" eq "P")
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
@@ -806,6 +808,25 @@ MAP
         OFFSET         -60 10
       END
     END
+
+    CLASS
+      NAME "bezoek"
+      EXPRESSION ("[locatie_type]" eq "B")
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1001
+        COLOR   0 200 0
+        OUTLINECOLOR   55 255 55
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
   END
 
   #-----------------------------------------------------------------------------
@@ -933,6 +954,8 @@ MAP
     LABELITEM          "naam"
 
     CLASS
+      NAME "post"
+      EXPRESSION ("[locatie_type]" eq "P")
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
@@ -947,7 +970,26 @@ MAP
         OFFSET         -60 10
       END
     END
-  END
+
+    CLASS
+      NAME "bezoek"
+      EXPRESSION ("[locatie_type]" eq "B")
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1001
+        COLOR   0 200 0
+        OUTLINECOLOR   55 255 55
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+ END
 
 
   #-----------------------------------------------------------------------------

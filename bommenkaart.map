@@ -1,0 +1,598 @@
+#==============================================================================
+#
+# bommenkaart.map
+# doel: serveren WOII inslagen informatie
+#
+#==============================================================================
+
+
+
+MAP
+  NAME                      "bommenkaart"
+  INCLUDE                   "header.inc"
+  DEBUG 5
+
+  WEB
+    METADATA
+      "ows_title"           "bommenkaart"
+      "ows_abstract"        "Bommenkaart Amsterdam"
+    END
+  END
+
+  LAYER
+    NAME                    "inslagen"
+    DEBUG 5
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_milieu.inc"
+
+    DATA                    "geometrie FROM public.geo_bommenkaart_bominslag_point USING srid=28992 USING UNIQUE id"
+
+    TYPE                    POINT
+
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           10
+
+    METADATA
+      "wms_title"           "inslagen"
+      "wms_group_title"     "inslagen"
+      "wms_abstract"        "Inslagen Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "inslagen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME                  "blindganger"
+      EXPRESSION ("[type]" eq "Blindganger")
+
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#e31a1c"
+        SIZE                5
+      END
+
+      STYLE
+        SYMBOL              "cross"
+        COLOR               "#ffffff"
+	ANGLE               45.0
+        SIZE                4
+      END
+
+    END
+
+    CLASS
+      NAME                  "bominslag"
+      EXPRESSION ("[type]" eq "Bominslag")
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#730000"
+        SIZE                6
+      END
+    END
+
+    CLASS
+      NAME                  "crashlocatie"
+      EXPRESSION ("[type]" eq "Crashlocatie")
+      STYLE
+        SYMBOL              "vierkant"
+        COLOR               "#000000"
+        SIZE                6
+      END
+    END
+
+    CLASS
+      NAME                  "gedetoneerde vernielingslading"
+      EXPRESSION ("[type]" eq "Gedetoneerde vernielingslading")
+      STYLE
+        SYMBOL              "pentagon"
+        COLOR               "#ff5500"
+        SIZE                10
+      END
+    END
+
+
+    CLASS
+      NAME                  "krater"
+      EXPRESSION ("[type]" eq "Krater")
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#e60000"
+        SIZE                9
+      END
+    END
+
+
+    CLASS
+      NAME                  "niet gedetoneerde vernielingslading"
+      EXPRESSION ("[type]" eq "Niet gedetoneerde vernielingslading")
+      STYLE
+        SYMBOL              "pentagon"
+        COLOR               "#a8a800"
+        SIZE                10
+      END
+    END
+
+
+    CLASS
+      NAME                  "vermoedelijke bominslag(en)"
+      EXPRESSION ("[type]" eq "Vermoedelijke bominslag(en)")
+      STYLE
+        SYMBOL              "driehoek"
+        COLOR               "#e69800"
+        SIZE                10
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "verdachte_gebieden"
+    DEBUG 5
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_bommenkaart_verdachtgebied_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           10
+
+    METADATA
+      "wms_title"           "verdachte gebieden"
+      "wms_group_title"     "verdachte gebieden"
+      "wms_abstract"        "Verdachte gebieden in Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "verdachte_gebieden"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME                  "brisantbom/afwerpmunitie"
+
+      EXPRESSION ("[type]" eq "Afwerpmunitie")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ff0000"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "raketmunitie"
+
+      EXPRESSION ("[type]" eq "Afwerpmunitie, Raketmunitie")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#e8beff"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#e8beff"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "granaten"
+
+      EXPRESSION ("[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffd37f"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#ffd37f"
+        WIDTH               2
+      END
+
+    END
+
+    CLASS
+      NAME                  "patronen"
+
+      EXPRESSION ("[type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffd31f"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#ffd31f"
+        WIDTH               2
+      END
+
+    END
+
+    CLASS
+      NAME                  "overig verdacht"
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#0000ff"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#0000ff"
+        WIDTH               2
+      END
+
+    END
+
+  END # layer
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "gevrijwaarde_gebieden"
+    DEBUG 5
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_bommenkaart_gevrijwaardgebied_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           10
+
+    METADATA
+      "wms_title"           "gevrijwaarde gebieden"
+      "wms_group_title"     "gevrijwaarde gebieden"
+      "wms_abstract"        "Gevrijwaarde Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "gevrijwaarde_gebieden"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME                  "gevrijwaard"
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#38a800"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#38a800"
+        WIDTH               1
+      END
+
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME                    "uitgevoerde_CE_onderzoeken"
+    DEBUG 5
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_bommenkaart_uitgevoerdonderzoek_polygon USING srid=28992 USING UNIQUE id"
+
+    TYPE                    POLYGON
+
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           10
+
+    METADATA
+      "wms_title"           "uitgevoerde CE onderzoeken"
+      "wms_group_title"     "uitgevoerde CE onderzoeken"
+      "wms_abstract"        "Uitgevoerde CE onderzoeken"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "uitgevoerde_CE_onderzoeken"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME                  "Aanvullend vooronderzoek"
+
+      EXPRESSION ("[type]" eq "Aanvullend vooronderzoek")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#005ce6"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#005ce6"
+        WIDTH               2
+      END
+
+    END
+
+
+    CLASS
+      NAME                  "adviesrapport"
+
+      EXPRESSION ("[type]" eq "Adviesrapport")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#38a800"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#38a800"
+        WIDTH               1
+      END
+
+    END
+
+
+    CLASS
+      NAME                  "detectie"
+
+      EXPRESSION ("[type]" eq "Detectie")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#e31a1c"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#e31a1c"
+        WIDTH               1
+      END
+
+    END
+
+
+    CLASS
+      NAME                  "notitie"
+
+      EXPRESSION ("[type]" eq "Notitie")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffff00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "probleemanalyse"
+
+      EXPRESSION ("[type]" eq "Probleemanalyse")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffff00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               1
+      END
+
+    END
+
+
+    CLASS
+      NAME                  "probleeminventarisatie"
+
+      EXPRESSION ("[type]" eq "Probleeminventarisatie")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffff00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "probleeminventarisatie, analyse"
+
+      EXPRESSION ("[type]" eq "Probleeminventarisatie, Probleemanalyse")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#a900e6"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#a900e6"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "projectgebonden risicoanalyse"
+
+      EXPRESSION ("[type]" eq "Projectgebonden risicoanalyse")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#38a800"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+	OUTLINECOLOR        "#38a800"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "quickscan"
+
+      EXPRESSION ("[type]" eq "Quickscan")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#ffaa00"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+	OUTLINECOLOR        "#ffaa00"
+        WIDTH               1
+      END
+
+    END
+
+
+    CLASS
+      NAME                  "vooronderzoek"
+
+      EXPRESSION ("[type]" eq "Vooronderzoek")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#005ce6"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+	OUTLINECOLOR        "#005ce6"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "projectgegonden risicoanalyse"
+
+      EXPRESSION ("[type]" eq "Vooronderzoek, Projectgebonden risicoanalyse")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#38a800"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+	OUTLINECOLOR        "#38a800"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "overig"
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#0000ff"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+      STYLE
+	OUTLINECOLOR        "#0000ff"
+        WIDTH               1
+      END
+
+    END
+
+  END
+
+END
+
