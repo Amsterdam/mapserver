@@ -37,6 +37,13 @@ MAP
     MINSCALEDENOM           10
 
     METADATA
+      "wfs_title"           "inslagen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Bominslagen in Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+
       "wms_title"           "inslagen"
       "wms_group_title"     "inslagen"
       "wms_abstract"        "Inslagen Amsterdam"
@@ -146,14 +153,20 @@ MAP
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
 
+    COMPOSITE
+      OPACITY 50
+    END # COMPOSITE
+
     METADATA
-      "wms_title"           "verdachte gebieden"
+      "wms_title"           "verdachte_gebieden"
       "wms_group_title"     "verdachte gebieden"
       "wms_abstract"        "Verdachte gebieden in Amsterdam"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "verdachte_gebieden"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
     END
 
     CLASS
@@ -277,6 +290,11 @@ MAP
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
 
+    COMPOSITE
+      OPACITY 50
+    END # COMPOSITE
+
+
     METADATA
       "wms_title"           "gevrijwaarde gebieden"
       "wms_group_title"     "gevrijwaarde gebieden"
@@ -285,9 +303,12 @@ MAP
       "wms_name"            "gevrijwaarde_gebieden"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
     END
 
     CLASS
+
       NAME                  "gevrijwaard"
 
       STYLE
@@ -327,14 +348,20 @@ MAP
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
 
+    COMPOSITE
+      OPACITY 50
+    END # COMPOSITE
+
     METADATA
-      "wms_title"           "uitgevoerde CE onderzoeken"
+      "wms_title"           "uitgevoerde_CE_onderzoeken"
       "wms_group_title"     "uitgevoerde CE onderzoeken"
       "wms_abstract"        "Uitgevoerde CE onderzoeken"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "uitgevoerde_CE_onderzoeken"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
     END
 
     CLASS
@@ -544,6 +571,7 @@ MAP
         WIDTH               2
         ANGLE               45
       END
+
 
       STYLE
 	OUTLINECOLOR        "#005ce6"
