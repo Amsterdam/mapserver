@@ -154,7 +154,7 @@ MAP
     MINSCALEDENOM           10
 
     COMPOSITE
-      OPACITY 50
+      OPACITY 60
     END # COMPOSITE
 
     METADATA
@@ -291,7 +291,7 @@ MAP
     MINSCALEDENOM           10
 
     COMPOSITE
-      OPACITY 50
+      OPACITY 60
     END # COMPOSITE
 
 
@@ -349,7 +349,7 @@ MAP
     MINSCALEDENOM           10
 
     COMPOSITE
-      OPACITY 50
+      OPACITY 60
     END # COMPOSITE
 
     METADATA
@@ -364,48 +364,6 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASS
-      NAME                  "Aanvullend vooronderzoek"
-
-      EXPRESSION ("[type]" eq "Aanvullend vooronderzoek")
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#005ce6"
-        SIZE                5
-        WIDTH               2
-        ANGLE               -45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#005ce6"
-        WIDTH               2
-      END
-
-    END
-
-
-    CLASS
-      NAME                  "adviesrapport"
-
-      EXPRESSION ("[type]" eq "Adviesrapport")
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#38a800"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#38a800"
-        WIDTH               1
-      END
-
-    END
 
 
     CLASS
@@ -429,6 +387,14 @@ MAP
 
     END
 
+    # shade 0 = #AF550B = rgb(175, 85, 11) = rgba(175, 85, 11,1) = rgb0(0.686,0.333,0.043)
+    # shade 1 = #E38E48 = rgb(227,142, 72) = rgba(227,142, 72,1) = rgb0(0.89,0.557,0.282)
+    # shade 2 = #D46F1C = rgb(212,111, 28) = rgba(212,111, 28,1) = rgb0(0.831,0.435,0.11)
+    # shade 3 = #914200 = rgb(145, 66,  0) = rgba(145, 66,  0,1) = rgb0(0.569,0.259,0)
+    # shade 4 = #6B3100 = rgb(107, 49,  0) = rgba(107, 49,  0,1) = rgb0(0.42,0.192,0)
+    #
+    #
+    #
 
     CLASS
       NAME                  "notitie"
@@ -438,14 +404,14 @@ MAP
       STYLE
         ANTIALIAS           true
         SYMBOL              "hatchsymbol"
-        COLOR               "#ffff00"
+        COLOR               "#AF550B"
         SIZE                5
         WIDTH               2
         ANGLE               45
       END
 
       STYLE
-        OUTLINECOLOR        "#ffff00"
+        OUTLINECOLOR        "#AF651B"
         WIDTH               1
       END
 
@@ -459,14 +425,14 @@ MAP
       STYLE
         ANTIALIAS           true
         SYMBOL              "hatchsymbol"
-        COLOR               "#ffff00"
+        COLOR               #E38E48"
         SIZE                5
         WIDTH               2
         ANGLE               45
       END
 
       STYLE
-        OUTLINECOLOR        "#ffff00"
+        OUTLINECOLOR        "#E49E68"
         WIDTH               1
       END
 
@@ -481,14 +447,14 @@ MAP
       STYLE
         ANTIALIAS           true
         SYMBOL              "hatchsymbol"
-        COLOR               "#ffff00"
+        COLOR               "#D46F1C"
         SIZE                5
         WIDTH               2
         ANGLE               45
       END
 
       STYLE
-        OUTLINECOLOR        "#ffff00"
+        OUTLINECOLOR        "#D47F3C"
         WIDTH               1
       END
 
@@ -502,14 +468,14 @@ MAP
       STYLE
         ANTIALIAS           true
         SYMBOL              "hatchsymbol"
-        COLOR               "#a900e6"
+        COLOR               "#914200"
         SIZE                5
         WIDTH               2
         ANGLE               45
       END
 
       STYLE
-        OUTLINECOLOR        "#a900e6"
+        OUTLINECOLOR        "#917230"
         WIDTH               1
       END
 
@@ -581,9 +547,30 @@ MAP
     END
 
     CLASS
-      NAME                  "projectgegonden risicoanalyse"
+      NAME                  "Aanvullend vooronderzoek"
 
-      EXPRESSION ("[type]" eq "Vooronderzoek, Projectgebonden risicoanalyse")
+      EXPRESSION ("[type]" eq "Aanvullend vooronderzoek")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#005ce6"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#005ce6"
+        WIDTH               2
+      END
+
+    END
+
+    CLASS
+      NAME                  "adviesrapport"
+
+      EXPRESSION ("[type]" eq "Adviesrapport")
 
       STYLE
         ANTIALIAS           true
@@ -595,7 +582,7 @@ MAP
       END
 
       STYLE
-	OUTLINECOLOR        "#38a800"
+        OUTLINECOLOR        "#38a800"
         WIDTH               1
       END
 
@@ -617,10 +604,7 @@ MAP
 	OUTLINECOLOR        "#0000ff"
         WIDTH               1
       END
-
-    END
-
-  END
-
-END
+    END  # class
+  END # layer
+END # map
 
