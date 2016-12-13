@@ -502,50 +502,6 @@ MAP
 
     END
 
-
-    CLASS
-      NAME                  "vooronderzoek"
-
-      EXPRESSION ("[type]" eq "Vooronderzoek")
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#005ce6"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-
-      STYLE
-	OUTLINECOLOR        "#005ce6"
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "Aanvullend vooronderzoek"
-
-      EXPRESSION ("[type]" eq "Aanvullend vooronderzoek")
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#005ce6"
-        SIZE                5
-        WIDTH               2
-        ANGLE               -45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#005ce6"
-        WIDTH               2
-      END
-
-    END
-
     CLASS
       NAME                  "projectgebonden risicoanalyse"
 
@@ -584,6 +540,49 @@ MAP
       STYLE
         OUTLINECOLOR        "#38a800"
         WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "vooronderzoek"
+
+      EXPRESSION ("[type]" eq "Vooronderzoek")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#005ce6"
+        SIZE                5
+        WIDTH               2
+        ANGLE               45
+      END
+
+
+      STYLE
+	OUTLINECOLOR        "#005ce6"
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "aanvullend vooronderzoek"
+
+      EXPRESSION ("[type]" eq "Aanvullend vooronderzoek")
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               "#005ce6"
+        SIZE                5
+        WIDTH               2
+        ANGLE               -45
+      END
+
+      STYLE
+        OUTLINECOLOR        "#005ce6"
+        WIDTH               2
       END
 
     END
