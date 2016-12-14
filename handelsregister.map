@@ -95,14 +95,16 @@ MAP
     MAXSCALEDENOM   1001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
+
+    #PROJECTION
+    #  "init=epsg:28992"
+    #END
 
     METADATA
       "ows_title"           "vestiging_label"
       "ows_group_title"     "vestigingen_label"
       "ows_abstract"        "Labels van vestigingslocaties, bezoek- en postadressen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -111,15 +113,16 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR          200 200 200
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
+        ANTIALIAS      true
       END
 
     END
@@ -168,6 +171,7 @@ MAP
         COLOR          23 164 84
         COLOR          241 119 48
         WIDTH          1
+        ANTIALIAS      true
       END
     END
 
@@ -182,6 +186,7 @@ MAP
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
         WIDTH          1
+        ANTIALIAS      true
       END
     END
 
@@ -196,6 +201,7 @@ MAP
         OUTLINECOLOR   0 0 0
         COLOR          97  184 77
         WIDTH          1
+        ANTIALIAS      true
       END
     END
 
@@ -210,6 +216,7 @@ MAP
         OUTLINECOLOR   0 0 0
         COLOR          26  170 182
         WIDTH          1
+        ANTIALIAS      true
       END
     END
 
@@ -224,6 +231,7 @@ MAP
         OUTLINECOLOR   0 0 0
         COLOR          21  134 201
         WIDTH          1
+        ANTIALIAS      true
       END
     END
 
@@ -238,6 +246,7 @@ MAP
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
         WIDTH          1
+        ANTIALIAS      true
       END
     END
 
@@ -252,6 +261,7 @@ MAP
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
         WIDTH          1
+        ANTIALIAS      true
       END
     END
   END
@@ -277,6 +287,7 @@ MAP
       "ows_title"           "horeca_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
     LABELITEM          "naam"
 
@@ -290,9 +301,10 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
+        ANTIALIAS      true
       END
     END
   END
@@ -404,6 +416,7 @@ MAP
       "ows_title"           "financiele_dienstverlening_verhuur_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -418,7 +431,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -531,6 +544,7 @@ MAP
       "ows_title"           "overige_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -545,7 +559,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -659,6 +673,7 @@ MAP
       "ows_title"           "cultuur_sport_recreatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -673,7 +688,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -787,6 +802,7 @@ MAP
       "ows_title"           "telecommunicatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -803,7 +819,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -821,7 +837,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -965,7 +981,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -983,7 +999,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
+        POSITION       ur
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -1123,6 +1139,7 @@ MAP
       "ows_title"           "landbouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
 
@@ -1294,6 +1311,7 @@ MAP
       "ows_title"           "handel_vervoer_opslag_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
     LABELITEM          "naam"
 
@@ -1513,6 +1531,7 @@ MAP
       "ows_title"           "zakelijke_dienstverlening_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -1627,6 +1646,7 @@ MAP
       "ows_title"           "productie_installatie_reparatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -1741,6 +1761,7 @@ MAP
       "ows_title"           "overheid_onderwijs_zorg_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -1898,6 +1919,7 @@ MAP
       "ows_title"           "bouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
