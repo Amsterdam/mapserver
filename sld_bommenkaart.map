@@ -1,0 +1,80 @@
+#==============================================================================
+#
+# sld_bommenkaart.map
+# doel: gestyled serveren WOII inslagen informatie mbv sld
+#
+#==============================================================================
+
+
+MAP
+  NAME                      "bommenkaart_sld"
+  INCLUDE                   "header.inc"
+  DEBUG 5
+
+  WEB
+    METADATA
+      "ows_title"           "bommenkaart"
+      "ows_abstract"        "Bommenkaart Amsterdam"
+    END
+  END
+
+  LAYER
+    DEBUG 5
+    NAME                   "inslagen"
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    TYPE                    RASTER
+    # CONNECTION              "https://map.datapunt.amsterdam.nl/maps/bommenkaart?SLD=https:map.datapunt.amsterdam.nl/sld/inslagen.sld"
+
+    CONNECTION              "http://127.0.0.1/maps/bommenkaart"
+
+    CONNECTIONTYPE          WMS
+
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           0
+
+    METADATA
+      "wms_title"           "inslagen"
+      "wms_group_title"     "inslagen"
+      "wms_abstract"        "Inslagen Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "inslagen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_sld_url"         "http://127.0.0.1/sld/inslagen.sld"
+    END
+  END
+
+  LAYER
+    DEBUG 5
+    NAME                   "verdachtgebied"
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    TYPE                    RASTER
+    # CONNECTION              "https://map.datapunt.amsterdam.nl/maps/bommenkaart?SLD=https:map.datapunt.amsterdam.nl/sld/inslagen.sld"
+
+    CONNECTION              "http://127.0.0.1/maps/bommenkaart"
+
+    CONNECTIONTYPE          WMS
+
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           0
+
+    METADATA
+      "wms_title"           "inslagen"
+      "wms_group_title"     "inslagen"
+      "wms_abstract"        "Inslagen Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "verdachte gebieden"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_sld_url"         "http://127.0.0.1/sld/verdachte_gebieden.sld"
+    END
+  END
+END
