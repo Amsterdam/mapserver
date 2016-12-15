@@ -20,6 +20,9 @@ MAP
     END
   END
 
+
+  #-----------------------------------------------------------------------------
+
   LAYER
     NAME                    "inslagen"
     DEBUG 5
@@ -62,55 +65,64 @@ MAP
       STYLE
         SYMBOL              "stip"
         COLOR               "#e31a1c"
-        SIZE                10
+        SIZE                9
       END
 
       STYLE
         SYMBOL              "kruis"
         COLOR               "#fffff0"
-	ANGLE               45.0
-        SIZE                11
+	    ANGLE               45.0
+        SIZE                10
       END
 
     END
 
     CLASS
       NAME                  "bominslag"
-      EXPRESSION ("[type]" eq "Bominslag")
+      EXPRESSION            ("[type]" eq "Bominslag")
       STYLE
         SYMBOL              "stip"
         COLOR               "#730000"
-        SIZE                8
+        SIZE                9
       END
     END
 
     CLASS
       NAME                  "crashlocatie"
-      EXPRESSION ("[type]" eq "Crashlocatie")
+      EXPRESSION            ("[type]" eq "Crashlocatie")
       STYLE
         SYMBOL              "vierkant"
         COLOR               "#000000"
-        SIZE                6
+        SIZE                7
       END
     END
 
     CLASS
       NAME                  "gedetoneerde vernielingslading"
-      EXPRESSION ("[type]" eq "Gedetoneerde vernielingslading")
+      EXPRESSION            ("[type]" eq "Gedetoneerde vernielingslading")
       STYLE
         SYMBOL              "pentagon"
-        COLOR               "#ff5500"
-        SIZE                10
+        COLOR               "#a8a800"
+        SIZE                9
       END
     END
 
+    CLASS
+      NAME                  "geruimd explosief"
+      EXPRESSION            ("[type]" eq "Geruimd explosief")
+      STYLE
+        SYMBOL              "stip"
+        COLOR               40 190 70
+        SIZE                9
+      END
+    END
 
     CLASS
       NAME                  "krater"
-      EXPRESSION ("[type]" eq "Krater")
+      EXPRESSION            ("[type]" eq "Krater")
       STYLE
         SYMBOL              "stip"
-        COLOR               "#e60000"
+        COLOR               80 50 140
         SIZE                9
       END
     END
@@ -118,22 +130,22 @@ MAP
 
     CLASS
       NAME                  "niet gedetoneerde vernielingslading"
-      EXPRESSION ("[type]" eq "Niet gedetoneerde vernielingslading")
+      EXPRESSION            ("[type]" eq "Niet gedetoneerde vernielingslading")
       STYLE
         SYMBOL              "pentagon"
-        COLOR               "#a8a800"
-        SIZE                10
+        COLOR               "#ff5500"
+        SIZE                9
       END
     END
 
 
     CLASS
       NAME                  "vermoedelijke bominslag(en)"
-      EXPRESSION ("[type]" eq "Vermoedelijke bominslag(en)")
+      EXPRESSION            ("[type]" eq "Vermoedelijke bominslag(en)")
       STYLE
         SYMBOL              "driehoek"
         COLOR               "#e69800"
-        SIZE                10
+        SIZE                9
       END
     END
 
@@ -173,21 +185,72 @@ MAP
     END
 
     CLASS
-      NAME                  "brisantbom/afwerpmunitie"
+      NAME                  "afwerpmunitie"
 
-      EXPRESSION ("[type]" eq "Afwerpmunitie")
+      EXPRESSION            ("[type]" eq "Afwerpmunitie")
+
+      STYLE
+        ANTIALIAS           true
+        COLOR               160 40 180
+        OPACITY             40
+      END
+
+      STYLE
+        OUTLINECOLOR        160 40 180
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "afwerpmunitie: kleinkalibermunitie"
+
+      EXPRESSION            ("[type]" eq "Afwerpmunitie, Kleinkalibermunitie")
+
+      STYLE
+        ANTIALIAS           true
+        COLOR               160 40 180
+        OPACITY             40
+      END
 
       STYLE
         ANTIALIAS           true
         SYMBOL              "hatchsymbol"
-        COLOR               "#ff0000"
-        SIZE                5
-        WIDTH               2
+        COLOR               160 40 180
+        SIZE                3
+        WIDTH               3
         ANGLE               -45
       END
 
       STYLE
-        OUTLINECOLOR        "#ff0000"
+        OUTLINECOLOR        160 40 180
+        WIDTH               1
+      END
+
+    END
+
+    CLASS
+      NAME                  "afwerpmunitie: raketmunitie"
+
+      EXPRESSION            ("[type]" eq "Afwerpmunitie, Raketmunitie")
+
+      STYLE
+        ANTIALIAS           true
+        COLOR               160 40 180
+        OPACITY             40
+      END
+
+      STYLE
+        ANTIALIAS           true
+        SYMBOL              "hatchsymbol"
+        COLOR               160 40 180
+        SIZE                3
+        WIDTH               3
+        ANGLE               45
+      END
+
+      STYLE
+        OUTLINECOLOR        160 40 180
         WIDTH               1
       END
 
@@ -196,81 +259,71 @@ MAP
     CLASS
       NAME                  "raketmunitie"
 
-      EXPRESSION ("[type]" eq "Afwerpmunitie, Raketmunitie")
+      EXPRESSION           ("[type]" eq "Raketmunitie")
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#6B0000"
-        SIZE                5
-        WIDTH               2
-        ANGLE               -45
+        COLOR               210 230 0
+        OPACITY             40
       END
 
       STYLE
-        OUTLINECOLOR        "#6B1010"
+        OUTLINECOLOR        210 230 0
         WIDTH               1
       END
 
     END
 
     CLASS
-      NAME                  "granaten"
+      NAME                  "munities en granaten"
 
-      EXPRESSION ("[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers")
+      EXPRESSION           ("[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#910000"
-        SIZE                5
-        WIDTH               2
-        ANGLE               -45
+        COLOR               255 130 0
+        OPACITY             40
       END
 
       STYLE
-        OUTLINECOLOR        "#912020"
-        WIDTH               2
+        OUTLINECOLOR        255 130 0
+        WIDTH               1
       END
 
     END
 
     CLASS
-      NAME                  "patronen"
+      NAME                  "landmijnen"
 
-      EXPRESSION ("[type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
+      EXPRESSION           ("[type]" eq "Landmijnen")
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#DF3F3F"
-        SIZE                5
-        WIDTH               2
-        ANGLE               -45
+        COLOR               10 180 180
+        OPACITY             40
       END
 
       STYLE
-        OUTLINECOLOR        "#DF3F3F"
-        WIDTH               2
+        OUTLINECOLOR        10 180 180
+        WIDTH               1
       END
 
     END # class
 
     CLASS
-      NAME                  "overig verdacht"
+      NAME                  "vernielingsladingen"
+
+      EXPRESSION           ("[type]" eq "Vernielingsladingen")
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#ffABAB"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
+        COLOR               160 35 70
+        OPACITY             40
       END
 
       STYLE
-        OUTLINECOLOR        "#ffABAB"
-        WIDTH               2
+        OUTLINECOLOR        160 35 70
+        WIDTH               1
       END
 
     END # class
@@ -299,8 +352,7 @@ MAP
 
 
     METADATA
-      "wms_title"           "gevrijwaarde gebieden"
-      "wms_group_title"     "gevrijwaarde gebieden"
+      "wms_title"           "gevrijwaarde_gebieden"
       "wms_abstract"        "Gevrijwaarde Amsterdam"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "gevrijwaarde_gebieden"
@@ -313,19 +365,15 @@ MAP
 
     CLASS
 
-      NAME                  "gevrijwaard"
+      NAME                  "gevrijwaarde gebieden"
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#38a800"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
+        COLOR               50 160 40
       END
 
       STYLE
-        OUTLINECOLOR        "#38a800"
+        OUTLINECOLOR        50 160 40
         WIDTH               1
       END
 
@@ -337,8 +385,7 @@ MAP
 
 
   LAYER
-    NAME                    "uitgevoerde_CE_onderzoeken"
-    DEBUG 5
+    NAME                    "uitgevoerde CE onderzoeken"
 
     PROJECTION
       "init=epsg:28992"
@@ -378,7 +425,7 @@ MAP
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
+        #SYMBOL              "hatchsymbol"
         COLOR               "#e31a1c"
         SIZE                5
         WIDTH               2
@@ -408,15 +455,12 @@ MAP
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#AF550B"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
+        COLOR               110 70 180
+        OPACITY             40
       END
 
       STYLE
-        OUTLINECOLOR        "#AF651B"
+        OUTLINECOLOR        110 70 180
         WIDTH               1
       END
 
@@ -429,7 +473,7 @@ MAP
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
+        #SYMBOL              "hatchsymbol"
         COLOR               "#E38E48"
         SIZE                5
         WIDTH               2
@@ -451,7 +495,7 @@ MAP
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
+        #SYMBOL              "hatchsymbol"
         COLOR               "#D46F1C"
         SIZE                5
         WIDTH               2
@@ -472,7 +516,7 @@ MAP
 
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
+        #SYMBOL              "hatchsymbol"
         COLOR               "#914200"
         SIZE                5
         WIDTH               2
@@ -611,4 +655,3 @@ MAP
     END  # class
   END # layer
 END # map
-
