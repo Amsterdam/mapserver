@@ -12,8 +12,9 @@
 #==============================================================================
 
 MAP
-  NAME "Handelsregister"
+  NAME    "Handelsregister"
   INCLUDE "header.inc"
+  DEBUG    5
 
   WEB
     METADATA
@@ -67,19 +68,46 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-
     CLASS
-      NAME "vestiging"
+      NAME "vestiging (correctie)"
+
+      EXPRESSION ('[correctie]' = 't')
+
       STYLE
         MINSCALEDENOM  100
-        MAXSCALEDENOM  5001
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          255 255 255
-        WIDTH          1
+        MAXSCALEDENOM  190001
+
+        SYMBOL         "dashstip"
+        # SYMBOL         "stip"
+        SIZE           12
+        SIZE           12
+
+        OUTLINECOLOR   255 10 10
+        COLOR          255 10 10
+
+        ANTIALIAS      true
       END
     END
+
+
+    #CLASS
+    #  NAME "vestiging"
+
+    #  STYLE
+    #    MINSCALEDENOM  100
+    #    MAXSCALEDENOM  190001
+
+    #    SYMBOL         "stip"
+    #    SIZE           1
+    #    OUTLINECOLOR   10 255 10
+    #    COLOR          10 255 10
+    #    WIDTH          1
+    #    ANTIALIAS      true
+
+    #  END
+    #END
+
+
   END
 
 
@@ -134,7 +162,7 @@ MAP
 
 
   LAYER
-    NAME            "horeca"
+    NAME            horeca
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
@@ -159,6 +187,20 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
+    # cafe
+
+    CLASS
+      NAME "cafe (correctie)"
+
+      EXPRESSION (("[sbi_detail_group]" eq "café") AND ('[correctie]' = 't'))
+
+      STYLE
+        SYMBOL         "dash1"
+        SIZE           30
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Café"
       EXPRESSION ("[sbi_detail_group]" eq "café")
@@ -173,6 +215,19 @@ MAP
         WIDTH          1
         ANTIALIAS      true
       END
+    END
+
+    # snackbar
+
+    CLASS
+       NAME "Cafetaria, Snackbar, IJssalon (correctie)"
+       EXPRESSION (("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon") AND ('[correctie]' = 't'))
+
+       STYLE
+         SYMBOL         "dash3"
+         SIZE           30
+         ANTIALIAS      true
+       END
     END
 
     CLASS
@@ -190,6 +245,21 @@ MAP
       END
     END
 
+    # hotel
+
+    CLASS
+      NAME "Hotel, Pension (correctie)"
+      EXPRESSION (("[sbi_detail_group]" eq "hotel, pension") AND ('[correctie]' = 't'))
+
+      STYLE
+         SYMBOL         "dash5"
+         SIZE           30
+         ANTIALIAS      true
+       END
+
+    END
+
+
     CLASS
       NAME "Hotel, Pension"
       EXPRESSION ("[sbi_detail_group]" eq "hotel, pension")
@@ -203,6 +273,20 @@ MAP
         WIDTH          1
         ANTIALIAS      true
       END
+    END
+
+    # hotel restaurant
+
+    CLASS
+      NAME "Hotel-restaurant (correctie)"
+      EXPRESSION (("[sbi_detail_group]" eq "hotel-restaurant") AND ('[correctie]' = 't'))
+
+      STYLE
+         SYMBOL         "dash7"
+         SIZE           30
+         ANTIALIAS      true
+       END
+
     END
 
     CLASS
@@ -220,6 +304,19 @@ MAP
       END
     END
 
+    # kantine
+
+    CLASS
+      NAME "Kantine, Catering (correctie)"
+      EXPRESSION (("[sbi_detail_group]" eq "kantine, catering") AND ('[correctie]' = 't'))
+      STYLE
+         SYMBOL         "dash9"
+         SIZE           30
+         ANTIALIAS      true
+       END
+    END
+
+
     CLASS
       NAME "Kantine, Catering"
       EXPRESSION ("[sbi_detail_group]" eq "kantine, catering")
@@ -235,6 +332,19 @@ MAP
       END
     END
 
+    # cafe rest
+
+    CLASS
+      NAME "Restaurant, Café-restaurant"
+      EXPRESSION (("[sbi_detail_group]" eq "restaurant, café-restaurant") AND ('[correctie]' = 't'))
+      STYLE
+         SYMBOL         "dash11"
+         SIZE           30
+         ANTIALIAS      true
+       END
+    END
+
+
     CLASS
       NAME "Restaurant, Café-restaurant"
       EXPRESSION ("[sbi_detail_group]" eq "restaurant, café-restaurant")
@@ -247,6 +357,18 @@ MAP
         COLOR          47  52  144
         WIDTH          1
         ANTIALIAS      true
+      END
+    END
+
+    # overige horeca
+
+    CLASS
+      NAME "Overige horeca"
+      EXPRESSION (("[sbi_detail_group]" eq "overige horeca") AND ('[correctie]' = 't'))
+      STYLE
+         SYMBOL         "dash13"
+         SIZE           30
+         ANTIALIAS      true
       END
     END
 
@@ -295,7 +417,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR          200 200 200
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -733,7 +855,7 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-	COLOR          241 119 48
+    COLOR          241 119 48
         WIDTH          1
       END
     END
@@ -747,7 +869,7 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-	COLOR          183 210 66
+    COLOR          183 210 66
         WIDTH          1
       END
     END
@@ -761,7 +883,7 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-	COLOR          29  174 236
+    COLOR          29  174 236
         WIDTH          1
       END
     END
@@ -775,7 +897,7 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-	COLOR          117 47  142
+    COLOR          117 47  142
         WIDTH          1
       END
     END
