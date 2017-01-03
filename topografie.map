@@ -1,3 +1,10 @@
+#==============================================================================
+#
+# topografie.map
+# doel: serveren van kaartlagen ten behoeve van referentiekaarten
+#
+#==============================================================================
+
 MAP
   NAME                      "topografie"
   INCLUDE                   "header.inc"
@@ -9,8 +16,13 @@ MAP
     END
   END
 
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
   LAYER
     NAME                    "kbk50"
+    GROUP                   "basiskaart"
     PROJECTION     
       "init=epsg:28992"
     END
@@ -30,8 +42,37 @@ MAP
     END
   END
 
+  #-----------------------------------------------------------------------------
+
   LAYER
-    NAME                   "kbk10"
+    NAME                    "kbk50-light"
+    GROUP                   "basiskaart-light"
+    PROJECTION     
+      "init=epsg:28992"
+    END
+    TYPE                    RASTER
+    CONNECTION              "https://map.datapunt.amsterdam.nl/maps/kbk50"
+    CONNECTIONTYPE          WMS
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
+    METADATA
+      "wms_title"           "kbk50-light"
+      "wms_group_title"     "basiskaart-light"
+      "wms_abstract"        "Basiskaart Amsterdam - Light"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "vlakken,lijnen,teksten"
+# ADJUST FOLLOWING URL:
+      "wms_sld_url"         "https://map.datapunt.amsterdam.nl/kbk50_light.xml"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "kbk10"
+    GROUP                   "basiskaart"
     PROJECTION
       "init=epsg:28992"
     END
@@ -51,8 +92,37 @@ MAP
     END
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "kbk10-light"
+    GROUP                   "basiskaart-light"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    TYPE                    RASTER
+    CONNECTION              "https://map.datapunt.amsterdam.nl/maps/kbk10"
+    CONNECTIONTYPE          WMS
+    MAXSCALEDENOM           12500
+    MINSCALEDENOM           4000
+    METADATA
+      "wms_title"           "kbk10-light"
+      "wms_group_title"     "basiskaart-light"
+      "wms_abstract"        "Basiskaart Amsterdam -Light"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "vlakken,lijnen,teksten"
+# ADJUST FOLLOWING URL:
+      "wms_sld_url"         "https://map.datapunt.amsterdam.nl/kbk10_light.xml"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
   LAYER
     NAME                    "bgt"
+    GROUP                   "basiskaart"
     PROJECTION
       "init=epsg:28992"
     END
@@ -72,4 +142,34 @@ MAP
       "wms_server_version"  "1.1.1"
     END
   END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "bgt-light"
+    GROUP                   "basiskaart-light"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    TYPE                    RASTER
+#    CONNECTION              "https://map.datapunt.amsterdam.nl/maps/bgt"
+    CONNECTION              "http://www.diva.amsterdam.nl/cgi-bin/topografie"
+    CONNECTIONTYPE          WMS
+    MAXSCALEDENOM           4000
+    MINSCALEDENOM           0
+    METADATA
+      "wms_title"           "bgt-light"
+      "wms_group_title"     "basiskaart-light"
+      "wms_abstract"        "Basiskaart Amsterdam - Light"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "topovlakken,topolijnen,topoteksten"
+# ADJUST FOLLOWING URL:
+      "wms_sld_url"         "https://map.datapunt.amsterdam.nl/bgt_light.xml"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+  END
+
+#=============================================================================
+
 END
