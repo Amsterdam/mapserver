@@ -116,29 +116,29 @@ MAP
 
   #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    woonboten
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bag.woonboten USING UNIQUE gid USING srid=28992"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#B4D3DB"
-      END
-      STYLE 
-        WIDTH 1
-        OUTLINECOLOR "#A5CDD8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+#  LAYER
+#    NAME                    woonboten
+#    GROUP                   "vlakken"
+#    MAXSCALEDENOM           4000
+#    INCLUDE                 "connection_basiskaart.inc"
+#    DATA                    "geometrie FROM bag_ligplaats USING UNIQUE gid USING srid=28992"
+#    TYPE POLYGON
+#    PROJECTION
+#      "init=epsg:28992"
+#    END
+#    CLASS
+#      MAXSCALEDENOM 4000
+#      STYLE
+#        COLOR "#B4D3DB"
+#      END
+#      STYLE
+#        WIDTH 1
+#        OUTLINECOLOR "#A5CDD8"
+#        LINECAP BUTT
+#        LINEJOIN MITER
+#      END
+#    END
+#  END
 
   #-----------------------------------------------------------------------------
 
