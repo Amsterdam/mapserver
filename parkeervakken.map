@@ -35,7 +35,7 @@ MAP
     DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   12501
+    MAXSCALEDENOM   425001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992"
@@ -47,6 +47,19 @@ MAP
       "ows_abstract"        "Parkeervakken in de gemeente Amsterdam"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "FISCAAL"
+      EXPRESSION ("[soort]" eq "FISCAAL")
+      STYLE
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   155 145 0
+        COLOR          255 245 0
+        WIDTH          2
+      END
     END
 
     CLASS
