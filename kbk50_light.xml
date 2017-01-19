@@ -72,7 +72,7 @@
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#fbf0de</CssParameter>
+              <CssParameter name="fill">#E5EBD8</CssParameter>
             </Fill>
           </PolygonSymbolizer>
         </Rule>
@@ -85,16 +85,36 @@
       <FeatureTypeStyle>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>400000</MaxScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D9D9D4</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#D9D9D4</CssParameter>
+              <CssParameter name="stroke-width">0.70</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
           <PolygonSymbolizer>
             <Fill>
               <CssParameter name="fill">#D9D9D4</CssParameter>
             </Fill>
           </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>100000</MinScaleDenominator>
+          <MaxScaleDenominator>400000</MaxScaleDenominator>
           <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D9D9D4</CssParameter>
+            </Fill>
             <Stroke>
               <CssParameter name="stroke">#D9D9D4</CssParameter>
-              <CssParameter name="stroke-width">0.70</CssParameter>
+              <CssParameter name="stroke-width">1.5</CssParameter>
             </Stroke>
           </PolygonSymbolizer>
         </Rule>
@@ -148,7 +168,7 @@
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#D9D9D4</CssParameter>
+              <CssParameter name="fill">#D2E3BA</CssParameter>
             </Fill>
           </PolygonSymbolizer>
         </Rule>
@@ -157,7 +177,7 @@
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#D9D9D4</CssParameter>
+              <CssParameter name="fill">#D2E3BA</CssParameter>
             </Fill>
           </PolygonSymbolizer>
         </Rule>
@@ -188,13 +208,15 @@
             </Stroke>
           </LineSymbolizer>
         </Rule>
+        <!--
         <Rule>
           <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
+              <CssParameter name="stroke">#ff0000</CssParameter>
               <CssParameter name="stroke">#B2CBD9</CssParameter>
-              <CssParameter name="stroke-width">0.10</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -218,6 +240,7 @@
             </Stroke>
           </LineSymbolizer>
         </Rule>
+        -->
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>
@@ -245,6 +268,7 @@
             </Stroke>
           </LineSymbolizer>
         </Rule>
+        <!--
         <Rule>
           <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
@@ -275,6 +299,7 @@
             </Stroke>
           </LineSymbolizer>
         </Rule>
+        -->
       </FeatureTypeStyle>
     </UserStyle>
   </NamedLayer>
@@ -437,8 +462,8 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-              <CssParameter name="stroke-dasharray">4 3 </CssParameter>
+              <CssParameter name="stroke-width">7</CssParameter>
+              <CssParameter name="stroke-dasharray">4 3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -448,8 +473,8 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-              <CssParameter name="stroke-dasharray">3 3 </CssParameter>
+              <CssParameter name="stroke-width">6</CssParameter>
+              <CssParameter name="stroke-dasharray">3 3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -459,8 +484,8 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-              <CssParameter name="stroke-dasharray">1 3 </CssParameter>
+              <CssParameter name="stroke-width">4.5</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -470,8 +495,8 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-              <CssParameter name="stroke-dasharray">1 3 </CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+              <CssParameter name="stroke-dasharray">1 3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -481,8 +506,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-              <CssParameter name="stroke-dasharray">1 3 </CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -556,8 +580,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
-              <CssParameter name="stroke-width">3</CssParameter>
+              <CssParameter name="stroke-width">5</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -567,8 +590,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -578,8 +600,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
-              <CssParameter name="stroke-width">1.50</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -589,8 +610,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -600,8 +620,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -625,16 +644,6 @@
         <Rule>
           <MinScaleDenominator>25000</MinScaleDenominator>
           <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">1.75</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#D9D9D4</CssParameter>
@@ -712,7 +721,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">2.50</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -739,16 +748,6 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">0.75</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#D9D9D4</CssParameter>
               <CssParameter name="stroke-width">0.75</CssParameter>
             </Stroke>
           </LineSymbolizer>
@@ -823,7 +822,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">1.50</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -833,7 +832,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -843,8 +842,7 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-opacity">0.80</CssParameter>
-              <CssParameter name="stroke-width">0.75</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
@@ -1228,7 +1226,6 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
               <CssParameter name="stroke-width">5</CssParameter>
             </Stroke>
           </LineSymbolizer>
@@ -1239,7 +1236,6 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
               <CssParameter name="stroke-width">4</CssParameter>
             </Stroke>
           </LineSymbolizer>
@@ -1250,7 +1246,6 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
               <CssParameter name="stroke-width">3</CssParameter>
             </Stroke>
           </LineSymbolizer>
@@ -1261,7 +1256,6 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
               <CssParameter name="stroke-width">2</CssParameter>
             </Stroke>
           </LineSymbolizer>
@@ -1272,7 +1266,6 @@
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-opacity">0.94</CssParameter>
               <CssParameter name="stroke-width">2</CssParameter>
             </Stroke>
           </LineSymbolizer>
