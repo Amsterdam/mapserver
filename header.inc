@@ -17,10 +17,11 @@
   # MAP: debug
   #=============================================================================
 
-  #CONFIG   "MS_ERRORFILE" "/srv/mapserver/ms_error.txt"
-  #DEBUG    5
+  CONFIG   "MS_ERRORFILE" "/srv/mapserver/ms_error.txt"
+  DEBUG    5
 
 
+  TEMPPATH /tmp/
 
   #=============================================================================
   # MAP: algemeen
