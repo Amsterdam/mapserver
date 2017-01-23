@@ -32,11 +32,8 @@ MAP
     END
 
     INCLUDE                 "connection_milieu.inc"
-
     DATA                    "geometrie FROM public.geo_bommenkaart_bominslag_point USING srid=28992 USING UNIQUE id"
-
     TYPE                    POINT
-
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
 
@@ -187,9 +184,7 @@ MAP
     END
 
     CLASS
-      NAME                  "afwerpmunitie"
-
-      EXPRESSION            ("[type]" eq "Afwerpmunitie")
+      NAME                  "Afwerpmunitie"
 
       STYLE
         ANTIALIAS           true
@@ -203,134 +198,6 @@ MAP
       END
 
     END
-
-    CLASS
-      NAME                  "afwerpmunitie: kleinkalibermunitie"
-
-      EXPRESSION            ("[type]" eq "Afwerpmunitie, Kleinkalibermunitie")
-
-      STYLE
-        ANTIALIAS           true
-        COLOR               160 40 180
-        OPACITY             40
-      END
-
-      STYLE
-        ANTIALIAS           true
-        # SYMBOL              "hatchsymbol"
-        COLOR               160 40 180
-        SIZE                3
-        WIDTH               3
-        ANGLE               -45
-      END
-
-      STYLE
-        OUTLINECOLOR        160 40 180
-        WIDTH               1
-        OPACITY             40
-      END
-
-    END
-
-    CLASS
-      NAME                  "afwerpmunitie: raketmunitie"
-
-      EXPRESSION            ("[type]" eq "Afwerpmunitie, Raketmunitie")
-
-      STYLE
-        ANTIALIAS           true
-        COLOR               160 40 180
-        OPACITY             40
-      END
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               160 40 180
-        SIZE                3
-        WIDTH               3
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        160 40 180
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "raketmunitie"
-
-      EXPRESSION           ("[type]" eq "Raketmunitie")
-
-      STYLE
-        ANTIALIAS           true
-        COLOR               210 230 0
-        OPACITY             40
-      END
-
-      STYLE
-        OUTLINECOLOR        210 230 0
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "munities en granaten"
-
-      EXPRESSION           ("[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
-
-      STYLE
-        ANTIALIAS           true
-        COLOR               255 130 0
-        OPACITY             40
-      END
-
-      STYLE
-        OUTLINECOLOR        255 130 0
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "landmijnen"
-
-      EXPRESSION           ("[type]" eq "Landmijnen")
-
-      STYLE
-        ANTIALIAS           true
-        COLOR               10 180 180
-        OPACITY             40
-      END
-
-      STYLE
-        OUTLINECOLOR        10 180 180
-        WIDTH               1
-      END
-
-    END # class
-
-    CLASS
-      NAME                  "vernielingsladingen"
-
-      EXPRESSION           ("[type]" eq "Vernielingsladingen")
-
-      STYLE
-        ANTIALIAS           true
-        COLOR               160 35 70
-        OPACITY             40
-      END
-
-      STYLE
-        OUTLINECOLOR        160 35 70
-        WIDTH               1
-      END
-
-    END # class
-
   END # layer
 
   #-----------------------------------------------------------------------------
@@ -373,6 +240,7 @@ MAP
       STYLE
         ANTIALIAS           true
         COLOR               50 160 40
+        OPACITY             40
       END
 
       STYLE
@@ -396,9 +264,7 @@ MAP
 
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM public.geo_bommenkaart_uitgevoerdonderzoek_polygon USING srid=28992 USING UNIQUE id"
-
     TYPE                    POLYGON
-
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
 
@@ -421,247 +287,45 @@ MAP
       "gml_include_items"   "all"
     END
 
-
-
     CLASS
-      NAME                  "detectie"
-
+      NAME                  "Detectieonderzoek"
       EXPRESSION ("[type]" eq "Detectie")
-
       STYLE
         ANTIALIAS           true
         OPACITY             40
-        #SYMBOL              "hatchsymbol"
-        COLOR               "#e31a1c"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#e31a1c"
-        WIDTH               1
-      END
-
-    END
-
-    # shade 0 = #AF550B = rgb(175, 85, 11) = rgba(175, 85, 11,1) = rgb0(0.686,0.333,0.043)
-    # shade 1 = #E38E48 = rgb(227,142, 72) = rgba(227,142, 72,1) = rgb0(0.89,0.557,0.282)
-    # shade 2 = #D46F1C = rgb(212,111, 28) = rgba(212,111, 28,1) = rgb0(0.831,0.435,0.11)
-    # shade 3 = #914200 = rgb(145, 66,  0) = rgba(145, 66,  0,1) = rgb0(0.569,0.259,0)
-    # shade 4 = #6B3100 = rgb(107, 49,  0) = rgba(107, 49,  0,1) = rgb0(0.42,0.192,0)
-    #
-    #
-    #
-
-    CLASS
-      NAME                  "notitie"
-
-      EXPRESSION ("[type]" eq "Notitie")
-
-      STYLE
-        ANTIALIAS           true
         COLOR               110 70 180
-        OPACITY             40
       END
-
       STYLE
         OUTLINECOLOR        110 70 180
         WIDTH               1
       END
-
     END
 
     CLASS
-      NAME                  "probleemanalyse"
-
-      EXPRESSION ("[type]" eq "Probleemanalyse")
-
-      STYLE
-        ANTIALIAS           true
-        OPACITY             40
-        #SYMBOL              "hatchsymbol"
-        COLOR               "#E38E48"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#E49E68"
-        WIDTH               1
-      END
-
-    END
-
-
-    CLASS
-      NAME                  "probleeminventarisatie"
-
-      EXPRESSION ("[type]" eq "Probleeminventarisatie")
-
-      STYLE
-        ANTIALIAS           true
-        OPACITY             40
-        #SYMBOL              "hatchsymbol"
-        COLOR               "#D46F1C"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#D47F3C"
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "probleeminventarisatie, analyse"
-
-      EXPRESSION ("[type]" eq "Probleeminventarisatie, Probleemanalyse")
-
-      STYLE
-        ANTIALIAS           true
-        OPACITY             40
-        #SYMBOL              "hatchsymbol"
-        COLOR               "#914200"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#917230"
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "quickscan"
-
-      EXPRESSION ("[type]" eq "Quickscan")
-
-      STYLE
-        ANTIALIAS           true
-        OPACITY             40
-        SYMBOL              "hatchsymbol"
-        COLOR               "#ffaa00"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-	OUTLINECOLOR        "#ffaa00"
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "projectgebonden risicoanalyse"
-
+      NAME                  "Projectgebonden risicoanalyse"
       EXPRESSION ("[type]" eq "Projectgebonden risicoanalyse")
-
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
+        OPACITY             40
         COLOR               "#38a800"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
       END
-
       STYLE
-	OUTLINECOLOR        "#38a800"
+        OUTLINECOLOR        110 70 180
         WIDTH               1
       END
-
     END
 
     CLASS
-      NAME                  "adviesrapport"
-
-      EXPRESSION ("[type]" eq "Adviesrapport")
-
+      NAME                  "Vooronderzoek"
       STYLE
         ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#38a800"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#38a800"
-        WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "vooronderzoek"
-
-      EXPRESSION ("[type]" eq "Vooronderzoek")
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
+        OPACITY             40
         COLOR               "#005ce6"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
       END
-
-
       STYLE
-	OUTLINECOLOR        "#005ce6"
+        OUTLINECOLOR        110 70 180
         WIDTH               1
-      END
-
-    END
-
-    CLASS
-      NAME                  "aanvullend vooronderzoek"
-
-      EXPRESSION ("[type]" eq "Aanvullend vooronderzoek")
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#005ce6"
-        SIZE                5
-        WIDTH               2
-        ANGLE               -45
-      END
-
-      STYLE
-        OUTLINECOLOR        "#005ce6"
-        WIDTH               2
-      END
-
-    END
-
-    CLASS
-      NAME                  "overig"
-
-      STYLE
-        ANTIALIAS           true
-        SYMBOL              "hatchsymbol"
-        COLOR               "#0000ff"
-        SIZE                5
-        WIDTH               2
-        ANGLE               45
-      END
-
-      STYLE
-	OUTLINECOLOR        "#0000ff"
-        WIDTH               1
-      END
-    END  # class
+      END # style
+    END # class
   END # layer
 END # map
