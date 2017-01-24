@@ -184,6 +184,49 @@ MAP
     END
 
     CLASS
+      NAME                  "Munities en granaten"
+      EXPRESSION           ("[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
+      STYLE
+        ANTIALIAS           true
+        COLOR               255 130 0
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        255 130 0
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Landmijnen"
+      EXPRESSION           ("[type]" eq "Landmijnen")
+      STYLE
+        ANTIALIAS           true
+        COLOR               10 180 180
+        OPACITY             40
+      END
+
+      STYLE
+        OUTLINECOLOR        10 180 180
+        WIDTH               1
+      END
+    END
+
+    CLASS
+      NAME                  "Vernielingsladingen"
+      EXPRESSION           ("[type]" eq "Vernielingsladingen")
+      STYLE
+        ANTIALIAS           true
+        COLOR               160 35 70
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        160 35 70
+        WIDTH               1
+      END
+    END
+
+    CLASS
       NAME                  "Afwerpmunitie"
 
       STYLE
