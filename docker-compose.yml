@@ -8,7 +8,7 @@ database:
 map:
   build: .
   ports:
-    - "80"
+      - "80"
   links:
     - "database:atlas_db"
     - "database:nap_db"
@@ -17,6 +17,7 @@ map:
     - "database:parkeervakken_db"
     - "database:basiskaart_db"
     - "database:handelsregister_db"
+    - "database:tellus_db"
   environment:
     ATLAS_DB_NAME: atlas
     ATLAS_DB_USER: postgres
@@ -45,5 +46,10 @@ map:
     HANDELSREGISTER_DB_NAME: handelsregister
     HANDELSREGISTER_DB_USER: postgres
     HANDELSREGISTER_DB_PASSWORD: insecure
+
+    TELLUS_DB_NAME: tellus
+    TELLUS_DB_USER: tellus
+    TELLUS_DB_PASSWORD: insecure
+
   volumes:
     - /srv/lufo:/srv/lufo
