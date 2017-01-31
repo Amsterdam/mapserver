@@ -162,7 +162,7 @@ MAP
 
 
   LAYER
-    NAME            horeca
+    NAME            "horeca"
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
@@ -188,19 +188,6 @@ MAP
     END
 
     # cafe
-
-    CLASS
-      NAME "cafe (correctie)"
-
-      EXPRESSION (("[sbi_detail_group]" eq "café") AND ('[correctie]' = 't'))
-
-      STYLE
-        SYMBOL         "dash1"
-        SIZE           30
-        ANTIALIAS      true
-      END
-    END
-
     CLASS
       NAME "Café"
       EXPRESSION ("[sbi_detail_group]" eq "café")
@@ -218,18 +205,6 @@ MAP
     END
 
     # snackbar
-
-    CLASS
-       NAME "Cafetaria, Snackbar, IJssalon (correctie)"
-       EXPRESSION (("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon") AND ('[correctie]' = 't'))
-
-       STYLE
-         SYMBOL         "dash3"
-         SIZE           30
-         ANTIALIAS      true
-       END
-    END
-
     CLASS
       NAME "Cafetaria, Snackbar, IJssalon"
       EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon")
@@ -246,20 +221,6 @@ MAP
     END
 
     # hotel
-
-    CLASS
-      NAME "Hotel, Pension (correctie)"
-      EXPRESSION (("[sbi_detail_group]" eq "hotel, pension") AND ('[correctie]' = 't'))
-
-      STYLE
-         SYMBOL         "dash5"
-         SIZE           30
-         ANTIALIAS      true
-       END
-
-    END
-
-
     CLASS
       NAME "Hotel, Pension"
       EXPRESSION ("[sbi_detail_group]" eq "hotel, pension")
@@ -276,19 +237,6 @@ MAP
     END
 
     # hotel restaurant
-
-    CLASS
-      NAME "Hotel-restaurant (correctie)"
-      EXPRESSION (("[sbi_detail_group]" eq "hotel-restaurant") AND ('[correctie]' = 't'))
-
-      STYLE
-         SYMBOL         "dash7"
-         SIZE           30
-         ANTIALIAS      true
-       END
-
-    END
-
     CLASS
       NAME "Hotel-restaurant"
       EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant")
@@ -305,18 +253,6 @@ MAP
     END
 
     # kantine
-
-    CLASS
-      NAME "Kantine, Catering (correctie)"
-      EXPRESSION (("[sbi_detail_group]" eq "kantine, catering") AND ('[correctie]' = 't'))
-      STYLE
-         SYMBOL         "dash9"
-         SIZE           30
-         ANTIALIAS      true
-       END
-    END
-
-
     CLASS
       NAME "Kantine, Catering"
       EXPRESSION ("[sbi_detail_group]" eq "kantine, catering")
@@ -333,18 +269,6 @@ MAP
     END
 
     # cafe rest
-
-    CLASS
-      NAME "Restaurant, Café-restaurant"
-      EXPRESSION (("[sbi_detail_group]" eq "restaurant, café-restaurant") AND ('[correctie]' = 't'))
-      STYLE
-         SYMBOL         "dash11"
-         SIZE           30
-         ANTIALIAS      true
-       END
-    END
-
-
     CLASS
       NAME "Restaurant, Café-restaurant"
       EXPRESSION ("[sbi_detail_group]" eq "restaurant, café-restaurant")
@@ -361,17 +285,6 @@ MAP
     END
 
     # overige horeca
-
-    CLASS
-      NAME "Overige horeca"
-      EXPRESSION (("[sbi_detail_group]" eq "overige horeca") AND ('[correctie]' = 't'))
-      STYLE
-         SYMBOL         "dash13"
-         SIZE           30
-         ANTIALIAS      true
-      END
-    END
-
     CLASS
       NAME "Overige horeca"
       EXPRESSION ("[sbi_detail_group]" eq "overige horeca")
