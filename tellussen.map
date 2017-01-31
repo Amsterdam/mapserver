@@ -33,8 +33,8 @@ MAP
     INCLUDE                 "connection_tellus.inc"
     DATA                    "geometrie FROM public.tellus_data_tellus USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
-    MAXSCALEDENOM           4000000
-    MINSCALEDENOM           10
+    MINSCALEDENOM           100
+    MAXSCALEDENOM           5001
 
     METADATA
       "wfs_title"           "tellussen"
