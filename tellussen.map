@@ -1,0 +1,76 @@
+#==============================================================================
+#
+# tellus.map
+# doel: serveren tellus locaties
+#
+#==============================================================================
+
+
+
+MAP
+  NAME                      "tellussen"
+  INCLUDE                   "header.inc"
+  DEBUG 5
+
+  WEB
+    METADATA
+      "ows_title"           "tellussen"
+      "ows_abstract"        "Tellussen Amsterdam"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "tellussen"
+    DEBUG 5
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_tellus.inc"
+    DATA                    "geometrie FROM public.tellus_data_tellus USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           100
+    MAXSCALEDENOM           5001
+
+    METADATA
+      "wfs_title"           "tellussen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Tellussen Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+
+      "wms_title"           "tellussen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "tellussen"
+      "wms_abstract"        "Tellussen Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "tellussen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME                  "tellus locatie"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#e300df"
+        SIZE                9
+      END
+
+      STYLE
+        SYMBOL              "kruis"
+        COLOR               "#fffff0"
+	    ANGLE               45.0
+        SIZE                10
+      END
+
+    END
+  END
+ END
+END
