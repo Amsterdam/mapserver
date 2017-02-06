@@ -58,7 +58,7 @@ MAP
 
     CLASS
       NAME                  "blindganger"
-      EXPRESSION ("[type]" eq "Blindganger")
+      EXPRESSION           ("[detail_type]" eq "Blindganger")
 
       STYLE
         SYMBOL              "stip"
@@ -77,7 +77,7 @@ MAP
 
     CLASS
       NAME                  "bominslag"
-      EXPRESSION            ("[type]" eq "Bominslag")
+      EXPRESSION            ("[detail_type]" eq "Bominslag")
       STYLE
         SYMBOL              "stip"
         COLOR               "#730000"
@@ -87,7 +87,7 @@ MAP
 
     CLASS
       NAME                  "crashlocatie"
-      EXPRESSION            ("[type]" eq "Crashlocatie")
+      EXPRESSION            ("[detail_type]" eq "Crashlocatie")
       STYLE
         SYMBOL              "vierkant"
         COLOR               "#000000"
@@ -97,7 +97,7 @@ MAP
 
     CLASS
       NAME                  "gedetoneerde vernielingslading"
-      EXPRESSION            ("[type]" eq "Gedetoneerde vernielingslading")
+      EXPRESSION            ("[detail_type]" eq "Gedetoneerde vernielingslading")
       STYLE
         SYMBOL              "pentagon"
         COLOR               "#a8a800"
@@ -107,7 +107,7 @@ MAP
 
     CLASS
       NAME                  "geruimd explosief"
-      EXPRESSION            ("[type]" eq "Geruimd explosief")
+      EXPRESSION            ("[detail_type]" eq "Geruimd explosief")
       STYLE
         SYMBOL              "stip"
         COLOR               40 190 70
@@ -117,7 +117,7 @@ MAP
 
     CLASS
       NAME                  "krater"
-      EXPRESSION            ("[type]" eq "Krater")
+      EXPRESSION            ("[detail_type]" eq "Krater")
       STYLE
         SYMBOL              "stip"
         COLOR               80 50 140
@@ -128,7 +128,7 @@ MAP
 
     CLASS
       NAME                  "niet gedetoneerde vernielingslading"
-      EXPRESSION            ("[type]" eq "Niet gedetoneerde vernielingslading")
+      EXPRESSION            ("[detail_type]" eq "Niet gedetoneerde vernielingslading")
       STYLE
         SYMBOL              "pentagon"
         COLOR               "#ff5500"
@@ -139,7 +139,7 @@ MAP
 
     CLASS
       NAME                  "vermoedelijke bominslag(en)"
-      EXPRESSION            ("[type]" eq "Vermoedelijke bominslag(en)")
+      EXPRESSION            ("[detail_type]" eq "Vermoedelijke bominslag(en)")
       STYLE
         SYMBOL              "driehoek"
         COLOR               "#e69800"
@@ -185,7 +185,7 @@ MAP
 
     CLASS
       NAME                  "Munities en granaten"
-      EXPRESSION           ("[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
+      EXPRESSION           ("[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[detail_type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
       STYLE
         ANTIALIAS           true
         COLOR               255 130 0
@@ -199,7 +199,7 @@ MAP
 
     CLASS
       NAME                  "Landmijnen"
-      EXPRESSION           ("[type]" eq "Landmijnen")
+      EXPRESSION           ("[detail_type]" eq "Landmijnen")
       STYLE
         ANTIALIAS           true
         COLOR               10 180 180
@@ -214,7 +214,7 @@ MAP
 
     CLASS
       NAME                  "Vernielingsladingen"
-      EXPRESSION           ("[type]" eq "Vernielingsladingen")
+      EXPRESSION           ("[detail_type]" eq "Vernielingsladingen")
       STYLE
         ANTIALIAS           true
         COLOR               160 35 70
@@ -332,7 +332,7 @@ MAP
 
     CLASS
       NAME                  "Detectieonderzoek"
-      EXPRESSION ("[type]" eq "Detectie")
+      EXPRESSION            ("[detail_type]" eq "Detectie")
       STYLE
         ANTIALIAS           true
         OPACITY             40
@@ -346,7 +346,7 @@ MAP
 
     CLASS
       NAME                  "Projectgebonden risicoanalyse"
-      EXPRESSION ("[type]" eq "Projectgebonden risicoanalyse")
+      EXPRESSION            ("[detail_type]" eq "Projectgebonden risicoanalyse")
       STYLE
         ANTIALIAS           true
         OPACITY             40
