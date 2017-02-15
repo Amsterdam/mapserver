@@ -1,0 +1,93 @@
+#==============================================================================
+#
+# parkeervakken.map
+# doel: serveren van wegdelen en buurten met parkeervak informatie
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Stephan Preeker       1-4-2017      schepping
+#
+#==============================================================================
+
+MAP
+  NAME "PREDICTIVEPARKING"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"    "PREDICTIVEPARKING"
+      "ows_abstract" "wegdelen en buurten met parkeervak informatie"
+    END
+  END
+
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "wegdelen"
+    GROUP           "predictiveparking"
+    INCLUDE         "connection_predictiveparking.inc"
+    DATA            "geometrie FROM scans_wegdelen USING srid=4326 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   425001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "wegdelen"
+      "ows_group_title"     "predictiveparking"
+      "ows_abstract"        "wegdelen met parkeervak informatie"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          'Wegdeel'
+      STYLE
+       OUTLINECOLOR 210 150 50
+       WIDTH        2
+      END
+    END
+
+  END
+
+  LAYER
+    NAME            "buurten"
+    GROUP           "predictiveparking"
+    INCLUDE         "connection_predictiveparking.inc"
+    DATA            "geometrie FROM scans_buurt USING srid=4326 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   425001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "buurten"
+      "ows_group_title"     "predictiveparking"
+      "ows_abstract"        "wegdelen met parkeervak informatie"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          'Buurt'
+      STYLE
+       OUTLINECOLOR 210 50 250
+       WIDTH        4
+      END
+    END
+
+  END
+
+END
+
