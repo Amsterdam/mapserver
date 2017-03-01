@@ -40,7 +40,7 @@
   # MAP: algemeen uitvoer
   #=============================================================================
 
-  IMAGETYPE   agg_png
+  IMAGETYPE   png
 
   WEB
     METADATA
