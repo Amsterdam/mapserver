@@ -1,34 +1,8 @@
 #==============================================================================
 #
 # bgt.map
-# doel: serveren van kaartlagen ten behoeve van de basiskaart
-#       op zoomniveaus 12 t/m 16 van het Nederlandse tiling schema
-#       op zoomniveaus ?? van het Google Maps tiling schema
+# doel: serveren van bgt kaart wms
 #
-# Volgorde van aanroepen:
-# waterdeel
-# ondersteunendwaterdeel
-# steigers
-# onbegroeidterreindeel
-# begroeidterreindeel
-# tunneldeel
-# overbruggingsdeel
-# wegdeel-case
-# wegdeel-fill
-# ondersteunendwegdeel-case
-# ondersteunendwegdeel-fill
-# voetgangers-case
-# voetgangers-fill
-# pand
-# overigbouwwerk
-# kunstwerkdeel
-# gebouwinstallatie
-# scheiding
-# overigescheiding
-# vegetatieobject
-# spoor
-
-
 #==============================================================================
 
 MAP
@@ -38,31 +12,260 @@ MAP
   WEB
     METADATA
       "ows_title"           "bgt"
-      "ows_abstract"        "Grootschalige Basiskaart"
+      "ows_abstract"        "Basisregistratie Grootschalige Topografie"
     END
   END
 
   IMAGECOLOR                "#fefafa"
 
+
+
+
+
   #=============================================================================
-  # LAYERS
+  # LAYERS HOOGTELIGGING 0
   #=============================================================================
 
   LAYER
-    NAME                    waterdeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    waterdeel_vlak0
+    GROUP                   waterdeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_waterdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.waterdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "waterdeel_vlak0"
+	 "wms_group_title"      "waterdeel"
+    END
     CLASS
-      # Zoom{17 18 19 20 21}
+	  # bgttype: {greppel, droge sloot,niet-bgt,transitie,waterloop,watervlakte}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#95c6d5"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    terrein_vlak0
+    GROUP                   terrein
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.terrein_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgtfysvkn
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "terrein_vlak0"
+	 "wms_group_title"      "terrein"
+    END
+    CLASS
+      EXPRESSION      erf
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f9f9e7"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      EXPRESSION      {gesloten verharding,half verhard,onverhard,open verharding,zand}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # {boomteelt,bouwland,duin,fruitteelt,gemengd bos,grasland agrarisch,grasland overig,groenvoorziening,houtwal,
+	  #  loofbos,moeras,naaldbos,rietland,struiken,transitie,zand}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#dceacf"
+		OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    wegdeel_vlak0
+    GROUP                   wegdeel
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgtfunctie
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "wegdeel_vlak0"
+	 "wms_group_title"      "wegdeel"
+    END
+    CLASS
+	  EXPRESSION      {berm,verkeerseiland}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # {baan voor vliegverkeer,fietspad,inrit,OV-baan,overweg,parkeervlak,rijbaan autosnelweg,rijbaan autoweg,
+	  #  rijbaan lokale weg,rijbaan regionale weg,ruiterpad,transitie,voetgangersgebied,voetpad,voetpad op trap,woonerf}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ffffff"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    gebouw_vlak0
+    GROUP                   gebouw
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.gebouw_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgttype
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "gebouw_vlak0"
+	 "wms_group_title"      "gebouw"
+    END
+    CLASS
+	  # overig bouwwerk
+	  EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#e0ded8"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # pand; gebouwinstallatie plustype: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ebeae6"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    inrichtingselement_vlak0
+    GROUP                   inrichtingselement
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    CLASSITEM               bgttype
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_vlak0"
+	 "wms_group_title"      "inrichtingselement"
+    END
+    CLASS
+	  EXPRESSION      steiger
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac80"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  EXPRESSION      {gemaal,hoogspanningsmast,sluis,stuw,transitie}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#ebeae6"
+        OUTLINECOLOR  "#e0ded8"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # {kademuur,muur,niet-bgt}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ff0000"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    waterdeel_lijn0
+    GROUP                   waterdeel
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.waterdeel_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "waterdeel_lijn0"
+	 "wms_group_title"      "waterdeel"
+    END
+    CLASS
+	  # plustype: {duiker}
       MAXSCALEDENOM 4000
       STYLE
         COLOR "#95c6d5"
+		WIDTH 2
       END
     END
   END
@@ -70,159 +273,97 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    ondersteunendwaterdeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    spoor_lijn0
+    GROUP                   spoor
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_ondersteunendwaterdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+	CLASSITEM               bgtfunctie
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
-    CLASS
-      # Zoom{17 18 19 20 21}
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#95c6d5"
-      END
+    METADATA
+     "wms_title"            "spoor_lijn0"
+	 "wms_group_title"      "spoor"
     END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    steigers
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM bgt.imgeo_kunstwerkdeel WHERE bgt_type = 'steiger') AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
+	CLASS
+	  EXPRESSION       sneltram
+      MAXSCALEDENOM    4000
       STYLE
-        COLOR "#f6f6f4"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac80"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-#  LAYER
-#    NAME                    woonboten
-#    GROUP                   "vlakken"
-#    MAXSCALEDENOM           4000
-#    INCLUDE                 "connection_basiskaart.inc"
-#    DATA                    "geometrie FROM bag_ligplaats USING UNIQUE gid USING srid=28992"
-#    TYPE POLYGON
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
-#    CLASS
-#      MAXSCALEDENOM 4000
-#      STYLE
-#        COLOR "#B4D3DB"
-#      END
-#      STYLE
-#        WIDTH 1
-#        OUTLINECOLOR "#A5CDD8"
-#        LINECAP BUTT
-#        LINEJOIN MITER
-#      END
-#    END
-#  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    onbegroeidterreindeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_onbegroeidterreindeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      EXPRESSION ("[bgt_fysiekvoorkomen]" = 'erf')
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#f9f9e7"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#c9c7c2"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      EXPRESSION ("[bgt_fysiekvoorkomen]" != 'erf')
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#f6f6f4"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#c9c7c2"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    begroeidterreindeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_begroeidterreindeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    tunneldeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_tunneldeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
+        WIDTH          3
+        COLOR          "#fc7f7f"
         PATTERN
-          6
-          6
+          8
+          8
         END
-        LINECAP BUTT
-        LINEJOIN MITER
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	  STYLE
+        WIDTH          1
+        COLOR          "#ffffff"
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	END
+	CLASS
+	  EXPRESSION      tram
+      MAXSCALEDENOM   4000
+	  STYLE
+        WIDTH         2
+        COLOR         "#fc7f7f"
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+	END
+	CLASS
+	  EXPRESSION       trein
+      MAXSCALEDENOM    4000
+      STYLE
+        WIDTH          3
+        COLOR          "#9d9d9d"
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	  STYLE
+        WIDTH          1
+        COLOR          "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    inrichtingselement_lijn0
+    GROUP                   inrichtingselement
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.inrichtingselement_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_lijn0"
+	 "wms_group_title"      "inrichtingselement"
+    END
+    CLASS
+	  # bgttype: {damwand,geluidsscherm,hek,kademuur,muur,niet-bgt,stuw,transitie,walbescherming}
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#e0ded8"
+		WIDTH 1
       END
     END
   END
@@ -230,22 +371,63 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    overbruggingsdeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    inrichtingselement_punt0
+    GROUP                   inrichtingselement
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_overbruggingsdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+	CLASSITEM               plustype
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_punt0"
+	 "wms_group_title"      "inrichtingselement"
+    END
+    CLASS
+	  # plustype: {abri,afval apart plaats,afvalbak,betaalautomaat,boom,brandkraan / -put,CAI-kast,elektrakast,fietsenrek,
+	  #            herdenkingsmonument,inspectie- / rioolput,kolk,kunstobject,lichtmast,onbekend,openbaar toilet,pomp,
+	  #			   reclamezuil,telefooncel}
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           6
+        COLOR          "#ff0000"
+        OUTLINECOLOR   "#000000"
+        WIDTH          1
+      END
+    END
+  END
+
+
+
+
+
+  #=============================================================================
+  # LAYERS HOOGTELIGGING 1
+  #=============================================================================
+
+  LAYER
+    NAME                    waterdeel_vlak1
+    GROUP                   waterdeel
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.waterdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "waterdeel_vlak1"
+	 "wms_group_title"      "waterdeel"
     END
     CLASS
       MAXSCALEDENOM 4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
-        LINECAP BUTT
-        LINEJOIN MITER
+        COLOR "#95c6d5"
       END
     END
   END
@@ -253,22 +435,51 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    wegdeel-case
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    terrein_vlak1
+    GROUP                   terrein
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM bgt.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.terrein_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgtfysvkn
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "terrein_vlak1"
+	 "wms_group_title"      "terrein"
+    END
     CLASS
-      MAXSCALEDENOM 4000
+      EXPRESSION      "erf"
+      MAXSCALEDENOM   4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
-        LINECAP BUTT
-        LINEJOIN MITER
+	    COLOR         "#f9f9e7"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      EXPRESSION      {gesloten verharding,half verhard,onverhard,open verharding,zand}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#dceacf"
+		OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -276,19 +487,40 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    wegdeel-fill
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    wegdeel_vlak1
+    GROUP                   wegdeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM bgt.bgt_wegdeel WHERE bgt_functie NOT IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgtfunctie
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "wegdeel_vlak1"
+	 "wms_group_title"      "wegdeel"
+    END
     CLASS
-      MAXSCALEDENOM 4000
+	  EXPRESSION      {berm,verkeerseiland}
+      MAXSCALEDENOM   4000
       STYLE
-        COLOR "#ffffff"
+        COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ffffff"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -296,22 +528,42 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    voetgangers-case
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    gebouw_vlak1
+    GROUP                   gebouw
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM bgt.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.gebouw_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgttype
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "gebouw_vlak1"
+	 "wms_group_title"      "gebouw"
+    END
     CLASS
-      MAXSCALEDENOM 4000
+	  # overig bouwwerk
+	  EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
+      MAXSCALEDENOM   4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
-        LINECAP BUTT
-        LINEJOIN MITER
+        COLOR         "#e0ded8"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # pand en gebouwinstallatie
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ebeae6"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -319,20 +571,50 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    voetgangers-fill
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    inrichtingselement_vlak1
+    GROUP                   inrichtingselement
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie,identificatie_lokaalid FROM bgt.bgt_wegdeel WHERE bgt_functie IN ('voetgangersgebied','voetpad', 'voetpad op trap')) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "inrichtingselement_vlak1"
+	 "wms_group_title"      "inrichtingselement"
+    END
     CLASS
-      MAXSCALEDENOM 4000
+	  EXPRESSION      steiger
+      MAXSCALEDENOM   4000
       STYLE
-#        COLOR "#f6f6f4"
-        COLOR "#ffffff"
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac80"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  EXPRESSION      {gemaal,hoogspanningsmast,sluis,stuw,transitie}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#ebeae6"
+        OUTLINECOLOR  "#e0ded8"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ff0000"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -340,22 +622,95 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    ondersteunendwegdeel-case
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    spoor_lijn1
+    GROUP                   spoor
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_ondersteunendwegdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+	CLASSITEM               bgtfunctie
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
-    CLASS
-      MAXSCALEDENOM 4000    
+    METADATA
+     "wms_title"            "spoor_lijn1"
+	 "wms_group_title"      "spoor"
+    END
+	CLASS
+	  EXPRESSION       sneltram
+      MAXSCALEDENOM    4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
-        LINECAP BUTT
-        LINEJOIN MITER
+        WIDTH          3
+        COLOR          "#fc7f7f"
+        PATTERN
+          8
+          8
+        END
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	  STYLE
+        WIDTH          1
+        COLOR          "#ffffff"
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	END
+	CLASS
+	  EXPRESSION      tram
+      MAXSCALEDENOM   4000
+	  STYLE
+        WIDTH         2
+        COLOR         "#fc7f7f"
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+	END
+	CLASS
+	  EXPRESSION       trein
+      MAXSCALEDENOM    4000
+      STYLE
+        WIDTH          3
+        COLOR          "#9d9d9d"
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	  STYLE
+        WIDTH          1
+        COLOR          "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    inrichtingselement_lijn1
+    GROUP                   inrichtingselement
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_lijn1"
+	 "wms_group_title"      "inrichtingselement"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ff0000"
+		WIDTH 2
       END
     END
   END
@@ -363,19 +718,86 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    ondersteunendwegdeel-fill
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    inrichtingselement_punt1
+    GROUP                   inrichtingselement
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_ondersteunendwegdeel USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_punt1"
+	 "wms_group_title"      "inrichtingselement"
     END
     CLASS
       MAXSCALEDENOM 4000
       STYLE
-        COLOR "#f6f6f4"
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#ff0000"
+        OUTLINECOLOR   "#000000"
+        WIDTH          1
+      END
+    END
+  END
+
+
+
+
+
+  #=============================================================================
+  # LAYERS HOOGTELIGGING 2
+  #=============================================================================
+
+  LAYER
+    NAME                    terrein_vlak2
+    GROUP                   terrein
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.terrein_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgtfysvkn
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "terrein_vlak2"
+	 "wms_group_title"      "terrein"
+    END
+    CLASS
+      EXPRESSION      "erf"
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f9f9e7"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      EXPRESSION      {gesloten verharding,half verhard,onverhard,open verharding,zand}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#dceacf"
+		OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -383,39 +805,39 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    pand
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    wegdeel_vlak2
+    GROUP                   wegdeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.bgt_pand USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "wegdeel_vlak2"
+	 "wms_group_title"      "wegdeel"
+    END
     CLASS
-      # Zoom{=17}
-      MAXSCALEDENOM 4000
+	  EXPRESSION      {berm,verkeerseiland}
+      MAXSCALEDENOM   4000
       STYLE
-        COLOR "#ebeae6"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#c9c7c2"
-        LINECAP BUTT
-        LINEJOIN MITER
+        COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
     CLASS
-      # Zoom{17 18 19 20 21 22}
-      MAXSCALEDENOM 4000
+      MAXSCALEDENOM   4000
       STYLE
-        COLOR "#ebeae6"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#c9c7c2"
-        LINECAP BUTT
-        LINEJOIN MITER
+        COLOR         "#ffffff"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -423,25 +845,42 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    overigbouwwerk
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    gebouw_vlak2
+    GROUP                   gebouw
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.imgeo_overigbouwwerk USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.gebouw_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgttype
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "gebouw_vlak2"
+	 "wms_group_title"      "gebouw"
+    END
     CLASS
-      MAXSCALEDENOM 4000
+	  # overig bouwwerk
+	  EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
+      MAXSCALEDENOM   4000
       STYLE
-        COLOR "#ebeae6"
+        COLOR         "#e0ded8"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
+    END
+    CLASS
+	  # pand en gebouwinstallatie
+      MAXSCALEDENOM   4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
+        COLOR         "#ebeae6"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -449,25 +888,50 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    gebouwinstallatie
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    inrichtingselement_vlak2
+    GROUP                   inrichtingselement
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.imgeo_gebouwinstallatie USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
+    METADATA
+     "wms_title"            "inrichtingselement_vlak2"
+	 "wms_group_title"      "inrichtingselement"
+    END
     CLASS
-      MAXSCALEDENOM 4000
+	  EXPRESSION      steiger
+      MAXSCALEDENOM   4000
       STYLE
-        COLOR "#ebeae6"
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac80"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
+    END
+    CLASS
+	  EXPRESSION      {gemaal,hoogspanningsmast,sluis,stuw,transitie}
+      MAXSCALEDENOM   4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
+	    COLOR         "#ebeae6"
+        OUTLINECOLOR  "#e0ded8"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ff0000"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
@@ -475,92 +939,95 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    kunstwerkdeel
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    spoor_lijn2
+    GROUP                   spoor
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, identificatie_lokaalid FROM bgt.imgeo_kunstwerkdeel WHERE bgt_type != 'steiger' AND relatievehoogteligging > -1) AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+	CLASSITEM               bgtfunctie
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
-    CLASS
-      MAXSCALEDENOM 4000
+    METADATA
+     "wms_title"            "spoor_lijn2"
+	 "wms_group_title"      "spoor"
+    END
+	CLASS
+	  EXPRESSION       sneltram
+      MAXSCALEDENOM    4000
       STYLE
-        COLOR "#ebeae6"
+        WIDTH          3
+        COLOR          "#fc7f7f"
+        PATTERN
+          8
+          8
+        END
+        LINECAP        BUTT
+        LINEJOIN       MITER
       END
+	  STYLE
+        WIDTH          1
+        COLOR          "#ffffff"
+        LINECAP        BUTT
+        LINEJOIN       MITER
+      END
+	END
+	CLASS
+	  EXPRESSION      tram
+      MAXSCALEDENOM   4000
+	  STYLE
+        WIDTH         2
+        COLOR         "#fc7f7f"
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+	END
+	CLASS
+	  EXPRESSION       trein
+      MAXSCALEDENOM    4000
       STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
+        WIDTH          3
+        COLOR          "#9d9d9d"
+        LINECAP        BUTT
+        LINEJOIN       MITER
       END
-    END
-  END
-
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    scheiding
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.imgeo_scheiding USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
+	  STYLE
+        WIDTH          1
+        COLOR          "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP        BUTT
+        LINEJOIN       MITER
       END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    overigescheiding
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.imgeo_overigescheiding USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
+	END
   END
 
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    vegetatieobject
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           4000
+    NAME                    inrichtingselement_lijn2
+    GROUP                   inrichtingselement
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.imgeo_vegetatieobject USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE POLYGON
+    DATA                    "geometrie FROM bgt.inrichtingselement_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_lijn2"
+	 "wms_group_title"      "inrichtingselement"
     END
     CLASS
       MAXSCALEDENOM 4000
       STYLE
-        COLOR "#dceacf"
+        COLOR "#ff0000"
+		WIDTH 2
       END
     END
   END
@@ -568,36 +1035,307 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    spoor
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           4000
+    NAME                    inrichtingselement_punt2
+    GROUP                   inrichtingselement
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.imgeo_spoor USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE LINE
+    DATA                    "geometrie FROM bgt.inrichtingselement_punt2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_punt2"
+	 "wms_group_title"      "inrichtingselement"
     END
     CLASS
       MAXSCALEDENOM 4000
       STYLE
-        WIDTH 1
-        COLOR "#fc7f7f"
-        LINECAP BUTT
-        LINEJOIN MITER
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#ff0000"
+        OUTLINECOLOR   "#000000"
+        WIDTH          1
+      END
+    END
+  END
+
+
+
+
+
+  #=============================================================================
+  # LAYERS HOOGTELIGGING 3
+  #=============================================================================
+
+  LAYER
+    NAME                    terrein_vlak3
+    GROUP                   terrein
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.terrein_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgtfysvkn
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "terrein_vlak3"
+	 "wms_group_title"      "terrein"
+    END
+    CLASS
+      EXPRESSION      "erf"
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f9f9e7"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      EXPRESSION      {gesloten verharding,half verhard,onverhard,open verharding,zand}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#c9c7c2"
+        WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#dceacf"
+		OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
       END
     END
   END
 
   #-----------------------------------------------------------------------------
 
-  # Niet in BGT, maar wel in TOP10NL:
-  # Voetveer
-  # Autoveer
-  # Spoor (trein) - ProRail bronhouder
-  # Autosnelwegen - RWS bronhouder
+  LAYER
+    NAME                    wegdeel_vlak3
+    GROUP                   wegdeel
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "wegdeel_vlak3"
+	 "wms_group_title"      "wegdeel"
+    END
+    CLASS
+	  EXPRESSION      {berm,verkeerseiland}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ffffff"
+        OUTLINECOLOR  "#acacac"
+		WIDTH         0.5
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
 
   #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    gebouw_vlak3
+    GROUP                   gebouw
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.gebouw_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgttype
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "gebouw_vlak3"
+	 "wms_group_title"      "gebouw"
+    END
+    CLASS
+	  # overig bouwwerk
+	  EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#e0ded8"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # pand en gebouwinstallatie
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ebeae6"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    inrichtingselement_vlak3
+    GROUP                   inrichtingselement
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.inrichtingselement_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_vlak3"
+	 "wms_group_title"      "inrichtingselement"
+    END
+    CLASS
+	  EXPRESSION      steiger
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#f6f6f4"
+        OUTLINECOLOR  "#acacac80"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  EXPRESSION      {gemaal,hoogspanningsmast,sluis,stuw,transitie}
+      MAXSCALEDENOM   4000
+      STYLE
+	    COLOR         "#ebeae6"
+        OUTLINECOLOR  "#e0ded8"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ff0000"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    inrichtingselement_lijn3
+    GROUP                   inrichtingselement
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.inrichtingselement_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "inrichtingselement_lijn3"
+	 "wms_group_title"      "inrichtingselement"
+    END
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#ff0000"
+		WIDTH 2
+      END
+    END
+  END
+
+
+
+
+
+  #=============================================================================
+  # LAYERS HOOGTELIGGING 4
+  #=============================================================================
+
+  LAYER
+    NAME                    gebouw_vlak4
+    GROUP                   gebouw
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.gebouw_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+	CLASSITEM               bgttype
+    MAXSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "gebouw_vlak4"
+	 "wms_group_title"      "gebouw"
+    END
+    CLASS
+	  # overig bouwwerk
+	  EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#e0ded8"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+    CLASS
+	  # pand en gebouwinstallatie
+      MAXSCALEDENOM   4000
+      STYLE
+        COLOR         "#ebeae6"
+        OUTLINECOLOR  "#c9c7c2"
+		WIDTH         1
+        LINECAP       BUTT
+        LINEJOIN      MITER
+      END
+    END
+  END
+
+
+
+# (NOG) NIET IN MAPFILE:
+# alles onder hoogteligging 0
+# tunneldeel
+# overbruggingsdeel
+# vegetatieobject
+# inrichtingselement, vlakken, lijnen en punten
 
 #=============================================================================
-
 END
