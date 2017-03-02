@@ -74,40 +74,33 @@ MAP
       EXPRESSION ('[correctie]' = 't')
 
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  1
         MAXSCALEDENOM  190001
 
-        SYMBOL         "dashstip"
-        # SYMBOL         "stip"
-        SIZE           12
-        SIZE           12
+        SYMBOL         "stip"
+        SIZE           10
 
-        OUTLINECOLOR   255 10 10
+	# Voor all correctie = 't' stippen
+        OUTLINECOLOR    99 99 99
         COLOR          255 10 10
-
-        ANTIALIAS      true
       END
     END
 
+    CLASS
+      NAME "vestiging"
 
-    #CLASS
-    #  NAME "vestiging"
+      STYLE
+        MINSCALEDENOM  1
+        MAXSCALEDENOM  190001
 
-    #  STYLE
-    #    MINSCALEDENOM  100
-    #    MAXSCALEDENOM  190001
+        SYMBOL         "stip"
+        SIZE           10
+        OUTLINECOLOR   10  10 10
+        COLOR          10 205 10
+        WIDTH          1
 
-    #    SYMBOL         "stip"
-    #    SIZE           1
-    #    OUTLINECOLOR   10 255 10
-    #    COLOR          10 255 10
-    #    WIDTH          1
-    #    ANTIALIAS      true
-
-    #  END
-    #END
-
-
+      END
+    END
   END
 
 
@@ -141,7 +134,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR          200 200 200
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -188,6 +181,22 @@ MAP
     END
 
     # cafe
+
+    CLASS
+      NAME "Café (correctie)"
+      EXPRESSION ("[sbi_detail_group]" eq "café" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   99   99 99
+        COLOR          241 119 48
+        WIDTH          1
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Café"
       EXPRESSION ("[sbi_detail_group]" eq "café")
@@ -197,7 +206,6 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23 164 84
         COLOR          241 119 48
         WIDTH          1
         ANTIALIAS      true
@@ -330,7 +338,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR          200 200 200
+        COLOR          66   66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -460,7 +468,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
