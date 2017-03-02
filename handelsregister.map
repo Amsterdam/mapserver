@@ -190,9 +190,9 @@ MAP
         MAXSCALEDENOM  5001
         SYMBOL         'stip'
         SIZE           10
-        OUTLINECOLOR   99   99 99
+        OUTLINECOLOR   150 150 150
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          3
         ANTIALIAS      true
       END
     END
@@ -207,12 +207,28 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          3
         ANTIALIAS      true
       END
     END
 
     # snackbar
+
+    CLASS
+      NAME "Cafetaria, Snackbar, IJssalon (correctie)"
+      EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   99   99 99
+        COLOR          254 239 53
+        WIDTH          1
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Cafetaria, Snackbar, IJssalon"
       EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon")
@@ -231,6 +247,21 @@ MAP
     # hotel
     CLASS
       NAME "Hotel, Pension"
+      EXPRESSION ("[sbi_detail_group]" eq "hotel, pension" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   99  99  99
+        COLOR          97  184 77
+        WIDTH          1
+        ANTIALIAS      true
+      END
+    END
+
+    CLASS
+      NAME "Hotel, Pension"
       EXPRESSION ("[sbi_detail_group]" eq "hotel, pension")
       STYLE
         MINSCALEDENOM  100
@@ -245,6 +276,22 @@ MAP
     END
 
     # hotel restaurant
+
+    CLASS
+      NAME "Hotel-restaurant"
+      EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   99  99  99
+        COLOR          26  170 182
+        WIDTH          1
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Hotel-restaurant"
       EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant")
@@ -596,7 +643,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -725,7 +772,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -856,7 +903,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1018,7 +1065,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1036,7 +1083,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66 66 66
         OUTLINECOLOR   55 255 55
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1192,7 +1239,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1362,7 +1409,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1587,7 +1634,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1702,7 +1749,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66 66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1817,7 +1864,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1975,7 +2022,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
