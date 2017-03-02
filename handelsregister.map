@@ -69,45 +69,38 @@ MAP
     END
 
     CLASS
-      NAME "vestiging (correctie)"
+      NAME "vestiging (bij benadering)"
 
       EXPRESSION ('[correctie]' = 't')
 
       STYLE
-        MINSCALEDENOM  100
+        MINSCALEDENOM  1
         MAXSCALEDENOM  190001
 
-        SYMBOL         "dashstip"
-        # SYMBOL         "stip"
-        SIZE           12
-        SIZE           12
+        SYMBOL         "stip"
+        SIZE           10
 
-        OUTLINECOLOR   255 10 10
+	# Voor all correctie = 't' stippen
+        OUTLINECOLOR    99 99 99
         COLOR          255 10 10
-
-        ANTIALIAS      true
       END
     END
 
+    CLASS
+      NAME "vestiging"
 
-    #CLASS
-    #  NAME "vestiging"
+      STYLE
+        MINSCALEDENOM  1
+        MAXSCALEDENOM  190001
 
-    #  STYLE
-    #    MINSCALEDENOM  100
-    #    MAXSCALEDENOM  190001
+        SYMBOL         "stip"
+        SIZE           10
+        OUTLINECOLOR   10  10 10
+        COLOR          10 205 10
+        WIDTH          1
 
-    #    SYMBOL         "stip"
-    #    SIZE           1
-    #    OUTLINECOLOR   10 255 10
-    #    COLOR          10 255 10
-    #    WIDTH          1
-    #    ANTIALIAS      true
-
-    #  END
-    #END
-
-
+      END
+    END
   END
 
 
@@ -141,7 +134,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR          200 200 200
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -188,6 +181,22 @@ MAP
     END
 
     # cafe
+
+    CLASS
+      NAME "Café (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "café" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Café"
       EXPRESSION ("[sbi_detail_group]" eq "café")
@@ -197,14 +206,28 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23 164 84
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
         ANTIALIAS      true
       END
     END
 
     # snackbar
+    CLASS
+      NAME "Cafetaria, Snackbar, IJssalon (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          254 239 53
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Cafetaria, Snackbar, IJssalon"
       EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon")
@@ -215,12 +238,27 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
-        WIDTH          1
+        WIDTH          2
         ANTIALIAS      true
       END
     END
 
     # hotel
+    CLASS
+      NAME "Hotel, Pension (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "hotel, pension" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          97  184 77
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Hotel, Pension"
       EXPRESSION ("[sbi_detail_group]" eq "hotel, pension")
@@ -231,12 +269,28 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          97  184 77
-        WIDTH          1
+        WIDTH          2
         ANTIALIAS      true
       END
     END
 
     # hotel restaurant
+
+    CLASS
+      NAME "Hotel-restaurant (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          26  170 182
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Hotel-restaurant"
       EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant")
@@ -247,12 +301,28 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          26  170 182
-        WIDTH          1
+        WIDTH          2
         ANTIALIAS      true
       END
     END
 
     # kantine
+
+    CLASS
+      NAME "Kantine, Catering (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "kantine, catering" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          21  134 201
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Kantine, Catering"
       EXPRESSION ("[sbi_detail_group]" eq "kantine, catering")
@@ -263,12 +333,27 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          21  134 201
-        WIDTH          1
+        WIDTH          2
         ANTIALIAS      true
       END
     END
 
     # cafe rest
+    CLASS
+      NAME "Restaurant, Café-restaurant (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Restaurant, Café-restaurant"
       EXPRESSION ("[sbi_detail_group]" eq "restaurant, café-restaurant")
@@ -279,12 +364,27 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
-        WIDTH          1
+        WIDTH          2
         ANTIALIAS      true
       END
     END
 
     # overige horeca
+    CLASS
+      NAME "Overige horeca (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "overige horeca" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
+        ANTIALIAS      true
+      END
+    END
+
     CLASS
       NAME "Overige horeca"
       EXPRESSION ("[sbi_detail_group]" eq "overige horeca")
@@ -330,7 +430,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR          200 200 200
+        COLOR          66   66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -374,6 +474,20 @@ MAP
     FILTERITEM         "locatie_type"
 
     CLASS
+      NAME "Holdings, financiële dienstverlening en verzekeringen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Holdings, financiële dienstverlening en verzekeringen"
       EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen")
       STYLE
@@ -383,7 +497,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Holdings (geen financiële) (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "holdings (geen financiële)" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          183 210 66
+        WIDTH          2
       END
     END
 
@@ -397,7 +525,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          183 210 66
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Verhuur van- en beheer/handel in onroerend goed (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          29  174 236
+        WIDTH          2
       END
     END
 
@@ -411,7 +553,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          29  174 236
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Verhuur van roerende goederen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "verhuur van roerende goederen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          117 47  142
+        WIDTH          2
       END
     END
 
@@ -425,7 +581,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          117 47  142
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -460,7 +616,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -502,6 +658,20 @@ MAP
     END
 
     CLASS
+      NAME "Belangenorganisaties (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "belangenorganisaties" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Belangenorganisaties"
       EXPRESSION ("[sbi_detail_group]" eq "belangenorganisaties")
       STYLE
@@ -511,7 +681,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Hobbyclubs (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "hobbyclubs" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          254 239 53
+        WIDTH          2
       END
     END
 
@@ -525,9 +709,24 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
-        WIDTH          1
+        WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Idieële organisaties (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "idieële organisaties" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          23  164 84
+        WIDTH          2
+      END
+    END
+
 
     CLASS
       NAME "Idieële organisaties"
@@ -539,7 +738,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          23  164 84
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Overige (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "overige" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          2
       END
     END
 
@@ -553,7 +766,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -588,7 +801,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -631,6 +844,20 @@ MAP
     END
 
     CLASS
+      NAME "Kunst (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "kunst" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          250 178 49
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Kunst"
       EXPRESSION ("[sbi_detail_group]" eq "kunst")
       STYLE
@@ -640,7 +867,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          250 178 49
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Musea, Bibliotheken, Kunstuitleen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          97  184 77
+        WIDTH          2
       END
     END
 
@@ -654,9 +895,24 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          97  184 77
-        WIDTH          1
+        WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Recreatie (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "recreatie"  && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          13  97  171
+        WIDTH          2
+      END
+    END
+
 
     CLASS
       NAME "Recreatie"
@@ -668,7 +924,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          13  97  171
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Sport (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "sport" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -682,7 +952,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -717,7 +987,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -760,6 +1030,20 @@ MAP
     END
 
     CLASS
+      NAME "Activiteiten  op gebied van film, tv, radio, audio (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "activiteiten  op gebied van film, tv, radio, audio"  && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Activiteiten  op gebied van film, tv, radio, audio"
       EXPRESSION ("[sbi_detail_group]" eq "activiteiten  op gebied van film, tv, radio, audio")
       STYLE
@@ -768,8 +1052,22 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-    COLOR          241 119 48
-        WIDTH          1
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Activiteiten op het gebied van ict (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "activiteiten op het gebied van ict"  && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          183 210 66
+        WIDTH          2
       END
     END
 
@@ -782,8 +1080,22 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-    COLOR          183 210 66
-        WIDTH          1
+        COLOR          183 210 66
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Telecommunicatie (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          29  174 236
+        WIDTH          2
       END
     END
 
@@ -796,8 +1108,22 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-    COLOR          29  174 236
-        WIDTH          1
+        COLOR          29  174 236
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Uitgeverijen (correcrtie)"
+      EXPRESSION ("[sbi_detail_group]" eq "uitgeverijen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          117 47  142
+        WIDTH          2
       END
     END
 
@@ -810,8 +1136,8 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-    COLOR          117 47  142
-        WIDTH          1
+        COLOR          117 47  142
+        WIDTH          2
       END
     END
   END
@@ -847,8 +1173,8 @@ MAP
       EXPRESSION ("[locatie_type]" eq "P")
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        MAXSCALEDENOM  1000
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -865,9 +1191,9 @@ MAP
       EXPRESSION ("[locatie_type]" eq "B")
       LABEL
         MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR   0 200 0
-        OUTLINECOLOR   55 255 55
+        MAXSCALEDENOM  1000
+        COLOR           66  66  66
+        OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
@@ -909,6 +1235,20 @@ MAP
     END
 
     CLASS
+      NAME "Kappers (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "kappers" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Kappers"
       EXPRESSION ("[sbi_detail_group]" eq "kappers")
       STYLE
@@ -918,7 +1258,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Sauna, solariat (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "sauna, solaria" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          183 210 66
+        WIDTH          2
       END
     END
 
@@ -932,7 +1286,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          183 210 66
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Schoonheidsverzorging (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "schoonheidsverzorging" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          26  170 182
+        WIDTH          2
       END
     END
 
@@ -946,9 +1314,25 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          26  170 182
-        WIDTH          1
+        WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Uitvaart, crematoria (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "uitvaart, crematoria" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          13  97  171
+        WIDTH          2
+      END
+    END
+
+
 
     CLASS
       NAME "Uitvaart, crematoria"
@@ -960,7 +1344,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          13  97  171
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Overige dienstverlening (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "overige dienstverlening" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -974,7 +1372,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -1010,7 +1408,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1028,8 +1426,8 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
-        OUTLINECOLOR   55 255 55
+        COLOR           66 66 66
+        OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
@@ -1069,6 +1467,20 @@ MAP
     END
 
     CLASS
+      NAME "Dienstverlening voor de land/tuinbouw (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Dienstverlening voor de land/tuinbouw"
       EXPRESSION ("[sbi_detail_group]" eq "dienstverlening voor de land/tuinbouw")
       STYLE
@@ -1078,7 +1490,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Fokken, houden dieren (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "fokken, houden dieren" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          254 239 53
+        WIDTH          2
       END
     END
 
@@ -1092,7 +1518,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Gemengd bedrijf (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "gemengd bedrijf" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          23  164 84
+        WIDTH          2
       END
     END
 
@@ -1106,7 +1546,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          23  164 84
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Teelt eenjarige gewassen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "teelt eenjarige gewassen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          29  174 236
+        WIDTH          2
       END
     END
 
@@ -1120,7 +1574,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          29  174 236
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Teelt meerjarige gewassen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "teelt meerjarige gewassen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          2
       END
     END
 
@@ -1134,7 +1602,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Teelt sierplanten (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "teelt sierplanten" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -1148,7 +1630,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -1184,7 +1666,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1227,6 +1709,20 @@ MAP
     END
 
     CLASS
+      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd) (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
       EXPRESSION ("[sbi_detail_group]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
@@ -1236,7 +1732,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Dienstverlening vervoer (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening vervoer" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          254 239 53
+        WIDTH          2
       END
     END
 
@@ -1250,7 +1760,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd) (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          97  184 77
+        WIDTH          2
       END
     END
 
@@ -1264,7 +1788,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          97  184 77
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Handel en reparatie van auto's (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          26  170 182
+        WIDTH          2
       END
     END
 
@@ -1278,7 +1816,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          26  170 182
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf) (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          21  134 201
+        WIDTH          2
       END
     END
 
@@ -1292,7 +1844,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          21  134 201
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Opslag (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "opslag" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          2
       END
     END
 
@@ -1306,7 +1872,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Vervoer (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "vervoer" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -1320,7 +1900,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -1354,7 +1934,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1394,6 +1974,20 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
+   CLASS
+      NAME "Accountancy, administratie (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "accountancy, administratie" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
     CLASS
       NAME "Accountancy, administratie"
       EXPRESSION ("[sbi_detail_group]" eq "accountancy, administratie")
@@ -1404,7 +1998,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Advocaten rechtskundige diensten, notarissen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          254 239 53
+        WIDTH          2
       END
     END
 
@@ -1418,7 +2026,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          97  184 77
+        WIDTH          2
       END
     END
 
@@ -1432,7 +2054,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          97  184 77
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Architecten (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "architecten" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          26  170 182
+        WIDTH          2
       END
     END
 
@@ -1446,8 +2082,23 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          26  170 182
-        WIDTH          1
+        WIDTH          2
       END
+    END
+
+    CLASS
+      NAME "Design (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "design" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          21  134 201
+        WIDTH          2
+      END
+    END
 
     CLASS
       NAME "Design"
@@ -1459,7 +2110,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          21  134 201
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Interieurarchitecten (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "interieurarchitecten" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          2
       END
     END
 
@@ -1473,7 +2138,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Managementadvies, economisch advies (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "managementadvies, economisch advies" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          117 47  142
+        WIDTH          2
       END
     END
 
@@ -1487,7 +2166,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          117 47  142
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Public relationsbureaus (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "public relationsbureaus" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -1501,7 +2194,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Reclame en Marktonderzoek (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "reclame en marktonderzoek" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          23  164 84
+        WIDTH          2
       END
     END
 
@@ -1515,7 +2222,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          23  164 84
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Technisch ontwerp, advies, keuring/research (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          183 210 66
+        WIDTH          2
       END
     END
 
@@ -1529,7 +2250,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          183 210 66
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Overige zakelijke dienstverlening (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "overige zakelijke dienstverlening" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          250 178 49
+        WIDTH          2
       END
     END
 
@@ -1579,7 +2314,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1621,6 +2356,21 @@ MAP
     END
 
     CLASS
+      NAME "Installatie (geen bouw) (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "installatie (geen bouw)" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          183 210 66
+        WIDTH          2
+      END
+    END
+
+
+    CLASS
       NAME "Installatie (geen bouw)"
       EXPRESSION ("[sbi_detail_group]" eq "installatie (geen bouw)")
       STYLE
@@ -1630,7 +2380,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          183 210 66
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Productie (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "productie" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          29  174 236
+        WIDTH          2
       END
     END
 
@@ -1644,7 +2408,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          29  174 236
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Reparatie (geen bouw) (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "reparatie (geen bouw)" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -1694,7 +2472,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66 66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1736,6 +2514,20 @@ MAP
     END
 
     CLASS
+      NAME "Gezondheids- en welzijnszorg (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Gezondheids- en welzijnszorg"
       EXPRESSION ("[sbi_detail_group]" eq "gezondheids- en welzijnszorg")
       STYLE
@@ -1745,7 +2537,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Onderwijs (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "onderwijs" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          23  164 84
+        WIDTH          2
       END
     END
 
@@ -1759,7 +2565,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          23  164 84
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Overheid (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "overheid" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -1809,7 +2629,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1852,6 +2672,20 @@ MAP
     END
 
     CLASS
+      NAME "Afwerking van gebouwen (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "afwerking van gebouwen" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          2
+      END
+    END
+
+    CLASS
       NAME "Afwerking van gebouwen"
       EXPRESSION ("[sbi_detail_group]" eq "afwerking van gebouwen")
       STYLE
@@ -1861,7 +2695,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          241 119 48
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Bouwinstallatie (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "bouwinstallatie" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          254 239 53
+        WIDTH          2
       END
     END
 
@@ -1875,7 +2723,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          254 239 53
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          23  164 84
+        WIDTH          2
       END
     END
 
@@ -1889,7 +2751,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          23  164 84
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Dak- en overige gespecialiseerde bouw (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          21  134 201
+        WIDTH          2
       END
     END
 
@@ -1903,7 +2779,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          21  134 201
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Grond, water, wegenbouw (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          2
       END
     END
 
@@ -1917,7 +2807,21 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          47  52  144
-        WIDTH          1
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Bouw overig (bij benadering)"
+      EXPRESSION ("[sbi_detail_group]" eq "bouw overig" && '[correctie]' = 't')
+      STYLE
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  5001
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          2
       END
     END
 
@@ -1931,7 +2835,7 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 0 0
         COLOR          233 22  139
-        WIDTH          1
+        WIDTH          2
       END
     END
   END
@@ -1967,7 +2871,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR   0 200 0
+        COLOR           66  66  66
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
