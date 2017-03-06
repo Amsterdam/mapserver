@@ -33,6 +33,7 @@ MAP
     DATA                    "geometrie FROM bgt.waterdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -42,7 +43,7 @@ MAP
 	 "wms_group_title"      "waterdeel"
     END
     CLASS
-	  # bgttype: {greppel, droge sloot,niet-bgt,transitie,waterloop,watervlakte}
+	  # bgt_type: {greppel, droge sloot,niet-bgt,transitie,waterloop,watervlakte}
       MAXSCALEDENOM   4000
       STYLE
         COLOR         "#95c6d5"
@@ -53,20 +54,20 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    terrein_vlak0
-    GROUP                   terrein
+    NAME                    terreindeel_vlak0
+    GROUP                   terreindeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.terrein_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.terreindeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgtfysvkn
+	CLASSITEM               bgt_fysiekvoorkomen
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "wms_title"            "terrein_vlak0"
-	 "wms_group_title"      "terrein"
+     "wms_title"            "terreindeel_vlak0"
+	 "wms_group_title"      "terreindeel"
     END
     CLASS
       EXPRESSION      erf
@@ -113,7 +114,7 @@ MAP
     DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgtfunctie
+	CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -156,7 +157,7 @@ MAP
     DATA                    "geometrie FROM bgt.gebouw_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgttype
+	CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -178,7 +179,7 @@ MAP
       END
     END
     CLASS
-	  # pand; gebouwinstallatie plustype: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
+	  # pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
       MAXSCALEDENOM   4000
       STYLE
         COLOR         "#ebeae6"
@@ -199,7 +200,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-    CLASSITEM               bgttype
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -252,6 +253,7 @@ MAP
     DATA                    "geometrie FROM bgt.waterdeel_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
+    CLASSITEM               plus_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -261,7 +263,7 @@ MAP
 	 "wms_group_title"      "waterdeel"
     END
     CLASS
-	  # plustype: {duiker}
+	  # plus_type: {duiker}
       MAXSCALEDENOM 4000
       STYLE
         COLOR "#95c6d5"
@@ -279,7 +281,7 @@ MAP
     DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
-	CLASSITEM               bgtfunctie
+	CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -350,6 +352,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -359,7 +362,7 @@ MAP
 	 "wms_group_title"      "inrichtingselement"
     END
     CLASS
-	  # bgttype: {damwand,geluidsscherm,hek,kademuur,muur,niet-bgt,stuw,transitie,walbescherming}
+	  # bgt_type: {damwand,geluidsscherm,hek,kademuur,muur,niet-bgt,stuw,transitie,walbescherming}
       MAXSCALEDENOM 4000
       STYLE
         COLOR "#e0ded8"
@@ -377,7 +380,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
-	CLASSITEM               plustype
+	CLASSITEM               plus_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -387,7 +390,7 @@ MAP
 	 "wms_group_title"      "inrichtingselement"
     END
     CLASS
-	  # plustype: {abri,afval apart plaats,afvalbak,betaalautomaat,boom,brandkraan / -put,CAI-kast,elektrakast,fietsenrek,
+	  # plus_type: {abri,afval apart plaats,afvalbak,betaalautomaat,boom,brandkraan / -put,CAI-kast,elektrakast,fietsenrek,
 	  #            herdenkingsmonument,inspectie- / rioolput,kolk,kunstobject,lichtmast,onbekend,openbaar toilet,pomp,
 	  #			   reclamezuil,telefooncel}
       MAXSCALEDENOM 4000
@@ -416,6 +419,7 @@ MAP
     DATA                    "geometrie FROM bgt.waterdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -435,20 +439,20 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    terrein_vlak1
-    GROUP                   terrein
+    NAME                    terreindeel_vlak1
+    GROUP                   terreindeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.terrein_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.terreindeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgtfysvkn
+	CLASSITEM               bgt_fysiekvoorkomen
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "wms_title"            "terrein_vlak1"
-	 "wms_group_title"      "terrein"
+     "wms_title"            "terreindeel_vlak1"
+	 "wms_group_title"      "terreindeel"
     END
     CLASS
       EXPRESSION      "erf"
@@ -493,7 +497,7 @@ MAP
     DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgtfunctie
+	CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -534,7 +538,7 @@ MAP
     DATA                    "geometrie FROM bgt.gebouw_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgttype
+	CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -577,6 +581,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -628,7 +633,7 @@ MAP
     DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
-	CLASSITEM               bgtfunctie
+	CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -698,6 +703,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -724,6 +730,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
+    CLASSITEM               plus_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -753,20 +760,20 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME                    terrein_vlak2
-    GROUP                   terrein
+    NAME                    terreindeel_vlak2
+    GROUP                   terreindeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.terrein_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.terreindeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgtfysvkn
+	CLASSITEM               bgt_fysiekvoorkomen
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "wms_title"            "terrein_vlak2"
-	 "wms_group_title"      "terrein"
+     "wms_title"            "terreindeel_vlak2"
+	 "wms_group_title"      "terreindeel"
     END
     CLASS
       EXPRESSION      "erf"
@@ -811,6 +818,7 @@ MAP
     DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -851,7 +859,7 @@ MAP
     DATA                    "geometrie FROM bgt.gebouw_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgttype
+	CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -894,6 +902,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASS                   bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -945,7 +954,7 @@ MAP
     DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
-	CLASSITEM               bgtfunctie
+	CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1015,6 +1024,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
+    CLASS                   bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1041,6 +1051,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_punt2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
+    CLASS                   plus_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1070,20 +1081,20 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME                    terrein_vlak3
-    GROUP                   terrein
+    NAME                    terreindeel_vlak3
+    GROUP                   terreindeel
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.terrein_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.terreindeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgtfysvkn
+	CLASSITEM               bgt_fysiekvoorkomen
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "wms_title"            "terrein_vlak3"
-	 "wms_group_title"      "terrein"
+     "wms_title"            "terreindeel_vlak3"
+	 "wms_group_title"      "terreindeel"
     END
     CLASS
       EXPRESSION      "erf"
@@ -1128,6 +1139,7 @@ MAP
     DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASSITEM               bgt_functie
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1168,7 +1180,7 @@ MAP
     DATA                    "geometrie FROM bgt.gebouw_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgttype
+	CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1211,6 +1223,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1262,6 +1275,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1294,7 +1308,7 @@ MAP
     DATA                    "geometrie FROM bgt.gebouw_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-	CLASSITEM               bgttype
+	CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
