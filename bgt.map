@@ -902,7 +902,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
-    CLASS                   bgt_type
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1024,7 +1024,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    LINE
-    CLASS                   bgt_type
+    CLASSITEM               bgt_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
@@ -1051,7 +1051,7 @@ MAP
     DATA                    "geometrie FROM bgt.inrichtingselement_punt2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
-    CLASS                   plus_type
+    CLASSITEM               plus_type
     MAXSCALEDENOM           4000
     PROJECTION
       "init=epsg:28992"
