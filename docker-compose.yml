@@ -18,6 +18,7 @@ map:
     - "database:basiskaart_db"
     - "database:handelsregister_db"
     - "database:tellus_db"
+    - "database:monumenten_db"
   environment:
     ATLAS_DB_NAME: atlas
     ATLAS_DB_USER: postgres
@@ -54,6 +55,11 @@ map:
     TELLUS_DB_NAME: tellus
     TELLUS_DB_USER: tellus
     TELLUS_DB_PASSWORD: insecure
+
+    MONUMENTEN_DB_NAME: monumenten
+    MONUMENTEN_DB_USER: monumenten
+    MONUMENTEN_DB_PASSWORD: insecure
+
 
   volumes:
     - /srv/lufo:/srv/lufo

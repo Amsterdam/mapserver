@@ -79,3 +79,8 @@ Bijvoorbeeld de kaartserver in bag.map:
 * kaart opvragen :    <http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wms&request=getmap&version=1.3.0&layers=ligplaats&width=500&height=500&crs=epsg:28992&bbox=122000,487000,122250,487250&format=image/png>
 * wfs capabilities:   <http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&request=getcapabilities>
 * 1 feature opvragen: <http://192.168.99.100:8989/cgi-bin/mapserv?map=/srv/mapserver/bag.map&service=wfs&version=1.1.0&request=getfeature&typename=ligplaats&maxfeatures=1>
+
+Monumenten
+* wms kaart:
+http://localhost:8989/cgi-bin/mapserv?map=/srv/mapserver/monumenten.map&&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=119160,485473,124004,489948&CRS=EPSG:28992&WIDTH=1217&HEIGHT=1217&LAYERS=monument_coordinaten&STYLES=&FORMAT=image/png&DPI=72&MAP_RESOLUTION=72&FORMAT_OPTIONS=dpi:72&TRANSPARENT=false
+http://localhost:8989/cgi-bin/mapserv?map=/srv/mapserver/monumenten.map&&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=119160,485473,124004,489948&CRS=EPSG:28992&WIDTH=1217&HEIGHT=1217&LAYERS=monument_geometrie&STYLES=&FORMAT=image/png&DPI=72&MAP_RESOLUTION=72&FORMAT_OPTIONS=dpi:72&TRANSPARENT=false
