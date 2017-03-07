@@ -39,6 +39,10 @@ TELLUS_DB_HOST=${TELLUS_DB_PORT_5432_TCP_ADDR:-tellus-read.service.consul}
 TELLUS_DB_PORT=${TELLUS_DB_PORT_5432_TCP_PORT:-5432}
 TELLUS_DB_USER=${TELLUS_DB_USER:-${TELLUS_DB_NAME}}
 
+MONUMENTEN_DB_HOST=${MONUMENTEN_DB_PORT_5432_TCP_ADDR:-monumenten-read.service.consul}
+MONUMENTEN_DB_PORT=${MONUMENTEN_DB_PORT_5432_TCP_PORT:-5432}
+MONUMENTEN_DB_USER=${MONUMENTEN_DB_USER:-${MONUMENTEN_DB_NAME}}
+
 echo Creating configuration files
 
 cat > /srv/mapserver/connection.inc <<EOF
@@ -87,6 +91,11 @@ EOF
 cat > /srv/mapserver/connection_tellus.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${TELLUS_DB_HOST} dbname=${TELLUS_DB_NAME} user=${TELLUS_DB_USER} password=${TELLUS_DB_PASSWORD} port=${TELLUS_DB_PORT}"
+EOF
+
+cat > /srv/mapserver/connection_monumenten.inc <<EOF
+CONNECTIONTYPE postgis
+CONNECTION "host=${MONUMENTEN_DB_HOST} dbname=${MONUMENTEN_DB_NAME} user=${MONUMENTEN_DB_USER} password=${MONUMENTEN_DB_PASSWORD} port=${MONUMENTEN_DB_PORT}"
 EOF
 
 echo Starting server
