@@ -16,8 +16,12 @@ MAP
     END
   END
 
+
+
+
+
   #=============================================================================
-  # LAYERS
+  # LAYERS KBK50
   #=============================================================================
 
   LAYER
@@ -92,7 +96,13 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+
+
+
+
+  #=============================================================================
+  # LAYERS KBK10
+  #=============================================================================
 
   LAYER
     NAME                    "kbk10"
@@ -166,7 +176,13 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+
+
+
+
+  #=============================================================================
+  # LAYERS BGT
+  #=============================================================================
 
   LAYER
     NAME                    "bgt"
@@ -176,7 +192,7 @@ MAP
     END
     TYPE                    RASTER
 #    CONNECTION              "https://map.datapunt.amsterdam.nl/maps/bgt"
-    CONNECTION              "http://www.diva.amsterdam.nl/cgi-bin/topografie?SLD=http://www.diva.amsterdam.nl/topografie_sld.xml"
+    CONNECTION              "http://www.diva.amsterdam.nl/cgi-bin/topografie"
     CONNECTIONTYPE          WMS
     MAXSCALEDENOM           4000
     MINSCALEDENOM           0
@@ -186,6 +202,7 @@ MAP
       "wms_abstract"        "Basiskaart Amsterdam"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "topovlakken,topolijnen,topoteksten"
+      "wms_sld_url"         "http://www.diva.amsterdam.nl/topografie.xml"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
     END
@@ -211,12 +228,41 @@ MAP
       "wms_abstract"        "Basiskaart Amsterdam - Light"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "topovlakken,topolijnen,topoteksten"
-      "wms_sld_url"         "https://map.datapunt.amsterdam.nl/bgt_light.xml"
+      "wms_sld_url"         "http://www.diva.amsterdam.nl/topografie_light.xml"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
     END
   END
 
-#=============================================================================
+  #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME                    "bgt-zw"
+    GROUP                   "basiskaart-zwartwit"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    TYPE                    RASTER
+#    CONNECTION              "https://map.datapunt.amsterdam.nl/maps/bgt"
+    CONNECTION              "http://www.diva.amsterdam.nl/cgi-bin/topografie"
+    CONNECTIONTYPE          WMS
+    MAXSCALEDENOM           4000
+    MINSCALEDENOM           0
+    METADATA
+      "wms_title"           "bgt-zw"
+      "wms_group_title"     "basiskaart-zwartwit"
+      "wms_abstract"        "Basiskaart Amsterdam - Zwartwit"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "topovlakken,topolijnen,topoteksten"
+      "wms_sld_url"         "http://www.diva.amsterdam.nl/topografie_zw.xml"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+  END
+
+
+
+
+
+#=============================================================================
 END
