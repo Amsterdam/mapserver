@@ -25,7 +25,11 @@ node {
 
     stage("Build image") {
         tryStep "build", {
-            def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/mapserver:${env.BUILD_NUMBER}")
+            def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-public:${env.BUILD_NUMBER}")
+            image.push()
+        }
+        tryStep "build private", {
+            def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}", "private")
             image.push()
         }
     }
@@ -38,7 +42,15 @@ if (BRANCH == "master") {
     node {
         stage('Push acceptance image') {
             tryStep "image tagging", {
-                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver:${env.BUILD_NUMBER}")
+                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-public:${env.BUILD_NUMBER}")
+                image.pull()
+                image.push("acceptance")
+            }
+        }
+
+        stage('Push acceptance image') {
+            tryStep "image tagging", {
+                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}")
                 image.pull()
                 image.push("acceptance")
             }
@@ -66,8 +78,16 @@ if (BRANCH == "master") {
     node {
         stage('Push production image') {
             tryStep "image tagging", {
-                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver:${env.BUILD_NUMBER}")
+                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-public:${env.BUILD_NUMBER}")
                 image.pull()
+
+                image.push("production")
+                image.push("latest")
+            }
+            tryStep "image tagging private", {
+                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}")
+                image.pull()
+
                 image.push("production")
                 image.push("latest")
             }
