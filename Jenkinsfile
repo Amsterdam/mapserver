@@ -29,7 +29,8 @@ node {
             image.push()
         }
         tryStep "build private", {
-            def image = docker.build("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}", "private")
+            sh "docker build -f Dockerfile_private -t build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}" &&
+                    "docker push build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}"
             image.push()
         }
     }
