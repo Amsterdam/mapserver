@@ -87,8 +87,8 @@ RUN a2enmod actions cgi alias rewrite headers
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-COPY docker/000-default.conf /etc/apache2/sites-available/
-COPY docker/docker-entrypoint.sh /bin
+COPY 000-default.conf /etc/apache2/sites-available/
+COPY docker-entrypoint.sh /bin
 
 # Link to cgi-bin executable
 RUN chmod o+x /usr/local/bin/mapserv
