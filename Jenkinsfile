@@ -44,13 +44,6 @@ if (BRANCH == "master") {
             }
         }
 
-        stage('Push acceptance image') {
-            tryStep "image tagging", {
-                def image = docker.image("build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}")
-                image.pull()
-                image.push("acceptance")
-            }
-        }
     }
 
     node {
