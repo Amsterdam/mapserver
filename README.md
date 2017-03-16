@@ -18,7 +18,7 @@ Development met Docker
 ----------------------
 
 Installeer:
-
+cd 
 * [docker](https://docs.docker.com/index.html)
 * [docker-compose](https://docs.docker.com/compose/install/)
 
