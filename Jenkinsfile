@@ -29,8 +29,8 @@ node {
             image.push()
         }
         tryStep "build private", {
-            sh "docker build -f Dockerfile_private -t build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER} ."  &&
-                "docker push build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:${env.BUILD_NUMBER}"
+            sh "docker build -f Dockerfile_private -t build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:999 . &&" +
+                "docker push build.datapunt.amsterdam.nl:5000/datapunt/mapserver-private:999"
         }
     }
 }
