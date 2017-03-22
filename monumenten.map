@@ -30,7 +30,7 @@ MAP
     END
 
     INCLUDE                 "connection_monumenten.inc"
-    DATA                    "coordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
+    DATA                    "monumentcoordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
