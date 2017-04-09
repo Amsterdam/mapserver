@@ -14,6 +14,9 @@
 MAP
   NAME "PREDICTIVEPARKING"
   INCLUDE "header.inc"
+  EXTENT  52.3934628 4.783332 52.284674 5.014410
+
+  #EXTENT      100000 450000 150000 500000
 
   WEB
     METADATA
@@ -47,6 +50,7 @@ MAP
       "ows_abstract"        "wegdelen met parkeervak en scan_count ~2m informatie"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
+      "gml_types"           "auto"
     END
 
     CLASS
@@ -66,7 +70,7 @@ MAP
     DATA            "geometrie FROM wegdelen_parkeervak USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   5001
+    MAXSCALEDENOM   425001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:4326"
@@ -78,6 +82,7 @@ MAP
       "ows_abstract"        "wegdelen met scan_count ~2m"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
+      "gml_types"           "auto"
     END
 
     CLASS
@@ -91,7 +96,7 @@ MAP
   END
 
   LAYER
-    NAME            "sample_scans"
+    NAME            "scans_sample"
     GROUP           "predictiveparking"
     INCLUDE         "connection_predictiveparking.inc"
 
@@ -110,6 +115,8 @@ MAP
       "ows_abstract"        "Scans van de ongeveer de laaste maand HARAKIRI"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "gml_point_type"      "geometrie"
     END
 
     CLASS
@@ -141,6 +148,7 @@ MAP
       "ows_abstract"        "wegdelen met parkeervak informatie"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
+      "gml_types"           "auto"
     END
 
     CLASS
