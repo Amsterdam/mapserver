@@ -2,15 +2,14 @@ FROM ubuntu:16.04
 MAINTAINER datapunt.ois@amsterdam.nl
 
 ENV DEBIAN_FRONTEND noninteractive
-
 ENV LANG C.UTF-8
-RUN update-locale LANG=C.UTF-8
 
 # Update and upgrade system
 RUN apt-get -qq update --fix-missing && apt-get -qq --yes upgrade
 
 # Install mapcache compilation prerequisites
-RUN apt-get install -y software-properties-common g++ make cmake wget git openssh-server
+RUN apt-get install -y software-properties-common g++ make cmake wget git openssh-server locales
+RUN update-locale LANG=C.UTF-8
 
 # Install mapcache dependencies provided by Ubuntu repositories
 RUN apt-get install -y \
