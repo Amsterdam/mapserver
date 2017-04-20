@@ -57,9 +57,15 @@
       "ows_contactperson"            "Basisinformatie"
 
     END
-    IMAGEPATH    "/srv/mapserver/tmp_img/"
-    IMAGEURL     "/ms_tmp/"
-    BROWSEFORMAT "image/svg+xml"
+    IMAGEPATH                        "/srv/mapserver/tmp_img/"
+    IMAGEURL                         "/ms_tmp/"
+    BROWSEFORMAT                     "image/svg+xml"
+    VALIDATION
+      "MAP_RESOLUTION"               "^[0-9]{1,3}$"
+      "DPI"                          "^[0-9]{1,3}$"
+      "default_MAP_RESOLUTION"       "72"
+      "default_DPI"                  "72"
+    END
   END
 
   PROJECTION
