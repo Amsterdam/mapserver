@@ -3,7 +3,7 @@
 # basiskaart10-11.map
 # doel: serveren van kaartlagen ten behoeve van de basiskaart
 #       op zoomniveaus 10 t/m 11 van het Nederlandse tiling schema
-#       op zoomniveau 16 van het Google Maps (Webmercator) tiling schema
+#       op zoomniveau 16 van het Google Maps tiling schema
 #
 # Volgorde van aanroepen:
 # WDL_breed_water
@@ -36,8 +36,7 @@
 # WDL_waterbassin
 # WDL_smal_water_3_tot_6m
 # WDL_smal_water_tot_3m
-# WGL_voetveer
-# WGL_autoveer
+# KRT_tunnelcontour
 # IRT_aanlegsteiger_smal
 # WGL_smalle_weg-case
 # WGL_smalle_weg-fill
@@ -234,7 +233,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 4000
       STYLE
-        COLOR "#f6f6f4"
+        COLOR "#f2ecee"
       END
     END
   END
@@ -788,14 +787,14 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
+  
   LAYER
-    NAME                    WGL_voetveer
+    NAME                    KRT_tunnelcontour
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
     MINSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_voetveer\" USING srid=28992 USING UNIQUE ogc_fid"
+    DATA                    "geom FROM kbk10.\"KRT_tunnelcontour\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -804,33 +803,9 @@ MAP
       # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
       STYLE
-        WIDTH 1
-        COLOR "#77bb9980"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    WGL_autoveer
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           12500
-    MINSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_autoveer\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
-      MAXSCALEDENOM 12500
-      STYLE
-        WIDTH 2
-        OUTLINECOLOR "#77bb9980"
+        OPACITY        30
+        WIDTH 6
+        COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
       END
@@ -933,7 +908,8 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
-        WIDTH 2.5
+        WIDTH 6
+        INITIALGAP 3
         OUTLINECOLOR "#fc7f7f"
         PATTERN
           8
@@ -945,10 +921,11 @@ MAP
     END
     CLASS
       # Zoom{16}
-      MAXSCALEDENOM 8000
+      MAXSCALEDENOM 7999
       MINSCALEDENOM 4000
       STYLE
-        WIDTH 3
+        WIDTH 4
+        INITIALGAP 2
         OUTLINECOLOR "#fc7f7f"
         PATTERN
           8
@@ -978,7 +955,7 @@ MAP
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
-        WIDTH 1.5
+        WIDTH 3
         OUTLINECOLOR "#ffffff"
         PATTERN
           8
@@ -990,7 +967,7 @@ MAP
     END
     CLASS
       # Zoom{16}
-      MAXSCALEDENOM 8000
+      MAXSCALEDENOM 7999
       MINSCALEDENOM 4000
       STYLE
         WIDTH 2
@@ -1050,7 +1027,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+      MINSCALEDENOM 8000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
@@ -1058,13 +1035,13 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
     CLASS
       MAXSCALEDENOM 8000
-	  MINSCALEDENOM 4000
+      MINSCALEDENOM 4000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
@@ -1072,7 +1049,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1101,7 +1078,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1115,7 +1092,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1143,7 +1120,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1157,7 +1134,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1186,7 +1163,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1200,7 +1177,7 @@ MAP
             8
             8
         END
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1415,7 +1392,7 @@ MAP
       STYLE
         WIDTH 2.5
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1425,7 +1402,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1493,7 +1470,7 @@ MAP
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1503,7 +1480,7 @@ MAP
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1528,7 +1505,7 @@ MAP
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1538,7 +1515,7 @@ MAP
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
