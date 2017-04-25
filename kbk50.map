@@ -16,7 +16,6 @@
 # TRN_bos_groen_sport
 # WDL_brede_waterloop
 # WDL_smalle_waterloop
-# WGL_veerverbinding
 # WGL_straat_in_tunnel
 # WGL_hoofdweg_in_tunnel-case
 # WGL_regionale_weg_in_tunnel-case
@@ -412,33 +411,6 @@ MAP
         LINEJOIN MITER
       END
     END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "WGL_veerverbinding"
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk50.\"WGL_veerverbinding\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    CLASS
-      MAXSCALEDENOM         25000
-      MINSCALEDENOM         12500
-      STYLE
-        WIDTH               1
-        COLOR               "#77bb9980"
-        LINECAP             BUTT
-        LINEJOIN            MITER
-      END
-    END
-
   END
 
   #-----------------------------------------------------------------------------
@@ -1173,14 +1145,15 @@ MAP
       MAXSCALEDENOM 25000
       MINSCALEDENOM 12500
       STYLE
-        WIDTH 3
+        WIDTH 4
+        # INITIALGAP 2
         PATTERN
           8
           8
         END
         COLOR "#fc7f7f"
         LINECAP BUTT
-        LINEJOIN MITER
+        LINEJOIN BEVEL
       END
     END
   END
@@ -1204,13 +1177,11 @@ MAP
       MINSCALEDENOM 12500
       STYLE
         WIDTH 2
-        PATTERN
-          8
-          8
+        PATTERN 8 8
         END
         COLOR "#ffffff"
         LINECAP BUTT
-        LINEJOIN MITER
+        LINEJOIN BEVEL
       END
     END
   END
@@ -1412,7 +1383,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1423,7 +1394,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1434,7 +1405,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1535,7 +1506,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1546,7 +1517,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
@@ -1557,7 +1528,7 @@ MAP
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
-        LINECAP square
+        LINECAP BUTT
         LINEJOIN MITER
       END
     END
