@@ -1,6 +1,6 @@
 #==============================================================================
-#
 # bgt.map
+#==============================================================================
 # doel: serveren van bgt kaart wms
 #
 #==============================================================================
@@ -16,13 +16,14 @@ MAP
 		END
 	END
 
-	IMAGECOLOR                "#fefafa"
+	IMAGECOLOR                "#FEFAFA"
+
+
 
 #==============================================================================
-#
 # VLAKKEN
-#
 #==============================================================================
+
 #==============================================================================
 # WATER
 #==============================================================================
@@ -47,20 +48,20 @@ MAP
 		CLASS
 			MAXSCALEDENOM         4000
 			STYLE
-				COLOR               "#95c6d5"
-				OUTLINECOLOR        "#95c6d5"
+				COLOR               "#95C6D5"
+				OUTLINECOLOR        "#95C6D5"
 			END
 		END
 	END
 
 #==============================================================================
-# HOOGTELIGGING -2
+## HOOGTELIGGING -2
 #==============================================================================
 #==============================================================================
-# HOOGTELIGGING -1
+## HOOGTELIGGING -1
 #==============================================================================
 #==============================================================================
-# HOOGTELIGGING 0
+## HOOGTELIGGING 0
 #==============================================================================
 
 # Terreindeel 0
@@ -86,16 +87,16 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM   2000
 			STYLE
-				COLOR         "#f9f9e7"
-				OUTLINECOLOR  "#f9f9e7"
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
 			END
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#f9f9e7"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -113,7 +114,7 @@ MAP
 			END
 		END
 		CLASS
-			EXPRESSION      {gesloten verharding,half verhard}
+			EXPRESSION      {gesloten verharding,half verhard,perron}
 			MAXSCALEDENOM   4000
 			STYLE
 				COLOR         "#FFFFFF"
@@ -124,18 +125,18 @@ MAP
 			END
 		END
 		CLASS
-			EXPRESSION      {groenvoorziening,struiken}
+			EXPRESSION      {groenvoorziening,struiken,grasland agrarisch,grasland overig}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#dceacf"
-				OUTLINECOLOR  "#dceacf"
+				COLOR         "#DCEACF"
+				OUTLINECOLOR  "#DCEACF"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 		CLASS
-			EXPRESSION      {grasland agrarisch,naaldbos,grasland overig,fruitteelt,loofbos,bouwland,gemengd bos,moeras,boomteelt}
+			EXPRESSION      {naaldbos,fruitteelt,loofbos,bouwland,gemengd bos,moeras,boomteelt}
 			MAXSCALEDENOM   4000
 			STYLE
 				COLOR         "#CBE0B8"
@@ -145,8 +146,20 @@ MAP
 				LINEJOIN      MITER
 			END
 		END
+		# oever, slootkant
+		CLASS
+			MAXSCALEDENOM   4000
+			STYLE
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
 	END
 
+#==============================================================================
 # Overbrugging 0
 	LAYER
 		NAME                    spoorbaan_overbrugging
@@ -166,12 +179,13 @@ MAP
 		CLASS
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
-				OUTLINECOLOR  "#ffffff"
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
 			END
 		END
 	END
 
+#==============================================================================
 # Berm achter 0
 	LAYER
 		NAME                    berm_achter_0
@@ -192,8 +206,8 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -203,8 +217,8 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -214,14 +228,15 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
+#==============================================================================
 # Berm voor 0
 	LAYER
 		NAME                    berm_voor_0
@@ -242,14 +257,14 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 		CLASS
@@ -261,6 +276,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Rijbanen achter 0
 	LAYER
 			NAME                    rijbanen_achter_0
@@ -282,14 +298,15 @@ MAP
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,baan voor vliegverkeer}
 				MAXSCALEDENOM   4000
 				STYLE
-					COLOR         "#c9c7c2"
-					OUTLINECOLOR  "#c9c7c2"
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
 					WIDTH         1.8
 					LINECAP       BUTT
 					LINEJOIN      MITER
 				END
 			END
 		END
+#==============================================================================
 # Rijbanen voor 0
 	LAYER
 		NAME                    rijbanen_voor_0
@@ -311,18 +328,19 @@ MAP
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      {baan voor vliegverkeer}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#d3d2cf"
+				COLOR         "#D3D2CF"
 			END
 		END
 	END
 
+#==============================================================================
 # Voetgangers achter 0
 	LAYER
 		NAME                    voetganers_achter_0
@@ -344,14 +362,15 @@ MAP
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
+#==============================================================================
 # Voetgangers voor 0
 	LAYER
 		NAME                    voetgangers_voor_0
@@ -373,11 +392,12 @@ MAP
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 	END
 
+#==============================================================================
 # Inrichtingselement vlak 0
 	LAYER
 		NAME                    inrichtingselement_vlak0
@@ -399,8 +419,8 @@ MAP
 			EXPRESSION           {steiger}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR             "#f2f1ee"
-				OUTLINECOLOR      "#c9c7c2"
+				COLOR             "#F2F1EE"
+				OUTLINECOLOR      "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -410,15 +430,15 @@ MAP
 			EXPRESSION           {sluis,gemaal,stuw}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR  "#c9c7c2"
+				COLOR  "#C9C7C2"
 			END
 		END
 		CLASS
 			EXPRESSION           {muur}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -426,9 +446,10 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Snelweg achter 0
 	LAYER
-			NAME                    rijbanen_achter_0
+			NAME                    snelweg_achter_0
 			GROUP                   vlakken
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -440,24 +461,25 @@ MAP
 				"init=epsg:28992"
 			END
 			METADATA
-				"wms_title"            "rijbanen_achter_0"
+				"wms_title"            "snelweg_achter_0"
 				"wms_group_title"      "vlakken"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
 		      MAXSCALEDENOM 4000
 		      STYLE
-		        COLOR         "#fa0000"
-		        OUTLINECOLOR  "#fa0000"
+		        COLOR         "#FA0000"
+		        OUTLINECOLOR  "#FA0000"
 		        WIDTH         4
 		        LINECAP       BUTT
 				LINEJOIN      MITER
 		      END
 		    END
 		END
+#==============================================================================
 # Snelweg voor 0
 	LAYER
-		NAME                    rijbanen_voor_0
+		NAME                    snelweg_voor_0
 		GROUP                   vlakken
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -469,18 +491,19 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "rijbanen_voor_0"
+			"wms_title"            "snelweg_voor_0"
 			"wms_group_title"      "vlakken"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
 	      MAXSCALEDENOM 4000
 	      STYLE
-	        COLOR         "#fefafa"
+	        COLOR         "#FEFAFA"
 	      END
 	    END
 	END
 
+#==============================================================================
 # Gebouw 0
 	LAYER
 		NAME                    gebouw_vlak0
@@ -504,8 +527,8 @@ MAP
 			MAXSCALEDENOM   2000
 			MINSCALEDENOM	4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -516,8 +539,8 @@ MAP
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -528,8 +551,8 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM	2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -539,8 +562,8 @@ MAP
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -552,7 +575,7 @@ MAP
 
 
 #==============================================================================
-# HOOGTELIGGING 1
+## HOOGTELIGGING 1
 #==============================================================================
 
 # Tunnel -1
@@ -577,11 +600,12 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				OPACITY        30
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 	END
 
+#==============================================================================
 # Terreindeel 1
 	LAYER
 		NAME                    terreindeel_vlak1
@@ -604,23 +628,23 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM   2000
 			STYLE
-				COLOR         "#f9f9e7"
-				OUTLINECOLOR  "#f9f9e7"
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
 			END
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#f9f9e7"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 		CLASS
-			EXPRESSION      {transitie,open verharding}
+			EXPRESSION      {transitie,open verharding,perron}
 			MAXSCALEDENOM   4000
 			STYLE
 				COLOR         "#F4F6F6"
@@ -636,10 +660,10 @@ MAP
 			END
 		END
 		CLASS
-			EXPRESSION      {groenvoorziening}
+			EXPRESSION      {groenvoorziening,grasland overig}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#dceacf"
+				COLOR         "#DCEACF"
 			END
 		END
 		CLASS
@@ -648,8 +672,20 @@ MAP
 				COLOR         "#DDDCDA"
 			END
 		END
+		# oever, slootkant
+		CLASS
+			MAXSCALEDENOM   4000
+			STYLE
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
 	END
 
+#==============================================================================
 # Berm achter 1
 	LAYER
 		NAME                    berm_achter_1
@@ -670,8 +706,8 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -681,8 +717,8 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -692,14 +728,15 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
+#==============================================================================
 # Berm voor 1
 	LAYER
 		NAME                    berm_voor_1
@@ -721,14 +758,14 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 		CLASS
@@ -740,6 +777,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Rijbanen achter 1
 	LAYER
 			NAME                    rijbanen_achter_1
@@ -761,14 +799,15 @@ MAP
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 				MAXSCALEDENOM   4000
 				STYLE
-					COLOR         "#c9c7c2"
-					OUTLINECOLOR  "#c9c7c2"
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
 					WIDTH         1.8
 					LINECAP       BUTT
 					LINEJOIN      MITER
 				END
 			END
 		END
+#==============================================================================
 # Rijbanen voor 1
 	LAYER
 		NAME                    rijbanen_voor_1
@@ -790,11 +829,12 @@ MAP
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 	END
 
+#==============================================================================
 # Voetgangers achter 1
 	LAYER
 			NAME                    voetganers_achter_1
@@ -816,14 +856,15 @@ MAP
 				EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 				MAXSCALEDENOM   4000
 				STYLE
-					COLOR         "#c9c7c2"
-					OUTLINECOLOR  "#c9c7c2"
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
 					WIDTH         1
 					LINECAP       BUTT
 					LINEJOIN      MITER
 				END
 			END
 		END
+#==============================================================================
 # Voetgangers voor 1
 	LAYER
 		NAME                    voetgangers_voor_1
@@ -845,11 +886,12 @@ MAP
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 	END
 
+#==============================================================================
 # Gebouw 1
 	LAYER
 		NAME                    gebouw_vlak1
@@ -873,8 +915,8 @@ MAP
 			MAXSCALEDENOM   2000
 			MINSCALEDENOM	4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -885,8 +927,8 @@ MAP
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -897,8 +939,8 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				OPACITY       50
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -909,8 +951,8 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM	2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -920,8 +962,8 @@ MAP
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -929,6 +971,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Inrichtingselement vlak 1 
 	LAYER
 		NAME                    inrichtingselement_vlak1
@@ -950,8 +993,8 @@ MAP
 			EXPRESSION           {steiger}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR             "#f2f1ee"
-				OUTLINECOLOR      "#c9c7c2"
+				COLOR             "#F2F1EE"
+				OUTLINECOLOR      "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -961,15 +1004,15 @@ MAP
 			EXPRESSION           {sluis,gemaal,stuw}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR         "#c9c7c2"
+				COLOR         "#C9C7C2"
 			END
 		END
 		CLASS
 			EXPRESSION           {muur}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -978,9 +1021,10 @@ MAP
 	END
 
 
+#==============================================================================
 # Snelweg achter 1
 	LAYER
-			NAME                    rijbanen_achter_1
+			NAME                    snelweg_achter_1
 			GROUP                   vlakken
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -992,24 +1036,25 @@ MAP
 				"init=epsg:28992"
 			END
 			METADATA
-				"wms_title"            "rijbanen_achter_1"
+				"wms_title"            "snelweg_achter_1"
 				"wms_group_title"      "vlakken"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
 		      MAXSCALEDENOM 4000
 		      STYLE
-		        COLOR         "#fa0000"
-		        OUTLINECOLOR  "#fa0000"
+		        COLOR         "#FA0000"
+		        OUTLINECOLOR  "#FA0000"
 		        WIDTH         4
 		        LINECAP       BUTT
 				LINEJOIN      MITER
 		      END
 		    END
 		END
+#==============================================================================
 # Snelweg voor 1
 	LAYER
-		NAME                    rijbanen_voor_1
+		NAME                    snelweg_voor_1
 		GROUP                   vlakken
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -1021,14 +1066,14 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "rijbanen_voor_1"
+			"wms_title"            "snelweg_voor_1"
 			"wms_group_title"      "vlakken"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
 	      MAXSCALEDENOM 4000
 	      STYLE
-	        COLOR         "#fefafa"
+	        COLOR         "#FEFAFA"
 	      END
 	    END
 	END
@@ -1036,7 +1081,7 @@ MAP
 
 
 #==============================================================================
-# HOOGTELIGGING 2
+## HOOGTELIGGING 2
 #==============================================================================
 
 # Terreindeel 2
@@ -1061,23 +1106,23 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM   2000
 			STYLE
-				COLOR         "#f9f9e7"
-				OUTLINECOLOR  "#f9f9e7"
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
 			END
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#f9f9e7"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 		CLASS
-			EXPRESSION      {gesloten verharding}
+			EXPRESSION      {gesloten verharding,perron}
 			MAXSCALEDENOM   4000
 			STYLE
 				COLOR         "#FFFFFF"
@@ -1096,8 +1141,20 @@ MAP
 				COLOR         "#DDDCDA"
 			END
 		END
+		# oever, slootkant
+		CLASS
+			MAXSCALEDENOM   4000
+			STYLE
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
 	END
 
+#==============================================================================
 # Berm achter 2
 	LAYER
 		NAME                    berm_achter_2
@@ -1118,8 +1175,8 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1129,8 +1186,8 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1140,14 +1197,15 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
+#==============================================================================
 # Berm voor 2
 	LAYER
 		NAME                    berm_voor_2
@@ -1168,14 +1226,14 @@ MAP
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 		CLASS
@@ -1187,6 +1245,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Rijbanen achter 2
 	LAYER
 			NAME                    rijbanen_achter_2
@@ -1208,14 +1267,15 @@ MAP
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 				MAXSCALEDENOM   4000
 				STYLE
-					COLOR         "#c9c7c2"
-					OUTLINECOLOR  "#c9c7c2"
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
 					WIDTH         1.8
 					LINECAP       BUTT
 					LINEJOIN      MITER
 				END
 			END
 		END
+#==============================================================================
 # Rijbanen voor 2
 	LAYER
 		NAME                    rijbanen_voor_2
@@ -1237,11 +1297,12 @@ MAP
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 	END
 
+#==============================================================================
 # Voetgangers achter 2
 	LAYER
 		NAME                    voetgangers_achter_2
@@ -1263,14 +1324,15 @@ MAP
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         1
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
+#==============================================================================
 # Voetgangers voor 2
 	LAYER
 		NAME                    voetgangers_voor_2
@@ -1292,11 +1354,12 @@ MAP
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 	END
 
+#==============================================================================
 # Gebouw 2
 	LAYER
 		NAME                    gebouw_vlak2
@@ -1320,8 +1383,8 @@ MAP
 			MAXSCALEDENOM   2000
 			MINSCALEDENOM	4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1332,8 +1395,8 @@ MAP
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1344,8 +1407,8 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				OPACITY       50
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1356,8 +1419,8 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM	2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1367,14 +1430,15 @@ MAP
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
+#==============================================================================
 # Inrichtingselement vlak 2
 	LAYER
 		NAME                    inrichtingselement_vlak2
@@ -1396,8 +1460,8 @@ MAP
 			EXPRESSION           {steiger}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR         "#f2f1ee"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#F2F1EE"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1407,8 +1471,8 @@ MAP
 			EXPRESSION           {muur}
 			MAXSCALEDENOM 4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1416,9 +1480,10 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Snelweg achter 2
 	LAYER
-			NAME                    rijbanen_achter_2
+			NAME                    snelweg_achter_2
 			GROUP                   vlakken
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -1430,24 +1495,25 @@ MAP
 				"init=epsg:28992"
 			END
 			METADATA
-				"wms_title"            "rijbanen_achter_2"
+				"wms_title"            "snelweg_achter_2"
 				"wms_group_title"      "vlakken"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
 		      MAXSCALEDENOM 4000
 		      STYLE
-		        COLOR         "#fa0000"
-		        OUTLINECOLOR  "#fa0000"
+		        COLOR         "#FA0000"
+		        OUTLINECOLOR  "#FA0000"
 		        WIDTH         4
 		        LINECAP       BUTT
 				LINEJOIN      MITER
 		      END
 		    END
 		END
+#==============================================================================
 # Snelweg voor 2
 	LAYER
-		NAME                    rijbanen_voor_2
+		NAME                    snelweg_voor_2
 		GROUP                   vlakken
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -1459,111 +1525,50 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "rijbanen_voor_2"
+			"wms_title"            "snelweg_voor_2"
 			"wms_group_title"      "vlakken"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
 	      MAXSCALEDENOM 4000
 	      STYLE
-	        COLOR         "#fefafa"
+	        COLOR         "#FEFAFA"
 	      END
 	    END
 	END
 
 #==============================================================================
-# HOOGTELIGGING 3
+## HOOGTELIGGING 3
 #==============================================================================
 
-# Berm achter 3
+# Terreindeel 3
+
 	LAYER
-		NAME                    berm_achter_3
+		NAME                    terreindeel_vlak3
 		GROUP                   vlakken
 		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		DATA                    "geometrie FROM bgt.terreindeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
+		CLASSITEM               bgt_fysiekvoorkomen
 		MAXSCALEDENOM           4000
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_achter_3"
+			"wms_title"            "terreindeel_vlak3"
 			"wms_group_title"      "vlakken"
 		END
 		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
+			EXPRESSION      {perron}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
-				WIDTH         1
-				LINECAP       BUTT
-				LINEJOIN      MITER
-			END
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
-			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
-				WIDTH         1
-				LINECAP       BUTT
-				LINEJOIN      MITER
-			END
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
-			STYLE
-				COLOR         "#c9c7c2"
-				OUTLINECOLOR  "#c9c7c2"
-				WIDTH         1
-				LINECAP       BUTT
-				LINEJOIN      MITER
-			END
-		END
-	END
-# Berm voor 3
-	LAYER
-		NAME                    berm_voor_3
-		GROUP                   vlakken
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		PROCESSING              "CLOSE_CONNECTION=DEFER"
-		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "berm_voor_3"
-			"wms_group_title"      "vlakken"
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
-			STYLE
-				COLOR         "#ffffff"
-			END
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
-			STYLE
-				COLOR         "#f2ecee"
-			END
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
-			STYLE
-				COLOR         "#DCEACF"
+				COLOR         "#FFFFFF"
 			END
 		END
 	END
 
+#==============================================================================
 # Rijbanen achter 3
 	LAYER
 			NAME                    rijbanen_achter_3
@@ -1585,14 +1590,15 @@ MAP
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 				MAXSCALEDENOM   4000
 				STYLE
-					COLOR         "#c9c7c2"
-					OUTLINECOLOR  "#c9c7c2"
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
 					WIDTH         1.8
 					LINECAP       BUTT
 					LINEJOIN      MITER
 				END
 			END
 		END
+#==============================================================================
 # Rijbanen voor 3
 	LAYER
 		NAME                    rijbanen_voor_3
@@ -1614,11 +1620,12 @@ MAP
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ffffff"
+				COLOR         "#FFFFFF"
 			END
 		END
 	END
 
+#==============================================================================
 # Voetgangers achter 3
 	LAYER
 			NAME                    voetganers_achter_3
@@ -1640,14 +1647,15 @@ MAP
 				EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 				MAXSCALEDENOM   4000
 				STYLE
-					COLOR         "#c9c7c2"
-					OUTLINECOLOR  "#c9c7c2"
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
 					WIDTH         1
 					LINECAP       BUTT
 					LINEJOIN      MITER
 				END
 			END
 		END
+#==============================================================================
 # Voetgangers voor 3
 	LAYER
 		NAME                    voetgangers_voor_3
@@ -1669,11 +1677,12 @@ MAP
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#f2ecee"
+				COLOR         "#F2ECEE"
 			END
 		END
 	END
 
+#==============================================================================
 # Gebouw 3
 	LAYER
 		NAME                    gebouw_vlak3
@@ -1697,8 +1706,8 @@ MAP
 			MAXSCALEDENOM   2000
 			MINSCALEDENOM	4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1709,8 +1718,8 @@ MAP
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1721,8 +1730,8 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				OPACITY       50
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1733,8 +1742,8 @@ MAP
 			MAXSCALEDENOM   4000
 			MINSCALEDENOM	2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1744,8 +1753,8 @@ MAP
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
 			MAXSCALEDENOM   2000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1753,9 +1762,10 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Snelweg achter 3
 	LAYER
-			NAME                    rijbanen_achter_3
+			NAME                    snelweg_achter_3
 			GROUP                   vlakken
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -1767,24 +1777,25 @@ MAP
 				"init=epsg:28992"
 			END
 			METADATA
-				"wms_title"            "rijbanen_achter_3"
+				"wms_title"            "snelweg_achter_3"
 				"wms_group_title"      "vlakken"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
 		      MAXSCALEDENOM 4000
 		      STYLE
-		        COLOR         "#fa0000"
-		        OUTLINECOLOR  "#fa0000"
+		        COLOR         "#FA0000"
+		        OUTLINECOLOR  "#FA0000"
 		        WIDTH         4
 		        LINECAP       BUTT
 				LINEJOIN      MITER
 		      END
 		    END
 		END
+#==============================================================================
 # Snelweg voor 3
 	LAYER
-		NAME                    rijbanen_voor_3
+		NAME                    snelweg_voor_3
 		GROUP                   vlakken
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -1796,23 +1807,54 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "rijbanen_voor_3"
+			"wms_title"            "snelweg_voor_3"
 			"wms_group_title"      "vlakken"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
 	      MAXSCALEDENOM 4000
 	      STYLE
-	        COLOR         "#fefafa"
+	        COLOR         "#FEFAFA"
 	      END
 	    END
 	END
 
 
 #==============================================================================
-# HOOGTELIGGING 4
+## HOOGTELIGGING 4
 #==============================================================================
 
+
+# Terreindeel 4
+
+	LAYER
+		NAME                    terreindeel_vlak4
+		GROUP                   vlakken
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.terreindeel_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING              "CLOSE_CONNECTION=DEFER"
+		TYPE                    POLYGON
+		CLASSITEM               bgt_fysiekvoorkomen
+		MAXSCALEDENOM           4000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "terreindeel_vlak4"
+			"wms_group_title"      "vlakken"
+		END
+		CLASS
+			EXPRESSION      {perron}
+			MAXSCALEDENOM   4000
+			STYLE
+				COLOR         "#FFFFFF"
+			END
+		END
+	END
+
+
+
+#==============================================================================
 # Gebouw 4
 	LAYER
 		NAME                    gebouw_vlak4
@@ -1834,8 +1876,8 @@ MAP
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1846,8 +1888,8 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				OPACITY       50
-				COLOR         "#e0ded8"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1856,8 +1898,8 @@ MAP
 		CLASS
 			MAXSCALEDENOM   4000
 			STYLE
-				COLOR         "#ebeae6"
-				OUTLINECOLOR  "#c9c7c2"
+				COLOR         "#EBEAE6"
+				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.9
 				LINECAP       BUTT
 				LINEJOIN      MITER
@@ -1865,14 +1907,15 @@ MAP
 		END
 	END
 
+
+
 #==============================================================================
-#
 # LIJNEN
 #
 #==============================================================================
+## HOOGTELIGGING -2
 #==============================================================================
-# HOOGTELIGGING -2
-#==============================================================================
+
 
 # Metro -2
 	LAYER
@@ -1897,7 +1940,7 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 1.5
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				PATTERN
 					7
 					7
@@ -1912,7 +1955,7 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 2
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				PATTERN
 					7
 					7
@@ -1923,6 +1966,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Trein -2
 	LAYER
 		NAME                    trein_2
@@ -1946,7 +1990,7 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 3
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				PATTERN
 					8
 					8
@@ -1961,7 +2005,7 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 3.5
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				PATTERN
 					8
 					8
@@ -1973,8 +2017,9 @@ MAP
 	END
 
 #==============================================================================
-# HOOGTELIGGING -1
+## HOOGTELIGGING -1
 #==============================================================================
+
 
 # Metro achter -1
 	LAYER
@@ -1999,7 +2044,7 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 2.5
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2010,12 +2055,13 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 3
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Metro voor -1
 	LAYER
 		NAME                    metro_voor_1
@@ -2039,7 +2085,7 @@ MAP
 			STYLE
 				OPACITY 60
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2054,7 +2100,7 @@ MAP
 			STYLE
 				OPACITY 60
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2065,6 +2111,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Tram  -1 
 	LAYER
 		NAME                    tram_1
@@ -2088,7 +2135,7 @@ MAP
 			STYLE
 				OPACITY       50
 				WIDTH         1.5
-				COLOR         "#fc7f7f"
+				COLOR         "#FC7F7F"
 				LINECAP       BUTT
 				LINEJOIN      MITER
 				PATTERN       
@@ -2103,7 +2150,7 @@ MAP
 			STYLE
 				OPACITY       50
 				WIDTH         2
-				COLOR         "#fc7f7f"
+				COLOR         "#FC7F7F"
 				LINECAP       BUTT
 				LINEJOIN      MITER
 				PATTERN       
@@ -2114,6 +2161,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Trein achter -1
 	LAYER
 		NAME                    trein_achter_1
@@ -2137,7 +2185,7 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 3
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2148,12 +2196,13 @@ MAP
 			STYLE
 				OPACITY 50
 				WIDTH 3.5
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Trein voor -1
 	LAYER
 		NAME                    trein_voor_1
@@ -2177,7 +2226,7 @@ MAP
 			STYLE
 				OPACITY 60
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2192,7 +2241,7 @@ MAP
 			STYLE
 				OPACITY 60
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2204,8 +2253,9 @@ MAP
 	END
 
 #==============================================================================
-# HOOGTELIGGING 0
+## HOOGTELIGGING 0
 #==============================================================================
+
 # Metro achter 0
 	LAYER
 		NAME                    metro_achter0
@@ -2228,7 +2278,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 3
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2238,12 +2288,13 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 3.5
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Metro voor 0
 	LAYER
 		NAME                    metro_voor0
@@ -2266,7 +2317,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2280,7 +2331,7 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2291,6 +2342,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Tram 0
 	LAYER
 		NAME                    tram0
@@ -2313,7 +2365,7 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				WIDTH         1.5
-				COLOR         "#fc7f7f"
+				COLOR         "#FC7F7F"
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
@@ -2323,13 +2375,14 @@ MAP
 			MAXSCALEDENOM   2000
 			STYLE
 				WIDTH         2
-				COLOR         "#fc7f7f"
+				COLOR         "#FC7F7F"
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
 
+#==============================================================================
 # Trein achter 0
 	LAYER
 		NAME                    trein_achter0
@@ -2352,7 +2405,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 3
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2362,12 +2415,13 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 3.5
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Trein voor 0
 	LAYER
 		NAME                    trein_voor0
@@ -2390,7 +2444,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2404,7 +2458,7 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2416,8 +2470,9 @@ MAP
 	END
 
 #==============================================================================
-# HOOGTELIGGING 1
+## HOOGTELIGGING 1
 #==============================================================================
+
 
 # Metro achter 1
 	LAYER
@@ -2441,7 +2496,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 3
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2451,12 +2506,13 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 3.5
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Metro voor 1
 	LAYER
 		NAME                    metro_voor1
@@ -2479,7 +2535,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2493,7 +2549,7 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2504,6 +2560,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Tram 1 
 	LAYER
 		NAME                    tram1
@@ -2526,7 +2583,7 @@ MAP
 			MAXSCALEDENOM   4000
 			STYLE
 				WIDTH         1.5
-				COLOR         "#fc7f7f"
+				COLOR         "#FC7F7F"
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
@@ -2536,13 +2593,14 @@ MAP
 			MAXSCALEDENOM   2000
 			STYLE
 				WIDTH         2
-				COLOR         "#fc7f7f"
+				COLOR         "#FC7F7F"
 				LINECAP       BUTT
 				LINEJOIN      MITER
 			END
 		END
 	END
 
+#==============================================================================
 # Trein achter 1 
 	LAYER
 		NAME                    trein_achter1
@@ -2565,7 +2623,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 3
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2575,15 +2633,16 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 3.5
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Trein voor 1 
 	LAYER
-		NAME                    spoor_lijn_trein1_line
+		NAME                    trein_voor1
 		GROUP                   lijnen
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
@@ -2595,7 +2654,7 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "spoor_lijn0"
+			"wms_title"            "trein_voor1"
 			"wms_group_title"      "lijnen"
 		END
 		CLASS
@@ -2603,7 +2662,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2617,7 +2676,7 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2629,7 +2688,7 @@ MAP
 	END
 
 #==============================================================================
-# HOOGTELIGGING 2
+## HOOGTELIGGING 2
 #==============================================================================
 
 # Metro achter 2
@@ -2654,7 +2713,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 3
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2664,12 +2723,13 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 3.5
-				OUTLINECOLOR "#fc7f7f"
+				OUTLINECOLOR "#FC7F7F"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Metro voor 2
 	LAYER
 		NAME                    metro_voor2
@@ -2692,7 +2752,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2706,7 +2766,7 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					7
 					7
@@ -2717,6 +2777,7 @@ MAP
 		END
 	END
 
+#==============================================================================
 # Trein achter 2 
 	LAYER
 		NAME                    trein_achter2
@@ -2739,7 +2800,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 3
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
@@ -2749,12 +2810,13 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 3.5
-				OUTLINECOLOR "#9d9d9d"
+				OUTLINECOLOR "#9D9D9D"
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
 		END
 	END
+#==============================================================================
 # Trein voor 2 
 	LAYER
 		NAME                    trein_voor2
@@ -2777,7 +2839,7 @@ MAP
 			MAXSCALEDENOM           4000
 			STYLE
 				WIDTH 2
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2791,7 +2853,7 @@ MAP
 			MAXSCALEDENOM           2000
 			STYLE
 				WIDTH 2.5
-				OUTLINECOLOR "#ffffff"
+				OUTLINECOLOR "#FFFFFF"
 				PATTERN
 					8
 					8
@@ -2803,51 +2865,97 @@ MAP
 	END
 
 #=============================================================================
-# inrichtingselement Punt
+## HOOGTELIGGING 3
 #=============================================================================
-# "abri""afval apart plaats""afvalbak""betaalautomaat""boom""brandkraan / -put""CAI-kast""elektrakast""fietsenrek""herdenkingsmonument""inspectie- / rioolput""kolk""kunstobject""lichtmast""onbekend""openbaar toilet""pomp""reclamezuil""telefooncel"
-	
-	# LAYER
-	# 	NAME                    inrichtingselement_punt0
-	# 	GROUP                   inrichtingselement_punt
-	# 	INCLUDE                 "connection_basiskaart.inc"
-	# 	DATA                    "geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	# 	PROCESSING              "CLOSE_CONNECTION=DEFER"
-	# 	TYPE                    POINT
-	# 	CLASSITEM               plus_type
-	# 	MAXSCALEDENOM           4000
-	# 	PROJECTION
-	# 		"init=epsg:28992"
-	# 	END
-	# 	METADATA
-	# 		"wms_title"            "inrichtingselement_punt0"
-	# 		"wms_group_title"      "inrichtingselement_punt"
-	# 	END
-	# 	CLASS
-	# 		EXPRESSION       boom
-	# 		MAXSCALEDENOM 4000
-	# 		STYLE
-	# 			OPACITY        40
-	# 			SYMBOL         "stip"
-	# 			SIZE           10
-	# 			COLOR          "#CBE0B8"
-	# 			OUTLINECOLOR   "#CBE0B8"
-	# 			WIDTH          1
-	# 		END
-	# 	END
-	# 	# CLASS
-	# 	# 	EXPRESSION       {lichtmast,reclamezuil,openbaar toilet,onbekend,kunstobject,herdenkingsmonument,elektrakast,afvalbak,afval apart plaats,abri}
-	# 	# 	MAXSCALEDENOM 2000
-	# 	# 	STYLE
-	# 	# 		OPACITY        60
-	# 	# 		SYMBOL         "stip"
-	# 	# 		SIZE           3
-	# 	# 		COLOR          "#9D9D9D"
-	# 	# 	END
-	# 	# END
-	# END
 
-#=============================================================================
+# Metro achter 3
+	LAYER
+		NAME                    metro_achter3
+		GROUP                   lijnen
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING              "CLOSE_CONNECTION=DEFER"
+		TYPE                    LINE
+		CLASSITEM               bgt_functie
+		MAXSCALEDENOM           4000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter3"
+			"wms_group_title"      "lijnen"
+		END
+		CLASS
+			EXPRESSION      sneltram
+			MAXSCALEDENOM           4000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			EXPRESSION      sneltram
+			MAXSCALEDENOM           2000
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+#==============================================================================
+# Metro voor 3
+	LAYER
+		NAME                    metro_voor3
+		GROUP                   lijnen
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING              "CLOSE_CONNECTION=DEFER"
+		TYPE                    LINE
+		CLASSITEM               bgt_functie
+		MAXSCALEDENOM           4000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor2"
+			"wms_group_title"      "lijnen"
+		END
+		CLASS
+			EXPRESSION      sneltram
+			MAXSCALEDENOM           4000
+			STYLE
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			EXPRESSION      sneltram
+			MAXSCALEDENOM           2000
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+#==============================================================================
 # TEKSTEN 
 #=============================================================================
 
@@ -2869,9 +2977,7 @@ MAP
 	END
 	END
 
-#=============================================================================
-# spoorlijnen en snelwegen missen. Metro lijnen ook. Opgelost met kbk10
+
+#==============================================================================
 # BAG.inc Woonboten 
-# berm
-# metro sneltram 
 END
