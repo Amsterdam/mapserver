@@ -23,13 +23,160 @@ MAP
   #============================================================================= 
 
   LAYER
+    NAME                    "maatgevendetoetshoogteschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_maatgevendetoetshoogte_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Schiphol - hoogtebeperkingen"
+      "ows_abstract"        "Schiphol - hoogtebeperkingen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASSITEM               "type"
+
+    CLASS
+      NAME                  "-10 - 0m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= -10) AND ([hoogte_nap_klasse] < 0))
+      STYLE
+        COLOR               "#E99493"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#E99493"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "0 - 20m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 0) AND ([hoogte_nap_klasse] < 20))
+      STYLE
+        COLOR               "#FEC1BD"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#FEC1BD"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "20 - 40m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 20) AND ([hoogte_nap_klasse] < 40))
+      STYLE
+        COLOR               "#FBCE99"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#FBCE99"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "40 - 60m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 40) AND ([hoogte_nap_klasse] < 60))
+      STYLE
+        COLOR               "#FAF498"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#FAF498"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "60 - 80m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 60) AND ([hoogte_nap_klasse] < 80))
+      STYLE
+        COLOR               "#BCFC96"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#BCFC96"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "80 - 100m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 80) AND ([hoogte_nap_klasse] < 100))
+      STYLE
+        COLOR               "#9FF0D0"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#9FF0D0"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "100 - 140m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 100) AND ([hoogte_nap_klasse] < 140))
+      STYLE
+        COLOR               "#C3F6FE"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#C3F6FE"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "140m NAP"
+      EXPRESSION            ([hoogte_nap_klasse] eq 140)
+      STYLE
+        COLOR               "#C9D2FE"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#C9D2FE"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "Hoger dan 140m NAP"
+      EXPRESSION            ([hoogte_nap_klasse] > 140)
+      STYLE
+        COLOR               "#DFC3EF"
+        SIZE                4
+      END
+      STYLE
+        OUTLINECOLOR        "#DFC3EF"
+        WIDTH               1
+      END
+    END
+
+  END
+
+
+  LAYER
     NAME                    "hoogtebeperkingschiphol"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM public.geo_schiphol_hoogtebeperkendevlakken_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992" 
+      "init=epsg:28992" 
     END
     
     METADATA
