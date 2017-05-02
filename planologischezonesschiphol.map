@@ -33,8 +33,8 @@ MAP
     END
     
     METADATA
-      "ows_title"           "Schiphol - hoogtebeperkingen"
-      "ows_abstract"        "Schiphol - hoogtebeperkingen"
+      "ows_title"           "Schiphol - maatgevende toetshoogtes"
+      "ows_abstract"        "Schiphol - maatgevende toetshoogtes"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -168,7 +168,7 @@ MAP
 
 
   LAYER
-    NAME                    "hoogtebeperkingradarschiphol"
+    NAME                    "toetshoogteradarschiphol"
     INCLUDE                 "connection_milieu.inc"
     DATA                    "geometrie FROM public.geo_schiphol_hoogtebeperkingradar_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
@@ -178,8 +178,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Schiphol - hoogtebeperkingen radar"
-      "ows_abstract"        "Schiphol - hoogtebeperkingen radar"
+      "ows_title"           "Schiphol - toetshoogte radar"
+      "ows_abstract"        "Schiphol - toetshoogte radar"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -484,8 +484,8 @@ MAP
     END
     
     METADATA
-      "ows_title"           "Planologische geluidszone Schiphol"
-      "ows_abstract"        "Planologische geluidszone Schiphol"
+      "ows_title"           "Schiphol - Planologische geluidszone"
+      "ows_abstract"        "Schiphol - Planologische geluidszone"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -526,14 +526,14 @@ MAP
     END
     
     METADATA
-      "ows_title"           "Vogelvrijwaringsgebied Schiphol"
-      "ows_abstract"        "Vogelvrijwaringsgebied Schiphol"
+      "ows_title"           "Schiphol - Vogelvrijwaringsgebied"
+      "ows_abstract"        "Schiphol - Vogelvrijwaringsgebied"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
-      NAME                  "Vogelvrijwaringsgebied Schiphol"
+      NAME                  "Vogelvrijwaringsgebied"
       STYLE
         SYMBOL              "chess"
         COLOR               "#e0afb9"
