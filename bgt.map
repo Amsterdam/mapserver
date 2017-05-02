@@ -37,7 +37,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -46,7 +46,7 @@ MAP
 			"wms_group_title"     "vlakken"
 		END
 		CLASS
-			MAXSCALEDENOM         4000
+			MAXSCALEDENOM         5000
 			STYLE
 				COLOR               "#95C6D5"
 				OUTLINECOLOR        "#95C6D5"
@@ -73,7 +73,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_fysiekvoorkomen
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		FILTER                  ("[bgt_fysiekvoorkomen]" != 'NULL')
 		PROJECTION
 			"init=epsg:28992"
@@ -84,7 +84,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM   2000
 			STYLE
 				COLOR         "#F9F9E7"
@@ -104,7 +104,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {transitie,open verharding}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F4F6F6"
 				OUTLINECOLOR  "#F4F6F6"
@@ -115,7 +115,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {gesloten verharding,half verhard,perron}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 				OUTLINECOLOR  "#FFFFFF"
@@ -126,7 +126,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {groenvoorziening,struiken,grasland agrarisch,grasland overig}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DCEACF"
 				OUTLINECOLOR  "#DCEACF"
@@ -137,7 +137,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {naaldbos,fruitteelt,loofbos,bouwland,gemengd bos,moeras,boomteelt}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#CBE0B8"
 				OUTLINECOLOR  "#CBE0B8"
@@ -148,7 +148,7 @@ MAP
 		END
 		# oever, slootkant
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F9F9E7"
 				OUTLINECOLOR  "#F9F9E7"
@@ -168,7 +168,7 @@ MAP
 		DATA                    "geometrie FROM bgt.\"BGT_ODL_overbruggingsdeel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -177,7 +177,7 @@ MAP
 			"wms_group_title"      "vlakken"
 		END
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 				OUTLINECOLOR  "#FFFFFF"
@@ -194,7 +194,7 @@ MAP
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -204,7 +204,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -215,7 +215,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -226,7 +226,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -245,7 +245,7 @@ MAP
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -255,21 +255,21 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DCEACF"
 			END
@@ -286,7 +286,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -296,7 +296,7 @@ MAP
 			END
 			CLASS
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,baan voor vliegverkeer}
-				MAXSCALEDENOM   4000
+				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -316,7 +316,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -326,14 +326,14 @@ MAP
 		END
 	    CLASS
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      {baan voor vliegverkeer}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#D3D2CF"
 			END
@@ -350,7 +350,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -360,7 +360,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -380,7 +380,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -390,7 +390,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
@@ -407,7 +407,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -417,7 +417,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           {steiger}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR             "#F2F1EE"
 				OUTLINECOLOR      "#C9C7C2"
@@ -428,14 +428,14 @@ MAP
 		END
 		CLASS
 			EXPRESSION           {sluis,gemaal,stuw}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR  "#C9C7C2"
 			END
 		END
 		CLASS
 			EXPRESSION           {muur}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -456,7 +456,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -466,7 +466,7 @@ MAP
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
-		      MAXSCALEDENOM 4000
+		      MAXSCALEDENOM 5000
 		      STYLE
 		        COLOR         "#FA0000"
 		        OUTLINECOLOR  "#FA0000"
@@ -486,7 +486,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -496,7 +496,7 @@ MAP
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
-	      MAXSCALEDENOM 4000
+	      MAXSCALEDENOM 5000
 	      STYLE
 	        COLOR         "#FEFAFA"
 	      END
@@ -513,7 +513,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -525,7 +525,7 @@ MAP
 		# overig bouwwerk
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,overkapping,transitie,windturbine}
 			MAXSCALEDENOM   2000
-			MINSCALEDENOM	4000
+			MINSCALEDENOM	5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -548,7 +548,7 @@ MAP
 		END	
 		CLASS
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM	2000
 			STYLE
 				COLOR         "#EBEAE6"
@@ -587,7 +587,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -597,7 +597,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY        30
 				COLOR         "#FFFFFF"
@@ -615,7 +615,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_fysiekvoorkomen
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -625,7 +625,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM   2000
 			STYLE
 				COLOR         "#F9F9E7"
@@ -645,7 +645,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {transitie,open verharding,perron}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F4F6F6"
 				OUTLINECOLOR  "#F4F6F6"
@@ -653,7 +653,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {gesloten verharding,half verhard}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 				OUTLINECOLOR  "#FFFFFF"
@@ -661,20 +661,20 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {groenvoorziening,grasland overig}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DCEACF"
 			END
 		END
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DDDCDA"
 			END
 		END
 		# oever, slootkant
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F9F9E7"
 				OUTLINECOLOR  "#F9F9E7"
@@ -694,7 +694,7 @@ MAP
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -704,7 +704,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -715,7 +715,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -726,7 +726,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -746,7 +746,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -756,21 +756,21 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DCEACF"
 			END
@@ -787,7 +787,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -797,7 +797,7 @@ MAP
 			END
 			CLASS
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-				MAXSCALEDENOM   4000
+				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -817,7 +817,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -827,7 +827,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
@@ -844,7 +844,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -854,7 +854,7 @@ MAP
 			END
 			CLASS
 				EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-				MAXSCALEDENOM   4000
+				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -874,7 +874,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -884,7 +884,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
@@ -901,7 +901,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -913,7 +913,7 @@ MAP
 		# overig bouwwerk
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   2000
-			MINSCALEDENOM	4000
+			MINSCALEDENOM	5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -936,7 +936,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {overkapping}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY       50
 				COLOR         "#E0DED8"
@@ -948,7 +948,7 @@ MAP
 		END
 		CLASS
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM	2000
 			STYLE
 				COLOR         "#EBEAE6"
@@ -981,7 +981,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -991,7 +991,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           {steiger}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR             "#F2F1EE"
 				OUTLINECOLOR      "#C9C7C2"
@@ -1002,14 +1002,14 @@ MAP
 		END
 		CLASS
 			EXPRESSION           {sluis,gemaal,stuw}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR         "#C9C7C2"
 			END
 		END
 		CLASS
 			EXPRESSION           {muur}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1031,7 +1031,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -1041,7 +1041,7 @@ MAP
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
-		      MAXSCALEDENOM 4000
+		      MAXSCALEDENOM 5000
 		      STYLE
 		        COLOR         "#FA0000"
 		        OUTLINECOLOR  "#FA0000"
@@ -1061,7 +1061,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1071,7 +1071,7 @@ MAP
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
-	      MAXSCALEDENOM 4000
+	      MAXSCALEDENOM 5000
 	      STYLE
 	        COLOR         "#FEFAFA"
 	      END
@@ -1093,7 +1093,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_fysiekvoorkomen
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1103,7 +1103,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM   2000
 			STYLE
 				COLOR         "#F9F9E7"
@@ -1123,27 +1123,27 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {gesloten verharding,perron}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      {transitie}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F4F6F6"
 			END
 		END
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DDDCDA"
 			END
 		END
 		# oever, slootkant
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F9F9E7"
 				OUTLINECOLOR  "#F9F9E7"
@@ -1163,7 +1163,7 @@ MAP
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1173,7 +1173,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1184,7 +1184,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1195,7 +1195,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1214,7 +1214,7 @@ MAP
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1224,21 +1224,21 @@ MAP
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "groenvoorziening,onverhard")
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#DCEACF"
 			END
@@ -1255,7 +1255,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -1265,7 +1265,7 @@ MAP
 			END
 			CLASS
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-				MAXSCALEDENOM   4000
+				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -1285,7 +1285,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1295,7 +1295,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
@@ -1312,7 +1312,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1322,7 +1322,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#C9C7C2"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1342,7 +1342,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1352,7 +1352,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
@@ -1369,7 +1369,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1381,7 +1381,7 @@ MAP
 		# overig bouwwerk
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   2000
-			MINSCALEDENOM	4000
+			MINSCALEDENOM	5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1404,7 +1404,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {overkapping}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY       50
 				COLOR         "#E0DED8"
@@ -1416,7 +1416,7 @@ MAP
 		END
 		CLASS
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM	2000
 			STYLE
 				COLOR         "#EBEAE6"
@@ -1448,7 +1448,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1458,7 +1458,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           {steiger}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR         "#F2F1EE"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1469,7 +1469,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           {muur}
-			MAXSCALEDENOM 4000
+			MAXSCALEDENOM 5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1490,7 +1490,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -1500,7 +1500,7 @@ MAP
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
-		      MAXSCALEDENOM 4000
+		      MAXSCALEDENOM 5000
 		      STYLE
 		        COLOR         "#FA0000"
 		        OUTLINECOLOR  "#FA0000"
@@ -1520,7 +1520,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1530,7 +1530,7 @@ MAP
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
-	      MAXSCALEDENOM 4000
+	      MAXSCALEDENOM 5000
 	      STYLE
 	        COLOR         "#FEFAFA"
 	      END
@@ -1551,7 +1551,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_fysiekvoorkomen
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1561,7 +1561,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {perron}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
@@ -1578,7 +1578,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -1588,7 +1588,7 @@ MAP
 			END
 			CLASS
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-				MAXSCALEDENOM   4000
+				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -1608,7 +1608,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1618,7 +1618,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
@@ -1635,7 +1635,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -1645,7 +1645,7 @@ MAP
 			END
 			CLASS
 				EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-				MAXSCALEDENOM   4000
+				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -1665,7 +1665,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1675,7 +1675,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#F2ECEE"
 			END
@@ -1692,7 +1692,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1704,7 +1704,7 @@ MAP
 		# overig bouwwerk
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
 			MAXSCALEDENOM   2000
-			MINSCALEDENOM	4000
+			MINSCALEDENOM	5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1727,7 +1727,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {overkapping}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY       50
 				COLOR         "#E0DED8"
@@ -1739,7 +1739,7 @@ MAP
 		END
 		CLASS
 		# pand; gebouwinstallatie plus_type: {bordes,bunker,luifel,onbekend,schuur,toegangstrap,voedersilo}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			MINSCALEDENOM	2000
 			STYLE
 				COLOR         "#EBEAE6"
@@ -1772,7 +1772,7 @@ MAP
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
 			TYPE                    POLYGON
 			CLASSITEM               bgt_functie
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			PROJECTION
 				"init=epsg:28992"
 			END
@@ -1782,7 +1782,7 @@ MAP
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
-		      MAXSCALEDENOM 4000
+		      MAXSCALEDENOM 5000
 		      STYLE
 		        COLOR         "#FA0000"
 		        OUTLINECOLOR  "#FA0000"
@@ -1802,7 +1802,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1812,7 +1812,7 @@ MAP
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
-	      MAXSCALEDENOM 4000
+	      MAXSCALEDENOM 5000
 	      STYLE
 	        COLOR         "#FEFAFA"
 	      END
@@ -1835,7 +1835,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_fysiekvoorkomen
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1845,7 +1845,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {perron}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
 			END
@@ -1864,7 +1864,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    POLYGON
 		CLASSITEM               bgt_type
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1874,7 +1874,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1885,7 +1885,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      {overkapping}
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY       50
 				COLOR         "#E0DED8"
@@ -1896,7 +1896,7 @@ MAP
 			END
 		END
 		CLASS
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#EBEAE6"
 				OUTLINECOLOR  "#C9C7C2"
@@ -1926,7 +1926,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1936,7 +1936,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY 50
 				WIDTH 1.5
@@ -1976,7 +1976,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -1986,7 +1986,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				OPACITY 50
 				WIDTH 3
@@ -2030,7 +2030,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2040,7 +2040,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY 50
 				WIDTH 2.5
@@ -2071,7 +2071,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2081,7 +2081,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY 60
 				WIDTH 2
@@ -2121,7 +2121,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2131,7 +2131,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      tram
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				OPACITY       50
 				WIDTH         1.5
@@ -2171,7 +2171,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2181,7 +2181,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				OPACITY 50
 				WIDTH 3
@@ -2212,7 +2212,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2222,7 +2222,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				OPACITY 60
 				WIDTH 2
@@ -2265,7 +2265,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2275,7 +2275,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#FC7F7F"
@@ -2304,7 +2304,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2314,7 +2314,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
@@ -2352,7 +2352,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2362,7 +2362,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      tram
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				WIDTH         1.5
 				COLOR         "#FC7F7F"
@@ -2392,7 +2392,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2402,7 +2402,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#9D9D9D"
@@ -2431,7 +2431,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2441,7 +2441,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
@@ -2483,7 +2483,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2493,7 +2493,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#FC7F7F"
@@ -2522,7 +2522,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2532,7 +2532,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
@@ -2570,7 +2570,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2580,7 +2580,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      tram
-			MAXSCALEDENOM   4000
+			MAXSCALEDENOM   5000
 			STYLE
 				WIDTH         1.5
 				COLOR         "#FC7F7F"
@@ -2610,7 +2610,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2620,7 +2620,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#9D9D9D"
@@ -2649,7 +2649,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2659,7 +2659,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
@@ -2700,7 +2700,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2710,7 +2710,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#FC7F7F"
@@ -2739,7 +2739,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2749,7 +2749,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
@@ -2787,7 +2787,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2797,7 +2797,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#9D9D9D"
@@ -2826,7 +2826,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2836,7 +2836,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION           trein
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
@@ -2877,7 +2877,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2887,7 +2887,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 3
 				OUTLINECOLOR "#FC7F7F"
@@ -2917,7 +2917,7 @@ MAP
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
 		TYPE                    LINE
 		CLASSITEM               bgt_functie
-		MAXSCALEDENOM           4000
+		MAXSCALEDENOM           5000
 		PROJECTION
 			"init=epsg:28992"
 		END
@@ -2927,7 +2927,7 @@ MAP
 		END
 		CLASS
 			EXPRESSION      sneltram
-			MAXSCALEDENOM           4000
+			MAXSCALEDENOM           5000
 			STYLE
 				WIDTH 2
 				OUTLINECOLOR "#FFFFFF"
