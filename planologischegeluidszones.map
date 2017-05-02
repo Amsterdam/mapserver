@@ -90,6 +90,41 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
+    NAME                    "geluidzoneindustrieterrein"
+    GROUP                   "milieu_geluid_planologisch_industrie"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Geluidzone industrieterrein"
+      "ows_abstract"        "Geluidzone industrieterrein"
+      "wms_group_title"     "Industrie"
+      "wms_group_abstract"  "Planologische geluidszone industrie"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    CLASS
+      NAME                  "Geluidzone industrieterrein"
+      STYLE
+        COLOR               "#00b000"
+        OPACITY             30
+      END
+      STYLE
+        OUTLINECOLOR        "#00b000"
+        WIDTH               1
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
     NAME                    "gezoneerdindustrieterrein"
     GROUP                   "milieu_geluid_planologisch_industrie"
     INCLUDE                 "connection_milieu.inc"
@@ -122,40 +157,7 @@ MAP
 
   END
 
-  #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    "geluidzoneindustrieterrein"
-    GROUP                   "milieu_geluid_planologisch_industrie"
-    INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
-    TYPE                    POLYGON
-    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Geluidzone industrieterrein"
-      "ows_abstract"        "Geluidzone industrieterrein"
-      "wms_group_title"     "Industrie"
-      "wms_group_abstract"  "Planologische geluidszone industrie"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    CLASS
-      NAME                  "Geluidzone industrieterrein"
-      STYLE
-        COLOR               "#00b000"
-        OPACITY             30
-      END
-      STYLE
-        OUTLINECOLOR        "#00b000"
-        WIDTH               1
-      END
-    END
-
-  END
 
 #=============================================================================
 END
