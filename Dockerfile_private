@@ -94,8 +94,8 @@ RUN chmod o+x /usr/local/bin/mapserv
 RUN ln -s /usr/local/bin/mapserv /usr/lib/cgi-bin/mapserv
 RUN chmod 755 /usr/lib/cgi-bin
 
-COPY . /srv/
-COPY /private/ /srv/
+COPY . /srv/mapserver/
+COPY /private/ /srv/mapserver/
 
 EXPOSE 80
 
