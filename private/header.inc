@@ -24,7 +24,7 @@
   # MAP: algemeen
   #=============================================================================
 
-  EXTENT      100000 450000 150000 500000
+  EXTENT      90000 465000 175000 520000
   UNITS       meters
   MAXSIZE     4000
   STATUS      ON
@@ -63,10 +63,13 @@
     VALIDATION
       "MAP_RESOLUTION"               "^[0-9]{1,3}$"
       "DPI"                          "^[0-9]{1,3}$"
-      "default_MAP_RESOLUTION"       "72"
-      "default_DPI"                  "72"
+      "default_MAP_RESOLUTION"       "91"
+      "default_DPI"                  "91"
     END
   END
+
+  RESOLUTION                         91
+  DEFRESOLUTION                      91
 
   PROJECTION
     "init=epsg:28992"
