@@ -2619,7 +2619,7 @@ MAP
     GROUP                   pand
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"CFT_Onderbouw\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"CFT_Onderbouw\" USING srid=28992 USING UNIQUE guid"
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -2628,7 +2628,7 @@ MAP
      "ows_title"            "CFT_Onderbouw"
 	 "ows_group_title"      "pand"
      "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
+     "gml_featureid"        "guid"
     END
 
     CLASS
@@ -2646,7 +2646,7 @@ MAP
     GROUP                   pand
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"CFT_Overbouw\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"CFT_Overbouw\" USING srid=28992 USING UNIQUE guid"
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -2655,7 +2655,7 @@ MAP
      "ows_title"            "CFT_Overbouw"
 	 "ows_group_title"      "begroeidterreindeel"
      "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
+     "gml_featureid"        "guid"
     END
 
     CLASS
