@@ -14,7 +14,6 @@
 MAP
   NAME    "Handelsregister"
   INCLUDE "header.inc"
-  DEBUG    5
 
   WEB
     METADATA
@@ -70,14 +69,10 @@ MAP
 
     CLASS
       NAME "vestiging (bij benadering)"
-
       EXPRESSION ('[correctie]' = 't')
-
       STYLE
-
         SYMBOL         "stip"
         SIZE           10
-
 	# Voor all correctie = 't' stippen
         OUTLINECOLOR    99 99 99
         COLOR          255 10 10
@@ -86,19 +81,16 @@ MAP
 
     CLASS
       NAME "vestiging"
-
       STYLE
-
         SYMBOL         "stip"
         SIZE           10
         OUTLINECOLOR   10  10 10
         COLOR          10 205 10
         WIDTH          1
-
       END
     END
-  END
 
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -139,14 +131,11 @@ MAP
         OFFSET         -60 10
         ANTIALIAS      true
       END
-
     END
+
   END
 
-
   #-----------------------------------------------------------------------------
-
-
 
   LAYER
     NAME            "horeca"
@@ -372,7 +361,21 @@ MAP
         ANTIALIAS      true
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "horeca_label"
@@ -415,8 +418,8 @@ MAP
         ANTIALIAS      true
       END
     END
-  END
 
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -541,7 +544,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "financiele_dienstverlening_verhuur_label"
@@ -584,6 +601,7 @@ MAP
         OFFSET         -60 10
       END
     END
+
   END
 
   #-----------------------------------------------------------------------------
@@ -710,7 +728,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "overige_label"
@@ -753,8 +785,8 @@ MAP
         OFFSET         -60 10
       END
     END
-  END
 
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -880,7 +912,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "cultuur_sport_recreatie_label"
@@ -923,8 +969,8 @@ MAP
         OFFSET         -60 10
       END
     END
-  END
 
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -1049,7 +1095,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "telecommunicatie_label"
@@ -1227,8 +1287,6 @@ MAP
       END
     END
 
-
-
     CLASS
       NAME "Uitvaart, crematoria"
       EXPRESSION ("[sbi_detail_group]" eq "uitvaart, crematoria")
@@ -1264,7 +1322,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "persoonlijke_dienstverlening_label"
@@ -1328,7 +1400,6 @@ MAP
     END
 
  END
-
 
   #-----------------------------------------------------------------------------
 
@@ -1498,7 +1569,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "landbouw_label"
@@ -1542,8 +1627,8 @@ MAP
         OFFSET         -60 10
       END
     END
-  END
 
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -1740,7 +1825,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "handel_vervoer_opslag_label"
@@ -2074,7 +2173,21 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "zakelijke_dienstverlening_label"
@@ -2118,6 +2231,7 @@ MAP
         OFFSET         -60 10
       END
     END
+
   END
 
   #-----------------------------------------------------------------------------
@@ -2159,7 +2273,6 @@ MAP
         WIDTH          2
       END
     END
-
 
     CLASS
       NAME "Installatie (geen bouw)"
@@ -2220,7 +2333,21 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "productie_installatie_reparatie_label"
@@ -2264,6 +2391,7 @@ MAP
         OFFSET         -60 10
       END
     END
+
   END
 
   #-----------------------------------------------------------------------------
@@ -2365,7 +2493,21 @@ MAP
         WIDTH          1
       END
     END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          255 255 255
+        WIDTH          2
+      END
+    END
+
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "overheid_onderwijs_zorg_label"
@@ -2585,17 +2727,19 @@ MAP
     END
 
     CLASS
-      NAME "Bouw category X"
+      NAME "Onbekend"
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          256 22  39
+        COLOR          255 255 255
         WIDTH          2
       END
     END
 
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "bouw_label"
@@ -2641,4 +2785,7 @@ MAP
     END
   END
 
+
+
+#=============================================================================
 END
