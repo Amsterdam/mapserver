@@ -18,570 +18,371 @@ MAP
 
   IMAGECOLOR                "#fefafa"
 
+
+
   #=============================================================================
-  # LAYERS
+  # LAYER BGT LABEL
   #=============================================================================
 
   LAYER
-    NAME                    waternamen
-    MAXSCALEDENOM           4000
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT geometrie, opr_label_tekst, (opr_label_hoek::numeric * -1) as hoek, identificatie_lokaalid FROM bgt.bgt_openbareruimtelabel WHERE openbareruimtetype = 'Water') AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
+    NAME                    BGT_LBL_weg
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
-    CLASS
-      MAXSCALEDENOM         1000
-      LABEL
-        SIZE                14
-        COLOR               "#D8F6FF"
-        TEXT                '[opr_label_tekst]'
-        POSITION            cc
-        ANGLE               [hoek]
-        FONT                "Corbel-B"
-        TYPE                truetype
-      END
+    METADATA
+     "ows_title"            "BGT_LBL_weg"
+	 "ows_group_title"      "bgt"
     END
-    CLASS
-      MAXSCALEDENOM         2000
-      MINSCALEDENOM         1000
-      LABEL
-        SIZE                10
-        COLOR               "#D8F6FF"
-        TEXT                '[opr_label_tekst]'
-        POSITION            cc
-        ANGLE               [hoek]
-        FONT                "Corbel-B"
-        TYPE                truetype
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         4000
-      MINSCALEDENOM         2000
-      LABEL
-        SIZE                8
-        COLOR               "#D8F6FF"
-        TEXT                '[opr_label_tekst]'
-        POSITION            cc
-        ANGLE               [hoek]
-        FONT                "Corbel-B"
-        TYPE                truetype
-      END
-    END
-  END
 
-  #-----------------------------------------------------------------------------
+    LABELITEM               "tekst"
 
-  LAYER
-    NAME                    huisnummers
-    MAXSCALEDENOM           750
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT geometrie,hnr_label_tekst,(hnr_label_hoek::numeric * -1) AS hoek, identificatie_lokaalid FROM teksten.bgt_nummeraanduidingreeks) AS data USING UNIQUE identificatie_lokaalid USING srid=28992"
-    # Not yet available in default BGT delivery?
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
     CLASS
-      MAXSCALEDENOM         250
-        LABEL
+      LABEL
+        MINSCALEDENOM       1000
+        MAXSCALEDENOM       2000
+        SIZE                12
+        COLOR               "#787878"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       1000
         SIZE                14
         COLOR               "#787878"
-        TEXT                '[hnr_label_tekst]'
-        POSITION            cc
-        ANGLE               [hoek]
-        FONT                "Corbel"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         500
-      MINSCALEDENOM         250
-      LABEL
-        SIZE                10
-        COLOR               "#787878"
-        TEXT                '[hnr_label_tekst]'
-        POSITION            cc
         ANGLE               [hoek]
-        FONT                "Corbel"
-        TYPE                truetype
-        FORCE               true
+        POSITION            CC
       END
-    END
-    CLASS
-      MAXSCALEDENOM         1000
-      MINSCALEDENOM         500
       LABEL
-        SIZE                8
-        COLOR               "#999999"
-        TEXT                '[hnr_label_tekst]'
-        POSITION            cc
-        ANGLE               [hoek]
-        FONT                "Corbel"
-        TYPE                truetype
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    straatnamen
-    MAXSCALEDENOM           25000
-    TYPE                    LINE
-    DATA                    "geometrie FROM (SELECT geometrie, hoofdverkeersgebruik, lengte, typeweg, straatnaam, ogc_fid FROM teksten.straatnamen WHERE hoofdverkeersgebruik NOT IN ('(1:voetgangers)','(1:fietsers, bromfietsers)') ORDER BY lengte ) AS data USING UNIQUE ogc_fid USING srid=28992"
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM         250
-      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
         SIZE                20
-        COLOR               "#999999"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        FONT                "Corbel"
-        TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      512
-        BUFFER              32
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         1000
-      MINSCALEDENOM         250
-      LABEL
-        SIZE                14
         COLOR               "#787878"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        FONT                "Corbel"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      512
-        BUFFER              16
+        ANGLE               [hoek]
+        POSITION            CC
       END
     END
-    CLASS
-      MAXSCALEDENOM         2000
-      MINSCALEDENOM         1000
-      LABEL
-        SIZE                12
-        COLOR               "#787878"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        FONT                "Corbel"
-        TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      512
-        BUFFER              16
-      END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_water
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
     END
+    METADATA
+     "ows_title"            "BGT_LBL_water"
+	 "ows_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
     CLASS
-      MAXSCALEDENOM         4000
-      MINSCALEDENOM         2000
       LABEL
+        MINSCALEDENOM       1000
+        MAXSCALEDENOM       2000
         SIZE                10
-        COLOR               "#787878"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        FONT                "Corbel"
+        COLOR               "#D8F6FF"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      256
-        BUFFER              8
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       1000
+        SIZE                14
+        COLOR               "#D8F6FF"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
       END
     END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_terrein
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_LBL_terrein"
+	 "ows_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
     CLASS
-      MAXSCALEDENOM         8000
-      MINSCALEDENOM         4000
-      EXPRESSION            (([lengte] >= 500) OR ('[typeweg]' = '(1:regionale weg)'))
       LABEL
-        SIZE                 10
-        COLOR               "#787878"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        PARTIALS            false
-        POSITION            cc
-        FONT                "Corbel"
+        MINSCALEDENOM       1000
+        MAXSCALEDENOM       2000
+        SIZE                10
+        COLOR               "#787878cc"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      256
-        BUFFER              8
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       1000
+        SIZE                14
+        COLOR               "#787878cc"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
       END
     END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_kunstwerk
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_LBL_kunstwerk"
+	 "ows_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
     CLASS
-      MAXSCALEDENOM         12500
-      MINSCALEDENOM         8000
-      EXPRESSION            ((([lengte] >= 500) OR ('[typeweg]' = '(1:regionale weg)'))  AND ('[typeweg]' != '(1:autosnelweg)'))
       LABEL
-        SIZE                 10
-        COLOR               "#787878"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        PARTIALS            false
-        POSITION            cc
-        FONT                "Corbel"
+        MINSCALEDENOM       1000
+        MAXSCALEDENOM       2000
+        SIZE                10
+        COLOR               "#737373"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      128
-        BUFFER              4
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       1000
+        SIZE                14
+        COLOR               "#737373"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
       END
     END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_administratief_gebied
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_LBL_administratief_gebied"
+	 "ows_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
     CLASS
-      MAXSCALEDENOM         24000
-      MINSCALEDENOM         12500
-      EXPRESSION            ((([lengte] >= 1000) OR ('[typeweg]' = '(1:regionale weg)')) AND ('[typeweg]' != '(1:autosnelweg)'))
       LABEL
+        MINSCALEDENOM       1000
+        MAXSCALEDENOM       2000
+        SIZE                10
+        COLOR               "#737373"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       1000
+        SIZE                14
+        COLOR               "#737373"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_landschappelijk_gebied
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_LBL_landschappelijk_gebied"
+	 "ows_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       1000
+        MAXSCALEDENOM       2000
+        SIZE                10
+        COLOR               "#737373"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       1000
+        SIZE                14
+        COLOR               "#737373"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_nummeraanduidingreeks
+    GROUP                   bgt
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_LBL_nummeraanduidingreeks"
+	 "ows_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst_afk"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
         SIZE                8
         COLOR               "#787878"
-        TEXT                '[straatnaam]'
-        PARTIALS            false
-        POSITION            cc
-        FONT                "Corbel"
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      256
-        BUFFER              4
+        ANGLE               [hoek]
+        POSITION            CC
       END
-    END
-    CLASS
-      MAXSCALEDENOM         25000
-      MINSCALEDENOM         5000
-      EXPRESSION            ('[typeweg]' = '(1:autosnelweg)')
       LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
         SIZE                10
         COLOR               "#787878"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[straatnaam]'
-        PARTIALS            false
-        POSITION            cc
-        FONT                "Corbel"
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        ANGLE               FOLLOW
-        PRIORITY            [lengte]
-        REPEATDISTANCE      512
-        BUFFER              8
+        ANGLE               [hoek]
+        POSITION            CC
       END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    parken
-    MAXSCALEDENOM           25000
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied_punt) AS data USING UNIQUE lokaalid using srid=28992"
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM         2000
       LABEL
-        SIZE                42
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         4000
-      MINSCALEDENOM         2000
-      LABEL
-        SIZE                20
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         8000
-      MINSCALEDENOM         4000
-      LABEL
-        SIZE                16
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         12500
-      MINSCALEDENOM         8000
-      LABEL
-        SIZE                12
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    dierentuinen
-    MAXSCALEDENOM           25000
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT upper(naamnl) as naam, geometrie, lokaalid FROM teksten.functioneelgebied_vlak) AS data USING UNIQUE lokaalid using srid=28992"
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM         2000
-      LABEL
-        SIZE                42
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         4000
-      MINSCALEDENOM         2000
-      LABEL
-        SIZE                20
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         8000
-      MINSCALEDENOM         4000
-      LABEL
-        SIZE                16
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         12500
-      MINSCALEDENOM         8000
-      LABEL
-        SIZE                12
-        COLOR               "#787878cc"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    waterloop
-    MAXSCALEDENOM           25000
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT geometrie, textstring, ogc_fid, angle FROM teksten.waterloop WHERE textstring != 'Jachthaven') AS data USING UNIQUE ogc_fid USING srid=28992"
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM         8000
-      MINSCALEDENOM         4000
-      LABEL
-        SIZE                16
-        COLOR               "#D8F6FF"
-        TEXT                '[textstring]'
-        ANGLE               [angle]
-        POSITION            cc
-        FONT                "Corbel-I"
-        TYPE                truetype
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         12500
-      MINSCALEDENOM         8000
-      LABEL
-        SIZE                12.201212789415656
-        COLOR               "#D8F6FF"
-        TEXT                '[textstring]'
-        ANGLE               [angle]
-        POSITION            cc
-        FONT                "Corbel-I"
-        TYPE                truetype
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         25000
-      MINSCALEDENOM         12500
-      LABEL
-        SIZE                10.6135611907387
-        COLOR               "#D8F6FF"
-        TEXT                '[textstring]'
-        ANGLE               [angle]
-        POSITION            cc
-        FONT                "Corbel-I"
-        TYPE                truetype
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    stations
-    MAXSCALEDENOM           25000
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT ogc_fid, geometrie, naam FROM teksten.stations) AS data USING UNIQUE ogc_fid USING srid=28992"
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM         4000
-      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
         SIZE                14
-        COLOR               "#666666"
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
         TYPE                truetype
-        MAXLENGTH           0
-        WRAP                ' '
-        ALIGN               center
+        ANGLE               [hoek]
+        POSITION            CC
       END
     END
-    CLASS
-      # Zoom{=16}
-      MAXSCALEDENOM         12500
-      MINSCALEDENOM         4000
-      LABEL
-        SIZE                10
-        COLOR               "#666666"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT '[naam]'
-        POSITION cc
-        FONT "Corbel-B"
-        TYPE truetype
-        MAXLENGTH           0
-        WRAP                ' '
-        ALIGN               center
-        force               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         24000
-      MINSCALEDENOM         12500
-      LABEL
-        SIZE                8
-        COLOR               "#666666"
-        OUTLINECOLOR        "#ffffff"
-        OUTLINEWIDTH        2
-        TEXT                '[naam]'
-        POSITION            cc
-        FONT                "Corbel-B"
-        TYPE                truetype
-        MAXLENGTH           0
-        WRAP                ' '
-        ALIGN               center
-        force               true
-      END
-    END
+
   END
 
-  #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    plaatsnaam
-    TYPE                    POINT
-    DATA                    "geometrie FROM (SELECT geometrie,lokaalid,naamnl,typegebied from teksten.plaats_vlak) AS data USING UNIQUE lokaalid USING srid=28992"
-    INCLUDE                 "connection_basiskaart.inc"
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      MAXSCALEDENOM         12500
-      MINSCALEDENOM         8000
-      EXPRESSION            ('[typegebied]' = 'woonkern')
-      LABEL
-        SIZE                28
-        COLOR               "#666666cc"
-        TEXT                '[naamnl]'
-        FORCE               true
-        POSITION            cc
-        FONT                "Corbel"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         24000
-      MINSCALEDENOM         12500
-      EXPRESSION            ('[typegebied]' = 'woonkern')
-      LABEL
-        SIZE                18
-        COLOR               "#666666cc"
-        TEXT                '[naamnl]'
-        FORCE               true
-        POSITION            cc
-        FONT                "Corbel"
-        TYPE                truetype
-        FORCE               true
-      END
-    END
-    CLASS
-      MAXSCALEDENOM         96000
-      MINSCALEDENOM         24000
-      EXPRESSION            ('[typegebied]' = 'woonkern')
-      LABEL
-        SIZE                12
-        COLOR               "#666666cc"
-        TEXT                '[naamnl]'
-        POSITION            cc
-        FONT                "Corbel"
-        TYPE                truetype
-        BUFFER              8
-      END
-    END
-  END
 
 #=============================================================================
 
