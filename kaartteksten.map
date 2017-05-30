@@ -29,7 +29,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -44,9 +44,33 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       1000
+        MINSCALEDENOM       1250
         MAXSCALEDENOM       2000
-        SIZE                12
+        SIZE                10
+        COLOR               "#787878"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                11
+        COLOR               "#787878"
+        OUTLINECOLOR        255 255 255
+        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
         COLOR               "#787878"
         OUTLINECOLOR        255 255 255
         OUTLINEWIDTH        1
@@ -57,8 +81,8 @@ MAP
       END
       LABEL
         MINSCALEDENOM       250
-        MAXSCALEDENOM       1000
-        SIZE                14
+        MAXSCALEDENOM       500
+        SIZE                15
         COLOR               "#787878"
         OUTLINECOLOR        255 255 255
         OUTLINEWIDTH        1
@@ -70,7 +94,7 @@ MAP
       LABEL
         MINSCALEDENOM       1
         MAXSCALEDENOM       250
-        SIZE                20
+        SIZE                19
         COLOR               "#787878"
         OUTLINECOLOR        255 255 255
         OUTLINEWIDTH        1
@@ -90,7 +114,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -105,12 +129,40 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       1000
+        MINSCALEDENOM       1250
         MAXSCALEDENOM       2000
         SIZE                10
         COLOR               "#D8F6FF"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                11
+        COLOR               "#D8F6FF"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
+        COLOR               "#D8F6FF"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                15
+        COLOR               "#D8F6FF"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -118,11 +170,9 @@ MAP
       END
       LABEL
         MINSCALEDENOM       1
-        MAXSCALEDENOM       1000
-        SIZE                14
+        MAXSCALEDENOM       250
+        SIZE                19
         COLOR               "#D8F6FF"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -139,7 +189,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -154,12 +204,40 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       1000
+        MINSCALEDENOM       1250
         MAXSCALEDENOM       2000
         SIZE                10
-        COLOR               "#787878cc"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                15
+        COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -167,11 +245,9 @@ MAP
       END
       LABEL
         MINSCALEDENOM       1
-        MAXSCALEDENOM       1000
-        SIZE                14
-        COLOR               "#787878cc"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        MAXSCALEDENOM       250
+        SIZE                19
+        COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -186,9 +262,9 @@ MAP
   LAYER
     NAME                    BGT_LBL_kunstwerk
     GROUP                   bgt
-    MAXSCALEDENOM           2000
+    MAXSCALEDENOM           500
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -203,25 +279,25 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       1000
-        MAXSCALEDENOM       2000
-        SIZE                10
-        COLOR               "#737373"
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                12
+        COLOR               "#787878"
         OUTLINECOLOR        255 255 255
         OUTLINEWIDTH        1
-        FONT                "Ubuntu-M"
+        FONT                "Ubuntu-MI"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
       END
       LABEL
         MINSCALEDENOM       1
-        MAXSCALEDENOM       1000
+        MAXSCALEDENOM       250
         SIZE                14
-        COLOR               "#737373"
+        COLOR               "#787878"
         OUTLINECOLOR        255 255 255
         OUTLINEWIDTH        1
-        FONT                "Ubuntu-M"
+        FONT                "Ubuntu-MI"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
@@ -237,7 +313,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
@@ -251,12 +327,40 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       1000
+        MINSCALEDENOM       1250
         MAXSCALEDENOM       2000
         SIZE                10
-        COLOR               "#737373"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                15
+        COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -264,11 +368,9 @@ MAP
       END
       LABEL
         MINSCALEDENOM       1
-        MAXSCALEDENOM       1000
-        SIZE                14
-        COLOR               "#737373"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        MAXSCALEDENOM       250
+        SIZE                19
+        COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -285,7 +387,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -300,12 +402,40 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       1000
+        MINSCALEDENOM       1250
         MAXSCALEDENOM       2000
         SIZE                10
-        COLOR               "#737373"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                15
+        COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -313,11 +443,9 @@ MAP
       END
       LABEL
         MINSCALEDENOM       1
-        MAXSCALEDENOM       1000
-        SIZE                14
-        COLOR               "#737373"
-        OUTLINECOLOR        255 255 255
-        OUTLINEWIDTH        1
+        MAXSCALEDENOM       250
+        SIZE                19
+        COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
         ANGLE               [hoek]
@@ -332,9 +460,9 @@ MAP
   LAYER
     NAME                    BGT_LBL_nummeraanduidingreeks
     GROUP                   bgt
-    MAXSCALEDENOM           2000
+    MAXSCALEDENOM           750
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT msGeometry as geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -349,7 +477,7 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       500
+        MINSCALEDENOM       600
         MAXSCALEDENOM       750
         SIZE                8
         COLOR               "#787878"
@@ -359,8 +487,8 @@ MAP
         POSITION            CC
       END
       LABEL
-        MINSCALEDENOM       250
-        MAXSCALEDENOM       500
+        MINSCALEDENOM       450
+        MAXSCALEDENOM       600
         SIZE                10
         COLOR               "#787878"
         FONT                "Ubuntu-M"
@@ -369,9 +497,29 @@ MAP
         POSITION            CC
       END
       LABEL
-        MINSCALEDENOM       1
-        MAXSCALEDENOM       250
+        MINSCALEDENOM       300
+        MAXSCALEDENOM       450
+        SIZE                12
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       200
+        MAXSCALEDENOM       300
         SIZE                14
+        COLOR               "#787878"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       200
+        SIZE                16
         COLOR               "#787878"
         FONT                "Ubuntu-M"
         TYPE                truetype
