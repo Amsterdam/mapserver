@@ -127,4 +127,160 @@ MAP
 
   #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "panorama_recent"
+    GROUP           "panorama opnamelocaties"
+    INCLUDE         "connection_panorama.inc"
+    DATA            "geometrie FROM public.geo_panoramas_recente_opnames_alle USING srid=4326 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "panorama_recent"
+      "ows_group_title"     "recente panorama's"
+      "ows_abstract"        "recente panorama's"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+
+    CLASS
+      EXPRESSION ("[year]" eq "2016")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 61 133
+        OUTLINECOLOR   0 61 133
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      EXPRESSION ("[year]" eq "2017")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          60 201 255
+        OUTLINECOLOR   60 201 255
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      EXPRESSION ("[year]" eq "2018")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 160 60
+        OUTLINECOLOR   0 160 60
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      EXPRESSION ("[year]" eq "2019")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          190 210 0
+        OUTLINECOLOR   190 210 0
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      EXPRESSION ("[year]" eq "2020")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          160 0 120
+        OUTLINECOLOR   160 0 120
+        WIDTH          2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "panorama_recent_2016"
+    GROUP           "panorama opnamelocaties"
+    INCLUDE         "connection_panorama.inc"
+    DATA            "geometrie FROM public.geo_panoramas_recente_opnames_2016 USING srid=4326 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "panorama_recent_2016"
+      "ows_group_title"     "recente panorama's uit 2016"
+      "ows_abstract"        "recente panorama's uit 2016"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+
+    CLASS
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 61 133
+        OUTLINECOLOR   0 61 133
+        WIDTH          2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "panorama_recent_2017"
+    GROUP           "panorama opnamelocaties"
+    INCLUDE         "connection_panorama.inc"
+    DATA            "geometrie FROM public.geo_panoramas_recente_opnames_2017 USING srid=4326 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "panorama_recent_2017"
+      "ows_group_title"     "recente panorama's uit 2017"
+      "ows_abstract"        "recente panorama's uit 2017"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+
+    CLASS
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          60 201 255
+        OUTLINECOLOR   60 201 255
+        WIDTH          2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
 END
