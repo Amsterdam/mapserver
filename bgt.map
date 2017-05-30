@@ -31,7 +31,7 @@ MAP
 # Water 0
 	LAYER
 		NAME                    waterdeel_vlak
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.waterdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -43,7 +43,7 @@ MAP
 		END
 		METADATA
 			"wms_title"           "waterdeel_vlak"
-			"wms_group_title"     "vlakken"
+			"wms_group_title"     "hoogte0"
 		END
 		CLASS
 			MAXSCALEDENOM         5000
@@ -67,7 +67,7 @@ MAP
 # Terreindeel 0
 	LAYER
 		NAME                    terreindeel_vlak0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -80,7 +80,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "terreindeel_vlak0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
@@ -152,7 +152,7 @@ MAP
 # Overbrugging 0
 	LAYER
 		NAME                    spoorbaan_overbrugging
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.\"BGT_ODL_overbruggingsdeel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -163,7 +163,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "spoorbaan_overbrugging"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			MAXSCALEDENOM   5000
@@ -178,7 +178,7 @@ MAP
 # Berm achter 0
 	LAYER
 		NAME                    berm_achter_0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -189,7 +189,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "berm_achter_0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
@@ -218,7 +218,7 @@ MAP
 # Berm voor 0
 	LAYER
 		NAME                    berm_voor_0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -229,7 +229,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "berm_voor_0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
@@ -251,7 +251,7 @@ MAP
 # Rijbanen achter 0
 	LAYER
 			NAME                    rijbanen_achter_0
-			GROUP                   vlakken
+			GROUP                   hoogte0
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -263,7 +263,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "rijbanen_achter_0"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte0"
 			END
 			CLASS
 				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,parkeervlak,transitie,baan voor vliegverkeer}
@@ -281,7 +281,7 @@ MAP
 # Rijbanen voor 0
 	LAYER
 		NAME                    rijbanen_voor_0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -293,7 +293,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "rijbanen_voor_0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 	    CLASS
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,parkeervlak,transitie}
@@ -315,7 +315,7 @@ MAP
 # Voetgangers achter 0
 	LAYER
 		NAME                    voetganers_achter_0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -327,7 +327,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "voetganers_achter_0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -345,7 +345,7 @@ MAP
 # Voetgangers voor 0
 	LAYER
 		NAME                    voetgangers_voor_0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -357,7 +357,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "voetgangers_voor_0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -372,7 +372,7 @@ MAP
 # Inrichtingselement vlak 0
 	LAYER
 		NAME                    inrichtingselement_vlak0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -384,7 +384,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "inrichtingselement_vlak0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION           {steiger}
@@ -421,7 +421,7 @@ MAP
 # Gebouw 0
 	LAYER
 		NAME                    gebouw_vlak0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -433,7 +433,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "gebouw_vlak0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 		# overig bouwwerk
@@ -490,7 +490,7 @@ MAP
 # Metro achter 0
 	LAYER
 		NAME                    metro_achter0
-		GROUP                   lijnen
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -502,7 +502,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_achter0"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -529,7 +529,7 @@ MAP
 # Metro voor 0
 	LAYER
 		NAME                    metro_voor0
-		GROUP                   lijnen
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -541,7 +541,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_voor0"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -577,7 +577,7 @@ MAP
 # Tram 0
 	LAYER
 		NAME                    tram0
-		GROUP                   lijnen
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -589,7 +589,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "tram0"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION      tram
@@ -617,7 +617,7 @@ MAP
 # Trein achter 0
 	LAYER
 		NAME                    trein_achter0
-		GROUP                   lijnen
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -629,7 +629,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_achter0"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -656,7 +656,7 @@ MAP
 # Trein voor 0
 	LAYER
 		NAME                    trein_voor0
-		GROUP                   lijnen
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -668,7 +668,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_voor0"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -704,7 +704,7 @@ MAP
 # Snelweg achter 0
 	LAYER
 			NAME                    snelweg_achter_0
-			GROUP                   vlakken
+			GROUP                   hoogte0
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -716,7 +716,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "snelweg_achter_0"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte0"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
@@ -734,7 +734,7 @@ MAP
 # Snelweg voor 0
 	LAYER
 		NAME                    snelweg_voor_0
-		GROUP                   vlakken
+		GROUP                   hoogte0
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -746,7 +746,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "snelweg_voor_0"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte0"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
@@ -765,7 +765,7 @@ MAP
 # Tunnel -1
 	LAYER
 		NAME                    wegdeel_vlak_tunnel
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -777,7 +777,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "wegdeel_vlak_tunnel"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      {rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg}
@@ -793,7 +793,7 @@ MAP
 # Terreindeel 1
 	LAYER
 		NAME                    terreindeel_vlak1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -805,7 +805,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "terreindeel_vlak1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
@@ -877,7 +877,7 @@ MAP
 # Berm achter 1
 	LAYER
 		NAME                    berm_achter_1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -888,7 +888,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "berm_achter_1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
@@ -928,7 +928,7 @@ MAP
 # Berm voor 1
 	LAYER
 		NAME                    berm_voor_1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -940,14 +940,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "berm_voor_1"
-			"wms_group_title"      "vlakken"
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   5000
-			STYLE
-				COLOR         "#FFFFFF"
-			END
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
@@ -969,7 +962,7 @@ MAP
 # Rijbanen achter 1
 	LAYER
 			NAME                    rijbanen_achter_1
-			GROUP                   vlakken
+			GROUP                   hoogte1
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -981,10 +974,10 @@ MAP
 			END
 			METADATA
 				"wms_title"            "rijbanen_achter_1"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte1"
 			END
 			CLASS
-				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
+				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak}
 				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
@@ -999,7 +992,7 @@ MAP
 # Rijbanen voor 1
 	LAYER
 		NAME                    rijbanen_voor_1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1011,7 +1004,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "rijbanen_voor_1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
@@ -1026,7 +1019,7 @@ MAP
 # Voetgangers achter 1
 	LAYER
 			NAME                    voetganers_achter_1
-			GROUP                   vlakken
+			GROUP                   hoogte1
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1038,7 +1031,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "voetganers_achter_1"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte1"
 			END
 			CLASS
 				EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -1056,7 +1049,7 @@ MAP
 # Voetgangers voor 1
 	LAYER
 		NAME                    voetgangers_voor_1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1068,7 +1061,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "voetgangers_voor_1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -1083,7 +1076,7 @@ MAP
 # Gebouw 1
 	LAYER
 		NAME                    gebouw_vlak1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1095,7 +1088,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "gebouw_vlak1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 		# overig bouwwerk
@@ -1163,7 +1156,7 @@ MAP
 # Inrichtingselement vlak 1 
 	LAYER
 		NAME                    inrichtingselement_vlak1
-		GROUP                   vlakken
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1175,7 +1168,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "inrichtingselement_vlak1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION           {steiger}
@@ -1211,7 +1204,7 @@ MAP
 # Metro achter 1
 	LAYER
 		NAME                    metro_achter1
-		GROUP                   lijnen
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1223,7 +1216,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_achter1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -1250,7 +1243,7 @@ MAP
 # Metro voor 1
 	LAYER
 		NAME                    metro_voor1
-		GROUP                   lijnen
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1262,7 +1255,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_voor1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -1298,7 +1291,7 @@ MAP
 # Tram 1 
 	LAYER
 		NAME                    tram1
-		GROUP                   lijnen
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1310,7 +1303,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "tram1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION      tram
@@ -1338,7 +1331,7 @@ MAP
 # Trein achter 1 
 	LAYER
 		NAME                    trein_achter1
-		GROUP                   lijnen
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1350,7 +1343,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_achter1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -1377,7 +1370,7 @@ MAP
 # Trein voor 1 
 	LAYER
 		NAME                    trein_voor1
-		GROUP                   lijnen
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1389,7 +1382,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_voor1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -1423,8 +1416,8 @@ MAP
 #==============================================================================
 # Snelweg achter 1
 	LAYER
-			NAME                    snelweg_achter_1
-			GROUP                   vlakken
+			NAME                    snelweg_achter1
+			GROUP                   hoogte1
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1436,7 +1429,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "snelweg_achter_1"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte1"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
@@ -1453,8 +1446,8 @@ MAP
 #==============================================================================
 # Snelweg voor 1
 	LAYER
-		NAME                    snelweg_voor_1
-		GROUP                   vlakken
+		NAME                    snelweg_voor1
+		GROUP                   hoogte1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1466,7 +1459,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "snelweg_voor_1"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte1"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
@@ -1486,7 +1479,7 @@ MAP
 # Terreindeel 2
 	LAYER
 		NAME                    terreindeel_vlak2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1498,7 +1491,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "terreindeel_vlak2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
@@ -1570,7 +1563,7 @@ MAP
 # Berm achter 2
 	LAYER
 		NAME                    berm_achter_2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1581,18 +1574,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "berm_achter_2"
-			"wms_group_title"      "vlakken"
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   5000
-			STYLE
-				COLOR         "#C9C7C2"
-				OUTLINECOLOR  "#C9C7C2"
-				WIDTH         1
-				LINECAP       BUTT
-				LINEJOIN      MITER
-			END
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
@@ -1621,7 +1603,7 @@ MAP
 # Berm voor 2
 	LAYER
 		NAME                    berm_voor_2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1632,14 +1614,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "berm_voor_2"
-			"wms_group_title"      "vlakken"
-		END
-		CLASS
-			EXPRESSION      ("[bgt_functie]" IN "parkeervlak")
-			MAXSCALEDENOM   5000
-			STYLE
-				COLOR         "#FFFFFF"
-			END
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      ("[bgt_functie]" IN "berm" AND "[bgt_fysiekvoorkomen]"  IN "gesloten verharding,half verhard,open verharding,transitie")
@@ -1661,7 +1636,7 @@ MAP
 # Rijbanen achter 2
 	LAYER
 			NAME                    rijbanen_achter_2
-			GROUP                   vlakken
+			GROUP                   hoogte2
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1673,10 +1648,10 @@ MAP
 			END
 			METADATA
 				"wms_title"            "rijbanen_achter_2"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte2"
 			END
 			CLASS
-				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
+				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak}
 				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
@@ -1691,7 +1666,7 @@ MAP
 # Rijbanen voor 2
 	LAYER
 		NAME                    rijbanen_voor_2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1703,10 +1678,10 @@ MAP
 		END
 		METADATA
 			"wms_title"            "rijbanen_voor_2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
-			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
+			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak}
 			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
@@ -1718,7 +1693,7 @@ MAP
 # Voetgangers achter 2
 	LAYER
 		NAME                    voetgangers_achter_2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1730,7 +1705,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "voetgangers_achter_2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -1748,7 +1723,7 @@ MAP
 # Voetgangers voor 2
 	LAYER
 		NAME                    voetgangers_voor_2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1760,7 +1735,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "voetgangers_voor_2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -1775,7 +1750,7 @@ MAP
 # Gebouw 2
 	LAYER
 		NAME                    gebouw_vlak2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1787,7 +1762,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "gebouw_vlak2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 		# overig bouwwerk
@@ -1854,7 +1829,7 @@ MAP
 # Inrichtingselement vlak 2
 	LAYER
 		NAME                    inrichtingselement_vlak2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1866,7 +1841,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "inrichtingselement_vlak2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION           {steiger}
@@ -1896,7 +1871,7 @@ MAP
 # Metro achter 2
 	LAYER
 		NAME                    metro_achter2
-		GROUP                   lijnen
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1908,7 +1883,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_achter2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -1935,7 +1910,7 @@ MAP
 # Metro voor 2
 	LAYER
 		NAME                    metro_voor2
-		GROUP                   lijnen
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1947,7 +1922,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_voor2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -1983,7 +1958,7 @@ MAP
 # Trein achter 2 
 	LAYER
 		NAME                    trein_achter2
-		GROUP                   lijnen
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1995,7 +1970,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_achter2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -2022,7 +1997,7 @@ MAP
 # Trein voor 2 
 	LAYER
 		NAME                    trein_voor2
-		GROUP                   lijnen
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2034,7 +2009,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_voor2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -2070,7 +2045,7 @@ MAP
 # Snelweg achter 2
 	LAYER
 			NAME                    snelweg_achter_2
-			GROUP                   vlakken
+			GROUP                   hoogte2
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2082,7 +2057,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "snelweg_achter_2"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte2"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
@@ -2100,7 +2075,7 @@ MAP
 # Snelweg voor 2
 	LAYER
 		NAME                    snelweg_voor_2
-		GROUP                   vlakken
+		GROUP                   hoogte2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2112,7 +2087,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "snelweg_voor_2"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte2"
 		END
 		CLASS
 	      EXPRESSION          {rijbaan autosnelweg}
@@ -2131,7 +2106,7 @@ MAP
 
 	LAYER
 		NAME                    terreindeel_vlak3
-		GROUP                   vlakken
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2143,7 +2118,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "terreindeel_vlak3"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte3"
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
@@ -2215,7 +2190,7 @@ MAP
 # Rijbanen achter 3
 	LAYER
 			NAME                    rijbanen_achter_3
-			GROUP                   vlakken
+			GROUP                   hoogte3
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2227,10 +2202,10 @@ MAP
 			END
 			METADATA
 				"wms_title"            "rijbanen_achter_3"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte3"
 			END
 			CLASS
-				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
+				EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak}
 				MAXSCALEDENOM   5000
 				STYLE
 					COLOR         "#C9C7C2"
@@ -2245,7 +2220,7 @@ MAP
 # Rijbanen voor 3
 	LAYER
 		NAME                    rijbanen_voor_3
-		GROUP                   vlakken
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2257,10 +2232,10 @@ MAP
 		END
 		METADATA
 			"wms_title"            "rijbanen_voor_3"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte3"
 		END
 		CLASS
-			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie}
+			EXPRESSION      {fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak}
 			MAXSCALEDENOM   5000
 			STYLE
 				COLOR         "#FFFFFF"
@@ -2272,7 +2247,7 @@ MAP
 # Voetgangers achter 3
 	LAYER
 			NAME                    voetganers_achter_3
-			GROUP                   vlakken
+			GROUP                   hoogte3
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2284,7 +2259,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "voetganers_achter_3"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte3"
 			END
 			CLASS
 				EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -2302,7 +2277,7 @@ MAP
 # Voetgangers voor 3
 	LAYER
 		NAME                    voetgangers_voor_3
-		GROUP                   vlakken
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2314,7 +2289,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "voetgangers_voor_3"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte3"
 		END
 		CLASS
 			EXPRESSION      {ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf,verkeerseiland}
@@ -2329,7 +2304,7 @@ MAP
 # Gebouw 3
 	LAYER
 		NAME                    gebouw_vlak3
-		GROUP                   vlakken
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2341,7 +2316,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "gebouw_vlak3"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte3"
 		END
 		CLASS
 		# overig bouwwerk
@@ -2408,7 +2383,7 @@ MAP
 # Metro achter 3
 	LAYER
 		NAME                    metro_achter3
-		GROUP                   lijnen
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2420,7 +2395,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_achter3"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte3"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -2448,7 +2423,7 @@ MAP
 # Metro voor 3
 	LAYER
 		NAME                    metro_voor3
-		GROUP                   lijnen
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2460,7 +2435,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_voor2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte3"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -2496,7 +2471,7 @@ MAP
 # Snelweg achter 3
 	LAYER
 			NAME                    snelweg_achter3
-			GROUP                   vlakken
+			GROUP                   hoogte3
 			INCLUDE                 "connection_basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2508,7 +2483,7 @@ MAP
 			END
 			METADATA
 				"wms_title"            "snelweg_achter_3"
-				"wms_group_title"      "vlakken"
+				"wms_group_title"      "hoogte3"
 			END
 			CLASS
 		      EXPRESSION            {rijbaan autosnelweg}
@@ -2526,7 +2501,7 @@ MAP
 # Snelweg voor 3
 	LAYER
 		NAME                    snelweg_voor3
-		GROUP                   vlakken
+		GROUP                   hoogte3
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2559,7 +2534,7 @@ MAP
 
 	LAYER
 		NAME                    terreindeel_vlak4
-		GROUP                   vlakken
+		GROUP                   hoogte4
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2571,7 +2546,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "terreindeel_vlak4"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte4"
 		END
 		CLASS
 			EXPRESSION      {erf,zand,onverhard,houtwal,duin,rietland}
@@ -2645,7 +2620,7 @@ MAP
 # Gebouw 4
 	LAYER
 		NAME                    gebouw_vlak4
-		GROUP                   vlakken
+		GROUP                   hoogte4
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2657,7 +2632,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "gebouw_vlak4"
-			"wms_group_title"      "vlakken"
+			"wms_group_title"      "hoogte4"
 		END
 		CLASS
 			EXPRESSION      {bassin,bezinkbak,lage trafo,niet-bgt,open loods,opslagtank,transitie,windturbine}
@@ -2706,7 +2681,7 @@ MAP
 # Metro -2
 	LAYER
 		NAME                    metro_2
-		GROUP                   lijnen
+		GROUP                   hoogte_2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2718,7 +2693,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_2"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -2754,7 +2729,7 @@ MAP
 # Trein -2
 	LAYER
 		NAME                    trein_2
-		GROUP                   lijnen
+		GROUP                   hoogte_2
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2766,7 +2741,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_2"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_2"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -2806,7 +2781,7 @@ MAP
 # Metro achter -1
 	LAYER
 		NAME                    metro_achter_1
-		GROUP                   lijnen
+		GROUP                   hoogte_1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2818,7 +2793,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_achter_1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_1"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -2847,7 +2822,7 @@ MAP
 # Metro voor -1
 	LAYER
 		NAME                    metro_voor_1
-		GROUP                   lijnen
+		GROUP                   hoogte_1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2859,7 +2834,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "metro_voor_1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_1"
 		END
 		CLASS
 			EXPRESSION      sneltram
@@ -2897,7 +2872,7 @@ MAP
 # Tram  -1 
 	LAYER
 		NAME                    tram_1
-		GROUP                   lijnen
+		GROUP                   hoogte_1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2909,7 +2884,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "tram_1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_1"
 		END
 		CLASS
 			EXPRESSION      tram
@@ -2947,7 +2922,7 @@ MAP
 # Trein achter -1
 	LAYER
 		NAME                    trein_achter_1
-		GROUP                   lijnen
+		GROUP                   hoogte_1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -2959,7 +2934,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_achter_1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_1"
 		END
 		CLASS
 			EXPRESSION           trein
@@ -2988,7 +2963,7 @@ MAP
 # Trein voor -1
 	LAYER
 		NAME                    trein_voor_1
-		GROUP                   lijnen
+		GROUP                   hoogte_1
 		INCLUDE                 "connection_basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -3000,7 +2975,7 @@ MAP
 		END
 		METADATA
 			"wms_title"            "trein_voor_1"
-			"wms_group_title"      "lijnen"
+			"wms_group_title"      "hoogte_1"
 		END
 		CLASS
 			EXPRESSION           trein
