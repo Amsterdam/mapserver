@@ -109,30 +109,6 @@
 						<ogc:Or>
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
-								<ogc:Literal>transitie</ogc:Literal>
-							</ogc:PropertyIsEqualTo>
-							<ogc:PropertyIsEqualTo>
-								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
-								<ogc:Literal>open verharding</ogc:Literal>
-							</ogc:PropertyIsEqualTo>
-						</ogc:Or>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#F5F4F2</CssParameter>
-						</Fill>
-						<Stroke>
-							<CssParameter name="stroke">#F5F4F2</CssParameter>
-							<CssParameter name="stroke-width">0.5</CssParameter>
-						</Stroke>
-					</PolygonSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:Or>
-							<ogc:PropertyIsEqualTo>
-								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 								<ogc:Literal>gesloten verharding</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 							<ogc:PropertyIsEqualTo>
@@ -142,6 +118,14 @@
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 								<ogc:Literal>perron</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>transitie</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>open verharding</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
@@ -278,24 +262,6 @@
 			<FeatureTypeStyle>
 				<Rule>
 					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>parkeervlak</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-						<Stroke>
-							<CssParameter name="stroke">#C9C7C2</CssParameter>
-							<CssParameter name="stroke-width">1</CssParameter>
-						</Stroke>
-					</PolygonSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
 						<ogc:And>
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
@@ -369,20 +335,6 @@
 		<Name>berm_voor_0</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>parkeervlak</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-					</PolygonSymbolizer>
-				</Rule>
 				<Rule>
 					<ogc:Filter>
 						<ogc:And>
@@ -489,6 +441,10 @@
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>baan voor vliegverkeer</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
 					<MaxScaleDenominator>5000</MaxScaleDenominator>
@@ -498,7 +454,7 @@
 						</Fill>
 						<Stroke>
 							<CssParameter name="stroke">#C9C7C2</CssParameter>
-							<CssParameter name="stroke-width">1.80</CssParameter>
+							<CssParameter name="stroke-width">1</CssParameter>
 						</Stroke>
 					</PolygonSymbolizer>
 				</Rule>
@@ -543,6 +499,10 @@
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>transitie</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
@@ -728,52 +688,6 @@
 		</UserStyle>
 	</NamedLayer>
 	<NamedLayer>
-		<Name>snelweg_achter_0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>rijbaan autosnelweg</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#B4B4B4</CssParameter>
-						</Fill>
-						<Stroke>
-							<CssParameter name="stroke">#B4B4B4</CssParameter>
-							<CssParameter name="stroke-width">3.5</CssParameter>
-						</Stroke>
-					</PolygonSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>snelweg_voor_0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>rijbaan autosnelweg</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#EAEAAE</CssParameter>
-						</Fill>
-					</PolygonSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
 		<Name>gebouw_vlak0</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
@@ -911,6 +825,237 @@
 		</UserStyle>
 	</NamedLayer>
 	<NamedLayer>
+		<Name>metro_achter0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>metro_voor0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>tram0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>tram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.2</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>tram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>trein_achter0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.4</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>trein_voor0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.4</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>snelweg_achter_0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>rijbaan autosnelweg</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill">#B4B4B4</CssParameter>
+						</Fill>
+						<Stroke>
+							<CssParameter name="stroke">#B4B4B4</CssParameter>
+							<CssParameter name="stroke-width">3.5</CssParameter>
+						</Stroke>
+					</PolygonSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>snelweg_voor_0</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>rijbaan autosnelweg</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<PolygonSymbolizer>
+						<Fill>
+							<CssParameter name="fill">#EAEAAE</CssParameter>
+						</Fill>
+					</PolygonSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
 		<Name>wegdeel_vlak_tunnel</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
@@ -1032,30 +1177,6 @@
 						<ogc:Or>
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
-								<ogc:Literal>transitie</ogc:Literal>
-							</ogc:PropertyIsEqualTo>
-							<ogc:PropertyIsEqualTo>
-								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
-								<ogc:Literal>open verharding</ogc:Literal>
-							</ogc:PropertyIsEqualTo>
-						</ogc:Or>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#F5F4F2</CssParameter>
-						</Fill>
-						<Stroke>
-							<CssParameter name="stroke">#F5F4F2</CssParameter>
-							<CssParameter name="stroke-width">1</CssParameter>
-						</Stroke>
-					</PolygonSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:Or>
-							<ogc:PropertyIsEqualTo>
-								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 								<ogc:Literal>gesloten verharding</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 							<ogc:PropertyIsEqualTo>
@@ -1065,6 +1186,14 @@
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 								<ogc:Literal>perron</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>transitie</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>open verharding</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
@@ -1142,24 +1271,6 @@
 			<FeatureTypeStyle>
 				<Rule>
 					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>parkeervlak</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-						<Stroke>
-							<CssParameter name="stroke">#C9C7C2</CssParameter>
-							<CssParameter name="stroke-width">1</CssParameter>
-						</Stroke>
-					</PolygonSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
 						<ogc:And>
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
@@ -1182,6 +1293,14 @@
 									<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 									<ogc:Literal>transitie</ogc:Literal>
 								</ogc:PropertyIsEqualTo>
+								<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>transitie</ogc:Literal>
+								</ogc:PropertyIsEqualTo>
+								<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>open verharding</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
 							</ogc:Or>
 						</ogc:And>
 					</ogc:Filter>
@@ -1233,20 +1352,6 @@
 		<Name>berm_voor_1</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>parkeervlak</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-					</PolygonSymbolizer>
-				</Rule>
 				<Rule>
 					<ogc:Filter>
 						<ogc:And>
@@ -1353,6 +1458,10 @@
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>baan voor vliegverkeer</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
 					<MaxScaleDenominator>5000</MaxScaleDenominator>
@@ -1362,7 +1471,7 @@
 						</Fill>
 						<Stroke>
 							<CssParameter name="stroke">#C9C7C2</CssParameter>
-							<CssParameter name="stroke-width">1.80</CssParameter>
+							<CssParameter name="stroke-width">1</CssParameter>
 						</Stroke>
 					</PolygonSymbolizer>
 				</Rule>
@@ -1407,6 +1516,10 @@
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>transitie</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
@@ -1726,7 +1839,192 @@
 		</UserStyle>
 	</NamedLayer>
 	<NamedLayer>
-		<Name>snelweg_achter_1</Name>
+		<Name>metro_achter1</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>metro_voor1</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>tram1</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>tram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.2</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>tram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>trein_achter1</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.4</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>trein_voor1</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.4</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>snelweg_achter1</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
 				<Rule>
@@ -1751,7 +2049,7 @@
 		</UserStyle>
 	</NamedLayer>
 	<NamedLayer>
-		<Name>snelweg_voor_1</Name>
+		<Name>snelweg_voor1</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
 				<Rule>
@@ -1866,16 +2164,6 @@
 								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 								<ogc:Literal>perron</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-					</PolygonSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
 								<ogc:Literal>transitie</ogc:Literal>
@@ -1884,7 +2172,7 @@
 					<MaxScaleDenominator>5000</MaxScaleDenominator>
 					<PolygonSymbolizer>
 						<Fill>
-							<CssParameter name="fill">#F5F4F2</CssParameter>
+							<CssParameter name="fill">#FFFFFF</CssParameter>
 						</Fill>
 					</PolygonSymbolizer>
 				</Rule>
@@ -1921,24 +2209,6 @@
 		<Name>berm_achter_2</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>parkeervlak</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-						<Stroke>
-							<CssParameter name="stroke">#C9C7C2</CssParameter>
-							<CssParameter name="stroke-width">1</CssParameter>
-						</Stroke>
-					</PolygonSymbolizer>
-				</Rule>
 				<Rule>
 						<ogc:Filter>
 						<ogc:And>
@@ -2014,20 +2284,6 @@
 		<Name>berm_voor_2</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>parkeervlak</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<PolygonSymbolizer>
-						<Fill>
-							<CssParameter name="fill">#FFFFFF</CssParameter>
-						</Fill>
-					</PolygonSymbolizer>
-				</Rule>
 				<Rule>
 					<ogc:Filter>
 						<ogc:And>
@@ -2134,6 +2390,10 @@
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>baan voor vliegverkeer</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
 					<MaxScaleDenominator>5000</MaxScaleDenominator>
@@ -2192,6 +2452,10 @@
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>baan voor vliegverkeer</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_fysiekvoorkomen</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
@@ -2494,6 +2758,124 @@
 			</FeatureTypeStyle>
 		</UserStyle>
 	</NamedLayer>
+<NamedLayer>
+		<Name>metro_achter2</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>metro_voor2</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>trein_achter2</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.4</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>trein_voor2</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>trein</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.4</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
 	<NamedLayer>
 		<Name>snelweg_achter_2</Name>
 		<UserStyle>
@@ -2604,6 +2986,10 @@
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>baan voor vliegverkeer</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
 					<MaxScaleDenominator>5000</MaxScaleDenominator>
@@ -2662,6 +3048,10 @@
 							<ogc:PropertyIsEqualTo>
 								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
 								<ogc:Literal>baan voor vliegverkeer</ogc:Literal>
+							</ogc:PropertyIsEqualTo>
+							<ogc:PropertyIsEqualTo>
+								<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+								<ogc:Literal>parkeervlak</ogc:Literal>
 							</ogc:PropertyIsEqualTo>
 						</ogc:Or>
 					</ogc:Filter>
@@ -2922,6 +3312,80 @@
 		</UserStyle>
 	</NamedLayer>
 	<NamedLayer>
+		<Name>metro_achter3</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
+		<Name>metro_voor3</Name>
+		<UserStyle>
+			<FeatureTypeStyle>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>5000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">1.3</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+				<Rule>
+					<ogc:Filter>
+						<ogc:PropertyIsEqualTo>
+							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
+							<ogc:Literal>sneltram</ogc:Literal>
+						</ogc:PropertyIsEqualTo>
+					</ogc:Filter>
+					<MaxScaleDenominator>2000</MaxScaleDenominator>
+					<LineSymbolizer>
+						<Stroke>
+							<CssParameter name="stroke">#BCB7D2</CssParameter>
+							<CssParameter name="stroke-width">2.5</CssParameter>
+						</Stroke>
+					</LineSymbolizer>
+				</Rule>
+			</FeatureTypeStyle>
+		</UserStyle>
+	</NamedLayer>
+	<NamedLayer>
 		<Name>snelweg_achter_3</Name>
 		<UserStyle>
 			<FeatureTypeStyle>
@@ -3093,7 +3557,6 @@
 					<LineSymbolizer>
 						<Stroke>
 							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-opacity">0.8</CssParameter>
 							<CssParameter name="stroke-width">1.3</CssParameter>
 							<CssParameter name="stroke-dasharray">5 5 </CssParameter>
 						</Stroke>
@@ -3110,7 +3573,6 @@
 					<LineSymbolizer>
 						<Stroke>
 							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-opacity">0.8</CssParameter>
 							<CssParameter name="stroke-width">2.5</CssParameter>
 							<CssParameter name="stroke-dasharray">7 7 </CssParameter>
 						</Stroke>
@@ -3351,568 +3813,6 @@
 							<CssParameter name="stroke">#BCB7D2</CssParameter>
 							<CssParameter name="stroke-opacity">0.5</CssParameter>
 							<CssParameter name="stroke-width">3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_achter0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_voor0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>tram0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>tram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.2</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>tram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>trein_achter0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.4</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>trein_voor0</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.4</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_achter1</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_voor1</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>tram1</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>tram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.2</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>tram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>trein_achter1</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.4</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>trein_voor1</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.4</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_achter2</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_voor2</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>trein_achter2</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.4</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>trein_voor2</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>trein</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.4</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_achter3</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-			</FeatureTypeStyle>
-		</UserStyle>
-	</NamedLayer>
-	<NamedLayer>
-		<Name>metro_voor3</Name>
-		<UserStyle>
-			<FeatureTypeStyle>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>5000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">1.3</CssParameter>
-						</Stroke>
-					</LineSymbolizer>
-				</Rule>
-				<Rule>
-					<ogc:Filter>
-						<ogc:PropertyIsEqualTo>
-							<ogc:PropertyName>bgt_functie</ogc:PropertyName>
-							<ogc:Literal>sneltram</ogc:Literal>
-						</ogc:PropertyIsEqualTo>
-					</ogc:Filter>
-					<MaxScaleDenominator>2000</MaxScaleDenominator>
-					<LineSymbolizer>
-						<Stroke>
-							<CssParameter name="stroke">#BCB7D2</CssParameter>
-							<CssParameter name="stroke-width">2.5</CssParameter>
 						</Stroke>
 					</LineSymbolizer>
 				</Rule>
