@@ -29,7 +29,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -90,7 +90,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -139,7 +139,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -188,7 +188,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -237,7 +237,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
     TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
@@ -285,7 +285,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -334,7 +334,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
