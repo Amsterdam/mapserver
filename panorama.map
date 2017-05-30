@@ -30,7 +30,7 @@ MAP
     NAME            "panorama_opnamelocaties"
     GROUP           "panorama opnamelocaties"
     INCLUDE         "connection_panorama.inc"
-    DATA            "geometrie FROM public.geo_panoramas_panoramafotopunt USING srid=4326 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_panoramas_recente_opnames_alle USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   150001
