@@ -262,7 +262,7 @@ MAP
   LAYER
     NAME                    BGT_LBL_kunstwerk
     GROUP                   bgt
-    MAXSCALEDENOM           1000
+    MAXSCALEDENOM           500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
