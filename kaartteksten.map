@@ -29,7 +29,7 @@ MAP
     GROUP                   bgt
     MAXSCALEDENOM           2000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM (SELECT geometrie, upper(tekst) as tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -481,7 +481,7 @@ MAP
         MAXSCALEDENOM       750
         SIZE                11
         COLOR               "#787878"
-        FONT                "UniversCD"
+        FONT                "Univers"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
@@ -491,7 +491,7 @@ MAP
         MAXSCALEDENOM       600
         SIZE                13
         COLOR               "#787878"
-        FONT                "UniversCD"
+        FONT                "Univers"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
@@ -501,7 +501,7 @@ MAP
         MAXSCALEDENOM       450
         SIZE                15
         COLOR               "#787878"
-        FONT                "UniversCD"
+        FONT                "Univers"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
@@ -511,7 +511,7 @@ MAP
         MAXSCALEDENOM       300
         SIZE                17
         COLOR               "#787878"
-        FONT                "UniversCD"
+        FONT                "Univers"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
@@ -521,7 +521,7 @@ MAP
         MAXSCALEDENOM       200
         SIZE                19
         COLOR               "#787878"
-        FONT                "UniversCD"
+        FONT                "Univers"
         TYPE                truetype
         ANGLE               [hoek]
         POSITION            CC
