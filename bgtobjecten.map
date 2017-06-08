@@ -1352,7 +1352,7 @@ MAP
     GROUP                   tekstlabel
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_LBL_nummeraanduidingreeks\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"BGT_LBL_nummeraanduidingreeks\" USING srid=28992 USING UNIQUE ogc_fid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
@@ -1362,7 +1362,7 @@ MAP
      "ows_title"            "BGT_LBL_nummeraanduidingreeks"
 	 "ows_group_title"      "tekstlabel"
      "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
+     "gml_featureid"        "ogc_fid"
     END
 
     CLASS
