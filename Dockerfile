@@ -86,6 +86,7 @@ RUN a2enmod actions cgi alias rewrite headers
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
