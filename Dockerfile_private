@@ -91,6 +91,7 @@ COPY docker/docker-entrypoint.sh /bin
 
 # Link to cgi-bin executable
 RUN chmod o+x /usr/local/bin/mapserv
+RUN rm /etc/apache2/mods-enabled/alias.conf
 RUN ln -s /usr/local/bin/mapserv /usr/lib/cgi-bin/mapserv
 RUN chmod 755 /usr/lib/cgi-bin
 
