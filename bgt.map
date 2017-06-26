@@ -3160,24 +3160,26 @@ MAP
 # TEKSTEN 
 #=============================================================================
 
-	LAYER
-	NAME            "tekst"
-	GROUP           "teksten"
-	CONNECTION      "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
-	CONNECTIONTYPE  WMS
-	TYPE            RASTER
-
-	METADATA
-		"ows_title"           "teksten"
-		"ows_abstract"        "Teksten van de gemeente Amsterdam"
-		"wms_onlineresource"  "http://www.diva.amsterdam.nl/cgi-bin/topografie?"
-		"wms_server_version"  "1.1.1"
-		"wms_formatlist"      "png_afb"
-		"wms_srs"             "EPSG:28992"
-		"wms_name"            "topoteksten"
-	END
-	END
-
-
+    LAYER
+        NAME                      "teksten"
+        PROJECTION
+          "init=epsg:28992"
+        END
+        TYPE                      RASTER
+        CONNECTION                "https://map.data.amsterdam.nl/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE            WMS
+        MAXSCALEDENOM             2000
+        MINSCALEDENOM             0
+        METADATA
+            "wms_title"           "teksten"
+            "wms_abstract"        "Teksten voor basiskaart bgt"
+            "wms_srs"             "EPSG:28992"
+            "wms_name"            "bgt"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+      END
 
 END
