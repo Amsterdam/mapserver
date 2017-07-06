@@ -50,7 +50,7 @@ WMS services
 | ------ | ---------------------------------------------------------------------------------------------------------------|
 | BAG    | /maps/bag&service=wms&request=getcapabilities      |
 | WKPB   | /maps/wkpb&service=wms&request=getcapabilities     |
-| LKI    | /maps/lki&service=wms&request=getcapabilities      |
+| BRK    | /maps/brk&service=wms&request=getcapabilities      |
 | GBKA   | /maps/gbka&service=wms&request=getcapabilities     |
 | KBKA10 | /maps/kbka10&service=wms&request=getcapabilities   |
 | KBKA50 | /maps/kbka50&service=wms&request=getcapabilities   |
@@ -66,7 +66,7 @@ WFS services
 | ------ | ------------------------------------------------------------------------------------------------------------ |
 | BAG    | maps/bag&service=wfs&request=getcapabilities    |
 | WKPB   | maps/wkpb&service=wfs&request=getcapabilities   |
-| LKI    | maps/lki&service=wfs&request=getcapabilities    |
+| BRK    | maps/brk&service=wfs&request=getcapabilities    |
 | NAP    | maps/nap&service=wfs&request=getcapabilities    |
 
 
