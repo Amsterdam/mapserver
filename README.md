@@ -1,7 +1,7 @@
-Atlas map
+City Data map
 =========
 
-MapServer configuratie voor Atlas.
+MapServer configuratie voor City Data.
 
 
 Development
