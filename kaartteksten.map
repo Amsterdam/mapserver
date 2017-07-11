@@ -79,6 +79,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -92,8 +94,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
-    MAXSCALEDENOM   50000
+    MINSCALEDENOM   25000
+    MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
     END
@@ -108,6 +110,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -137,6 +141,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -151,7 +157,7 @@ MAP
     DATA            "geom FROM kbk50.\"KBK50_LBL_provincie\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   20000
-    MAXSCALEDENOM   50000
+    MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
     END
@@ -166,6 +172,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -180,7 +188,7 @@ MAP
     DATA            "geom FROM kbk50.\"KBK50_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   20000
-    MAXSCALEDENOM   50000
+    MAXSCALEDENOM   30000
     PROJECTION
     "init=epsg:28992"
     END
@@ -195,6 +203,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -208,8 +218,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_water\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
-    MAXSCALEDENOM   50000
+    MINSCALEDENOM   15000
+    MAXSCALEDENOM   30000
     PROJECTION
     "init=epsg:28992"
     END
@@ -224,6 +234,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -238,7 +250,7 @@ MAP
     DATA            "geom FROM kbk50.\"KBK50_LBL_weg\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   20000
-    MAXSCALEDENOM   50000
+    MAXSCALEDENOM   30000
     PROJECTION
     "init=epsg:28992"
     END
@@ -252,7 +264,9 @@ MAP
     CLASS
       STYLE
         ANTIALIAS      true
-        COLOR          "#787878"
+        COLOR          "#5a5a5a"
+        OUTLINECOLOR   "#5a5a5a"
+        WIDTH          1
       END
     END
 
@@ -273,7 +287,7 @@ MAP
     DATA            "geom FROM kbk25.\"KBK25_LBL_gebied\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MAXSCALEDENOM   15000
     PROJECTION
     "init=epsg:28992"
     END
@@ -288,6 +302,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -301,8 +317,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   10000
+    MAXSCALEDENOM   25000
     PROJECTION
     "init=epsg:28992"
     END
@@ -317,6 +333,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -330,8 +348,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
     END
@@ -346,6 +364,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -359,8 +379,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_park\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   6000
+    MAXSCALEDENOM   15000
     PROJECTION
     "init=epsg:28992"
     END
@@ -375,6 +395,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -417,8 +439,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_polder\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   15000
+    MAXSCALEDENOM   25000
     PROJECTION
     "init=epsg:28992"
     END
@@ -433,6 +455,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -444,10 +468,10 @@ MAP
     NAME            "kbk25_lbl_provincie"
     GROUP           "kbk25_label"
     INCLUDE         "connection_basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_provincie USING\" srid=28992 using unique ogc_fid"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_provincie\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   6000
+    MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
     END
@@ -462,6 +486,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -491,6 +517,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -504,8 +532,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_water\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   15000
     PROJECTION
     "init=epsg:28992"
     END
@@ -520,6 +548,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -533,8 +563,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_weg\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   12500
     PROJECTION
     "init=epsg:28992"
     END
@@ -549,6 +579,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -566,8 +598,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk10.\"KBK10_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
     END
@@ -582,6 +614,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -596,7 +630,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MAXSCALEDENOM   4000
     PROJECTION
     "init=epsg:28992"
     END
@@ -611,6 +645,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -624,7 +660,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk10.\"KBK10_LBL_plaats\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   2000
+    MINSCALEDENOM   4000
     MAXSCALEDENOM   7000
     PROJECTION
     "init=epsg:28992"
@@ -640,6 +676,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -654,7 +692,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_park\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MAXSCALEDENOM   6000
     PROJECTION
     "init=epsg:28992"
     END
@@ -669,6 +707,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -682,8 +722,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk10.\"KBK10_LBL_polder\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MINSCALEDENOM   6000
+    MAXSCALEDENOM   15000
     PROJECTION
     "init=epsg:28992"
     END
@@ -698,6 +738,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -712,7 +754,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_provincie\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MAXSCALEDENOM   6000
     PROJECTION
     "init=epsg:28992"
     END
@@ -727,6 +769,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -770,7 +814,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_water\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
     END
@@ -785,6 +829,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -799,7 +845,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_weg\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MAXSCALEDENOM   4000
     PROJECTION
     "init=epsg:28992"
     END
@@ -814,6 +860,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
@@ -827,8 +875,8 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk10.\"KBK10_LBL_wijk\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
     END
@@ -843,6 +891,8 @@ MAP
       STYLE
         ANTIALIAS      true
         COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          1
       END
     END
 
