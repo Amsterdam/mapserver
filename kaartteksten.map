@@ -187,7 +187,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
+    MINSCALEDENOM   14000
     MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
@@ -262,6 +262,12 @@ MAP
     END
 
     CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#ffffff"
+        OUTLINECOLOR   "#ffffff"
+        WIDTH          3
+      END
       STYLE
         ANTIALIAS      true
         COLOR          "#5a5a5a"
@@ -502,7 +508,7 @@ MAP
     DATA            "geom FROM kbk25.\"KBK25_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MAXSCALEDENOM   14000
     PROJECTION
     "init=epsg:28992"
     END
@@ -532,7 +538,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk25.\"KBK25_LBL_water\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   5000
+    MINSCALEDENOM   4000
     MAXSCALEDENOM   15000
     PROJECTION
     "init=epsg:28992"
@@ -630,7 +636,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   4000
+    MAXSCALEDENOM   3000
     PROJECTION
     "init=epsg:28992"
     END
@@ -814,7 +820,7 @@ MAP
     DATA            "geom FROM kbk10.\"KBK10_LBL_water\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   2000
-    MAXSCALEDENOM   5000
+    MAXSCALEDENOM   4000
     PROJECTION
     "init=epsg:28992"
     END
@@ -1002,7 +1008,7 @@ MAP
         MINSCALEDENOM       1250
         MAXSCALEDENOM       2000
         SIZE                10
-        COLOR               "#787878"
+        COLOR               "#474747"
         FONT                "Univers-I"
         TYPE                truetype
         ANGLE               [hoek]
@@ -1012,7 +1018,7 @@ MAP
         MINSCALEDENOM       750
         MAXSCALEDENOM       1250
         SIZE                11
-        COLOR               "#787878"
+        COLOR               "#474747"
         FONT                "Univers-I"
         TYPE                truetype
         ANGLE               [hoek]
@@ -1022,7 +1028,7 @@ MAP
         MINSCALEDENOM       500
         MAXSCALEDENOM       750
         SIZE                13
-        COLOR               "#787878"
+        COLOR               "#474747"
         FONT                "Univers-I"
         TYPE                truetype
         ANGLE               [hoek]
@@ -1032,7 +1038,7 @@ MAP
         MINSCALEDENOM       250
         MAXSCALEDENOM       500
         SIZE                15
-        COLOR               "#787878"
+        COLOR               "#474747"
         FONT                "Univers-I"
         TYPE                truetype
         ANGLE               [hoek]
@@ -1042,7 +1048,7 @@ MAP
         MINSCALEDENOM       1
         MAXSCALEDENOM       250
         SIZE                19
-        COLOR               "#787878"
+        COLOR               "#474747"
         FONT                "Univers-I"
         TYPE                truetype
         ANGLE               [hoek]
