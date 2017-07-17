@@ -166,6 +166,8 @@ MAP
 		IMAGE "symbols/vegetatieobject/vegetatieobject.svg"
 	END
 #==============================================================================
+# HOOGTENIVEAU 0
+#==============================================================================
 # PUT
 	LAYER 
 		NAME 		PUT
@@ -1232,5 +1234,1076 @@ MAP
 			END
 		END
 	END
+#==============================================================================
+#HOOGTENIVEAU 1
+#==============================================================================
+# PUT
+	LAYER 
+		NAME 		PUT1
+		GROUP 		PUT
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"PUT1"
+			"wms_group_title"  "PUT"
+		END
+		CLASS
+			EXPRESSION		{benzine-_olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
+			MAXSCALEDENOM 	2000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#0088aa"
+			END
+		END
+		CLASS
+			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "PUT"
+				SIZE 3
+			END
+		END
+		CLASS
+			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "PUT"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "PUT"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "PUT"
+				SIZE 15
+			END
+		END
+	END
+	LAYER 
+		NAME 		PUT_KOLK1
+		GROUP 		PUT
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"PUT_KOLK1"
+			"wms_group_title"  "PUT"
+		END
+		CLASS
+			EXPRESSION		{kolk}
+			MAXSCALEDENOM 	2000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#0088aa"
+			END
+		END
+		CLASS
+			EXPRESSION		{kolk}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "KOLK"
+				SIZE 3
+			END
+		END
+		CLASS
+			EXPRESSION		{kolk}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "KOLK"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{kolk}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "KOLK"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{kolk}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "KOLK"
+				SIZE 15
+			END
+		END
+	END
+#==============================================================================
+# AFVALBAK
+	LAYER 
+		NAME 		AFVALBAK1
+		GROUP 		AFVALBAK
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "AFVALBAK1"
+			"wms_group_title"  "AFVALBAK"
+		END
+		CLASS
+			EXPRESSION 		{afvalbak,afval apart plaats}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#333333"
+			END
+		END
+		CLASS
+			EXPRESSION 		{afvalbak,afval apart plaats}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "BAK_klein"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION 		{afvalbak,afval apart plaats}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "BAK_klein"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION 		{afvalbak,afval apart plaats}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "BAK"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION 		{afvalbak,afval apart plaats}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "AFVALBAK"
+				SIZE 30
+			END
+		END
+	END
+#==============================================================================
+	# BORD
+	LAYER 
+		NAME 		BORD1
+		GROUP 		BORD
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "BORD1"
+			"wms_group_title"  "BORD"
+		END
+		CLASS
+			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
+			MAXSCALEDENOM 	2000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#333333"
+			END
+		END
+		CLASS
+			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "BORD"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "BORD"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "BORD"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "BORD"
+				SIZE 30
+			END
+		END
+	END
+#==============================================================================
+	# KAST
+	LAYER 
+		NAME 		KAST1
+		GROUP 		KAST
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "KAST1"
+			"wms_group_title"  "KAST"
+		END
+		CLASS
+			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#333333"
+			END
+		END
+		CLASS
+			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "KAST"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "KAST"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "KAST"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "KAST"
+				SIZE 30
+			END
+		END
+	END
+#==============================================================================
+# MAST
+	LAYER 
+		NAME 		MAST1
+		GROUP 		MAST
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "MAST1"
+			"wms_group_title"  "MAST"
+		END
+		CLASS
+			EXPRESSION		{zendmast}
+			MAXSCALEDENOM 	5000
+			STYLE
+				SYMBOL "MAST"
+				SIZE 10
+			END
+		END
+	END
+#==============================================================================
+# SCHEIDING
+	LAYER 
+		NAME 		SCHEIDING_L1
+		GROUP 		SCHEIDING
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		LINE
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "SCHEIDING_L1"
+			"wms_group_title"  "SCHEIDING"
+		END
+		CLASS
+			EXPRESSION		{damwand,geluidsscherm,hek,kademuur,draadraster,faunaraster,walbescherming,rooster,wildrooster}
+			MAXSCALEDENOM 	5000
+			STYLE
+				OPACITY 80
+				WIDTH 2
+				OUTLINECOLOR "#C9C7C2"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+	LAYER 
+		NAME 		SCHEIDING_V1
+		GROUP 		SCHEIDING
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POLYGON
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "SCHEIDING_V1"
+			"wms_group_title"  "SCHEIDING"
+		END
+		CLASS
+			EXPRESSION		{rooster,wildrooster,muur,keermuur,kademuur}
+			MAXSCALEDENOM 	5000
+			STYLE
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+#==============================================================================
+# PAAL
+	LAYER 
+		NAME 		PAAL1
+		GROUP 		PAAL
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"PAAL1"
+			"wms_group_title"  "PAAL"
+		END
+		CLASS
+			EXPRESSION		{afsluitpaal,drukknoppaal,haltepaal,hectometerpaal,poller,telpaal,verkeersbordpaal,verkeersregelinstallatiepaal,vlaggenmast}
+			MAXSCALEDENOM 	5000
+			STYLE
+				SYMBOL "PAAL"
+				SIZE 4
+				COLOR "#666666"
+			END
+		END
+	END
+	LAYER 
+		NAME 		LICHTMAST1
+		GROUP 		PAAL
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"LICHTMAST1"
+			"wms_group_title"  "PAAL"
+		END
+		CLASS
+			EXPRESSION		{lichtmast}
+			MAXSCALEDENOM 	5000
+			MINSCALEDENOM 	2500
+			STYLE
+				SYMBOL "circle"
+				SIZE 1.5	
+				COLOR "#ffcc00"
+			END
+		END
+		CLASS
+			EXPRESSION		{lichtmast}
+			MAXSCALEDENOM 	2500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "LICHTMAST"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{lichtmast}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "LICHTMAST"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION		{lichtmast}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "LICHTMAST"
+				SIZE 25
+			END
+		END
+		CLASS
+			EXPRESSION		{lichtmast}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "LICHTMAST"
+				SIZE 35
+			END
+		END
+	END
+
+#==============================================================================
+# STRAATMEUBILAIR
+# De volgende lagen komen niet regelmatig verspreid in Amsterdam voor en zijn daarom als simple icoon verbeeld:
+#bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel
+	LAYER 
+		NAME 		STRAATMEUBILAIR1
+		GROUP 		STRAATMEUBILAIR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"STRAATMEUBILAIR1"
+			"wms_group_title"  "STRAATMEUBILAIR"
+		END
+		CLASS
+			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#dd6c27"
+			END
+		END
+		CLASS
+			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "STRAATMEUBILAIR"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	500
+			STYLE
+				SYMBOL "STRAATMEUBILAIR"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
+			MAXSCALEDENOM 	500
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "STRAATMEUBILAIR"
+				SIZE 15	
+			END
+		END
+		CLASS
+			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "STRAATMEUBILAIR"
+				SIZE 25
+			END
+		END
+	END
+	LAYER 
+		NAME 		STRAATMEUBILAIR_RECLAMEZUIL1
+		GROUP 		STRAATMEUBILAIR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"STRAATMEUBILAIR_RECLAMEZUIL1"
+			"wms_group_title"  "STRAATMEUBILAIR"
+		END
+		CLASS
+			EXPRESSION		{reclamezuil}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#dd6c27"
+			END
+		END
+		CLASS
+			EXPRESSION		{reclamezuil}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "RECLAMEZUIL"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{reclamezuil}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	500
+			STYLE
+				SYMBOL "RECLAMEZUIL"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{reclamezuil}
+			MAXSCALEDENOM 	500
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "RECLAMEZUIL"
+				SIZE 20
+			END
+		END
+		CLASS
+			EXPRESSION		{reclamezuil}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "RECLAMEZUIL"
+				SIZE 30
+			END
+		END
+	END
+	LAYER 
+		NAME 		STRAATMEUBILAIR_ABRI1
+		GROUP 		STRAATMEUBILAIR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"STRAATMEUBILAIR_ABRI1"
+			"wms_group_title"  "STRAATMEUBILAIR"
+		END
+		CLASS
+			EXPRESSION		{abri}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#dd6c27"
+			END
+		END
+		CLASS
+			EXPRESSION		{abri}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "ABRI"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{abri}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	500
+			STYLE
+				SYMBOL "ABRI"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION		{abri}
+			MAXSCALEDENOM 	500
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "ABRI"
+				SIZE 25
+			END
+		END
+		CLASS
+			EXPRESSION		{abri}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "ABRI"
+				SIZE 35
+			END
+		END
+	END
+	LAYER 
+		NAME 		STRAATMEUBILAIR_KUNST1
+		GROUP 		STRAATMEUBILAIR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"STRAATMEUBILAIR_KUNST1"
+			"wms_group_title"  "STRAATMEUBILAIR"
+		END
+		CLASS
+			EXPRESSION		{kunstobject}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#dd6c27"
+			END
+		END
+		CLASS
+			EXPRESSION		{kunstobject}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "KUNST"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{kunstobject}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	500
+			STYLE
+				SYMBOL "KUNST"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{kunstobject}
+			MAXSCALEDENOM 	500
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "KUNST"
+				SIZE 20
+			END
+		END
+		CLASS
+			EXPRESSION		{kunstobject}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "KUNST"
+				SIZE 25
+			END
+		END
+	END
+	LAYER 
+		NAME 		STRAATMEUBILAIR_HERDENKINGSMONUMENT1
+		GROUP 		STRAATMEUBILAIR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"STRAATMEUBILAIR_HERDENKINGSMONUMENT1"
+			"wms_group_title"  "STRAATMEUBILAIR"
+		END
+		CLASS
+			EXPRESSION		{herdenkingsmonument}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#dd6c27"
+			END
+		END
+		CLASS
+			EXPRESSION		{herdenkingsmonument}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "HERDENKINGSMONUMENT"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{herdenkingsmonument}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	500
+			STYLE
+				SYMBOL "HERDENKINGSMONUMENT"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION		{herdenkingsmonument}
+			MAXSCALEDENOM 	500
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "HERDENKINGSMONUMENT"
+				SIZE 25	
+			END
+		END
+		CLASS
+			EXPRESSION		{herdenkingsmonument}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "HERDENKINGSMONUMENT"
+				SIZE 25
+			END
+		END
+	END
+	LAYER 
+		NAME 		STRAATMEUBILAIR_OPENBAARTOILET1
+		GROUP 		STRAATMEUBILAIR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"STRAATMEUBILAIR_OPENBAARTOILET1"
+			"wms_group_title"  "STRAATMEUBILAIR"
+		END
+		CLASS
+			EXPRESSION		{openbaar toilet}
+			MAXSCALEDENOM 	3000
+			MINSCALEDENOM 	1500
+			STYLE
+				SYMBOL "circle"
+				SIZE 2
+				COLOR "#dd6c27"
+			END
+		END
+		CLASS
+			EXPRESSION		{openbaar toilet}
+			MAXSCALEDENOM 	1500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "OPENBAARTOILET"
+				SIZE 5
+			END
+		END
+		CLASS
+			EXPRESSION		{openbaar toilet}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	500
+			STYLE
+				SYMBOL "OPENBAARTOILET"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{openbaar toilet}
+			MAXSCALEDENOM 	500
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "OPENBAARTOILET"
+				SIZE 15	
+			END
+		END
+		CLASS
+			EXPRESSION		{openbaar toilet}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "OPENBAARTOILET"
+				SIZE 25
+			END
+		END
+	END
+#==============================================================================
+# SENSOR
+	LAYER 
+		NAME 		SENSOR1
+		GROUP 		SENSOR
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"SENSOR1"
+			"wms_group_title"  "SENSOR"
+		END
+		CLASS
+			EXPRESSION		{camera,flitser,waterstandmeter}
+			MAXSCALEDENOM 	5000
+			STYLE
+				SYMBOL "SENSOR"
+				SIZE 10
+			END
+		END
+	END
+#==============================================================================
+# VEGETATIE
+	LAYER 
+		NAME 		VEGETATIE_P1
+		GROUP 		VEGETATIE
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"VEGETATIE_P1"
+			"wms_group_title"  "VEGETATIE"
+		END
+		CLASS
+			EXPRESSION		{boom}
+			MAXSCALEDENOM 	5500
+			MINSCALEDENOM 	4500
+			STYLE
+				SYMBOL "circle"
+				SIZE 3	
+				COLOR "#a0cc3a"
+				OPACITY 70
+			END
+		END
+		CLASS
+			EXPRESSION		{boom}
+			MAXSCALEDENOM 	4500
+			MINSCALEDENOM 	1000
+			STYLE
+				SYMBOL "VEGETATIE"
+				SIZE 10
+			END
+		END
+		CLASS
+			EXPRESSION		{boom}
+			MAXSCALEDENOM 	1000
+			MINSCALEDENOM 	400
+			STYLE
+				SYMBOL "VEGETATIE"
+				SIZE 15
+			END
+		END
+		CLASS
+			EXPRESSION		{boom}
+			MAXSCALEDENOM 	400
+			MINSCALEDENOM 	200
+			STYLE
+				SYMBOL "VEGETATIE"
+				SIZE 25
+			END
+		END
+		CLASS
+			EXPRESSION		{boom}
+			MAXSCALEDENOM 	200
+			MINSCALEDENOM 	0
+			STYLE
+				SYMBOL "VEGETATIE"
+				SIZE 35
+			END
+		END
+	END
+	LAYER 
+		NAME 		VEGETATIE_L1
+		GROUP 		VEGETATIE
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		LINE
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"VEGETATIE_L1"
+			"wms_group_title"  "VEGETATIE"
+		END
+		CLASS
+			EXPRESSION		{haag}
+			MAXSCALEDENOM 	5000
+			STYLE
+				WIDTH 2
+				OUTLINECOLOR "#a0cc3a"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END	
+	END
+	LAYER 
+		NAME 		VEGETATIE_V1
+		GROUP 		VEGETATIE
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POLYGON
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  		"VEGETATIE_V1"
+			"wms_group_title"  "VEGETATIE"
+		END
+		CLASS
+			EXPRESSION		{haag}
+			MAXSCALEDENOM 	5000
+			STYLE
+				OPACITY 80
+				COLOR "#a0cc3a"
+			END
+		END
+	END
+#==============================================================================
+# ONBEKEND
+	LAYER 
+		NAME 		ONBEKEND1
+		GROUP 		ONBEKEND
+		INCLUDE 	"connection_basiskaart.inc"
+		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		PROCESSING 	"CLOSE_CONNECTION=DEFER"
+		TYPE		POINT
+		CLASSITEM  	plus_type
+		MAXSCALEDENOM 5000
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"  "ONBEKEND1"
+			"wms_group_title"  "ONBEKEND"
+		END
+		CLASS
+			EXPRESSION		{onbekend}
+			MAXSCALEDENOM 	5000
+			MINSCALEDENOM   2000
+			STYLE
+				SYMBOL "circle"
+				SIZE 5
+				COLOR "#ff0000"
+				OPACITY  30
+			END
+		END
+		CLASS
+			EXPRESSION		{onbekend}
+			MAXSCALEDENOM 	2000
+			STYLE
+				SYMBOL "circle"
+				SIZE 7
+				COLOR "#ff0000"
+				OPACITY  30
+			END
+		END
+	END
+
+
 END
 
