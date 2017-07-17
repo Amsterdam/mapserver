@@ -1,66 +1,68 @@
-database:
-  image: build.datapunt.amsterdam.nl:5000/atlas/postgres
-  ports:
-    - "5432"
-  environment:
-    POSTGRES_PASSWORD: insecure
+version: "3.0"
+services:
+  database:
+    image: build.datapunt.amsterdam.nl:5000/atlas/postgres
+    ports:
+      - "5432"
+    environment:
+      POSTGRES_PASSWORD: insecure
 
-map:
-  build: .
-  ports:
-      - "80"
-  links:
-    - "database:atlas_db"
-    - "database:nap_db"
-    - "database:milieuthemas_db"
-    - "database:panorama_db"
-    - "database:parkeervakken_db"
-    - "database:predictiveparking_db"
-    - "database:basiskaart_db"
-    - "database:handelsregister_db"
-    - "database:tellus_db"
-    - "database:monumenten_db"
-  environment:
-    ATLAS_DB_NAME: atlas
-    ATLAS_DB_USER: postgres
-    ATLAS_DB_PASSWORD: insecure
+  map:
+    build: .
+    ports:
+        - "80"
+    links:
+      - "database:atlas_db"
+      - "database:nap_db"
+      - "database:milieuthemas_db"
+      - "database:panorama_db"
+      - "database:parkeervakken_db"
+      - "database:predictiveparking_db"
+      - "database:basiskaart_db"
+      - "database:handelsregister_db"
+      - "database:tellus_db"
+      - "database:monumenten_db"
+    environment:
+      ATLAS_DB_NAME: atlas
+      ATLAS_DB_USER: postgres
+      ATLAS_DB_PASSWORD: insecure
 
-    NAP_DB_NAME: nap
-    NAP_DB_USER: postgres
-    NAP_DB_PASSWORD: insecure
+      NAP_DB_NAME: nap
+      NAP_DB_USER: postgres
+      NAP_DB_PASSWORD: insecure
 
-    MILIEUTHEMAS_DB_NAME: milieuthemas
-    MILIEUTHEMAS_DB_USER: postgres
-    MILIEUTHEMAS_DB_PASSWORD: insecure
+      MILIEUTHEMAS_DB_NAME: milieuthemas
+      MILIEUTHEMAS_DB_USER: postgres
+      MILIEUTHEMAS_DB_PASSWORD: insecure
 
-    PANORAMA_DB_NAME: panorama
-    PANORAMA_DB_USER: panorama
-    PANORAMA_DB_PASSWORD: insecure
+      PANORAMA_DB_NAME: panorama
+      PANORAMA_DB_USER: panorama
+      PANORAMA_DB_PASSWORD: insecure
 
-    PARKEERVAKKEN_DB_NAME: parkeervakken
-    PARKEERVAKKEN_DB_USER: postgres
-    PARKEERVAKKEN_DB_PASSWORD: insecure
+      PARKEERVAKKEN_DB_NAME: parkeervakken
+      PARKEERVAKKEN_DB_USER: postgres
+      PARKEERVAKKEN_DB_PASSWORD: insecure
 
-    PREDICTIVEPARKING_DB_NAME: predictiveparking
-    PREDICTIVEPARKING_DB_USER: predictiveparking
-    PREDICTIVEPARKING_DB_PASSWORD: insecure
+      PREDICTIVEPARKING_DB_NAME: predictiveparking
+      PREDICTIVEPARKING_DB_USER: predictiveparking
+      PREDICTIVEPARKING_DB_PASSWORD: insecure
 
-    BASISKAART_DB_NAME: basiskaart
-    BASISKAART_DB_USER: postgres
-    BASISKAART_DB_PASSWORD: insecure
+      BASISKAART_DB_NAME: basiskaart
+      BASISKAART_DB_USER: postgres
+      BASISKAART_DB_PASSWORD: insecure
 
-    HANDELSREGISTER_DB_NAME: handelsregister
-    HANDELSREGISTER_DB_USER: postgres
-    HANDELSREGISTER_DB_PASSWORD: insecure
+      HANDELSREGISTER_DB_NAME: handelsregister
+      HANDELSREGISTER_DB_USER: postgres
+      HANDELSREGISTER_DB_PASSWORD: insecure
 
-    TELLUS_DB_NAME: tellus
-    TELLUS_DB_USER: tellus
-    TELLUS_DB_PASSWORD: insecure
+      TELLUS_DB_NAME: tellus
+      TELLUS_DB_USER: tellus
+      TELLUS_DB_PASSWORD: insecure
 
-    MONUMENTEN_DB_NAME: monumenten
-    MONUMENTEN_DB_USER: monumenten
-    MONUMENTEN_DB_PASSWORD: insecure
+      MONUMENTEN_DB_NAME: monumenten
+      MONUMENTEN_DB_USER: monumenten
+      MONUMENTEN_DB_PASSWORD: insecure
 
 
-  volumes:
-    - /srv/lufo:/srv/lufo
+    volumes:
+      - /srv/lufo:/srv/lufo
