@@ -1,4 +1,32 @@
-  LAYER
+#==============================================================================
+#
+# overlastgebieden.map
+# doel: serveren van Overlastgebiedens gegevens
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# P.Berkhout            20-07-2017    initieel
+#
+#==============================================================================
+
+MAP
+  NAME "Overlastgebieden"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Overlastgebieden"
+      "ows_abstract"        "Overlastgebieden"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+    LAYER
     NAME            "algemeen_overlastgebied"
     GROUP           "overlastgebieden"
     INCLUDE         "connection.inc"
