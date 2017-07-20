@@ -22,6 +22,7 @@ services:
       - "database:handelsregister_db"
       - "database:tellus_db"
       - "database:monumenten_db"
+      - "database:overlastgebieden_db"
     environment:
       ATLAS_DB_NAME: atlas
       ATLAS_DB_USER: postgres
@@ -62,6 +63,10 @@ services:
       MONUMENTEN_DB_NAME: monumenten
       MONUMENTEN_DB_USER: monumenten
       MONUMENTEN_DB_PASSWORD: insecure
+
+      OVERLASTGEBIEDEN_DB_NAME: overlastgebieden
+      OVERLASTGEBIEDEN_DB_USER: overlastgebieden
+      OVERLASTGEBIEDEN_DB_PASSWORD: insecure
 
 
     volumes:
