@@ -1,11 +1,10 @@
-City Data map
-=========
+# City Data map
+
 
 MapServer configuratie voor City Data.
 
 
-Development
------------
+# Development stappen
 
 * Build de mapserver docker.
 * Download eventueel de database met de geoviews.
@@ -14,34 +13,47 @@ Development
 * Ontwikkel met http://localhost/map/YOURMAPFILENAME
 
 
-Development met Docker
-----------------------
+## Prerequisites:
 
-Installeer:
-cd 
 * [docker](https://docs.docker.com/index.html)
 * [docker-compose](https://docs.docker.com/compose/install/)
 
-Draai
+## Start mapserver in de docker
+    
+    docker-compose build
+    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
 
 
-    cd mapserver
-    $ docker-compose build && docker-compose up -d
+De server is nu te bereiken op <http://localhost:8383/maps/YOURMAPFILE>
+b.v. http://localhost:8383:/maps/monumenten
 
-De server is nu te bereiken op <http://${DOCKER_HOST}:8989/maps/YOURMAPFILE>
-
-De Postgres database is te bereiken op tcp://${DOCKER_HOST}:5403
+De Postgres database is te bereiken op tcp://localhost:5403
 
 De laatste versie van de database kan opgehaald worden met:
 
-	$ docker exec $(docker-compose ps -q database) update-db.sh nap
-	$ docker exec $(docker-compose ps -q database) update-db.sh milieuthemas
-	$ docker exec $(docker-compose ps -q database) update-db bag
-	$ docker exec $(docker-compose ps -q database) update-db handelsregister
-	
-	
-Each mapfile can be reached `/maps/mapfilename` for convenience.
+	docker-compose exec database update-db.sh nap
+	docker-compose exec database update-db.sh milieuthemas
+	docker-compose exec database update-db.sh bag
+	docker-compose exec database update-db.sh handelsregister
+	docker-compose exec database update-db.sh monumenten
+	docker-compose exec database update-db.sh overlastgebieden
 
+	
+	
+De maps zijn te benaderen vanuit QGis: maak een WMS connectie met de url <http://localhost:8383/maps/YOURMAPFILE>
+b.v. http://localhost:8383:/maps/monumenten
+
+## DEBUG Mapserver
+Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
+
+        CONFIG   "MS_ERRORFILE" "/tmp/ms_error.txt"
+        DEBUG    5
+        
+        docker-compose build map && docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
+ 
+ Na het opvragen van een map, zal dan de logging te zien zijn via:
+ 
+        docker exec -it `docker-compose ps -q  map` bash -c 'tail -f /tmp/ms_error.txt'
 	
 WMS services
 ------------
