@@ -1332,7 +1332,7 @@ MAP
   LAYER
     NAME                    BGT_LBL_nummeraanduidingreeks
     GROUP                   bgt_label
-    MAXSCALEDENOM           750
+    MAXSCALEDENOM           1000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
@@ -1348,6 +1348,16 @@ MAP
     LABELITEM               "tekst_afk"
 
     CLASS
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1000
+        SIZE                9
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
       LABEL
         MINSCALEDENOM       600
         MAXSCALEDENOM       750
