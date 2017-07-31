@@ -20,7 +20,8 @@
   #CONFIG   "MS_ERRORFILE" "/srv/mapserver/ms_error.txt"
 
   # Redirect errors to apache errorstream
-  CONFIG   "MS_ERRORFILE" stderr
+  # ENABLE for debugging purposes - quite spammy
+  # CONFIG   "MS_ERRORFILE" stderr
 
   #DEBUG    5
 
