@@ -143,6 +143,9 @@ EOF
 #      https://serverfault.com/questions/711168/writing-apache2-logs-to-stdout-stderr
 sed -i 's/ErrorLog .*/ErrorLog \/dev\/stderr/' /etc/apache2/apache2.conf
 
+# Replace actual location of the mapserver depending on the environment
+sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map
+
 echo Starting server
 apachectl -D FOREGROUND
 
