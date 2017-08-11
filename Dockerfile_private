@@ -4,6 +4,9 @@ MAINTAINER datapunt.ois@amsterdam.nl
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
 
+ARG MAP_URL
+ENV MAP_URL=$MAP_URL
+
 # Update and upgrade system
 RUN apt-get -qq update --fix-missing && apt-get -qq --yes upgrade
 
