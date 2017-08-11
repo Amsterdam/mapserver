@@ -167,7 +167,7 @@ MAP
 
     CLASS
       NAME "Café (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "café" && '[correctie]' = 't')
+      EXPRESSION ("[q3]" eq "Cafés" && '[correctie]' = 't')
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
@@ -179,24 +179,10 @@ MAP
       END
     END
 
-    CLASS
-      NAME "Café"
-      EXPRESSION ("[sbi_detail_group]" eq "café")
-      STYLE
-        MINSCALEDENOM  100
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          2
-        ANTIALIAS      true
-      END
-    END
-
     # snackbar
     CLASS
       NAME "Cafetaria, Snackbar, IJssalon (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
@@ -210,7 +196,7 @@ MAP
 
     CLASS
       NAME "Cafetaria, Snackbar, IJssalon"
-      EXPRESSION ("[sbi_detail_group]" eq "cafetaria, snackbar, ijssalon")
+      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon")
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
@@ -225,7 +211,7 @@ MAP
     # hotel
     CLASS
       NAME "Hotel, Pension (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "hotel, pension" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "hotel, pension" && '[correctie]' = 't')
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
@@ -239,7 +225,7 @@ MAP
 
     CLASS
       NAME "Hotel, Pension"
-      EXPRESSION ("[sbi_detail_group]" eq "hotel, pension")
+      EXPRESSION ("[q2]" eq "hotel, pension")
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
@@ -255,7 +241,7 @@ MAP
 
     CLASS
       NAME "Hotel-restaurant (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "hotel-restaurant" && '[correctie]' = 't')
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
@@ -269,7 +255,7 @@ MAP
 
     CLASS
       NAME "Hotel-restaurant"
-      EXPRESSION ("[sbi_detail_group]" eq "hotel-restaurant")
+      EXPRESSION ("[q2]" eq "hotel-restaurant")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -284,7 +270,7 @@ MAP
 
     CLASS
       NAME "Kantine, Catering (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "kantine, catering" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "kantine, catering" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -297,7 +283,7 @@ MAP
 
     CLASS
       NAME "Kantine, Catering"
-      EXPRESSION ("[sbi_detail_group]" eq "kantine, catering")
+      EXPRESSION ("[q2]" eq "kantine, catering")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -311,7 +297,7 @@ MAP
     # cafe rest
     CLASS
       NAME "Restaurant, Café-restaurant (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -324,7 +310,7 @@ MAP
 
     CLASS
       NAME "Restaurant, Café-restaurant"
-      EXPRESSION ("[sbi_detail_group]" eq "restaurant, café-restaurant")
+      EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -338,7 +324,7 @@ MAP
     # overige horeca
     CLASS
       NAME "Overige horeca (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "overige horeca" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige horeca" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -351,7 +337,7 @@ MAP
 
     CLASS
       NAME "Overige horeca"
-      EXPRESSION ("[sbi_detail_group]" eq "overige horeca")
+      EXPRESSION ("[q2]" eq "overige horeca")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -450,8 +436,8 @@ MAP
     FILTERITEM         "locatie_type"
 
     CLASS
-      NAME "Holdings, financiële dienstverlening en verzekeringen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen" && '[correctie]' = 't')
+      NAME "Financiële dienstverlening en verzekeringen (bij benadering)"
+      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -462,8 +448,8 @@ MAP
     END
 
     CLASS
-      NAME "Holdings, financiële dienstverlening en verzekeringen"
-      EXPRESSION ("[sbi_detail_group]" eq "holdings, financiële dienstverlening en verzekeringen")
+      NAME "Holdings dienstverlening en verzekeringen"
+      EXPRESSION ("[q2]" eq "holdings")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -474,20 +460,8 @@ MAP
     END
 
     CLASS
-      NAME "Holdings (geen financiële) (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "holdings (geen financiële)" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          183 210 66
-        WIDTH          2
-      END
-    END
-
-    CLASS
       NAME "Holdings (geen financiële)"
-      EXPRESSION ("[sbi_detail_group]" eq "holdings (geen financiële)")
+      EXPRESSION ("[q3]" eq "Holdings (geen financiële)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -499,7 +473,7 @@ MAP
 
     CLASS
       NAME "Verhuur van- en beheer/handel in onroerend goed (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -511,7 +485,7 @@ MAP
 
     CLASS
       NAME "Verhuur van- en beheer/handel in onroerend goed"
-      EXPRESSION ("[sbi_detail_group]" eq "verhuur van- en beheer/handel in onroerend goed")
+      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -523,7 +497,7 @@ MAP
 
     CLASS
       NAME "Verhuur van roerende goederen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "verhuur van roerende goederen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "verhuur van roerende goederen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -535,7 +509,7 @@ MAP
 
     CLASS
       NAME "Verhuur van roerende goederen"
-      EXPRESSION ("[sbi_detail_group]" eq "verhuur van roerende goederen")
+      EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -634,7 +608,7 @@ MAP
 
     CLASS
       NAME "Belangenorganisaties (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "belangenorganisaties" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "belangenorganisaties" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -646,7 +620,7 @@ MAP
 
     CLASS
       NAME "Belangenorganisaties"
-      EXPRESSION ("[sbi_detail_group]" eq "belangenorganisaties")
+      EXPRESSION ("[q2]" eq "belangenorganisaties")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -658,7 +632,7 @@ MAP
 
     CLASS
       NAME "Hobbyclubs (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "hobbyclubs" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "hobbyclubs" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -670,7 +644,7 @@ MAP
 
     CLASS
       NAME "Hobbyclubs"
-      EXPRESSION ("[sbi_detail_group]" eq "hobbyclubs")
+      EXPRESSION ("[q2]" eq "hobbyclubs")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -682,7 +656,7 @@ MAP
 
     CLASS
       NAME "Idieële organisaties (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "idieële organisaties" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "idieële organisaties" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -695,7 +669,7 @@ MAP
 
     CLASS
       NAME "Idieële organisaties"
-      EXPRESSION ("[sbi_detail_group]" eq "idieële organisaties")
+      EXPRESSION ("[q2]" eq "idieële organisaties")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -707,7 +681,7 @@ MAP
 
     CLASS
       NAME "Overige (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "overige" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -719,7 +693,7 @@ MAP
 
     CLASS
       NAME "Overige"
-      EXPRESSION ("[sbi_detail_group]" eq "overige")
+      EXPRESSION ("[q2]" eq "overige")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -818,7 +792,7 @@ MAP
 
     CLASS
       NAME "Kunst (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "kunst" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -830,7 +804,7 @@ MAP
 
     CLASS
       NAME "Kunst"
-      EXPRESSION ("[sbi_detail_group]" eq "kunst")
+      EXPRESSION ("[q2]" eq "kunst")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -842,7 +816,7 @@ MAP
 
     CLASS
       NAME "Musea, Bibliotheken, Kunstuitleen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -854,7 +828,7 @@ MAP
 
     CLASS
       NAME "Musea, Bibliotheken, Kunstuitleen"
-      EXPRESSION ("[sbi_detail_group]" eq "musea, bibliotheken, kunstuitleen")
+      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -866,7 +840,7 @@ MAP
 
     CLASS
       NAME "Recreatie (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "recreatie"  && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "recreatie"  && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -879,7 +853,7 @@ MAP
 
     CLASS
       NAME "Recreatie"
-      EXPRESSION ("[sbi_detail_group]" eq "recreatie")
+      EXPRESSION ("[q2]" eq "recreatie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -891,7 +865,7 @@ MAP
 
     CLASS
       NAME "Sport (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "sport" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -903,7 +877,7 @@ MAP
 
     CLASS
       NAME "Sport"
-      EXPRESSION ("[sbi_detail_group]" eq "sport")
+      EXPRESSION ("[q2]" eq "sport")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1002,7 +976,7 @@ MAP
 
     CLASS
       NAME "Activiteiten  op gebied van film, tv, radio, audio (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "activiteiten  op gebied van film, tv, radio, audio"  && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio"  && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1014,7 +988,7 @@ MAP
 
     CLASS
       NAME "Activiteiten  op gebied van film, tv, radio, audio"
-      EXPRESSION ("[sbi_detail_group]" eq "activiteiten  op gebied van film, tv, radio, audio")
+      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1026,7 +1000,7 @@ MAP
 
     CLASS
       NAME "Activiteiten op het gebied van ict (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "activiteiten op het gebied van ict"  && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict"  && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1038,7 +1012,7 @@ MAP
 
     CLASS
       NAME "Activiteiten op het gebied van ict"
-      EXPRESSION ("[sbi_detail_group]" eq "activiteiten op het gebied van ict")
+      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1050,7 +1024,7 @@ MAP
 
     CLASS
       NAME "Telecommunicatie (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "telecommunicatie" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1062,7 +1036,7 @@ MAP
 
     CLASS
       NAME "Telecommunicatie"
-      EXPRESSION ("[sbi_detail_group]" eq "telecommunicatie")
+      EXPRESSION ("[q2]" eq "telecommunicatie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1074,7 +1048,7 @@ MAP
 
     CLASS
       NAME "Uitgeverijen (correcrtie)"
-      EXPRESSION ("[sbi_detail_group]" eq "uitgeverijen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "uitgeverijen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1086,7 +1060,7 @@ MAP
 
     CLASS
       NAME "Uitgeverijen"
-      EXPRESSION ("[sbi_detail_group]" eq "uitgeverijen")
+      EXPRESSION ("[q2]" eq "uitgeverijen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1205,7 +1179,7 @@ MAP
 
     CLASS
       NAME "Kappers (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "kappers" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "kappers" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1217,7 +1191,7 @@ MAP
 
     CLASS
       NAME "Kappers"
-      EXPRESSION ("[sbi_detail_group]" eq "kappers")
+      EXPRESSION ("[q2]" eq "kappers")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1229,7 +1203,7 @@ MAP
 
     CLASS
       NAME "Sauna, solariat (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "sauna, solaria" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "sauna, solaria" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1241,7 +1215,7 @@ MAP
 
     CLASS
       NAME "Sauna, solariat"
-      EXPRESSION ("[sbi_detail_group]" eq "sauna, solaria")
+      EXPRESSION ("[q2]" eq "sauna, solaria")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1253,7 +1227,7 @@ MAP
 
     CLASS
       NAME "Schoonheidsverzorging (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "schoonheidsverzorging" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "schoonheidsverzorging" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1265,7 +1239,7 @@ MAP
 
     CLASS
       NAME "Schoonheidsverzorging"
-      EXPRESSION ("[sbi_detail_group]" eq "schoonheidsverzorging")
+      EXPRESSION ("[q2]" eq "schoonheidsverzorging")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1277,7 +1251,7 @@ MAP
 
     CLASS
       NAME "Uitvaart, crematoria (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "uitvaart, crematoria" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "uitvaart, crematoria" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1289,7 +1263,7 @@ MAP
 
     CLASS
       NAME "Uitvaart, crematoria"
-      EXPRESSION ("[sbi_detail_group]" eq "uitvaart, crematoria")
+      EXPRESSION ("[q2]" eq "uitvaart, crematoria")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1301,7 +1275,7 @@ MAP
 
     CLASS
       NAME "Overige dienstverlening (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "overige dienstverlening" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige dienstverlening" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1313,7 +1287,7 @@ MAP
 
     CLASS
       NAME "Overige dienstverlening"
-      EXPRESSION ("[sbi_detail_group]" eq "overige dienstverlening")
+      EXPRESSION ("[q2]" eq "overige dienstverlening")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1428,7 +1402,7 @@ MAP
 
     CLASS
       NAME "Dienstverlening voor de land/tuinbouw (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1440,7 +1414,7 @@ MAP
 
     CLASS
       NAME "Dienstverlening voor de land/tuinbouw"
-      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening voor de land/tuinbouw")
+      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1452,7 +1426,7 @@ MAP
 
     CLASS
       NAME "Fokken, houden dieren (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "fokken, houden dieren" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "fokken, houden dieren" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1464,7 +1438,7 @@ MAP
 
     CLASS
       NAME "Fokken, houden dieren"
-      EXPRESSION ("[sbi_detail_group]" eq "fokken, houden dieren")
+      EXPRESSION ("[q2]" eq "fokken, houden dieren")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1476,7 +1450,7 @@ MAP
 
     CLASS
       NAME "Gemengd bedrijf (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "gemengd bedrijf" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "gemengd bedrijf" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1488,7 +1462,7 @@ MAP
 
     CLASS
       NAME "Gemengd bedrijf"
-      EXPRESSION ("[sbi_detail_group]" eq "gemengd bedrijf")
+      EXPRESSION ("[q2]" eq "gemengd bedrijf")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1500,7 +1474,7 @@ MAP
 
     CLASS
       NAME "Teelt eenjarige gewassen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt eenjarige gewassen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1512,7 +1486,7 @@ MAP
 
     CLASS
       NAME "Teelt eenjarige gewassen"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt eenjarige gewassen")
+      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1524,7 +1498,7 @@ MAP
 
     CLASS
       NAME "Teelt meerjarige gewassen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt meerjarige gewassen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1536,7 +1510,7 @@ MAP
 
     CLASS
       NAME "Teelt meerjarige gewassen"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt meerjarige gewassen")
+      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1548,7 +1522,7 @@ MAP
 
     CLASS
       NAME "Teelt sierplanten (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt sierplanten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "teelt sierplanten" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1560,7 +1534,7 @@ MAP
 
     CLASS
       NAME "Teelt sierplanten"
-      EXPRESSION ("[sbi_detail_group]" eq "teelt sierplanten")
+      EXPRESSION ("[q2]" eq "teelt sierplanten")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1660,7 +1634,7 @@ MAP
 
     CLASS
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd) (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1672,7 +1646,7 @@ MAP
 
     CLASS
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
-      EXPRESSION ("[sbi_detail_group]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
+      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1684,7 +1658,7 @@ MAP
 
     CLASS
       NAME "Dienstverlening vervoer (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening vervoer" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1696,7 +1670,7 @@ MAP
 
     CLASS
       NAME "Dienstverlening vervoer"
-      EXPRESSION ("[sbi_detail_group]" eq "dienstverlening vervoer")
+      EXPRESSION ("[q2]" eq "dienstverlening vervoer")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1708,7 +1682,7 @@ MAP
 
     CLASS
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd) (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1720,7 +1694,7 @@ MAP
 
     CLASS
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
-      EXPRESSION ("[sbi_detail_group]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
+      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1732,7 +1706,7 @@ MAP
 
     CLASS
       NAME "Handel en reparatie van auto's (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1744,7 +1718,7 @@ MAP
 
     CLASS
       NAME "Handel en reparatie van auto's"
-      EXPRESSION ("[sbi_detail_group]" eq "handel en reparatie van auto s")
+      EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1756,7 +1730,7 @@ MAP
 
     CLASS
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf) (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1768,7 +1742,7 @@ MAP
 
     CLASS
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
-      EXPRESSION ("[sbi_detail_group]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
+      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1780,7 +1754,7 @@ MAP
 
     CLASS
       NAME "Opslag (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "opslag" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1792,7 +1766,7 @@ MAP
 
     CLASS
       NAME "Opslag"
-      EXPRESSION ("[sbi_detail_group]" eq "opslag")
+      EXPRESSION ("[q2]" eq "opslag")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1804,7 +1778,7 @@ MAP
 
     CLASS
       NAME "Vervoer (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "vervoer" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1816,7 +1790,7 @@ MAP
 
     CLASS
       NAME "Vervoer"
-      EXPRESSION ("[sbi_detail_group]" eq "vervoer")
+      EXPRESSION ("[q2]" eq "vervoer")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1912,7 +1886,7 @@ MAP
 
    CLASS
       NAME "Accountancy, administratie (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "accountancy, administratie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "accountancy, administratie" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1924,7 +1898,7 @@ MAP
 
     CLASS
       NAME "Accountancy, administratie"
-      EXPRESSION ("[sbi_detail_group]" eq "accountancy, administratie")
+      EXPRESSION ("[q2]" eq "accountancy, administratie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1936,7 +1910,7 @@ MAP
 
     CLASS
       NAME "Advocaten rechtskundige diensten, notarissen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1948,7 +1922,7 @@ MAP
 
     CLASS
       NAME "Advocaten rechtskundige diensten, notarissen"
-      EXPRESSION ("[sbi_detail_group]" eq "advocaten rechtskundige diensten, notarissen")
+      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1960,7 +1934,7 @@ MAP
 
     CLASS
       NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1972,7 +1946,7 @@ MAP
 
     CLASS
       NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
-      EXPRESSION ("[sbi_detail_group]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
+      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1984,7 +1958,7 @@ MAP
 
     CLASS
       NAME "Architecten (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "architecten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "architecten" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -1996,7 +1970,7 @@ MAP
 
     CLASS
       NAME "Architecten"
-      EXPRESSION ("[sbi_detail_group]" eq "architecten")
+      EXPRESSION ("[q2]" eq "architecten")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2008,7 +1982,7 @@ MAP
 
     CLASS
       NAME "Design (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "design" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "design" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2020,7 +1994,7 @@ MAP
 
     CLASS
       NAME "Design"
-      EXPRESSION ("[sbi_detail_group]" eq "design")
+      EXPRESSION ("[q2]" eq "design")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2032,7 +2006,7 @@ MAP
 
     CLASS
       NAME "Interieurarchitecten (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "interieurarchitecten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "interieurarchitecten" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2044,7 +2018,7 @@ MAP
 
     CLASS
       NAME "Interieurarchitecten"
-      EXPRESSION ("[sbi_detail_group]" eq "interieurarchitecten")
+      EXPRESSION ("[q2]" eq "interieurarchitecten")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2056,7 +2030,7 @@ MAP
 
     CLASS
       NAME "Managementadvies, economisch advies (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "managementadvies, economisch advies" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "managementadvies, economisch advies" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2068,7 +2042,7 @@ MAP
 
     CLASS
       NAME "Managementadvies, economisch advies"
-      EXPRESSION ("[sbi_detail_group]" eq "managementadvies, economisch advies")
+      EXPRESSION ("[q2]" eq "managementadvies, economisch advies")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2080,7 +2054,7 @@ MAP
 
     CLASS
       NAME "Public relationsbureaus (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "public relationsbureaus" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "public relationsbureaus" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2092,7 +2066,7 @@ MAP
 
     CLASS
       NAME "Public relationsbureaus"
-      EXPRESSION ("[sbi_detail_group]" eq "public relationsbureaus")
+      EXPRESSION ("[q2]" eq "public relationsbureaus")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2104,7 +2078,7 @@ MAP
 
     CLASS
       NAME "Reclame en Marktonderzoek (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "reclame en marktonderzoek" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "reclame en marktonderzoek" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2116,7 +2090,7 @@ MAP
 
     CLASS
       NAME "Reclame en Marktonderzoek"
-      EXPRESSION ("[sbi_detail_group]" eq "reclame en marktonderzoek")
+      EXPRESSION ("[q2]" eq "reclame en marktonderzoek")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2128,7 +2102,7 @@ MAP
 
     CLASS
       NAME "Technisch ontwerp, advies, keuring/research (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2140,7 +2114,7 @@ MAP
 
     CLASS
       NAME "Technisch ontwerp, advies, keuring/research"
-      EXPRESSION ("[sbi_detail_group]" eq "technisch ontwerp, advies, keuring/research")
+      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2152,7 +2126,7 @@ MAP
 
     CLASS
       NAME "Overige zakelijke dienstverlening (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "overige zakelijke dienstverlening" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2164,7 +2138,7 @@ MAP
 
     CLASS
       NAME "Overige zakelijke dienstverlening"
-      EXPRESSION ("[sbi_detail_group]" eq "overige zakelijke dienstverlening")
+      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2264,7 +2238,7 @@ MAP
 
     CLASS
       NAME "Installatie (geen bouw) (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "installatie (geen bouw)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "installatie (geen bouw)" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2276,7 +2250,7 @@ MAP
 
     CLASS
       NAME "Installatie (geen bouw)"
-      EXPRESSION ("[sbi_detail_group]" eq "installatie (geen bouw)")
+      EXPRESSION ("[q2]" eq "installatie (geen bouw)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2288,7 +2262,7 @@ MAP
 
     CLASS
       NAME "Productie (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "productie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "productie" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2300,7 +2274,7 @@ MAP
 
     CLASS
       NAME "Productie"
-      EXPRESSION ("[sbi_detail_group]" eq "productie")
+      EXPRESSION ("[q2]" eq "productie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2312,7 +2286,7 @@ MAP
 
     CLASS
       NAME "Reparatie (geen bouw) (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "reparatie (geen bouw)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "reparatie (geen bouw)" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2324,7 +2298,7 @@ MAP
 
     CLASS
       NAME "Reparatie (geen bouw)"
-      EXPRESSION ("[sbi_detail_group]" eq "reparatie (geen bouw)")
+      EXPRESSION ("[q2]" eq "reparatie (geen bouw)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2424,7 +2398,7 @@ MAP
 
     CLASS
       NAME "Gezondheids- en welzijnszorg (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2436,7 +2410,7 @@ MAP
 
     CLASS
       NAME "Gezondheids- en welzijnszorg"
-      EXPRESSION ("[sbi_detail_group]" eq "gezondheids- en welzijnszorg")
+      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2448,7 +2422,7 @@ MAP
 
     CLASS
       NAME "Onderwijs (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "onderwijs" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "onderwijs" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2460,7 +2434,7 @@ MAP
 
     CLASS
       NAME "Onderwijs"
-      EXPRESSION ("[sbi_detail_group]" eq "onderwijs")
+      EXPRESSION ("[q2]" eq "onderwijs")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2472,7 +2446,7 @@ MAP
 
     CLASS
       NAME "Overheid (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "overheid" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overheid" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2484,7 +2458,7 @@ MAP
 
     CLASS
       NAME "Overheid"
-      EXPRESSION ("[sbi_detail_group]" eq "overheid")
+      EXPRESSION ("[q2]" eq "overheid")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2584,7 +2558,7 @@ MAP
 
     CLASS
       NAME "Afwerking van gebouwen (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "afwerking van gebouwen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2596,7 +2570,7 @@ MAP
 
     CLASS
       NAME "Afwerking van gebouwen"
-      EXPRESSION ("[sbi_detail_group]" eq "afwerking van gebouwen")
+      EXPRESSION ("[q2]" eq "afwerking van gebouwen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2608,7 +2582,7 @@ MAP
 
     CLASS
       NAME "Bouwinstallatie (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "bouwinstallatie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2620,7 +2594,7 @@ MAP
 
     CLASS
       NAME "Bouwinstallatie"
-      EXPRESSION ("[sbi_detail_group]" eq "bouwinstallatie")
+      EXPRESSION ("[q2]" eq "bouwinstallatie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2632,7 +2606,7 @@ MAP
 
     CLASS
       NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2644,7 +2618,7 @@ MAP
 
     CLASS
       NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
-      EXPRESSION ("[sbi_detail_group]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf")
+      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen / klusbedrijf")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2656,7 +2630,7 @@ MAP
 
     CLASS
       NAME "Dak- en overige gespecialiseerde bouw (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2668,7 +2642,7 @@ MAP
 
     CLASS
       NAME "Dak- en overige gespecialiseerde bouw"
-      EXPRESSION ("[sbi_detail_group]" eq "dak- en overige gespecialiseerde bouw")
+      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2680,7 +2654,7 @@ MAP
 
     CLASS
       NAME "Grond, water, wegenbouw (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2692,7 +2666,7 @@ MAP
 
     CLASS
       NAME "Grond, water, wegenbouw"
-      EXPRESSION ("[sbi_detail_group]" eq "grond, water, wegenbouw")
+      EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2704,7 +2678,7 @@ MAP
 
     CLASS
       NAME "Bouw overig (bij benadering)"
-      EXPRESSION ("[sbi_detail_group]" eq "bouw overig" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 't')
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -2716,7 +2690,7 @@ MAP
 
     CLASS
       NAME "Bouw overig"
-      EXPRESSION ("[sbi_detail_group]" eq "bouw overig")
+      EXPRESSION ("[q2]" eq "bouw overig")
       STYLE
         SYMBOL         'stip'
         SIZE           10
