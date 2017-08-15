@@ -162,19 +162,6 @@ MAP
       "ows_abstract"        "Vestigingen van Bouwbedrijven"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Afwerking van gebouwen"
-      EXPRESSION ("[q2]" eq "afwerking van gebouwen")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -190,13 +177,13 @@ MAP
     END
 
     CLASS
-      NAME "Bouwinstallatie"
-      EXPRESSION ("[q2]" eq "bouwinstallatie")
+      NAME "Afwerking van gebouwen"
+      EXPRESSION ("[q2]" eq "afwerking van gebouwen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -214,13 +201,13 @@ MAP
     END
 
     CLASS
-      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
-      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen")
+      NAME "Bouwinstallatie"
+      EXPRESSION ("[q2]" eq "bouwinstallatie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23  164 84
+        COLOR          254 239 53
         WIDTH          1.5
       END
     END
@@ -238,13 +225,13 @@ MAP
     END
 
     CLASS
-      NAME "Dak- en overige gespecialiseerde bouw"
-      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
+      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
+      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          21  134 201
+        COLOR          23  164 84
         WIDTH          1.5
       END
     END
@@ -262,13 +249,13 @@ MAP
     END
 
     CLASS
-      NAME "Grond, water, wegenbouw"
-      EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
+      NAME "Dak- en overige gespecialiseerde bouw"
+      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
+        COLOR          21  134 201
         WIDTH          1.5
       END
     END
@@ -286,13 +273,13 @@ MAP
     END
 
     CLASS
-      NAME "Overige bouw"
-      EXPRESSION ("[q2]" eq "bouw overig")
+      NAME "Grond, water, wegenbouw"
+      EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
+        COLOR          47  52  144
         WIDTH          1.5
       END
     END
@@ -304,6 +291,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Overige bouw"
+      EXPRESSION ("[q2]" eq "bouw overig")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          233 22  139
         WIDTH          1.5
       END
@@ -342,7 +341,6 @@ MAP
       "ows_title"           "bouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -397,19 +395,6 @@ MAP
       "ows_abstract"        "Vestigingen van cultuur, sport en recreatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Kunst"
-      EXPRESSION ("[q2]" eq "kunst")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -425,13 +410,13 @@ MAP
     END
 
     CLASS
-      NAME "Musea, Bibliotheken, Kunstuitleen"
-      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
+      NAME "Kunst"
+      EXPRESSION ("[q2]" eq "kunst")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          97  184 77
+        COLOR          250 178 49
         WIDTH          1.5
       END
     END
@@ -449,13 +434,13 @@ MAP
     END
 
     CLASS
-      NAME "Recreatie"
-      EXPRESSION ("[q2]" eq "recreatie")
+      NAME "Musea, Bibliotheken, Kunstuitleen"
+      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          13  97  171
+        COLOR          97  184 77
         WIDTH          1.5
       END
     END
@@ -473,13 +458,13 @@ MAP
     END
 
     CLASS
-      NAME "Sport"
-      EXPRESSION ("[q2]" eq "sport")
+      NAME "Recreatie"
+      EXPRESSION ("[q2]" eq "recreatie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
+        COLOR          13  97  171
         WIDTH          1.5
       END
     END
@@ -491,6 +476,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Sport"
+      EXPRESSION ("[q2]" eq "sport")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          233 22  139
         WIDTH          1.5
       END
@@ -532,7 +529,6 @@ MAP
       "ows_title"           "cultuur_sport_recreatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -581,23 +577,10 @@ MAP
       "ows_abstract"        "Vestigingen van financiele dienstverleners en verhuur van roerende en onroerende goederen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
-    CLASS
-      NAME "Financiële dienstverlening en verzekeringen"
-      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
-    END
 
     CLASS
       NAME "Financiële dienstverlening en verzekeringen (bij benadering)"
@@ -612,8 +595,8 @@ MAP
     END
 
     CLASS
-      NAME "Holdings"
-      EXPRESSION ("[q2]" eq "holdings")
+      NAME "Financiële dienstverlening en verzekeringen"
+      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
@@ -636,13 +619,13 @@ MAP
     END
 
     CLASS
-      NAME "Verhuur van- en beheer/handel in onroerend goed"
-      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
+      NAME "Holdings"
+      EXPRESSION ("[q2]" eq "holdings")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          29  174 236
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -660,13 +643,13 @@ MAP
     END
 
     CLASS
-      NAME "Verhuur van roerende goederen"
-      EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
+      NAME "Verhuur van- en beheer/handel in onroerend goed"
+      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          117 47 142
+        COLOR          29  174 236
         WIDTH          1.5
       END
     END
@@ -678,6 +661,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          117 47 142
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Verhuur van roerende goederen"
+      EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          117 47 142
         WIDTH          1.5
       END
@@ -719,7 +714,6 @@ MAP
       "ows_title"           "financiele_dienstverlening_verhuur_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -771,19 +765,6 @@ MAP
       "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
-      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -799,13 +780,13 @@ MAP
     END
 
     CLASS
-      NAME "Dienstverlening vervoer"
-      EXPRESSION ("[q2]" eq "dienstverlening vervoer")
+      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
+      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -823,13 +804,13 @@ MAP
     END
 
     CLASS
-      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
-      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
+      NAME "Dienstverlening vervoer"
+      EXPRESSION ("[q2]" eq "dienstverlening vervoer")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          97  184 77
+        COLOR          254 239 53
         WIDTH          1.5
       END
     END
@@ -847,13 +828,13 @@ MAP
     END
 
     CLASS
-      NAME "Handel en reparatie van auto's"
-      EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
+      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
+      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          26  170 182
+        COLOR          97  184 77
         WIDTH          1.5
       END
     END
@@ -871,13 +852,13 @@ MAP
     END
 
     CLASS
-      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
-      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
+      NAME "Handel en reparatie van auto's"
+      EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          21  134 201
+        COLOR          26  170 182
         WIDTH          1.5
       END
     END
@@ -895,13 +876,13 @@ MAP
     END
 
     CLASS
-      NAME "Opslag"
-      EXPRESSION ("[q2]" eq "opslag")
+      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
+      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
+        COLOR          21  134 201
         WIDTH          1.5
       END
     END
@@ -919,13 +900,13 @@ MAP
     END
 
     CLASS
-      NAME "Vervoer"
-      EXPRESSION ("[q2]" eq "vervoer")
+      NAME "Opslag"
+      EXPRESSION ("[q2]" eq "opslag")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
+        COLOR          47  52  144
         WIDTH          1.5
       END
     END
@@ -937,6 +918,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Vervoer"
+      EXPRESSION ("[q2]" eq "vervoer")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          233 22  139
         WIDTH          1.5
       END
@@ -978,7 +971,6 @@ MAP
       "ows_title"           "handel_vervoer_opslag_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
     LABELITEM          "naam"
 
@@ -1031,20 +1023,6 @@ MAP
     END
 
     CLASS
-      NAME "Café"
-      EXPRESSION ("[q2]" eq "café")
-      STYLE
-        MINSCALEDENOM  100
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-        ANTIALIAS      true
-      END
-    END
-
-    CLASS
       NAME "Café (bij benadering)"
       EXPRESSION ("[q2]" eq "café" && '[correctie]' = 't')
       STYLE
@@ -1059,14 +1037,14 @@ MAP
     END
 
     CLASS
-      NAME "Cafetaria, Snackbar, IJssalon"
-      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon")
+      NAME "Café"
+      EXPRESSION ("[q2]" eq "café")
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          241 119 48
         WIDTH          1.5
         ANTIALIAS      true
       END
@@ -1087,14 +1065,14 @@ MAP
     END
 
     CLASS
-      NAME "Hotel, Pension"
-      EXPRESSION ("[q2]" eq "hotel, pension")
+      NAME "Cafetaria, Snackbar, IJssalon"
+      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon")
       STYLE
         MINSCALEDENOM  100
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          97  184 77
+        COLOR          254 239 53
         WIDTH          1.5
         ANTIALIAS      true
       END
@@ -1115,13 +1093,14 @@ MAP
     END
 
     CLASS
-      NAME "Hotel-restaurant"
-      EXPRESSION ("[q2]" eq "hotel-restaurant")
+      NAME "Hotel, Pension"
+      EXPRESSION ("[q2]" eq "hotel, pension")
       STYLE
+        MINSCALEDENOM  100
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          26  170 182
+        COLOR          97  184 77
         WIDTH          1.5
         ANTIALIAS      true
       END
@@ -1142,13 +1121,13 @@ MAP
     END
 
     CLASS
-      NAME "Kantine, Catering"
-      EXPRESSION ("[q2]" eq "kantine, catering")
+      NAME "Hotel-restaurant"
+      EXPRESSION ("[q2]" eq "hotel-restaurant")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          21  134 201
+        COLOR          26  170 182
         WIDTH          1.5
         ANTIALIAS      true
       END
@@ -1168,19 +1147,18 @@ MAP
     END
 
     CLASS
-      NAME "Restaurant, Café-restaurant"
-      EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
+      NAME "Kantine, Catering"
+      EXPRESSION ("[q2]" eq "kantine, catering")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
+        COLOR          21  134 201
         WIDTH          1.5
         ANTIALIAS      true
       END
     END
 
-    # cafe rest
     CLASS
       NAME "Restaurant, Café-restaurant (bij benadering)"
       EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
@@ -1195,14 +1173,14 @@ MAP
     END
 
     CLASS
-      NAME "Overige horeca"
-      EXPRESSION ("[q2]" eq "overig, te weten")
+      NAME "Restaurant, Café-restaurant"
+      EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
-        WIDTH          1
+        COLOR          47  52  144
+        WIDTH          1.5
         ANTIALIAS      true
       END
     END
@@ -1216,6 +1194,19 @@ MAP
         OUTLINECOLOR   187 187 187
         COLOR          233 22  139
         WIDTH          1.5
+        ANTIALIAS      true
+      END
+    END
+
+    CLASS
+      NAME "Overige horeca"
+      EXPRESSION ("[q2]" eq "overig, te weten")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          233 22  139
+        WIDTH          1
         ANTIALIAS      true
       END
     END
@@ -1308,19 +1299,6 @@ MAP
       "ows_abstract"        "Vestigingen van telecommunicatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Activiteiten  op gebied van film, tv, radio, audio"
-      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -1336,13 +1314,13 @@ MAP
     END
 
     CLASS
-      NAME "Activiteiten op het gebied van ict"
-      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict")
+      NAME "Activiteiten  op gebied van film, tv, radio, audio"
+      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -1360,13 +1338,13 @@ MAP
     END
 
     CLASS
-      NAME "Telecommunicatie"
-      EXPRESSION ("[q2]" eq "telecommunicatie")
+      NAME "Activiteiten op het gebied van ict"
+      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          29  174 236
+        COLOR          183 210 66
         WIDTH          1.5
       END
     END
@@ -1384,13 +1362,13 @@ MAP
     END
 
     CLASS
-      NAME "Uitgeverijen"
-      EXPRESSION ("[q2]" eq "uitgeverijen")
+      NAME "Telecommunicatie"
+      EXPRESSION ("[q2]" eq "telecommunicatie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          117 47  142
+        COLOR          29  174 236
         WIDTH          1.5
       END
     END
@@ -1402,6 +1380,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          117 47  142
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Uitgeverijen"
+      EXPRESSION ("[q2]" eq "uitgeverijen")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          117 47  142
         WIDTH          1.5
       END
@@ -1443,7 +1433,6 @@ MAP
       "ows_title"           "telecommunicatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
@@ -1512,19 +1501,6 @@ MAP
       "ows_abstract"        "Vestigingen landbouw organisaties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Dienstverlening voor de land/tuinbouw"
-      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -1540,13 +1516,13 @@ MAP
     END
 
     CLASS
-      NAME "Fokken, houden dieren"
-      EXPRESSION ("[q2]" eq "fokken, houden dieren")
+      NAME "Dienstverlening voor de land/tuinbouw"
+      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -1564,13 +1540,13 @@ MAP
     END
 
     CLASS
-      NAME "Gemengd bedrijf"
-      EXPRESSION ("[q2]" eq "gemengd bedrijf")
+      NAME "Fokken, houden dieren"
+      EXPRESSION ("[q2]" eq "fokken, houden dieren")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23  164 84
+        COLOR          254 239 53
         WIDTH          1.5
       END
     END
@@ -1588,13 +1564,13 @@ MAP
     END
 
     CLASS
-      NAME "Teelt eenjarige gewassen"
-      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen")
+      NAME "Gemengd bedrijf"
+      EXPRESSION ("[q2]" eq "gemengd bedrijf")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          29  174 236
+        COLOR          23  164 84
         WIDTH          1.5
       END
     END
@@ -1612,13 +1588,13 @@ MAP
     END
 
     CLASS
-      NAME "Teelt meerjarige gewassen"
-      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
+      NAME "Teelt eenjarige gewassen"
+      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
+        COLOR          29  174 236
         WIDTH          1.5
       END
     END
@@ -1636,13 +1612,13 @@ MAP
     END
 
     CLASS
-      NAME "Teelt sierplanten"
-      EXPRESSION ("[q2]" eq "teelt sierplanten")
+      NAME "Teelt meerjarige gewassen"
+      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
+        COLOR          47  52  144
         WIDTH          1.5
       END
     END
@@ -1654,6 +1630,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Teelt sierplanten"
+      EXPRESSION ("[q2]" eq "teelt sierplanten")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          233 22  139
         WIDTH          1.5
       END
@@ -1695,7 +1683,6 @@ MAP
       "ows_title"           "landbouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
 
@@ -1748,19 +1735,6 @@ MAP
       "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Gezondheids- en welzijnszorg"
-      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -1776,13 +1750,13 @@ MAP
     END
 
     CLASS
-      NAME "Onderwijs"
-      EXPRESSION ("[q2]" eq "onderwijs")
+      NAME "Gezondheids- en welzijnszorg"
+      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23  164 84
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -1800,14 +1774,14 @@ MAP
     END
 
     CLASS
-      NAME "Overheid"
-      EXPRESSION ("[q2]" eq "overheid")
+      NAME "Onderwijs"
+      EXPRESSION ("[q2]" eq "onderwijs")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
-        WIDTH          1
+        COLOR          23  164 84
+        WIDTH          1.5
       END
     END
 
@@ -1820,6 +1794,18 @@ MAP
         OUTLINECOLOR   187 187 187
         COLOR          233 22  139
         WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Overheid"
+      EXPRESSION ("[q2]" eq "overheid")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          233 22  139
+        WIDTH          1
       END
     END
 
@@ -1856,7 +1842,6 @@ MAP
       "ows_title"           "overheid_onderwijs_zorg_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -1911,19 +1896,6 @@ MAP
       "ows_abstract"        "Vestigingen persoonlijke dienstverlening"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Kappers"
-      EXPRESSION ("[q2]" eq "kappers")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -1939,13 +1911,13 @@ MAP
     END
 
     CLASS
-      NAME "Sauna, solaria"
-      EXPRESSION ("[q2]" eq "sauna, solaria")
+      NAME "Kappers"
+      EXPRESSION ("[q2]" eq "kappers")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -1963,13 +1935,13 @@ MAP
     END
 
     CLASS
-      NAME "Schoonheidsverzorging"
-      EXPRESSION ("[q2]" eq "schoonheidsverzorging")
+      NAME "Sauna, solaria"
+      EXPRESSION ("[q2]" eq "sauna, solaria")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          26  170 182
+        COLOR          183 210 66
         WIDTH          1.5
       END
     END
@@ -1987,13 +1959,13 @@ MAP
     END
 
     CLASS
-      NAME "Uitvaart, crematoria"
-      EXPRESSION ("[q2]" eq "uitvaart, crematoria")
+      NAME "Schoonheidsverzorging"
+      EXPRESSION ("[q2]" eq "schoonheidsverzorging")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          13  97  171
+        COLOR          26  170 182
         WIDTH          1.5
       END
     END
@@ -2011,13 +1983,13 @@ MAP
     END
 
     CLASS
-      NAME "Overige dienstverlening"
-      EXPRESSION ("[q2]" eq "overige dienstverlening")
+      NAME "Uitvaart, crematoria"
+      EXPRESSION ("[q2]" eq "uitvaart, crematoria")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
+        COLOR          13  97  171
         WIDTH          1.5
       END
     END
@@ -2029,6 +2001,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          233 22  139
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Overige dienstverlening"
+      EXPRESSION ("[q2]" eq "overige dienstverlening")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          233 22  139
         WIDTH          1.5
       END
@@ -2141,19 +2125,6 @@ MAP
       "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Installatie (geen bouw)"
-      EXPRESSION ("[q2]" eq "installatie (geen bouw)")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -2169,13 +2140,13 @@ MAP
     END
 
     CLASS
-      NAME "Productie"
-      EXPRESSION ("[q2]" eq "productie")
+      NAME "Installatie (geen bouw)"
+      EXPRESSION ("[q2]" eq "installatie (geen bouw)")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          29  174 236
+        COLOR          183 210 66
         WIDTH          1.5
       END
     END
@@ -2193,14 +2164,14 @@ MAP
     END
 
     CLASS
-      NAME "Reparatie (geen bouw)"
-      EXPRESSION ("[q2]" eq "reparatie (geen bouw)")
+      NAME "Productie"
+      EXPRESSION ("[q2]" eq "productie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
-        WIDTH          1
+        COLOR          29  174 236
+        WIDTH          1.5
       END
     END
 
@@ -2213,6 +2184,18 @@ MAP
         OUTLINECOLOR   187 187 187
         COLOR          233 22  139
         WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Reparatie (geen bouw)"
+      EXPRESSION ("[q2]" eq "reparatie (geen bouw)")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          233 22  139
+        WIDTH          1
       END
     END
 
@@ -2249,7 +2232,6 @@ MAP
       "ows_title"           "productie_installatie_reparatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -2304,19 +2286,6 @@ MAP
       "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Accountancy, administratie"
-      EXPRESSION ("[q2]" eq "accountancy, administratie")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
    CLASS
@@ -2332,13 +2301,13 @@ MAP
     END
 
     CLASS
-      NAME "Advocaten rechtskundige diensten, notarissen"
-      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen")
+      NAME "Accountancy, administratie"
+      EXPRESSION ("[q2]" eq "accountancy, administratie")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -2356,13 +2325,13 @@ MAP
     END
 
     CLASS
-      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
-      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
+      NAME "Advocaten rechtskundige diensten, notarissen"
+      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          97  184 77
+        COLOR          254 239 53
         WIDTH          1.5
       END
     END
@@ -2380,13 +2349,13 @@ MAP
     END
 
     CLASS
-      NAME "Architecten"
-      EXPRESSION ("[q2]" eq "architecten")
+      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
+      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          26  170 182
+        COLOR          97  184 77
         WIDTH          1.5
       END
     END
@@ -2404,13 +2373,13 @@ MAP
     END
 
     CLASS
-      NAME "Design"
-      EXPRESSION ("[q2]" eq "design")
+      NAME "Architecten"
+      EXPRESSION ("[q2]" eq "architecten")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          21  134 201
+        COLOR          26  170 182
         WIDTH          1.5
       END
     END
@@ -2428,13 +2397,13 @@ MAP
     END
 
     CLASS
-      NAME "Interieurarchitecten"
-      EXPRESSION ("[q2]" eq "interieurarchitecten")
+      NAME "Design"
+      EXPRESSION ("[q2]" eq "design")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
+        COLOR          21  134 201
         WIDTH          1.5
       END
     END
@@ -2452,18 +2421,18 @@ MAP
     END
 
     CLASS
-      NAME "Managementadvies, economisch advies"
-      EXPRESSION ("[q2]" eq "managementadvies, economisch advies")
+      NAME "Interieurarchitecten"
+      EXPRESSION ("[q2]" eq "interieurarchitecten")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          117 47  142
+        COLOR          47  52  144
         WIDTH          1.5
       END
     END
 
-    CLASS
+   CLASS
       NAME "Managementadvies, economisch advies (bij benadering)"
       EXPRESSION ("[q2]" eq "managementadvies, economisch advies" && '[correctie]' = 't')
       STYLE
@@ -2476,13 +2445,13 @@ MAP
     END
 
     CLASS
-      NAME "Public relationsbureaus"
-      EXPRESSION ("[q2]" eq "public relationsbureaus")
+      NAME "Managementadvies, economisch advies"
+      EXPRESSION ("[q2]" eq "managementadvies, economisch advies")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
+        COLOR          117 47  142
         WIDTH          1.5
       END
     END
@@ -2500,13 +2469,13 @@ MAP
     END
 
     CLASS
-      NAME "Reclame en Marktonderzoek"
-      EXPRESSION ("[q2]" eq "reclame en marktonderzoek")
+      NAME "Public relationsbureaus"
+      EXPRESSION ("[q2]" eq "public relationsbureaus")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23  164 84
+        COLOR          233 22  139
         WIDTH          1.5
       END
     END
@@ -2524,13 +2493,13 @@ MAP
     END
 
     CLASS
-      NAME "Technisch ontwerp, advies, keuring/research"
-      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
+      NAME "Reclame en Marktonderzoek"
+      EXPRESSION ("[q2]" eq "reclame en marktonderzoek")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
+        COLOR          23  164 84
         WIDTH          1.5
       END
     END
@@ -2548,14 +2517,14 @@ MAP
     END
 
     CLASS
-      NAME "Overige zakelijke dienstverlening"
-      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening")
+      NAME "Technisch ontwerp, advies, keuring/research"
+      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
-        WIDTH          1
+        COLOR          183 210 66
+        WIDTH          1.5
       END
     END
 
@@ -2568,6 +2537,18 @@ MAP
         OUTLINECOLOR   187 187 187
         COLOR          250 178 49
         WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Overige zakelijke dienstverlening"
+      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
+        COLOR          250 178 49
+        WIDTH          1
       END
     END
 
@@ -2604,7 +2585,6 @@ MAP
       "ows_title"           "zakelijke_dienstverlening_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     FILTER             "B"
@@ -2659,19 +2639,6 @@ MAP
       "ows_abstract"        "Vestigingen van overige organisaties"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    CLASS
-      NAME "Belangenorganisaties"
-      EXPRESSION ("[q2]" eq "belangenorganisaties")
-      STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
-      END
     END
 
     CLASS
@@ -2687,13 +2654,13 @@ MAP
     END
 
     CLASS
-      NAME "Hobbyclubs"
-      EXPRESSION ("[q2]" eq "hobbyclubs")
+      NAME "Belangenorganisaties"
+      EXPRESSION ("[q2]" eq "belangenorganisaties")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
+        COLOR          241 119 48
         WIDTH          1.5
       END
     END
@@ -2711,13 +2678,13 @@ MAP
     END
 
     CLASS
-      NAME "Idieële organisaties"
-      EXPRESSION ("[q2]" eq "idieële organisaties")
+      NAME "Hobbyclubs"
+      EXPRESSION ("[q2]" eq "hobbyclubs")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          23  164 84
+        COLOR          254 239 53
         WIDTH          1.5
       END
     END
@@ -2735,13 +2702,13 @@ MAP
     END
 
     CLASS
-      NAME "Overige"
-      EXPRESSION ("[q2]" eq "overige")
+      NAME "Idieële organisaties"
+      EXPRESSION ("[q2]" eq "idieële organisaties")
       STYLE
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
+        COLOR          23  164 84
         WIDTH          1.5
       END
     END
@@ -2753,6 +2720,18 @@ MAP
         SYMBOL         'stip'
         SIZE           10
         OUTLINECOLOR   187 187 187
+        COLOR          47  52  144
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
+      NAME "Overige"
+      EXPRESSION ("[q2]" eq "overige")
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   0 0 0
         COLOR          47  52  144
         WIDTH          1.5
       END
@@ -2794,7 +2773,6 @@ MAP
       "ows_title"           "overige_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM          "naam"
