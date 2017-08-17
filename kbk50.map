@@ -109,6 +109,35 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
+    NAME                    TRN_bedrijfsterrein_dienstverlening
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk50.\"TRN_bedrijfsterrein_dienstverlening\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{11 12 13 14 15}
+      MAXSCALEDENOM         400000
+      MINSCALEDENOM         12500
+      STYLE
+        COLOR               "#d3d2cf"
+      END
+      STYLE
+        WIDTH               0.5
+        OUTLINECOLOR        "#c9c8c4"
+        LINECAP             BUTT
+        LINEJOIN            MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
     NAME                    TRN_overig
     GROUP                   "vlakken"
     MAXSCALEDENOM           400000
@@ -132,6 +161,37 @@ MAP
       MINSCALEDENOM         25000
       STYLE
         COLOR               "#f6f6f4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bos_groen_sport
+    GROUP                   "vlakken"
+    MAXSCALEDENOM 400000
+    MINSCALEDENOM 12500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk50.\"TRN_bos_groen_sport\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      # Zoom{=13,14,15}
+      MAXSCALEDENOM 100000
+      MINSCALEDENOM 12500
+      STYLE
+        COLOR "#cbe0b8"
+      END
+    END
+    CLASS
+      # Zoom{=11,12}
+      MAXSCALEDENOM 400000
+      MINSCALEDENOM 100000
+      STYLE
+        COLOR "#cbe0b8"
       END
     END
   END
@@ -191,35 +251,6 @@ MAP
 
   #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    TRN_bedrijfsterrein_dienstverlening
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           400000
-    MINSCALEDENOM           12500
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk50.\"TRN_bedrijfsterrein_dienstverlening\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      # Zoom{11 12 13 14 15}
-      MAXSCALEDENOM         400000
-      MINSCALEDENOM         12500
-      STYLE
-        COLOR               "#d3d2cf"
-      END
-      STYLE
-        WIDTH               0.5
-        OUTLINECOLOR        "#c9c8c4"
-        LINECAP             BUTT
-        LINEJOIN            MITER
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
 
   LAYER
     NAME                    GBW_kassen
@@ -238,37 +269,6 @@ MAP
       MINSCALEDENOM 12500
       STYLE
         COLOR "#e3dbd3"
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    TRN_bos_groen_sport
-    GROUP                   "vlakken"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk50.\"TRN_bos_groen_sport\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-      # Zoom{=13,14,15}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 12500
-      STYLE
-        COLOR "#cbe0b8"
-      END
-    END
-    CLASS
-      # Zoom{=11,12}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 100000
-      STYLE
-        COLOR "#cbe0b8"
       END
     END
   END
