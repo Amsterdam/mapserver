@@ -35,9 +35,6 @@ MAP
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
-    COMPOSITE
-     OPACITY        20
-    END
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992"
@@ -55,8 +52,11 @@ MAP
       NAME          "Algemeen overlastgebied"
       STYLE
        ANTIALIAS    true
-	     COLOR        255 0 40
-       OUTLINECOLOR 255 0 40
+	   COLOR        178 39 46
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 178 39 46
        WIDTH        2
       END
     END
@@ -75,9 +75,6 @@ MAP
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
-    COMPOSITE
-     OPACITY        20
-    END
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992"
@@ -95,8 +92,11 @@ MAP
       NAME          "Cameratoezichtgebied"
       STYLE
        ANTIALIAS    true
-	     COLOR        50 160 40
-       OUTLINECOLOR 50 160 40
+	   COLOR        51 114 41
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 51 114 41
        WIDTH        2
       END
     END
@@ -135,8 +135,11 @@ MAP
       NAME          "Dealeroverlastgebied"
       STYLE
        ANTIALIAS    true
-	     COLOR        30 120 180
-       OUTLINECOLOR 30 120 180
+	   COLOR        49 102 188
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 49 102 188
        WIDTH        2
       END
     END
@@ -175,8 +178,11 @@ MAP
       NAME          "Uitgaansoverlastgebied"
       STYLE
        ANTIALIAS    true
-	     COLOR        255 110 0
-       OUTLINECOLOR 255 110 0
+	   COLOR        196 147 13
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 196 147 13
        WIDTH        2
       END
     END
@@ -211,7 +217,7 @@ MAP
       NAME             "algemeen_overlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
-        COLOR          255 0 40
+        COLOR          178 39 46
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -223,7 +229,7 @@ MAP
       LABEL
         MINSCALEDENOM  3000
         MAXSCALEDENOM  6000
-        COLOR          255 0 40
+        COLOR          178 39 46
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -235,7 +241,7 @@ MAP
       LABEL
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
-        COLOR          255 0 40
+        COLOR          178 39 46
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -276,7 +282,7 @@ MAP
       NAME             "cameratoezichtgebied_label"
       LABEL
         MAXSCALEDENOM  3000
-        COLOR          50 160 40
+        COLOR          51 114 41
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -288,7 +294,7 @@ MAP
       LABEL
         MINSCALEDENOM  3000
         MAXSCALEDENOM  6000
-        COLOR          50 160 40
+        COLOR          51 114 41
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -300,7 +306,7 @@ MAP
       LABEL
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
-        COLOR          50 160 40
+        COLOR          51 114 41
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -341,7 +347,7 @@ MAP
       NAME             "dealeroverlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
-        COLOR          30 120 180
+        COLOR          49 102 188
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -353,7 +359,7 @@ MAP
       LABEL
         MINSCALEDENOM  3000
         MAXSCALEDENOM  6000
-        COLOR          30 120 180
+        COLOR          49 102 188
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -365,7 +371,7 @@ MAP
       LABEL
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
-        COLOR          30 120 180
+        COLOR          49 102 188
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -406,7 +412,7 @@ MAP
       NAME             "uitgaansoverlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
-        COLOR          255 110 0
+        COLOR          196 147 13
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -418,7 +424,7 @@ MAP
       LABEL
         MINSCALEDENOM  3000
         MAXSCALEDENOM  6000
-        COLOR          255 110 0
+        COLOR          196 147 13
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -430,7 +436,7 @@ MAP
       LABEL
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
-        COLOR          255 110 0
+        COLOR          196 147 13
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
