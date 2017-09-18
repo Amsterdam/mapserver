@@ -26,21 +26,20 @@ MAP
 
 #=============================================================================
 # LAYERS
-# Kleuren zijn voor alle layers hetzelfde! De Amsterdamse standaard kleuren
+# Kleuren zijn voor alle layers hetzelfde! De (nieuwe) Amsterdamse standaard kleuren
 
-#   COLOR          241 119 48
-#   COLOR          250 178 49
-#   COLOR          254 239 53
-#   COLOR          183 210 66
-#   COLOR          97  184 77
-#   COLOR          23  164 84
-#   COLOR          26  170 182
-#   COLOR          29  174 236
-#   COLOR          21  134 201
-#   COLOR          13  97  171
-#   COLOR          47  52  144
-#   COLOR          117 47  142
-#   COLOR          233 22  139
+#   COLOR oranje		255 145 0
+#   COLOR geel			255 230 0
+#   COLOR lichtgroen	190 210 0
+#   COLOR lichtblauw	0 157 230
+#   COLOR donkerblauw	0 70 153
+#   COLOR paars			160 0 120
+#   COLOR roze			229 0 130
+#   COLOR blauwgroen	0 210 180
+#   COLOR groen			0 160 60
+#   COLOR lichtoranje	255 199 0
+#   COLOR roodbruin		160 0 0
+#   COLOR rood			236 0 0
 #=============================================================================
 
   LAYER
@@ -118,7 +117,7 @@ MAP
 
     CLASS
       LABEL
-        COLOR           66  66  66
+        COLOR          0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -168,11 +167,8 @@ MAP
       NAME "Afwerking van gebouwen (bij benadering)"
       EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           12
       END
     END
 
@@ -180,11 +176,8 @@ MAP
       NAME "Afwerking van gebouwen"
       EXPRESSION ("[q2]" eq "afwerking van gebouwen")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
       END
     END
 
@@ -192,11 +185,8 @@ MAP
       NAME "Bouwinstallatie (bij benadering)"
       EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          254 239 53
-        WIDTH          1.5
+        SYMBOL         'cirkel_geel_correctie'
+        SIZE           12
       END
     END
 
@@ -204,11 +194,8 @@ MAP
       NAME "Bouwinstallatie"
       EXPRESSION ("[q2]" eq "bouwinstallatie")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
-        WIDTH          1.5
+        SYMBOL         'cirkel_geel'
+        SIZE           12
       END
     END
 
@@ -216,11 +203,8 @@ MAP
       NAME "Bouw/utiliteitsbouw algemeen (bij benadering)"
       EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          23  164 84
-        WIDTH          1.5
+        SYMBOL         'cirkel_groen_correctie'
+        SIZE           12
       END
     END
 
@@ -228,11 +212,8 @@ MAP
       NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
       EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          23  164 84
-        WIDTH          1.5
+        SYMBOL         'cirkel_groen'
+        SIZE           12
       END
     END
 
@@ -240,11 +221,8 @@ MAP
       NAME "Dak- en overige gespecialiseerde bouw (bij benadering)"
       EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          21  134 201
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           12
       END
     END
 
@@ -252,11 +230,8 @@ MAP
       NAME "Dak- en overige gespecialiseerde bouw"
       EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          21  134 201
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
       END
     END
 
@@ -264,11 +239,8 @@ MAP
       NAME "Grond, water, wegenbouw (bij benadering)"
       EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          47  52  144
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           12
       END
     END
 
@@ -276,11 +248,8 @@ MAP
       NAME "Grond, water, wegenbouw"
       EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars'
+        SIZE           12
       END
     END
 
@@ -288,11 +257,8 @@ MAP
       NAME "Overige bouw (bij benadering)"
       EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          233 22  139
-        WIDTH          1.5
+        SYMBOL         'cirkel_roze_correctie'
+        SIZE           12
       END
     END
 
@@ -300,22 +266,16 @@ MAP
       NAME "Overige bouw"
       EXPRESSION ("[q2]" eq "bouw overig")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
-        WIDTH          1.5
+        SYMBOL         'cirkel_roze'
+        SIZE           12
       END
     END
 
     CLASS
       NAME "Onbekend"
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          255 255 255
-        WIDTH          1.5
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
       END
     END
 
