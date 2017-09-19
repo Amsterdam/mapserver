@@ -677,11 +677,8 @@ MAP
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd) (bij benadering)"
       EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           12
       END
     END
 
@@ -689,11 +686,8 @@ MAP
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
       EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
       END
     END
 
@@ -701,11 +695,8 @@ MAP
       NAME "Dienstverlening vervoer (bij benadering)"
       EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          254 239 53
-        WIDTH          1.5
+        SYMBOL         'cirkel_geel_correctie'
+        SIZE           12
       END
     END
 
@@ -713,11 +704,8 @@ MAP
       NAME "Dienstverlening vervoer"
       EXPRESSION ("[q2]" eq "dienstverlening vervoer")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          254 239 53
-        WIDTH          1.5
+        SYMBOL         'cirkel_geel'
+        SIZE           12
       END
     END
 
@@ -725,11 +713,8 @@ MAP
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd) (bij benadering)"
       EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          97  184 77
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtgroen_correctie'
+        SIZE           12
       END
     END
 
@@ -737,11 +722,8 @@ MAP
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
       EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          97  184 77
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
       END
     END
 
@@ -749,11 +731,8 @@ MAP
       NAME "Handel en reparatie van auto's (bij benadering)"
       EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          26  170 182
-        WIDTH          1.5
+        SYMBOL         'cirkel_groen_correctie'
+        SIZE           12
       END
     END
 
@@ -761,11 +740,8 @@ MAP
       NAME "Handel en reparatie van auto's"
       EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          26  170 182
-        WIDTH          1.5
+        SYMBOL         'cirkel_groen'
+        SIZE           12
       END
     END
 
@@ -773,11 +749,8 @@ MAP
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf) (bij benadering)"
       EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          21  134 201
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           12
       END
     END
 
@@ -785,11 +758,8 @@ MAP
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
       EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          21  134 201
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
       END
     END
 
@@ -797,11 +767,8 @@ MAP
       NAME "Opslag (bij benadering)"
       EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          47  52  144
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           12
       END
     END
 
@@ -809,11 +776,8 @@ MAP
       NAME "Opslag"
       EXPRESSION ("[q2]" eq "opslag")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          47  52  144
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars'
+        SIZE           12
       END
     END
 
@@ -821,11 +785,8 @@ MAP
       NAME "Vervoer (bij benadering)"
       EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          233 22  139
-        WIDTH          1.5
+        SYMBOL         'cirkel_roze_correctie'
+        SIZE           12
       END
     END
 
@@ -833,22 +794,16 @@ MAP
       NAME "Vervoer"
       EXPRESSION ("[q2]" eq "vervoer")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
-        WIDTH          1.5
+        SYMBOL         'cirkel_roze'
+        SIZE           12
       END
     END
 
     CLASS
       NAME "Onbekend"
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          255 255 255
-        WIDTH          1.5
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
       END
     END
 
@@ -884,7 +839,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR           66  66  66
+        COLOR           0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
