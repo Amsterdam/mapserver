@@ -164,6 +164,18 @@ MAP
     END
 
     CLASS
+      NAME "(bij benadering)"
+      EXPRESSION ("[q1]" eq "bouw" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'stip'
+        SIZE           10
+        OUTLINECOLOR   187 187 187
+        COLOR          241 119 48
+        WIDTH          1.5
+      END
+    END
+
+    CLASS
       NAME "Afwerking van gebouwen (bij benadering)"
       EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
       STYLE
