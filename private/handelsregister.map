@@ -313,7 +313,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR           66  66  66
+        COLOR          0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -361,11 +361,8 @@ MAP
       NAME "Kunst (bij benadering)"
       EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          250 178 49
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtoranje_correctie'
+        SIZE           12
       END
     END
 
@@ -373,11 +370,8 @@ MAP
       NAME "Kunst"
       EXPRESSION ("[q2]" eq "kunst")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          250 178 49
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtoranje'
+        SIZE           12
       END
     END
 
@@ -385,11 +379,8 @@ MAP
       NAME "Musea, Bibliotheken, Kunstuitleen (bij benadering)"
       EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          97  184 77
-        WIDTH          1.5
+        SYMBOL         'cirkel_groen_correctie'
+        SIZE           12
       END
     END
 
@@ -397,11 +388,8 @@ MAP
       NAME "Musea, Bibliotheken, Kunstuitleen"
       EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          97  184 77
-        WIDTH          1.5
+        SYMBOL         'cirkel_groen'
+        SIZE           12
       END
     END
 
@@ -409,11 +397,8 @@ MAP
       NAME "Recreatie (bij benadering)"
       EXPRESSION ("[q2]" eq "recreatie"  && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          13  97  171
-        WIDTH          1.5
+        SYMBOL         'cirkel_donkerblauw_correctie'
+        SIZE           12
       END
     END
 
@@ -421,11 +406,8 @@ MAP
       NAME "Recreatie"
       EXPRESSION ("[q2]" eq "recreatie")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          13  97  171
-        WIDTH          1.5
+        SYMBOL         'cirkel_donkerblauw'
+        SIZE           12
       END
     END
 
@@ -433,11 +415,8 @@ MAP
       NAME "Sport (bij benadering)"
       EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          233 22  139
-        WIDTH          1.5
+        SYMBOL         'cirkel_roze_correctie'
+        SIZE           12
       END
     END
 
@@ -445,22 +424,16 @@ MAP
       NAME "Sport"
       EXPRESSION ("[q2]" eq "sport")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          233 22  139
-        WIDTH          1.5
+        SYMBOL         'cirkel_roze'
+        SIZE           12
       END
     END
 
     CLASS
       NAME "Onbekend"
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          255 255 255
-        WIDTH          1.5
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
       END
     END
 
@@ -497,7 +470,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR           66  66  66
+        COLOR           0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
