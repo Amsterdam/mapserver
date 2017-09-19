@@ -519,11 +519,8 @@ MAP
       NAME "Financiële dienstverlening en verzekeringen (bij benadering)"
       EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           12
       END
     END
 
@@ -531,11 +528,8 @@ MAP
       NAME "Financiële dienstverlening en verzekeringen"
       EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
       END
     END
 
@@ -543,11 +537,8 @@ MAP
       NAME "Holdings (bij benadering)"
       EXPRESSION ("[q2]" eq "holdings" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtgroen_correctie'
+        SIZE           12
       END
     END
 
@@ -555,11 +546,8 @@ MAP
       NAME "Holdings"
       EXPRESSION ("[q2]" eq "holdings")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
       END
     END
 
@@ -567,11 +555,8 @@ MAP
       NAME "Verhuur van- en beheer/handel in onroerend goed (bij benadering)"
       EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          29  174 236
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           12
       END
     END
 
@@ -579,11 +564,8 @@ MAP
       NAME "Verhuur van- en beheer/handel in onroerend goed"
       EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          29  174 236
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
       END
     END
 
@@ -591,11 +573,8 @@ MAP
       NAME "Verhuur van roerende goederen (bij benadering)"
       EXPRESSION ("[q2]" eq "verhuur van roerende goederen" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          117 47 142
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           12
       END
     END
 
@@ -603,22 +582,16 @@ MAP
       NAME "Verhuur van roerende goederen"
       EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          117 47 142
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars'
+        SIZE           12
       END
     END
 
     CLASS
       NAME "Onbekend"
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          255 255 255
-        WIDTH          1.5
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
       END
     END
 
@@ -655,7 +628,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR           66  66  66
+        COLOR           0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
