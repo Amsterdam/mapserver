@@ -1050,7 +1050,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1001
-        COLOR          66   66  66
+        COLOR          0   0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1100,11 +1100,8 @@ MAP
       NAME "Activiteiten  op gebied van film, tv, radio, audio (bij benadering)"
       EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio"  && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           12
       END
     END
 
@@ -1112,11 +1109,8 @@ MAP
       NAME "Activiteiten  op gebied van film, tv, radio, audio"
       EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          241 119 48
-        WIDTH          1.5
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
       END
     END
 
@@ -1124,11 +1118,8 @@ MAP
       NAME "Activiteiten op het gebied van ict (bij benadering)"
       EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict"  && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          183 210 66
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtgroen_correctie'
+        SIZE           12
       END
     END
 
@@ -1136,11 +1127,8 @@ MAP
       NAME "Activiteiten op het gebied van ict"
       EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          183 210 66
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
       END
     END
 
@@ -1148,11 +1136,8 @@ MAP
       NAME "Telecommunicatie (bij benadering)"
       EXPRESSION ("[q2]" eq "telecommunicatie" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          29  174 236
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           12
       END
     END
 
@@ -1160,11 +1145,8 @@ MAP
       NAME "Telecommunicatie"
       EXPRESSION ("[q2]" eq "telecommunicatie")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          29  174 236
-        WIDTH          1.5
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
       END
     END
 
@@ -1172,11 +1154,8 @@ MAP
       NAME "Uitgeverijen (bij benadering)"
       EXPRESSION ("[q2]" eq "uitgeverijen" && '[correctie]' = 't')
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   187 187 187
-        COLOR          117 47  142
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           12
       END
     END
 
@@ -1184,22 +1163,16 @@ MAP
       NAME "Uitgeverijen"
       EXPRESSION ("[q2]" eq "uitgeverijen")
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          117 47  142
-        WIDTH          1.5
+        SYMBOL         'cirkel_paars'
+        SIZE           12
       END
     END
 
     CLASS
       NAME "Onbekend"
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   0 0 0
-        COLOR          255 255 255
-        WIDTH          1.5
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
       END
     END
 
@@ -1238,7 +1211,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR           66  66  66
+        COLOR           0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
@@ -1256,7 +1229,7 @@ MAP
       LABEL
         MINSCALEDENOM  100
         MAXSCALEDENOM  1000
-        COLOR           66  66  66
+        COLOR           0  0  0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
