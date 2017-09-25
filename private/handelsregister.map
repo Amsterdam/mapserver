@@ -141,9 +141,18 @@ MAP
   LAYER
   	NAME "bouw"
   	TYPE POINT
-  	STATUS OFF
+  	MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+  	STATUS DEFAULT
   	CONNECTIONTYPE UNION
   	CONNECTION "bouw_punten,bouw_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	CLASS
+  	END
+  	PROJECTION
+      "init=epsg:28992"
+    END
   END
 
   LAYER
@@ -232,7 +241,6 @@ MAP
         SIZE           12
       END
     END
-
   END
   
   LAYER
@@ -268,7 +276,6 @@ MAP
         SIZE           12
       END
     END
-    
   END
 
   #-----------------------------------------------------------------------------
