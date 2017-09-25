@@ -159,8 +159,6 @@ MAP
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
@@ -247,8 +245,6 @@ MAP
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
     PROJECTION
