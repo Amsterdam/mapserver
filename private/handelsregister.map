@@ -141,12 +141,8 @@ MAP
   LAYER
   	NAME "bouw"
   	GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
   	TYPE POINT
-  	MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-  	STATUS DEFAULT
+  	STATUS OFF
   	CONNECTIONTYPE UNION
   	CONNECTION "bouw_punten,bouw_correcties" # reference to the source layers
   	STYLEITEM "AUTO"
