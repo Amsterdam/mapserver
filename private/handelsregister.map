@@ -141,15 +141,35 @@ MAP
   LAYER
   	NAME "bouw"
   	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
   	TYPE POINT
   	STATUS OFF
   	CONNECTIONTYPE UNION
   	CONNECTION "bouw_punten,bouw_correcties" # reference to the source layers
   	STYLEITEM "AUTO"
-  	CLASS
-  	END
   	PROJECTION
       "init=epsg:28992"
+    END
+    
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
+    METADATA
+      "ows_title"           "bouw_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Bouwbedrijven, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Bij benadering)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
     END
   END
 
