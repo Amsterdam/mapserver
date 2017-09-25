@@ -163,12 +163,11 @@ MAP
       "gml_include_items"   "all"
     END
 
-
     CLASS
-      NAME "Afwerking van gebouwen (bij benadering)"
-      EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
+      NAME "(bij benadering)"
+      EXPRESSION ('[correctie]' = 't')
       STYLE
-        SYMBOL         'cirkel_oranje_correctie'
+        SYMBOL         'cirkel_correctie'
         SIZE           12
       END
     END
@@ -183,28 +182,10 @@ MAP
     END
 
     CLASS
-      NAME "Bouwinstallatie (bij benadering)"
-      EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Bouwinstallatie"
       EXPRESSION ("[q2]" eq "bouwinstallatie")
       STYLE
         SYMBOL         'cirkel_geel'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Bouw/utiliteitsbouw algemeen (bij benadering)"
-      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
         SIZE           12
       END
     END
@@ -219,15 +200,6 @@ MAP
     END
 
     CLASS
-      NAME "Dak- en overige gespecialiseerde bouw (bij benadering)"
-      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Dak- en overige gespecialiseerde bouw"
       EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
       STYLE
@@ -237,28 +209,10 @@ MAP
     END
 
     CLASS
-      NAME "Grond, water, wegenbouw (bij benadering)"
-      EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Grond, water, wegenbouw"
       EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
       STYLE
         SYMBOL         'cirkel_paars'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Overige bouw (bij benadering)"
-      EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
