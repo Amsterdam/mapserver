@@ -893,22 +893,22 @@ MAP
 #=============================================================================
 
   LAYER
-    NAME            "handel_vervoer_opslag"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "handel_vervoer_opslag"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "handel_vervoer_opslag_punten,handel_vervoer_opslag_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "handel_vervoer_opslag"
       "ows_group_title"     "vestigingen_cbs"
@@ -916,30 +916,12 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-
-    CLASS
-      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd) (bij benadering)"
-      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           12
-      END
-    END
-
+    
     CLASS
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
       EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'cirkel_oranje'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Dienstverlening vervoer (bij benadering)"
-      EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
         SIZE           12
       END
     END
@@ -954,28 +936,10 @@ MAP
     END
 
     CLASS
-      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd) (bij benadering)"
-      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
       EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'cirkel_lichtgroen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Handel en reparatie van auto's (bij benadering)"
-      EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
         SIZE           12
       END
     END
@@ -990,15 +954,6 @@ MAP
     END
 
     CLASS
-      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf) (bij benadering)"
-      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
       EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
       STYLE
@@ -1008,28 +963,10 @@ MAP
     END
 
     CLASS
-      NAME "Opslag (bij benadering)"
-      EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Opslag"
       EXPRESSION ("[q2]" eq "opslag")
       STYLE
         SYMBOL         'cirkel_paars'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Vervoer (bij benadering)"
-      EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
@@ -1050,9 +987,149 @@ MAP
         SIZE           12
       END
     END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+  END
+  
+  #-----------------------------------------------------------------------------  
 
+  LAYER
+    NAME            "handel_vervoer_opslag_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "handel_vervoer_opslag_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen, punten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
+      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
+      STYLE
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Dienstverlening vervoer"
+      EXPRESSION ("[q2]" eq "dienstverlening vervoer")
+      STYLE
+        SYMBOL         'cirkel_geel'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
+      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
+      STYLE
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Handel en reparatie van auto's"
+      EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
+      STYLE
+        SYMBOL         'cirkel_groen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
+      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
+      STYLE
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Opslag"
+      EXPRESSION ("[q2]" eq "opslag")
+      STYLE
+        SYMBOL         'cirkel_paars'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Vervoer"
+      EXPRESSION ("[q2]" eq "vervoer")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
   END
 
+  #-----------------------------------------------------------------------------
+  
+  LAYER
+    NAME            "handel_vervoer_opslag_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "handel_vervoer_opslag_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+  END
+  
   #-----------------------------------------------------------------------------
 
   LAYER
@@ -1095,8 +1172,6 @@ MAP
       END
     END
   END
-
-
 
 #=============================================================================
 # CBS indeling horeca
