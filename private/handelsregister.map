@@ -1717,20 +1717,24 @@ MAP
 # CBS indeling landbouw
 #=============================================================================
 
+
   LAYER
-    NAME            "landbouw"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "landbouw"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "landbouw_punten,landbouw_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
     METADATA
       "ows_title"           "Landbouw"
       "ows_group_title"     "vestigingen_cbs"
@@ -1738,30 +1742,13 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-
-    CLASS
-      NAME "Dienstverlening voor de land/tuinbouw (bij benadering)"
-      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           12
-      END
-    END
+    
 
     CLASS
       NAME "Dienstverlening voor de land/tuinbouw"
       EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
       STYLE
         SYMBOL         'cirkel_oranje'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Fokken, houden dieren (bij benadering)"
-      EXPRESSION ("[q2]" eq "fokken, houden dieren" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
         SIZE           12
       END
     END
@@ -1776,28 +1763,10 @@ MAP
     END
 
     CLASS
-      NAME "Gemengd bedrijf (bij benadering)"
-      EXPRESSION ("[q2]" eq "gemengd bedrijf" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Gemengd bedrijf"
       EXPRESSION ("[q2]" eq "gemengd bedrijf")
       STYLE
         SYMBOL         'cirkel_groen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Teelt eenjarige gewassen (bij benadering)"
-      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           12
       END
     END
@@ -1812,28 +1781,10 @@ MAP
     END
 
     CLASS
-      NAME "Teelt meerjarige gewassen (bij benadering)"
-      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Teelt meerjarige gewassen"
       EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
       STYLE
         SYMBOL         'cirkel_paars'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Teelt sierplanten (bij benadering)"
-      EXPRESSION ("[q2]" eq "teelt sierplanten" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
@@ -1854,7 +1805,136 @@ MAP
         SIZE           12
       END
     END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+  END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "landbouw_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Landbouw_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen landbouw organisaties, punten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Dienstverlening voor de land/tuinbouw"
+      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
+      STYLE
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Fokken, houden dieren"
+      EXPRESSION ("[q2]" eq "fokken, houden dieren")
+      STYLE
+        SYMBOL         'cirkel_geel'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Gemengd bedrijf"
+      EXPRESSION ("[q2]" eq "gemengd bedrijf")
+      STYLE
+        SYMBOL         'cirkel_groen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Teelt eenjarige gewassen"
+      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen")
+      STYLE
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Teelt meerjarige gewassen"
+      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
+      STYLE
+        SYMBOL         'cirkel_paars'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Teelt sierplanten"
+      EXPRESSION ("[q2]" eq "teelt sierplanten")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+  END
+  
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "landbouw_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Landbouw_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen landbouw organisaties, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -1900,10 +1980,7 @@ MAP
         OFFSET         -60 10
       END
     END
-
   END
-
-
 
 #=============================================================================
 # CBS indeling overheid, onderwijs, zorg
