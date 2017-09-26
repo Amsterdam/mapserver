@@ -1177,23 +1177,24 @@ MAP
 # CBS indeling horeca
 #=============================================================================
 
+
   LAYER
-    NAME            "horeca"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "horeca"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "horeca_punten,horeca_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "Horeca"
       "ows_group_title"     "vestigingen_cbs"
@@ -1201,30 +1202,13 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-
-    CLASS
-      NAME "Café (bij benadering)"
-      EXPRESSION ("[q2]" eq "café" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           12
-      END
-    END
+    
 
     CLASS
       NAME "Café"
       EXPRESSION ("[q2]" eq "café")
       STYLE
         SYMBOL         'cirkel_oranje'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Cafetaria, Snackbar, IJssalon (bij benadering)"
-      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
         SIZE           12
       END
     END
@@ -1239,28 +1223,10 @@ MAP
     END
 
     CLASS
-      NAME "Hotel, Pension (bij benadering)"
-      EXPRESSION ("[q2]" eq "hotel, pension" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Hotel, Pension"
       EXPRESSION ("[q2]" eq "hotel, pension")
       STYLE
         SYMBOL         'cirkel_lichtgroen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Hotel-restaurant (bij benadering)"
-      EXPRESSION ("[q2]" eq "hotel-restaurant" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           12
       END
     END
@@ -1275,28 +1241,10 @@ MAP
     END
 
     CLASS
-      NAME "Kantine, Catering (bij benadering)"
-      EXPRESSION ("[q2]" eq "kantine, catering" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Kantine, Catering"
       EXPRESSION ("[q2]" eq "kantine, catering")
       STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Restaurant, Café-restaurant (bij benadering)"
-      EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
+        SYMBOL         'cirkel_donkerblauw'
         SIZE           12
       END
     END
@@ -1306,15 +1254,6 @@ MAP
       EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
       STYLE
         SYMBOL         'cirkel_paars'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Overige horeca (bij benadering)"
-      EXPRESSION ("[q2]" eq "overig, te weten" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
@@ -1335,7 +1274,148 @@ MAP
         SIZE           12
       END
     END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+    
+  END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "horeca_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "Horeca_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Horeca vestigingen bezoek, punten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Café"
+      EXPRESSION ("[q2]" eq "café")
+      STYLE
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Cafetaria, Snackbar, IJssalon"
+      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon")
+      STYLE
+        SYMBOL         'cirkel_geel'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Hotel, Pension"
+      EXPRESSION ("[q2]" eq "hotel, pension")
+      STYLE
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Hotel-restaurant"
+      EXPRESSION ("[q2]" eq "hotel-restaurant")
+      STYLE
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Kantine, Catering"
+      EXPRESSION ("[q2]" eq "kantine, catering")
+      STYLE
+        SYMBOL         'cirkel_donkerblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Restaurant, Café-restaurant"
+      EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
+      STYLE
+        SYMBOL         'cirkel_paars'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Overige horeca"
+      EXPRESSION ("[q2]" eq "overig, te weten")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "horeca_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "Horeca_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Horeca vestigingen bezoek, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
