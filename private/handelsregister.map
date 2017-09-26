@@ -41,6 +41,17 @@ MAP
 #   COLOR roodbruin		160 0 0
 #   COLOR rood			236 0 0
 #=============================================================================
+#
+# Opzet is nu: 1 (union) layer, die 2 sub layers (de punten zelf en 
+# de correcties) combineert. Om het mogelijk te maken dat de layer met correcties 
+# over de punten heen gelegd kan worden en dit correctie icoon maar 1 keer in 
+# de legenda staat. 
+#
+# Ivm een mapserver bug dat de legenda van de bouw van deze union layer niet 
+# wordt geleverd, staan de iconen van de punten en correcties ook in de union
+# layer. Ze staan er dus dubbel, zowel in de union layer, als in de sub layers.
+#
+#==============================================================================
 
   LAYER
     NAME            "vestiging"
@@ -153,14 +164,12 @@ MAP
   	PROJECTION
       "init=epsg:28992"
     END
-    
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
-      "ows_title"           "bouw_correcties"
+      "ows_title"           "bouw"
       "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Bouwbedrijven, gecorrigeerd"
+      "ows_abstract"        "Vestigingen van Bouwbedrijven"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -236,6 +245,8 @@ MAP
       END
     END
   END
+
+  #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "bouw_punten"
@@ -325,6 +336,8 @@ MAP
     END
   END
   
+  #-----------------------------------------------------------------------------
+  
   LAYER
     NAME            "bouw_correcties"
     GROUP           "vestigingen_cbs"
@@ -385,7 +398,6 @@ MAP
     FILTER             "B"
     FILTERITEM         "locatie_type"
 
-
     LABELITEM          "naam"
 
     CLASS
@@ -412,7 +424,88 @@ MAP
 #=============================================================================
 
   LAYER
-    NAME            "cultuur_sport_recreatie"
+  	NAME "cultuur_sport_recreatie"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+  	MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "cultuur_sport_recreatie_punten,cultuur_sport_recreatie_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "bouw"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Bouwbedrijven"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "Kunst"
+      EXPRESSION ("[q2]" eq "kunst")
+      STYLE
+        SYMBOL         'cirkel_lichtoranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Musea, Bibliotheken, Kunstuitleen"
+      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
+      STYLE
+        SYMBOL         'cirkel_groen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Recreatie"
+      EXPRESSION ("[q2]" eq "recreatie")
+      STYLE
+        SYMBOL         'cirkel_donkerblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Sport"
+      EXPRESSION ("[q2]" eq "sport")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+    
+    CLASS
+      NAME "(Bij benadering)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+  END
+    
+  #-----------------------------------------------------------------------------
+ 
+  LAYER
+    NAME            "cultuur_sport_recreatie_punten"
     GROUP           "vestigingen_cbs"
     INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
@@ -437,28 +530,10 @@ MAP
     END
 
     CLASS
-      NAME "Kunst (bij benadering)"
-      EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtoranje_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Kunst"
       EXPRESSION ("[q2]" eq "kunst")
       STYLE
         SYMBOL         'cirkel_lichtoranje'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Musea, Bibliotheken, Kunstuitleen (bij benadering)"
-      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
         SIZE           12
       END
     END
@@ -473,28 +548,10 @@ MAP
     END
 
     CLASS
-      NAME "Recreatie (bij benadering)"
-      EXPRESSION ("[q2]" eq "recreatie"  && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Recreatie"
       EXPRESSION ("[q2]" eq "recreatie")
       STYLE
         SYMBOL         'cirkel_donkerblauw'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Sport (bij benadering)"
-      EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
@@ -515,7 +572,43 @@ MAP
         SIZE           12
       END
     END
+  END
+  
+  #-----------------------------------------------------------------------------
+ 
+  LAYER
+    NAME            "cultuur_sport_recreatie_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
 
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+
+    METADATA
+      "ows_title"           "cultuur_sport_recreatie"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van cultuur, sport en recreatie"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Bij benadering)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -560,10 +653,7 @@ MAP
         OFFSET         -60 10
       END
     END
-
   END
-
-
 
 #=============================================================================
 # CBS indeling financiele dienstverlening
