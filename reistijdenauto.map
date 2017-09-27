@@ -1,0 +1,48 @@
+MAP
+  NAME "REISTIJDENAUTO"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"    "reistijdenauto"
+      "ows_abstract" "Reistijden per auto omgeving Amsterdam"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "reistijdenauto"
+    GROUP           "REISTIJDEN"
+    INCLUDE         "connection_reistijdenauto.inc"
+    DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id"
+    TYPE            LINE
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "reistijdenauto"
+      "ows_group_title"     "reistijdenauto"
+      "ows_abstract"        "Reistijden per auto regio Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#ff0000"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+  END
+
+END
