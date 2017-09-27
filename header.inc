@@ -24,6 +24,8 @@
   # CONFIG   "MS_ERRORFILE" stderr
 
   #DEBUG    5
+  # For errors from underlying GDAL (shows SQL query issues) -- is spammy
+  # CONFIG "CPL_DEBUG" "ON"
 
   #=============================================================================
   # MAP: algemeen
