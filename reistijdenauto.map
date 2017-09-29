@@ -6,6 +6,7 @@ MAP
     METADATA
       "ows_title"    "reistijdenauto"
       "ows_abstract" "Reistijden per auto omgeving Amsterdam"
+      "wms_extent"          "100000 450000 150000 500000"
     END
   END
 
@@ -15,7 +16,6 @@ MAP
 
   LAYER
     NAME            "reistijdenauto"
-    GROUP           "REISTIJDEN"
     INCLUDE         "connection_reistijdenauto.inc"
     DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id"
     TYPE            LINE
@@ -34,15 +34,115 @@ MAP
       "gml_include_items"   "all"
     END
 
+# Color ramp from Colorbrewer 2.0 (http://colorbrewer2.org/)
+#ffffe5  # skip, too light
+#f7fcb9  # skip, too light
+#d9f0a3
+#addd8e
+#78c679
+#41ab5d
+#238443
+#006837
+#004529
+
     CLASS
+      NAME "negatieve reistijd"
+      EXPRESSION (([velocity] = 0) AND ([traveltime] < 0))
       STYLE
         WIDTH 3
-        OUTLINECOLOR "#ff0000"
+        OUTLINECOLOR "#f768a1"
         LINECAP BUTT
         LINEJOIN MITER
       END
     END
 
+    CLASS
+      NAME "0 tot 20 Km/h"
+      EXPRESSION (([velocity] >= 0) AND ([velocity] < 20))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#d9f0a3"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "20 tot 40 Km/h"
+      EXPRESSION (([velocity] >= 20) AND ([velocity] < 20))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#addd8e"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "40 tot 60 Km/h"
+      EXPRESSION (([velocity] >= 40) AND ([velocity] < 60))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#78c679"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "60 tot 80 Km/h"
+      EXPRESSION (([velocity] >= 60) AND ([velocity] < 80))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#41ab5d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "80 tot 100 Km/h"
+      EXPRESSION (([velocity] >= 80) AND ([velocity] < 100))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#238443"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "100 tot 120 Km/h"
+      EXPRESSION (([velocity] >= 100) AND ([velocity] < 120))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#006837"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "120 tot 140 Km/h"
+      EXPRESSION (([velocity] >= 120) AND ([velocity] < 140))
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#004529"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "meer dan 140 Km/h"
+      EXPRESSION ([velocity] >= 140)
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#fd8d3c"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
   END
 
 END
