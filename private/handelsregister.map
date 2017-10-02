@@ -3043,22 +3043,22 @@ MAP
 #=============================================================================
 
   LAYER
-    NAME            "overige"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "overige"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "overige_punten,overige_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "Overige"
       "ows_group_title"     "vestigingen_cbs"
@@ -3068,28 +3068,10 @@ MAP
     END
 
     CLASS
-      NAME "Belangenorganisaties (bij benadering)"
-      EXPRESSION ("[q2]" eq "belangenorganisaties" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Belangenorganisaties"
       EXPRESSION ("[q2]" eq "belangenorganisaties")
       STYLE
         SYMBOL         'cirkel_oranje'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Hobbyclubs (bij benadering)"
-      EXPRESSION ("[q2]" eq "hobbyclubs" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
         SIZE           12
       END
     END
@@ -3104,28 +3086,10 @@ MAP
     END
 
     CLASS
-      NAME "Idieële organisaties (bij benadering)"
-      EXPRESSION ("[q2]" eq "idieële organisaties" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Idieële organisaties"
       EXPRESSION ("[q2]" eq "idieële organisaties")
       STYLE
         SYMBOL         'cirkel_groen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Overige (bij benadering)"
-      EXPRESSION ("[q2]" eq "overige" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
         SIZE           12
       END
     END
@@ -3146,7 +3110,120 @@ MAP
         SIZE           12
       END
     END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+  END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "overige_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "Overige_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van overige organisaties, punten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Belangenorganisaties"
+      EXPRESSION ("[q2]" eq "belangenorganisaties")
+      STYLE
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Hobbyclubs"
+      EXPRESSION ("[q2]" eq "hobbyclubs")
+      STYLE
+        SYMBOL         'cirkel_geel'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Idieële organisaties"
+      EXPRESSION ("[q2]" eq "idieële organisaties")
+      STYLE
+        SYMBOL         'cirkel_groen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Overige"
+      EXPRESSION ("[q2]" eq "overige")
+      STYLE
+        SYMBOL         'cirkel_donkerblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "overige_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "Overige_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van overige organisaties, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -3191,7 +3268,6 @@ MAP
         OFFSET         -60 10
       END
     END
-
   END
 
 #=============================================================================
