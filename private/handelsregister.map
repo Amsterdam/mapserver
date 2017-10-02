@@ -2218,9 +2218,9 @@ MAP
     FILTER             "B"
     FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "overheid_onderwijs_zorg"
+      "ows_title"           "persoonlijke dienstverlening"
       "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg"
+      "ows_abstract"        "Vestigingen persoonlijke dienstverlening"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -2464,7 +2464,6 @@ MAP
         OFFSET         -60 10
       END
     END
-
  END
 
 #=============================================================================
@@ -2472,22 +2471,22 @@ MAP
 #=============================================================================
 
   LAYER
-    NAME            "productie_installatie_reparatie"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "productie_installatie_reparatie"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "productie_installatie_reparatie_punten,productie_installatie_reparatie_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "productie_installatie_reparatie"
       "ows_group_title"     "vestigingen_cbs"
@@ -2495,16 +2494,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-
-    CLASS
-      NAME "Installatie (geen bouw) (bij benadering)"
-      EXPRESSION ("[q2]" eq "installatie (geen bouw)" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           12
-      END
-    END
-
+    
     CLASS
       NAME "Installatie (geen bouw)"
       EXPRESSION ("[q2]" eq "installatie (geen bouw)")
@@ -2515,28 +2505,10 @@ MAP
     END
 
     CLASS
-      NAME "Productie (bij benadering)"
-      EXPRESSION ("[q2]" eq "productie" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Productie"
       EXPRESSION ("[q2]" eq "productie")
       STYLE
         SYMBOL         'cirkel_lichtblauw'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Reparatie (geen bouw) (bij benadering)"
-      EXPRESSION ("[q2]" eq "reparatie (geen bouw)" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
@@ -2557,7 +2529,111 @@ MAP
         SIZE           12
       END
     END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+  END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "productie_installatie_reparatie_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "productie_installatie_reparatie_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie, punten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Installatie (geen bouw)"
+      EXPRESSION ("[q2]" eq "installatie (geen bouw)")
+      STYLE
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Productie"
+      EXPRESSION ("[q2]" eq "productie")
+      STYLE
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Reparatie (geen bouw)"
+      EXPRESSION ("[q2]" eq "reparatie (geen bouw)")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "productie_installatie_reparatie_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "productie_installatie_reparatie_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -2603,62 +2679,41 @@ MAP
         OFFSET         -60 10
       END
     END
-
   END
-
-
 
 #=============================================================================
 # CBS indeling zakelijke dienstverlening
 #=============================================================================
 
   LAYER
-    NAME            "zakelijke_dienstverlening"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "zakelijke_dienstverlening"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "zakelijke_dienstverlening_punten,zakelijke_dienstverlening_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "zakelijke_dienstverlening"
       "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening"
       "gml_include_items"   "all"
     END
-
-   CLASS
-      NAME "Accountancy, administratie (bij benadering)"
-      EXPRESSION ("[q2]" eq "accountancy, administratie" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           12
-      END
-    END
-
+    
     CLASS
       NAME "Accountancy, administratie"
       EXPRESSION ("[q2]" eq "accountancy, administratie")
       STYLE
         SYMBOL         'cirkel_oranje'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Advocaten rechtskundige diensten, notarissen (bij benadering)"
-      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
         SIZE           12
       END
     END
@@ -2673,28 +2728,10 @@ MAP
     END
 
     CLASS
-      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus (bij benadering)"
-      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
       EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
       STYLE
         SYMBOL         'cirkel_lichtgroen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Architecten (bij benadering)"
-      EXPRESSION ("[q2]" eq "architecten" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           12
       END
     END
@@ -2709,28 +2746,10 @@ MAP
     END
 
     CLASS
-      NAME "Design (bij benadering)"
-      EXPRESSION ("[q2]" eq "design" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Design"
       EXPRESSION ("[q2]" eq "design")
       STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Interieurarchitecten (bij benadering)"
-      EXPRESSION ("[q2]" eq "interieurarchitecten" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
+        SYMBOL         'cirkel_donkerblauw'
         SIZE           12
       END
     END
@@ -2740,15 +2759,6 @@ MAP
       EXPRESSION ("[q2]" eq "interieurarchitecten")
       STYLE
         SYMBOL         'cirkel_paars'
-        SIZE           12
-      END
-    END
-
-   CLASS
-      NAME "Managementadvies, economisch advies (bij benadering)"
-      EXPRESSION ("[q2]" eq "managementadvies, economisch advies" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_donkerrood_correctie'
         SIZE           12
       END
     END
@@ -2763,28 +2773,10 @@ MAP
     END
 
     CLASS
-      NAME "Public relationsbureaus (bij benadering)"
-      EXPRESSION ("[q2]" eq "public relationsbureaus" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Public relationsbureaus"
       EXPRESSION ("[q2]" eq "public relationsbureaus")
       STYLE
         SYMBOL         'cirkel_roze'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Reclame en Marktonderzoek (bij benadering)"
-      EXPRESSION ("[q2]" eq "reclame en marktonderzoek" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
         SIZE           12
       END
     END
@@ -2799,28 +2791,10 @@ MAP
     END
 
     CLASS
-      NAME "Technisch ontwerp, advies, keuring/research (bij benadering)"
-      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_blauwgroen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Technisch ontwerp, advies, keuring/research"
       EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
       STYLE
         SYMBOL         'cirkel_blauwgroen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Overige zakelijke dienstverlening (bij benadering)"
-      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_lichtoranje_correctie'
         SIZE           12
       END
     END
@@ -2842,6 +2816,181 @@ MAP
       END
     END
 
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+    
+  END
+  
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "zakelijke_dienstverlening_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "zakelijke_dienstverlening_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Zakelijke dienstverlening, punten"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Accountancy, administratie"
+      EXPRESSION ("[q2]" eq "accountancy, administratie")
+      STYLE
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Advocaten rechtskundige diensten, notarissen"
+      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen")
+      STYLE
+        SYMBOL         'cirkel_geel'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
+      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
+      STYLE
+        SYMBOL         'cirkel_lichtgroen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Architecten"
+      EXPRESSION ("[q2]" eq "architecten")
+      STYLE
+        SYMBOL         'cirkel_lichtblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Design"
+      EXPRESSION ("[q2]" eq "design")
+      STYLE
+        SYMBOL         'cirkel_donkerblauw'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Interieurarchitecten"
+      EXPRESSION ("[q2]" eq "interieurarchitecten")
+      STYLE
+        SYMBOL         'cirkel_paars'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Managementadvies, economisch advies"
+      EXPRESSION ("[q2]" eq "managementadvies, economisch advies")
+      STYLE
+        SYMBOL         'cirkel_donkerrood'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Public relationsbureaus"
+      EXPRESSION ("[q2]" eq "public relationsbureaus")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Reclame en Marktonderzoek"
+      EXPRESSION ("[q2]" eq "reclame en marktonderzoek")
+      STYLE
+        SYMBOL         'cirkel_groen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Technisch ontwerp, advies, keuring/research"
+      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
+      STYLE
+        SYMBOL         'cirkel_blauwgroen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Overige zakelijke dienstverlening"
+      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening")
+      STYLE
+        SYMBOL         'cirkel_lichtoranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+  END
+
+#-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "zakelijke_dienstverlening_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "zakelijke_dienstverlening_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Zakelijke dienstverlening, gecorrigeerd"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -2887,9 +3036,7 @@ MAP
         OFFSET         -60 10
       END
     END
-
   END
-
 
 #=============================================================================
 # CBS indeling overig
