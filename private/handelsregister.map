@@ -1717,7 +1717,6 @@ MAP
 # CBS indeling landbouw
 #=============================================================================
 
-
   LAYER
   	NAME "landbouw"
   	GROUP           "vestigingen_cbs"
@@ -1742,7 +1741,6 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-    
 
     CLASS
       NAME "Dienstverlening voor de land/tuinbouw"
@@ -1987,22 +1985,22 @@ MAP
 #=============================================================================
 
   LAYER
-    NAME            "overheid_onderwijs_zorg"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection_handelsregister.inc"
+  	NAME "overheid_onderwijs_zorg"
+  	GROUP           "vestigingen_cbs"
+  	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
+    TYPE POINT
+  	MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-    PROCESSING      CLOSE_CONNECTION=DEFER
-    STATUS          OFF
-    PROJECTION
+  	STATUS OFF
+  	CONNECTIONTYPE UNION
+  	CONNECTION "overheid_onderwijs_zorg_punten,overheid_onderwijs_zorg_correcties" # reference to the source layers
+  	STYLEITEM "AUTO"
+  	PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "overheid_onderwijs_zorg"
       "ows_group_title"     "vestigingen_cbs"
@@ -2010,16 +2008,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-
-    CLASS
-      NAME "Gezondheids- en welzijnszorg (bij benadering)"
-      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           12
-      END
-    END
-
+    
     CLASS
       NAME "Gezondheids- en welzijnszorg"
       EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
@@ -2030,28 +2019,10 @@ MAP
     END
 
     CLASS
-      NAME "Onderwijs (bij benadering)"
-      EXPRESSION ("[q2]" eq "onderwijs" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           12
-      END
-    END
-
-    CLASS
       NAME "Onderwijs"
       EXPRESSION ("[q2]" eq "onderwijs")
       STYLE
         SYMBOL         'cirkel_groen'
-        SIZE           12
-      END
-    END
-
-    CLASS
-      NAME "Overheid (bij benadering)"
-      EXPRESSION ("[q2]" eq "overheid" && '[correctie]' = 't')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
         SIZE           12
       END
     END
@@ -2072,7 +2043,112 @@ MAP
         SIZE           12
       END
     END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
+    
+  END
+    
+  #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "overheid_onderwijs_zorg_punten"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "overheid_onderwijs_zorg_punten"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg, punten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME "Gezondheids- en welzijnszorg"
+      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
+      STYLE
+        SYMBOL         'cirkel_oranje'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onderwijs"
+      EXPRESSION ("[q2]" eq "onderwijs")
+      STYLE
+        SYMBOL         'cirkel_groen'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Overheid"
+      EXPRESSION ("[q2]" eq "overheid")
+      STYLE
+        SYMBOL         'cirkel_roze'
+        SIZE           12
+      END
+    END
+
+    CLASS
+      NAME "Onbekend"
+      STYLE
+        SYMBOL         'cirkel_onbekend'
+        SIZE           12
+      END
+    END
+  END
+  
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "overheid_onderwijs_zorg_correcties"
+    GROUP           "vestigingen_cbs"
+    INCLUDE         "connection_handelsregister.inc"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    PROCESSING      CLOSE_CONNECTION=DEFER
+    STATUS          OFF
+    PROJECTION
+      "init=epsg:28992"
+    END
+    FILTER             "B"
+    FILTERITEM         "locatie_type"
+    METADATA
+      "ows_title"           "overheid_onderwijs_zorg_correcties"
+      "ows_group_title"     "vestigingen_cbs"
+      "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg, gecorrigeerd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME "(Locatie geschat)"
+      EXPRESSION ('[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_correctie'
+        SIZE           12
+      END
+    END
   END
 
   #-----------------------------------------------------------------------------
@@ -2119,8 +2195,6 @@ MAP
       END
     END
   END
-
-
 
 #=============================================================================
 # CBS indeling persoonlijke dienstverlening
