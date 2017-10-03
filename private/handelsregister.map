@@ -22,8 +22,6 @@ MAP
     END
   END
 
-
-
 #=============================================================================
 # LAYERS
 # Kleuren zijn voor alle layers hetzelfde! De (nieuwe) Amsterdamse standaard kleuren
@@ -47,7 +45,7 @@ MAP
 # over de punten heen gelegd kan worden en dit correctie icoon maar 1 keer in 
 # de legenda staat. 
 #
-# Ivm een mapserver bug dat de legenda van de bouw van deze union layer niet 
+# Ivm een mapserver bug dat de legenda van deze union layer niet 
 # wordt geleverd, staan de iconen van de punten en correcties ook in de union
 # layer. Ze staan er dus dubbel, zowel in de union layer, als in de sub layers.
 #
@@ -67,7 +65,6 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "vestiging"
       "ows_group_title"     "vestigingen"
@@ -113,17 +110,14 @@ MAP
     MAXSCALEDENOM   1001
     PROCESSING      CLOSE_CONNECTION=DEFER
     STATUS          OFF
-
     #PROJECTION
     #  "init=epsg:28992"
     #END
-
     METADATA
       "ows_title"           "vestiging_label"
       "ows_group_title"     "vestigingen_label"
       "ows_abstract"        "Labels van vestigingslocaties, bezoek- en postadressen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -140,10 +134,7 @@ MAP
         ANTIALIAS      true
       END
     END
-
   END
-
-
 
 #=============================================================================
 # CBS indeling bouw
@@ -261,10 +252,8 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "bouw_punten"
       "ows_group_title"     "vestigingen_cbs"
@@ -351,10 +340,8 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "bouw_correcties"
       "ows_group_title"     "vestigingen_cbs"
@@ -388,16 +375,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "bouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     LABELITEM          "naam"
 
     CLASS
@@ -624,16 +608,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "cultuur_sport_recreatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -856,16 +837,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "financiele_dienstverlening_verhuur_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -883,10 +861,7 @@ MAP
         OFFSET         -60 10
       END
     END
-
   END
-
-
 
 #=============================================================================
 # CBS indeling handel, vervoer, opslag
@@ -1145,10 +1120,8 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "handel_vervoer_opslag_label"
       "ows_group_title"     "vestigingen_cbs_label"
@@ -1281,7 +1254,6 @@ MAP
         SIZE           12
       END
     END
-    
   END
 
   #-----------------------------------------------------------------------------
@@ -1431,16 +1403,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "horeca_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -1664,10 +1633,8 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "telecommunicatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
@@ -1829,7 +1796,6 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "Landbouw_punten"
       "ows_group_title"     "vestigingen_cbs"
@@ -1916,7 +1882,6 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "Landbouw_correcties"
       "ows_group_title"     "vestigingen_cbs"
@@ -2161,16 +2126,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "overheid_onderwijs_zorg_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     LABELITEM          "naam"
 
     CLASS
@@ -2411,16 +2373,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "persoonlijke_dienstverlening_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
@@ -2645,16 +2604,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "productie_installatie_reparatie_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     LABELITEM          "naam"
 
     CLASS
@@ -3233,16 +3189,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "overige_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     LABELITEM          "naam"
 
     CLASS
