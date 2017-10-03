@@ -1950,17 +1950,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
     METADATA
       "ows_title"           "landbouw_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
-
     LABELITEM          "naam"
 
     CLASS
@@ -2052,7 +2048,6 @@ MAP
         SIZE           12
       END
     END
-    
   END
     
   #-----------------------------------------------------------------------------
@@ -2175,7 +2170,6 @@ MAP
 
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
 
     LABELITEM          "naam"
 
@@ -2661,7 +2655,6 @@ MAP
     FILTER             "B"
     FILTERITEM         "locatie_type"
 
-
     LABELITEM          "naam"
 
     CLASS
@@ -2706,6 +2699,7 @@ MAP
       "ows_title"           "zakelijke_dienstverlening"
       "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
     
@@ -2848,6 +2842,7 @@ MAP
       "ows_title"           "zakelijke_dienstverlening_punten"
       "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening, punten"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
@@ -2980,6 +2975,7 @@ MAP
       "ows_title"           "zakelijke_dienstverlening_correcties"
       "ows_group_title"     "vestigingen_cbs"
       "ows_abstract"        "Vestigingen van Zakelijke dienstverlening, gecorrigeerd"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
     
@@ -3008,17 +3004,13 @@ MAP
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
       "ows_title"           "zakelijke_dienstverlening_label"
       "ows_group_title"     "vestigingen_cbs_label"
       "ows_abstract"        "Labels van vestigingen"
     END
-
     FILTER             "B"
     FILTERITEM         "locatie_type"
-
-
     LABELITEM          "naam"
 
     CLASS
