@@ -26,6 +26,11 @@ MAP
   # LAYERS
   #============================================================================= 
 
+  LEGEND
+  	STATUS ON
+  	KEYSIZE 16 16
+  END
+
   LAYER
     NAME            "peilmerk"
     GROUP           "NAP"
@@ -49,16 +54,8 @@ MAP
 
     CLASS
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap5_geel'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap5_geel'
-        SIZE           14
+        SIZE           16
       END
     END
   END
@@ -140,16 +137,8 @@ MAP
       NAME "lager dan -1,5 m"
       EXPRESSION ([hoogte] < -1.5)
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap1_donkerblauw'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap1_donkerblauw'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -157,17 +146,8 @@ MAP
       NAME "-1,5 m tot -0,5 m"
       EXPRESSION (([hoogte] >= -1.5) AND ([hoogte] < -0.5))
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap2_lichtblauw'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant'
-        SYMBOL         'vierkant_trap2_lichtblauw'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -175,16 +155,8 @@ MAP
       NAME "-0,5 m tot 0 m"
       EXPRESSION (([hoogte] >= -0.5) AND ([hoogte] < 0))
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap3_lichtblauwgroen'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap3_lichtblauwgroen'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -192,16 +164,8 @@ MAP
       NAME "0 m tot 1 m"
       EXPRESSION (([hoogte] >= 0) AND ([hoogte] < 1))
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap4_lichtgroen'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap4_lichtgroen'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -209,16 +173,8 @@ MAP
       NAME "1 m tot 1,5 m"
       EXPRESSION (([hoogte] >= 1) AND ([hoogte] < 1.5))
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap5_geel'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap5_geel'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -226,16 +182,8 @@ MAP
       NAME "1,5 m tot 2 m"
       EXPRESSION (([hoogte] >= 1.5) AND ([hoogte] < 2))
       STYLE
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         SYMBOL         'vierkant_trap6_geeloranje'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap6_geeloranje'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -243,16 +191,8 @@ MAP
       NAME "2 m tot 3,5 m"
       EXPRESSION (([hoogte] >= 2) AND ([hoogte] < 3.5))
       STYLE
-        MINSCALEDENOM   100
-        MAXSCALEDENOM   8000
         SYMBOL         'vierkant_trap7_oranje'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap7_oranje'
-        SIZE           14
+        SIZE           16
       END
     END
 
@@ -260,16 +200,8 @@ MAP
       NAME "hoger dan 3,5 m"
       EXPRESSION ([hoogte] >= 3.5)
       STYLE
-        MINSCALEDENOM   100
-        MAXSCALEDENOM   8000
         SYMBOL         'vierkant_trap8_rood'
-        SIZE           12
-      END
-      STYLE
-        MINSCALEDENOM  8000
-        MAXSCALEDENOM  15001
-        SYMBOL         'vierkant_trap8_rood'
-        SIZE           14
+        SIZE           16
       END
     END
 
