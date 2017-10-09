@@ -40,8 +40,8 @@ MAP
 #   COLOR rood			236 0 0
 #=============================================================================
 #
-# Opzet is nu: 1 (union) layer, die 2 sub layers (de punten zelf en 
-# de correcties) combineert. Om het mogelijk te maken dat de layer met correcties 
+# Opzet is nu: 1 (union) layer, die 1 sub layer (de punten zelf en 
+# de correcties) toont. Om het mogelijk te maken dat de layer met correcties 
 # over de punten heen gelegd kan worden en dit correctie icoon maar 1 keer in 
 # de legenda staat. 
 #
@@ -155,7 +155,7 @@ MAP
     MAXSCALEDENOM   10001
   	STATUS OFF
   	CONNECTIONTYPE UNION
-  	CONNECTION "bouw_punten" # reference to the source layers
+  	CONNECTION "bouw_punten" #reference to the source layers
   	STYLEITEM "AUTO"
   	PROJECTION
       "init=epsg:28992"
@@ -260,7 +260,7 @@ MAP
     END
 
     CLASS
-      NAME "Afwerking van gebouwen"
+      NAME "Afwerking van gebouwen, gecorrigeerd"
       EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
@@ -278,7 +278,7 @@ MAP
     END
 
     CLASS
-      NAME "Bouwinstallatie"
+      NAME "Bouwinstallatie, gecorrigeerd"
       EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 't')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
@@ -296,7 +296,7 @@ MAP
     END
 
     CLASS
-      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
+      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf, gecorrigeerd"
       EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 't')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
@@ -314,7 +314,7 @@ MAP
     END
 
     CLASS
-      NAME "Dak- en overige gespecialiseerde bouw"
+      NAME "Dak- en overige gespecialiseerde bouw, gecorrigeerd"
       EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
@@ -332,7 +332,7 @@ MAP
     END
 
     CLASS
-      NAME "Grond, water, wegenbouw"
+      NAME "Grond, water, wegenbouw, gecorrigeerd"
       EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
@@ -350,7 +350,7 @@ MAP
     END
 
     CLASS
-      NAME "Overige bouw"
+      NAME "Overige bouw, gecorrigeerd"
       EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 't')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
@@ -405,7 +405,7 @@ MAP
       NAME "(Locatie geschat)"
       EXPRESSION ('[correctie]' = 't')
       STYLE
-        SYMBOL         'cirkel_correctie_punt'
+        SYMBOL         'cirkel_correctie'
         SIZE           16
       END
     END
@@ -468,7 +468,7 @@ MAP
     MAXSCALEDENOM   10001
   	STATUS OFF
   	CONNECTIONTYPE UNION
-  	CONNECTION "cultuur_sport_recreatie_punten,cultuur_sport_recreatie_correcties" # reference to the source layers
+  	CONNECTION "cultuur_sport_recreatie_punten" # reference to the source layers
   	STYLEITEM "AUTO"
   	PROJECTION
       "init=epsg:28992"
@@ -518,20 +518,12 @@ MAP
         SIZE           16
       END
     END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
     
     CLASS
       NAME "(Locatie geschat)"
       EXPRESSION ('[correctie]' = 't')
       STYLE
-        SYMBOL         'cirkel_correctie'
+        SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
       END
     END
@@ -563,10 +555,28 @@ MAP
     END
 
     CLASS
+      NAME "Kunst, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtoranje_correctie'
+        SIZE           16
+      END
+    END
+    
+    CLASS
       NAME "Kunst"
       EXPRESSION ("[q2]" eq "kunst")
       STYLE
         SYMBOL         'cirkel_lichtoranje'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Musea, Bibliotheken, Kunstuitleen, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_groen_correctie'
         SIZE           16
       END
     END
@@ -581,6 +591,15 @@ MAP
     END
 
     CLASS
+      NAME "Recreatie, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "recreatie" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_donkerblauw_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Recreatie"
       EXPRESSION ("[q2]" eq "recreatie")
       STYLE
@@ -589,6 +608,15 @@ MAP
       END
     END
 
+    CLASS
+      NAME "Sport, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_roze_correctie'
+        SIZE           16
+      END
+    END
+    
     CLASS
       NAME "Sport"
       EXPRESSION ("[q2]" eq "sport")
@@ -699,7 +727,7 @@ MAP
     MAXSCALEDENOM   10001
   	STATUS OFF
   	CONNECTIONTYPE UNION
-  	CONNECTION "financiele_dienstverlening_verhuur_punten,financiele_dienstverlening_verhuur_correcties" # reference to the source layers
+  	CONNECTION "financiele_dienstverlening_verhuur_punten" # reference to the source layers
   	STYLEITEM "AUTO"
   	PROJECTION
       "init=epsg:28992"
@@ -749,20 +777,12 @@ MAP
         SIZE           16
       END
     END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
     
     CLASS
       NAME "(Locatie geschat)"
       EXPRESSION ('[correctie]' = 't')
       STYLE
-        SYMBOL         'cirkel_correctie'
+        SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
       END
     END
@@ -794,6 +814,15 @@ MAP
     FILTERITEM         "locatie_type"
 
     CLASS
+      NAME "Financiële dienstverlening en verzekeringen, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Financiële dienstverlening en verzekeringen"
       EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen")
       STYLE
@@ -802,6 +831,15 @@ MAP
       END
     END
 
+    CLASS
+      NAME "Holdings, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "holdings" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtgroen_correctie'
+        SIZE           16
+      END
+    END
+    
     CLASS
       NAME "Holdings"
       EXPRESSION ("[q2]" eq "holdings")
@@ -812,6 +850,15 @@ MAP
     END
 
     CLASS
+      NAME "Verhuur van- en beheer/handel in onroerend goed, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           16
+      END
+    END
+    
+	CLASS
       NAME "Verhuur van- en beheer/handel in onroerend goed"
       EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
@@ -820,6 +867,15 @@ MAP
       END
     END
 
+    CLASS
+      NAME "Verhuur van roerende goederen, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "verhuur van roerende goederen" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           16
+      END
+    END
+    
     CLASS
       NAME "Verhuur van roerende goederen"
       EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
@@ -915,7 +971,7 @@ MAP
   END
 
 #=============================================================================
-# CBS indeling handel, vervoer, opslag
+# CBS indeling handel, vervoer, opslag / hier verder @nico
 #=============================================================================
 
   LAYER
