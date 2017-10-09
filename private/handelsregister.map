@@ -155,7 +155,7 @@ MAP
     MAXSCALEDENOM   10001
   	STATUS OFF
   	CONNECTIONTYPE UNION
-  	CONNECTION "bouw_punten,bouw_correcties" # reference to the source layers
+  	CONNECTION "bouw_punten" # reference to the source layers
   	STYLEITEM "AUTO"
   	PROJECTION
       "init=epsg:28992"
@@ -223,14 +223,6 @@ MAP
         SIZE           16
       END
     END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
     
     CLASS
       NAME "(Locatie geschat)"
@@ -269,6 +261,15 @@ MAP
 
     CLASS
       NAME "Afwerking van gebouwen"
+      EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Afwerking van gebouwen"
       EXPRESSION ("[q2]" eq "afwerking van gebouwen")
       STYLE
         SYMBOL         'cirkel_oranje'
@@ -278,9 +279,27 @@ MAP
 
     CLASS
       NAME "Bouwinstallatie"
+      EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_geel_correctie'
+        SIZE           16
+      END
+    END
+    
+	CLASS
+      NAME "Bouwinstallatie"
       EXPRESSION ("[q2]" eq "bouwinstallatie")
       STYLE
         SYMBOL         'cirkel_geel'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
+      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_groen_correctie'
         SIZE           16
       END
     END
@@ -296,6 +315,15 @@ MAP
 
     CLASS
       NAME "Dak- en overige gespecialiseerde bouw"
+      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           16
+      END
+    END
+    
+    CLASS
+      NAME "Dak- en overige gespecialiseerde bouw"
       EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
       STYLE
         SYMBOL         'cirkel_lichtblauw'
@@ -305,6 +333,15 @@ MAP
 
     CLASS
       NAME "Grond, water, wegenbouw"
+      EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           16
+      END
+    END
+    
+    CLASS
+      NAME "Grond, water, wegenbouw"
       EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
       STYLE
         SYMBOL         'cirkel_paars'
@@ -312,6 +349,15 @@ MAP
       END
     END
 
+    CLASS
+      NAME "Overige bouw"
+      EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_roze_correctie'
+        SIZE           16
+      END
+    END
+    
     CLASS
       NAME "Overige bouw"
       EXPRESSION ("[q2]" eq "bouw overig")
