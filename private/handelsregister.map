@@ -971,11 +971,11 @@ MAP
   END
 
 #=============================================================================
-# CBS indeling handel, vervoer, opslag / hier verder @nico
+# CBS indeling handel, vervoer, opslag
 #=============================================================================
 
   LAYER
-  	NAME "handel_vervoer_opslag"
+  	NAME 			"handel_vervoer_opslag"
   	GROUP           "vestigingen_cbs"
   	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
@@ -984,7 +984,7 @@ MAP
     MAXSCALEDENOM   10001
   	STATUS OFF
   	CONNECTIONTYPE UNION
-  	CONNECTION "handel_vervoer_opslag_punten,handel_vervoer_opslag_correcties" # reference to the source layers
+  	CONNECTION "handel_vervoer_opslag_punten" # reference to the source layers
   	STYLEITEM "AUTO"
   	PROJECTION
       "init=epsg:28992"
@@ -1061,20 +1061,12 @@ MAP
         SIZE           16
       END
     END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
     
     CLASS
       NAME "(Locatie geschat)"
       EXPRESSION ('[correctie]' = 't')
       STYLE
-        SYMBOL         'cirkel_correctie'
+        SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
       END
     END
@@ -1106,10 +1098,28 @@ MAP
     END
 
     CLASS
+      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd), gecorrigeerd"
+      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
       EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'cirkel_oranje'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Dienstverlening vervoer, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_geel_correctie'
         SIZE           16
       END
     END
@@ -1124,10 +1134,28 @@ MAP
     END
 
     CLASS
+      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd), gecorrigeerd"
+      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtgroen_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
       EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
       STYLE
         SYMBOL         'cirkel_lichtgroen'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Handel en reparatie van auto's, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_groen_correctie'
         SIZE           16
       END
     END
@@ -1142,6 +1170,15 @@ MAP
     END
 
     CLASS
+      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf), gecorrigeerd"
+      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtblauw_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
       EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
       STYLE
@@ -1151,10 +1188,28 @@ MAP
     END
 
     CLASS
+      NAME "Opslag, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Opslag"
       EXPRESSION ("[q2]" eq "opslag")
       STYLE
         SYMBOL         'cirkel_paars'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Vervoer, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_roze_correctie'
         SIZE           16
       END
     END
@@ -1258,7 +1313,7 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME "horeca"
+  	NAME 			"horeca"
   	GROUP           "vestigingen_cbs"
   	INCLUDE         "connection_handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
@@ -1267,7 +1322,7 @@ MAP
     MAXSCALEDENOM   10001
   	STATUS OFF
   	CONNECTIONTYPE UNION
-  	CONNECTION "horeca_punten,horeca_correcties" # reference to the source layers
+  	CONNECTION "horeca_punten" # reference to the source layers
   	STYLEITEM "AUTO"
   	PROJECTION
       "init=epsg:28992"
@@ -1344,20 +1399,12 @@ MAP
         SIZE           16
       END
     END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
     
     CLASS
       NAME "(Locatie geschat)"
       EXPRESSION ('[correctie]' = 't')
       STYLE
-        SYMBOL         'cirkel_correctie'
+        SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
       END
     END
@@ -1389,10 +1436,28 @@ MAP
     END
 
     CLASS
+      NAME "Café, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "café" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_oranje_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Café"
       EXPRESSION ("[q2]" eq "café")
       STYLE
         SYMBOL         'cirkel_oranje'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Cafetaria, Snackbar, IJssalon, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_geel_correctie'
         SIZE           16
       END
     END
@@ -1407,10 +1472,28 @@ MAP
     END
 
     CLASS
+      NAME "Hotel, Pension, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "hotel, pension" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtgroen_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Hotel, Pension"
       EXPRESSION ("[q2]" eq "hotel, pension")
       STYLE
         SYMBOL         'cirkel_lichtgroen'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Hotel-restaurant, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "hotel-restaurant" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
       END
     END
@@ -1425,6 +1508,15 @@ MAP
     END
 
     CLASS
+      NAME "Kantine, Catering, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "kantine, catering" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_donkerblauw_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Kantine, Catering"
       EXPRESSION ("[q2]" eq "kantine, catering")
       STYLE
@@ -1434,10 +1526,28 @@ MAP
     END
 
     CLASS
+      NAME "Restaurant, Café-restaurant, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_paars_correctie'
+        SIZE           16
+      END
+    END
+
+    CLASS
       NAME "Restaurant, Café-restaurant"
       EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
       STYLE
         SYMBOL         'cirkel_paars'
+        SIZE           16
+      END
+    END
+
+    CLASS
+      NAME "Overige horeca, gecorrigeerd"
+      EXPRESSION ("[q2]" eq "overig, te weten" && '[correctie]' = 't')
+      STYLE
+        SYMBOL         'cirkel_roze_correctie'
         SIZE           16
       END
     END
@@ -1538,7 +1648,7 @@ MAP
   END
 
 #=============================================================================
-# CBS indeling telecommunicatie
+# CBS indeling telecommunicatie @nico
 #=============================================================================
 
   LAYER
