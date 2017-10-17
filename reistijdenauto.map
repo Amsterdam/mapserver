@@ -17,7 +17,7 @@ MAP
   LAYER
     NAME            "reistijdenauto"
     INCLUDE         "connection_reistijdenauto.inc"
-    DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id ORDER BY velocity DESC"
+    DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id ORDER BY velocity ASC"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
