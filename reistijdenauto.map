@@ -47,8 +47,8 @@ MAP
 #004529
 
     CLASS
-      NAME "negatieve reistijd"
-      #EXPRESSION (([velocity] = 0) AND ([traveltime] < 0))
+      NAME "0 km/h"
+      EXPRESSION ([velocity] < 0)
       STYLE
         WIDTH 3
         OUTLINECOLOR "#f768a1"
@@ -58,8 +58,8 @@ MAP
     END
 
     CLASS
-      NAME "0 tot 20 km/h"
-      EXPRESSION (([velocity] >= 0) AND ([velocity] < 20))
+      NAME "1 tot 20 km/h"
+      EXPRESSION (([velocity] > 0) AND ([velocity] < 20))
       STYLE
         WIDTH 3
         OUTLINECOLOR "#d9f0a3"
