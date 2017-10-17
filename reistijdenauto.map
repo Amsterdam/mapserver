@@ -17,7 +17,7 @@ MAP
   LAYER
     NAME            "reistijdenauto"
     INCLUDE         "connection_reistijdenauto.inc"
-    DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id ORDER BY velocity ASC"
+    DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
@@ -48,12 +48,11 @@ MAP
 
 
 
-
     CLASS
       NAME "1 tot 20 km/h"
       EXPRESSION (([velocity] > 0) AND ([velocity] < 20))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#d9f0a3"
         LINECAP BUTT
         LINEJOIN MITER
@@ -64,7 +63,7 @@ MAP
       NAME "20 tot 40 km/h"
       EXPRESSION (([velocity] >= 20) AND ([velocity] < 40))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#addd8e"
         LINECAP BUTT
         LINEJOIN MITER
@@ -75,7 +74,7 @@ MAP
       NAME "40 tot 60 km/h"
       EXPRESSION (([velocity] >= 40) AND ([velocity] < 60))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#78c679"
         LINECAP BUTT
         LINEJOIN MITER
@@ -86,7 +85,7 @@ MAP
       NAME "60 tot 80 km/h"
       EXPRESSION (([velocity] >= 60) AND ([velocity] < 80))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#41ab5d"
         LINECAP BUTT
         LINEJOIN MITER
@@ -97,7 +96,7 @@ MAP
       NAME "80 tot 100 km/h"
       EXPRESSION (([velocity] >= 80) AND ([velocity] < 100))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#238443"
         LINECAP BUTT
         LINEJOIN MITER
@@ -108,7 +107,7 @@ MAP
       NAME "100 tot 120 km/h"
       EXPRESSION (([velocity] >= 100) AND ([velocity] < 120))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#006837"
         LINECAP BUTT
         LINEJOIN MITER
@@ -119,7 +118,7 @@ MAP
       NAME "120 tot 140 km/h"
       EXPRESSION (([velocity] >= 120) AND ([velocity] < 140))
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#004529"
         LINECAP BUTT
         LINEJOIN MITER
@@ -130,7 +129,7 @@ MAP
       NAME "meer dan 140 km/h"
       EXPRESSION ([velocity] >= 140)
       STYLE
-        WIDTH 3
+        WIDTH 5
         OUTLINECOLOR "#fd8d3c"
         LINECAP BUTT
         LINEJOIN MITER
@@ -138,16 +137,16 @@ MAP
     END
 
 
-  #  CLASS
-  #    NAME "0 km/h"
-  #    EXPRESSION ([velocity] <= 0)
-  #    STYLE
-  #      WIDTH 3
-  #      OUTLINECOLOR "#f768a1"
-  #      LINECAP BUTT
-  #      LINEJOIN MITER
-  #    END
-  #  END
+    CLASS
+      NAME "0 km/h"
+      EXPRESSION ([velocity] <= 0)
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#333333"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
 
   END
 
