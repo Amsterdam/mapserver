@@ -48,7 +48,7 @@ MAP
 
     CLASS
       NAME "negatieve reistijd"
-      EXPRESSION (([velocity] = 0) AND ([traveltime] < 0))
+      #EXPRESSION (([velocity] = 0) AND ([traveltime] < 0))
       STYLE
         WIDTH 3
         OUTLINECOLOR "#f768a1"
@@ -70,7 +70,7 @@ MAP
 
     CLASS
       NAME "20 tot 40 km/h"
-      EXPRESSION (([velocity] >= 20) AND ([velocity] < 20))
+      EXPRESSION (([velocity] >= 20) AND ([velocity] < 40))
       STYLE
         WIDTH 3
         OUTLINECOLOR "#addd8e"
