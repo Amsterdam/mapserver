@@ -49,8 +49,8 @@ MAP
 
 
     CLASS
-      NAME "1 tot 20 km/h"
-      EXPRESSION (([velocity] > 0) AND ([velocity] < 20))
+      NAME "0 tot 20 km/h"
+      EXPRESSION (([velocity] >= 0) AND ([velocity] < 20))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#d9f0a3"
@@ -139,7 +139,7 @@ MAP
 
     CLASS
       NAME "0 km/h"
-      EXPRESSION ([velocity] <= 0)
+      EXPRESSION ([velocity] < 0)
       STYLE
         WIDTH 1
         OUTLINECOLOR "#999999"
