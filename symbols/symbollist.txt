@@ -16,6 +16,10 @@ SYMBOLSET
 
 
 
+#==============================================================================
+# inline-constructed icons
+#==============================================================================
+
 SYMBOL
   NAME      "stip"
   TYPE      ellipse
@@ -26,98 +30,261 @@ SYMBOL
 END
 
 SYMBOL
+  NAME      "vierkant"
+  TYPE      vector
+  POINTS
+    0 0
+    0 4
+    4 4
+    4 0
+    0 0
+  END
+  FILLED    true
+END
+
+SYMBOL
+  NAME "cross"
+  TYPE vector
+  POINTS
+    2.0 0.0
+    2.0 4.0
+    -99 -99
+    0.0 2.0
+    4.0 2.0
+  END
+  FILLED    true
+END
+
+SYMBOL
+  NAME "kruis"
+  TYPE vector
+  POINTS
+    2.0 0.0
+    2.0 4.0
+    -99 -99
+    0.0 2.0
+    4.0 2.0
+  END
+  FILLED   false
+END
+
+SYMBOL
+  NAME "pentagon"
+  TYPE vector
+  POINTS
+    0  -5
+    -5 -2
+    -3 4
+    3  4
+    5 -2
+  END
+  FILLED    true
+END
+
+SYMBOL
+  NAME      "driehoek"
+  TYPE      vector
+  POINTS
+    0 0
+    4 0
+    2 3.54
+    0 0
+  END
+  FILLED    true
+END
+
+SYMBOL
+  NAME      "chess"
+  TYPE      vector
+  FILLED    true
+  POINTS
+    0 0
+    1 0
+    1 1
+    0 1
+    0 0
+    -99 -99
+    1 1
+    2 1
+    2 2
+    1 2
+    1 1
+  END
+END
+
+SYMBOL
+  NAME      "chess2"
+  TYPE      vector
+  FILLED    true
+  POINTS
+    0 0
+    1 0
+    1 1
+    0 1
+    0 0
+    -99 -99
+    2 1
+    3 1
+    3 2
+    2 2
+    2 1
+    -99 -99
+    0 2
+    1 2
+    1 3
+    0 3
+    0 2
+    -99 -99
+    2 3
+    4 3
+    4 4
+    2 4
+    2 3
+  END
+END
+
+SYMBOL
+  NAME      "hatchsymbol"
+  TYPE      hatch
+END
+
+SYMBOL
+  NAME      "linelinesymbol"
+  TYPE      vector
+  FILLED    true
+  POINTS
+    # Full line
+    0 3
+    12 3
+    12 4
+    0 4
+    0 3
+    # Half line
+    1 7
+    6 7
+    6 8
+    1 8
+    1 7
+    -99 -99
+    # Half line
+    7 7
+    11 7
+    11 8
+    7 8
+    7 7
+    -99 -99
+    # Half line
+    1 11
+    6 11
+    6 12
+    1 12
+    1 11
+    -99 -99
+    7 11
+    11 11
+    11 12
+    7 12
+    7 11
+  END
+END
+
+
+
+#==============================================================================
+# stipdash
+#==============================================================================
+
+SYMBOL
   NAME      "dashstip"
   TYPE      SVG
-  IMAGE     "dashstip.svg"
+  IMAGE     "stipdash/dashstip.svg"
 END
 
 SYMBOL
   NAME      "dash1"
   TYPE      SVG
-  IMAGE     "stipdash1.svg"
+  IMAGE     "stipdash/stipdash1.svg"
 END
 
 SYMBOL
   NAME      "dash2"
   TYPE      SVG
-  IMAGE     "stipdash2.svg"
+  IMAGE     "stipdash/stipdash2.svg"
 END
 
 SYMBOL
   NAME      "dash3"
   TYPE      SVG
-  IMAGE     "stipdash3.svg"
+  IMAGE     "stipdash/stipdash3.svg"
 END
 
 SYMBOL
   NAME      "dash4"
   TYPE      SVG
-  IMAGE     "stipdash4.svg"
+  IMAGE     "stipdash/stipdash4.svg"
 END
 
 SYMBOL
   NAME      "dash5"
   TYPE      SVG
-  IMAGE     "stipdash5.svg"
+  IMAGE     "stipdash/stipdash5.svg"
 END
 
 SYMBOL
   NAME      "dash6"
   TYPE      SVG
-  IMAGE     "stipdash6.svg"
+  IMAGE     "stipdash/stipdash6.svg"
 END
 
 SYMBOL
   NAME      "dash7"
   TYPE      SVG
-  IMAGE     "stipdash7.svg"
+  IMAGE     "stipdash/stipdash7.svg"
 END
 
 SYMBOL
   NAME      "dash8"
   TYPE      SVG
-  IMAGE     "stipdash8.svg"
+  IMAGE     "stipdash/stipdash8.svg"
 END
 
 SYMBOL
   NAME      "dash9"
   TYPE      SVG
-  IMAGE     "stipdash9.svg"
+  IMAGE     "stipdash/stipdash9.svg"
 END
 
 SYMBOL
   NAME      "dash10"
   TYPE      SVG
-  IMAGE     "stipdash10.svg"
+  IMAGE     "stipdash/stipdash10.svg"
 END
 
 
 SYMBOL
   NAME      "dash11"
   TYPE      SVG
-  IMAGE     "stipdash11.svg"
+  IMAGE     "stipdash/stipdash11.svg"
 END
 
 
 SYMBOL
   NAME      "dash12"
   TYPE      SVG
-  IMAGE     "stipdash12.svg"
+  IMAGE     "stipdash/stipdash12.svg"
 END
 
 SYMBOL
   NAME      "dash13"
   TYPE      SVG
-  IMAGE     "stipdash13.svg"
+  IMAGE     "stipdash/stipdash13.svg"
 END
 
-SYMBOL
-  NAME      "dash14"
-  TYPE      SVG
-  IMAGE     "stipdash14.svg"
-END
 
-#========================= vierkanten (bijv. tbv NAP) =================
+
+#==============================================================================
+# iconen vierkanten
+#==============================================================================
 
 SYMBOL
   NAME      "vierkant_trap1_donkerblauw"
@@ -173,7 +340,11 @@ SYMBOL
   IMAGE     "iconen/vierkant_trap9_roodbruin_groot.svg"
 END
 
-#========================= cirkels (bijv. tbv handelsregister) =================
+
+
+#==============================================================================
+# iconen cirkels
+#==============================================================================
 
 SYMBOL
   NAME      "cirkel_blauwgroen"
@@ -367,170 +538,177 @@ SYMBOL
   IMAGE     "iconen/cirkel_onbekend_groot.svg"
 END
 
-#=================================================================
-
-SYMBOL
-  NAME      "vierkant"
-  TYPE      vector
-  POINTS
-    0 0
-    0 4
-    4 4
-    4 0
-    0 0
-  END
-  FILLED    true
-END
-
-SYMBOL
-  NAME "cross"
-  TYPE vector
-  POINTS
-    2.0 0.0
-    2.0 4.0
-    -99 -99
-    0.0 2.0
-    4.0 2.0
-  END
-  FILLED    true
-END
-
-SYMBOL
-  NAME "kruis"
-  TYPE vector
-  POINTS
-    2.0 0.0
-    2.0 4.0
-    -99 -99
-    0.0 2.0
-    4.0 2.0
-  END
-  FILLED   false
-END
 
 
+#==============================================================================
+# bgt symbolen
+#==============================================================================
 
-SYMBOL
-  NAME "pentagon"
-  TYPE vector
-  POINTS
-    0  -5
-    -5 -2
-    -3 4
-    3  4
-    5 -2
-  END
-  FILLED    true
-END
+# Symbolen in SVG
+# 10 px WIDTH
+# Document to image SIZE
+# ANCHORPOINT default is 0.5 0.5 # midden
 
 
-SYMBOL
-  NAME      "driehoek"
-  TYPE      vector
-  POINTS
-    0 0
-    4 0
-    2 3.54
-    0 0
-  END
-  FILLED    true
-END
+	SYMBOL
+		NAME "circle"
+		TYPE ellipse
+		FILLED true
+		POINTS
+			10 10
+		END
+	END
 
-SYMBOL
-  NAME      "chess"
-  TYPE      vector
-  FILLED    true
-  POINTS
-    0 0
-    1 0
-    1 1
-    0 1
-    0 0
-    -99 -99
-    1 1
-    2 1
-    2 2
-    1 2
-    1 1
-  END
-END
+#------------------------------------------------------------------------------
+# AFVALBAK
 
-SYMBOL
-  NAME      "chess2"
-  TYPE      vector
-  FILLED    true
-  POINTS
-    0 0
-    1 0
-    1 1
-    0 1
-    0 0
-    -99 -99
-    2 1
-    3 1
-    3 2
-    2 2
-    2 1
-    -99 -99
-    0 2
-    1 2
-    1 3
-    0 3
-    0 2
-    -99 -99
-    2 3
-    4 3
-    4 4
-    2 4
-    2 3
-  END
-END
+	SYMBOL
+		NAME "AFVALBAK"
+		TYPE svg
+		IMAGE "symbols/bgt/afvalbak.svg"
+	END
+
+	SYMBOL
+		NAME "BAK"
+		TYPE svg
+		IMAGE "symbols/bgt/bak.svg"
+	END
+
+	SYMBOL
+		NAME "BAK_klein"
+		TYPE svg
+		IMAGE "symbols/bgt/bak_klein.svg"
+	END
+
+#------------------------------------------------------------------------------
+# BORD
+
+	SYMBOL
+		NAME "BORD"
+		TYPE svg
+		IMAGE "symbols/bgt/bord.svg"
+	END
+
+#------------------------------------------------------------------------------
+# KAST
+
+	SYMBOL
+		NAME "KAST"
+		TYPE svg
+		IMAGE "symbols/bgt/kast.svg"
+		ANCHORPOINT 0.5 1   # midden onder
+	END
+
+#------------------------------------------------------------------------------
+# MAST
+
+	SYMBOL
+		NAME "MAST"
+		TYPE svg
+		IMAGE "symbols/bgt/mast.svg"
+		ANCHORPOINT 0.5 1   # midden onder
+	END
+
+#------------------------------------------------------------------------------
+# PAAL
+
+	SYMBOL
+		NAME "PAAL"
+		TYPE ellipse
+		FILLED true
+		POINTS
+			10 10
+		END
+	END
+
+	SYMBOL
+		NAME "LICHTMAST"
+		TYPE svg
+		IMAGE "symbols/bgt/lantaarn.svg"
+	END
+
+#------------------------------------------------------------------------------
+# PUT
+
+	SYMBOL
+		NAME "PUT"
+		TYPE svg
+		IMAGE "symbols/bgt/put.svg"
+	END
+
+	SYMBOL
+		NAME "KOLK"
+		TYPE svg
+		IMAGE "symbols/bgt/kolk.svg"
+	END
+
+#------------------------------------------------------------------------------
+# STRAATMEUBILAIR
+
+	SYMBOL
+		NAME "STRAATMEUBILAIR"
+		TYPE svg
+		IMAGE "symbols/bgt/straatmeubilair.svg"
+	END
+
+	Banken komen niet voor in Amsterdam
+	 SYMBOL
+	 	NAME "BANK"
+	 	TYPE svg
+	 	IMAGE "symbols/bgt/bank.svg"
+	 END
+
+	SYMBOL
+		NAME "RECLAMEZUIL"
+		TYPE svg
+		IMAGE "symbols/bgt/reclamezuil.svg"
+	END
+
+	SYMBOL
+		NAME "ABRI"
+		TYPE svg
+		IMAGE "symbols/bgt/abri.svg"
+		ANCHORPOINT 0.5 1   # midden onder
+	END
+
+	SYMBOL
+		NAME "KUNST"
+		TYPE svg
+		IMAGE "symbols/bgt/kunstobject.svg"
+	END
+
+	SYMBOL
+		NAME "HERDENKINGSMONUMENT"
+		TYPE svg
+		IMAGE "symbols/bgt/herdenkingsmonument.svg"
+		ANCHORPOINT 0.5 1   # midden onder
+	END
+
+	SYMBOL
+		NAME "OPENBAARTOILET"
+		TYPE svg
+		IMAGE "symbols/bgt/openbaartoilet.svg"
+	END
+
+#------------------------------------------------------------------------------
+# SENSOR
+
+	SYMBOL
+		NAME "SENSOR"
+		TYPE svg
+		IMAGE "symbols/bgt/sensor.svg"
+	END
+
+#------------------------------------------------------------------------------
+# VEGETATIE
+
+	SYMBOL
+		NAME "VEGETATIE"
+		TYPE svg
+		IMAGE "symbols/bgt/vegetatieobject.svg"
+	END
 
 
-SYMBOL
-  NAME      "hatchsymbol"
-  TYPE      hatch
-END
-
-SYMBOL
-  NAME      "linelinesymbol"
-  TYPE      vector
-  FILLED    true
-  POINTS
-    # Full line
-    0 3
-    12 3
-    12 4
-    0 4
-    0 3
-    # Half line
-    1 7
-    6 7
-    6 8
-    1 8
-    1 7
-    -99 -99
-    # Half line
-    7 7
-    11 7
-    11 8
-    7 8
-    7 7
-    -99 -99
-    # Half line
-    1 11
-    6 11
-    6 12
-    1 12
-    1 11
-    -99 -99
-    7 11
-    11 11
-    11 12
-    7 12
-    7 11
-  END
-END
 
 #=============================================================================
 END
