@@ -249,6 +249,33 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
+    NAME                    BGT_BTRN_heide
+    GROUP                   begroeidterreindeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGT_BTRN_heide\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_BTRN_heide"
+	 "ows_group_title"      "begroeidterreindeel"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#dceacf"
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
     NAME                    BGT_BTRN_houtwal
     GROUP                   begroeidterreindeel
     MAXSCALEDENOM           4000
@@ -261,6 +288,33 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_BTRN_houtwal"
+	 "ows_group_title"      "begroeidterreindeel"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#dceacf"
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_BTRN_kwelder
+    GROUP                   begroeidterreindeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGT_BTRN_kwelder\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_BTRN_kwelder"
 	 "ows_group_title"      "begroeidterreindeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -429,60 +483,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_BTRN_transitie"
-	 "ows_group_title"      "begroeidterreindeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_BTRN_heide
-    GROUP                   begroeidterreindeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_BTRN_heide\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_BTRN_heide"
-	 "ows_group_title"      "begroeidterreindeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_BTRN_kwelder
-    GROUP                   begroeidterreindeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_BTRN_kwelder\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_BTRN_kwelder"
 	 "ows_group_title"      "begroeidterreindeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
