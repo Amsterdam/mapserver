@@ -1,33 +1,23 @@
 #==============================================================================
-# bgt.map
+# bgt_inrichtingselementen.map
 #==============================================================================
-# doel: serveren van bgt plus inrichtings_element
-#
-## INRICHTINGSELEMENTEN:
-#-----------------------
-# AFVALBAK
-# BORD
-# KAST
-# MAST
-# SCHEIDING
-# PAAL
-# PUT
-# STRAATMEUBILAIR 
-# SENSOR
-# VEGETATIE
+# doel: serveren van BGT (plus) inrichtingselementen
 #
 #==============================================================================
 
 MAP
-	NAME                      "inrichtings_element"
+	NAME                      "bgt_inrichtingselementen"
 	INCLUDE                   "header.inc"
 
 	WEB
 		METADATA
-			"ows_title"           "inrichtings_element"
+			"ows_title"           "bgt_inrichtingselementen"
 			"ows_abstract"        "Basisregistratie Grootschalige Topografie PLUS"
 		END
 	END
+
+
+
 #==============================================================================
 # Symbolen in SVG
 # 10 px WIDTH
@@ -165,10 +155,13 @@ MAP
 		TYPE svg
 		IMAGE "symbols/vegetatieobject/vegetatieobject.svg"
 	END
+
+
+
 #==============================================================================
 # HOOGTENIVEAU 0
 #==============================================================================
-# PUT
+
 	LAYER 
 		NAME 		PUT
 		GROUP 		PUT
@@ -232,6 +225,9 @@ MAP
 			END
 		END
 	END
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		PUT_KOLK
 		GROUP 		PUT
@@ -295,8 +291,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# AFVALBAK
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		AFVALBAK
 		GROUP 		AFVALBAK
@@ -360,8 +357,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-	# BORD
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		BORD
 		GROUP 		BORD
@@ -425,8 +423,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-	# KAST
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		KAST
 		GROUP 		KAST
@@ -490,8 +489,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# MAST
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		MAST
 		GROUP 		MAST
@@ -517,8 +517,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# SCHEIDING
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		SCHEIDING_L
 		GROUP 		SCHEIDING
@@ -575,8 +576,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# PAAL
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		PAAL
 		GROUP 		PAAL
@@ -603,6 +605,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		LICHTMAST
 		GROUP 		PAAL
@@ -667,10 +670,11 @@ MAP
 		END
 	END
 
-#==============================================================================
-# STRAATMEUBILAIR
+#------------------------------------------------------------------------------
+
 # De volgende lagen komen niet regelmatig verspreid in Amsterdam voor en zijn daarom als simple icoon verbeeld:
 #bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR
 		GROUP 		STRAATMEUBILAIR
@@ -734,6 +738,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_RECLAMEZUIL
 		GROUP 		STRAATMEUBILAIR
@@ -797,6 +802,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_ABRI
 		GROUP 		STRAATMEUBILAIR
@@ -860,6 +866,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_KUNST
 		GROUP 		STRAATMEUBILAIR
@@ -923,6 +930,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_HERDENKINGSMONUMENT
 		GROUP 		STRAATMEUBILAIR
@@ -986,6 +994,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_OPENBAARTOILET
 		GROUP 		STRAATMEUBILAIR
@@ -1049,8 +1058,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# SENSOR
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		SENSOR
 		GROUP 		SENSOR
@@ -1076,8 +1086,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# VEGETATIE
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		VEGETATIE_P
 		GROUP 		VEGETATIE
@@ -1142,6 +1153,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		VEGETATIE_L
 		GROUP 		VEGETATIE
@@ -1169,6 +1181,7 @@ MAP
 			END
 		END	
 	END
+
 	LAYER 
 		NAME 		VEGETATIE_V
 		GROUP 		VEGETATIE
@@ -1194,8 +1207,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# ONBEKEND
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		ONBEKEND
 		GROUP 		ONBEKEND
@@ -1234,10 +1248,13 @@ MAP
 			END
 		END
 	END
+
+
+
 #==============================================================================
 #HOOGTENIVEAU 1
 #==============================================================================
-# PUT
+
 	LAYER 
 		NAME 		PUT1
 		GROUP 		PUT
@@ -1301,6 +1318,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		PUT_KOLK1
 		GROUP 		PUT
@@ -1364,8 +1382,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# AFVALBAK
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		AFVALBAK1
 		GROUP 		AFVALBAK
@@ -1429,8 +1448,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-	# BORD
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		BORD1
 		GROUP 		BORD
@@ -1494,8 +1514,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-	# KAST
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		KAST1
 		GROUP 		KAST
@@ -1559,8 +1580,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# MAST
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		MAST1
 		GROUP 		MAST
@@ -1586,8 +1608,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# SCHEIDING
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		SCHEIDING_L1
 		GROUP 		SCHEIDING
@@ -1616,6 +1639,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		SCHEIDING_V1
 		GROUP 		SCHEIDING
@@ -1644,8 +1668,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# PAAL
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		PAAL1
 		GROUP 		PAAL
@@ -1672,6 +1697,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		LICHTMAST1
 		GROUP 		PAAL
@@ -1736,10 +1762,11 @@ MAP
 		END
 	END
 
-#==============================================================================
-# STRAATMEUBILAIR
+#------------------------------------------------------------------------------
+
 # De volgende lagen komen niet regelmatig verspreid in Amsterdam voor en zijn daarom als simple icoon verbeeld:
 #bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR1
 		GROUP 		STRAATMEUBILAIR
@@ -1803,6 +1830,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_RECLAMEZUIL1
 		GROUP 		STRAATMEUBILAIR
@@ -1866,6 +1894,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_ABRI1
 		GROUP 		STRAATMEUBILAIR
@@ -1929,6 +1958,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_KUNST1
 		GROUP 		STRAATMEUBILAIR
@@ -1992,6 +2022,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_HERDENKINGSMONUMENT1
 		GROUP 		STRAATMEUBILAIR
@@ -2055,6 +2086,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		STRAATMEUBILAIR_OPENBAARTOILET1
 		GROUP 		STRAATMEUBILAIR
@@ -2118,8 +2150,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# SENSOR
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		SENSOR1
 		GROUP 		SENSOR
@@ -2145,8 +2178,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# VEGETATIE
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		VEGETATIE_P1
 		GROUP 		VEGETATIE
@@ -2211,6 +2245,7 @@ MAP
 			END
 		END
 	END
+
 	LAYER 
 		NAME 		VEGETATIE_L1
 		GROUP 		VEGETATIE
@@ -2263,8 +2298,9 @@ MAP
 			END
 		END
 	END
-#==============================================================================
-# ONBEKEND
+
+#------------------------------------------------------------------------------
+
 	LAYER 
 		NAME 		ONBEKEND1
 		GROUP 		ONBEKEND
@@ -2305,5 +2341,6 @@ MAP
 	END
 
 
-END
 
+#==============================================================================
+END
