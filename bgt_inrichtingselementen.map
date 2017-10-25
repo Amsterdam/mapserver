@@ -37,31 +37,31 @@ MAP
 	SYMBOL
 		NAME "AFVALBAK"
 		TYPE svg
-		IMAGE "symbols/afvalbak/afvalbak.svg"
+		IMAGE "symbols/bgt/afvalbak.svg"
 	END
 	SYMBOL
 		NAME "BAK"
 		TYPE svg
-		IMAGE "symbols/bak/bak.svg"
+		IMAGE "symbols/bgt/bak.svg"
 	END
 	SYMBOL
 		NAME "BAK_klein"
 		TYPE svg
-		IMAGE "symbols/bak_klein/bak_klein.svg"
+		IMAGE "symbols/bgt/bak_klein.svg"
 	END
 #==============================================================================
 # BORD
 	SYMBOL
 		NAME "BORD"
 		TYPE svg
-		IMAGE "symbols/bord/bord.svg"
+		IMAGE "symbols/bgt/bord.svg"
 	END
 #==============================================================================
 # KAST
 	SYMBOL
 		NAME "KAST"
 		TYPE svg
-		IMAGE "symbols/kast/kast.svg"
+		IMAGE "symbols/bgt/kast.svg"
 		ANCHORPOINT 0.5 1   # midden onder
 	END
 #==============================================================================
@@ -69,7 +69,7 @@ MAP
 	SYMBOL
 		NAME "MAST"
 		TYPE svg
-		IMAGE "symbols/mast/mast.svg"
+		IMAGE "symbols/bgt/mast.svg"
 		ANCHORPOINT 0.5 1   # midden onder
 	END
 #==============================================================================
@@ -87,73 +87,73 @@ MAP
 	SYMBOL
 		NAME "LICHTMAST"
 		TYPE svg
-		IMAGE "symbols/lantaarn/lantaarn.svg"
+		IMAGE "symbols/bgt/lantaarn.svg"
 	END
 #==============================================================================
 # PUT
 	SYMBOL
 		NAME "PUT"
 		TYPE svg
-		IMAGE "symbols/put/put.svg"
+		IMAGE "symbols/bgt/put.svg"
 	END
 	SYMBOL
 		NAME "KOLK"
 		TYPE svg
-		IMAGE "symbols/kolk/kolk.svg"
+		IMAGE "symbols/bgt/kolk.svg"
 	END
 #==============================================================================
 # STRAATMEUBILAIR
 	SYMBOL
 		NAME "STRAATMEUBILAIR"
 		TYPE svg
-		IMAGE "symbols/straatmeubilair/straatmeubilair.svg"
+		IMAGE "symbols/bgt/straatmeubilair.svg"
 	END
-	#Banken komen niet voor in Amsterdam
-	# SYMBOL
-	# 	NAME "BANK"
-	# 	TYPE svg
-	# 	IMAGE "symbols/bank/bank.svg"
-	# END
+	Banken komen niet voor in Amsterdam
+	 SYMBOL
+	 	NAME "BANK"
+	 	TYPE svg
+	 	IMAGE "symbols/bgt/bank.svg"
+	 END
 	SYMBOL
 		NAME "RECLAMEZUIL"
 		TYPE svg
-		IMAGE "symbols/reclamezuil/reclamezuil.svg"
+		IMAGE "symbols/bgt/reclamezuil.svg"
 	END
 	SYMBOL
 		NAME "ABRI"
 		TYPE svg
-		IMAGE "symbols/abri/abri.svg"
+		IMAGE "symbols/bgt/abri.svg"
 		ANCHORPOINT 0.5 1   # midden onder
 	END
 	SYMBOL
 		NAME "KUNST"
 		TYPE svg
-		IMAGE "symbols/kunstobject/kunstobject.svg"
+		IMAGE "symbols/bgt/kunstobject.svg"
 	END
 	SYMBOL
 		NAME "HERDENKINGSMONUMENT"
 		TYPE svg
-		IMAGE "symbols/herdenkingsmonument/herdenkingsmonument.svg"
+		IMAGE "symbols/bgt/herdenkingsmonument.svg"
 		ANCHORPOINT 0.5 1   # midden onder
 	END
 	SYMBOL
 		NAME "OPENBAARTOILET"
 		TYPE svg
-		IMAGE "symbols/openbaartoilet/openbaartoilet.svg"
+		IMAGE "symbols/bgt/openbaartoilet.svg"
 	END
 #==============================================================================
 # SENSOR
 	SYMBOL
 		NAME "SENSOR"
 		TYPE svg
-		IMAGE "symbols/sensor/sensor.svg"
+		IMAGE "symbols/bgt/sensor.svg"
 	END
 #==============================================================================
 # VEGETATIE
 	SYMBOL
 		NAME "VEGETATIE"
 		TYPE svg
-		IMAGE "symbols/vegetatieobject/vegetatieobject.svg"
+		IMAGE "symbols/bgt/vegetatieobject.svg"
 	END
 
 
@@ -163,8 +163,8 @@ MAP
 #==============================================================================
 
 	LAYER 
-		NAME 		PUT
-		GROUP 		PUT
+		NAME 		put
+		GROUP 		put
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -175,9 +175,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"PUT"
-			"wms_group_title"  "PUT"
+			"wms_title"  	   "put"
+			"wms_group_title"  "put"
 		END
+
 		CLASS
 			EXPRESSION		{benzine-_olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	2000
@@ -188,6 +189,7 @@ MAP
 				COLOR "#0088aa"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	1500
@@ -197,6 +199,7 @@ MAP
 				SIZE 3
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	1000
@@ -206,6 +209,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	400
@@ -215,6 +219,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	200
@@ -224,13 +229,14 @@ MAP
 				SIZE 15
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		PUT_KOLK
-		GROUP 		PUT
+		NAME 		put_kolk
+		GROUP 		put
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -241,9 +247,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"PUT_KOLK"
-			"wms_group_title"  "PUT"
+			"wms_title"  	   "put_kolk"
+			"wms_group_title"  "put"
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	2000
@@ -254,6 +261,7 @@ MAP
 				COLOR "#0088aa"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	1500
@@ -263,6 +271,7 @@ MAP
 				SIZE 3
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	1000
@@ -272,6 +281,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	400
@@ -281,6 +291,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	200
@@ -290,13 +301,14 @@ MAP
 				SIZE 15
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		AFVALBAK
-		GROUP 		AFVALBAK
+		NAME 		afvalbak
+		GROUP 		afvalbak
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -307,9 +319,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "AFVALBAK"
-			"wms_group_title"  "AFVALBAK"
+			"wms_title"  "afvalbak"
+			"wms_group_title"  "afvalbak"
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	3000
@@ -320,6 +333,7 @@ MAP
 				COLOR "#333333"
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	1500
@@ -329,6 +343,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	1000
@@ -338,6 +353,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	400
@@ -347,6 +363,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	200
@@ -356,13 +373,14 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		BORD
-		GROUP 		BORD
+		NAME 		bord
+		GROUP 		bord
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -373,9 +391,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "BORD"
-			"wms_group_title"  "BORD"
+			"wms_title"  "bord"
+			"wms_group_title"  "bord"
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	2000
@@ -386,6 +405,7 @@ MAP
 				COLOR "#333333"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	1500
@@ -395,6 +415,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	1000
@@ -404,6 +425,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	400
@@ -413,6 +435,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	200
@@ -422,13 +445,14 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		KAST
-		GROUP 		KAST
+		NAME 		kast
+		GROUP 		kast
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -439,9 +463,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "KAST"
-			"wms_group_title"  "KAST"
+			"wms_title"  "kast"
+			"wms_group_title"  "kast"
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	3000
@@ -452,6 +477,7 @@ MAP
 				COLOR "#333333"
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	1500
@@ -461,6 +487,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	1000
@@ -470,6 +497,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	400
@@ -479,6 +507,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	200
@@ -488,13 +517,14 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		MAST
-		GROUP 		MAST
+		NAME 		mast
+		GROUP 		mast
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -505,9 +535,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "MAST"
-			"wms_group_title"  "MAST"
+			"wms_title"  "mast"
+			"wms_group_title"  "mast"
 		END
+
 		CLASS
 			EXPRESSION		{zendmast}
 			MAXSCALEDENOM 	5000
@@ -516,13 +547,14 @@ MAP
 				SIZE 10
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		SCHEIDING_L
-		GROUP 		SCHEIDING
+		NAME 		scheiding_l
+		GROUP 		scheiding
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -533,9 +565,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "SCHEIDING_L"
-			"wms_group_title"  "SCHEIDING"
+			"wms_title"  "scheiding_l"
+			"wms_group_title"  "scheiding"
 		END
+
 		CLASS
 			EXPRESSION		{damwand,geluidsscherm,hek,kademuur,draadraster,faunaraster,walbescherming,rooster,wildrooster}
 			MAXSCALEDENOM 	5000
@@ -547,10 +580,12 @@ MAP
 				LINEJOIN MITER
 			END
 		END
+
 	END
+
 	LAYER 
-		NAME 		SCHEIDING_V
-		GROUP 		SCHEIDING
+		NAME 		scheiding_v
+		GROUP 		scheiding
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -561,9 +596,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "SCHEIDING_V"
-			"wms_group_title"  "SCHEIDING"
+			"wms_title"  "scheiding_v"
+			"wms_group_title"  "scheiding"
 		END
+
 		CLASS
 			EXPRESSION		{rooster,wildrooster,muur,keermuur,kademuur}
 			MAXSCALEDENOM 	5000
@@ -575,13 +611,14 @@ MAP
 				LINEJOIN MITER
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		PAAL
-		GROUP 		PAAL
+		NAME 		paal
+		GROUP 		paal
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -592,9 +629,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"PAAL"
-			"wms_group_title"  "PAAL"
+			"wms_title"  		"paal"
+			"wms_group_title"  "paal"
 		END
+
 		CLASS
 			EXPRESSION		{afsluitpaal,drukknoppaal,haltepaal,hectometerpaal,poller,telpaal,verkeersbordpaal,verkeersregelinstallatiepaal,vlaggenmast}
 			MAXSCALEDENOM 	5000
@@ -604,11 +642,12 @@ MAP
 				COLOR "#666666"
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		LICHTMAST
-		GROUP 		PAAL
+		NAME 		lichtmast
+		GROUP 		paal
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -619,9 +658,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"LICHTMAST"
-			"wms_group_title"  "PAAL"
+			"wms_title"  		"lichtmast"
+			"wms_group_title"  "paal"
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	5000
@@ -632,6 +672,7 @@ MAP
 				COLOR "#ffcc00"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	2500
@@ -641,6 +682,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	1000
@@ -650,6 +692,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	400
@@ -659,6 +702,7 @@ MAP
 				SIZE 25
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	200
@@ -668,6 +712,7 @@ MAP
 				SIZE 35
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
@@ -676,8 +721,8 @@ MAP
 #bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -688,9 +733,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	3000
@@ -701,6 +747,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	1500
@@ -710,6 +757,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	1000
@@ -719,6 +767,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	500
@@ -728,6 +777,7 @@ MAP
 				SIZE 15	
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	200
@@ -737,11 +787,12 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_RECLAMEZUIL
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_reclamezuil
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -752,9 +803,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_RECLAMEZUIL"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_reclamezuil"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	3000
@@ -765,6 +817,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	1500
@@ -774,6 +827,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	1000
@@ -783,6 +837,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	500
@@ -792,6 +847,7 @@ MAP
 				SIZE 20
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	200
@@ -801,11 +857,12 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_ABRI
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_abri
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -816,9 +873,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_ABRI"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_abri"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	3000
@@ -829,6 +887,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	1500
@@ -838,6 +897,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	1000
@@ -847,6 +907,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	500
@@ -856,6 +917,7 @@ MAP
 				SIZE 25
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	200
@@ -865,11 +927,12 @@ MAP
 				SIZE 35
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_KUNST
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_kunst
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -880,9 +943,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_KUNST"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_kunst"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	3000
@@ -893,6 +957,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	1500
@@ -902,6 +967,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	1000
@@ -911,6 +977,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	500
@@ -920,6 +987,7 @@ MAP
 				SIZE 20
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	200
@@ -929,11 +997,12 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_HERDENKINGSMONUMENT
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_herdenkingsmonument
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -944,9 +1013,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_HERDENKINGSMONUMENT"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_herdenkingsmonument"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	3000
@@ -957,6 +1027,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	1500
@@ -966,6 +1037,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	1000
@@ -975,6 +1047,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	500
@@ -984,6 +1057,7 @@ MAP
 				SIZE 25	
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	200
@@ -993,11 +1067,12 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_OPENBAARTOILET
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_openbaartoilet
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1008,9 +1083,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_OPENBAARTOILET"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_openbaartoilet"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	3000
@@ -1021,6 +1097,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	1500
@@ -1030,6 +1107,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	1000
@@ -1039,6 +1117,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	500
@@ -1048,6 +1127,7 @@ MAP
 				SIZE 15	
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	200
@@ -1057,13 +1137,14 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		SENSOR
-		GROUP 		SENSOR
+		NAME 		sensor
+		GROUP 		sensor
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1074,9 +1155,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"SENSOR"
-			"wms_group_title"  "SENSOR"
+			"wms_title"  		"sensor"
+			"wms_group_title"  "sensor"
 		END
+
 		CLASS
 			EXPRESSION		{camera,flitser,waterstandmeter}
 			MAXSCALEDENOM 	5000
@@ -1085,13 +1167,14 @@ MAP
 				SIZE 10
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		VEGETATIE_P
-		GROUP 		VEGETATIE
+		NAME 		vegetatie_p
+		GROUP 		vegetatie
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1102,9 +1185,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"VEGETATIE_P"
-			"wms_group_title"  "VEGETATIE"
+			"wms_title"  		"vegetatie_p"
+			"wms_group_title"  "vegetatie"
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	5500
@@ -1116,6 +1200,7 @@ MAP
 				OPACITY 70
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	4500
@@ -1125,6 +1210,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	1000
@@ -1134,6 +1220,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	400
@@ -1143,6 +1230,7 @@ MAP
 				SIZE 25
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	200
@@ -1152,11 +1240,12 @@ MAP
 				SIZE 35
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		VEGETATIE_L
-		GROUP 		VEGETATIE
+		NAME 		vegetatie_l
+		GROUP 		vegetatie
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1167,9 +1256,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"VEGETATIE_L"
-			"wms_group_title"  "VEGETATIE"
+			"wms_title"  		"vegetatie_l"
+			"wms_group_title"  "vegetatie"
 		END
+
 		CLASS
 			EXPRESSION		{haag}
 			MAXSCALEDENOM 	5000
@@ -1179,12 +1269,13 @@ MAP
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
-		END	
+		END
+
 	END
 
 	LAYER 
-		NAME 		VEGETATIE_V
-		GROUP 		VEGETATIE
+		NAME 		vegetatie_v
+		GROUP 		vegetatie
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1195,9 +1286,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"VEGETATIE_V"
-			"wms_group_title"  "VEGETATIE"
+			"wms_title"  		"vegetatie_v"
+			"wms_group_title"  "vegetatie"
 		END
+
 		CLASS
 			EXPRESSION		{haag}
 			MAXSCALEDENOM 	5000
@@ -1206,13 +1298,14 @@ MAP
 				COLOR "#a0cc3a"
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		ONBEKEND
-		GROUP 		ONBEKEND
+		NAME 		onbekend
+		GROUP 		onbekend
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1223,9 +1316,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "ONBEKEND"
-			"wms_group_title"  "ONBEKEND"
+			"wms_title"  "onbekend"
+			"wms_group_title"  "onbekend"
 		END
+
 		CLASS
 			EXPRESSION		{onbekend}
 			MAXSCALEDENOM 	5000
@@ -1237,6 +1331,7 @@ MAP
 				OPACITY  30
 			END
 		END
+
 		CLASS
 			EXPRESSION		{onbekend}
 			MAXSCALEDENOM 	2000
@@ -1247,6 +1342,7 @@ MAP
 				OPACITY  30
 			END
 		END
+
 	END
 
 
@@ -1256,8 +1352,8 @@ MAP
 #==============================================================================
 
 	LAYER 
-		NAME 		PUT1
-		GROUP 		PUT
+		NAME 		put1
+		GROUP 		put
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1268,9 +1364,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"PUT1"
-			"wms_group_title"  "PUT"
+			"wms_title"  		"put1"
+			"wms_group_title"  "put"
 		END
+
 		CLASS
 			EXPRESSION		{benzine-_olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	2000
@@ -1281,6 +1378,7 @@ MAP
 				COLOR "#0088aa"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	1500
@@ -1290,6 +1388,7 @@ MAP
 				SIZE 3
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	1000
@@ -1299,6 +1398,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	400
@@ -1308,6 +1408,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	200
@@ -1317,11 +1418,12 @@ MAP
 				SIZE 15
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		PUT_KOLK1
-		GROUP 		PUT
+		NAME 		put_kolk1
+		GROUP 		put
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1332,9 +1434,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"PUT_KOLK1"
-			"wms_group_title"  "PUT"
+			"wms_title"  		"put_kolk1"
+			"wms_group_title"  "put"
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	2000
@@ -1345,6 +1448,7 @@ MAP
 				COLOR "#0088aa"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	1500
@@ -1354,6 +1458,7 @@ MAP
 				SIZE 3
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	1000
@@ -1363,6 +1468,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	400
@@ -1372,6 +1478,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kolk}
 			MAXSCALEDENOM 	200
@@ -1381,13 +1488,14 @@ MAP
 				SIZE 15
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		AFVALBAK1
-		GROUP 		AFVALBAK
+		NAME 		afvalbak1
+		GROUP 		afvalbak
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1398,9 +1506,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "AFVALBAK1"
-			"wms_group_title"  "AFVALBAK"
+			"wms_title"  "afvalbak1"
+			"wms_group_title"  "afvalbak"
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	3000
@@ -1411,6 +1520,7 @@ MAP
 				COLOR "#333333"
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	1500
@@ -1420,6 +1530,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	1000
@@ -1429,6 +1540,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	400
@@ -1438,6 +1550,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION 		{afvalbak,afval apart plaats}
 			MAXSCALEDENOM 	200
@@ -1447,13 +1560,14 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		BORD1
-		GROUP 		BORD
+		NAME 		bord1
+		GROUP 		bord
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1464,9 +1578,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "BORD1"
-			"wms_group_title"  "BORD"
+			"wms_title"  "bord1"
+			"wms_group_title"  "bord"
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	2000
@@ -1477,6 +1592,7 @@ MAP
 				COLOR "#333333"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	1500
@@ -1486,6 +1602,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	1000
@@ -1495,6 +1612,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	400
@@ -1504,6 +1622,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{informatiebord,reclamebord,straatnaambord,verkeersbord,verklikker transportleiding,wegwijzer}
 			MAXSCALEDENOM 	200
@@ -1513,13 +1632,14 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		KAST1
-		GROUP 		KAST
+		NAME 		kast1
+		GROUP 		kast
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1530,9 +1650,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "KAST1"
-			"wms_group_title"  "KAST"
+			"wms_title"  "kast1"
+			"wms_group_title"  "kast"
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	3000
@@ -1543,6 +1664,7 @@ MAP
 				COLOR "#333333"
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	1500
@@ -1552,6 +1674,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	1000
@@ -1561,6 +1684,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	400
@@ -1570,6 +1694,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION	{CAI-kast,elektrakast,gaskast,gms kast,openbare verlichtingkast,rioolkast,telecom kast,telkast,verkeersregelinstallatiekast}
 			MAXSCALEDENOM 	200
@@ -1579,13 +1704,14 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		MAST1
-		GROUP 		MAST
+		NAME 		mast1
+		GROUP 		mast
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1596,9 +1722,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "MAST1"
-			"wms_group_title"  "MAST"
+			"wms_title"  "mast1"
+			"wms_group_title"  "mast"
 		END
+
 		CLASS
 			EXPRESSION		{zendmast}
 			MAXSCALEDENOM 	5000
@@ -1607,13 +1734,14 @@ MAP
 				SIZE 10
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		SCHEIDING_L1
-		GROUP 		SCHEIDING
+		NAME 		scheiding_l1
+		GROUP 		scheiding
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1624,9 +1752,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "SCHEIDING_L1"
-			"wms_group_title"  "SCHEIDING"
+			"wms_title"  "scheiding_l1"
+			"wms_group_title"  "scheiding"
 		END
+
 		CLASS
 			EXPRESSION		{damwand,geluidsscherm,hek,kademuur,draadraster,faunaraster,walbescherming,rooster,wildrooster}
 			MAXSCALEDENOM 	5000
@@ -1638,11 +1767,12 @@ MAP
 				LINEJOIN MITER
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		SCHEIDING_V1
-		GROUP 		SCHEIDING
+		NAME 		scheiding_v1
+		GROUP 		scheiding
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1653,9 +1783,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "SCHEIDING_V1"
-			"wms_group_title"  "SCHEIDING"
+			"wms_title"  "scheiding_v1"
+			"wms_group_title"  "scheiding"
 		END
+
 		CLASS
 			EXPRESSION		{rooster,wildrooster,muur,keermuur,kademuur}
 			MAXSCALEDENOM 	5000
@@ -1667,13 +1798,14 @@ MAP
 				LINEJOIN MITER
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		PAAL1
-		GROUP 		PAAL
+		NAME 		paal1
+		GROUP 		paal
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1684,9 +1816,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"PAAL1"
-			"wms_group_title"  "PAAL"
+			"wms_title"  		"paal1"
+			"wms_group_title"  "paal"
 		END
+
 		CLASS
 			EXPRESSION		{afsluitpaal,drukknoppaal,haltepaal,hectometerpaal,poller,telpaal,verkeersbordpaal,verkeersregelinstallatiepaal,vlaggenmast}
 			MAXSCALEDENOM 	5000
@@ -1696,11 +1829,12 @@ MAP
 				COLOR "#666666"
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		LICHTMAST1
-		GROUP 		PAAL
+		NAME 		lichtmast1
+		GROUP 		paal
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1711,9 +1845,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"LICHTMAST1"
-			"wms_group_title"  "PAAL"
+			"wms_title"  		"lichtmast1"
+			"wms_group_title"  "paal"
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	5000
@@ -1724,6 +1859,7 @@ MAP
 				COLOR "#ffcc00"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	2500
@@ -1733,6 +1869,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	1000
@@ -1742,6 +1879,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	400
@@ -1751,6 +1889,7 @@ MAP
 				SIZE 25
 			END
 		END
+
 		CLASS
 			EXPRESSION		{lichtmast}
 			MAXSCALEDENOM 	200
@@ -1760,6 +1899,7 @@ MAP
 				SIZE 35
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
@@ -1768,8 +1908,8 @@ MAP
 #bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR1
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair1
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1780,9 +1920,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR1"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair1"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	3000
@@ -1793,6 +1934,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	1500
@@ -1802,6 +1944,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	1000
@@ -1811,6 +1954,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	500
@@ -1820,6 +1964,7 @@ MAP
 				SIZE 15	
 			END
 		END
+
 		CLASS
 			EXPRESSION		{bank,betaalautomaat,brievenbus,fietsenkluis,fietsenrek,lichtpunt,slagboom,speelvoorziening,telefooncel}
 			MAXSCALEDENOM 	200
@@ -1829,11 +1974,12 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_RECLAMEZUIL1
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_reclamezuil1
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1844,9 +1990,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_RECLAMEZUIL1"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_reclamezuil1"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	3000
@@ -1857,6 +2004,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	1500
@@ -1866,6 +2014,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	1000
@@ -1875,6 +2024,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	500
@@ -1884,6 +2034,7 @@ MAP
 				SIZE 20
 			END
 		END
+
 		CLASS
 			EXPRESSION		{reclamezuil}
 			MAXSCALEDENOM 	200
@@ -1893,11 +2044,12 @@ MAP
 				SIZE 30
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_ABRI1
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_abri1
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1908,9 +2060,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_ABRI1"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_abri1"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	3000
@@ -1921,6 +2074,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	1500
@@ -1930,6 +2084,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	1000
@@ -1939,6 +2094,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	500
@@ -1948,6 +2104,7 @@ MAP
 				SIZE 25
 			END
 		END
+
 		CLASS
 			EXPRESSION		{abri}
 			MAXSCALEDENOM 	200
@@ -1957,11 +2114,12 @@ MAP
 				SIZE 35
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_KUNST1
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_kunst1
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -1972,9 +2130,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_KUNST1"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_kunst1"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	3000
@@ -1985,6 +2144,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	1500
@@ -1994,6 +2154,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	1000
@@ -2003,6 +2164,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	500
@@ -2012,6 +2174,7 @@ MAP
 				SIZE 20
 			END
 		END
+
 		CLASS
 			EXPRESSION		{kunstobject}
 			MAXSCALEDENOM 	200
@@ -2021,11 +2184,12 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_HERDENKINGSMONUMENT1
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_herdenkingsmonument1
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2036,9 +2200,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_HERDENKINGSMONUMENT1"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_herdenkingsmonument1"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	3000
@@ -2049,6 +2214,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	1500
@@ -2058,6 +2224,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	1000
@@ -2067,6 +2234,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	500
@@ -2076,6 +2244,7 @@ MAP
 				SIZE 25	
 			END
 		END
+
 		CLASS
 			EXPRESSION		{herdenkingsmonument}
 			MAXSCALEDENOM 	200
@@ -2085,11 +2254,12 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		STRAATMEUBILAIR_OPENBAARTOILET1
-		GROUP 		STRAATMEUBILAIR
+		NAME 		straatmeubilair_openbaartoilet1
+		GROUP 		straatmeubilair
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2100,9 +2270,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"STRAATMEUBILAIR_OPENBAARTOILET1"
-			"wms_group_title"  "STRAATMEUBILAIR"
+			"wms_title"  		"straatmeubilair_openbaartoilet1"
+			"wms_group_title"  "straatmeubilair"
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	3000
@@ -2113,6 +2284,7 @@ MAP
 				COLOR "#dd6c27"
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	1500
@@ -2122,6 +2294,7 @@ MAP
 				SIZE 5
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	1000
@@ -2131,6 +2304,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	500
@@ -2140,6 +2314,7 @@ MAP
 				SIZE 15	
 			END
 		END
+
 		CLASS
 			EXPRESSION		{openbaar toilet}
 			MAXSCALEDENOM 	200
@@ -2149,13 +2324,14 @@ MAP
 				SIZE 25
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		SENSOR1
-		GROUP 		SENSOR
+		NAME 		sensor1
+		GROUP 		sensor
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2166,9 +2342,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"SENSOR1"
-			"wms_group_title"  "SENSOR"
+			"wms_title"  		"sensor1"
+			"wms_group_title"  "sensor"
 		END
+
 		CLASS
 			EXPRESSION		{camera,flitser,waterstandmeter}
 			MAXSCALEDENOM 	5000
@@ -2177,13 +2354,14 @@ MAP
 				SIZE 10
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		VEGETATIE_P1
-		GROUP 		VEGETATIE
+		NAME 		vegetatie_p1
+		GROUP 		vegetatie
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2194,9 +2372,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"VEGETATIE_P1"
-			"wms_group_title"  "VEGETATIE"
+			"wms_title"  		"vegetatie_p1"
+			"wms_group_title"  "vegetatie"
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	5500
@@ -2208,6 +2387,7 @@ MAP
 				OPACITY 70
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	4500
@@ -2217,6 +2397,7 @@ MAP
 				SIZE 10
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	1000
@@ -2226,6 +2407,7 @@ MAP
 				SIZE 15
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	400
@@ -2235,6 +2417,7 @@ MAP
 				SIZE 25
 			END
 		END
+
 		CLASS
 			EXPRESSION		{boom}
 			MAXSCALEDENOM 	200
@@ -2244,11 +2427,12 @@ MAP
 				SIZE 35
 			END
 		END
+
 	END
 
 	LAYER 
-		NAME 		VEGETATIE_L1
-		GROUP 		VEGETATIE
+		NAME 		vegetatie_l1
+		GROUP 		vegetatie
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2259,9 +2443,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"VEGETATIE_L1"
-			"wms_group_title"  "VEGETATIE"
+			"wms_title"  		"vegetatie_l1"
+			"wms_group_title"  "vegetatie"
 		END
+
 		CLASS
 			EXPRESSION		{haag}
 			MAXSCALEDENOM 	5000
@@ -2271,11 +2456,13 @@ MAP
 				LINECAP BUTT
 				LINEJOIN MITER
 			END
-		END	
+		END
+
 	END
+
 	LAYER 
-		NAME 		VEGETATIE_V1
-		GROUP 		VEGETATIE
+		NAME 		vegetatie_v1
+		GROUP 		vegetatie
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2286,9 +2473,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  		"VEGETATIE_V1"
-			"wms_group_title"  "VEGETATIE"
+			"wms_title"  		"vegetatie_v1"
+			"wms_group_title"  "vegetatie"
 		END
+
 		CLASS
 			EXPRESSION		{haag}
 			MAXSCALEDENOM 	5000
@@ -2297,13 +2485,14 @@ MAP
 				COLOR "#a0cc3a"
 			END
 		END
+
 	END
 
 #------------------------------------------------------------------------------
 
 	LAYER 
-		NAME 		ONBEKEND1
-		GROUP 		ONBEKEND
+		NAME 		onbekend1
+		GROUP 		onbekend
 		INCLUDE 	"connection_basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
@@ -2314,9 +2503,10 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"  "ONBEKEND1"
-			"wms_group_title"  "ONBEKEND"
+			"wms_title"  "onbekend1"
+			"wms_group_title"  "onbekend"
 		END
+
 		CLASS
 			EXPRESSION		{onbekend}
 			MAXSCALEDENOM 	5000
@@ -2328,6 +2518,7 @@ MAP
 				OPACITY  30
 			END
 		END
+
 		CLASS
 			EXPRESSION		{onbekend}
 			MAXSCALEDENOM 	2000
@@ -2338,6 +2529,7 @@ MAP
 				OPACITY  30
 			END
 		END
+
 	END
 
 
