@@ -50,7 +50,7 @@ MAP
 
     CLASS
       NAME "0 tot 20 km/h"
-      EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#be0000"
@@ -61,7 +61,7 @@ MAP
 
     CLASS
       NAME "20 tot 40 km/h"
-      EXPRESSION ((([velocity] >= 20) AND ([velocity] < 40)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 20) AND ([velocity] < 40)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#ff0000"
@@ -72,7 +72,7 @@ MAP
 
     CLASS
       NAME "40 tot 60 km/h"
-      EXPRESSION ((([velocity] >= 40) AND ([velocity] < 60)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 40) AND ([velocity] < 60)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#ff9e00"
@@ -83,7 +83,7 @@ MAP
 
     CLASS
       NAME "60 tot 80 km/h"
-      EXPRESSION ((([velocity] >= 60) AND ([velocity] < 80)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 60) AND ([velocity] < 80)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#ffff00"
@@ -94,7 +94,7 @@ MAP
 
     CLASS
       NAME "80 tot 100 km/h"
-      EXPRESSION ((([velocity] >= 80) AND ([velocity] < 100)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 80) AND ([velocity] < 100)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#aaff00"
@@ -105,7 +105,7 @@ MAP
 
     CLASS
       NAME "100 tot 120 km/h"
-      EXPRESSION ((([velocity] >= 100) AND ([velocity] < 120)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 100) AND ([velocity] < 120)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#00b22d"
@@ -116,7 +116,7 @@ MAP
 
     CLASS
       NAME "120 tot 140 km/h"
-      EXPRESSION ((([velocity] >= 120) AND ([velocity] < 140)) AND ([type] = "H"))
+      EXPRESSION ((([velocity] >= 120) AND ([velocity] < 140)) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#00b22d"
@@ -127,7 +127,7 @@ MAP
 
     CLASS
       NAME "meer dan 140 km/h"
-      EXPRESSION (([velocity] >= 140) AND ([type] = "H"))
+      EXPRESSION (([velocity] >= 140) AND ("[type]" = "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#00b22d"
@@ -139,7 +139,7 @@ MAP
 
     CLASS
       NAME "0 km/h"
-      EXPRESSION (([velocity] < 0) AND ([type] = "H"))
+      EXPRESSION (([velocity] < 0) AND ("[type]" = "H"))
       STYLE
         WIDTH 1
         OUTLINECOLOR "#999999"
