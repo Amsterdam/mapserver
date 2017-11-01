@@ -49,104 +49,100 @@ MAP
 
 
     CLASS
-      NAME "0 tot 20 km/h"
+      NAME "0 tot 20 km/h - snelweg"
       EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ("[type]" = "H"))
       STYLE
-      	MINSCALEDENOM  100
-        MAXSCALEDENOM  8000
         WIDTH 8
         OUTLINECOLOR "#be0000"
         LINECAP BUTT
         LINEJOIN MITER
         PATTERN 8.0 1.0 END
-      END
-      STYLE
-      	MINSCALEDENOM  8000
-        WIDTH 4
-        OUTLINECOLOR "#be0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-        PATTERN 4.0 1.0 END
-      END    
+      END   
     END
 
     CLASS
-      NAME "20 tot 40 km/h"
+      NAME "20 tot 40 km/h - snelweg"
       EXPRESSION ((([velocity] >= 20) AND ([velocity] < 40)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#ff0000"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
 
     CLASS
-      NAME "40 tot 60 km/h"
+      NAME "40 tot 60 km/h - snelweg"
       EXPRESSION ((([velocity] >= 40) AND ([velocity] < 60)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#ff9e00"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
 
     CLASS
-      NAME "60 tot 80 km/h"
+      NAME "60 tot 80 km/h - snelweg"
       EXPRESSION ((([velocity] >= 60) AND ([velocity] < 80)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#ffff00"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
 
     CLASS
-      NAME "80 tot 100 km/h"
+      NAME "80 tot 100 km/h - snelweg"
       EXPRESSION ((([velocity] >= 80) AND ([velocity] < 100)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#aaff00"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
 
     CLASS
-      NAME "100 tot 120 km/h"
+      NAME "100 tot 120 km/h - snelweg"
       EXPRESSION ((([velocity] >= 100) AND ([velocity] < 120)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#00b22d"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
 
     CLASS
-      NAME "120 tot 140 km/h"
+      NAME "120 tot 140 km/h - snelweg"
       EXPRESSION ((([velocity] >= 120) AND ([velocity] < 140)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#00b22d"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
 
     CLASS
-      NAME "meer dan 140 km/h"
+      NAME "meer dan 140 km/h - snelweg"
       EXPRESSION (([velocity] >= 140) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+        WIDTH 8
         OUTLINECOLOR "#00b22d"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
     END
-
 
     CLASS
       NAME "0 km/h"
@@ -160,5 +156,4 @@ MAP
     END
 
   END
-
 END
