@@ -10,12 +10,23 @@ MAP
     END
   END
 
+# Color ramp from Colorbrewer 2.0 (http://colorbrewer2.org/)
+#ffffe5  # skip, too light
+#f7fcb9  # skip, too light
+#d9f0a3
+#addd8e
+#78c679
+#41ab5d
+#238443
+#006837
+#004529
+
   #=============================================================================
   # LAYERS
   #=============================================================================
 
   LAYER
-    NAME            "reistijdenauto"
+    NAME            "reistijdenauto" #snelwegen
     INCLUDE         "connection_reistijdenauto.inc"
     DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id"
     TYPE            LINE
@@ -35,22 +46,11 @@ MAP
       "gml_types"           "auto"
     END
 
-# Color ramp from Colorbrewer 2.0 (http://colorbrewer2.org/)
-#ffffe5  # skip, too light
-#f7fcb9  # skip, too light
-#d9f0a3
-#addd8e
-#78c679
-#41ab5d
-#238443
-#006837
-#004529
-
 
 
     CLASS
       NAME "0 tot 20 km/h"
-      EXPRESSION (([velocity] >= 0) AND ([velocity] < 20))
+      EXPRESSION (([velocity] >= 0) AND ([velocity] < 20) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#be0000"
@@ -61,7 +61,7 @@ MAP
 
     CLASS
       NAME "20 tot 40 km/h"
-      EXPRESSION (([velocity] >= 20) AND ([velocity] < 40))
+      EXPRESSION (([velocity] >= 20) AND ([velocity] < 40) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#ff0000"
@@ -72,7 +72,7 @@ MAP
 
     CLASS
       NAME "40 tot 60 km/h"
-      EXPRESSION (([velocity] >= 40) AND ([velocity] < 60))
+      EXPRESSION (([velocity] >= 40) AND ([velocity] < 60) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#ff9e00"
@@ -83,7 +83,7 @@ MAP
 
     CLASS
       NAME "60 tot 80 km/h"
-      EXPRESSION (([velocity] >= 60) AND ([velocity] < 80))
+      EXPRESSION (([velocity] >= 60) AND ([velocity] < 80) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#ffff00"
@@ -94,7 +94,7 @@ MAP
 
     CLASS
       NAME "80 tot 100 km/h"
-      EXPRESSION (([velocity] >= 80) AND ([velocity] < 100))
+      EXPRESSION (([velocity] >= 80) AND ([velocity] < 100) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#aaff00"
@@ -105,7 +105,7 @@ MAP
 
     CLASS
       NAME "100 tot 120 km/h"
-      EXPRESSION (([velocity] >= 100) AND ([velocity] < 120))
+      EXPRESSION (([velocity] >= 100) AND ([velocity] < 120) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#00b22d"
@@ -116,7 +116,7 @@ MAP
 
     CLASS
       NAME "120 tot 140 km/h"
-      EXPRESSION (([velocity] >= 120) AND ([velocity] < 140))
+      EXPRESSION (([velocity] >= 120) AND ([velocity] < 140) AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#00b22d"
@@ -127,7 +127,7 @@ MAP
 
     CLASS
       NAME "meer dan 140 km/h"
-      EXPRESSION ([velocity] >= 140)
+      EXPRESSION ([velocity] >= 140 AND ([type] eq "H"))
       STYLE
         WIDTH 5
         OUTLINECOLOR "#00b22d"
@@ -139,7 +139,7 @@ MAP
 
     CLASS
       NAME "0 km/h"
-      EXPRESSION ([velocity] < 0)
+      EXPRESSION ([velocity] < 0 AND ([type] eq "H"))
       STYLE
         WIDTH 1
         OUTLINECOLOR "#999999"
