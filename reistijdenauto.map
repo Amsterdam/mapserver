@@ -52,11 +52,23 @@ MAP
       NAME "0 tot 20 km/h"
       EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 5
+      	MINSCALEDENOM  100
+        MAXSCALEDENOM  8000
+        WIDTH 8
         OUTLINECOLOR "#be0000"
         LINECAP BUTT
         LINEJOIN MITER
+        PATTERN 8.0 1.0 END
       END
+      STYLE
+      	MINSCALEDENOM  8000
+        MAXSCALEDENOM  18001
+        WIDTH 4
+        OUTLINECOLOR "#be0000"
+        LINECAP BUTT
+        LINEJOIN MITER
+        PATTERN 4.0 1.0 END
+      END    
     END
 
     CLASS
