@@ -10,23 +10,12 @@ MAP
     END
   END
 
-# Color ramp from Colorbrewer 2.0 (http://colorbrewer2.org/)
-#ffffe5  # skip, too light
-#f7fcb9  # skip, too light
-#d9f0a3
-#addd8e
-#78c679
-#41ab5d
-#238443
-#006837
-#004529
-
   #=============================================================================
   # LAYERS
   #=============================================================================
 
   LAYER
-    NAME            "reistijdenauto" #snelwegen
+    NAME            "reistijdenauto"
     INCLUDE         "connection_reistijdenauto.inc"
     DATA            "mline FROM public.dataset_wegstuk USING srid=28992 USING UNIQUE id"
     TYPE            LINE
@@ -52,11 +41,10 @@ MAP
       NAME "0 tot 20 km/h - snelweg"
       EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
-        OUTLINECOLOR "#be0000"
+        WIDTH 10
+        OUTLINECOLOR "#C60000"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END   
     END
 
@@ -64,11 +52,10 @@ MAP
       NAME "20 tot 40 km/h - snelweg"
       EXPRESSION ((([velocity] >= 20) AND ([velocity] < 40)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
-        OUTLINECOLOR "#ff0000"
+        WIDTH 10
+        OUTLINECOLOR "#EC0000"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
@@ -77,10 +64,9 @@ MAP
       EXPRESSION ((([velocity] >= 40) AND ([velocity] < 60)) AND ("[type]" = "H"))
       STYLE
         WIDTH 8
-        OUTLINECOLOR "#ff9e00"
+        OUTLINECOLOR "#FF9100"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
@@ -89,10 +75,9 @@ MAP
       EXPRESSION ((([velocity] >= 60) AND ([velocity] < 80)) AND ("[type]" = "H"))
       STYLE
         WIDTH 8
-        OUTLINECOLOR "#ffff00"
+        OUTLINECOLOR "#FFC700"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
@@ -101,10 +86,9 @@ MAP
       EXPRESSION ((([velocity] >= 80) AND ([velocity] < 100)) AND ("[type]" = "H"))
       STYLE
         WIDTH 8
-        OUTLINECOLOR "#aaff00"
+        OUTLINECOLOR "#FFE600"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
@@ -113,10 +97,9 @@ MAP
       EXPRESSION ((([velocity] >= 100) AND ([velocity] < 120)) AND ("[type]" = "H"))
       STYLE
         WIDTH 8
-        OUTLINECOLOR "#00b22d"
+        OUTLINECOLOR "#DEDC00"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
@@ -125,10 +108,9 @@ MAP
       EXPRESSION ((([velocity] >= 120) AND ([velocity] < 140)) AND ("[type]" = "H"))
       STYLE
         WIDTH 8
-        OUTLINECOLOR "#00b22d"
+        OUTLINECOLOR "#5FD25A"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
@@ -137,10 +119,9 @@ MAP
       EXPRESSION (([velocity] >= 140) AND ("[type]" = "H"))
       STYLE
         WIDTH 8
-        OUTLINECOLOR "#00b22d"
+        OUTLINECOLOR "#00A03C"
         LINECAP BUTT
         LINEJOIN MITER
-        PATTERN 8.0 1.0 END
       END
     END
 
