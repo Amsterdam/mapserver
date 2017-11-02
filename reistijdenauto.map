@@ -63,7 +63,7 @@ MAP
       NAME "40 tot 60 km/h - snelweg"
       EXPRESSION ((([velocity] >= 40) AND ([velocity] < 60)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
+        WIDTH 10
         OUTLINECOLOR "#FF9100"
         LINECAP BUTT
         LINEJOIN MITER
@@ -74,7 +74,7 @@ MAP
       NAME "60 tot 80 km/h - snelweg"
       EXPRESSION ((([velocity] >= 60) AND ([velocity] < 80)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
+        WIDTH 10
         OUTLINECOLOR "#FFC700"
         LINECAP BUTT
         LINEJOIN MITER
@@ -85,7 +85,7 @@ MAP
       NAME "80 tot 100 km/h - snelweg"
       EXPRESSION ((([velocity] >= 80) AND ([velocity] < 100)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
+        WIDTH 10
         OUTLINECOLOR "#FFE600"
         LINECAP BUTT
         LINEJOIN MITER
@@ -96,7 +96,7 @@ MAP
       NAME "100 tot 120 km/h - snelweg"
       EXPRESSION ((([velocity] >= 100) AND ([velocity] < 120)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
+        WIDTH 10
         OUTLINECOLOR "#DEDC00"
         LINECAP BUTT
         LINEJOIN MITER
@@ -107,7 +107,7 @@ MAP
       NAME "120 tot 140 km/h - snelweg"
       EXPRESSION ((([velocity] >= 120) AND ([velocity] < 140)) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
+        WIDTH 10
         OUTLINECOLOR "#5FD25A"
         LINECAP BUTT
         LINEJOIN MITER
@@ -118,7 +118,7 @@ MAP
       NAME "meer dan 140 km/h - snelweg"
       EXPRESSION (([velocity] >= 140) AND ("[type]" = "H"))
       STYLE
-        WIDTH 8
+        WIDTH 10
         OUTLINECOLOR "#00A03C"
         LINECAP BUTT
         LINEJOIN MITER
@@ -131,6 +131,50 @@ MAP
       STYLE
         WIDTH 1
         OUTLINECOLOR "#999999"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    
+	CLASS
+      NAME "0 tot 20 km/h - weg"
+      EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ("[type]" = "O"))
+      STYLE
+        WIDTH 5
+        OUTLINECOLOR "#C60000"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END   
+    END
+
+    CLASS
+      NAME "20 tot 40 km/h - weg"
+      EXPRESSION ((([velocity] >= 20) AND ([velocity] < 40)) AND ("[type]" = "O"))
+      STYLE
+        WIDTH 5
+        OUTLINECOLOR "#FF9100"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "40 tot 60 km/h - weg"
+      EXPRESSION ((([velocity] >= 40) AND ([velocity] < 60)) AND ("[type]" = "O"))
+      STYLE
+        WIDTH 5
+        OUTLINECOLOR "#FFE600"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      NAME "meer dan 60 km/h - weg"
+      EXPRESSION ((([velocity] >= 60) AND ([velocity] < 80)) AND ("[type]" = "O"))
+      STYLE
+        WIDTH 5
+        OUTLINECOLOR "#00A03C"
         LINECAP BUTT
         LINEJOIN MITER
       END
