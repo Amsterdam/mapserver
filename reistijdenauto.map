@@ -39,7 +39,7 @@ MAP
 
     CLASS
       NAME "0 tot 20 km/h - snelweg"
-      EXPRESSION ((([velocity] >= 0) AND ([velocity] < 20)) AND ("[type]" = "H"))
+      EXPRESSION ((([velocity] > 0) AND ([velocity] < 20)) AND ("[type]" = "H"))
       STYLE
         WIDTH 10
         OUTLINECOLOR "#EC0000"
