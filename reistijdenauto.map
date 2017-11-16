@@ -129,7 +129,7 @@ MAP
     
 	CLASS
       NAME "0 tot 10 km/h - weg"
-      EXPRESSION ((([velocity] >= 0) AND ([velocity] < 10)) AND ("[type]" = "O"))
+      EXPRESSION ((([velocity] > 0) AND ([velocity] < 10)) AND ("[type]" = "O"))
       STYLE
         WIDTH 3
         OUTLINECOLOR "#EC0000"
