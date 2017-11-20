@@ -6,6 +6,11 @@ services:
       - "5403:5432"
     environment:
       POSTGRES_PASSWORD: insecure
+      LOCAL: "True"
+    extra_hosts:
+      admin.datapunt.amsterdam.nl: 10.99.157.24
+    volumes:
+        - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   map:
     build: .
