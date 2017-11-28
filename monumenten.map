@@ -70,6 +70,64 @@ MAP
 
   #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "monumenten_labels"
+    GROUP           "monumenten"
+    INCLUDE         "connection_monumenten.inc"
+    DATA            "monumentcoordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   1001
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "monumenten_labels"
+      "ows_group_title"     "monumenten"
+      "ows_abstract"        "Labels van monumenten"
+    END
+
+    LABELITEM          "display_naam"
+
+    CLASS
+      NAME "Pand"
+      EXPRESSION ("[monumenttype]" eq "Pand")
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1000
+        COLOR   0 200 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME "NoPand"
+      EXPRESSION ("[monumenttype]" ne "Pand")
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  1000
+        COLOR   200 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
 
  END
 END
