@@ -1,13 +1,17 @@
 # Using the Amsterdam mapserver for local testing
 
-The [Datapunt Amsterdam mapserver][1] docker container is used to provide WMS and
-WFS services as part of the [Amsterdam City Data portal][2]. This container
+*This document describes how to serve your own datasets using the Datapunt Amsterdam Mapserver container.*
+
+The [Datapunt Amsterdam mapserver][1] docker container is used to provide [WMS][7] and
+[WFS][8] services as part of the [Amsterdam City Data portal][2]. This container
 provides a webserver with the [Mapserver][3] scripts pre-configured for some of
 the Amsterdam City Data data sets.
 
 While you cannot access all the datasets that are served using this container you
-can re-use it for your own purposes such as local testing. This document describes
-how you can adapt this mapserver container to run locally with your own data.
+can re-use it for your own purposes such as local testing. How you can adapt it
+is described below.
+
+*Note: web browsers do not implement the WMS and WFS protocols, you need a dedicated client.*
 
 
 ## Pre-requisites
@@ -18,7 +22,7 @@ The rest of this document assumes that you know how to use:
 * Docker
 * docker-compose
 * Mapserver ``.map`` files
-* QGis (or any other WMS / WFS viewer)
+* [QGIS][9] (or any other WMS / WFS client)
 * PostGIS
 
 We furthermore assume you have containerized spatial database, in our example
@@ -209,3 +213,6 @@ above in the section about adding a new map layer.
 [4]: http://www.mapserver.org/mapfile/ "Mapfile documentation"
 [5]: https://docs.djangoproject.com/en/1.11/ref/contrib/gis/ "The GeoDjango geographic Web framework"
 [6]: http://postgis.net/ "PostGIS spatial extension for PostgreSQL"
+[7]: https://en.wikipedia.org/wiki/Web_Map_Service "Wikipedia: Web Wap Service (WMS)"
+[8]: https://en.wikipedia.org/wiki/Web_Feature_Service "Wikipedia: Web Feature Service (WFS)"
+[9]: http://qgis.org/en/site/ "QGIS homepage"
