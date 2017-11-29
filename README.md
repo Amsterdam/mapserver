@@ -12,6 +12,8 @@ MapServer configuratie voor City Data.
 * configureer de mapfile om het de juiste database en data te werken
 * Ontwikkel met http://localhost/map/YOURMAPFILENAME
 
+Deze mapserver is te gebruiken als WMS of WFS mapserver met behulp van een programma als QGis en
+niet vanuit een webbrowser. In de webbrowser geven de URL links foutmeldingen.
 
 ## Prerequisites:
 
@@ -23,9 +25,10 @@ MapServer configuratie voor City Data.
     docker-compose build
     docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
 
+Bij dit laatste commando moet de directory /tmp/srv/lufo local bestaan. Om luchtfotos te gebruiken moet deze
+directory luchtfotos bevatten of een symlink zijn naar luchtfotos.
 
-De server is nu te bereiken op <http://localhost:8383/maps/YOURMAPFILE>
-b.v. http://localhost:8383:/maps/monumenten
+Note : In de docker-compose.yml staat volumes: - /srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
 
 De Postgres database is te bereiken op tcp://localhost:5403
 
