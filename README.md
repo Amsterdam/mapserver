@@ -34,12 +34,12 @@ De Postgres database is te bereiken op tcp://localhost:5403
 
 De laatste versie van de database kan opgehaald worden met:
 
-	docker-compose exec database update-db.sh nap
-	docker-compose exec database update-db.sh milieuthemas
-	docker-compose exec database update-db.sh bag
-	docker-compose exec database update-db.sh handelsregister
-	docker-compose exec database update-db.sh monumenten
-	docker-compose exec database update-db.sh overlastgebieden
+	docker-compose exec database update-db.sh nap <your-username>
+	docker-compose exec database update-db.sh milieuthemas <your-username>
+	docker-compose exec database update-db.sh bag <your-username>
+	docker-compose exec database update-db.sh handelsregister <your-username>
+	docker-compose exec database update-db.sh monumenten <your-username>
+	docker-compose exec database update-db.sh overlastgebieden <your-username>
 
 	
 	
