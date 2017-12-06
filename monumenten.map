@@ -55,7 +55,7 @@ MAP
 
     LABELITEM               "display_naam"
 
-    FILTER                  ("[monumenttype]" = 'Bouwwerk' or "[monumenttype]" = 'ParkTerrein' or "[monumenttype]" = 'Beeldhouwkunst')
+    FILTER                 ("[monumenttype]" != 'Pand' and "[monumenttype]" != 'Bouwblok')
 
     CLASS
       NAME                  "MonumentNoPand"
