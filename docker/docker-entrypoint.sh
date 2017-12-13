@@ -3,11 +3,11 @@
 set -e
 set -u
 
-ATLAS_DB_HOST=${ATLAS_DB_HOST:-atlas-read.service.consul}
-ATLAS_DB_PORT=${ATLAS_DB_PORT:-5432}
-ATLAS_DB_NAME=${ATLAS_DB_NAME:-atlas}
-ATLAS_DB_USER=${ATLAS_DB_USER:-${ATLAS_DB_NAME}}
-ATLAS_DB_PASSWORD=${ATLAS_DB_PASSWORD:-insecure}
+BAG_DB_HOST=${BAG_DB_HOST:-bag-read.service.consul}
+BAG_DB_PORT=${BAG_DB_PORT:-5432}
+BAG_DB_NAME=${BAG_DB_NAME:-bag}
+BAG_DB_USER=${BAG_DB_USER:-${BAG_DB_NAME}}
+BAG_DB_PASSWORD=${BAG_DB_PASSWORD:-insecure}
 
 NAP_DB_HOST=${NAP_DB_HOST:-nap-read.service.consul}
 NAP_DB_PORT=${NAP_DB_PORT:-5432}
@@ -79,7 +79,7 @@ echo Creating configuration files
 
 cat > /srv/mapserver/connection.inc <<EOF
 CONNECTIONTYPE postgis
-CONNECTION "host=${ATLAS_DB_HOST} dbname=${ATLAS_DB_NAME} user=${ATLAS_DB_USER} password=${ATLAS_DB_PASSWORD} port=${ATLAS_DB_PORT}"
+CONNECTION "host=${BAG_DB_HOST} dbname=${BAG_DB_NAME} user=${BAG_DB_USER} password=${BAG_DB_PASSWORD} port=${BAG_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
