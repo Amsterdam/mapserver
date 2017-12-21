@@ -10,16 +10,18 @@ services:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   map:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_private
     ports:
       - "80"
     links:
       - "database:database"
     environment:
-      BAG_DB_NAME: bag
-      BAG_DB_USER: postgres
-      BAG_DB_PASSWORD: insecure
-      BAG_DB_HOST: database
+      ATLAS_DB_NAME: atlas
+      ATLAS_DB_USER: postgres
+      ATLAS_DB_PASSWORD: insecure
+      ATLAS_DB_HOST: database
 
       NAP_DB_NAME: nap
       NAP_DB_USER: postgres
@@ -76,8 +78,8 @@ services:
       REISTIJDENAUTO_DB_PASSWORD: insecure
       REISTIJDENAUTO_DB_HOST: database
 
-      GRONDEXPLOITATIE_DB_NAME: grondexploitatie
-      GRONDEXPLOITATIE_DB_USER: grondexploitatie
+      GRONDEXPLOITATIE_DB_NAME: reistijdenauto
+      GRONDEXPLOITATIE_DB_USER: postgres
       GRONDEXPLOITATIE_DB_PASSWORD: insecure
       GRONDEXPLOITATIE_DB_HOST: database
 

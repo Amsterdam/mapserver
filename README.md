@@ -57,7 +57,11 @@ Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
  Na het opvragen van een map, zal dan de logging te zien zijn via:
  
         docker exec -it `docker-compose ps -q  map` bash -c 'tail -f /tmp/ms_error.txt'
-	
+
+ Het private docker image kan worden gebouwd met :
+
+        docker-compose -f docker-compose-private.yml build map && docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
+
 WMS services
 ------------
 
