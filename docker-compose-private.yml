@@ -18,10 +18,10 @@ services:
     links:
       - "database:database"
     environment:
-      ATLAS_DB_NAME: atlas
-      ATLAS_DB_USER: postgres
-      ATLAS_DB_PASSWORD: insecure
-      ATLAS_DB_HOST: database
+      BAG_DB_NAME: bag
+      BAG_DB_USER: postgres
+      BAG_DB_PASSWORD: insecure
+      BAG_DB_HOST: database
 
       NAP_DB_NAME: nap
       NAP_DB_USER: postgres
