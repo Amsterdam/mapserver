@@ -40,8 +40,8 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh handelsregister <your-username>
 	docker-compose exec database update-db.sh monumenten <your-username>
 	docker-compose exec database update-db.sh overlastgebieden <your-username>
+	docker-compose exec database update-db.sh grondexploitatie <your-username>
 
-	
 	
 De maps zijn te benaderen vanuit QGis: maak een WMS connectie met de url <http://localhost:8383/maps/YOURMAPFILE>
 b.v. http://localhost:8383:/maps/monumenten
