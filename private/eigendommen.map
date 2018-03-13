@@ -330,7 +330,7 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "geometrie FROM public.brk_eigendom_point_niet_poly_mat USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.brk_eigendom_filled_polygons_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
     MAXSCALEDENOM   300001
