@@ -51,19 +51,16 @@ MAP
     END
 
     LABELITEM               "baanvak_in"
-  
-  CLASS
-  NAME          "Tramlijn"
-    STYLE
-      COLOR 102 102 102
-      WIDTH 4.0
-    END # STYLE
-    STYLE
-      COLOR 255 255 255
-      WIDTH 2.0
-      LINECAP BUTT
-      PATTERN 8 12 END
-    END # STYLE
+
+    CLASS
+      NAME          "Tramlijn"
+      STYLE
+        ANTIALIAS   true
+        WIDTH       1
+	    COLOR       70 153 0
+        LINECAP     BUTT
+        LINEJOIN    MITER
+      END
 
       LABEL
         MINSCALEDENOM  10
@@ -116,12 +113,17 @@ MAP
     CLASS
       NAME              "Metrolijn"
       STYLE
-        ANTIALIAS       true
-        WIDTH           1
-	    COLOR           153 70 0
-        LINECAP         BUTT
-        LINEJOIN        MITER
-      END
+        COLOR 236 0 0
+        WIDTH 4.0
+        LINECAP BUTT
+        PATTERN 8 12 END
+      END # STYLE
+      STYLE
+        COLOR 255 255 255
+        WIDTH 2.0
+        LINECAP BUTT
+        PATTERN 8 12 END
+      END # STYLE
 
       LABEL
         MINSCALEDENOM  10
