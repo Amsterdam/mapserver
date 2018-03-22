@@ -41,6 +41,7 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh monumenten <your-username>
 	docker-compose exec database update-db.sh overlastgebieden <your-username>
 	docker-compose exec database update-db.sh grondexploitatie <your-username>
+	docker-compose exec database update-db.sh dataselectie <your-username>
 
 	
 De maps zijn te benaderen vanuit QGis: maak een WMS connectie met de url <http://localhost:8383/maps/YOURMAPFILE>

@@ -9,7 +9,6 @@ MAP
   NAME "EIGENDOMMEN"
   INCLUDE "header.inc"
 
-
   WEB
     METADATA
       "ows_title"    "EIGENDOMMEN"
@@ -22,9 +21,9 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "eigendomvlak_1"
+    NAME            "niet_eigendom_zoomed"
     GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_dataselectie.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -32,7 +31,10 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "poly_geom FROM public.brk_eigendom_point_mat USING srid=28992 USING UNIQUE id"
+    DATA            "poly_geom FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly eigendom,
+                          (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
+                             (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -44,19 +46,25 @@ MAP
     FILTER ("[cat_id]" = '%categorie%')
 
     METADATA
-      "ows_title"           "eigendomvlak"
+      "ows_title"           "niet_eigendom_zoomed"
       "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
+      "ows_abstract"        "Grondstukken niet in eigendom onder objecten wel in eigendom, per categorie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
-      NAME          Bouwblok
+      NAME          Perceel_niet_eigendom
       STYLE
        ANTIALIAS    true
-       OUTLINECOLOR 10 205 10
-       WIDTH        2
+       COLOR        [cat_color]
+       OPACITY      33
+      END
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR [cat_color]
+       PATTERN 3.0 4.0 END
+       OUTLINEWIDTH 2
       END
     END
 
@@ -65,9 +73,9 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "eigendomvlak"
+    NAME            "eigendom_zoomed"
     GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_dataselectie.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -75,7 +83,10 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "poly_geom FROM brk_eigendommen_mat USING srid=28992 USING UNIQUE id"
+    DATA            "poly_geom FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly eigendom,
+			  (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
+			     (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
+			  WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -87,19 +98,24 @@ MAP
     FILTER ("[cat_id]" = '%categorie%')
 
     METADATA
-      "ows_title"           "eigendomvlak"
+      "ows_title"           "eigendom_zoomed"
       "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
+      "ows_abstract"        "Grondstukken in eigendom, per categorie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
-      NAME          Bouwblok
+      NAME          Perceel_eigendom
       STYLE
        ANTIALIAS    true
-       OUTLINECOLOR 0 150 255
-       WIDTH        2
+       COLOR        [cat_color]
+       OPACITY      50
+      END
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR [cat_color]
+       OUTLINEWIDTH 2
       END
     END
 
@@ -108,9 +124,9 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "eigendompunt_1"
+    NAME            "eigendom_zoomed_punt"
     GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_dataselectie.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -118,7 +134,10 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "geometrie FROM public.brk_eigendom_point_mat USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_point eigendom,
+                          (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
+                             (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -132,9 +151,9 @@ MAP
     FILTER ("[cat_id]" = '%categorie%')
 
     METADATA
-      "ows_title"           "eigendompunt_1"
+      "ows_title"           "eigendom_zoomed_punt"
       "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
+      "ows_abstract"        "Per grondstuk gegroepeerde eigendommen, per categorie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -143,10 +162,11 @@ MAP
       EXPRESSION ([aantal] < 10)
       STYLE
         SYMBOL         "stip"
+        ANTIALIAS      true
+        COLOR          [cat_color]
         SIZE           20
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
+        OUTLINECOLOR   255 255 255
+        WIDTH          2
       END
     END
 
@@ -154,10 +174,11 @@ MAP
       EXPRESSION ([aantal] > 9 and [aantal] < 100)
       STYLE
         SYMBOL         "stip"
+        ANTIALIAS      true
+        COLOR          [cat_color]
         SIZE           30
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
+        OUTLINECOLOR   255 255 255
+        WIDTH          2
       END
     END
 
@@ -165,32 +186,23 @@ MAP
       EXPRESSION ([aantal] > 99 and [aantal] < 1000)
       STYLE
         SYMBOL         "stip"
+        ANTIALIAS      true
+        COLOR          [cat_color]
         SIZE           40
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
+        OUTLINECOLOR   255 255 255
+        WIDTH          2
       END
     END
 
     CLASS
-      EXPRESSION ([aantal] > 999 and [aantal] < 10000)
+      EXPRESSION ([aantal] > 999)
       STYLE
         SYMBOL         "stip"
+        ANTIALIAS      true
+        COLOR          [cat_color]
         SIZE           50
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 9999)
-      STYLE
-        SYMBOL         "stip"
-        SIZE           60
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
+        OUTLINECOLOR   255 255 255
+        WIDTH          2
       END
     END
 
@@ -199,9 +211,9 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "eigendompunt_1_label"
+    NAME            "eigendom_zoomed_punt_aantal"
     GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_dataselectie.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -209,7 +221,7 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "geometrie FROM public.brk_eigendom_point_mat USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_brk_eigendom_point USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -223,9 +235,9 @@ MAP
     FILTER ("[cat_id]" = '%categorie%')
 
     METADATA
-      "ows_title"           "eigendompunt_1_label"
+      "ows_title"           "eigendom_zoomed_punt_aantal"
       "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
+      "ows_abstract"        "Aantal per grondstuk gegroepeerde eigendommen, per categorie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
@@ -235,12 +247,10 @@ MAP
     CLASS
       EXPRESSION ([aantal] < 10)
       LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
+        COLOR          255 255 255
         FONT           "Ubuntu-M"
         TYPE           truetype
-        SIZE           10
+        SIZE           11
         POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         -3 -4
@@ -252,12 +262,10 @@ MAP
     CLASS
       EXPRESSION ([aantal] > 9 and [aantal] < 100)
       LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
+        COLOR          255 255 255
         FONT           "Ubuntu-M"
         TYPE           truetype
-        SIZE           10
+        SIZE           11
         POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         -7 -4
@@ -269,12 +277,10 @@ MAP
     CLASS
       EXPRESSION ([aantal] > 99 and [aantal] < 1000)
       LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
+        COLOR          255 255 255
         FONT           "Ubuntu-M"
         TYPE           truetype
-        SIZE           10
+        SIZE           11
         POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         -11 -4
@@ -284,14 +290,12 @@ MAP
     END
 
     CLASS
-      EXPRESSION ([aantal] > 999 and [aantal] < 10000)
+      EXPRESSION ([aantal] > 999)
       LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
+        COLOR          255 255 255
         FONT           "Ubuntu-M"
         TYPE           truetype
-        SIZE           10
+        SIZE           11
         POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         -15 -4
@@ -299,30 +303,14 @@ MAP
         ALIGN          center
       END
     END
-
-    CLASS
-      EXPRESSION ([aantal] > 9999)
-      LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -19 -4
-        ANTIALIAS      true
-        ALIGN          center
-      END
-    END
   END
+
   #=============================================================================
 
   LAYER
-    NAME            "eigendomvlak_g1"
+    NAME            "niet_eigendom"
     GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_dataselectie.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -330,7 +318,10 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "geometrie FROM public.brk_eigendom_filled_polygons_mat USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly_all eigendom,
+                          (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
+                             (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
     MAXSCALEDENOM   300001
@@ -342,19 +333,25 @@ MAP
     FILTER ("[cat_id]" = '%categorie%')
 
     METADATA
-      "ows_title"           "eigendomvlak"
+      "ows_title"           "niet_eigendom"
       "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
+      "ows_abstract"        "Grondstukken onder eigendom, grondstuk niet in eigendom, per categorie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
-      NAME          Bouwblok
+      NAME          Perceel_niet_eigendom
       STYLE
        ANTIALIAS    true
-       OUTLINECOLOR 10 205 10
-       WIDTH        2
+       COLOR        [cat_color]
+       OPACITY      33
+      END
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR [cat_color]
+       PATTERN 3.0 4.0 END
+       OUTLINEWIDTH 2
       END
     END
 
@@ -363,9 +360,9 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "eigendomvlak_g"
+    NAME            "eigendom"
     GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_dataselectie.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -373,7 +370,10 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "geometrie FROM brk_eigendom_poly_mat USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly_all eigendom,
+                          (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
+                             (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
     MAXSCALEDENOM   300001
@@ -387,216 +387,25 @@ MAP
     METADATA
       "ows_title"           "eigendomvlak"
       "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
+      "ows_abstract"        "Eigendomspolygonen per categorie"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
-      NAME          Bouwblok
+      NAME          Perceel_eigendom
       STYLE
        ANTIALIAS    true
-       OUTLINECOLOR 0 150 255
-       WIDTH        2
+       COLOR        [cat_color]
+       OPACITY      50
       END
-    END
-
-  END
-
-  #=============================================================================
-
-  LAYER
-    NAME            "eigendompunt_g1"
-    GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
-
-    VALIDATION
-      # %categorie% substitutions can only have letters
-	  'default_categorie' '1'
-      'categorie'     '^[0-9]$'
-    END
-
-    DATA            "geometrie FROM public.brk_eigendom_point_sectiecluster_mat USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   3001
-    MAXSCALEDENOM   300001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    STATUS          OFF
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    FILTER ("[cat_id]" = '%categorie%')
-
-    METADATA
-      "ows_title"           "eigendompunt_1"
-      "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      EXPRESSION ([aantal] < 10)
       STYLE
-        SYMBOL         "stip"
-        SIZE           20
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
+       ANTIALIAS    true
+       OUTLINECOLOR [cat_color]
+       OUTLINEWIDTH 2
       END
     END
 
-    CLASS
-      EXPRESSION ([aantal] > 9 and [aantal] < 100)
-      STYLE
-        SYMBOL         "stip"
-        SIZE           30
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 99 and [aantal] < 1000)
-      STYLE
-        SYMBOL         "stip"
-        SIZE           40
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 999 and [aantal] < 10000)
-      STYLE
-        SYMBOL         "stip"
-        SIZE           50
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 9999)
-      STYLE
-        SYMBOL         "stip"
-        SIZE           60
-        OUTLINECOLOR   10 205 10
-        COLOR          10 205 10
-        WIDTH          1
-      END
-    END
-
-  END
-
-  #=============================================================================
-
-  LAYER
-    NAME            "eigendompunt_g1_label"
-    GROUP           "eigendommen"
-    INCLUDE         "connection.inc"
-
-    VALIDATION
-      # %categorie% substitutions can only have letters
-	  'default_categorie' '1'
-      'categorie'     '^[0-9]$'
-    END
-
-    DATA            "geometrie FROM public.brk_eigendom_point_sectiecluster_mat USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   3001
-    MAXSCALEDENOM   300001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    STATUS          OFF
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    FILTER ("[cat_id]" = '%categorie%')
-
-    METADATA
-      "ows_title"           "eigendompunt_1_label"
-      "ows_group_title"     "eigendommen"
-      "ows_abstract"        "Eigendommen van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    LABELITEM          "aantal"
-
-    CLASS
-      EXPRESSION ([aantal] > 9 and [aantal] < 100)
-      LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -7 -4
-        ANTIALIAS      true
-        ALIGN          center
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 99 and [aantal] < 1000)
-      LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -11 -4
-        ANTIALIAS      true
-        ALIGN          center
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 999 and [aantal] < 10000)
-      LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -15 -4
-        ANTIALIAS      true
-        ALIGN          center
-      END
-    END
-
-    CLASS
-      EXPRESSION ([aantal] > 9999)
-      LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -19 -4
-        ANTIALIAS      true
-        ALIGN          center
-      END
-    END
   END
 
   #=============================================================================
