@@ -62,6 +62,38 @@ MAP
 
   END
 
+  LAYER
+    NAME            "buurt_simple"
+    GROUP           "bestuurlijke_gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_buurt_simple USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   12501
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "buurt"
+      "ows_group_title"     "bestuurlijke_gebieden"
+      "ows_abstract"        "Buurten met simpele geometrie van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          Buurt
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 210 150 50
+       WIDTH        2
+      END
+    END
+
+  END
+
   #-----------------------------------------------------------------------------
 
 
