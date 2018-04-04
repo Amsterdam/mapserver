@@ -76,7 +76,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "buurt"
+      "ows_title"           "buurt_simple"
       "ows_group_title"     "bestuurlijke_gebieden"
       "ows_abstract"        "Buurten met simpele geometrie van de gemeente Amsterdam"
       "gml_featureid"       "ID"
@@ -128,6 +128,39 @@ MAP
     END
 
   END
+
+  LAYER
+    NAME            "buurtcombinatie_simple"
+    GROUP           "bestuurlijke_gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_buurtcombinatie_simple USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "buurtcombinatie_simple"
+      "ows_group_title"     "bestuurlijke_gebieden"
+      "ows_abstract"        "Wijken van de gemeente Amsterdam (versimpelde geo)"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          Wijk
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 210 100 50
+       WIDTH        2
+      END
+    END
+
+  END
+
 
   #-----------------------------------------------------------------------------
 
