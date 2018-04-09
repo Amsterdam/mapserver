@@ -12,12 +12,6 @@
               <CssParameter name="fill">#B2CBD9</CssParameter>
             </Fill>
           </PolygonSymbolizer>
-          <PolygonSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#B2CBD9</CssParameter>
-              <CssParameter name="stroke-width">0.75</CssParameter>
-            </Stroke>
-          </PolygonSymbolizer>
         </Rule>
       </FeatureTypeStyle>
     </UserStyle>
@@ -39,6 +33,28 @@
     </UserStyle>
   </NamedLayer>
   <NamedLayer>
+    <Name>TRN_bedrijfsterrein_dienstverlening</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>12500</MinScaleDenominator>
+          <MaxScaleDenominator>400000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#F5F4F2</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+          <PolygonSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#F5F4F2</CssParameter>
+              <CssParameter name="stroke-width">0.50</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
     <Name>TRN_overig</Name>
     <UserStyle>
       <FeatureTypeStyle>
@@ -48,6 +64,22 @@
           <PolygonSymbolizer>
             <Fill>
               <CssParameter name="fill">#F5F4F2</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>TRN_bos_groen_sport</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>12500</MinScaleDenominator>
+          <MaxScaleDenominator>400000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D2E3BA</CssParameter>
             </Fill>
           </PolygonSymbolizer>
         </Rule>
@@ -89,46 +121,11 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <PolygonSymbolizer>
-            <Fill>
-              <CssParameter name="fill">#D9D9D4</CssParameter>
-            </Fill>
-          </PolygonSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>100000</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <PolygonSymbolizer>
             <Fill>
               <CssParameter name="fill">#D9D9D4</CssParameter>
             </Fill>
-            <Stroke>
-              <CssParameter name="stroke">#D9D9D4</CssParameter>
-              <CssParameter name="stroke-width">1.5</CssParameter>
-            </Stroke>
-          </PolygonSymbolizer>
-        </Rule>
-      </FeatureTypeStyle>
-    </UserStyle>
-  </NamedLayer>
-  <NamedLayer>
-    <Name>TRN_bedrijfsterrein_dienstverlening</Name>
-    <UserStyle>
-      <FeatureTypeStyle>
-        <Rule>
-          <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>400000</MaxScaleDenominator>
-          <PolygonSymbolizer>
-            <Fill>
-              <CssParameter name="fill">#F5F4F2</CssParameter>
-            </Fill>
-          </PolygonSymbolizer>
-          <PolygonSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#F5F4F2</CssParameter>
-              <CssParameter name="stroke-width">0.50</CssParameter>
-            </Stroke>
           </PolygonSymbolizer>
         </Rule>
       </FeatureTypeStyle>
@@ -144,31 +141,6 @@
           <PolygonSymbolizer>
             <Fill>
               <CssParameter name="fill">#D9D9D4</CssParameter>
-            </Fill>
-          </PolygonSymbolizer>
-        </Rule>
-      </FeatureTypeStyle>
-    </UserStyle>
-  </NamedLayer>
-  <NamedLayer>
-    <Name>TRN_bos_groen_sport</Name>
-    <UserStyle>
-      <FeatureTypeStyle>
-        <Rule>
-          <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <PolygonSymbolizer>
-            <Fill>
-              <CssParameter name="fill">#D2E3BA</CssParameter>
-            </Fill>
-          </PolygonSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>100000</MinScaleDenominator>
-          <MaxScaleDenominator>400000</MaxScaleDenominator>
-          <PolygonSymbolizer>
-            <Fill>
-              <CssParameter name="fill">#D2E3BA</CssParameter>
             </Fill>
           </PolygonSymbolizer>
         </Rule>
@@ -351,17 +323,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-              <CssParameter name="stroke-dasharray">2 3 </CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>100000</MinScaleDenominator>
           <MaxScaleDenominator>200000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -512,16 +473,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>100000</MinScaleDenominator>
           <MaxScaleDenominator>200000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -579,16 +530,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>100000</MinScaleDenominator>
-          <MaxScaleDenominator>200000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>200000</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -680,16 +621,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">3</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -781,26 +712,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#FBFBFB</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>100000</MinScaleDenominator>
           <MaxScaleDenominator>200000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -862,26 +773,6 @@
       <FeatureTypeStyle>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -899,26 +790,6 @@
       <FeatureTypeStyle>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -970,26 +841,6 @@
       <FeatureTypeStyle>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -1005,36 +856,6 @@
     <Name>SBL_trein_ongeelektrificeerd-dash</Name>
     <UserStyle>
       <FeatureTypeStyle>
-        <Rule>
-          <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -1054,26 +875,6 @@
       <FeatureTypeStyle>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
           <MaxScaleDenominator>100000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -1089,36 +890,6 @@
     <Name>SBL_trein-dash</Name>
     <UserStyle>
       <FeatureTypeStyle>
-        <Rule>
-          <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#BCB7D2</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
@@ -1168,16 +939,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>100000</MinScaleDenominator>
-          <MaxScaleDenominator>200000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#B4B4B4</CssParameter>
-              <CssParameter name="stroke-width">3</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>200000</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -1225,16 +986,6 @@
         </Rule>
         <Rule>
           <MinScaleDenominator>100000</MinScaleDenominator>
-          <MaxScaleDenominator>200000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">2</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>200000</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
@@ -1252,51 +1003,10 @@
       <FeatureTypeStyle>
         <Rule>
           <MinScaleDenominator>12500</MinScaleDenominator>
-          <MaxScaleDenominator>25000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">0.40</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>25000</MinScaleDenominator>
-          <MaxScaleDenominator>50000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">0.40</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>50000</MinScaleDenominator>
-          <MaxScaleDenominator>100000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">0.30</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>100000</MinScaleDenominator>
-          <MaxScaleDenominator>200000</MaxScaleDenominator>
-          <LineSymbolizer>
-            <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">0.20</CssParameter>
-            </Stroke>
-          </LineSymbolizer>
-        </Rule>
-        <Rule>
-          <MinScaleDenominator>200000</MinScaleDenominator>
           <MaxScaleDenominator>400000</MaxScaleDenominator>
           <LineSymbolizer>
             <Stroke>
-              <CssParameter name="stroke">#EAEAAE</CssParameter>
-              <CssParameter name="stroke-width">0.20</CssParameter>
+              <CssParameter name="stroke-width">0</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>
