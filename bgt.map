@@ -861,10 +861,22 @@ MAP
 			END
 		END
 		CLASS
-			EXPRESSION      {niet-bgt,transitie,lage trafo,open loods,opslagtank,bassin,overkapping,windturbine,bezinkbak}
+			EXPRESSION      {niet-bgt,transitie,lage trafo,open loods,opslagtank,bassin,windturbine,bezinkbak}
 			STYLE
 				MAXSCALEDENOM   3500
 				MINSCALEDENOM	0
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "overkapping"
+			MAXSCALEDENOM   3500
+			STYLE
+				OPACITY       50
 				COLOR         "#E0DED8"
 				OUTLINECOLOR  "#C9C7C2"
 				WIDTH         0.5
@@ -1646,6 +1658,17 @@ MAP
 				LINEJOIN      MITER
 			END
 		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
 	END
 
   #-----------------------------------------------------------------------------
@@ -2342,6 +2365,17 @@ MAP
 				LINEJOIN      MITER
 			END
 		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
 	END
 
   #-----------------------------------------------------------------------------
@@ -2847,6 +2881,17 @@ MAP
 		END
 		CLASS
 			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
 			MAXSCALEDENOM   3500
 			MINSCALEDENOM	0
 			STYLE
