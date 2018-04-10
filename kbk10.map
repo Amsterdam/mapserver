@@ -87,7 +87,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -110,7 +109,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -133,7 +131,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -160,7 +157,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -183,7 +179,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -206,7 +201,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -229,7 +223,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -252,7 +245,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -275,7 +267,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -298,7 +289,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -321,7 +311,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -344,7 +333,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -367,7 +355,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -390,7 +377,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -413,7 +399,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -436,7 +421,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -459,7 +443,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -482,7 +465,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -505,7 +487,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -528,7 +509,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -551,7 +531,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -595,13 +574,10 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
         COLOR "#e5e3de"
-      END
-      STYLE
         WIDTH 0.9
         OUTLINECOLOR "#c9c7c2"
         LINECAP BUTT
@@ -624,13 +600,10 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
         COLOR "#e6e5e0"
-      END
-      STYLE
         WIDTH 0.5
         OUTLINECOLOR "#c9c7c2"
         LINECAP BUTT
@@ -653,8 +626,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
-      MAXSCALEDENOM 12500
+      MAXSCALEDENOM 10000
       MINSCALEDENOM 3500
       STYLE
         COLOR "#e3dbd3"
@@ -676,7 +648,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -693,8 +664,8 @@ MAP
   LAYER
     NAME                    TRN_binnentuin-fill
     GROUP                   "vlakken"
-    MAXSCALEDENOM 8000
-    MINSCALEDENOM 3500
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"TRN_binnentuin\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
@@ -702,8 +673,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=16}
-      MAXSCALEDENOM 10000
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
         COLOR "#f9f9e7"
@@ -725,7 +695,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -748,7 +717,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -774,7 +742,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -800,8 +767,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15 16 17 18 19 20 21 22}
       MAXSCALEDENOM 12500
+      MINSCALEDENOM           3500
       STYLE
         OPACITY        30
         WIDTH 6
@@ -826,7 +793,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -852,7 +818,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -878,7 +843,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 3500
       STYLE
@@ -904,7 +868,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -920,8 +883,7 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
-      MAXSCALEDENOM 7999
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
         WIDTH 4
@@ -951,7 +913,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -966,8 +927,7 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
-      MAXSCALEDENOM 7999
+      MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
         WIDTH 2
@@ -996,7 +956,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1018,7 +977,7 @@ MAP
     NAME                    SBL_trein_overdekt_1sp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
-	MINSCALEDENOM           3500
+	  MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1061,7 +1020,7 @@ MAP
     NAME                    SBL_trein_overdekt_nsp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
-	MINSCALEDENOM           3500
+	  MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1070,7 +1029,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	    MINSCALEDENOM 8000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
@@ -1084,7 +1043,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 8000
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
@@ -1104,6 +1063,7 @@ MAP
     NAME                    SBL_trein_overdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+    MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1112,7 +1072,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	    MINSCALEDENOM 8000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1126,7 +1086,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 8000
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1146,16 +1106,16 @@ MAP
     NAME                    SBL_trein_overdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
+    MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
-	# wit
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	   MINSCALEDENOM 8000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1169,7 +1129,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 8000
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1197,7 +1157,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -1208,7 +1167,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1234,7 +1192,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -1249,7 +1206,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1279,7 +1235,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -1290,7 +1245,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1316,7 +1270,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -1331,7 +1284,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1361,7 +1313,6 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1379,7 +1330,7 @@ MAP
     NAME                    SBL_trein_ongeelektrificeerd-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
-	MINSCALEDENOM           3500
+	  MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1388,7 +1339,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	    MINSCALEDENOM 8000
       STYLE
         WIDTH 2.5
         COLOR "#9d9d9d"
@@ -1398,7 +1349,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 8000
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1414,7 +1365,7 @@ MAP
     NAME                    SBL_trein_ongeelektrificeerd-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
-	MINSCALEDENOM           3500
+	  MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1423,7 +1374,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	    MINSCALEDENOM 8000
       STYLE
         WIDTH 1.5
         PATTERN
@@ -1437,7 +1388,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 8000
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 2
         PATTERN
@@ -1527,7 +1478,7 @@ MAP
     NAME                    SBL_trein_nietoverdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
-	MINSCALEDENOM           3500
+	  MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1536,7 +1487,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	    MINSCALEDENOM 8000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1550,7 +1501,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1571,7 +1522,7 @@ MAP
     NAME                    SBL_trein_nietoverdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           12500
-	MINSCALEDENOM           3500
+	  MINSCALEDENOM           3500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1580,7 +1531,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 8000
+	    MINSCALEDENOM 8000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1594,7 +1545,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 12500
-	  MINSCALEDENOM 3500
+	    MINSCALEDENOM 3500
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1618,12 +1569,12 @@ MAP
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"WGL_hartlijn\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
+    FILTER "autosnelweg"
+    FILTERITEM "TYPEWEG"
     PROJECTION
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
-      EXPRESSION              ("[TYPEWEG]" eq "autosnelweg")
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -1634,8 +1585,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
-      EXPRESSION              ("[TYPEWEG]" eq "autosnelweg")
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
@@ -1657,12 +1606,12 @@ MAP
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk10.\"WGL_hartlijn\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
+    FILTER "autosnelweg"
+    FILTERITEM "TYPEWEG"
     PROJECTION
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{16}
-      EXPRESSION              ("[TYPEWEG]" eq "autosnelweg")
       MAXSCALEDENOM 12500
       MINSCALEDENOM 8000
       STYLE
@@ -1673,8 +1622,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{16}
-      EXPRESSION              ("[TYPEWEG]" eq "autosnelweg")
       MAXSCALEDENOM 8000
       MINSCALEDENOM 3500
       STYLE
