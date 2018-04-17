@@ -1190,62 +1190,62 @@ MAP
 
   #-----------------------------------------------------------------------------
 
-#   LAYER
-#     NAME            "ligplaats"
-#     GROUP           "hoogte0"
-#     INCLUDE         "connection.inc"
-#     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
-#     TYPE            POLYGON
-#     MAXSCALEDENOM   3500
-#     PROJECTION
-#     "init=epsg:28992"
-#     END
-#
-#     METADATA
-#       "wms_title"           "ligplaats"
-#       "wms_group_title"     "hoogte0"
-#     END
-#
-#     CLASS
-#       STYLE
-#         ANTIALIAS      true
-#         COLOR          220 220 255
-#         OUTLINECOLOR   160 160 205
-#         WIDTH          1
-#       END
-#     END
-#
-#   END
+   LAYER
+     NAME            "ligplaats"
+     GROUP           "hoogte0"
+     INCLUDE         "connection.inc"
+     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
+     TYPE            POLYGON
+     MAXSCALEDENOM   3500
+     PROJECTION
+     "init=epsg:28992"
+     END
 
-#   #-----------------------------------------------------------------------------
+     METADATA
+       "wms_title"           "ligplaats"
+       "wms_group_title"     "hoogte0"
+     END
 
-#   LAYER
-#     NAME            "standplaats"
-#     GROUP           "hoogte0"
-#     INCLUDE         "connection.inc"
-#     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
-#     TYPE            POLYGON
-#     MAXSCALEDENOM   3500
-#     PROJECTION
-#     "init=epsg:28992"
-#     END
-#
-#     METADATA
-#       "wms_title"           "standplaats"
-#       "wms_group_title"     "hoogte0"
-#     END
-#
-#     CLASS
-#       STYLE
-#         ANTIALIAS      true
-#         COLOR          220 220 255
-#         OUTLINECOLOR   160 160 205
-#         WIDTH          1
-#         OPACITY        60
-#       END
-#     END
-#
-#   END
+     CLASS
+       STYLE
+         ANTIALIAS      true
+         COLOR          220 220 255
+         OUTLINECOLOR   160 160 205
+         WIDTH          1
+       END
+     END
+
+   END
+
+   #-----------------------------------------------------------------------------
+
+   LAYER
+     NAME            "standplaats"
+     GROUP           "hoogte0"
+     INCLUDE         "connection.inc"
+     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
+     TYPE            POLYGON
+     MAXSCALEDENOM   3500
+     PROJECTION
+     "init=epsg:28992"
+     END
+
+     METADATA
+       "wms_title"           "standplaats"
+       "wms_group_title"     "hoogte0"
+     END
+
+     CLASS
+       STYLE
+         ANTIALIAS      true
+         COLOR          220 220 255
+         OUTLINECOLOR   160 160 205
+         WIDTH          1
+         OPACITY        60
+       END
+     END
+
+   END
 
 
 
