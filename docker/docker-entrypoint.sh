@@ -147,16 +147,19 @@ EOF
 cat > /srv/mapserver/connection_tellus.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${TELLUS_DB_HOST} dbname=${TELLUS_DB_NAME} user=${TELLUS_DB_USER} password=${TELLUS_DB_PASSWORD} port=${TELLUS_DB_PORT}"
+PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
 cat > /srv/mapserver/connection_monumenten.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${MONUMENTEN_DB_HOST} dbname=${MONUMENTEN_DB_NAME} user=${MONUMENTEN_DB_USER} password=${MONUMENTEN_DB_PASSWORD} port=${MONUMENTEN_DB_PORT}"
+PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
 cat > /srv/mapserver/connection_overlastgebieden.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${OVERLASTGEBIEDEN_DB_HOST} dbname=${OVERLASTGEBIEDEN_DB_NAME} user=${OVERLASTGEBIEDEN_DB_USER} password=${OVERLASTGEBIEDEN_DB_PASSWORD} port=${OVERLASTGEBIEDEN_DB_PORT}"
+PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
 cat > /srv/mapserver/connection_reistijdenauto.inc <<EOF
