@@ -6,38 +6,41 @@
 #       op zoomniveaus 11 t/m 15 van het Google Maps tiling schema
 #
 # Volgorde van aanroepen:
-# WDL_wateroppervlak
-# TRN_agrarisch
-# TRN_overig
-# TRN_zand
-# GBW_bebouwing
-# TRN_bedrijfsterrein_dienstverlening
-# GBW_kassen
-# TRN_bos_groen_sport
-# WDL_brede_waterloop
-# WDL_smalle_waterloop
-# WGL_straat_in_tunnel
-# WGL_hoofdweg_in_tunnel-case
-# WGL_regionale_weg_in_tunnel-case
-# WGL_autosnelweg_in_tunnel-case
-# WGL_regionale_weg_in_tunnel-fill
-# WGL_autosnelweg_in_tunnel-fill
-# WGL_straat-case
-# WGL_hoofdweg-case
-# WGL_regionale_weg-case
-# WGL_straat-fill
-# WGL_hoofdweg-fill
-# WGL_regionale_weg-fill
-# SBL_metro_sneltram_in_tunnel
-# SBL_trein_in_tunnel
-# SBL_metro_sneltram-line
-# SBL_trein_ongeelektrificeerd-line
-# SBL_trein_ongeelektrificeerd-dash
-# SBL_trein-line
-# SBL_trein-dash
-# WGL_autosnelweg-case
-# WGL_autosnelweg-fill
-# WGL_autosnelweg-centerline
+## WDL_wateroppervlak
+## TRN_agrarisch
+## TRN_bedrijfsterrein_dienstverlening
+## TRN_overig
+## TRN_bos_groen_sport
+## TRN_zand
+## GBW_bebouwing
+## GBW_kassen
+## WDL_brede_waterloop
+## WDL_smalle_waterloop
+## WGL_straat_in_tunnel
+## WGL_hoofdweg_in_tunnel-case
+## WGL_regionale_weg_in_tunnel-case
+## WGL_autosnelweg_in_tunnel-case
+## WGL_regionale_weg_in_tunnel-fill
+## WGL_autosnelweg_in_tunnel-fill
+## WGL_straat-case
+## WGL_hoofdweg-case
+## WGL_regionale_weg-case
+## WGL_straat-fill
+## WGL_hoofdweg-fill
+## WGL_regionale_weg-fill
+## SBL_metro_sneltram_in_tunnel_case
+## SBL_metro_sneltram_in_tunnel_line
+## SBL_trein_in_tunnel_case
+## SBL_trein_in_tunnel_line
+## SBL_metro_sneltram-case
+## SBL_metro_sneltram-line
+## SBL_trein_ongeelektrificeerd-line
+## SBL_trein_ongeelektrificeerd-dash
+## SBL_trein-line
+## SBL_trein-dash
+## WGL_autosnelweg-case
+## WGL_autosnelweg-fill
+## WGL_autosnelweg-centerline
 
 #==============================================================================
 
@@ -51,7 +54,7 @@ MAP
       "ows_abstract"        "Kleinschalige Basiskaart 50k"
     END
   END
-
+  
   IMAGECOLOR                "#fefafa"
 
   #=============================================================================
@@ -70,16 +73,10 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      MAXSCALEDENOM         400000
-      MINSCALEDENOM         12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR               "#95c6d5"
-      END
-      STYLE
-        WIDTH               0.75
-        OUTLINECOLOR        "#95c6d5"
-        LINECAP             BUTT
-        LINEJOIN            MITER
       END 
     END
   END
@@ -98,8 +95,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      MAXSCALEDENOM         400000
-      MINSCALEDENOM         12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR               "#dceacf"
       END
@@ -120,9 +117,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{11 12 13 14 15}
-      MAXSCALEDENOM         400000
-      MINSCALEDENOM         12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR               "#d3d2cf"
       END
@@ -149,16 +145,8 @@ MAP
      "init=epsg:28992"
     END
     CLASS
-      MAXSCALEDENOM         25000
-      MINSCALEDENOM         12500
-      STYLE
-        COLOR               "#f6f6f4"
-      END
-    END
-    CLASS
-      # Zoom{=11,12,13,14}
-      MAXSCALEDENOM         400000
-      MINSCALEDENOM         25000
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR               "#f6f6f4"
       END
@@ -179,17 +167,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=13,14,15}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 12500
-      STYLE
-        COLOR "#cbe0b8"
-      END
-    END
-    CLASS
-      # Zoom{=11,12}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 100000
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR "#cbe0b8"
       END
@@ -210,8 +189,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      MAXSCALEDENOM         400000
-      MINSCALEDENOM         12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR               "#fbf0de"
       END
@@ -232,15 +211,16 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{11 12 13 14 15}
       MAXSCALEDENOM 400000
       MINSCALEDENOM 12500
       STYLE
         COLOR "#e5e3de"
       END
-      STYLE
+    END
+    CLASS
       MAXSCALEDENOM 50000
       MINSCALEDENOM 12500
+      STYLE
         WIDTH 0.7
         OUTLINECOLOR "#e5e3de"
         LINECAP BUTT
@@ -264,9 +244,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{11 12 13 14 15}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         COLOR "#e3dbd3"
       END
@@ -278,8 +257,8 @@ MAP
   LAYER
     NAME                    WDL_brede_waterloop
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_brede_waterloop\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -287,53 +266,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
-      STYLE
-        WIDTH 0.1
-        OUTLINECOLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 0.1
-        OUTLINECOLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
-      STYLE
-        WIDTH 0.1
-        OUTLINECOLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=12}
-      MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
-      STYLE
-        WIDTH 0.1
-        OUTLINECOLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=11}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 0.1
         OUTLINECOLOR "#95c6d5"
@@ -348,8 +282,8 @@ MAP
   LAYER
     NAME                    WDL_smalle_waterloop
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_smalle_waterloop\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -357,8 +291,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
+      MAXSCALEDENOM 100000
       MINSCALEDENOM 12500
       STYLE
         WIDTH 0.2
@@ -368,42 +301,8 @@ MAP
       END
     END
     CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 0.2
-        COLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
-      STYLE
-        WIDTH 0.2
-        COLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=12}
-      MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
-      STYLE
-        WIDTH 0.1
-        COLOR "#95c6d5"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=11}
       MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
+      MINSCALEDENOM 100000
       STYLE
         WIDTH 0.1
         COLOR "#95c6d5"
@@ -418,7 +317,7 @@ MAP
   LAYER
     NAME                    WGL_straat_in_tunnel
     GROUP                   "lijnen"
-    MAXSCALEDENOM           100000
+    MAXSCALEDENOM           50000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -463,8 +362,8 @@ MAP
   LAYER
     NAME                    WGL_hoofdweg_in_tunnel-case
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -502,24 +401,9 @@ MAP
       END
     END
     CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
-      STYLE
-        WIDTH 2
-        PATTERN
-          2
-          3
-        END
-        COLOR "#fefafa"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=12}
+      # Zoom{=12 -13}
       MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
+      MINSCALEDENOM 50000
       STYLE
         WIDTH 2
         PATTERN
@@ -553,7 +437,7 @@ MAP
   LAYER
     NAME                    WGL_regionale_weg_in_tunnel-case
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
+    MAXSCALEDENOM 100000
     MINSCALEDENOM 12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -623,26 +507,11 @@ MAP
     END
     CLASS
       # Zoom{=15}
-      MAXSCALEDENOM 25000
+      MAXSCALEDENOM 50000
       MINSCALEDENOM 12500
       STYLE
         WIDTH 2
         PATTERN
-          4
-          3
-        END
-        COLOR "#fa0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 2
-        PATTERN
           3
           3
         END
@@ -652,41 +521,11 @@ MAP
       END
     END
     CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
+      # Zoom{=12 13}
+      MAXSCALEDENOM 400000
       MINSCALEDENOM 50000
       STYLE
         WIDTH 2
-        PATTERN
-          1
-          3
-        END
-        COLOR "#fa0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=12}
-      MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
-      STYLE
-        WIDTH 2
-        PATTERN
-          1
-          3
-        END
-        COLOR "#fa0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=11}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
-      STYLE
-        WIDTH 1
         PATTERN
           1
           3
@@ -703,8 +542,8 @@ MAP
   LAYER
     NAME                    WGL_regionale_weg_in_tunnel-fill
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -713,7 +552,7 @@ MAP
     END
     CLASS
       # Zoom{=15}
-      MAXSCALEDENOM 25000
+      MAXSCALEDENOM 50000
       MINSCALEDENOM 12500
       STYLE
         WIDTH 3
@@ -723,44 +562,11 @@ MAP
       END
     END
     CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 2
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
+      # Zoom{=12 13}
+      MAXSCALEDENOM 400000
       MINSCALEDENOM 50000
       STYLE
         WIDTH 1
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=12}
-      MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
-      STYLE
-        WIDTH 1
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=11}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
-      STYLE
-        WIDTH 0.5
         COLOR "#ffffff"
         LINECAP BUTT
         LINEJOIN MITER
@@ -773,8 +579,8 @@ MAP
   LAYER
     NAME                    WGL_autosnelweg_in_tunnel-fill
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -928,7 +734,7 @@ MAP
   LAYER
     NAME                    WGL_regionale_weg-case
     GROUP                   "lijnen"
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1141,9 +947,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM           25000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 4
         # INITIALGAP 2
@@ -1172,9 +977,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM           25000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 2
         PATTERN 8 8
@@ -1191,7 +995,7 @@ MAP
   LAYER
     NAME                    SBL_trein_in_tunnel_case
     GROUP                   "lijnen"
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1200,9 +1004,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM          100000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 2
         COLOR "#9d9d9d"
@@ -1214,37 +1017,6 @@ MAP
         LINEJOIN MITER
       END
     END
-    CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 2
-        COLOR "#9d9d9d"
-        PATTERN
-          8
-          8
-        END
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
-      STYLE
-        WIDTH 2
-        COLOR "#9d9d9d"
-        PATTERN
-          8
-          8
-        END
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-
   END
 
   #-----------------------------------------------------------------------------
@@ -1252,7 +1024,7 @@ MAP
   LAYER
     NAME                    SBL_trein_in_tunnel_line
     GROUP                   "lijnen"
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1261,41 +1033,10 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM          100000
+    MINSCALEDENOM           12500
       STYLE
-        WIDTH 2
-        COLOR "#ffffff"
-        PATTERN
-          8
-          8
-        END
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 2
-        COLOR "#ffffff"
-        PATTERN
-          8
-          8
-        END
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
-      STYLE
-        WIDTH 2
+        WIDTH 1.5
         COLOR "#ffffff"
         PATTERN
           8
@@ -1321,9 +1062,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM          25000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 3
         COLOR "#fc7f7f"
@@ -1347,9 +1087,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM          25000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 2
         COLOR "#ffffff"
@@ -1368,7 +1107,7 @@ MAP
   LAYER
     NAME                    SBL_trein_ongeelektrificeerd-line
     GROUP                   "lijnen"
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           100000
     MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
@@ -1377,31 +1116,8 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
-      STYLE
-        WIDTH 3
-        COLOR "#9d9d9d"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 3
-        COLOR "#9d9d9d"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
+    MAXSCALEDENOM          100000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1425,56 +1141,10 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+    MAXSCALEDENOM          100000
+    MINSCALEDENOM           12500
       STYLE
         WIDTH 1.5
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 1.5
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
-      MAXSCALEDENOM 100000
-      MINSCALEDENOM 50000
-      STYLE
-        WIDTH 1.5
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{11 12 13 14 15}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 12500
-      STYLE
-        WIDTH 2.5
         PATTERN
           8
           8
@@ -1491,8 +1161,8 @@ MAP
   LAYER
     NAME                    SBL_trein-line
     GROUP                   "lijnen"
-    MAXSCALEDENOM 100000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           100000
+    MINSCALEDENOM            12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1500,20 +1170,9 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
-      STYLE
-        WIDTH 3
-        COLOR "#9d9d9d"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
       # Zoom{=14}
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
+      MINSCALEDENOM 12500
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1526,7 +1185,7 @@ MAP
       MAXSCALEDENOM 100000
       MINSCALEDENOM 50000
       STYLE
-        WIDTH 3
+        WIDTH 2
         COLOR "#9d9d9d"
         LINECAP BUTT
         LINEJOIN MITER
@@ -1548,8 +1207,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
+      MAXSCALEDENOM 50000
       MINSCALEDENOM 12500
       STYLE
         WIDTH 1.5
@@ -1563,44 +1221,13 @@ MAP
       END
     END
     CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 1.5
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
       MAXSCALEDENOM 100000
       MINSCALEDENOM 50000
       STYLE
-        WIDTH 1.5
+        WIDTH 1
         PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{11 12 13 14 15}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 12500
-      STYLE
-        WIDTH 2.5
-        PATTERN
-          8
-          8
+          6
+          6
         END
         COLOR "#ffffff"
         LINECAP BUTT
@@ -1614,8 +1241,8 @@ MAP
   LAYER
     NAME                    WGL_autosnelweg-case
     GROUP                   "lijnen"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1657,19 +1284,8 @@ MAP
     END
     CLASS
       # Zoom{=12}
-      MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
-      STYLE
-        WIDTH 3
-        COLOR "#fa0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=11}
       MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
+      MINSCALEDENOM 100000
       STYLE
         WIDTH 3
         COLOR "#fa0000"
@@ -1727,19 +1343,8 @@ MAP
     END
     CLASS
       # Zoom{=12}
-      MAXSCALEDENOM 200000
-      MINSCALEDENOM 100000
-      STYLE
-        WIDTH 2
-        COLOR "#fefafaf0"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=11}
       MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
+      MINSCALEDENOM 100000
       STYLE
         WIDTH 2
         COLOR "#fefafaf0"
@@ -1763,8 +1368,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-      # Zoom{=15}
-      MAXSCALEDENOM 25000
+      MAXSCALEDENOM 50000
       MINSCALEDENOM 12500
       STYLE
         WIDTH 0.4
@@ -1774,18 +1378,6 @@ MAP
       END
     END
     CLASS
-      # Zoom{=14}
-      MAXSCALEDENOM 50000
-      MINSCALEDENOM 25000
-      STYLE
-        WIDTH 0.4
-        COLOR "#fa0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      # Zoom{=13}
       MAXSCALEDENOM 100000
       MINSCALEDENOM 50000
       STYLE
@@ -1796,8 +1388,7 @@ MAP
       END
     END
     CLASS
-      # Zoom{=12}
-      MAXSCALEDENOM 200000
+      MAXSCALEDENOM 400000
       MINSCALEDENOM 100000
       STYLE
         WIDTH 0.2
@@ -1806,20 +1397,7 @@ MAP
         LINEJOIN MITER
       END
     END
-    CLASS
-      # Zoom{=11}
-      MAXSCALEDENOM 400000
-      MINSCALEDENOM 200000
-      STYLE
-        WIDTH 0.2
-        COLOR "#fa0000"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
   END
-
-
 
 #=============================================================================
 END

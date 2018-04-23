@@ -31,7 +31,7 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "poly_geom FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly eigendom,
                           (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                              (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
@@ -83,7 +83,7 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "poly_geom FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly eigendom,
 			  (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
 			     (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
 			  WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=28992 USING UNIQUE id"
