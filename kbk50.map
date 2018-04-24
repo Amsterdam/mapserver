@@ -160,8 +160,8 @@ MAP
   LAYER
     NAME                    TRN_bos_groen_sport
     GROUP                   "vlakken"
-    MAXSCALEDENOM 400000
-    MINSCALEDENOM 12500
+    MAXSCALEDENOM           250000
+    MINSCALEDENOM           12500
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_bos_groen_sport\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
@@ -169,7 +169,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           250000
     MINSCALEDENOM           12500
       STYLE
         COLOR "#cbe0b8"
@@ -1038,7 +1038,7 @@ MAP
       "init=epsg:28992"
     END
     CLASS
-    MAXSCALEDENOM          25000
+    MAXSCALEDENOM           25000
     MINSCALEDENOM           12500
       STYLE
         WIDTH 3
