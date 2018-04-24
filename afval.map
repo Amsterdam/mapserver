@@ -1,7 +1,7 @@
 #==============================================================================
 #
 # afval.map
-# doel: serveren afvalcontainers, wells locaties
+# doel: serveren afval-containers en well locaties
 #
 #==============================================================================
 
@@ -16,7 +16,7 @@ MAP
     METADATA
       "ows_title"           "afvalcontainers"
       "ows_abstract"        "Afvalcontainers Amsterdam"
-      "wms_extent"          "52.03560, 4.58565, 52.48769, 5.31360"
+      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
   END
 
@@ -50,10 +50,10 @@ MAP
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "52.03560, 4.58565, 52.48769, 5.31360"
+      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
 
-    LABELITEM               "display_naam"
+    LABELITEM               "id"
 
     CLASS
       NAME                  "Afvalcontainer"
@@ -90,7 +90,7 @@ MAP
     NAME                    "well_coordinaten"
     GROUP                   "afvalcontainers"
     PROJECTION
-      "init=epsg:28992"
+      "init=epsg:4326"
     END
 
     INCLUDE                 "connection_afvalcontainers.inc"
@@ -114,7 +114,7 @@ MAP
       "wms_name"            "well_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "52.03560, 4.58565, 52.48769, 5.31360"
+      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
 
     LABELITEM               "id"

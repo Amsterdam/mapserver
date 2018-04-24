@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER datapunt.ois@amsterdam.nl
+MAINTAINER datapunt@amsterdam.nl
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG C.UTF-8
