@@ -9,15 +9,19 @@
 MAP
   NAME                      "containers"
   INCLUDE                   "header.inc"
-  DEBUG 1
+  # DEBUG 5
 
   WEB
     METADATA
       "ows_title"           "afvalcontainers"
       "ows_abstract"        "Afvalcontainers Amsterdam"
-      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
-      "wfs_extent"          "52.03560 4.58565 52.48769 5.31360"
+      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wfs_extent"          "4.58565 52.03560  5.31360 52.48769"
     END
+  END
+
+  PROJECTION
+    "init=epsg:4326"
   END
 
   #-----------------------------------------------------------------------------
@@ -25,10 +29,6 @@ MAP
   LAYER
     NAME                    "container_coordinaten"
     GROUP                   "afvalcontainers"
-    PROJECTION
-      "init=epsg:4326"
-    END
-
     INCLUDE                 "connection_afvalcontainers.inc"
     DATA                    "geometrie FROM public.container_locations USING srid=4326 USING UNIQUE id"
     TYPE                    POINT
@@ -40,7 +40,6 @@ MAP
       "wfs_srs"             "EPSG:4326"
       "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
-      "wfs_extent"          "52.03560 4.58565 52.48769 5.31360"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_title"           "container_coordinaten"
@@ -51,7 +50,6 @@ MAP
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
 
     LABELITEM               "id"
@@ -90,9 +88,6 @@ MAP
   LAYER
     NAME                    "well_coordinaten"
     GROUP                   "afvalcontainers"
-    PROJECTION
-      "init=epsg:4326"
-    END
 
     INCLUDE                 "connection_afvalcontainers.inc"
     DATA                    "geometrie FROM public.afvalcontainers_well USING srid=4326 USING UNIQUE id"
@@ -105,7 +100,6 @@ MAP
       "wfs_srs"             "EPSG:4326"
       "wfs_adstract"        "well coordinaten Amsterdam"
       "wfs_enable_request"  "*"
-      "wfs_extent"          "52.03560 4.58565 52.48769 5.31360"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "wms_title"           "well_coordinaten"
@@ -116,7 +110,6 @@ MAP
       "wms_name"            "well_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
 
     LABELITEM               "id"

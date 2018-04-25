@@ -23,9 +23,10 @@
   # ENABLE for debugging purposes - quite spammy
   # CONFIG   "MS_ERRORFILE" stderr
 
-  DEBUG    5
+  # DEBUG    5
   # For errors from underlying GDAL (shows SQL query issues) -- is spammy
   # CONFIG "CPL_DEBUG" "ON"
+  # CONFIG "PROJ_DEBUG" "ON"
 
   #=============================================================================
   # MAP: algemeen
@@ -79,7 +80,7 @@
   DEFRESOLUTION                      91
 
   PROJECTION
-    "init=epsg:28992"
+     "init=epsg:28992"
   END
 
 
