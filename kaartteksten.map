@@ -63,7 +63,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_gebied\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
+    MINSCALEDENOM   25000
     MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
@@ -125,7 +125,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_plaats\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
+    MINSCALEDENOM   25000
     MAXSCALEDENOM   50000
     PROJECTION
     "init=epsg:28992"
@@ -156,7 +156,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_provincie\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
+    MINSCALEDENOM   25000
     MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
@@ -249,7 +249,7 @@ MAP
     INCLUDE         "connection_basiskaart.inc"
     DATA            "geom FROM kbk50.\"KBK50_LBL_weg\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
-    MINSCALEDENOM   20000
+    MINSCALEDENOM   25000
     MAXSCALEDENOM   30000
     PROJECTION
     "init=epsg:28992"
@@ -417,7 +417,7 @@ MAP
     DATA            "geom FROM kbk25.\"KBK25_LBL_plaats\" USING srid=28992 using unique ogc_fid"
     TYPE            POLYGON
     MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MAXSCALEDENOM   25000
     PROJECTION
     "init=epsg:28992"
     END
