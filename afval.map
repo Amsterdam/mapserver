@@ -6,17 +6,18 @@
 #==============================================================================
 
 
-
 MAP
   NAME                      "containers"
   INCLUDE                   "header.inc"
-  DEBUG 1
+  # DEBUG 5
 
   WEB
     METADATA
       "ows_title"           "afvalcontainers"
       "ows_abstract"        "Afvalcontainers Amsterdam"
-      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
+      "ows_srs"             "EPSG:4326 EPSG:3857"
+      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wfs_extent"          "4.58565 52.03560  5.31360 52.48769"
     END
   END
 
@@ -25,15 +26,15 @@ MAP
   LAYER
     NAME                    "container_coordinaten"
     GROUP                   "afvalcontainers"
-    PROJECTION
-      "init=epsg:4326"
-    END
-
     INCLUDE                 "connection_afvalcontainers.inc"
     DATA                    "geometrie FROM public.container_locations USING srid=4326 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
 
     METADATA
       "wfs_title"           "containers"
@@ -50,7 +51,6 @@ MAP
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
 
     LABELITEM               "id"
@@ -89,15 +89,16 @@ MAP
   LAYER
     NAME                    "well_coordinaten"
     GROUP                   "afvalcontainers"
-    PROJECTION
-      "init=epsg:4326"
-    END
 
     INCLUDE                 "connection_afvalcontainers.inc"
     DATA                    "geometrie FROM public.afvalcontainers_well USING srid=4326 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
 
     METADATA
       "wfs_title"           "well_coordinaten"
@@ -114,7 +115,6 @@ MAP
       "wms_name"            "well_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "52.03560 4.58565 52.48769 5.31360"
     END
 
     LABELITEM               "id"
