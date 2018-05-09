@@ -81,34 +81,6 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
-    NAME                    BGT_BTRN_duin
-    GROUP                   begroeidterreindeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_BTRN_duin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_BTRN_duin"
-	 "ows_group_title"      "begroeidterreindeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
     NAME                    BGT_BTRN_fruitteelt
     GROUP                   begroeidterreindeel
     MAXSCALEDENOM           4000
@@ -783,6 +755,40 @@ MAP
   #=============================================================================
   # LAYERS KUNSTWERKDEEL
   #=============================================================================
+
+  LAYER
+    NAME                    BGT_KDL_faunavoorziening
+    GROUP                   kunstwerkdeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGT_KDL_faunavoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGT_KDL_faunavoorziening"
+	 "ows_group_title"      "kunstwerkdeel"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#f6f6f4"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac80"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
 
   LAYER
     NAME                    BGT_KDL_gemaal
@@ -1701,35 +1707,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_WDL_greppel_droge_sloot"
-	 "ows_group_title"      "waterdeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      # Zoom{17 18 19 20 21}
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#95c6d5"
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_WDL_transitie
-    GROUP                   waterdeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_WDL_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_WDL_transitie"
 	 "ows_group_title"      "waterdeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -4061,18 +4038,82 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
-    NAME                    BGTPLUS_BAK_afval_apart_plaats
+    NAME                    BGTPLUS_BAK_container
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_afval_apart_plaats\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_container\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "ows_title"            "BGTPLUS_BAK_afval_apart_plaats"
+     "ows_title"            "BGTPLUS_BAK_container"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_BAK_drinkbak
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_drinkbak\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_BAK_drinkbak"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_BAK_onbekend
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_BAK_onbekend"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -4091,9 +4132,6 @@ MAP
   END
 
 
-
-
-
   #=============================================================================
   # LAYERS BORD (INRICHTINGSELEMENT)
   #=============================================================================
@@ -4110,6 +4148,68 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_BRD_informatiebord"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+ LAYER
+    NAME                    BGTPLUS_BRD_onbekend
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_BRD_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_BRD_onbekend"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+ LAYER
+    NAME                    BGTPLUS_BRD_plaatsnaambord
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_BRD_plaatsnaambord\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_BRD_plaatsnaambord"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -4680,6 +4780,37 @@ MAP
   #=============================================================================
 
  LAYER
+    NAME                    BGTPLUS_MST_straalzender
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_MST_straalzender\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_MST_straalzender"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+ LAYER
     NAME                    BGTPLUS_MST_onbekend
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
@@ -4904,6 +5035,38 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
+    NAME                    BGTPLUS_PAL_onbekend
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_PAL_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_PAL_onbekend"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
     NAME                    BGTPLUS_PAL_poller
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
@@ -4915,6 +5078,68 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_PAL_poller"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_PAL_portaal
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_PAL_portaal\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_PAL_portaal"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_PAL_sirene
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_PAL_sirene\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_PAL_sirene"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -5384,6 +5609,37 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
+    NAME                    BGTPLUS_SSR_onbekend_P
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_SSR_onbekend_P\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_SSR_onbekend_P"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
     NAME                    BGTPLUS_SSR_waterstandmeter
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
@@ -5516,18 +5772,18 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
-    NAME                    BGTPLUS_SMR_fietsenrek
+    NAME                    BGTPLUS_SMR_bolder
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_fietsenrek\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_bolder\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "ows_title"            "BGTPLUS_SMR_fietsenrek"
+     "ows_title"            "BGTPLUS_SMR_bolder"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -5559,6 +5815,38 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_SMR_brievenbus"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_SMR_fietsenrek
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_fietsenrek\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_SMR_fietsenrek"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -5717,6 +6005,38 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_SMR_openbaar_toilet"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_SMR_picknicktafel
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_picknicktafel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_SMR_picknicktafel"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -6025,6 +6345,35 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
+    NAME                    BGTPLUS_WDI_onbekend_L
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_WDI_onbekend_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_WDI_onbekend_L"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        COLOR "#acacac80"
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
     NAME                    BGTPLUS_WDI_remmingswerk
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
@@ -6237,6 +6586,36 @@ MAP
 
   #------------------------------------------------------------------------------------------------
 
+ LAYER
+    NAME                    BGTPLUS_WGI_onbekend_L
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_onbekend_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_WGI_onbekend_L"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        COLOR "#dceacf"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
   LAYER
     NAME                    BGTPLUS_WGI_rooster_L
     GROUP                   inrichtingselement
@@ -6250,6 +6629,35 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_WGI_rooster_L"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        COLOR "#acacac80"
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_WGI_rooster_P
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_rooster_P\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_WGI_rooster_P"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -6308,6 +6716,64 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_WGI_wildrooster_L"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        COLOR "#acacac80"
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_WGI_wegmarkering_L
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wegmarkering_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_WGI_wegmarkering_L"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        WIDTH 1
+        COLOR "#acacac80"
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_WGI_wegmarkering_V
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wegmarkering_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_WGI_wegmarkering_V"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -6457,6 +6923,76 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
+    NAME                    BGTPLUS_FGD_halte
+    GROUP                   functioneelgebied
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_halte\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_FGD_halte"
+	 "ows_group_title"      "functioneelgebied"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR    "#ff7800"
+		OPACITY  40
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_FGD_recreatie_speeltuin
+    GROUP                   functioneelgebied
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_recreatie_speeltuin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_FGD_recreatie_speeltuin"
+	 "ows_group_title"      "functioneelgebied"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR    "#ff7800"
+		OPACITY  40
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
     NAME                    BGTPLUS_FGD_recreatie_sportterrein
     GROUP                   functioneelgebied
     MAXSCALEDENOM           4000
@@ -6469,6 +7005,41 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_FGD_recreatie_sportterrein"
+	 "ows_group_title"      "functioneelgebied"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR    "#7869ff"
+		OPACITY  40
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#e0ded8"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_FGD_recreatie_volkstuin
+    GROUP                   functioneelgebied
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"FGD_recreatie_volkstuin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_FGD_recreatie_volkstuin"
 	 "ows_group_title"      "functioneelgebied"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
