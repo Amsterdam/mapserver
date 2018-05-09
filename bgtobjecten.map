@@ -757,18 +757,18 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME                    BGT_KDL_faunavoorziening
+    NAME                    BGTPLUS_KDL_faunavoorziening
     GROUP                   kunstwerkdeel
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_KDL_faunavoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_faunavoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "ows_title"            "BGT_KDL_faunavoorziening"
+     "ows_title"            "BGTPLUS_KDL_faunavoorziening"
 	 "ows_group_title"      "kunstwerkdeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -4038,6 +4038,38 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
+    NAME                    BGTPLUS_BAK_afval_apart_plaats
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_afval_apart_plaats\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BAK_afval_apart_plaats"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
     NAME                    BGTPLUS_BAK_container
     GROUP                   inrichtingselement
     MAXSCALEDENOM           4000
@@ -5109,6 +5141,37 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_PAL_portaal"
+	 "ows_group_title"      "inrichtingselement"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        SYMBOL         'continue'
+        SIZE           8
+        COLOR          "#f6f6f4"
+        OUTLINECOLOR   "#acacac80"
+        WIDTH          1
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_PAL_sirene
+    GROUP                   inrichtingselement
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_PAL_sirene\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_PAL_sirene"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -6652,7 +6715,7 @@ MAP
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_rooster_P\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+    TYPE                    PIONT
     PROJECTION
       "init=epsg:28992"
     END
@@ -6768,7 +6831,7 @@ MAP
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wegmarkering_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+    TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -7032,7 +7095,7 @@ MAP
     GROUP                   functioneelgebied
     MAXSCALEDENOM           4000
     INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"FGD_recreatie_volkstuin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_recreatie_volkstuin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
     PROJECTION
