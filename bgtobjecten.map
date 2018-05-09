@@ -756,39 +756,6 @@ MAP
   # LAYERS KUNSTWERKDEEL
   #=============================================================================
 
-  LAYER
-    NAME                    BGTPLUS_KDL_faunavoorziening
-    GROUP                   kunstwerkdeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_faunavoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_KDL_faunavoorziening"
-	 "ows_group_title"      "kunstwerkdeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#f6f6f4"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac80"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
 
   LAYER
     NAME                    BGT_KDL_gemaal
@@ -1167,6 +1134,40 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_KDL_duiker_V"
+	 "ows_group_title"      "kunstwerkdeel"
+     "gml_include_items"    "all"
+     "gml_featureid"        "identificatie_lokaalid"
+    END
+
+    CLASS
+      MAXSCALEDENOM 4000
+      STYLE
+        COLOR "#f6f6f4"
+      END
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac80"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGTPLUS_KDL_faunavoorziening
+    GROUP                   kunstwerkdeel
+    MAXSCALEDENOM           4000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_faunavoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "ows_title"            "BGTPLUS_KDL_faunavoorziening"
 	 "ows_group_title"      "kunstwerkdeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -6715,7 +6716,7 @@ MAP
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_rooster_P\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    PIONT
+    TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
