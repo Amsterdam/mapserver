@@ -67,7 +67,7 @@ MAP
     NAME                    WDL_wateroppervlak
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_wateroppervlak\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
@@ -76,7 +76,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR               "#95c6d5"
       END 
@@ -89,7 +89,7 @@ MAP
     NAME                    TRN_agrarisch
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_agrarisch\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
@@ -98,7 +98,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR               "#dceacf"
       END
@@ -111,7 +111,7 @@ MAP
     NAME                    TRN_overig
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_overig\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
@@ -120,7 +120,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR               "#f6f6f4"
       END
@@ -133,7 +133,7 @@ MAP
     NAME                    TRN_bedrijfsterrein_dienstverlening
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_bedrijfsterrein_dienstverlening\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
@@ -142,7 +142,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR               "#d3d2cf"
       END
@@ -161,7 +161,7 @@ MAP
     NAME                    TRN_bos_groen_sport
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_bos_groen_sport\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
@@ -170,7 +170,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR "#cbe0b8"
       END
@@ -183,7 +183,7 @@ MAP
     NAME                    TRN_zand
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_zand\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
@@ -192,7 +192,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR               "#fbf0de"
       END
@@ -205,7 +205,7 @@ MAP
     NAME                    GBW_bebouwing
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"GBW_bebouwing\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
@@ -214,14 +214,14 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 300000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         COLOR "#e5e3de"
       END
     END
     CLASS
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 0.7
         OUTLINECOLOR "#e5e3de"
@@ -237,7 +237,7 @@ MAP
     NAME                    GBW_kassen
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"GBW_kassen\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
@@ -246,7 +246,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         COLOR "#e3dbd3"
       END
@@ -259,7 +259,7 @@ MAP
     NAME                    WDL_brede_waterloop
     GROUP                   "lijnen"
     MAXSCALEDENOM           50000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_brede_waterloop\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -268,7 +268,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           50000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 0.1
         OUTLINECOLOR "#95c6d5"
@@ -284,7 +284,7 @@ MAP
     NAME                    WDL_smalle_waterloop
     GROUP                   "lijnen"
     MAXSCALEDENOM           50000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_smalle_waterloop\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -293,7 +293,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 0.2
         COLOR "#95c6d5"
@@ -309,7 +309,7 @@ MAP
     NAME                    WGL_straat_in_tunnel
     GROUP                   "lijnen"
     MAXSCALEDENOM           75000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -319,7 +319,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 2
         PATTERN
@@ -354,7 +354,7 @@ MAP
     NAME                    WGL_hoofdweg_in_tunnel-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -364,7 +364,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 4
         PATTERN
@@ -414,7 +414,7 @@ MAP
     NAME                    WGL_regionale_weg_in_tunnel-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -424,7 +424,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 5
         PATTERN
@@ -474,7 +474,7 @@ MAP
     NAME                    WGL_autosnelweg_in_tunnel-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -484,7 +484,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 2
         PATTERN
@@ -519,7 +519,7 @@ MAP
     NAME                    WGL_regionale_weg_in_tunnel-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -529,7 +529,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 3
         COLOR "#ffffff"
@@ -556,7 +556,7 @@ MAP
     NAME                    WGL_autosnelweg_in_tunnel-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -566,7 +566,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 3
         COLOR "#fefafaf0"
@@ -626,7 +626,7 @@ MAP
     NAME                    WGL_straat-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           75000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -636,7 +636,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 3
         COLOR "#c9c7c2"
@@ -663,7 +663,7 @@ MAP
     NAME                    WGL_hoofdweg-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -673,7 +673,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 6
         COLOR "#acacac"
@@ -711,7 +711,7 @@ MAP
     NAME                    WGL_regionale_weg-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -721,7 +721,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 4
         COLOR "#acacac"
@@ -759,7 +759,7 @@ MAP
     NAME                    WGL_straat-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           75000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -769,7 +769,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 2
         COLOR "#ffffff"
@@ -796,7 +796,7 @@ MAP
     NAME                    WGL_hoofdweg-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -806,7 +806,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 5
         COLOR "#ffffff"
@@ -844,7 +844,7 @@ MAP
     NAME                    WGL_regionale_weg-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -854,7 +854,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 3
         COLOR "#ffffff"
@@ -915,7 +915,7 @@ MAP
     NAME                    SBL_metro_sneltram_in_tunnel_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -924,7 +924,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 4
         # INITIALGAP 2
@@ -945,7 +945,7 @@ MAP
     NAME                    SBL_metro_sneltram_in_tunnel_line
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -954,7 +954,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 2
         PATTERN 8 8
@@ -972,7 +972,7 @@ MAP
     NAME                    SBL_trein_in_tunnel_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -981,7 +981,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM          100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 2
         COLOR "#9d9d9d"
@@ -1001,7 +1001,7 @@ MAP
     NAME                    SBL_trein_in_tunnel_line
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1010,7 +1010,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM          100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 1.5
         COLOR "#ffffff"
@@ -1030,7 +1030,7 @@ MAP
     NAME                    SBL_metro_sneltram-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1039,7 +1039,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 3
         COLOR "#fc7f7f"
@@ -1055,7 +1055,7 @@ MAP
     NAME                    SBL_metro_sneltram-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1064,7 +1064,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM          25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 2
         COLOR "#ffffff"
@@ -1084,7 +1084,7 @@ MAP
     NAME                    SBL_trein_ongeelektrificeerd-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1093,7 +1093,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1109,7 +1109,7 @@ MAP
     NAME                    SBL_trein_ongeelektrificeerd-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1118,7 +1118,7 @@ MAP
     END
     CLASS
     MAXSCALEDENOM           25000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
       STYLE
         WIDTH 1.5
         PATTERN
@@ -1138,7 +1138,7 @@ MAP
     NAME                    SBL_trein-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM            12500
+    MINSCALEDENOM            20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1148,7 +1148,7 @@ MAP
     CLASS
       # Zoom{=14}
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1175,7 +1175,7 @@ MAP
     NAME                    SBL_trein-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1184,7 +1184,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 1.5
         PATTERN
@@ -1218,7 +1218,7 @@ MAP
     NAME                    WGL_autosnelweg-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
@@ -1228,7 +1228,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 7
         COLOR "#fa0000"
@@ -1277,7 +1277,7 @@ MAP
     NAME                    WGL_autosnelweg-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1287,7 +1287,7 @@ MAP
     CLASS
       # Zoom{=15}
       MAXSCALEDENOM 25000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 5
         COLOR "#fefafaf0"
@@ -1336,7 +1336,7 @@ MAP
     NAME                    WGL_autosnelweg-centerline
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
-    MINSCALEDENOM           12500
+    MINSCALEDENOM           20000
     INCLUDE                 "connection_basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
@@ -1345,7 +1345,7 @@ MAP
     END
     CLASS
       MAXSCALEDENOM 50000
-      MINSCALEDENOM 12500
+      MINSCALEDENOM 20000
       STYLE
         WIDTH 0.4
         COLOR "#fa0000"
