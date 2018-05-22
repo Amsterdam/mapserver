@@ -1,0 +1,95 @@
+#==============================================================================
+#
+# energie.map
+# doel: serveren van energie data
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Stephan Preeker       22-5-2018      schepping
+#
+#==============================================================================
+
+MAP
+  NAME "ENERGIE"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"    "energie"
+      "ows_abstract" "Gas en electra verbruiks gegevens. BAG gecombineerd met Alliander open data"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "gas_verbruik"
+    GROUP           "energie"
+    INCLUDE         "connection_gastransitie.inc"
+    DATA            "geometrie FROM public.gas_verbruik USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   425001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Gas energie verbruik per P6"
+      "ows_group_title"     "energie"
+      "ows_abstract"        "Gas verbruik per ~25 aansluiringen m3"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          'GasP6'
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 210 150 50
+       WIDTH        2
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME            "elektra_verbruik"
+    GROUP           "energie"
+    INCLUDE         "connection_gastransitie.inc"
+    DATA            "geometrie FROM public.elk_verbruik USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   425001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "elektra_verbruik"
+      "ows_group_title"     "energie"
+      "ows_abstract"        "Elektra verbruik per ~25 aansluitingen"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          'ElektraP6'
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 210 150 50
+       WIDTH        2
+      END
+    END
+
+  END
+
+#=============================================================================
+END
