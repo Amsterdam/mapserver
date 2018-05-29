@@ -164,6 +164,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /GS/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -181,11 +183,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Sluiting v. woning etc."
-      EXPRESSION /GS/
       STYLE
         COLOR          255 0 0
         OUTLINECOLOR   100 100 100
@@ -202,6 +201,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /EP/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -219,11 +220,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Exploitatieplan"
-      EXPRESSION /EP/
       STYLE
         COLOR          0 255 0
         OUTLINECOLOR   100 100 100
@@ -240,6 +238,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /WU|WV|WG|WA/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -257,11 +257,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Woningwet"
-      EXPRESSION /WU|WV|WG|WA/
       STYLE
         COLOR          0 0 255
         OUTLINECOLOR   100 100 100
@@ -278,6 +275,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /KW/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -295,11 +294,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Wet bodembescherming"
-      EXPRESSION /KW/
       STYLE
         COLOR          255 255 0
         OUTLINECOLOR   100 100 100
@@ -316,6 +312,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /OH/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -333,11 +331,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "WABO bestuursdwang / dwangsom"
-      EXPRESSION /OH/
       STYLE
         COLOR          255 0 255
         OUTLINECOLOR   100 100 100
@@ -351,9 +346,11 @@ MAP
 
   LAYER
     NAME            "beperking-HV"
-    GROUP           "wkpp-type"
+    GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /HV/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -371,11 +368,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Vordering tot woonruimte"
-      EXPRESSION /HV/
       STYLE
         COLOR          0 255 255
         OUTLINECOLOR   100 100 100
@@ -392,6 +386,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /GG/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -411,7 +407,6 @@ MAP
 
     CLASS
       NAME "Gemeentelijk monument"
-      EXPRESSION /GG/
       STYLE
         COLOR          255 175 0
         OUTLINECOLOR   100 100 100
@@ -428,6 +423,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /OS/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -445,11 +442,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Sluiting obv opiumwet"
-      EXPRESSION /OS/
       STYLE
         COLOR          0 175 0
         OUTLINECOLOR   100 100 100
@@ -466,6 +460,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /VV/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -483,11 +479,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "(voorlopige) aanwijzing WVG"
-      EXPRESSION /VV|VI/
       STYLE
         COLOR          175 0 255
         OUTLINECOLOR   100 100 100
@@ -504,6 +497,8 @@ MAP
     GROUP           "wkpb-type"
     INCLUDE         "connection.inc"
     DATA            "geometrie FROM public.geo_wkpb USING srid=28992 USING UNIQUE id"
+    FILTERITEM      "beperkingtype_id"
+    FILTER          /HS/
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -521,11 +516,8 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM "beperkingtype_id"
-
     CLASS
       NAME "Splitsingsvergunningstelsel"
-      EXPRESSION /HS/
       STYLE
         COLOR          175 0 0
         OUTLINECOLOR   100 100 100
