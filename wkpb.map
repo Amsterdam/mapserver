@@ -56,10 +56,10 @@ MAP
     CLASSITEM "beperkingtype_id"
 
     CLASS
-      NAME "Sluiting v. woning etc."
-      EXPRESSION /GS/
+      NAME "Vordering tot woonruimte"
+      EXPRESSION /HV/
       STYLE
-        COLOR          255 0 0
+        COLOR          0 255 255
         OUTLINECOLOR   100 100 100
         WIDTH          1
       END
@@ -70,6 +70,46 @@ MAP
       EXPRESSION /EP/
       STYLE
         COLOR          0 255 0
+        OUTLINECOLOR   100 100 100
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Gemeentelijk monument"
+      EXPRESSION /GG/
+      STYLE
+        COLOR          255 175 0
+        OUTLINECOLOR   100 100 100
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Sluiting v. woning/lokaal/erf"
+      EXPRESSION /GS/
+      STYLE
+        COLOR          255 0 0
+        OUTLINECOLOR   100 100 100
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "Sluiting o.b.v Opiumwet"
+      EXPRESSION /OS/
+      STYLE
+        COLOR          0 175 0
+        OUTLINECOLOR   100 100 100
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "WABO bestuursdwang / dwangsom"
+      EXPRESSION /OH/
+      STYLE
+        COLOR          255 0 255
         OUTLINECOLOR   100 100 100
         WIDTH          1
       END
@@ -90,46 +130,6 @@ MAP
       EXPRESSION /KW/
       STYLE
         COLOR          255 255 0
-        OUTLINECOLOR   100 100 100
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "WABO bestuursdwang / dwangsom"
-      EXPRESSION /OH/
-      STYLE
-        COLOR          255 0 255
-        OUTLINECOLOR   100 100 100
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Vordering tot woonruimte"
-      EXPRESSION /HV/
-      STYLE
-        COLOR          0 255 255
-        OUTLINECOLOR   100 100 100
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Gemeentelijk monument"
-      EXPRESSION /GG/
-      STYLE
-        COLOR          255 175 0
-        OUTLINECOLOR   100 100 100
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "Sluiting obv opiumwet"
-      EXPRESSION /OS/
-      STYLE
-        COLOR          0 175 0
         OUTLINECOLOR   100 100 100
         WIDTH          1
       END
@@ -184,7 +184,7 @@ MAP
     END
 
     CLASS
-      NAME "Sluiting v. woning etc."
+      NAME "Sluiting v. woning/lokaal/erf"
       STYLE
         COLOR          255 0 0
         OUTLINECOLOR   100 100 100
@@ -443,7 +443,7 @@ MAP
     END
 
     CLASS
-      NAME "Sluiting obv opiumwet"
+      NAME "Sluiting o.b.v. Opiumwet"
       STYLE
         COLOR          0 175 0
         OUTLINECOLOR   100 100 100
