@@ -92,38 +92,38 @@ MAP
 
   END
 
-  LAYER
-    NAME            "scans_sample"
-    GROUP           "predictiveparking"
-    INCLUDE         "connection_predictiveparking.inc"
-
-    DATA            "geometrie FROM scans_sample USING srid=4326 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   425001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:4326"
-    END
-
-    METADATA
-      "ows_title"           "scans"
-      "ows_group_title"     "predictiveparking"
-      "ows_abstract"        "Scans van de ongeveer de laaste maand HARAKIRI"
-      "gml_featureid"       "id"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-    END
-
-    CLASS
-      NAME          "Scan"
-      STYLE
-       OUTLINECOLOR 210 150 50
-       WIDTH        2
-      END
-    END
-
-  END
+#  LAYER
+#    NAME            "scans_sample"
+#    GROUP           "predictiveparking"
+#    INCLUDE         "connection_predictiveparking.inc"
+#
+#    DATA            "geometrie FROM scans_sample USING srid=4326 USING UNIQUE id"
+#    TYPE            POINT
+#    MINSCALEDENOM   100
+#    MAXSCALEDENOM   425001
+#    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+#    PROJECTION
+#    "init=epsg:4326"
+#    END
+#
+#    METADATA
+#      "ows_title"           "scans"
+#      "ows_group_title"     "predictiveparking"
+#      "ows_abstract"        "Scans van de ongeveer de laatste maand"
+#      "gml_featureid"       "id"
+#      "gml_include_items"   "all"
+#      "gml_types"           "auto"
+#    END
+#
+#    CLASS
+#      NAME          "Scan"
+#      STYLE
+#       OUTLINECOLOR 210 150 50
+#       WIDTH        2
+#      END
+#    END
+#
+#  END
 
   LAYER
     NAME            "buurten"
