@@ -34,13 +34,13 @@ MAP
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly eigendom,
                           (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                              (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
-                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992"
+      "init=epsg:28992"
     END
 
     FILTER ("[cat_id]" = '%categorie%')
@@ -86,13 +86,13 @@ MAP
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly eigendom,
 			  (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
 			     (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
-			  WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=28992 USING UNIQUE id"
+			  WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992"
+      "init=epsg:28992"
     END
 
     FILTER ("[cat_id]" = '%categorie%')
@@ -137,7 +137,7 @@ MAP
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_point eigendom,
                           (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                              (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
-                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -221,7 +221,7 @@ MAP
       'categorie'     '^[0-9]$'
     END
 
-    DATA            "geometrie FROM public.geo_brk_eigendom_point USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_brk_eigendom_point USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -321,13 +321,13 @@ MAP
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly_all eigendom,
                           (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                              (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
-                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
     MAXSCALEDENOM   300001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992"
+      "init=epsg:28992"
     END
 
     FILTER ("[cat_id]" = '%categorie%')
@@ -373,13 +373,13 @@ MAP
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly_all eigendom,
                           (SELECT * FROM (VALUES (0, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                              (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
-                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING UNIQUE id"
+                          WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
     MAXSCALEDENOM   300001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-    "init=epsg:28992"
+      "init=epsg:28992"
     END
 
     FILTER ("[cat_id]" = '%categorie%')
