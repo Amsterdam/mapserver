@@ -73,9 +73,8 @@ RUN mkdir /usr/local/src/mapserver/build && \
         -DWITH_GIF=1 \
         -DWITH_EXEMPI=1 \
         -DWITH_XMLMAPFILE=1 \
-
-	-DWITH_USE_POINT_Z_M=1 \
-    -DWITH_FCGI=0 && \
+        -DWITH_USE_POINT_Z_M=1 \
+        -DWITH_FCGI=0 && \
     make && \
     make install && \
     ldconfig
