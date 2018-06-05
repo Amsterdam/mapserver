@@ -427,6 +427,58 @@ MAP
     END
 
   END
+  
+  
+  #=============================================================================
+  # LAYERS FOR TVM
+  #=============================================================================
+  
+  LAYER
+    NAME            "fiscaal_parkeervakken"
+    GROUP           "fiscaalparkeervakken"
+    INCLUDE         "connection_parkeervakken.inc"
+    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "fiscaal_parkeervakken"
+      "ows_group_title"     "fiscale parkeervakken"
+      "ows_abstract"        "Fiscale parkeervakken in de gemeente Amsterdam"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+
+    CLASS
+      NAME "FISCAAL"
+      EXPRESSION ("[soort]" eq "FISCAAL")
+      STYLE
+    	MINSCALEDENOM  10
+        MAXSCALEDENOM  800
+        ANTIALIAS      true
+        OUTLINECOLOR   0 0 0
+        WIDTH          2
+      END
+      STYLE
+    	MINSCALEDENOM  800
+        MAXSCALEDENOM  2000
+        ANTIALIAS      true
+        OUTLINECOLOR   0 0 0
+        WIDTH          1.5
+      END
+      STYLE
+    	MINSCALEDENOM  2000
+        MAXSCALEDENOM  40000
+        ANTIALIAS      true
+        OUTLINECOLOR   0 0 0
+        WIDTH          1.0
+      END
+    END
+  END
 
 #=============================================================================
 END
