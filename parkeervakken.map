@@ -502,7 +502,7 @@ MAP
 
     CLASS
       NAME "Niet-fiscaal"
-      EXPRESSION ("[soort]" eq "FISCAAL")
+      EXPRESSION NOT ("[soort]" eq "FISCAAL")
       STYLE
     	MINSCALEDENOM  10
         MAXSCALEDENOM  800
