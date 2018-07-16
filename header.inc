@@ -32,7 +32,7 @@
   # MAP: algemeen
   #=============================================================================
 
-  EXTENT      90000 465000 175000 520000
+  EXTENT      94000 465000 170000 514000
   UNITS       meters
   MAXSIZE     4000
   STATUS      ON
@@ -62,7 +62,7 @@
 
       # verplicht om aan de OGC standaard te voldoen:
       "ows_contactorganization"      "gemeente Amsterdam"
-      "ows_contactperson"            "Basisinformatie"
+      "ows_contactperson"            "Onderzoek, Informatie en Statistiek"
 
     END
     IMAGEPATH                        "/srv/mapserver/tmp_img/"
