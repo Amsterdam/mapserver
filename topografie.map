@@ -42,6 +42,9 @@ MAP
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
         END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaart.png"
+        END
     END
 
     #-----------------------------------------------------------------------------
@@ -69,6 +72,9 @@ MAP
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
         END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartlight.png"
+        END
     END
 
     #-----------------------------------------------------------------------------
@@ -95,6 +101,9 @@ MAP
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
+        END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
         END
     END
 
@@ -126,6 +135,9 @@ MAP
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
         END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaart.png"
+        END
     END
 
     #-----------------------------------------------------------------------------
@@ -153,6 +165,9 @@ MAP
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
         END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartlight.png"
+        END
     END
 
     #-----------------------------------------------------------------------------
@@ -179,6 +194,9 @@ MAP
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
+        END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
         END
     END
 
@@ -210,6 +228,9 @@ MAP
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
         END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaart.png"
+        END
     END
 
     #-----------------------------------------------------------------------------
@@ -237,6 +258,9 @@ MAP
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
         END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartlight.png"
+        END
     END
 
     #-----------------------------------------------------------------------------
@@ -263,6 +287,9 @@ MAP
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
+        END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
         END
       END
 
@@ -294,33 +321,39 @@ MAP
            "wms_transparant"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaart.png"
+        END
     END
 
     #--------------------------------------------------------------------------
 
-           LAYER
-               NAME                    "tekst"
-               GROUP                   "basiskaart-light"
-               PROJECTION
-                  "init=epsg:28992"
-                  END
-               TYPE                    RASTER
-               CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
-               CONNECTIONTYPE          WMS
-               MAXSCALEDENOM           400000
-               MINSCALEDENOM           0
-               METADATA
-                  "wms_title"          "tekst"
-                  "wms_group_title"    "basiskaart-light"
-                  "wms_abstract"       "Basiskaart Amsterdam light"
-                  "wms_srs"            "EPSG:28992"
-                  "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
-                  "wms_format"         "image/png"
-                  "wms_server_version" "1.1.1"
-                  "wms_transparant"    "true"
-                  "wms_bgcolor"        "0xFFFFFF"
-                  END
-           END
+    LAYER
+        NAME                    "tekst"
+        GROUP                   "basiskaart-light"
+        PROJECTION
+           "init=epsg:28992"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           400000
+        MINSCALEDENOM           0
+        METADATA
+           "wms_title"          "tekst"
+           "wms_group_title"    "basiskaart-light"
+           "wms_abstract"       "Basiskaart Amsterdam light"
+           "wms_srs"            "EPSG:28992"
+           "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
+           "wms_format"         "image/png"
+           "wms_server_version" "1.1.1"
+           "wms_transparant"    "true"
+           "wms_bgcolor"        "0xFFFFFF"
+        END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartlight.png"
+        END
+    END
 
     #--------------------------------------------------------------------------
 
@@ -346,6 +379,9 @@ MAP
            "wms_transparant"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            END
+        CLASS
+         KEYIMAGE               "MAP_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
+        END
     END
 
 
