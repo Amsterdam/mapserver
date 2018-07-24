@@ -183,6 +183,45 @@ MAP
 
   END
 
+ #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "alcoholverbodsgebied"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+	FILTER          ([overlastgebied_type]='AVG')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "alcoholverbodsgebied"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "alcoholverbodsgebied"
+      STYLE
+       ANTIALIAS    true
+	   COLOR        240 40 240
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 240 40 240
+       WIDTH        2
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
@@ -431,6 +470,71 @@ MAP
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
         COLOR          196 147 13
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "alcoholverbodsgebied_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+	FILTER          ([overlastgebied_type]='AVG')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "alcoholverbodsgebied_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Labels van de alcoholverbodsgebieden van de gemeente Amsterdam"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "alcoholverbodsgebied_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          240 40 240
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          240 40 240
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          240 40 240
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
