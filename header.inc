@@ -55,7 +55,7 @@
   WEB
     METADATA
       "ows_enable_request"           "*"
-      "ows_srs"                      "EPSG:28992 EPSG:4326 EPSG:3857"
+      "ows_srs"                      "EPSG:28992 EPSG:4326 EPSG:3857 EPSG:4258"
       "ows_feature_info_mime_type"   "application/json"
       "wms_format"                   "image/png"
       "wfs_encoding"                 "UTF-8"
