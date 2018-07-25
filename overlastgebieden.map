@@ -31,7 +31,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='AOG')
+    FILTER          ([overlastgebied_type]='AOG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -52,11 +52,11 @@ MAP
       NAME          "Algemeen overlastgebied"
       STYLE
        ANTIALIAS    true
-	   COLOR        178 39 46
+       COLOR        212 33 44
        OPACITY      20
       END
       STYLE
-       OUTLINECOLOR 178 39 46
+       OUTLINECOLOR 212 33 44
        WIDTH        2
       END
     END
@@ -71,7 +71,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='CTG')
+    FILTER          ([overlastgebied_type]='CTG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -92,7 +92,7 @@ MAP
       NAME          "Cameratoezichtgebied"
       STYLE
        ANTIALIAS    true
-	   COLOR        51 114 41
+       COLOR        51 114 41
        OPACITY      20
       END
       STYLE
@@ -111,7 +111,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='DOG')
+    FILTER          ([overlastgebied_type]='DOG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -132,7 +132,7 @@ MAP
       NAME          "Dealeroverlastgebied"
       STYLE
        ANTIALIAS    true
-	   COLOR        49 102 188
+       COLOR        49 102 188
        OPACITY      20
       END
       STYLE
@@ -151,7 +151,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='UOG')
+    FILTER          ([overlastgebied_type]='UOG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -172,11 +172,11 @@ MAP
       NAME          "Uitgaansoverlastgebied"
       STYLE
        ANTIALIAS    true
-	   COLOR        196 147 13
+       COLOR        255 128 17
        OPACITY      20
       END
       STYLE
-       OUTLINECOLOR 196 147 13
+       OUTLINECOLOR 255 128 17
        WIDTH        2
       END
     END
@@ -191,7 +191,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='AVG')
+    FILTER          ([overlastgebied_type]='AVG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -212,16 +212,56 @@ MAP
       NAME          "alcoholverbodsgebied"
       STYLE
        ANTIALIAS    true
-	   COLOR        240 40 240
+       COLOR        169 27 169
        OPACITY      20
       END
       STYLE
-       OUTLINECOLOR 240 40 240
+       OUTLINECOLOR 169 27 169
        WIDTH        2
       END
     END
 
   END
+  
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "taxi-invloedsgebied"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='TAXI')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "taxi-invloedsgebied"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "taxi-invloedsgebied"
+      STYLE
+       ANTIALIAS    true
+       COLOR        236 211 22
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 236 211 22
+       WIDTH        2
+      END
+    END
+
+  END  
 
   #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
@@ -231,7 +271,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='AOG')
+    FILTER          ([overlastgebied_type]='AOG')
     TYPE            POLYGON
     MAXSCALEDENOM   8000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -250,7 +290,7 @@ MAP
       NAME             "algemeen_overlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
-        COLOR          178 39 46
+        COLOR          212 33 44
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -262,7 +302,7 @@ MAP
       LABEL
         MINSCALEDENOM  3000
         MAXSCALEDENOM  6000
-        COLOR          178 39 46
+        COLOR          212 33 44
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -274,7 +314,7 @@ MAP
       LABEL
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
-        COLOR          178 39 46
+        COLOR          212 33 44
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -295,7 +335,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='CTG')
+    FILTER          ([overlastgebied_type]='CTG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -360,7 +400,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='DOG')
+    FILTER          ([overlastgebied_type]='DOG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -425,7 +465,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='UOG')
+    FILTER          ([overlastgebied_type]='UOG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -490,7 +530,7 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-	FILTER          ([overlastgebied_type]='AVG')
+    FILTER          ([overlastgebied_type]='AVG')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -510,7 +550,7 @@ MAP
       NAME             "alcoholverbodsgebied_label"
       LABEL
         MAXSCALEDENOM  3000
-        COLOR          240 40 240
+        COLOR          169 27 169
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -522,7 +562,7 @@ MAP
       LABEL
         MINSCALEDENOM  3000
         MAXSCALEDENOM  6000
-        COLOR          240 40 240
+        COLOR          169 27 169
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
@@ -534,7 +574,72 @@ MAP
       LABEL
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
-        COLOR          240 40 240
+        COLOR          169 27 169
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+  
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "taxi-invloedsgebied_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='TAXI')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "taxi-invloedsgebied_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Labels van de alcoholverbodsgebieden van de gemeente Amsterdam"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "taxi-invloedsgebied_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          236 211 22
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          236 211 22
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          236 211 22
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
