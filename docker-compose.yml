@@ -12,9 +12,12 @@ services:
   map:
     build: .
     ports:
-      - "80"
+      - "80:80"
     links:
       - "database:database"
+    volumes:
+      - /tmp/srv/lufo:/srv/lufo
+      - .:/srv/mapserver
     environment:
       BAG_DB_NAME: bag
       BAG_DB_USER: postgres
@@ -98,5 +101,3 @@ services:
 
       MAP_URL: "http://mapserver"
 
-    volumes:
-      - /tmp/srv/lufo:/srv/lufo
