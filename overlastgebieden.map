@@ -227,7 +227,7 @@ MAP
 
 
   LAYER
-    NAME            "taxi-invloedsgebied"
+    NAME            "taxi-standplaatsgebied"
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
@@ -241,7 +241,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "taxi-invloedsgebied"
+      "ows_title"           "taxi-standplaatsgebied"
       "ows_group_title"     "overlastgebieden"
       "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
       "gml_featureid"       "ID"
@@ -249,7 +249,7 @@ MAP
     END
 
     CLASS
-      NAME          "taxi-invloedsgebied"
+      NAME          "taxi-standplaatsgebied"
       STYLE
        ANTIALIAS    true
        COLOR        236 211 22
@@ -591,7 +591,7 @@ MAP
 
 
   LAYER
-    NAME            "taxi-invloedsgebied_label"
+    NAME            "taxi-standplaatsgebied_label"
     GROUP           "overlastgebieden"
     INCLUDE         "connection_overlastgebieden.inc"
     DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
@@ -605,14 +605,14 @@ MAP
     END
 
     METADATA
-      "ows_title"           "taxi-invloedsgebied_label"
+      "ows_title"           "taxi-standplaatsgebied_label"
       "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de alcoholverbodsgebieden van de gemeente Amsterdam"
+      "ows_abstract"        "Labels van de taxi standplaatsgebieden van de gemeente Amsterdam"
     END
 
     CLASS
       TEXT             '[naam]'
-      NAME             "taxi-invloedsgebied_label"
+      NAME             "taxi-standplaatsgebied_label"
       LABEL
         MAXSCALEDENOM  3000
         COLOR          236 211 22
