@@ -841,4 +841,138 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "plastic"
+    GROUP                   "afvalcontainers"
+
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "wkb_geometry FROM public.pand_distance_to_plastic USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           4000000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "plastic_pand_distance"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "plastic afstanden Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_title"           "Plastic_afstanden"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Plastic afstanden"
+      "wms_abstract"        "Plastic afstanden Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "plastic_afstanden"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME                  "< 40 m"
+      EXPRESSION ([st_distance] < 40)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 60 m"
+      EXPRESSION ([st_distance] < 60)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 80 m"
+      EXPRESSION ([st_distance] < 80)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 m"
+      EXPRESSION ([st_distance] < 90)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 105 m"
+      EXPRESSION ([st_distance] < 105)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 120 m"
+      EXPRESSION ([st_distance] < 120)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 140 m"
+      EXPRESSION ([st_distance] < 140)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([st_distance] < 170)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 190 m"
+      EXPRESSION ([st_distance] < 190)
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 190"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+  END
+
 END
