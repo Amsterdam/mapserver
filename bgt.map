@@ -20,362 +20,6 @@ MAP
 
 
 #==============================================================================
-# LIJNEN
-#==============================================================================
-
-#==============================================================================
-## HOOGTELIGGING -2
-#==============================================================================
-
-# Metro -2
-	LAYER
-		NAME                    metro_2
-		GROUP                   hoogte_2
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"sneltram"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "metro_2"
-			"wms_group_title"      "hoogte_2"
-		END
-		CLASS
-			MAXSCALEDENOM   3500
-			MINSCALEDENOM	2000
-			STYLE
-				WIDTH 1.5
-				OUTLINECOLOR "#FC7F7F"
-				PATTERN
-					7
-					7
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-		CLASS
-			MAXSCALEDENOM   2000
-			MINSCALEDENOM	0
-			STYLE
-
-				WIDTH 2
-				OUTLINECOLOR "#FC7F7F"
-				PATTERN
-					7
-					7
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-	END
-
-  #-----------------------------------------------------------------------------
-  # Trein -2
-
-	LAYER
-		NAME                    trein_2
-		GROUP                   hoogte_2
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"trein"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "trein_2"
-			"wms_group_title"      "hoogte_2"
-		END
-		CLASS
-			MAXSCALEDENOM           3500
-			MINSCALEDENOM			2000
-			STYLE
-
-				OPACITY 50
-				WIDTH 3
-				OUTLINECOLOR "#9D9D9D"
-				PATTERN
-					8
-					8
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-		CLASS
-			MAXSCALEDENOM           2000
-			MINSCALEDENOM			0
-			STYLE
-				OPACITY 50
-				WIDTH 3.5
-				OUTLINECOLOR "#9D9D9D"
-				PATTERN
-					8
-					8
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-	END
-
-#==============================================================================
-## HOOGTELIGGING -1
-#==============================================================================
-
-# Metro achter -1
-	LAYER
-		NAME                    metro_achter_1
-		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"sneltram"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "metro_achter_1"
-			"wms_group_title"      "hoogte_1"
-		END
-		CLASS
-			MAXSCALEDENOM   3500
-			MINSCALEDENOM	2000
-			STYLE
-				OPACITY 50
-				WIDTH 2.5
-				OUTLINECOLOR "#FC7F7F"
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-		CLASS
-			MAXSCALEDENOM   2000
-			MINSCALEDENOM	0
-			STYLE
-				OPACITY 50
-				WIDTH 3
-				OUTLINECOLOR "#FC7F7F"
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-	END
-
-  #-----------------------------------------------------------------------------
-  # Metro voor -1
-
-	LAYER
-		NAME                    metro_voor_1
-		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"sneltram"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "metro_voor_1"
-			"wms_group_title"      "hoogte_1"
-		END
-		CLASS
-			MAXSCALEDENOM   3500
-			MINSCALEDENOM	2000
-			STYLE
-				OPACITY 60
-				WIDTH 2
-				OUTLINECOLOR "#FFFFFF"
-				PATTERN
-					7
-					7
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-		CLASS
-			MAXSCALEDENOM           2000
-			MINSCALEDENOM			0
-			STYLE
-				OPACITY 60
-				WIDTH 2.5
-				OUTLINECOLOR "#FFFFFF"
-				PATTERN
-					7
-					7
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-	END
-
-  #-----------------------------------------------------------------------------
-  # Tram  -1
-
-	LAYER
-		NAME                    tram_1
-		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"tram"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "tram_1"
-			"wms_group_title"      "hoogte_1"
-		END
-		CLASS
-			MAXSCALEDENOM   3500
-			MINSCALEDENOM	2000
-			STYLE
-				OPACITY       50
-				WIDTH         1.5
-				COLOR         "#FC7F7F"
-				LINECAP       BUTT
-				LINEJOIN      MITER
-				PATTERN
-					5
-					5
-				END
-			END
-		END
-		CLASS
-			MAXSCALEDENOM   2000
-			MINSCALEDENOM			0
-			STYLE
-				OPACITY       50
-				WIDTH         2
-				COLOR         "#FC7F7F"
-				LINECAP       BUTT
-				LINEJOIN      MITER
-				PATTERN
-					5
-					5
-				END
-			END
-		END
-	END
-
-  #-----------------------------------------------------------------------------
-  # Trein achter -1
-
-	LAYER
-		NAME                    trein_achter_1
-		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"trein"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "trein_achter_1"
-			"wms_group_title"      "hoogte_1"
-		END
-		CLASS
-			MAXSCALEDENOM           3500
-			MINSCALEDENOM			2000
-			STYLE
-				OPACITY 50
-				WIDTH 3
-				OUTLINECOLOR "#9D9D9D"
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-		CLASS
-			MAXSCALEDENOM           2000
-			MINSCALEDENOM			0
-			STYLE
-				OPACITY 50
-				WIDTH 3.5
-				OUTLINECOLOR "#9D9D9D"
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-	END
-
-  #-----------------------------------------------------------------------------
-  # Trein voor -1
-
-	LAYER
-		NAME                    trein_voor_1
-		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
-		FILTERITEM				"bgt_functie"
-		FILTER 					"trein"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "trein_voor_1"
-			"wms_group_title"      "hoogte_1"
-		END
-		CLASS
-			MAXSCALEDENOM           3500
-			MINSCALEDENOM			2000
-			STYLE
-				OPACITY 60
-				WIDTH 2
-				OUTLINECOLOR "#FFFFFF"
-				PATTERN
-					8
-					8
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-		CLASS
-			MAXSCALEDENOM           2000
-			MINSCALEDENOM			0
-			STYLE
-				OPACITY 60
-				WIDTH 2.5
-				OUTLINECOLOR "#FFFFFF"
-				PATTERN
-					8
-					8
-				END
-				LINECAP BUTT
-				LINEJOIN MITER
-			END
-		END
-	END
-
-#==============================================================================
 # VLAKKEN
 #==============================================================================
 
@@ -3133,6 +2777,365 @@ MAP
 		END
 	END
 
+
+
+#==============================================================================
+# LIJNEN
+#==============================================================================
+
+#==============================================================================
+## HOOGTELIGGING -2
+#==============================================================================
+
+# Metro -2
+	LAYER
+		NAME                    metro_2
+		GROUP                   hoogte_2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_2"
+			"wms_group_title"      "hoogte_2"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				WIDTH 1.5
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM	0
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein -2
+
+	LAYER
+		NAME                    trein_2
+		GROUP                   hoogte_2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_2"
+			"wms_group_title"      "hoogte_2"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				OPACITY 50
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 50
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+
+
+#==============================================================================
+## HOOGTELIGGING -1
+#==============================================================================
+
+# Metro achter -1
+	LAYER
+		NAME                    metro_achter_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				OPACITY 50
+				WIDTH 2.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM	0
+			STYLE
+				OPACITY 50
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro voor -1
+
+	LAYER
+		NAME                    metro_voor_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				OPACITY 60
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 60
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Tram  -1
+
+	LAYER
+		NAME                    tram_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"tram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "tram_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				OPACITY       50
+				WIDTH         1.5
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+				PATTERN
+					5
+					5
+				END
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY       50
+				WIDTH         2
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+				PATTERN
+					5
+					5
+				END
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein achter -1
+
+	LAYER
+		NAME                    trein_achter_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_achter_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				OPACITY 50
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 50
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein voor -1
+
+	LAYER
+		NAME                    trein_voor_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_voor_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				OPACITY 60
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 60
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
 
 
 
