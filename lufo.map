@@ -28,26 +28,26 @@ MAP
   # LAYERS
   #============================================================================= 
 
-#  LAYER
-#    NAME                    "lufo2018"
-#    GROUP                   "lufo"
-#    CONNECTION              "https://map.data.amsterdam.nl/maps/lufo2018"
-#    CONNECTIONTYPE          WMS
-#    TYPE                    RASTER
-#    PROJECTION
-#      "init=epsg:28992"
-#    END
-#
-#    METADATA
-#      "ows_title"           "lufo2018"
-#      "ows_group_title"     "lufo"
-#      "ows_abstract"        "Luchtfoto's van 2018 van het grondgebied van de gemeente Amsterdam"
-#      "wms_srs"             "EPSG:28992"
-#      "wms_name"            "lufo2018"
-#      "wms_format"          "image/tiff"
-#      "wms_server_version"  "1.1.1"
-#    END
-#  END
+  LAYER
+    NAME                    "lufo2018"
+    GROUP                   "lufo"
+    CONNECTION              "https://map.data.amsterdam.nl/maps/lufo2018"
+    CONNECTIONTYPE          WMS
+    TYPE                    RASTER
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo2018"
+      "ows_group_title"     "lufo"
+      "ows_abstract"        "Luchtfoto's van 2018 van het grondgebied van de gemeente Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "lufo2018"
+      "wms_format"          "image/tiff"
+      "wms_server_version"  "1.1.1"
+    END
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -400,13 +400,13 @@ MAP
 #  LAYER
 #    NAME            "lufo-TILE"
 #    GROUP           "lufo"
-#    TILEINDEX       "/srv/lufo/imagery.shp"
+#    TILEINDEX       "/mnt/lufo/imagery.shp"
 #    TILEITEM        "location"
 #    TYPE            RASTER
 #    PROJECTION
 #      "init=epsg:28992"
 #    END
-
+#
 #    METADATA
 #      "ows_title"           "lufo-tile"
 #      "ows_group_title"     "lufo"

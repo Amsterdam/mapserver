@@ -17,9 +17,19 @@
 # -----------------------------------------
 # Requirements:
 # -----------------------------------------
-# sudo apt-get install -y gdal-bin python-gdal gdal-dev
+# sudo apt-get install -y gdal-bin python-gdal
 #
 # -----------------------------------------
+#
+# From 2018 the files need to be translated first. Run this in the dir of the external harddrive
+#
+# for i in *.tif; do
+#     [ -f "$i" ] || break
+#     gdal_translate $i /mnt/lufo2018/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
+# done
+#
+# cp -a *.aux /mnt/lufo2018
+# cp -a *.tfw /mnt/lufo2018
 
 SOURCEDIR=$1
 DESTDIR_ROOT=$2
