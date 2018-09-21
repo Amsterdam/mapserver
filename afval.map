@@ -161,7 +161,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    "sites"
+    NAME                    "site_points"
     GROUP                   "afvalcontainers"
 
     INCLUDE                 "connection_afvalcontainers.inc"
@@ -191,7 +191,7 @@ MAP
       "wms_server_version"  "1.1.1"
     END
 
-    LABELITEM               "id"
+    LABELITEM               "short_id"
 
     CLASS
       NAME                  "Site"
@@ -207,7 +207,70 @@ MAP
 
       LABEL
         MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
+        MAXSCALEDENOM  2000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "site_circle"
+    GROUP                   "afvalcontainers"
+
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM public.afvalcontainers_site USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "site_geometrie"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "site geometrie Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "wms_title"           "site_geometrie"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "sites"
+      "wms_abstract"        "Site geometrie Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "site_geometrie"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "short_id"
+
+    CLASS
+      NAME                  "Site"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               102 102 102
+        SIZE                10
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  2000
         COLOR          102 102 102
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -741,8 +804,8 @@ MAP
     END
 
     CLASS
-      NAME                  "< 40 m"
-      EXPRESSION ([st_distance] < 40)
+      NAME                  "< 100 m"
+      EXPRESSION ([st_distance] < 100)
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
@@ -751,8 +814,8 @@ MAP
     END
 
     CLASS
-      NAME                  "< 60 m"
-      EXPRESSION ([st_distance] < 60)
+      NAME                  "< 200 m"
+      EXPRESSION ([st_distance] < 200)
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
@@ -761,72 +824,22 @@ MAP
     END
 
     CLASS
-      NAME                  "< 80 m"
-      EXPRESSION ([st_distance] < 80)
+      NAME                  "< 400 m"
+      EXPRESSION ([st_distance] < 400)
       STYLE
         MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
+        MAXSCALEDENOM       500001
         COLOR               102 189 99
       END
     END
 
     CLASS
-      NAME                  "< 90 m"
-      EXPRESSION ([st_distance] < 90)
+      NAME                  "< 500 m"
+      EXPRESSION ([st_distance] < 500)
       STYLE
         MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
+        MAXSCALEDENOM       500001
         COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "< 105 m"
-      EXPRESSION ([st_distance] < 105)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               217 239 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 120 m"
-      EXPRESSION ([st_distance] < 120)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               254 224 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 140 m"
-      EXPRESSION ([st_distance] < 140)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               253 174 97
-      END
-    END
-
-    CLASS
-      NAME                  "< 170 m"
-      EXPRESSION ([st_distance] < 170)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               244 109 67
-      END
-    END
-
-    CLASS
-      NAME                  "< 190 m"
-      EXPRESSION ([st_distance] < 190)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               215 48 39
       END
     END
 
