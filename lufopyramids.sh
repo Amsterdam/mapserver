@@ -11,20 +11,32 @@
 # -----------------------------------------
 # Usage:
 # -----------------------------------------
-# ./lufopyramids.sh <source dir of tiffs> <destination dir of result> <YYYY>
-# ./lufopyramids.sh /srv/lufo/2004 /srv/lufo 2004
-#
+# ./lufopyramids.sh <source dir of tiffs> <destination dir of result> <YYYY> <infrarood | luchtfotos>
+# ./lufopyramids.sh /mnt/lufo/2004 /mnt/lufo 2004 luchtfotos
+# OR
+# ./lufopyramids.sh /mnt/infrarood2018 /mnt/infrarood 2018 infrarood
 # -----------------------------------------
 # Requirements:
 # -----------------------------------------
-# sudo apt-get install -y gdal-bin python-gdal gdal-dev
+# sudo apt-get install -y gdal-bin python-gdal
 #
 # -----------------------------------------
+#
+# From 2018 the luchtfotos files need to be translated first to remove an alpha layer. Run this in the dir of the external harddrive
+#
+# for i in *.tif; do
+#     [ -f "$i" ] || break
+#     gdal_translate $i /mnt/lufo2018/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
+# done
+#
+# cp -a *.aux /mnt/lufo2018
+# cp -a *.tfw /mnt/lufo2018
 
 SOURCEDIR=$1
 DESTDIR_ROOT=$2
 DESTDIR=$2/pyramid
 YEAR=$3
+TYPE=$4
 
 # Create a list of images in the source directory
 
@@ -58,7 +70,7 @@ for i in $LEVELS; do
 
     gdaltindex $DESTDIR/imagery-$YEAR-$i.shp $DESTDIR/$i/*.tif
 
-    ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$YEAR-$i' SET location = '/vsicurl/https://data.amsterdam.nl/luchtfotos/$YEAR/pyramid' || SUBSTR(location,length('$DESTDIR/'),length(location))" $DESTDIR/imagery-$YEAR-$i.shp
+    ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$YEAR-$i' SET location = '/vsicurl/https://data.amsterdam.nl/$TYPE/$YEAR/pyramid' || SUBSTR(location,length('$DESTDIR/'),length(location))" $DESTDIR/imagery-$YEAR-$i.shp
 
     ogrinfo -sql "CREATE SPATIAL INDEX ON imagery-$YEAR-$i" $DESTDIR/imagery-$YEAR-$i.shp
 
