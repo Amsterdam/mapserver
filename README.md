@@ -23,12 +23,12 @@ niet vanuit een webbrowser. In de webbrowser geven de URL links foutmeldingen.
 ## Start mapserver in de docker
     
     docker-compose build
-    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
+    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo /tmp/srv/infrarood/:/mnt/infrarood map
 
-Bij dit laatste commando moet de directory /tmp/srv/lufo local bestaan. Om luchtfotos te gebruiken moet deze
+Bij dit laatste commando moet de directory /tmp/srv/lufo en /tmp/srv/infrarood local bestaan. Om luchtfotos te gebruiken moet deze
 directory luchtfotos bevatten of een symlink zijn naar luchtfotos.
 
-Note : In de docker-compose.yml staat volumes: - /srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
+Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
 
 De Postgres database is te bereiken op tcp://localhost:5403
 
@@ -45,7 +45,7 @@ De laatste versie van de database kan opgehaald worden met:
 
 	
 De maps zijn te benaderen vanuit QGis: maak een WMS connectie met de url <http://localhost:8383/maps/YOURMAPFILE>
-b.v. http://localhost:8383:/maps/monumenten
+b.v. http://localhost:8383/maps/monumenten
 
 ## DEBUG Mapserver
 Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
@@ -53,7 +53,7 @@ Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
         CONFIG   "MS_ERRORFILE" "/tmp/ms_error.txt"
         DEBUG    5
         
-        docker-compose build map && docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
+        docker-compose build map && docker-compose run -p "8383:80" -v -v /tmp/srv/lufo:/mnt/lufo /tmp/srv/infrarood/:/mnt/infrarood map
  
  Na het opvragen van een map, zal dan de logging te zien zijn via:
  
@@ -61,7 +61,9 @@ Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
 
  Het private docker image kan worden gebouwd met :
 
-        docker-compose -f docker-compose-private.yml build map && docker-compose run -p "8383:80" -v /tmp/srv/lufo:/srv/lufo map
+        docker-compose -f docker-compose-private.yml up -d database 
+        docker-compose -f docker-compose-private.yml build map 
+				docker-compose -f docker-compose-private.yml run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo map
 
 WMS services
 ------------
