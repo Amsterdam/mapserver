@@ -21,14 +21,14 @@ niet vanuit een webbrowser. In de webbrowser geven de URL links foutmeldingen.
 * [docker-compose](https://docs.docker.com/compose/install/)
 
 ## Start mapserver in de docker
+    Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
+    Voor locale ontwikkeling maak aan de volgende directories: /tmp/srv/lufo en /tmp/srv/infrarood 
+		Om luchtfotos te gebruiken moet deze directories luchtfotos/infrarood bevatten of een symlink zijn naar luchtfotos/infrarood.
     
-    docker-compose build
+		docker-compose build
     docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo /tmp/srv/infrarood/:/mnt/infrarood map
 
-Bij dit laatste commando moet de directory /tmp/srv/lufo en /tmp/srv/infrarood local bestaan. Om luchtfotos te gebruiken moet deze
-directory luchtfotos bevatten of een symlink zijn naar luchtfotos.
 
-Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
 
 De Postgres database is te bereiken op tcp://localhost:5403
 
@@ -53,43 +53,46 @@ Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
         CONFIG   "MS_ERRORFILE" "/tmp/ms_error.txt"
         DEBUG    5
         
-        docker-compose build map && docker-compose run -p "8383:80" -v -v /tmp/srv/lufo:/mnt/lufo /tmp/srv/infrarood/:/mnt/infrarood map
+        docker-compose build map && docker-compose run -p "8383:80" map
  
  Na het opvragen van een map, zal dan de logging te zien zijn via:
  
         docker exec -it `docker-compose ps -q  map` bash -c 'tail -f /tmp/ms_error.txt'
 
- Het private docker image kan worden gebouwd met :
+De private docker image kan worden gebouwd met :
 
         docker-compose -f docker-compose-private.yml up -d database 
         docker-compose -f docker-compose-private.yml build map 
-				docker-compose -f docker-compose-private.yml run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo map
+				docker-compose -f docker-compose-private.yml run -p "8383:80" map
+
+De private maps kunnen met http://localhost:8383/maps/<map-name>?service=wfs&request=getcapabilities gevraagd worden
 
 WMS services
 ------------
 
-| Set    | URL                                                                                                            |
-| ------ | ---------------------------------------------------------------------------------------------------------------|
-| BAG    | /maps/bag&service=wms&request=getcapabilities      |
-| WKPB   | /maps/wkpb&service=wms&request=getcapabilities     |
-| BRK    | /maps/brk&service=wms&request=getcapabilities      |
-| GBKA   | /maps/gbka&service=wms&request=getcapabilities     |
-| KBKA10 | /maps/kbka10&service=wms&request=getcapabilities   |
-| KBKA50 | /maps/kbka50&service=wms&request=getcapabilities   |
-| NAP    | /maps/nap&service=wms&request=getcapabilities      |
-| VLGH   | /maps/**externeveiligheid**&service=wms&request=getcapabilities                                |
-| GBIEDN | /maps/**gebieden**.map&service=wms&request=getcapabilities                                         |
+| Set     | URL                                                                                            |
+| ------- | -----------------------------------------------------------------------------------------------|
+| BAG     | /maps/bag&service=wms&request=getcapabilities                                                  |
+| WKPB    | /maps/wkpb&service=wms&request=getcapabilities                                                 |
+| BRK     | /maps/brk&service=wms&request=getcapabilities                                                  |
+| GBKA    | /maps/gbka&service=wms&request=getcapabilities                                                 |
+| KBKA10  | /maps/kbka10&service=wms&request=getcapabilities                                               |
+| KBKA50  | /maps/kbka50&service=wms&request=getcapabilities                                               |
+| NAP     | /maps/nap&service=wms&request=getcapabilities                                                  |
+| VLGH    | /maps/**externeveiligheid**&service=wms&request=getcapabilities                                |
+| GBIEDN  | /maps/**gebieden**.map&service=wms&request=getcapabilities                                     |
+| EIGENDM | /maps/eigendommen&service=wms&request=getcapabilities                                          |
 
 
 WFS services
 ------------
 
-| Set    | URL                                                                                                          |
-| ------ | ------------------------------------------------------------------------------------------------------------ |
-| BAG    | maps/bag&service=wfs&request=getcapabilities    |
-| WKPB   | maps/wkpb&service=wfs&request=getcapabilities   |
-| BRK    | maps/brk&service=wfs&request=getcapabilities    |
-| NAP    | maps/nap&service=wfs&request=getcapabilities    |
+| Set    | URL                                                                  |
+| ------ | ---------------------------------------------------------------------|
+| BAG    | maps/bag&service=wfs&request=getcapabilities                         |
+| WKPB   | maps/wkpb&service=wfs&request=getcapabilities                        |
+| BRK    | maps/brk&service=wfs&request=getcapabilities                         |
+| NAP    | maps/nap&service=wfs&request=getcapabilities                         |
 
 
 TMS services
