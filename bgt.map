@@ -2784,6 +2784,61 @@ MAP
 #==============================================================================
 
 #==============================================================================
+## HOOGTELIGGING -3
+#==============================================================================
+
+# Metro -3
+	LAYER
+		NAME                    metro_3
+		GROUP                   hoogte_3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_3"
+			"wms_group_title"      "hoogte_3"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				WIDTH 1.5
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM	0
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+
+
+#==============================================================================
 ## HOOGTELIGGING -2
 #==============================================================================
 
