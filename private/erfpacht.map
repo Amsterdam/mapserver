@@ -32,7 +32,7 @@ MAP
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_rond_erfpacht_poly erfpacht,
-                          (SELECT * FROM (VALUES (1, '#E50082'), (2, '#004699') ) AS t(cat_id, cat_color)) colors
+                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -83,7 +83,7 @@ MAP
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_poly erfpacht,
-                          (SELECT * FROM (VALUES (1, '#E50082'), (2, '#004699') ) AS t(cat_id, cat_color)) colors
+                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -133,7 +133,7 @@ MAP
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_point erfpacht,
-                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#BED200') ) AS t(cat_id, cat_color)) colors
+                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -316,7 +316,7 @@ MAP
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_rond_erfpacht_poly_all erfpacht,
-                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#BED200') ) AS t(cat_id, cat_color)) colors
+                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
@@ -366,7 +366,7 @@ MAP
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_poly_all erfpacht,
-                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#BED200') ) AS t(cat_id, cat_color)) colors
+                          (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   3001
