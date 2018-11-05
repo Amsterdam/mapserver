@@ -99,6 +99,394 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
+    NAME                    "blipvert_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Blipvert') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "blipvert"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "blipvert_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Afvalcontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "textiel_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Textiel') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "textiel"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "textiel_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Afvalcontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "papier_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Papier') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "papier"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "papier_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Papiercontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "glas_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Glas') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "glas"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Rest container coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "glas_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Glas container coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Glascontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "plastic_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Plastic') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "plastic"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Plastic container coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "plastic_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Plastic container coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Plasticontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "rest_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Rest') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "rest"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Rest container coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "rest_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Restcontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
     NAME                    "well_coordinaten"
     GROUP                   "afvalcontainers"
 
