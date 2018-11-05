@@ -1387,4 +1387,755 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "wegingen_rest"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_kilogram.inc"
+    DATA                    "geometrie FROM (
+    				select * from
+				public.kilogram_weigh_measurement
+				where fractie = 'Rest'
+				ORDER BY weigh_at desc
+				) as subquery USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "Rest kilogram wegingen"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "rest_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Rest Wegingen Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([net_weight] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([net_weight] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([net_weight] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([net_weight] < 170)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([net_weight] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([net_weight] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([net_weight] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([net_weight] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([net_weight] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  LAYER
+    NAME                    "wegingen_glas"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_kilogram.inc"
+    DATA                    "geometrie FROM (
+    				select * from
+				public.kilogram_weigh_measurement
+				where fractie = 'Glas'
+				ORDER BY weigh_at desc
+				) as subquery USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "glas wegingen"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "glas_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Glas Wegingen Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([net_weight] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([net_weight] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([net_weight] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([net_weight] < 170)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([net_weight] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([net_weight] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([net_weight] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([net_weight] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([net_weight] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+  LAYER
+    NAME                    "wegingen_papier"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_kilogram.inc"
+    DATA                    "geometrie FROM (
+    				select * from
+				public.kilogram_weigh_measurement
+				where fractie = 'Papier'
+				ORDER BY weigh_at desc
+				) as subquery USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "kilogram wegingen_papier"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "papier_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Papier Wegingen Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([net_weight] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([net_weight] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([net_weight] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([net_weight] < 170)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([net_weight] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([net_weight] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([net_weight] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([net_weight] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([net_weight] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+  LAYER
+    NAME                    "wegingen_plastic"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_kilogram.inc"
+    DATA                    "geometrie FROM (
+    				select * from
+				public.kilogram_weigh_measurement
+				where fractie = 'Plastic' or fractie = 'Kunststof'
+				ORDER BY weigh_at desc
+				) as subquery USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "kilogram wegingen_plastic"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "plastic_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Plastic Wegingen Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION (['net_weight'] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([net_weight] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([net_weight] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([net_weight] < 170)
+      STYLE
+        SYMBOL              'stip'
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([net_weight] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([net_weight] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([net_weight] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([net_weight] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([net_weight] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        MINSCALEDENOM       10
+        SYMBOL              'stip'
+        SIZE                4
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
 END
