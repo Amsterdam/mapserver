@@ -196,6 +196,42 @@ MAP
     END
 
   END
+  
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "gebiedsgerichtwerkenpraktijkgebieden"
+    GROUP           "gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "gebiedsgerichtwerkenpraktijkgebieden"
+      "ows_group_title"     "gebieden"
+      "ows_abstract"        "Gebiedsgerichtwerken praktijkgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME             Gebiedsgerichtwerken-praktijkgebieden
+      STYLE
+        ANTIALIAS      true
+        OUTLINECOLOR   0 70 153
+        WIDTH          2
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
 
