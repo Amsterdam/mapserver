@@ -523,8 +523,6 @@ MAP
     NAME            "panorama_new"
     GROUP           "panorama opnamelocaties"
     INCLUDE         "connection_panorama.inc"
-
-    DEBUG           4
     DATA            "geom FROM (SELECT id,
                         _geolocation_2d AS geom,
                         EXTRACT(year from timestamp) AS year
@@ -547,8 +545,6 @@ MAP
                         )
                       ) AS subquery
                     USING srid=4326 USING UNIQUE id"
-
-    # DATA            "geometrie FROM public.geo_panoramas_recente_opnames_alle USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   10001
