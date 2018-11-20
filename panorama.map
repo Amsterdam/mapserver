@@ -517,7 +517,160 @@ MAP
 
   END
 
+#-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "panorama_new"
+    GROUP           "panorama opnamelocaties"
+    INCLUDE         "connection_panorama.inc"
+
+    DEBUG           4
+    DATA            "geom FROM (SELECT id,
+                        _geolocation_2d AS geom,
+                        EXTRACT(year from timestamp) AS year
+                      FROM public.panoramas_panorama pano
+                      WHERE
+                        NOT EXISTS (
+                          SELECT *
+                          FROM public.panoramas_panorama newer
+                          WHERE pano.id != newer.id AND
+                            newer.timestamp > pano.timestamp AND
+                            ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, 4.3) AND
+                            ST_Intersects(
+                              newer._geolocation_2d_rd,
+                              ST_Buffer(ST_Transform(!BOX!, 28992), 4.3)
+                            )
+                        ) AND
+                        ST_Intersects(
+                          pano._geolocation_2d_rd,
+                          ST_Transform(!BOX!, 28992)
+                        )
+                      ) AS subquery
+                    USING srid=4326 USING UNIQUE id"
+
+    # DATA            "geometrie FROM public.geo_panoramas_recente_opnames_alle USING srid=4326 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "panorama_new"
+      "ows_group_title"     "recente panorama's"
+      "ows_abstract"        "recente panorama's"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+
+    COMPOSITE
+      OPACITY 70
+    END
+
+
+    CLASS
+      NAME "2016"
+      EXPRESSION ("[year]" eq "2016")
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 61 133
+        OUTLINECOLOR   0 61 133
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          0 61 133
+        OUTLINECOLOR   0 61 133
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           2
+        COLOR          0 61 133
+        OUTLINECOLOR   0 61 133
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "2017"
+      EXPRESSION ("[year]" eq "2017")
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          60 201 255
+        OUTLINECOLOR   0 116 171
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          60 201 255
+        OUTLINECOLOR   0 116 171
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          60 201 255
+        OUTLINECOLOR   0 116 171
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME "2018"
+      EXPRESSION ("[year]" eq "2018")
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 160 60
+        OUTLINECOLOR   0 160 60
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          0 160 60
+        OUTLINECOLOR   0 160 60
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          0 160 60
+        OUTLINECOLOR   0 160 60
+        WIDTH          1
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
 
 #-----------------------------------------------------------------------------
 END
