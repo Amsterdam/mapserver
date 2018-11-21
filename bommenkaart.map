@@ -75,9 +75,10 @@ MAP
 
     END
 
+    #temporary shown as Vermoedelijke bominslagen, but left here to be able to show legend
     CLASS
       NAME                  "Bominslag"
-      EXPRESSION            ("[detail_type]" eq "Bominslag")
+      EXPRESSION            ("[detail_type]" eq "NONEXISTENTVALUE")
       STYLE
         SYMBOL              "stip"
         COLOR               "#730000"
@@ -115,9 +116,10 @@ MAP
       END
     END
 
+    #temporary shown as Vermoedelijke bominslagen, but left here to be able to show legend
     CLASS
       NAME                  "Krater"
-      EXPRESSION            ("[detail_type]" eq "Krater")
+      EXPRESSION            ("[detail_type]" eq "NONEXISTENTVALUE")
       STYLE
         SYMBOL              "stip"
         COLOR               80 50 140
@@ -139,7 +141,7 @@ MAP
 
     CLASS
       NAME                  "Vermoedelijke bominslag(en)"
-      EXPRESSION            (("[detail_type]" eq "Vermoedelijke bominslag(en)") OR ("[detail_type]" eq "Vermoedelijke inslag") OR ("[detail_type]" eq "Beschadiging door inslag") OR ("[detail_type]" eq "Duidelijke inslag") OR ("[detail_type]" eq "Mogelijke inslag"))
+      EXPRESSION            (("[detail_type]" eq "Vermoedelijke bominslag(en)") OR ("[detail_type]" eq "Vermoedelijke inslag") OR ("[detail_type]" eq "Beschadiging door inslag") OR ("[detail_type]" eq "Duidelijke inslag") OR ("[detail_type]" eq "Mogelijke inslag") OR ("[detail_type]" eq "Krater") OR ("[detail_type]" eq "Bominslag"))
       STYLE
         SYMBOL              "driehoek"
         COLOR               "#e69800"
