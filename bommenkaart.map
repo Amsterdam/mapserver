@@ -360,7 +360,7 @@ MAP
 
     CLASS
       NAME                  "Vooronderzoek"
-      EXPRESSION            NOT ("[detail_type]" eq "Detectie" OR "[detail_type]" eq "Projectgebonden risicoanalyse")
+      EXPRESSION            (NOT (("[detail_type]" eq "Detectie") OR ("[detail_type]" eq "Projectgebonden risicoanalyse")))
       STYLE
         ANTIALIAS           true
         OPACITY             40
