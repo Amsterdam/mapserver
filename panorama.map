@@ -546,7 +546,7 @@ MAP
                           FROM public.panoramas_panorama newer
                           WHERE pano.id != newer.id AND
                             (%year% <= 1982 OR
-                            '[%year%-01-01,%year%-12-31)'::tstzrange @> newer.timestamp) AND
+                            '[%year%-01-01, %year%-12-31]'::tstzrange @> newer.timestamp) AND
                             newer.timestamp > pano.timestamp AND
                             ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, 4.3) AND
                             ST_Intersects(
@@ -559,7 +559,7 @@ MAP
                           ST_Transform(!BOX!, 28992)
                         ) AND
                         (%year% <= 1982 OR
-                        '[%year%-01-01, %year%-12-31)'::tstzrange @> timestamp)
+                        '[%year%-01-01, %year%-12-31]'::tstzrange @> timestamp)
                       ) AS subquery
                     USING srid=4326 USING UNIQUE id"
     TYPE            POINT
