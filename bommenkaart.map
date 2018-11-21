@@ -139,7 +139,7 @@ MAP
 
     CLASS
       NAME                  "Vermoedelijke bominslag(en)"
-      EXPRESSION            ("[detail_type]" eq "Vermoedelijke bominslag(en)")
+      EXPRESSION            (("[detail_type]" eq "Vermoedelijke bominslag(en)") OR ("[detail_type]" eq "Vermoedelijke inslag") OR ("[detail_type]" eq "Beschadiging door inslag") OR ("[detail_type]" eq "Duidelijke inslag") OR ("[detail_type]" eq "Mogelijke inslag"))
       STYLE
         SYMBOL              "driehoek"
         COLOR               "#e69800"
@@ -185,7 +185,7 @@ MAP
 
     CLASS
       NAME                  "Munities en granaten"
-      EXPRESSION           ("[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[detail_type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers")
+      EXPRESSION           ("[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[detail_type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers" OR "[detail_type]" eq "Kleinkalibermunitie, Vuurwerken en Munitietoebehoren" OR "[detail_type]" eq "KKM, hand- en geweergranaten, munitie voor granaatwerpers en toebehoren van munitie" OR "[detail_type]" eq "KKM, hand- en geweergranaten, munitie voor granaatwerpers, toebehoren van munitie en geschutmunitie" OR "[detail_type]" eq "Raketmunitie" OR "[detail_type]" eq "Geschutmunitie, Vuurwerken")
       STYLE
         ANTIALIAS           true
         COLOR               255 130 0
@@ -228,7 +228,7 @@ MAP
 
     CLASS
       NAME                  "Afwerpmunitie"
-
+      EXPRESSION           ("[detail_type]" eq "Afwerpmunitie" OR "[detail_type]" eq "Afwerpmunitie, Raketmunitie" OR "[detail_type]" eq "Afwerpmunitie, Kleinkalibermunitie")
       STYLE
         ANTIALIAS           true
         COLOR               160 40 180
@@ -360,6 +360,7 @@ MAP
 
     CLASS
       NAME                  "Vooronderzoek"
+      EXPRESSION            NOT ("[detail_type]" eq "Detectie" OR "[detail_type]" eq "Projectgebonden risicoanalyse")
       STYLE
         ANTIALIAS           true
         OPACITY             40
