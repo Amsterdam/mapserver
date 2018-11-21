@@ -523,15 +523,30 @@ MAP
     NAME            "panorama_new"
     GROUP           "panorama opnamelocaties"
     INCLUDE         "connection_panorama.inc"
+
+    VALIDATION
+      # %year% substitutions have 4 numbers
+      # The default value should be a year
+      # for which no panoramas exist, so
+      # Postgres can skip year filtering
+      # when this default value is chosen.
+	    "default_year" "1982"
+      "year"     "^[0-9]{4}$"
+    END
+
     DATA            "geom FROM (SELECT id,
                         _geolocation_2d AS geom,
-                        EXTRACT(year from timestamp) AS year
+                        EXTRACT(year from timestamp) AS year,
+                        (SELECT EXTRACT(year from MAX(timestamp)) FROM panoramas_panorama LIMIT 1) -
+                        EXTRACT(year from timestamp) AS age
                       FROM public.panoramas_panorama pano
                       WHERE
                         NOT EXISTS (
                           SELECT *
                           FROM public.panoramas_panorama newer
                           WHERE pano.id != newer.id AND
+                            (%year% <= 1982 OR
+                            '[%year%-01-01,%year%-12-31)'::tstzrange @> newer.timestamp) AND
                             newer.timestamp > pano.timestamp AND
                             ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, 4.3) AND
                             ST_Intersects(
@@ -542,7 +557,9 @@ MAP
                         ST_Intersects(
                           pano._geolocation_2d_rd,
                           ST_Transform(!BOX!, 28992)
-                        )
+                        ) AND
+                        (%year% <= 1982 OR
+                        '[%year%-01-01, %year%-12-31)'::tstzrange @> timestamp)
                       ) AS subquery
                     USING srid=4326 USING UNIQUE id"
     TYPE            POINT
@@ -567,17 +584,16 @@ MAP
       OPACITY 70
     END
 
-
     CLASS
-      NAME "2016"
-      EXPRESSION ("[year]" eq "2016")
+      NAME "2018"
+      EXPRESSION ([age] eq 0)
       STYLE
         MINSCALEDENOM   100
         MAXSCALEDENOM   1001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          0 61 133
-        OUTLINECOLOR   0 61 133
+        COLOR          0 160 60
+        OUTLINECOLOR   0 112 11
         WIDTH          2
       END
       STYLE
@@ -585,8 +601,72 @@ MAP
         MAXSCALEDENOM   4001
         SYMBOL         'stip'
         SIZE           6
-        COLOR          0 61 133
-        OUTLINECOLOR   0 61 133
+        COLOR          0 160 60
+        OUTLINECOLOR   0 112 11
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          0 160 60
+        OUTLINECOLOR   0 112 11
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "2017"
+      EXPRESSION ([age] eq 1)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          190 210 0
+        OUTLINECOLOR   137 161 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          190 210 0
+        OUTLINECOLOR   137 161 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          190 210 0
+        OUTLINECOLOR   137 161 0
+        WIDTH          2
+      END
+    END
+
+     CLASS
+      NAME "2016"
+      EXPRESSION ([age] >= 2)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          255 230 0
+        OUTLINECOLOR   199 180 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          255 230 0
+        OUTLINECOLOR   199 180 0
         WIDTH          2
       END
       STYLE
@@ -594,73 +674,9 @@ MAP
         MAXSCALEDENOM   10001
         SYMBOL         'stip'
         SIZE           2
-        COLOR          0 61 133
-        OUTLINECOLOR   0 61 133
+        COLOR          255 230 0
+        OUTLINECOLOR   199 180 0
         WIDTH          2
-      END
-    END
-
-    CLASS
-      NAME "2017"
-      EXPRESSION ("[year]" eq "2017")
-      STYLE
-        MINSCALEDENOM   100
-        MAXSCALEDENOM   1001
-        SYMBOL         'stip'
-        SIZE           10
-        COLOR          60 201 255
-        OUTLINECOLOR   0 116 171
-        WIDTH          1
-      END
-      STYLE
-        MINSCALEDENOM   1002
-        MAXSCALEDENOM   4001
-        SYMBOL         'stip'
-        SIZE           6
-        COLOR          60 201 255
-        OUTLINECOLOR   0 116 171
-        WIDTH          1
-      END
-      STYLE
-        MINSCALEDENOM   4002
-        MAXSCALEDENOM   10001
-        SYMBOL         'stip'
-        SIZE           3
-        COLOR          60 201 255
-        OUTLINECOLOR   0 116 171
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME "2018"
-      EXPRESSION ("[year]" eq "2018")
-      STYLE
-        MINSCALEDENOM   100
-        MAXSCALEDENOM   1001
-        SYMBOL         'stip'
-        SIZE           10
-        COLOR          0 160 60
-        OUTLINECOLOR   0 160 60
-        WIDTH          1
-      END
-      STYLE
-        MINSCALEDENOM   1002
-        MAXSCALEDENOM   4001
-        SYMBOL         'stip'
-        SIZE           6
-        COLOR          0 160 60
-        OUTLINECOLOR   0 160 60
-        WIDTH          1
-      END
-      STYLE
-        MINSCALEDENOM   4002
-        MAXSCALEDENOM   10001
-        SYMBOL         'stip'
-        SIZE           3
-        COLOR          0 160 60
-        OUTLINECOLOR   0 160 60
-        WIDTH          1
       END
     END
 
