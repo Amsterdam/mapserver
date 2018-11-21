@@ -525,13 +525,16 @@ MAP
     INCLUDE         "connection_panorama.inc"
 
     VALIDATION
-      # %year% substitutions have 4 numbers
-      # The default value should be a year
-      # for which no panoramas exist, so
-      # Postgres can skip year filtering
-      # when this default value is chosen.
-	    "default_year" "1982"
-      "year"     "^[0-9]{4}$"
+      # %before% and %after% substitutions
+      # are dates: 4 numbers, dash, 2 numbers,
+      # dash and 2 numbers.
+      # The default values should be reasonable
+      # lower and upper bounds.
+      "before"          "^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$"
+      "default_before"  "9999-12-31"
+
+      "after"           "^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$"
+      "default_after"   "0001-01-01"
     END
 
     DATA            "geom FROM (SELECT id,
@@ -545,8 +548,7 @@ MAP
                           SELECT *
                           FROM public.panoramas_panorama newer
                           WHERE pano.id != newer.id AND
-                            (%year% <= 1982 OR
-                            '[%year%-01-01, %year%-12-31]'::tstzrange @> newer.timestamp) AND
+                            '[%after%, %before%]'::tstzrange @> timestamp AND
                             newer.timestamp > pano.timestamp AND
                             ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, 4.3) AND
                             ST_Intersects(
@@ -558,8 +560,7 @@ MAP
                           pano._geolocation_2d_rd,
                           ST_Transform(!BOX!, 28992)
                         ) AND
-                        (%year% <= 1982 OR
-                        '[%year%-01-01, %year%-12-31]'::tstzrange @> timestamp)
+                        '[%after%, %before%]'::tstzrange @> timestamp
                       ) AS subquery
                     USING srid=4326 USING UNIQUE id"
     TYPE            POINT
@@ -585,16 +586,16 @@ MAP
     END
 
     CLASS
-      NAME "2018"
+      NAME "Latest"
       EXPRESSION ([age] eq 0)
       STYLE
         MINSCALEDENOM   100
         MAXSCALEDENOM   1001
         SYMBOL         'stip'
-        SIZE           10
+        SIZE           11
         COLOR          0 160 60
         OUTLINECOLOR   0 112 11
-        WIDTH          2
+        WIDTH          3
       END
       STYLE
         MINSCALEDENOM   1002
@@ -617,7 +618,7 @@ MAP
     END
 
     CLASS
-      NAME "2017"
+      NAME "Last year"
       EXPRESSION ([age] eq 1)
       STYLE
         MINSCALEDENOM   100
@@ -649,8 +650,9 @@ MAP
     END
 
      CLASS
-      NAME "2016"
+      NAME "Year before last"
       EXPRESSION ([age] >= 2)
+
       STYLE
         MINSCALEDENOM   100
         MAXSCALEDENOM   1001
