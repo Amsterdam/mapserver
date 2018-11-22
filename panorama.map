@@ -517,7 +517,173 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "panorama_new"
+    GROUP           "panorama opnamelocaties"
+    INCLUDE         "connection_panorama.inc"
 
-#-----------------------------------------------------------------------------
+    VALIDATION
+      # %before% and %after% substitutions
+      # are dates: 4 numbers, dash, 2 numbers,
+      # dash and 2 numbers.
+      # The default values should be reasonable
+      # lower and upper bounds.
+      "before"          "^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$"
+      "default_before"  "9999-12-31"
+
+      "after"           "^[0-9]{4}\-[0-9]{2}\-[0-9]{2}$"
+      "default_after"   "0001-01-01"
+    END
+
+    DATA            "geom FROM (SELECT id,
+                        _geolocation_2d AS geom,
+                        EXTRACT(year from timestamp) AS year,
+                        (SELECT EXTRACT(year from MAX(timestamp)) FROM panoramas_panorama LIMIT 1) -
+                        EXTRACT(year from timestamp) AS age
+                      FROM public.panoramas_panorama pano
+                      WHERE
+                        NOT EXISTS (
+                          SELECT *
+                          FROM public.panoramas_panorama newer
+                          WHERE pano.id != newer.id AND
+                            '[%after%, %before%]'::tstzrange @> timestamp AND
+                            newer.timestamp > pano.timestamp AND
+                            ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, 4.3) AND
+                            ST_Intersects(
+                              newer._geolocation_2d_rd,
+                              ST_Buffer(ST_Transform(!BOX!, 28992), 4.3)
+                            )
+                        ) AND
+                        ST_Intersects(
+                          pano._geolocation_2d_rd,
+                          ST_Transform(!BOX!, 28992)
+                        ) AND
+                        '[%after%, %before%]'::tstzrange @> timestamp
+                      ) AS subquery
+                    USING srid=4326 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "panorama_new"
+      "ows_group_title"     "recente panorama's"
+      "ows_abstract"        "recente panorama's"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+
+    COMPOSITE
+      OPACITY 70
+    END
+
+    CLASS
+      NAME "Latest"
+      EXPRESSION ([age] eq 0)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           11
+        COLOR          0 160 60
+        OUTLINECOLOR   0 112 11
+        WIDTH          3
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          0 160 60
+        OUTLINECOLOR   0 112 11
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          0 160 60
+        OUTLINECOLOR   0 112 11
+        WIDTH          2
+      END
+    END
+
+    CLASS
+      NAME "Last year"
+      EXPRESSION ([age] eq 1)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          190 210 0
+        OUTLINECOLOR   137 161 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          190 210 0
+        OUTLINECOLOR   137 161 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          190 210 0
+        OUTLINECOLOR   137 161 0
+        WIDTH          2
+      END
+    END
+
+     CLASS
+      NAME "Year before last"
+      EXPRESSION ([age] >= 2)
+
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          255 230 0
+        OUTLINECOLOR   199 180 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          255 230 0
+        OUTLINECOLOR   199 180 0
+        WIDTH          2
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           2
+        COLOR          255 230 0
+        OUTLINECOLOR   199 180 0
+        WIDTH          2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
 END
