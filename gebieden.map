@@ -196,6 +196,42 @@ MAP
     END
 
   END
+  
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "gebiedsgerichtwerkenpraktijkgebieden"
+    GROUP           "gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "gebiedsgerichtwerkenpraktijkgebieden"
+      "ows_group_title"     "gebieden"
+      "ows_abstract"        "Gebiedsgerichtwerken praktijkgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME             Gebiedsgerichtwerken-praktijkgebied
+      STYLE
+        ANTIALIAS      true
+        OUTLINECOLOR   0 70 153
+        WIDTH          2
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
 
@@ -500,6 +536,59 @@ MAP
         MINSCALEDENOM  10001
         MAXSCALEDENOM  40001
         COLOR          40 150 10
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "gebiedsgerichtwerkenpraktijkgebieden_label"
+    GROUP           "gebieden"
+    INCLUDE         "connection.inc"
+    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   40001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "gebiedsgerichtwerkenpraktijkgebieden_label"
+      "ows_group_title"     "gebieden"
+      "ows_abstract"        "Labels van gebiedsgerichtwerken praktijkgebieden van de gemeente Amsterdam"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "Gebiedsgerichtwerken praktijkgebied"
+      LABEL
+        MINSCALEDENOM  4000
+        MAXSCALEDENOM  10001
+        COLOR          0 70 153
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  10001
+        MAXSCALEDENOM  40001
+        COLOR          0 70 153
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
