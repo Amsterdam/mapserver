@@ -556,13 +556,9 @@ MAP
                         NOT EXISTS (
                           SELECT *
                           FROM public.panoramas_panorama newer
-<<<<<<< HEAD
                           WHERE
                             pano.id != newer.id AND
                             pano.surface_type = newer.surface_type AND
-=======
-                          WHERE pano.id != newer.id AND
->>>>>>> master
                             (
                               length('%mission_type%') = 0 OR
                               '%mission_type%' = newer.mission_type
@@ -573,13 +569,9 @@ MAP
                             ) AND
                             '[%timestamp_after%, %timestamp_before%]'::tstzrange @> timestamp AND
                             newer.timestamp > pano.timestamp AND
-<<<<<<< HEAD
                             -- Substract 0.7m from mission_distance to prevent panorama photos from one mission/trajectory
                             -- canceling each other
                             ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, pano.mission_distance - 0.7) AND
-=======
-                            ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, pano.mission_distance) AND
->>>>>>> master
                             ST_Intersects(
                               newer._geolocation_2d_rd,
                               ST_Buffer(ST_Transform(!BOX!, 28992), pano.mission_distance)
