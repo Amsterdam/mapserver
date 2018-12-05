@@ -556,7 +556,9 @@ MAP
                         NOT EXISTS (
                           SELECT *
                           FROM public.panoramas_panorama newer
-                          WHERE pano.id != newer.id AND
+                          WHERE
+                            pano.id != newer.id AND
+                            pano.surface_type = newer.surface_type AND
                             (
                               length('%mission_type%') = 0 OR
                               '%mission_type%' = newer.mission_type
