@@ -80,11 +80,11 @@ MAP
 
     CLASS
       NAME "vestiging (bij benadering)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         "stip"
         SIZE           10
-	# Voor all correctie = 't' stippen
+	# Voor all correctie = 'true' stippen
         OUTLINECOLOR    99 99 99
         COLOR          255 10 10
       END
@@ -226,7 +226,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -261,7 +261,7 @@ MAP
 
     CLASS
       NAME "Afwerking van gebouwen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -279,7 +279,7 @@ MAP
 
     CLASS
       NAME "Bouwinstallatie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
         SIZE           16
@@ -297,7 +297,7 @@ MAP
 
     CLASS
       NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -315,7 +315,7 @@ MAP
 
     CLASS
       NAME "Dak- en overige gespecialiseerde bouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -333,7 +333,7 @@ MAP
 
     CLASS
       NAME "Grond, water, wegenbouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -351,7 +351,7 @@ MAP
 
     CLASS
       NAME "Overige bouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -403,7 +403,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -521,7 +521,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -556,7 +556,7 @@ MAP
 
     CLASS
       NAME "Kunst, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtoranje_correctie'
         SIZE           16
@@ -574,7 +574,7 @@ MAP
 
     CLASS
       NAME "Musea, Bibliotheken, Kunstuitleen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -592,7 +592,7 @@ MAP
 
     CLASS
       NAME "Recreatie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "recreatie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "recreatie" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_donkerblauw_correctie'
         SIZE           16
@@ -610,7 +610,7 @@ MAP
 
     CLASS
       NAME "Sport, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -664,7 +664,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -780,7 +780,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -815,7 +815,7 @@ MAP
 
     CLASS
       NAME "Financiële dienstverlening en verzekeringen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -833,7 +833,7 @@ MAP
 
     CLASS
       NAME "Holdings, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "holdings" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "holdings" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -851,7 +851,7 @@ MAP
 
     CLASS
       NAME "Verhuur van- en beheer/handel in onroerend goed, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -869,7 +869,7 @@ MAP
 
     CLASS
       NAME "Verhuur van roerende goederen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "verhuur van roerende goederen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "verhuur van roerende goederen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -921,7 +921,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -1064,7 +1064,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -1099,7 +1099,7 @@ MAP
 
     CLASS
       NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -1117,7 +1117,7 @@ MAP
 
     CLASS
       NAME "Dienstverlening vervoer, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
         SIZE           16
@@ -1135,7 +1135,7 @@ MAP
 
     CLASS
       NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -1153,7 +1153,7 @@ MAP
 
     CLASS
       NAME "Handel en reparatie van auto's, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -1171,7 +1171,7 @@ MAP
 
     CLASS
       NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -1189,7 +1189,7 @@ MAP
 
     CLASS
       NAME "Opslag, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -1207,7 +1207,7 @@ MAP
 
     CLASS
       NAME "Vervoer, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -1259,7 +1259,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -1402,7 +1402,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -1437,7 +1437,7 @@ MAP
 
     CLASS
       NAME "Café, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "café" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "café" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -1455,7 +1455,7 @@ MAP
 
     CLASS
       NAME "Cafetaria, Snackbar, IJssalon, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
         SIZE           16
@@ -1473,7 +1473,7 @@ MAP
 
     CLASS
       NAME "Hotel, Pension, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "hotel, pension" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "hotel, pension" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -1491,7 +1491,7 @@ MAP
 
     CLASS
       NAME "Hotel-restaurant, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "hotel-restaurant" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "hotel-restaurant" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -1509,7 +1509,7 @@ MAP
 
     CLASS
       NAME "Kantine, Catering, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "kantine, catering" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "kantine, catering" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_donkerblauw_correctie'
         SIZE           16
@@ -1527,7 +1527,7 @@ MAP
 
     CLASS
       NAME "Restaurant, Café-restaurant, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -1545,7 +1545,7 @@ MAP
 
     CLASS
       NAME "Overige horeca, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overig, te weten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overig, te weten" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -1597,7 +1597,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -1714,7 +1714,7 @@ MAP
 
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -1749,7 +1749,7 @@ MAP
 
     CLASS
       NAME "Activiteiten op gebied van film, tv, radio, audio, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -1767,7 +1767,7 @@ MAP
 
     CLASS
       NAME "Activiteiten op het gebied van ict, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -1785,7 +1785,7 @@ MAP
 
     CLASS
       NAME "Telecommunicatie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "telecommunicatie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "telecommunicatie" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -1803,7 +1803,7 @@ MAP
 
     CLASS
       NAME "Uitgeverijen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "uitgeverijen"  && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "uitgeverijen"  && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -1855,7 +1855,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -2010,7 +2010,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -2043,7 +2043,7 @@ MAP
 
     CLASS
       NAME "Dienstverlening voor de land/tuinbouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -2061,7 +2061,7 @@ MAP
 
     CLASS
       NAME "Fokken, houden dieren, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "fokken, houden dieren" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "fokken, houden dieren" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
         SIZE           16
@@ -2079,7 +2079,7 @@ MAP
 
     CLASS
       NAME "Gemengd bedrijf, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "gemengd bedrijf" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "gemengd bedrijf" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -2097,7 +2097,7 @@ MAP
 
     CLASS
       NAME "Teelt eenjarige gewassen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -2115,7 +2115,7 @@ MAP
 
     CLASS
       NAME "Teelt meerjarige gewassen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -2133,7 +2133,7 @@ MAP
 
     CLASS
       NAME "Teelt sierplanten, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "teelt sierplanten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "teelt sierplanten" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -2183,7 +2183,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -2290,7 +2290,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -2325,7 +2325,7 @@ MAP
 
     CLASS
       NAME "Gezondheids- en welzijnszorg, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -2343,7 +2343,7 @@ MAP
 
     CLASS
       NAME "Onderwijs, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "onderwijs" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "onderwijs" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -2361,7 +2361,7 @@ MAP
 
     CLASS
       NAME "Overheid, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overheid" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overheid" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -2413,7 +2413,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -2538,7 +2538,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -2573,7 +2573,7 @@ MAP
 
     CLASS
       NAME "Kappers, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "kappers" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "kappers" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -2591,7 +2591,7 @@ MAP
 
     CLASS
       NAME "Sauna, solaria, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "sauna, solaria" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "sauna, solaria" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -2609,7 +2609,7 @@ MAP
 
     CLASS
       NAME "Schoonheidsverzorging, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "schoonheidsverzorging" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "schoonheidsverzorging" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -2627,7 +2627,7 @@ MAP
 
     CLASS
       NAME "Uitvaart, crematoria, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "uitvaart, crematoria" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "uitvaart, crematoria" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_donkerblauw_correctie'
         SIZE           16
@@ -2645,7 +2645,7 @@ MAP
 
     CLASS
       NAME "Overige dienstverlening, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overige dienstverlening" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige dienstverlening" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -2697,7 +2697,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -2824,7 +2824,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -2859,7 +2859,7 @@ MAP
 
     CLASS
       NAME "Installatie (geen bouw), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "installatie (geen bouw)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "installatie (geen bouw)" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -2877,7 +2877,7 @@ MAP
 
     CLASS
       NAME "Productie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "productie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "productie" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -2895,7 +2895,7 @@ MAP
 
     CLASS
       NAME "Reparatie (geen bouw), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "reparatie (geen bouw)" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "reparatie (geen bouw)" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -2947,7 +2947,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -3126,7 +3126,7 @@ MAP
 
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -3162,7 +3162,7 @@ MAP
 
     CLASS
       NAME "Accountancy, administratie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "accountancy, administratie" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "accountancy, administratie" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -3180,7 +3180,7 @@ MAP
 
     CLASS
       NAME "Advocaten rechtskundige diensten, notarissen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
         SIZE           16
@@ -3198,7 +3198,7 @@ MAP
 
     CLASS
       NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtgroen_correctie'
         SIZE           16
@@ -3216,7 +3216,7 @@ MAP
 
     CLASS
       NAME "Architecten, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "architecten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "architecten" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_lichtblauw_correctie'
         SIZE           16
@@ -3234,7 +3234,7 @@ MAP
 
     CLASS
       NAME "Design, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "design" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "design" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_donkerblauw_correctie'
         SIZE           16
@@ -3252,7 +3252,7 @@ MAP
 
     CLASS
       NAME "Interieurarchitecten, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "interieurarchitecten" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "interieurarchitecten" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_paars_correctie'
         SIZE           16
@@ -3270,7 +3270,7 @@ MAP
 
     CLASS
       NAME "Managementadvies, economisch advies, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "managementadvies, economisch advies" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "managementadvies, economisch advies" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_roze_correctie'
         SIZE           16
@@ -3288,7 +3288,7 @@ MAP
 
     CLASS
       NAME "Public relationsbureaus, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "public relationsbureaus" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "public relationsbureaus" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_blauwgroen_correctie'
         SIZE           16
@@ -3306,7 +3306,7 @@ MAP
 
     CLASS
       NAME "Reclame en Marktonderzoek, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "reclame en marktonderzoek" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "reclame en marktonderzoek" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -3324,7 +3324,7 @@ MAP
 
     CLASS
       NAME "Technisch ontwerp, advies, keuring/research, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_donkerrood_correctie'
         SIZE           16
@@ -3342,7 +3342,7 @@ MAP
 
     CLASS
       NAME "Overige zakelijke dienstverlening, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_grijs_correctie'
         SIZE           16
@@ -3394,7 +3394,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
@@ -3510,7 +3510,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie_legenda'
         SIZE           16
@@ -3545,7 +3545,7 @@ MAP
 
     CLASS
       NAME "Belangenorganisaties, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "belangenorganisaties" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "belangenorganisaties" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_oranje_correctie'
         SIZE           16
@@ -3563,7 +3563,7 @@ MAP
 
     CLASS
       NAME "Hobbyclubs, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "hobbyclubs" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "hobbyclubs" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_geel_correctie'
         SIZE           16
@@ -3581,7 +3581,7 @@ MAP
 
     CLASS
       NAME "Ideële organisaties, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "idieële organisaties" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "idieële organisaties" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_groen_correctie'
         SIZE           16
@@ -3599,7 +3599,7 @@ MAP
 
     CLASS
       NAME "Overige, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overige" && '[correctie]' = 't')
+      EXPRESSION ("[q2]" eq "overige" && '[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_donkerblauw_correctie'
         SIZE           16
@@ -3651,7 +3651,7 @@ MAP
     
     CLASS
       NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 't')
+      EXPRESSION ('[correctie]' = 'true')
       STYLE
         SYMBOL         'cirkel_correctie'
         SIZE           16
