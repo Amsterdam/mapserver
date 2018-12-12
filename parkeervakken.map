@@ -217,7 +217,7 @@ MAP
 
     CLASS
       NAME "FISCAAL"
-      EXPRESSION (("[soort]" eq "FISCAAL") AND (('%category%' = 'fiscaal') OR ('%category%' = 'all')))
+      EXPRESSION (("[soort]" eq "FISCAAL") AND ('%categorie%' ~ 'fiscaal' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -230,7 +230,7 @@ MAP
 
     CLASS
       NAME "Parkeerverbod"
-      EXPRESSION (("[e_type]" eq "E1")  AND ('%category%' ~ 'parkeerverbod' OR '%category%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E1")  AND ('%categorie%' ~ 'parkeerverbod' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -243,7 +243,7 @@ MAP
 
     CLASS
       NAME "Verbod stil te staan"
-      EXPRESSION (("[e_type]" eq "E2") AND (('%categorie%' = 'stopverbod') OR ('%categorie%' = 'all')))
+      EXPRESSION (("[e_type]" eq "E2") AND ('%categorie%' ~ 'stopverbod' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -256,7 +256,7 @@ MAP
 
     CLASS
       NAME "Verbod (brom)fietsen plaatsen"
-      EXPRESSION (("[e_type]" eq "E3") AND ('%categorie%' = 'fietsverbod' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E3") AND ('%categorie%' ~ 'fietsverbod' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -269,7 +269,7 @@ MAP
 
     CLASS
       NAME "Parkeergelegenheid"
-      EXPRESSION (("[e_type]" eq "E4") AND ('%categorie%' = 'parkeren' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E4") AND ('%categorie%' ~ 'parkeren' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -282,7 +282,7 @@ MAP
 
     CLASS
       NAME "Taxistandplaats"
-      EXPRESSION (("[e_type]" eq "E5")  AND ('%categorie%' = 'taxistandplaats' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E5") AND ('%categorie%' ~ 'taxistandplaats' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -295,7 +295,7 @@ MAP
 
     CLASS
       NAME "Gehandicaptenplaats"
-      EXPRESSION (("[e_type]" eq "E6") AND ('%categorie%' = 'gehandicapten' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E6") AND ('%categorie%' ~ 'gehandicapten_plaats' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -307,7 +307,7 @@ MAP
 
     CLASS
       NAME "Gehandicaptenplaats algemeen"
-      EXPRESSION (("[e_type]" eq "E6a") AND ('%categorie%' = 'gehandicapten_algemeen' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E6a") AND ('%categorie%' ~ 'gehandicapten_algemeen' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -319,7 +319,7 @@ MAP
 
     CLASS
       NAME "Gehandicaptenplaats kenteken"
-      EXPRESSION (("[e_type]" eq "E6b") AND ('%categorie%' = 'gehandicapten_kenteken' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E6b") AND ('%categorie%' ~ 'gehandicapten_kenteken' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -331,7 +331,7 @@ MAP
 
     CLASS
       NAME "Laden lossen"
-      EXPRESSION (("[e_type]" eq "E7") AND ('%categorie%' = 'laden_lossen' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E7") AND ('%categorie%' ~ 'laden_lossen' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -343,7 +343,7 @@ MAP
 
     CLASS
       NAME "Specifieke voertuigcategorie"
-      EXPRESSION (("[e_type]" eq "E8") AND ('%categorie%' = 'specifiek_voertuig' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E8") AND ('%categorie%' ~ 'specifiek_voertuig' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -356,7 +356,7 @@ MAP
 
     CLASS
       NAME "Vergunninghouders"
-      EXPRESSION (("[e_type]" eq "E9") AND ('%categorie%' = 'vergunning_houders' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E9") AND ('%categorie%' ~ 'vergunning_houders' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -369,7 +369,7 @@ MAP
 
     CLASS
       NAME "Blauwe zone"
-      EXPRESSION (("[e_type]" eq "E10") AND ('%categorie%' = 'blauwe_zone' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E10") AND ('%categorie%' ~ 'blauwe_zone' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -383,7 +383,7 @@ MAP
 
     CLASS
       NAME "Einde blauwe zone"
-      EXPRESSION (("[e_type]" eq "E11") AND ('%categorie%' = 'einde_blauwe_zone' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E11") AND ('%categorie%' ~ 'einde_blauwe_zone' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -396,7 +396,7 @@ MAP
 
     CLASS
       NAME "Park & Ride"
-      EXPRESSION (("[e_type]" eq "E12") AND ('%categorie%' = 'park_ride' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E12") AND ('%categorie%' ~ 'park_ride' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -409,7 +409,7 @@ MAP
 
     CLASS
       NAME "Carpool"
-      EXPRESSION (("[e_type]" eq "E13") AND ('%categorie%' = 'carpool' OR '%categorie%' = 'all'))
+      EXPRESSION (("[e_type]" eq "E13") AND ('%categorie%' ~ 'carpool' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -422,7 +422,7 @@ MAP
 
     CLASS
       NAME "MULDER"
-      EXPRESSION (("[soort]" eq "MULDER") AND ('%categorie%' = 'mulder' OR '%categorie%' = 'all'))
+      EXPRESSION (("[soort]" eq "MULDER") AND ('%categorie%' ~ 'mulder' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
