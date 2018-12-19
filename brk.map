@@ -70,8 +70,8 @@ MAP
     NAME            "kadastrale_sectie"
     GROUP           "kadaster"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
+    DATA            "geometrie_lines FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
+    TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   12501
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -104,8 +104,8 @@ MAP
     NAME            "kadastrale_gemeente"
     GROUP           "kadaster"
     INCLUDE         "connection.inc"
-    DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
+    DATA            "geometrie_lines FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
+    TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
