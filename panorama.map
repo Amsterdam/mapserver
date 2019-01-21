@@ -54,7 +54,7 @@ MAP
 
     DATA            "geom FROM (SELECT id,
                         _geolocation_2d AS geom,
-                        EXTRACT(year from timestamp) AS year
+                        mission_year AS year
                         -- Keep for future use:
                         -- (SELECT EXTRACT(year from MAX(timestamp)) FROM panoramas_panorama LIMIT 1) -
                         -- EXTRACT(year from timestamp) AS age
