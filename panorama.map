@@ -97,6 +97,8 @@ MAP
                           ST_Transform(!BOX!, 28992)
                         ) AND
                         '[%timestamp_after%, %timestamp_before%]'::tstzrange @> timestamp
+                        AND
+                        pano.status = 'done'
 
                       ) AS subquery
                     USING srid=4326 USING UNIQUE id"
