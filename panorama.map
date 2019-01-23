@@ -76,6 +76,7 @@ MAP
                             ) AND
                             '[%timestamp_after%, %timestamp_before%]'::tstzrange @> timestamp AND
                             newer.timestamp > pano.timestamp AND
+                            newer.status = 'done' AND
                             -- Substract 0.7m from mission_distance to prevent panorama photos from one mission/trajectory
                             -- canceling each other
                             ST_DWithin(newer._geolocation_2d_rd, pano._geolocation_2d_rd, pano.mission_distance - 0.7) AND
