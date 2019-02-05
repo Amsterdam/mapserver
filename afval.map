@@ -681,6 +681,71 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
+    NAME                    "enevo_site_points"
+    GROUP                   "afvalcontainers"
+
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM public.enevo_enevosite USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "enevo_site_coordinaten"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "ENEVO site coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "enevo_site_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "enevosites"
+      "wms_abstract"        "Enevo Site coordinaten Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "enevo_site_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "name"
+
+    CLASS
+      NAME                  "EnevoSite"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               102 102 102
+        SIZE                10
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  2000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
     NAME                    "kca"
     GROUP                   "afvalcontainers"
 
@@ -2540,8 +2605,8 @@ MAP
     INCLUDE                 "connection_kilogram.inc"
     DATA                    "geometrie FROM (
     				SELECT * FROM public.sidcon_container_states
-			        ORDER BY scraped_at
-				) as subquery USING srid=4326 USING UNIQUE id"
+				ORDER BY scraped_at) as subquery
+				USING srid=4326 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -2552,6 +2617,220 @@ MAP
 
     METADATA
       "wfs_title"           "sidcon historical fill-level"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Sidon perscontainers historical vullingsgraag"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "perscontainers sidcon"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "kilogram"
+      "wms_abstract"        "Sidcon containers Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "description"
+
+    CLASS
+      NAME                  "< 10 %"
+      EXPRESSION ([filling] < 10)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 20 %"
+      EXPRESSION ([filling] < 20)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 30 %"
+      EXPRESSION ([filling] < 30)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 40 %"
+      EXPRESSION ([filling] < 40)
+      STYLE
+        SYMBOL              'stip'
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 50 %"
+      EXPRESSION ([filling] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 60 %"
+      EXPRESSION ([filling] < 60)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 70 %"
+      EXPRESSION ([filling] < 70)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 80 %"
+      EXPRESSION ([filling] < 80)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 90% kg"
+      EXPRESSION ([filling] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME                  "> 90 kg"
+      STYLE
+        MINSCALEDENOM       10
+        SYMBOL              'stip'
+        SIZE                4
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "enevo_perscontainers_live"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_kilogram.inc"
+    DATA                    "geometrie FROM (
+    				SELECT * FROM public.enevo_filllevel WHERE id in (
+				select MAX(id) from public.sidcon_container_states group by ( _id))
+				AND \"time\" > (NOW() - INTERVAL '12 hours' )
+				) as subquery USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "sidcon live fill-level"
       "wfs_srs"             "EPSG:4326"
       "wfs_adstract"        "Sidon perscontainers live vullingsgraag"
       "wfs_enable_request"  "*"
@@ -2744,7 +3023,5 @@ MAP
 
     END
   END
-
-
 
 END
