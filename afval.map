@@ -57,7 +57,7 @@ MAP
       "gml_types"           "auto"
       "wms_title"           "container_coordinaten"
       "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
+      "wms_group_title"     "kilogram"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
       "wms_srs"             "EPSG:4326"
       "wms_name"            "afvalcontainers_coordinaten"
@@ -681,6 +681,7 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
+<<<<<<< HEAD
     NAME                    "enevo_site_points"
     GROUP                   "afvalcontainers"
 
@@ -748,7 +749,6 @@ MAP
   LAYER
     NAME                    "kca"
     GROUP                   "afvalcontainers"
-
     INCLUDE                 "connection_afvalcontainers.inc"
     DATA                    "wkb_geometry FROM public.pand_distance_to_kca USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
