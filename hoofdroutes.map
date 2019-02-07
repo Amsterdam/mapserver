@@ -43,7 +43,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    FILTER                  ("[name]" eq 'Toegestane vrachtroute Amsterdam > 7,5 ton')
+    FILTER                  ("[route]" eq 'truck')
 
     CLASS
       NAME          "Vrachtroutes"
@@ -89,7 +89,7 @@ MAP
     END
 
 
-    FILTER                  ("[name]" eq 'Hoofdroutes Taxi Amsterdam')
+    FILTER                  ("[route]" eq 'taxi')
 
     CLASS
       NAME          "Taxiroutes"
@@ -134,7 +134,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    FILTER                  ("[name]" eq 'Lijnbusbanen medegebruik Taxi uitgesloten (GOED)')
+    FILTER                  ("[route]" eq 'taxi_no')
 
     CLASS
       NAME          "Busbaan geen taxi"
