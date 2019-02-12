@@ -186,7 +186,7 @@ MAP
     END
 
   END
-
+  
   LAYER
     NAME            "parkeervakken_reservering"
     GROUP           "parkeervakken"
@@ -194,8 +194,8 @@ MAP
 
     VALIDATION
        # %categorie% substitutions can only have letters, digits and underscore
-	  'default_categorie' 'all'
-      'categorie'     '^[0-9a-z_,]{1,256}$'
+       'default_categorie' 'all'
+       'categorie'     '^[0-9a-z_,]{1,256}$'
     END
 
     DATA            "geometrie FROM bv.geo_parkeervakken_reserveringen USING srid=28992 USING UNIQUE id"
@@ -225,6 +225,19 @@ MAP
         OUTLINECOLOR   155 145 0
         COLOR          255 245 0
         WIDTH          2
+      END
+
+      TEXT             '[opmerkingen]'
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
       END
     END
 
@@ -339,6 +352,19 @@ MAP
         OUTLINECOLOR   50 50 50
         WIDTH          2
       END
+
+      TEXT             '[opmerkingen]'
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+      END
     END
 
     CLASS
@@ -351,6 +377,19 @@ MAP
         OUTLINECOLOR   200 100 100
         COLOR          255 255 255
         WIDTH          2
+      END
+
+      TEXT             '[opmerkingen]'
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1001
+        COLOR          210 100 50
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
       END
     END
 
@@ -464,21 +503,21 @@ MAP
       NAME "Fiscaal - embed"
       EXPRESSION ("[soort]" eq "FISCAAL")
       STYLE
-    	MINSCALEDENOM  10
+      MINSCALEDENOM  10
         MAXSCALEDENOM  800
         ANTIALIAS      true
         OUTLINECOLOR   0 0 0
         WIDTH          2
       END
       STYLE
-    	MINSCALEDENOM  800
+      MINSCALEDENOM  800
         MAXSCALEDENOM  2000
         ANTIALIAS      true
         OUTLINECOLOR   0 0 0
         WIDTH          1.5
       END
       STYLE
-    	MINSCALEDENOM  2000
+      MINSCALEDENOM  2000
         MAXSCALEDENOM  40000
         ANTIALIAS      true
         OUTLINECOLOR   0 0 0
@@ -511,21 +550,21 @@ MAP
       NAME "Niet-fiscaal - embed"
       EXPRESSION ("[soort]" eq "NIET FISCAAL" || "[soort]" eq "NIET FISCA" || "[soort]" eq "MULDER")
       STYLE
-    	MINSCALEDENOM  10
+      MINSCALEDENOM  10
         MAXSCALEDENOM  800
         ANTIALIAS      true
         OUTLINECOLOR   0 70 153
         WIDTH          2
       END
       STYLE
-    	MINSCALEDENOM  800
+      MINSCALEDENOM  800
         MAXSCALEDENOM  2000
         ANTIALIAS      true
         OUTLINECOLOR   0 70 153
         WIDTH          1.5
       END
       STYLE
-    	MINSCALEDENOM  2000
+      MINSCALEDENOM  2000
         MAXSCALEDENOM  40000
         ANTIALIAS      true
         OUTLINECOLOR   0 70 153
