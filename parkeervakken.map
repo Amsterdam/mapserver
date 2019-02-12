@@ -148,46 +148,6 @@ MAP
   END
 
   LAYER
-    NAME            "parkeervakken_reservering_label"
-    GROUP           "parkeervakken"
-    INCLUDE         "connection_parkeervakken.inc"
-    DATA            "geometrie FROM bv.geo_parkeervakken_reserveringen USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   10
-    MAXSCALEDENOM   2001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "parkeervakken_reservering_label"
-      "ows_group_title"     "parkeervakken"
-      "ows_abstract"        "Parkeervakken in Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-    END
-
-    CLASS
-      TEXT             '[opmerkingen]'
-      NAME             'Opmerkingen'
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        COLOR          210 100 50
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-      END
-    END
-
-  END
-  
-  LAYER
     NAME            "parkeervakken_reservering"
     GROUP           "parkeervakken"
     INCLUDE         "connection_parkeervakken.inc"
@@ -255,45 +215,6 @@ MAP
     END
 
     CLASS
-      NAME "Verbod stil te staan"
-      EXPRESSION (("[e_type]" eq "E2") AND ('%categorie%' ~ 'stopverbod' OR '%categorie%' eq 'all'))
-      STYLE
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        SIZE           10
-        OUTLINECOLOR   230 0 0
-        COLOR          255 155 155
-        WIDTH          2
-      END
-    END
-
-    CLASS
-      NAME "Verbod (brom)fietsen plaatsen"
-      EXPRESSION (("[e_type]" eq "E3") AND ('%categorie%' ~ 'fietsverbod' OR '%categorie%' eq 'all'))
-      STYLE
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        SIZE           10
-        OUTLINECOLOR   220 0 0
-        COLOR          255 255 255
-        WIDTH          2
-      END
-    END
-
-    CLASS
-      NAME "Parkeergelegenheid"
-      EXPRESSION (("[e_type]" eq "E4") AND ('%categorie%' ~ 'parkeren' OR '%categorie%' eq 'all'))
-      STYLE
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        SIZE           10
-        OUTLINECOLOR   0 200 0
-        COLOR          255 255 255
-        WIDTH          2
-      END
-    END
-
-    CLASS
       NAME "Taxistandplaats"
       EXPRESSION (("[e_type]" eq "E5") AND ('%categorie%' ~ 'taxistandplaats' OR '%categorie%' eq 'all'))
       STYLE
@@ -302,18 +223,6 @@ MAP
         SIZE           10
         OUTLINECOLOR   220 220 0
         COLOR          255 255 255
-        WIDTH          2
-      END
-    END
-
-    CLASS
-      NAME "Gehandicaptenplaats"
-      EXPRESSION (("[e_type]" eq "E6") AND ('%categorie%' ~ 'gehandicapten_plaats' OR '%categorie%' eq 'all'))
-      STYLE
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        COLOR          0 255 255
-        OUTLINECOLOR   255 255 255
         WIDTH          2
       END
     END
@@ -421,19 +330,6 @@ MAP
 
 
     CLASS
-      NAME "Einde blauwe zone"
-      EXPRESSION (("[e_type]" eq "E11") AND ('%categorie%' ~ 'einde_blauwe_zone' OR '%categorie%' eq 'all'))
-      STYLE
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        SIZE           10
-        OUTLINECOLOR   0 0 200
-        COLOR          250 100 155
-        WIDTH          2
-      END
-    END
-
-    CLASS
       NAME "Park & Ride"
       EXPRESSION (("[e_type]" eq "E12") AND ('%categorie%' ~ 'park_ride' OR '%categorie%' eq 'all'))
       STYLE
@@ -442,19 +338,6 @@ MAP
         SIZE           10
         OUTLINECOLOR   0 155 155
         COLOR          250 155 155
-        WIDTH          2
-      END
-    END
-
-    CLASS
-      NAME "Carpool"
-      EXPRESSION (("[e_type]" eq "E13") AND ('%categorie%' ~ 'carpool' OR '%categorie%' eq 'all'))
-      STYLE
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  9001
-        SIZE           10
-        OUTLINECOLOR   115 115 115
-        COLOR          200 200 250
         WIDTH          2
       END
     END
