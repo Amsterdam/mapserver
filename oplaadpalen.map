@@ -36,9 +36,12 @@ MAP
        # %charging_cap_min% substitutions can have  1 to 4 digits
 	  'default_charging_cap_min' '0'
       'charging_cap_min'     '^[0-9]{1,4}$'
+       # %charging_cap_max% substitutions can have  1 to 4 digits
+	  'default_charging_cap_max' '100000'
+      'charging_cap_max'     '^[0-9]{1,4}$'
     END
 
-    FILTER ([charging_cap_max]>=%charging_cap_min%)
+    FILTER (([charging_cap_max]>=%charging_cap_min%) AND ([charging_cap_max]<%charging_cap_max%))
 
     METADATA
       "wfs_title"           "Oplaadpalen"
@@ -122,7 +125,7 @@ MAP
       END
     END
 
-        CLASS
+    CLASS
       NAME          "Beschikbaar snellaadpaal"
       EXPRESSION (("[status]" ~ "Available") AND ([charging_cap_max] >= 22.0))
 
