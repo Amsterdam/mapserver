@@ -20,7 +20,7 @@ MAP
   END
 
   LAYER
-    NAME                    "oplaadpunten"
+    NAME                    "normaal_beschikbaar"
     GROUP                   "oplaadpunten"
     PROJECTION
       "init=epsg:28992"
@@ -32,27 +32,21 @@ MAP
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
-    VALIDATION
-       # %charging_cap_min% substitutions can have  1 to 4 digits
-	  'default_charging_cap_min' '0'
-      'charging_cap_min'     '^[0-9]{1,4}$'
-    END
-
-    FILTER ([charging_cap_max]>=%charging_cap_min%)
+    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] < 22.0))
 
     METADATA
-      "wfs_title"           "Oplaadpunten"
+      "wfs_title"           "Normaal beschikbaar"
       "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Oplaadpunten Amsterdam"
+      "wfs_abstract"        "Normale beschikbare oplaadpunten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "cs_external_id"
       "gml_include_items"   "all"
-      "wms_title"           "Oplaadpunten"
+      "wms_title"           "Normaal beschikbaar"
       "wms_enable_request"  "*"
       "wms_group_title"     "Oplaadpunten"
-      "wms_abstract"        "Oplaadpunten Amsterdam"
+      "wms_abstract"        "Normale beschikbare oplaadpunten Amsterdam"
       "wms_srs"             "EPSG:28992"
-      "wms_name"            "oplaadpunten"
+      "wms_name"            "normaal_beschikbaar"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
@@ -61,8 +55,7 @@ MAP
     LABELITEM               "cs_external_id"
 
     CLASS
-      NAME          "Beschikbaar gewoon"
-      EXPRESSION (("[status]" ~ "Available") AND ([charging_cap_max] < 22.0))
+      NAME          "Normaal beschikbaar"
 
       STYLE
           SYMBOL       "stip"
@@ -71,7 +64,6 @@ MAP
           SIZE         7
       END
       STYLE
-
           OUTLINECOLOR 0 153 70
           WIDTH        1
       END
@@ -90,10 +82,45 @@ MAP
         OFFSET         -60 10
       END
     END
+  END
+
+  LAYER
+    NAME                    "normaal_niet_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] < 22.0))
+
+    METADATA
+      "wfs_title"           "Normaal niet beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Normale, niet beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "cs_external_id"
+      "gml_include_items"   "all"
+      "wms_title"           "Normaal niet beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Normale niet beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "normaal_niet_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "cs_external_id"
 
     CLASS
       NAME          "Niet beschikbaar gewoon"
-      EXPRESSION    ((NOT ("[status]" ~ "Available")) AND ([charging_cap_max] < 22.0))
 
       STYLE
           SYMBOL       "stip"
@@ -102,7 +129,6 @@ MAP
           SIZE         7
       END
       STYLE
-
           OUTLINECOLOR 0 153 70
           WIDTH        1
       END
@@ -121,10 +147,45 @@ MAP
         OFFSET         -60 10
       END
     END
+  END
 
-        CLASS
-      NAME          "Beschikbaar snellaadpaal"
-      EXPRESSION (("[status]" ~ "Available") AND ([charging_cap_max] >= 22.0))
+  LAYER
+    NAME                    "snel_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] >= 22.0))
+
+    METADATA
+      "wfs_title"           "Snel beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Snelle beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "cs_external_id"
+      "gml_include_items"   "all"
+      "wms_title"           "Snel beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Snelle beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "snel_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "cs_external_id"
+
+    CLASS
+      NAME          "Snel beschikbaar"
 
       STYLE
           SYMBOL       "stip"
@@ -133,7 +194,6 @@ MAP
           SIZE         10
       END
       STYLE
-
           OUTLINECOLOR 0 153 70
           WIDTH        1
       END
@@ -152,10 +212,45 @@ MAP
         OFFSET         -60 10
       END
     END
+  END
+
+  LAYER
+    NAME                    "snel_niet_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] >= 22.0))
+
+    METADATA
+      "wfs_title"           "Snel niet beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Snelle, niet beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "cs_external_id"
+      "gml_include_items"   "all"
+      "wms_title"           "Snel niet beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Snelle, niet beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "snel_niet_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "cs_external_id"
 
     CLASS
-      NAME          "Niet beschikbaar snellaadpaal"
-      EXPRESSION    ((NOT ("[status]" ~ "Available")) AND ([charging_cap_max] >= 22.0))
+      NAME          "Snel niet beschikbaar"
 
       STYLE
           SYMBOL       "stip"
@@ -164,7 +259,6 @@ MAP
           SIZE         10
       END
       STYLE
-
           OUTLINECOLOR 0 153 70
           WIDTH        1
       END
