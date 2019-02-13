@@ -1,33 +1,33 @@
 #==============================================================================
-# DEPRECATED : to be deleted when oplaadpunten is in use everywhere
-# Dataset: oplaadpalen
-# Doel: Oplaadpalen
+#
+# Dataset: oplaadpunten
+# Doel: Oplaadpunten
 #
 #==============================================================================
 
 
 MAP
-  NAME                      "oplaadpalen"
+  NAME                      "oplaadpunten"
   INCLUDE                   "header.inc"
   DEBUG 1
 
   WEB
     METADATA
-      "ows_title"           "Oplaadpalen"
-      "ows_abstract"        "Oplaadpalen Amsterdam"
+      "ows_title"           "Oplaadpunten"
+      "ows_abstract"        "Oplaadpunten Amsterdam"
       "wms_extent"          "100000 450000 150000 500000"
     END
   END
 
   LAYER
-    NAME                    "oplaadpalen"
-    GROUP                   "oplaadpalen"
+    NAME                    "oplaadpunten"
+    GROUP                   "oplaadpunten"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_various_small_datasets.inc"
-    DATA                    "wkb_geometry FROM public.oplaadpalen USING srid=28992 USING UNIQUE id"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -36,26 +36,23 @@ MAP
        # %charging_cap_min% substitutions can have  1 to 4 digits
 	  'default_charging_cap_min' '0'
       'charging_cap_min'     '^[0-9]{1,4}$'
-       # %charging_cap_max% substitutions can have  1 to 4 digits
-	  'default_charging_cap_max' '100000'
-      'charging_cap_max'     '^[0-9]{1,4}$'
     END
 
-    FILTER (([charging_cap_max]>=%charging_cap_min%) AND ([charging_cap_max]<%charging_cap_max%))
+    FILTER ([charging_cap_max]>=%charging_cap_min%)
 
     METADATA
-      "wfs_title"           "Oplaadpalen"
+      "wfs_title"           "Oplaadpunten"
       "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Oplaadpalen Amsterdam"
+      "wfs_abstract"        "Oplaadpunten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "cs_external_id"
       "gml_include_items"   "all"
-      "wms_title"           "Oplaadpalen"
+      "wms_title"           "Oplaadpunten"
       "wms_enable_request"  "*"
-      "wms_group_title"     "Oplaadpalen"
-      "wms_abstract"        "Oplaadpalen Amsterdam"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Oplaadpunten Amsterdam"
       "wms_srs"             "EPSG:28992"
-      "wms_name"            "oplaadpalen"
+      "wms_name"            "oplaadpunten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
@@ -125,7 +122,7 @@ MAP
       END
     END
 
-    CLASS
+        CLASS
       NAME          "Beschikbaar snellaadpaal"
       EXPRESSION (("[status]" ~ "Available") AND ([charging_cap_max] >= 22.0))
 
