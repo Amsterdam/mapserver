@@ -61,7 +61,7 @@ MAP
     END
 
     CLASS
-      NAME          'Parkeervak'
+      NAME          'Niet FISCAAL'
       STYLE
        ANTIALIAS    true
        OUTLINECOLOR 210 150 50
@@ -114,7 +114,7 @@ MAP
     NAME            "parkeervakken_bord"
     GROUP           "parkeervakken"
     INCLUDE         "connection_parkeervakken.inc"
-    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id WHERE bord is not null"
     TYPE            POLYGON
     MINSCALEDENOM   10
     MAXSCALEDENOM   9001
@@ -132,6 +132,15 @@ MAP
     CLASS
       TEXT             '[bord]'
       NAME             'Bord'
+
+      STYLE
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   210 100 50
+        WIDTH          2
+      END
+
       LABEL
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
