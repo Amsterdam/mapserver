@@ -1479,8 +1479,9 @@ MAP
     				select * from
 				public.kilogram_weigh_measurement
 				where fractie = 'Rest'
+				AND \"weigh_at\" > (NOW() - INTERVAL '6 months')
 				ORDER BY weigh_at desc
-				) USING srid=4326 USING UNIQUE id"
+				) as subquery USING srid=4326 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
