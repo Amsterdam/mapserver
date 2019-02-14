@@ -114,7 +114,7 @@ MAP
     NAME            "parkeervakken_bord"
     GROUP           "parkeervakken"
     INCLUDE         "connection_parkeervakken.inc"
-    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id WHERE bord is not null"
+    DATA            "geometrie FROM bv.geo_parkeervakken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   10
     MAXSCALEDENOM   9001
@@ -126,8 +126,10 @@ MAP
     METADATA
       "ows_title"           "parkeervakken_bord"
       "ows_group_title"     "parkeervakken"
-      "ows_abstract"        "Labels van parkeervakken van de gemeente Amsterdam"
+      "ows_abstract"        "Parkeervakken met labels van de gemeente Amsterdam"
     END
+
+    PROCESSING 'NATIVE_FILTER=(NOT (bord IS NULL))' 
 
     CLASS
       TEXT             '[bord]'
