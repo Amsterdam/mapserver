@@ -51,7 +51,7 @@ MAP
     END
 
     CLASS
-      NAME "FISCAAL"
+      NAME "Fiscaal"
       EXPRESSION ("[soort]" eq "FISCAAL")
       STYLE
         ANTIALIAS      true
@@ -61,7 +61,7 @@ MAP
     END
 
     CLASS
-      NAME          'Niet FISCAAL'
+      NAME          'Niet fiscaal'
       STYLE
        ANTIALIAS    true
        OUTLINECOLOR 210 150 50
@@ -187,14 +187,15 @@ MAP
     END
 
     CLASS
-      NAME "FISCAAL"
+      NAME "Fiscaal"
       EXPRESSION (("[soort]" eq "FISCAAL") AND ('%categorie%' ~ 'fiscaal' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   155 145 0
-        COLOR          255 245 0
+        OUTLINECOLOR   190 210 0
+        COLOR          190 210 0
+        OPACITY        50
         WIDTH          2
       END
 
@@ -219,7 +220,7 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   240 0 0
+        OUTLINECOLOR   236 0 0
         COLOR          255 255 255
         WIDTH          2
       END
@@ -232,7 +233,7 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   220 220 0
+        OUTLINECOLOR   255 230 0
         COLOR          255 255 255
         WIDTH          2
       END
@@ -244,8 +245,9 @@ MAP
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
-        COLOR          0 255 255
-        OUTLINECOLOR   255 255 255
+        COLOR          0 157 230
+        OUTLINECOLOR   0 157 230
+        OPACITY        50
         WIDTH          2
       END
     END
@@ -256,8 +258,9 @@ MAP
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
-        COLOR          0 255 255
-        OUTLINECOLOR   255 0 0
+        COLOR          0 157 230
+        OUTLINECOLOR   0 157 230
+        OPACITY        50
         WIDTH          2
       END
     END
@@ -268,8 +271,9 @@ MAP
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
-        COLOR          200 200 200
-        OUTLINECOLOR   50 50 50
+        COLOR          102 102 102
+        OUTLINECOLOR   102 102 102
+        OPACITY        50
         WIDTH          2
       END
 
@@ -294,8 +298,9 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   200 100 100
-        COLOR          255 255 255
+        OUTLINECOLOR   229 0 130
+        COLOR          229 0 130
+        OPACITY        50
         WIDTH          2
       END
 
@@ -320,8 +325,9 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   200 0 0
-        COLOR          155 50 55
+        OUTLINECOLOR   160 0 120
+        COLOR          160 0 120
+        OPACITY        50
         WIDTH          2
       END
     END
@@ -333,8 +339,9 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   0 0 255
-        COLOR          100 100 255
+        OUTLINECOLOR   0 70 153
+        COLOR          0 70 153
+        OPACITY        50
         WIDTH          2
       END
     END
@@ -347,8 +354,9 @@ MAP
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
         SIZE           10
-        OUTLINECOLOR   0 155 155
-        COLOR          250 155 155
+        OUTLINECOLOR   0 160 60
+        COLOR          0 160 60
+        OPACITY        50
         WIDTH          2
       END
     END
