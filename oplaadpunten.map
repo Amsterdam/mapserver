@@ -5,7 +5,6 @@
 #
 #==============================================================================
 
-
 MAP
   NAME                      "oplaadpunten"
   INCLUDE                   "header.inc"
@@ -58,14 +57,22 @@ MAP
       NAME          "Normaal beschikbaar"
 
       STYLE
-          SYMBOL       "stip"
-          ANTIALIAS    true
-          COLOR        0 153 70
-          SIZE         7
+        MINSCALEDENOM 10
+        MAXSCALEDENOM 4000
+        SIZE          34
+        SYMBOL        "oplaadpunt_normaal_beschikbaar"
       END
       STYLE
-          OUTLINECOLOR 0 153 70
-          WIDTH        1
+        MINSCALEDENOM 4001
+        MAXSCALEDENOM 12000
+        SIZE          25
+        SYMBOL        "oplaadpunt_normaal_beschikbaar"
+      END
+      STYLE
+        MINSCALEDENOM 12001
+        MAXSCALEDENOM 400000
+        SIZE          17
+        SYMBOL        "oplaadpunt_normaal_beschikbaar"
       END
 
       LABEL
@@ -123,14 +130,22 @@ MAP
       NAME          "Normaal niet beschikbaar"
 
       STYLE
-          SYMBOL       "stip"
-          ANTIALIAS    true
-          COLOR        153 70 70
-          SIZE         7
+        MINSCALEDENOM 10
+        MAXSCALEDENOM 4000
+        SIZE          34
+        SYMBOL        "oplaadpunt_normaal_niet_beschikbaar"
       END
       STYLE
-          OUTLINECOLOR 0 153 70
-          WIDTH        1
+        MINSCALEDENOM 4001
+        MAXSCALEDENOM 12000
+        SIZE          25
+        SYMBOL        "oplaadpunt_normaal_niet_beschikbaar"
+      END
+      STYLE
+        MINSCALEDENOM 12001
+        MAXSCALEDENOM 400000
+        SIZE          17
+        SYMBOL        "oplaadpunt_normaal_niet_beschikbaar"
       END
 
       LABEL
@@ -188,14 +203,22 @@ MAP
       NAME          "Snel beschikbaar"
 
       STYLE
-          SYMBOL       "stip"
-          ANTIALIAS    true
-          COLOR        0 153 70
-          SIZE         10
+        MINSCALEDENOM 10
+        MAXSCALEDENOM 4000
+        SIZE          34
+        SYMBOL        "oplaadpunt_snel_beschikbaar"
       END
       STYLE
-          OUTLINECOLOR 0 153 70
-          WIDTH        1
+        MINSCALEDENOM 4001
+        MAXSCALEDENOM 12000
+        SIZE          25
+        SYMBOL        "oplaadpunt_snel_beschikbaar"
+      END
+      STYLE
+        MINSCALEDENOM 12001
+        MAXSCALEDENOM 400000
+        SIZE          17
+        SYMBOL        "oplaadpunt_snel_beschikbaar"
       END
 
       LABEL
@@ -253,14 +276,22 @@ MAP
       NAME          "Snel niet beschikbaar"
 
       STYLE
-          SYMBOL       "stip"
-          ANTIALIAS    true
-          COLOR        153 70 70
-          SIZE         10
+        MINSCALEDENOM 10
+        MAXSCALEDENOM 4000
+        SIZE          34
+        SYMBOL        "oplaadpunt_snel_niet_beschikbaar"
       END
       STYLE
-          OUTLINECOLOR 0 153 70
-          WIDTH        1
+        MINSCALEDENOM 4001
+        MAXSCALEDENOM 12000
+        SIZE          25
+        SYMBOL        "oplaadpunt_snel_niet_beschikbaar"
+      END
+      STYLE
+        MINSCALEDENOM 12001
+        MAXSCALEDENOM 400000
+        SIZE          17
+        SYMBOL        "oplaadpunt_snel_niet_beschikbaar"
       END
 
       LABEL
