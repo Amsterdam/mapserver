@@ -304,7 +304,7 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
+  # DEPRECATED : to be replaced by grootstedelijk_regio_amsterdam and grootstedelijk_regio_omgevingsdienst
 
   LAYER
     NAME            "grootstedelijkgebied"
@@ -708,7 +708,7 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
+  # DEPRECATED : to be replaced by grootstedelijk_regio_amsterdam and grootstedelijk_regio_omgevingsdienst
 
   LAYER
     NAME            "grootstedelijkgebied_label"
@@ -813,7 +813,132 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "grootstedelijk_regio_amsterdam"
+    GROUP           "grootstedelijkgebieden"
+    INCLUDE         "connection.inc"
+
+    DATA            "geometrie FROM public.bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "grootstedelijk_regio_amsterdam"
+      "ows_group_title"     "gebieden"
+      "ows_abstract"        "Grootstedelijke Gebieden Regie Gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    FILTER  ("[gsg_type]" eq 'GSP')
+
+    CLASS
+      TEXT             '[naam]'
+      NAME              "Regie Gemeente Amsterdam"
+
+      STYLE
+        ANTIALIAS       true
+        OUTLINECOLOR    150 40 255
+        WIDTH           2
+      END
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  50001
+        COLOR          150 40 255
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  50001
+        MAXSCALEDENOM  100001
+        COLOR          150 40 255
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "grootstedelijk_regio_omgevingsdienst"
+    GROUP           "grootstedelijkgebieden"
+    INCLUDE         "connection.inc"
+
+    DATA            "geometrie FROM public.bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "grootstedelijk_regio_omgevingsdienstr"
+      "ows_group_title"     "gebieden"
+      "ows_abstract"        "Grootstedelijke Gebieden Regie Omgevingsdienst"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    FILTER  ("[gsg_type]" eq 'OD')
+
+    CLASS
+      TEXT             '[naam]'
+      NAME              "Regie Omgevingsdienst"
+
+      STYLE
+        ANTIALIAS       true
+        OUTLINECOLOR    40 255 150
+        WIDTH           2
+      END
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  50001
+        COLOR          40 255 150
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+
+      LABEL
+        MINSCALEDENOM  50001
+        MAXSCALEDENOM  100001
+        COLOR          40 255 150
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+  END
 
 #=============================================================================
 END
