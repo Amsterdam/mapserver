@@ -80,7 +80,7 @@ section about connecting the Mapserver to the database.
 
 ### (2) Check out the Datapunt Amsterdam mapserver project
 Git clone the Datapunt [Amsterdam mapserver Docker project][1] to a directory
-that matches the ``buil`` directory you specified in the ``mapserver`` section
+that matches the ``build`` directory you specified in the ``mapserver`` section
 of your ``docker-compose.yml`` file. To test whether you did this correctly
 run the following ``docker-compose`` command from the directory with your
 ``docker-compose.yml`` file:
