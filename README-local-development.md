@@ -107,7 +107,7 @@ environment variables below is taken from the ``reistijdenauto`` project,
 whose variables all start with ``REISTIJDENAUTO``:
 
 ```sh
-REISTIJDENAUTO_DB_HOST=${REISTIJDENAUTO_DB_HOST:-reistijdenauto-read.service.consul}
+REISTIJDENAUTO_DB_HOST=${REISTIJDENAUTO_DB_HOST:-postgres-read.service.consul}
 REISTIJDENAUTO_DB_PORT=${REISTIJDENAUTO_DB_PORT:-5432}
 REISTIJDENAUTO_DB_NAME=${REISTIJDENAUTO_DB_NAME:-reistijdenauto}
 REISTIJDENAUTO_DB_USER=${REISTIJDENAUTO_DB_USER:-${REISTIJDENAUTO_DB_NAME}}
