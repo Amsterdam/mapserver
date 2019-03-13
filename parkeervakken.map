@@ -317,7 +317,7 @@ MAP
 
     CLASS
       NAME "Vergunninghouders"
-      EXPRESSION (("[e_type]" eq "E9") AND ('%categorie%' ~ 'vergunning_houders' OR '%categorie%' eq 'all'))
+      EXPRESSION (("[e_type]" eq "E9") AND ("[bord]" ne "Kiss & Ride") AND ('%categorie%' ~ 'vergunning_houders' OR '%categorie%' eq 'all'))
       STYLE
         MINSCALEDENOM  10
         MAXSCALEDENOM  9001
@@ -357,6 +357,21 @@ MAP
         WIDTH          2
       END
     END
+
+    CLASS
+      NAME "Kiss & Ride"
+      EXPRESSION (("[e_type]" eq "E9") AND ("[bord]" eq "Kiss & Ride") AND ('%categorie%' ~ 'kiss_ride' OR '%categorie%' eq 'all'))
+      STYLE
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  9001
+        SIZE           10
+        OUTLINECOLOR   0 160 60
+        COLOR          0 160 60
+        OPACITY        50
+        WIDTH          2
+      END
+    END
+
 
     CLASS
       NAME "MULDER"
