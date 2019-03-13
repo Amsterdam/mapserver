@@ -43,6 +43,8 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh grondexploitatie <your-username>
 	docker-compose exec database update-db.sh dataselectie <your-username>
 	docker-compose exec database update-db.sh various_small_datasets <your-username>
+	docker-compose exec database update-db.sh parkeervakken <your-username>
+
 
 	
 De maps zijn te benaderen vanuit QGis: maak een WMS connectie met de url <http://localhost:8383/maps/YOURMAPFILE>
