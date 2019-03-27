@@ -5,7 +5,6 @@
 #
 #==============================================================================
 
-
 MAP
   NAME                      "evenementen"
   INCLUDE                   "header.inc"
@@ -19,7 +18,10 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+  LEGEND
+     STATUS ON
+     KEYSIZE 17 17
+  END
 
   LAYER
     NAME                    "evenementen"
@@ -40,7 +42,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Evenementen Amsterdam"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "titel"
+      "gml_featureid"       "ogc_fid"
       "gml_include_items"   "all"
       "wms_title"           "Evenementen"
       "wms_enable_request"  "*"
@@ -59,14 +61,8 @@ MAP
       NAME          "Evenementen"
 
       STYLE
-          ANTIALIAS    true
-          COLOR        0 70 153
-          OPACITY      33
-      END
-      STYLE
-          OUTLINECOLOR        0 70 153
-          OPACITY      70
-          WIDTH        1
+        SIZE          17
+        SYMBOL        "cirkel_blauwgroen"
       END
 
       LABEL
