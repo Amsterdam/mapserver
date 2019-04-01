@@ -21,6 +21,10 @@ services:
       - /tmp/srv/infrarood:/mnt/infrarood
       - .:/srv/mapserver
     environment:
+      http_proxy:
+      https_proxy:
+      no_proxy:
+
       BAG_DB_NAME: bag
       BAG_DB_USER: postgres
       BAG_DB_PASSWORD: insecure
