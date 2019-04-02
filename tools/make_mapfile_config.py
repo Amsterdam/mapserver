@@ -85,7 +85,7 @@ def scan_map_file(mapfile):
     ws = re.compile(r'(\s+)')
     count = 0
     try:
-        with open(mapfile) as file:
+        with open(mapfile, encoding='utf-8') as file:
             for line in file:
                 count+=1
                 pos = line.find('#')
