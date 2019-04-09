@@ -19,7 +19,7 @@ RUN apt install build-essential -y
 
 # Setup build env
 RUN mkdir /build
-RUN apt-key adv --recv-keys --keyserver http://keyserver.ubuntu.com:80 16126D3A3E5C1192    \
+RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 16126D3A3E5C1192    \
   && apt-get update && apt-get install -y --fix-missing --no-install-recommends software-properties-common \
   && add-apt-repository ppa:ubuntugis/ubuntugis-unstable -y    \
   && apt-get update && apt-get install -y --fix-missing --no-install-recommends gcc-4.8 g++-4.8 build-essential ca-certificates curl wget git libaio1 make cmake python-dev \
