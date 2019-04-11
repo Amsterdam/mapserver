@@ -10,7 +10,9 @@ services:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   map:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_noproxy
     ports:
       - "80:80"
     links:
@@ -21,10 +23,6 @@ services:
       - /tmp/srv/infrarood:/mnt/infrarood
       - .:/srv/mapserver
     environment:
-      http_proxy:
-      https_proxy:
-      no_proxy:
-
       BAG_DB_NAME: bag
       BAG_DB_USER: postgres
       BAG_DB_PASSWORD: insecure

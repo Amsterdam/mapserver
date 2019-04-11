@@ -12,16 +12,12 @@ services:
   map:
     build:
       context: .
-      dockerfile: Dockerfile_private
+      dockerfile: Dockerfile_noproxy_private
     ports:
       - "8001:80"
     links:
       - "database:database"
     environment:
-      http_proxy:
-      https_proxy:
-      no_proxy:
-
       BAG_DB_NAME: bag
       BAG_DB_USER: postgres
       BAG_DB_PASSWORD: insecure
