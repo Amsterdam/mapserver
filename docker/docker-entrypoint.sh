@@ -117,6 +117,12 @@ BLACKSPOTS_DB_NAME=${BLACKSPOTS_DB_NAME:-blackspots}
 BLACKSPOTS_DB_USER=${BLACKSPOTS_DB_USER:-${BLACKSPOTS_DB_NAME}}
 BLACKSPOTS_DB_PASSWORD=${BLACKSPOTS_DB_PASSWORD:-insecure}
 
+EXT_DB_HOST=${EXT_DB_HOST:-postgres-read.service.consul}
+EXT_DB_PORT=${EXT_DB_PORT:-5432}
+EXT_DB_NAME=${EXT_DB_NAME:-externaldata}
+EXT_DB_USER=${EXT_DB_USER:-${EXT_DB_NAME}}
+EXT_DB_PASSWORD=${EXT_DB_PASSWORD:-insecure}
+
 echo Creating configuration files
 
 cat > /srv/mapserver/connection.inc <<EOF
@@ -234,6 +240,11 @@ CONNECTION "host=${BLACKSPOTS_DB_HOST} dbname=${BLACKSPOTS_DB_NAME} user=${BLACK
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
+cat > /srv/mapserver/connection_externaldata.inc <<EOF
+CONNECTIONTYPE postgis
+CONNECTION "host=${EXT_DB_HOST} dbname=${EXT_DB_NAME} user=${EXT_DB_USER} password=${EXT_DB_PASSWORD} port=${EXT_DB_PORT}"
+PROCESSING "CLOSE_CONNECTION=DEFER"
+EOF
 
 # Configure apache to redirect errors to stderr.
 # The mapserver will redirect errors to apache errorstream (see header.inc and private/header.inc)
