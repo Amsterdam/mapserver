@@ -30,32 +30,32 @@ MAP
   # per layer
   #-----------------------------------------------------------------------------
   LAYER
-    NAME                    "openbare_verlichting"
+    NAME                    "klokken"
     GROUP                   "openbare_verlichting"
     PROJECTION
       "init=epsg:4326"
     END
 
     INCLUDE                 "connection_various_small_datasets.inc"
-    DATA                    "wkb_geometry FROM public.openbare_verlichting USING srid=4326 USING UNIQUE ogc_fid"
+    DATA                    "wkb_geometry FROM  (select * from public.openbare_verlichting where type_id = '1') as subquery  USING srid=4326 USING UNIQUE ogc_fid"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
 
     METADATA
-      "wfs_title"           "Openbare_verlichting"
+      "wfs_title"           "Klokken"
       "wfs_srs"             "EPSG:4326"
-      "wfs_abstract"        "Openbare_verlichting Amsterdam"
+      "wfs_abstract"        "Klokken assets Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "objectnummer"
       "gml_include_items"   "all"
-      "wms_title"           "Openbare_verlichting"
+      "wms_title"           "Klokken"
       "wms_enable_request"  "*"
       "wms_group_title"     "Openbare_verlichting"
-      "wms_abstract"        "Openbare_verlichting Amsterdam"
+      "wms_abstract"        "Klokken assets Amsterdam"
       "wms_srs"             "EPSG:4326"
-      "wms_name"            "openbare_verlichting"
+      "wms_name"            "klokken"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
@@ -64,15 +64,78 @@ MAP
     LABELITEM               "objectnummer"
 
     CLASS
-      NAME          "Openbare_verlichting"
+      NAME          "Klokken"
 
       STYLE
           ANTIALIAS    true
-          COLOR        0 70 153
+	      COLOR        0 70 153
           OPACITY      33
       END
       STYLE
-          OUTLINECOLOR        0 70 153
+	      OUTLINECOLOR        0 70 153
+          OPACITY      70
+          WIDTH        1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+  LAYER
+    NAME                    "verlichting"
+    GROUP                   "openbare_verlichting"
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM  (select * from public.openbare_verlichting where type_id != '1') as subquery  USING srid=4326 USING UNIQUE ogc_fid"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "Verlichting"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_abstract"        "Verlichting assets Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "objectnummer"
+      "gml_include_items"   "all"
+      "wms_title"           "Verlichting"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Openbare_verlichting"
+      "wms_abstract"        "Verlichting assets Amsterdam"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "verlichting"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "objectnummer"
+
+    CLASS
+      NAME          "Verlichting"
+
+      STYLE
+          ANTIALIAS    true
+	      COLOR        0 70 153
+          OPACITY      33
+      END
+      STYLE
+	      OUTLINECOLOR        0 70 153
           OPACITY      70
           WIDTH        1
       END
