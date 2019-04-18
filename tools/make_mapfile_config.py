@@ -11,7 +11,7 @@ import json
 GROUPS_NAME = '__groups__'
 TYPE_NAME = '__type__'
 
-map_file_dict = {}
+map_file_dict = {'mapfiles': [] }
 
 
 expected_state = {
@@ -70,14 +70,26 @@ def zoomlevel_for_scaledenom(scaledenom, domax=True):
 
 
 def scan_map_file(mapfile):
+
+    print(f'Processing {mapfile}...')
     s = mapfile.rfind('/')
     if s > 0:
         name = mapfile[s+1:-4]
     else:
         name = mapfile[:-4]
+
+    if name == 'speed_classes':
+        return
     # print(name)
-    map_file_dict[name] = {}
-    cur_dict = map_file_dict[name]
+    cur_map_file = {
+        'file_name': name,
+        'layers': []
+    }
+
+    cur_layer = None
+    cur_class = None
+
+    map_file_dict['mapfiles'].append(cur_map_file)
     state = []
     dict_stack = []
     element = re.compile(r'"[^"]*"|\S+')
@@ -107,13 +119,22 @@ def scan_map_file(mapfile):
                 # print(ws_count, elements)
                 if elements[0] in expected_state:
                     expected = expected_state[elements[0]]
-                    if (expected is None and len(state) == 0) or (
+                    if expected is not None and len(state) == 0:
+                        print (expected)
+                    elif (expected is None and len(state) == 0) or (
                             type(expected) == list and state[-1] in expected) or expected == state[-1]:
                         state.append(elements[0])
                         if state[-1] in name_elements:
                             dict_stack.append('NEW_UNKOWN_NAME')
                             # print(dict_stack)
-                            set_in_dict(cur_dict, dict_stack, {TYPE_NAME: state[-1]})
+                            if state[-1] == 'LAYER':
+                                cur_layer = {'classes': []}
+                                cur_map_file['layers'].append(cur_layer)
+                            elif state[-1] == 'CLASS':
+                                assert cur_layer is not None
+                                cur_class = {}
+                                cur_layer['classes'].append(cur_class)
+                            # set_in_dict(cur_map_file, dict_stack, {TYPE_NAME: state[-1]})
                         # print(state)
                     elif elements[0] == 'SYMBOL' and len(elements) > 1:
                         # Process symbol
@@ -124,6 +145,10 @@ def scan_map_file(mapfile):
                     if len(state) > 0:
                         if state[-1] in name_elements and len(dict_stack) > 0:
                             dict_stack.pop()
+                            if state[-1] == 'CLASS':
+                                cur_class = None
+                            elif state[-1] == 'LAYER':
+                                cur_layer = None
                         state.pop()
                         # print(dict_stack)
                     else:
@@ -131,25 +156,33 @@ def scan_map_file(mapfile):
                 # Process elements here
                 if elements[0] == 'NAME' and state[-1] in name_elements:
                     name = elements[1].strip('"').strip("'")
-                    replace_key_in_dict(cur_dict, dict_stack, name)
+                    if state[-1]  == 'CLASS':
+                        cur_class['name'] = name
+                    elif state[-1] == 'LAYER':
+                        cur_layer['name'] = name
+                    elif state[-1] == 'MAP':
+                        cur_map_file['name'] = name
+                    # replace_key_in_dict(cur_map_file, dict_stack, name)
                 elif elements[0] == 'GROUP' and state[-1] == 'LAYER':
                     group = elements[1].strip('"')
                     layer = dict_stack[-1]
                     my_stack = dict_stack[0:-1]
-                    d = get_from_dict(cur_dict, my_stack)
-                    if GROUPS_NAME in d:
-                        if group in d[GROUPS_NAME]:
-                            d[GROUPS_NAME][group].append(layer)
-                        else:
-                            d[GROUPS_NAME][group] = [layer]
-                    else:
-                        d[GROUPS_NAME] = {group: [layer]}
+                    # d = get_from_dict(cur_map_file, my_stack)
+                    # if GROUPS_NAME in d:
+                    #     if group in d[GROUPS_NAME]:
+                    #         d[GROUPS_NAME][group].append(layer)
+                    #     else:
+                    #         d[GROUPS_NAME][group] = [layer]
+                    # else:
+                    #     d[GROUPS_NAME] = {group: [layer]}
                 elif elements[0] == 'MINSCALEDENOM' and state[-1] == 'LAYER':
                     maxZoom = zoomlevel_for_scaledenom(int(elements[1]), False)
-                    add_to_dict(cur_dict, dict_stack, 'maxZoom', maxZoom)
+                    cur_layer['maxZoom'] = maxZoom
+                    # add_to_dict(cur_map_file, dict_stack, 'maxZoom', maxZoom)
                 elif elements[0] == 'MAXSCALEDENOM' and state[-1] == 'LAYER':
                     minZoom = zoomlevel_for_scaledenom(int(elements[1]), True)
-                    add_to_dict(cur_dict, dict_stack, 'minMoom', minZoom)
+                    cur_layer['minZoom'] = minZoom
+                    # add_to_dict(cur_map_file, dict_stack, 'minMoom', minZoom)
 
                 # In one case the END is on the line itself
                 if len(elements) > 1 and elements[-1] == 'END':
