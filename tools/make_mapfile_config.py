@@ -71,15 +71,13 @@ def zoomlevel_for_scaledenom(scaledenom, domax=True):
 
 def scan_map_file(mapfile):
 
-    print(f'Processing {mapfile}...')
+    eprint(f'Processing {mapfile}...')
     s = mapfile.rfind('/')
     if s > 0:
         name = mapfile[s+1:-4]
     else:
         name = mapfile[:-4]
 
-    if name == 'speed_classes':
-        return
     # print(name)
     cur_map_file = {
         'file_name': name,
