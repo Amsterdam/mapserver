@@ -23,14 +23,14 @@ node {
     }
 
 
-    stage("Build image") {
-        tryStep "build", {
+    stage("Build images") {
+        tryStep "Build public image", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                 def image = docker.build("datapunt/mapserver-public:${env.BUILD_NUMBER}", "-f Dockerfile --build-arg http_proxy=${JENKINS_HTTP_PROXY_STRING} --build-arg https_proxy=${JENKINS_HTTP_PROXY_STRING} .")
                 image.push()
             }
         }
-        tryStep "build private", {
+        tryStep "Build private image", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                 def image = docker.build("datapunt/mapserver-private:${env.BUILD_NUMBER}", "-f Dockerfile_private --build-arg http_proxy=${JENKINS_HTTP_PROXY_STRING} --build-arg https_proxy=${JENKINS_HTTP_PROXY_STRING} .")
                 image.push()
@@ -45,18 +45,15 @@ String BRANCH = "${env.BRANCH_NAME}"
 if (BRANCH == "master") {
 
     node {
-        stage('Push acceptance image') {
-            tryStep "image tagging", {
+        stage('Push acceptance images') {
+            tryStep "Tag public image", {
                 docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                     def image = docker.image("datapunt/mapserver-public:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("acceptance")
                 }
             }
-        }
-
-        stage('Push acceptance image') {
-            tryStep "image tagging", {
+            tryStep "Tag private image", {
                 docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                     def image = docker.image("datapunt/mapserver-private:${env.BUILD_NUMBER}")
                     image.pull()
@@ -85,7 +82,7 @@ if (BRANCH == "master") {
 
     node {
         stage('Push production image') {
-            tryStep "image tagging", {
+            tryStep "Tag public image", {
                 docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                 def image = docker.image("datapunt/mapserver-public:${env.BUILD_NUMBER}")
                     image.pull()
@@ -94,13 +91,13 @@ if (BRANCH == "master") {
                 }
             }
 
-            tryStep "image tagging private", {
+            tryStep "Tag private image", {
                 docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                     def image = docker.image("datapunt/mapserver-private:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("production")
                     image.push("latest")
-                    }
+                }
             }
         }
     }
