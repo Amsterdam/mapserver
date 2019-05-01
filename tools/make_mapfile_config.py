@@ -3,15 +3,10 @@ import os
 import sys
 from warnings import warn
 from glob import glob
-from functools import reduce
-import operator
 import math
 import json
 
-GROUPS_NAME = '__groups__'
-TYPE_NAME = '__type__'
-
-map_file_dict = {'mapfiles': [] }
+map_file_dict = {'mapfiles': []}
 
 
 expected_state = {
@@ -39,29 +34,14 @@ def eprint(*args, **kwargs):
     print(*args, file=sys.stderr, **kwargs)
 
 
-def get_from_dict(datadict, maplist):
-    return reduce(operator.getitem, maplist, datadict)
-
-
-def set_in_dict(datadict, maplist, value):
-    get_from_dict(datadict, maplist[:-1])[maplist[-1]] = value
-
-
-def add_to_dict(datadict, maplist, key, value):
-    get_from_dict(datadict, maplist)[key] = value
-
-
-def replace_key_in_dict(datadict, maplist, new_key):
-    d = get_from_dict(datadict, maplist[:-1])
-    d[new_key] = d.pop(maplist[-1])
-    maplist[-1] = new_key
-
-
 def zoomlevel_for_scaledenom(scaledenom, domax=True):
+    # scaledenom is denominator for scale (10000 means 1 cm is 10000 cm in reality)
+    # zoomlevel is a log2 indication for the total number of pixels for the entire earth
+    # See  : https://leafletjs.com/examples/zoom-levels/
     if scaledenom == 0:
         return 16  # max zoomlevel
-    C = 10400000  # TODO determine exactly
-    zlf = math.log(C / scaledenom, 2)
+    c = 10400000  # Constant to be able to compute acceptable zoomlevels
+    zlf = math.log(c / scaledenom, 2)
     if domax:
         zoomlevel = int(math.ceil(zlf))
     else:
@@ -97,7 +77,7 @@ def scan_map_file(mapfile):
     try:
         with open(mapfile, encoding='utf-8') as file:
             for line in file:
-                count+=1
+                count += 1
                 pos = line.find('#')
                 if pos == 0:
                     continue
@@ -118,7 +98,7 @@ def scan_map_file(mapfile):
                 if elements[0] in expected_state:
                     expected = expected_state[elements[0]]
                     if expected is not None and len(state) == 0:
-                        print (expected)
+                        print(expected)
                     elif (expected is None and len(state) == 0) or (
                             type(expected) == list and state[-1] in expected) or expected == state[-1]:
                         state.append(elements[0])
@@ -132,8 +112,6 @@ def scan_map_file(mapfile):
                                 assert cur_layer is not None
                                 cur_class = {}
                                 cur_layer['classes'].append(cur_class)
-                            # set_in_dict(cur_map_file, dict_stack, {TYPE_NAME: state[-1]})
-                        # print(state)
                     elif elements[0] == 'SYMBOL' and len(elements) > 1:
                         # Process symbol
                         pass
@@ -148,44 +126,31 @@ def scan_map_file(mapfile):
                             elif state[-1] == 'LAYER':
                                 cur_layer = None
                         state.pop()
-                        # print(dict_stack)
                     else:
                         warn(f"Invalid {elements[0]} in {mapfile} line {count}")
                 # Process elements here
                 if elements[0] == 'NAME' and state[-1] in name_elements:
                     name = elements[1].strip('"').strip("'")
-                    if state[-1]  == 'CLASS':
+                    if state[-1] == 'CLASS':
                         cur_class['name'] = name
                     elif state[-1] == 'LAYER':
                         cur_layer['name'] = name
                     elif state[-1] == 'MAP':
                         cur_map_file['name'] = name
-                    # replace_key_in_dict(cur_map_file, dict_stack, name)
                 elif elements[0] == 'GROUP' and state[-1] == 'LAYER':
                     group = elements[1].strip('"')
                     layer = dict_stack[-1]
                     my_stack = dict_stack[0:-1]
-                    # d = get_from_dict(cur_map_file, my_stack)
-                    # if GROUPS_NAME in d:
-                    #     if group in d[GROUPS_NAME]:
-                    #         d[GROUPS_NAME][group].append(layer)
-                    #     else:
-                    #         d[GROUPS_NAME][group] = [layer]
-                    # else:
-                    #     d[GROUPS_NAME] = {group: [layer]}
                 elif elements[0] == 'MINSCALEDENOM' and state[-1] == 'LAYER':
-                    maxZoom = zoomlevel_for_scaledenom(int(elements[1]), False)
-                    cur_layer['maxZoom'] = maxZoom
-                    # add_to_dict(cur_map_file, dict_stack, 'maxZoom', maxZoom)
+                    max_zoom = zoomlevel_for_scaledenom(int(elements[1]), False)
+                    cur_layer['maxZoom'] = max_zoom
                 elif elements[0] == 'MAXSCALEDENOM' and state[-1] == 'LAYER':
-                    minZoom = zoomlevel_for_scaledenom(int(elements[1]), True)
-                    cur_layer['minZoom'] = minZoom
-                    # add_to_dict(cur_map_file, dict_stack, 'minMoom', minZoom)
+                    min_zoom = zoomlevel_for_scaledenom(int(elements[1]), True)
+                    cur_layer['minZoom'] = min_zoom
 
                 # In one case the END is on the line itself
                 if len(elements) > 1 and elements[-1] == 'END':
                     popped = state.pop()
-                    # print(state)
     except UnicodeDecodeError as e:
         eprint(f"Error {e} at {mapfile} {count}")
 
@@ -197,7 +162,7 @@ def main():
 
     public_mapfiles = glob('../*.map')
     mapfiles = list(public_mapfiles)
-    if os.getenv('ACCESS_SCOPE','public') == 'private':
+    if os.getenv('ACCESS_SCOPE', 'public') == 'private':
         private_mapfiles = glob('../private/*.map')
         mapfiles.extend(private_mapfiles)
 
