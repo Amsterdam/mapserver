@@ -85,7 +85,6 @@ WMS services
 | VLGH    | /maps/**externeveiligheid**&service=wms&request=getcapabilities                                |
 | GBIEDN  | /maps/**gebieden**.map&service=wms&request=getcapabilities                                     |
 | EIGENDM | /maps/eigendommen&service=wms&request=getcapabilities                                          |
-| blackspots | /maps/blackspots&service=wms&request=getcapabilities                                          |
 
 
 WFS services
@@ -97,7 +96,6 @@ WFS services
 | WKPB   | maps/wkpb&service=wfs&request=getcapabilities                        |
 | BRK    | maps/brk&service=wfs&request=getcapabilities                         |
 | NAP    | maps/nap&service=wfs&request=getcapabilities                         |
-| blackspots | maps/blackspots&service=wfs&request=getcapabilities              |
 
 
 TMS services
