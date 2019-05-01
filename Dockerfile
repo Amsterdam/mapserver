@@ -173,5 +173,6 @@ RUN rm -rf /srv/mapserver/private
 EXPOSE 80
 
 ENV HOST_IP `ifconfig | grep inet | grep Mask:255.255.255.0 | cut -d ' ' -f 12 | cut -d ':' -f 2`
+ENV ACCESS_SCOPE public
 
 CMD /bin/docker-entrypoint.sh
