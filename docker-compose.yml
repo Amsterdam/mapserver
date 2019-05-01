@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   database:
-    image: amsterdam/postgres
+    image: amsterdam/postgres11
     ports:
       - "5403:5432"
     environment:
@@ -10,7 +10,9 @@ services:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   map:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_noproxy
     ports:
       - "80:80"
     links:

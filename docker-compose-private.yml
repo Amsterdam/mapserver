@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   database:
-    image: amsterdam/postgres
+    image: amsterdam/postgres11
     ports:
       - "5403:5432"
     environment:
@@ -12,7 +12,7 @@ services:
   map:
     build:
       context: .
-      dockerfile: Dockerfile_private
+      dockerfile: Dockerfile_noproxy_private
     ports:
       - "8001:80"
     links:
