@@ -1,0 +1,70 @@
+MAP
+  NAME "TRAVELTIME"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"    "traveltime"
+      "ows_abstract" "Traveltime OV visualization"
+      "wms_extent"   "100000 450000 150000 500000"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "ovtraveltime"
+    INCLUDE         "connection_externaldata.inc"
+
+    VALIDATION
+       # %scraped_at% substitutions can only have letters, digits and underscore
+       'default_scraped_at' '2019-04-03' 
+       'scraped_at'     '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+    END  
+
+    DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date='%scraped_at%') as subquery USING srid=4326 USING UNIQUE id"
+    TYPE            LINE
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "traveltime"
+      "ows_group_title"     "traveltime"
+      "ows_abstract"        "traveltime per ov regio Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+    INCLUDE         "ovspeed_classes.inc"
+  END
+
+  LAYER
+    NAME            "ovlatest_traveltime"
+    INCLUDE         "connection_externaldata.inc"
+
+    DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date=(select max(vehicle_date) from public.sum_ovkv6_speed)) as subquery USING srid=4326 USING UNIQUE id"
+    TYPE            LINE
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "latest_traveltime"
+      "ows_group_title"     "latest_traveltime"
+      "ows_abstract"        "latest traveltime per ov regio Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+    END
+    INCLUDE         "includes/ovspeed_classes.inc"
+  END
+END
