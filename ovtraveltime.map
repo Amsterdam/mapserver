@@ -15,16 +15,16 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "ovtraveltime"
+    NAME            "ovtraveltime_by_day"
     INCLUDE         "connection_externaldata.inc"
 
     VALIDATION
-       # %scraped_at% substitutions can only have letters, digits and underscore
-       'default_scraped_at' '2019-04-03' 
-       'scraped_at'     '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+       # %date% substitutions can only have letters, digits and underscore
+       'default_date' '2019-04-03' 
+       'date'     '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
     END  
 
-    DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date='%scraped_at%') as subquery USING srid=4326 USING UNIQUE id"
+    DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date='%date%') as subquery USING srid=4326 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
@@ -34,18 +34,18 @@ MAP
     END
 
     METADATA
-      "ows_title"           "traveltime"
-      "ows_group_title"     "traveltime"
-      "ows_abstract"        "traveltime per ov regio Amsterdam"
+      "ows_title"           "ovtraveltime_by_day"
+      "ows_group_title"     "ovtraveltime_by_day"
+      "ows_abstract"        "ovtraveltime per ov regio Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
     END
-    INCLUDE         "ovspeed_classes.inc"
+    INCLUDE         "includes/ovspeed_classes.inc"
   END
 
   LAYER
-    NAME            "ovlatest_traveltime"
+    NAME            "latest_ovtraveltime"
     INCLUDE         "connection_externaldata.inc"
 
     DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date=(select max(vehicle_date) from public.sum_ovkv6_speed)) as subquery USING srid=4326 USING UNIQUE id"
@@ -58,9 +58,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "latest_traveltime"
-      "ows_group_title"     "latest_traveltime"
-      "ows_abstract"        "latest traveltime per ov regio Amsterdam"
+      "ows_title"           "latest_ovtraveltime"
+      "ows_group_title"     "latest_ovtraveltime"
+      "ows_abstract"        "latest ovtraveltime per ov regio Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
