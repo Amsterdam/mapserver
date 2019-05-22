@@ -332,22 +332,32 @@ MAP
     CLASSITEM               "geo_id"
 
     CLASS
-      NAME                  "Geluidzone Schiphol (nr. 4 'beperking gebouwen')"
-      EXPRESSION            "4"
+      NAME                  "X LIB-4: beperkingengebied geluidgevoelige gebouwen"
+      EXPRESSION            "30004"
       STYLE
-        SYMBOL              "chess"
-        COLOR               "#552700"
-        SIZE                4
+       ANTIALIAS            true
+       COLOR                "#00A03C"
+       OPACITY              40
+      END
+      STYLE
+       ANTIALIAS            true
+       OUTLINECOLOR         "#00A03C"
+       OUTLINEWIDTH         2
       END
     END
 
     CLASS
-      NAME                  "20 Ke contour"
-      EXPRESSION            "57"
+      NAME                  "X LIB-5: Afwegingsgebied geluid en externe veiligheid (voorheen 20-Ke)"
+      EXPRESSION            "30005"
       STYLE
-        OUTLINECOLOR        "#552700"
-        WIDTH               1
-        PATTERN 4 2 END
+       ANTIALIAS            true
+       COLOR                "#FFD700"
+       OPACITY              50
+      END
+      STYLE
+       ANTIALIAS            true
+       OUTLINECOLOR         "#FFD700"
+       OUTLINEWIDTH         2
       END
     END
 
