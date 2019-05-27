@@ -29,7 +29,7 @@ RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcach
 RUN ldconfig
 
 # Enable these Apache modules
-RUN  a2enmod actions cgi alias headers rewrite
+RUN  a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf

@@ -36,6 +36,12 @@ node {
                 image.push()
             }
         }
+        tryStep "Build tiles image", {
+            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                def image = docker.build("datapunt/mapserver-tiles:${env.BUILD_NUMBER}", "-f Dockerfile_tiles --build-arg http_proxy=${JENKINS_HTTP_PROXY_STRING} --build-arg https_proxy=${JENKINS_HTTP_PROXY_STRING} .")
+                image.push()
+            }
+        }
     }
 }
 
@@ -56,6 +62,13 @@ if (BRANCH == "master") {
             tryStep "Tag private image", {
                 docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                     def image = docker.image("datapunt/mapserver-private:${env.BUILD_NUMBER}")
+                    image.pull()
+                    image.push("acceptance")
+                }
+            }
+            tryStep "Tag tiles image", {
+                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                    def image = docker.image("datapunt/mapserver-tiles:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("acceptance")
                 }
