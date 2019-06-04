@@ -18,7 +18,7 @@ MAP
     NAME            "latest_traveltime"
     INCLUDE         "connection_externaldata.inc"
 
-    DATA            "geometrie FROM (select * from public.daily_traveltime_wms_view where grouped_day=(select max(grouped_day) from public.daily_traveltime_wms_view)) as subquery USING srid=4326 USING UNIQUE id"
+    DATA            "geometrie FROM (select * from public.traveltime_with_speed) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
@@ -42,13 +42,9 @@ MAP
     NAME            "traveltime_by_day"
     INCLUDE         "connection_externaldata.inc"
 
-    VALIDATION
-       # %date% substitutions can only have letters, digits and underscore
-       'default_date' '2019-04-04' 
-       'date'     '^[0-9]{4}-[0-9]{2}-[0-9]{4}$'
-    END  
+    INCLUDE         "includes/traveltime_summary_validation.inc"
 
-    DATA            "geometrie FROM (select * from public.daily_traveltime_wms_view where grouped_day='%date%') as subquery USING srid=4326 USING UNIQUE id"
+    DATA            "geometrie FROM (select * from public.daily_traveltime_wms_view where grouped_day='%date%' and bucket='%bucket%') as subquery USING srid=4326 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
