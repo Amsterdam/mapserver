@@ -1,11 +1,11 @@
 MAP
-  NAME "TRAVELTIME"
+  NAME "OV TRAMS TRAVELTIME"
   INCLUDE "header.inc"
 
   WEB
     METADATA
-      "ows_title"    "traveltime"
-      "ows_abstract" "Traveltime OV visualization"
+      "ows_title"    "ov trams traveltime"
+      "ows_abstract" "Traveltime OV Trams visualization"
       "wms_extent"   "100000 450000 150000 500000"
     END
   END
@@ -15,12 +15,12 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "ovtraveltime_by_day"
+    NAME            "ovtramstraveltime_by_day"
     INCLUDE         "connection_externaldata.inc"
 
     INCLUDE         "includes/traveltime_summary_validation.inc"
 
-    DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date='%date%' and bucket='%bucket%') as subquery USING srid=4326 USING UNIQUE id"
+    DATA            "geo_location FROM (select * from public.sum_ovkv6_tramlines_speed where vehicle_date='%date%' and bucket='%bucket%') as subquery USING srid=4326 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
@@ -30,9 +30,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "ovtraveltime_by_day"
-      "ows_group_title"     "ovtraveltime_by_day"
-      "ows_abstract"        "ovtraveltime per ov regio Amsterdam"
+      "ows_title"           "ovtramstraveltime_by_day"
+      "ows_group_title"     "ovtramstraveltime_by_day"
+      "ows_abstract"        "ovtramstraveltime per ov regio Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
@@ -41,10 +41,10 @@ MAP
   END
 
   LAYER
-    NAME            "latest_ovtraveltime"
+    NAME            "latest_ovtramstraveltime"
     INCLUDE         "connection_externaldata.inc"
 
-    DATA            "geo_location FROM (select * from public.sum_ovkv6_speed where vehicle_date=(select max(vehicle_date) from public.sum_ovkv6_speed)) as subquery USING srid=4326 USING UNIQUE id"
+    DATA            "geo_location FROM (select * from public.sum_ovkv6_tramlines_speed where vehicle_date=(select max(vehicle_date) from public.sum_ovkv6_tramlines_speed)) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   400001
@@ -54,9 +54,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "latest_ovtraveltime"
-      "ows_group_title"     "latest_ovtraveltime"
-      "ows_abstract"        "latest ovtraveltime per ov regio Amsterdam"
+      "ows_title"           "latest_ovtramstraveltime"
+      "ows_group_title"     "latest_ovtramstraveltime"
+      "ows_abstract"        "latest ovtramstraveltime per ov regio Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
@@ -64,3 +64,4 @@ MAP
     INCLUDE         "includes/ovspeed_classes.inc"
   END
 END
+
