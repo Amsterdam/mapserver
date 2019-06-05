@@ -44,6 +44,7 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh dataselectie <your-username>
 	docker-compose exec database update-db.sh various_small_datasets <your-username>
 	docker-compose exec database update-db.sh parkeervakken <your-username>
+	docker-compose exec database update-db.sh afvalcontainers <your-username>
 
 
 	
@@ -53,11 +54,13 @@ b.v. http://localhost:8383/maps/monumenten
 ## DEBUG Mapserver
 Voeg de volgende files toe aan de file `header.inc` en start de docker opnieuw
 
+```
         CONFIG   "MS_ERRORFILE" "/tmp/ms_error.txt"
         DEBUG    5
-        
+
         docker-compose build map && docker-compose run -p "8383:80" map
- 
+```
+
  Na het opvragen van een map, zal dan de logging te zien zijn via:
  
         docker exec -it `docker-compose ps -q  map` bash -c 'tail -f /tmp/ms_error.txt'
@@ -66,7 +69,7 @@ De private docker image kan worden gebouwd met :
 
         docker-compose -f docker-compose-private.yml up -d database 
         docker-compose -f docker-compose-private.yml build map 
-				docker-compose -f docker-compose-private.yml run -p "8383:80" map
+        docker-compose -f docker-compose-private.yml run -p "8383:80" map
 
 De private maps kunnen met http://localhost:8383/maps/<map-name>?service=wfs&request=getcapabilities gevraagd worden
 
