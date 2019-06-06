@@ -31,7 +31,7 @@ MAP
     END
 
     INCLUDE                 "connection_various_small_datasets.inc"
-    DATA                    "bag_pand_geometrie FROM (select * from public.vastgoed WHERE object_eigendomsstatus = 'volle eigendom') as subquery USING srid=28992 USING UNIQUE vhe_id"
+    DATA                    "geom FROM (select bag_pand_id, st_union(bag_pand_geometrie) as geom from public.vastgoed WHERE object_eigendomsstatus = 'volle eigendom' group by bag_pand_id) as subquery USING srid=28992 USING UNIQUE bag_pand_id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -82,7 +82,7 @@ MAP
     END
 
     INCLUDE                 "connection_various_small_datasets.inc"
-    DATA                    "bag_pand_geometrie FROM  (select * from public.vastgoed WHERE object_eigendomsstatus = 'appartementsrecht') as subquery USING srid=28992 USING UNIQUE vhe_id"
+    DATA                    "geom FROM (select bag_pand_id, st_union(bag_pand_geometrie) as geom from public.vastgoed WHERE object_eigendomsstatus = 'appartementsrecht' group by bag_pand_id) as subquery USING srid=28992 USING UNIQUE bag_pand_id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
