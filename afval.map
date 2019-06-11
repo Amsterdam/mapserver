@@ -92,6 +92,68 @@ MAP
         SIZE           10
         POSITION       AUTO
         PARTIALS       FALSE
+        OFFSET         -60 10 
+      END
+
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "gfe_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_afvalcontainers.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='GFT') as foo USING srid=4326 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "wfs_title"           "gfe"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "kca_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_srs"             "EPSG:4326"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Afvalcontainer"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'gfe'
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
         OFFSET         -60 10
       END
 
@@ -204,11 +266,7 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
+        SYMBOL              'textiel'
       END
 
       LABEL
@@ -270,11 +328,7 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
+        SYMBOL              'papier'
       END
 
       LABEL
@@ -335,11 +389,7 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
+        SYMBOL              'glas'
       END
 
       LABEL
@@ -401,11 +451,7 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
+        SYMBOL              'plastic'
       END
 
       LABEL
@@ -467,11 +513,7 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
+        SYMBOL              'rest'
       END
 
       LABEL
