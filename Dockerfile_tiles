@@ -29,7 +29,7 @@ RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcach
 RUN ldconfig
 
 # Enable these Apache modules
-RUN a2enmod actions cgid headers rewrite
+RUN a2enmod actions cgid headers rewrite status
 
 # Configure localhost in Apache
 COPY docker/000-default.conf /etc/apache2/sites-available/
