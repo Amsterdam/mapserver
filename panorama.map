@@ -201,8 +201,15 @@ MAP
     END
 
     DATA            "geom FROM (SELECT id,
+                        pano_id as display,
+                        mission_year AS year,
+                        roll,
+                        pitch,
+                        heading,
+                        timestamp,
                         _geolocation_2d AS geom,
-                        mission_year AS year
+                        'https://data.amsterdam.nl/panorama/' || path || trim(trailing '.jpg' from filename) || '/equirectangular/panorama_8000.jpg' AS url,
+                        'https://api.data.amsterdam.nl/panorama/recente_opnames/alle/' || pano_id || '/' AS uri
                         -- Keep for future use:
                         -- (SELECT EXTRACT(year from MAX(timestamp)) FROM panoramas_panorama LIMIT 1) -
                         -- EXTRACT(year from timestamp) AS age
@@ -255,6 +262,8 @@ MAP
     MINSCALEDENOM   100
     MAXSCALEDENOM   10001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+
+    FILTER          ("True")
 
     PROJECTION
       "init=epsg:4326"
