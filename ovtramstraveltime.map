@@ -39,29 +39,5 @@ MAP
     END
     INCLUDE         "includes/ovspeed_classes.inc"
   END
-
-  LAYER
-    NAME            "latest_ovtramstraveltime"
-    INCLUDE         "connection_externaldata.inc"
-
-    DATA            "geo_location FROM (select * from public.sum_ovkv6_tramlines_speed where vehicle_date=(select max(vehicle_date) from public.sum_ovkv6_tramlines_speed)) as subquery USING srid=4326 USING UNIQUE id"
-    TYPE            LINE
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:4326"
-    END
-
-    METADATA
-      "ows_title"           "latest_ovtramstraveltime"
-      "ows_group_title"     "latest_ovtramstraveltime"
-      "ows_abstract"        "latest ovtramstraveltime per ov regio Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-    END
-    INCLUDE         "includes/ovspeed_classes.inc"
-  END
 END
 
