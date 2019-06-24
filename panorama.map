@@ -41,7 +41,7 @@ MAP
             pp.timestamp,
             extract(year from pp.timestamp) as year,
             pp._geolocation_2d AS geometrie,
-            'https://data.amsterdam.nl/panorama/' || pp.path || trim(trailing '.jpg' from pp.filename)
+            'https://panorama.data.amsterdam.nl/panorama/' || pp.path || trim(trailing '.jpg' from pp.filename)
             || '/equirectangular/panorama_8000.jpg' AS url,
             'https://api.data.amsterdam.nl/panorama/recente_opnames/alle/' || pp.pano_id || '/' AS uri
         FROM
@@ -208,7 +208,7 @@ MAP
                         heading,
                         timestamp,
                         _geolocation_2d AS geom,
-                        'https://data.amsterdam.nl/panorama/' || path || trim(trailing '.jpg' from filename) || '/equirectangular/panorama_8000.jpg' AS url,
+                        'https://panorama.data.amsterdam.nl/panorama/' || path || trim(trailing '.jpg' from filename) || '/equirectangular/panorama_8000.jpg' AS url,
                         'https://api.data.amsterdam.nl/panorama/recente_opnames/alle/' || pano_id || '/' AS uri
                         -- Keep for future use:
                         -- (SELECT EXTRACT(year from MAX(timestamp)) FROM panoramas_panorama LIMIT 1) -
