@@ -22,6 +22,11 @@ MAP
     END
   END
 
+  LEGEND
+  	STATUS ON
+  	KEYSIZE 16 16
+  END
+
   #=============================================================================
   # LAYERS
   #=============================================================================
@@ -132,6 +137,38 @@ MAP
 
     COMPOSITE
       OPACITY 70
+    END
+
+    CLASS
+      NAME "2019"
+      EXPRESSION ([year] eq 2019)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 104 39
+        OUTLINECOLOR   0 46 17
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          0 104 39
+        OUTLINECOLOR   0 46 17
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          0 104 39
+        OUTLINECOLOR   0 46 17
+        WIDTH          1
+      END
     END
 
     CLASS
