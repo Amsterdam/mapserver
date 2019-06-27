@@ -139,14 +139,38 @@ MAP
       OPACITY 70
     END
 
-    # 2020
-    # COLOR         0 0 0
-    # UTLINECOLOR   0 0 0
+    CLASS
+      NAME "2019"
+      EXPRESSION ([year] eq 2019)
+      STYLE
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   1001
+        SYMBOL         'stip'
+        SIZE           10
+        COLOR          0 104 39
+        OUTLINECOLOR   0 46 17
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   1002
+        MAXSCALEDENOM   4001
+        SYMBOL         'stip'
+        SIZE           6
+        COLOR          0 104 39
+        OUTLINECOLOR   0 46 17
+        WIDTH          1
+      END
+      STYLE
+        MINSCALEDENOM   4002
+        MAXSCALEDENOM   10001
+        SYMBOL         'stip'
+        SIZE           3
+        COLOR          0 104 39
+        OUTLINECOLOR   0 46 17
+        WIDTH          1
+      END
+    END
 
-    # 2019
-    # COLOR         0 104 39
-    # UTLINECOLOR   0 46 17
-  
     CLASS
       NAME "2018"
       EXPRESSION ([year] eq 2018)
