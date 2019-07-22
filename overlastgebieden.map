@@ -303,7 +303,85 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
 
+
+  LAYER
+    NAME            "barbecueverbodsgebieden"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='BBQ')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "barbecueverbodsgebieden"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "barbecueverbodsgebieden"
+      STYLE
+       ANTIALIAS    true
+       COLOR        160 0 120
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 160 0 120
+       WIDTH        2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "rondleidingverbodsgebieden"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='RLV')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "rondleidingverbodsgebieden"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "rondleidingverbodsgebieden"
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 210 180
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 0 210 180
+       WIDTH        2
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
