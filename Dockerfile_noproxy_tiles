@@ -8,7 +8,7 @@ RUN apt install build-essential -y
 RUN mkdir /build
 RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic main" >> /etc/apt/sources.list.d/gis.list
 RUN echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic main" >> /etc/apt/sources.list.d/gis.list
-RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 314DF160    \
+RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 089EBE08314DF160    \
   && apt-get update
 RUN apt-get update && apt-get install -y --fix-missing --no-install-recommends gcc-4.8 g++-4.8 build-essential ca-certificates curl wget git libaio1 make cmake python-dev \
       software-properties-common  libc6-dev openssh-client libpng16-16 libjpeg-dev libgif-dev liblzma-dev libgeos-dev \

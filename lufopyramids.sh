@@ -26,7 +26,7 @@
 #
 # for i in *.tif; do
 #     [ -f "$i" ] || break
-#     gdal_translate $i /mnt/lufo2018/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
+#     gdal_translate $i /mnt/lufo2019/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
 # done
 #
 # cp -a *.aux /mnt/lufo2018
