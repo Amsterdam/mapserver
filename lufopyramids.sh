@@ -29,8 +29,8 @@
 #     gdal_translate $i /mnt/lufo2019/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
 # done
 #
-# cp -a *.aux /mnt/lufo2018
-# cp -a *.tfw /mnt/lufo2018
+# cp -a *.aux /mnt/lufo2019
+# cp -a *.tfw /mnt/lufo2019
 
 SOURCEDIR=$1
 DESTDIR_ROOT=$2
