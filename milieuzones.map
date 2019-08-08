@@ -27,7 +27,7 @@ MAP
       "init=epsg:28992"
     END
 
-      # id is one of  63363 63362  63361 63360 63324 63316
+      # id is one of  63363 63362  63361 63360 63324
     VALIDATION
       'id' '^[0-9]{5}$'
       'default_id' '63362'
@@ -139,22 +139,5 @@ MAP
           WIDTH        3
       END
     END
-
-    CLASS
-      NAME          "Touringcar na 2020"
-      EXPRESSION    ("[id]" = "63316")
-
-      STYLE
-          ANTIALIAS    true
-          COLOR        255 145 0
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR  255 145 0
-          OPACITY      100
-          WIDTH        3
-      END
-    END
-
   END
 END
