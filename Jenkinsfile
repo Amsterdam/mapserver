@@ -26,19 +26,19 @@ node {
     stage("Build images") {
         tryStep "Build public image", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.build("datapunt/mapserver-public:${env.BUILD_NUMBER}", "-f Dockerfile --build-arg http_proxy=${JENKINS_HTTP_PROXY_STRING} --build-arg https_proxy=${JENKINS_HTTP_PROXY_STRING} .")
+                def image = docker.build("datapunt/mapserver-public:${env.BUILD_NUMBER}", "-f Dockerfile .")
                 image.push()
             }
         }
         tryStep "Build private image", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.build("datapunt/mapserver-private:${env.BUILD_NUMBER}", "-f Dockerfile_private --build-arg http_proxy=${JENKINS_HTTP_PROXY_STRING} --build-arg https_proxy=${JENKINS_HTTP_PROXY_STRING} .")
+                def image = docker.build("datapunt/mapserver-private:${env.BUILD_NUMBER}", "-f Dockerfile_private .")
                 image.push()
             }
         }
         tryStep "Build tiles image", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.build("datapunt/mapserver-tiles:${env.BUILD_NUMBER}", "-f Dockerfile_tiles --build-arg http_proxy=${JENKINS_HTTP_PROXY_STRING} --build-arg https_proxy=${JENKINS_HTTP_PROXY_STRING} .")
+                def image = docker.build("datapunt/mapserver-tiles:${env.BUILD_NUMBER}", "-f Dockerfile_tiles .")
                 image.push()
             }
         }
