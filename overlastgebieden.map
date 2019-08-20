@@ -837,6 +837,139 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "barbecueverbodsgebieden_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='BBQ')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "barbecueverbodsgebieden_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "barbecueverbodsgebieden_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          160 0 120
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          160 0 120
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          160 0 120
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "rondleidingverbodsgebieden_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='RLV')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "rondleidingverbodsgebieden_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "rondleidingverbodsgebieden_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          0 210 180
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          0 210 180
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          0 210 180
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
 
 
 #==============================================================================
