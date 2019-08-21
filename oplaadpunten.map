@@ -36,7 +36,7 @@ MAP
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
-    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] < 22.0))
+    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] < 50.0))
 
     METADATA
       "wfs_title"           "Normaal beschikbaar"
@@ -95,7 +95,7 @@ MAP
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
-    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] < 22.0))
+    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] < 50.0))
 
     METADATA
       "wfs_title"           "Normaal niet beschikbaar"
@@ -154,7 +154,7 @@ MAP
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
-    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] >= 22.0))
+    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] >= 50.0))
 
     METADATA
       "wfs_title"           "Snel beschikbaar"
@@ -213,7 +213,7 @@ MAP
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
-    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] >= 22.0))
+    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] >= 50.0))
 
     METADATA
       "wfs_title"           "Snel niet beschikbaar"
