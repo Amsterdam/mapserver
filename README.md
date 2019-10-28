@@ -1,7 +1,7 @@
-# City Data map
+# Data en Informatie map
 
 
-MapServer configuratie voor City Data.
+MapServer configuratie voor Data en Informatie.
 
 
 # Development stappen

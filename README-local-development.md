@@ -3,9 +3,9 @@
 *This document describes how to serve your own datasets using the Datapunt Amsterdam Mapserver container.*
 
 The [Datapunt Amsterdam mapserver][1] docker container is used to provide [WMS][7] and
-[WFS][8] services as part of the [Amsterdam City Data portal][2]. This container
+[WFS][8] services as part of the [Amsterdam Data en Informatie portal][2]. This container
 provides a webserver with the [Mapserver][3] scripts pre-configured for some of
-the Amsterdam City Data data sets.
+the Amsterdam Data en Informatie data sets.
 
 While you cannot access all the datasets that are served using this container you
 can re-use it for your own purposes such as local testing. How you can adapt it
@@ -208,7 +208,7 @@ were needed to add the ``reistijdenauto`` map layer were as described
 above in the section about adding a new map layer.
 
 [1]: https://github.com/Amsterdam/mapserver "Github project for Datapunt Amsterdam mapserver Docker container"
-[2]: https://data.amsterdam.nl/ "Amsterdam City Data portal"
+[2]: https://data.amsterdam.nl/ "Amsterdam Data en Informatie portal"
 [3]: http://www.mapserver.org/ "Mapserver open source web mapping server"
 [4]: http://www.mapserver.org/mapfile/ "Mapfile documentation"
 [5]: https://docs.djangoproject.com/en/1.11/ref/contrib/gis/ "The GeoDjango geographic Web framework"
