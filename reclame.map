@@ -4,6 +4,14 @@ MAP
         NAME "reclame"
         TYPE POLYGON
         DATA "wkb_geometry from reclame USING srid=28992 USING UNIQUE ogc_fid"
+         
+        VALIDATION
+          'default_tarief' '1'
+          'tarief'     '^[A-C]{1}$'
+        END
+
+        FILTER ("[tarief]" = 'Tariefgebied_%tarief%')
+
         CLASS
             NAME "Tariefgebied A"
             EXPRESSION ('[tarief]' eq 'Tariefgebied_A')
@@ -16,6 +24,18 @@ MAP
                 OUTLINECOLOR 236 0 0
                 OPACITY 100
                 WIDTH 1
+            END
+            LABEL
+                COLOR          255 255 255
+                FONT           "Ubuntu-M"
+                TYPE           truetype
+                SIZE           11
+                POSITION       AUTO
+                PARTIALS       FALSE
+                OFFSET         -4 -5
+                ANTIALIAS      true
+                ALIGN          center
+                TEXT           "A"
             END
         END
         CLASS
@@ -31,6 +51,18 @@ MAP
                 OPACITY 100
                 WIDTH 1
             END
+            LABEL
+                COLOR          255 255 255
+                FONT           "Ubuntu-M"
+                TYPE           truetype
+                SIZE           11
+                POSITION       AUTO
+                PARTIALS       FALSE
+                OFFSET         -4 -5
+                ANTIALIAS      true
+                ALIGN          center
+                TEXT           "B"
+            END
         END
         CLASS
             NAME "Tariefgebied C"
@@ -44,6 +76,18 @@ MAP
                 OUTLINECOLOR 255 230 0
                 OPACITY 100
                 WIDTH 1
+            END
+            LABEL
+                COLOR          255 255 255
+                FONT           "Ubuntu-M"
+                TYPE           truetype
+                SIZE           11
+                POSITION       AUTO
+                PARTIALS       FALSE
+                OFFSET         -4 -5
+                ANTIALIAS      true
+                ALIGN          center
+                TEXT           "C"
             END
         END
         INCLUDE "connection_various_small_datasets.inc"
