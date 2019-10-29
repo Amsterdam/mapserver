@@ -1,0 +1,65 @@
+MAP
+    NAME "reclame"
+    LAYER
+        NAME "reclame"
+        TYPE POLYGON
+        DATA "wkb_geometry from reclame USING srid=28992 USING UNIQUE ogc_fid"
+        CLASS
+            NAME "Tariefgebied A"
+            EXPRESSION ('[tarief]' eq 'Tariefgebied_A')
+            STYLE
+                COLOR 236 0 0
+                OPACITY 50
+                ANTIALIAS TRUE
+            END
+            STYLE
+                OUTLINECOLOR 236 0 0
+                OPACITY 100
+                WIDTH 1
+            END
+        END
+        CLASS
+            NAME "Tariefgebied B"
+            EXPRESSION ('[tarief]' eq 'Tariefgebied_B')
+            STYLE
+                COLOR 255 145 0
+                OPACITY 50
+                ANTIALIAS TRUE
+            END
+            STYLE
+                OUTLINECOLOR 255 145 0
+                OPACITY 100
+                WIDTH 1
+            END
+        END
+        CLASS
+            NAME "Tariefgebied C"
+            EXPRESSION ('[tarief]' eq 'Tariefgebied_C')
+            STYLE
+                COLOR 255 230 0
+                OPACITY 30
+                ANTIALIAS TRUE
+            END
+            STYLE
+                OUTLINECOLOR 255 230 0
+                OPACITY 100
+                WIDTH 1
+            END
+        END
+        INCLUDE "connection_various_small_datasets.inc"
+        METADATA
+            "ows_title" "Reclame belastingtarieven"
+            "ows_group_title" "reclame"
+            "ows_abstract" "Reclame belastingtarieven"
+            "ows_enable_request" "*"
+            "wms_extent" "100000 450000 150000 500000"
+        END
+    END
+    INCLUDE "header.inc"
+    WEB
+        METADATA
+            "ows_abstract" "Reclame"
+            "ows_title" "reclame"
+        END
+    END
+END
