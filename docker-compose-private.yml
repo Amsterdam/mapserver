@@ -18,11 +18,6 @@ services:
     links:
       - "database:database"
     environment:
-      BAG_DB_NAME: bag
-      BAG_DB_USER: postgres
-      BAG_DB_PASSWORD: insecure
-      BAG_DB_HOST: database
-
       BAG_V11_DB_NAME: bag_v11
       BAG_V11_DB_USER: postgres
       BAG_V11_DB_PASSWORD: insecure

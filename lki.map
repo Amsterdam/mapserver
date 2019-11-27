@@ -35,7 +35,7 @@ MAP
   LAYER
     NAME            "kadastraal_object"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -69,7 +69,7 @@ MAP
   LAYER
     NAME            "kadastrale_sectie"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -103,7 +103,7 @@ MAP
   LAYER
     NAME            "kadastrale_gemeente"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -137,7 +137,7 @@ MAP
   LAYER
     NAME            "burgerlijke_gemeente"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -173,7 +173,7 @@ MAP
   LAYER
     NAME            "kadastraal_object_label"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -214,7 +214,7 @@ MAP
   LAYER
     NAME            "kadastrale_sectie_label"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   2501
@@ -255,7 +255,7 @@ MAP
   LAYER
     NAME            "kadastrale_gemeente_label"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   12501
@@ -296,7 +296,7 @@ MAP
   LAYER
     NAME            "burgerlijke_gemeente_label"
     GROUP           "kadaster"
-    INCLUDE         "connection_bag_new.inc"
+    INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   20000

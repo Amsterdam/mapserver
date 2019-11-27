@@ -3,12 +3,6 @@
 set -e
 set -u
 
-BAG_DB_HOST=${BAG_DB_HOST:-postgres-read.service.consul}
-BAG_DB_PORT=${BAG_DB_PORT:-5432}
-BAG_DB_NAME=${BAG_DB_NAME:-bag}
-BAG_DB_USER=${BAG_DB_USER:-${BAG_DB_NAME}}
-BAG_DB_PASSWORD=${BAG_DB_PASSWORD:-insecure}
-
 BAG_V11_DB_HOST=${BAG_V11_DB_HOST:-postgres-read.service.consul}
 BAG_V11_DB_PORT=${BAG_V11_DB_PORT:-5432}
 BAG_V11_DB_NAME=${BAG_V11_DB_NAME:-bag_v11}
@@ -119,13 +113,7 @@ EXTERNALDATA_DB_PASSWORD=${EXTERNALDATA_DB_PASSWORD:-insecure}
 
 echo Creating configuration files
 
-cat > /srv/mapserver/connection.inc <<EOF
-CONNECTIONTYPE postgis
-CONNECTION "host=${BAG_DB_HOST} dbname=${BAG_DB_NAME} user=${BAG_DB_USER} password=${BAG_DB_PASSWORD} port=${BAG_DB_PORT}"
-PROCESSING "CLOSE_CONNECTION=DEFER"
-EOF
-
-cat > /srv/mapserver/connection_bag_new.inc <<EOF
+cat > /srv/mapserver/connection_bag.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${BAG_V11_DB_HOST} dbname=${BAG_V11_DB_NAME} user=${BAG_V11_DB_USER} password=${BAG_V11_DB_PASSWORD} port=${BAG_V11_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
