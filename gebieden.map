@@ -33,7 +33,7 @@ MAP
   LAYER
     NAME            "buurt"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_buurt USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -65,7 +65,7 @@ MAP
   LAYER
     NAME            "buurt_simple"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_buurt_simple USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -100,7 +100,7 @@ MAP
   LAYER
     NAME            "buurtcombinatie"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_buurtcombinatie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -132,7 +132,7 @@ MAP
   LAYER
     NAME            "buurtcombinatie_simple"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_buurtcombinatie_simple USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -168,7 +168,7 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerken"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -204,7 +204,7 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerkenpraktijkgebieden"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -239,7 +239,7 @@ MAP
   LAYER
     NAME            "stadsdeel"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_stadsdeel USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -274,7 +274,7 @@ MAP
   LAYER
     NAME            "bouwblok"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_bouwblok USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -309,7 +309,7 @@ MAP
   LAYER
     NAME            "grootstedelijkgebied"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -344,7 +344,7 @@ MAP
   LAYER
     NAME            "unesco"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_unesco USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -395,7 +395,7 @@ MAP
   LAYER
     NAME            "buurt_label"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_buurt USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -448,7 +448,7 @@ MAP
   LAYER
     NAME            "buurtcombinatie_label"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_buurtcombinatie USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   5000
@@ -501,7 +501,7 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerken_label"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
@@ -554,7 +554,7 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerkenpraktijkgebieden_label"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
@@ -607,7 +607,7 @@ MAP
   LAYER
     NAME            "stadsdeel_label"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_stadsdeel USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   15000
@@ -660,7 +660,7 @@ MAP
   LAYER
     NAME            "bouwblok_label"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_bouwblok USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -713,7 +713,7 @@ MAP
   LAYER
     NAME            "grootstedelijkgebied_label"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
@@ -766,7 +766,7 @@ MAP
   LAYER
     NAME            "unesco_label"
     GROUP           "gebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_unesco USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -818,7 +818,7 @@ MAP
   LAYER
     NAME            "grootstedelijk_regio_amsterdam"
     GROUP           "grootstedelijkgebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
 
     DATA            "geometrie FROM public.bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -883,7 +883,7 @@ MAP
   LAYER
     NAME            "grootstedelijk_regio_omgevingsdienst"
     GROUP           "grootstedelijkgebieden"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
 
     DATA            "geometrie FROM public.bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON

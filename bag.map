@@ -34,7 +34,7 @@ MAP
   LAYER
     NAME            "openbareruimte"
     GROUP           "bag"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_openbareruimte_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -140,7 +140,7 @@ MAP
   LAYER
     NAME            "pand"
     GROUP           "bag"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_pand_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -175,7 +175,7 @@ MAP
   LAYER
     NAME            "ligplaats"
     GROUP           "bag"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -210,7 +210,7 @@ MAP
   LAYER
     NAME            "standplaats"
     GROUP           "bag"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -245,7 +245,7 @@ MAP
   LAYER
     NAME            "verblijfsobject"
     GROUP           "bag"
-    INCLUDE         "connection.inc"
+    INCLUDE         "connection_bag_new.inc"
     DATA            "geometrie FROM public.geo_bag_verblijfsobject_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
