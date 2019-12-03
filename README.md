@@ -26,7 +26,7 @@ niet vanuit een webbrowser. In de webbrowser geven de URL links foutmeldingen.
 		Om luchtfotos te gebruiken moet deze directories luchtfotos/infrarood bevatten of een symlink zijn naar luchtfotos/infrarood.
     
 		docker-compose build
-    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo /tmp/srv/infrarood/:/mnt/infrarood map
+    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo -v /tmp/srv/infrarood/:/mnt/infrarood map
 
 
 
