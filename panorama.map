@@ -64,7 +64,7 @@ MAP
                         pitch,
                         heading,
                         timestamp,
-                        _geolocation_2d AS geom,
+                        _geolocation_2d_rd AS geom,
                         'https://panorama.data.amsterdam.nl/panorama/' || path || trim(trailing '.jpg' from filename) || '/equirectangular/panorama_8000.jpg' AS url,
                         'https://api.data.amsterdam.nl/panorama/panoramas/' || pano_id || '/' AS uri
                         -- Keep for future use:
@@ -114,7 +114,7 @@ MAP
                         pano.status = 'done'
 
                       ) AS subquery
-                    USING srid=4326 USING UNIQUE id"
+                    USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   10001
@@ -123,7 +123,7 @@ MAP
     FILTER          ("True")
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
