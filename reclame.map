@@ -10,7 +10,7 @@ MAP
           'tarief'     '^[A-C]{1}$'
         END
 
-        FILTER ("[tarief]" = 'Tariefgebied_%tarief%')
+        FILTER ("[tarief]" = 'Tariefgebied %tarief%')
 
         CLASS
             NAME "Tariefgebied A"
