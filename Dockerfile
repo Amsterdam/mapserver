@@ -31,6 +31,7 @@ RUN  a2enmod actions cgid headers rewrite
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN rm /etc/apache2/mods-enabled/alias.conf
+COPY docker/mpm_event.conf /etc/apache2/mods-available/
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
