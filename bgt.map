@@ -2710,39 +2710,6 @@ MAP
 #==============================================================================
 
 
-# Terreindeel 4
-
-	LAYER
-		NAME                    terreindeel_vlak4
-		GROUP                   hoogte4
-		INCLUDE                 "connection_basiskaart.inc"
-		DATA                    "geometrie FROM bgt.terreindeel_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    POLYGON
-	FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
-		CLASSITEM               "bgt_fysiekvoorkomen"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "terreindeel_vlak4"
-			"wms_group_title"      "hoogte4"
-		END
-			CLASS
-			EXPRESSION      "perron"
-			MAXSCALEDENOM   3500
-			MINSCALEDENOM   0
-			STYLE
-				COLOR         "#FFFFFF"
-				OUTLINECOLOR  "#FFFFFF"
-				WIDTH         0.5
-				LINECAP       BUTT
-				LINEJOIN      MITER
-			END
-		END
-	END
-
   #-----------------------------------------------------------------------------
   # Gebouw 4
 
