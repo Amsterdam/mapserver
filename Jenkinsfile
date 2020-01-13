@@ -38,7 +38,7 @@ node {
         }
         tryStep "Build tiles image", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.build("datapunt/mapserver-tiles:${env.BUILD_NUMBER}", "-f Dockerfile_tiles .")
+                def image = docker.build("datapunt/mapserver-tiles:${env.BUILD_NUMBER}", "-f Dockerfile .")
                 image.push()
             }
         }
