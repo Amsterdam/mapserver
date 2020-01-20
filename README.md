@@ -40,7 +40,6 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh handelsregister <your-username>
 	docker-compose exec database update-db.sh monumenten <your-username>
 	docker-compose exec database update-db.sh overlastgebieden <your-username>
-	docker-compose exec database update-db.sh grondexploitatie <your-username>
 	docker-compose exec database update-db.sh dataselectie <your-username>
 	docker-compose exec database update-db.sh various_small_datasets <your-username>
 	docker-compose exec database update-db.sh parkeervakken <your-username>
