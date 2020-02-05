@@ -12,7 +12,7 @@
 
 
 MAP
-  NAME                      "bed_and_breakfast"
+  NAME                      "bb_quotum"
   INCLUDE                   "header.inc"
   DEBUG 1
 
@@ -29,14 +29,14 @@ MAP
   # per layer
   #-----------------------------------------------------------------------------
   LAYER
-    NAME                    "bed_and_breakfast"
-    GROUP                   "bed_and_breakfast"
+    NAME                    "bb_quotum"
+    GROUP                   "bb_quotum"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_various_small_datasets.inc"
-    DATA                    "geo FROM  public.bed_and_breakfast  USING srid=28992 USING UNIQUE wijk"
+    DATA                    "geo FROM  public.bb_quotum  USING srid=28992 USING UNIQUE wijk"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -54,7 +54,7 @@ MAP
       "wms_group_title"     "Bed and Breakfast"
       "wms_abstract"        "Bed and Breakfast quotum per wijk"
       "wms_srs"             "EPSG:28992"
-      "wms_name"            "bed_and_breakfast"
+      "wms_name"            "bb_quotum"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
