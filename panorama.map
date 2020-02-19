@@ -80,7 +80,7 @@ MAP
                             pano.surface_type = newer.surface_type AND
                             (
                               length('%mission_type%') = 0 OR
-                              '%mission_type%' = newer.mission_type
+                              '%mission_type%' = lower(newer.mission_type)
                             ) AND
                             (
                               length('%mission_year%') = 0 OR
@@ -99,7 +99,7 @@ MAP
                         ) AND
                         (
                           length('%mission_type%') = 0 OR
-                          '%mission_type%' = mission_type
+                          '%mission_type%' = lower(mission_type)
                         ) AND
                         (
                           length('%mission_year%') = 0 OR
