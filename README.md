@@ -21,11 +21,12 @@ niet vanuit een webbrowser. In de webbrowser geven de URL links foutmeldingen.
 * [docker-compose](https://docs.docker.com/compose/install/)
 
 ## Start mapserver in de docker
-    Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
-    Voor locale ontwikkeling maak aan de volgende directories: /tmp/srv/lufo en /tmp/srv/infrarood 
-		Om luchtfotos te gebruiken moet deze directories luchtfotos/infrarood bevatten of een symlink zijn naar luchtfotos/infrarood.
+
+Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
+Voor locale ontwikkeling maak aan de volgende directories: /tmp/srv/lufo en /tmp/srv/infrarood 
+Om luchtfotos te gebruiken moet deze directories luchtfotos/infrarood bevatten of een symlink zijn naar luchtfotos/infrarood.
     
-		docker-compose build
+    docker-compose build
     docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo -v /tmp/srv/infrarood/:/mnt/infrarood map
 
 
