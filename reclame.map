@@ -1,20 +1,20 @@
 MAP
-    NAME "reclame"
+    NAME "reclamebelasting"
     LAYER
-        NAME "reclame"
+        NAME "reclamebelasting"
         TYPE POLYGON
-        DATA "wkb_geometry from reclame USING srid=28992 USING UNIQUE ogc_fid"
+        DATA "wkb_geometry from reclamebelasting USING srid=28992 USING UNIQUE ogc_fid"
          
         VALIDATION
           'default_tarief' '1'
           'tarief'     '^[A-C]{1}$'
         END
 
-        FILTER ("[tarief]" = 'Tariefgebied_%tarief%')
+        FILTER ("[tarief]" = 'Tariefgebied %tarief%')
 
         CLASS
             NAME "Tariefgebied A"
-            EXPRESSION ('[tarief]' eq 'Tariefgebied_A')
+            EXPRESSION ('[tarief]' ~* 'A$')
             STYLE
                 COLOR 236 0 0
                 OPACITY 50
@@ -42,7 +42,7 @@ MAP
         END
         CLASS
             NAME "Tariefgebied B"
-            EXPRESSION ('[tarief]' eq 'Tariefgebied_B')
+            EXPRESSION ('[tarief]' ~* 'B$')
             STYLE
                 COLOR 255 145 0
                 OPACITY 50
@@ -70,7 +70,7 @@ MAP
         END
         CLASS
             NAME "Tariefgebied C"
-            EXPRESSION ('[tarief]' eq 'Tariefgebied_C')
+            EXPRESSION ('[tarief]' ~* 'C$')
             STYLE
                 COLOR 255 230 0
                 OPACITY 30
@@ -99,7 +99,7 @@ MAP
         INCLUDE "connection_various_small_datasets.inc"
         METADATA
             "ows_title" "Reclame belastingtarieven"
-            "ows_group_title" "reclame"
+            "ows_group_title" "reclamebelasting"
             "ows_abstract" "Reclame belastingtarieven"
             "ows_enable_request" "*"
             "wms_extent" "100000 450000 150000 500000"
@@ -109,7 +109,7 @@ MAP
     WEB
         METADATA
             "ows_abstract" "Reclame"
-            "ows_title" "reclame"
+            "ows_title" "reclamebelasting"
         END
     END
 END

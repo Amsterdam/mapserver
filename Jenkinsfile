@@ -25,19 +25,19 @@ node {
 
     stage("Build images") {
         tryStep "Build public image", {
-            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.build("datapunt/mapserver-public:${env.BUILD_NUMBER}", "-f Dockerfile .")
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
+                def image = docker.build("datapunt/mapserver-public:${env.BUILD_NUMBER}", "-f Dockerfile  .")
                 image.push()
             }
         }
         tryStep "Build private image", {
-            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                 def image = docker.build("datapunt/mapserver-private:${env.BUILD_NUMBER}", "-f Dockerfile_private .")
                 image.push()
             }
         }
         tryStep "Build tiles image", {
-            docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                 def image = docker.build("datapunt/mapserver-tiles:${env.BUILD_NUMBER}", "-f Dockerfile_tiles .")
                 image.push()
             }
@@ -53,21 +53,21 @@ if (BRANCH == "master") {
     node {
         stage('Push acceptance images') {
             tryStep "Tag public image", {
-                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                     def image = docker.image("datapunt/mapserver-public:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("acceptance")
                 }
             }
             tryStep "Tag private image", {
-                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                     def image = docker.image("datapunt/mapserver-private:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("acceptance")
                 }
             }
             tryStep "Tag tiles image", {
-                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                     def image = docker.image("datapunt/mapserver-tiles:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("acceptance")
@@ -96,7 +96,7 @@ if (BRANCH == "master") {
     node {
         stage('Push production image') {
             tryStep "Tag public image", {
-                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                 def image = docker.image("datapunt/mapserver-public:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("production")
@@ -105,7 +105,7 @@ if (BRANCH == "master") {
             }
 
             tryStep "Tag private image", {
-                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
+                docker.withRegistry("${DOCKER_REGISTRY_HOST}",'docker_registry_auth') {
                     def image = docker.image("datapunt/mapserver-private:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("production")

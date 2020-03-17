@@ -1,0 +1,122 @@
+#==============================================================================
+#
+# lood.map
+# doel: serveren van pand leeftijden i.v.m. loodproblematiek
+#
+# Achtergrond informatie:
+# https://www.amsterdam.nl/stelselpedia/bag-index/catalogus-bag/objectklasse-pand/bouwjaar-pand/
+#
+#==============================================================================
+
+MAP
+  NAME "loodkaart"
+  INCLUDE "header.inc"
+
+
+  WEB
+    METADATA
+      "ows_title"    "Loodkaart"
+      "ows_abstract" "BAG panden met kleurcodering op leeftijd, om te zien welke panden ouder zijn dan 1960"
+    END
+  END
+
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "lood"
+    INCLUDE         "connection_bag.inc"
+    DATA            "geometrie FROM (SELECT
+        landelijk_id AS id,
+        bouwjaar,
+        geometrie,
+        ligging,
+        type_woonobject,
+        ('https://api.data.amsterdam.nl/bag/v1.1/pand/' || landelijk_id::text || '/'::text) AS uri
+        FROM public.bag_pand
+      ) AS subquery USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    CLASSITEM       "bouwjaar"
+    LABELITEM       "bouwjaar"
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "pand leeftijd"
+      "ows_group_title"     "loodkaart"
+      "ows_abstract"        "BAG panden van de gemeente Amsterdam, op leeftijd"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME            "onbekend"
+      EXPRESSION      ([bouwjaar] == 1005)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#666666"
+        OUTLINECOLOR   "#666666"
+        OPACITY        50
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME            "< 1960"
+      EXPRESSION      ([bouwjaar] < 1960 AND [bouwjaar] != 1005)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#A50026"
+        OUTLINECOLOR   "#A50026"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            ">= 1960"
+      EXPRESSION      ([bouwjaar] >= 1960)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#313695"
+        OUTLINECOLOR   "#313695"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+END

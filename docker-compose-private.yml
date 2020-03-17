@@ -18,10 +18,10 @@ services:
     links:
       - "database:database"
     environment:
-      BAG_DB_NAME: bag
-      BAG_DB_USER: postgres
-      BAG_DB_PASSWORD: insecure
-      BAG_DB_HOST: database
+      BAG_V11_DB_NAME: bag_v11
+      BAG_V11_DB_USER: postgres
+      BAG_V11_DB_PASSWORD: insecure
+      BAG_V11_DB_HOST: database
 
       NAP_DB_NAME: nap
       NAP_DB_USER: postgres
@@ -72,11 +72,6 @@ services:
       OVERLASTGEBIEDEN_DB_USER: postgres
       OVERLASTGEBIEDEN_DB_PASSWORD: insecure
       OVERLASTGEBIEDEN_DB_HOST: database
-
-      GRONDEXPLOITATIE_DB_NAME: reistijdenauto
-      GRONDEXPLOITATIE_DB_USER: postgres
-      GRONDEXPLOITATIE_DB_PASSWORD: insecure
-      GRONDEXPLOITATIE_DB_HOST: database
 
       VARIOUS_SMALL_DATASETS_DB_NAME: various_small_datasets
       VARIOUS_SMALL_DATASETS_DB_USER: various_small_datasets

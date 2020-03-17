@@ -21,12 +21,13 @@ niet vanuit een webbrowser. In de webbrowser geven de URL links foutmeldingen.
 * [docker-compose](https://docs.docker.com/compose/install/)
 
 ## Start mapserver in de docker
-    Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
-    Voor locale ontwikkeling maak aan de volgende directories: /tmp/srv/lufo en /tmp/srv/infrarood 
-		Om luchtfotos te gebruiken moet deze directories luchtfotos/infrarood bevatten of een symlink zijn naar luchtfotos/infrarood.
+
+Note : In de docker-compose.yml staat volumes: - /tmp/srv/lufo:/srv/lufo. In Docker op MacOSX kan dit verschil problemen met opstarten geven)
+Voor locale ontwikkeling maak aan de volgende directories: /tmp/srv/lufo en /tmp/srv/infrarood 
+Om luchtfotos te gebruiken moet deze directories luchtfotos/infrarood bevatten of een symlink zijn naar luchtfotos/infrarood.
     
-		docker-compose build
-    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo /tmp/srv/infrarood/:/mnt/infrarood map
+    docker-compose build
+    docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo -v /tmp/srv/infrarood/:/mnt/infrarood map
 
 
 
@@ -40,7 +41,6 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh handelsregister <your-username>
 	docker-compose exec database update-db.sh monumenten <your-username>
 	docker-compose exec database update-db.sh overlastgebieden <your-username>
-	docker-compose exec database update-db.sh grondexploitatie <your-username>
 	docker-compose exec database update-db.sh dataselectie <your-username>
 	docker-compose exec database update-db.sh various_small_datasets <your-username>
 	docker-compose exec database update-db.sh parkeervakken <your-username>

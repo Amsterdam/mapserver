@@ -2,14 +2,11 @@ FROM ubuntu:18.04
 MAINTAINER datapunt@amsterdam.nl
 
 RUN apt-get update && apt-get install -my wget gnupg -y
-RUN apt install build-essential -y
+RUN apt install build-essential software-properties-common -y
 
 # Setup build env
 RUN mkdir /build
-RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic main" >> /etc/apt/sources.list.d/gis.list
-RUN echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic main" >> /etc/apt/sources.list.d/gis.list
-RUN apt-key adv --recv-keys --keyserver-options http-proxy=$http_proxy --keyserver hkp://keyserver.ubuntu.com:80 089EBE08314DF160    \
-  && apt-get update
+RUN add-apt-repository -y ppa:ubuntugis/ppa
 RUN apt-get update && apt-get install -y --fix-missing --no-install-recommends gcc-4.8 g++-4.8 build-essential ca-certificates curl wget git libaio1 make cmake python-dev \
       software-properties-common  libc6-dev openssh-client libpng16-16 libjpeg-dev libgif-dev liblzma-dev libgeos-dev \
       libproj-dev libxml2-dev libexpat-dev libxerces-c-dev libnetcdf-dev netcdf-bin libpoppler-dev libspatialite-dev swig  \
@@ -41,7 +38,6 @@ COPY docker/docker-entrypoint.sh /bin
 # RUN chmod o+x /usr/local/bin/mapserv
 # RUN ln -s /usr/local/bin/mapserv /usr/lib/cgi-bin/mapserv
 # RUN chmod 755 /usr/lib/cgi-bin
-#
 
 COPY . /srv/mapserver/
 RUN rm -rf /srv/mapserver/private

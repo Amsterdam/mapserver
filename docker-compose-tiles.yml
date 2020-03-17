@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_PASSWORD: insecure
     volumes:
-        - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
+      - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   map:
     build:
@@ -18,10 +18,10 @@ services:
     links:
       - "database:database"
     environment:
-      BAG_DB_NAME: bag
-      BAG_DB_USER: postgres
-      BAG_DB_PASSWORD: insecure
-      BAG_DB_HOST: database
+      BAG_V11_DB_NAME: bag_v11
+      BAG_V11_DB_USER: postgres
+      BAG_V11_DB_PASSWORD: insecure
+      BAG_V11_DB_HOST: database
 
       NAP_DB_NAME: nap
       NAP_DB_USER: postgres
@@ -72,11 +72,6 @@ services:
       OVERLASTGEBIEDEN_DB_USER: postgres
       OVERLASTGEBIEDEN_DB_PASSWORD: insecure
       OVERLASTGEBIEDEN_DB_HOST: database
-
-      GRONDEXPLOITATIE_DB_NAME: reistijdenauto
-      GRONDEXPLOITATIE_DB_USER: postgres
-      GRONDEXPLOITATIE_DB_PASSWORD: insecure
-      GRONDEXPLOITATIE_DB_HOST: database
 
       DATASELECTIE_DB_NAME: dataselectie
       DATASELECTIE_DB_USER: postgres
