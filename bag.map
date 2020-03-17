@@ -279,6 +279,327 @@ MAP
 
   END
 
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "pand leeftijden"
+    GROUP           "bag"
+    INCLUDE         "connection_bag.inc"
+    DATA            "geometrie FROM (SELECT
+        landelijk_id AS id,
+        bouwjaar,
+        geometrie,
+        ligging,
+        type_woonobject,
+        ('https://api.data.amsterdam.nl/bag/v1.1/pand/' || landelijk_id::text || '/'::text) AS uri
+        FROM public.bag_pand
+      ) AS subquery USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    CLASSITEM       "bouwjaar"
+    LABELITEM       "bouwjaar"
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   10001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "pand leeftijd detail"
+      "ows_group_title"     "loodkaart"
+      "ows_abstract"        "BAG panden van de gemeente Amsterdam, op leeftijd in detail"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME            "onbekend"
+      EXPRESSION      ([bouwjaar] == 1005)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#666666"
+        OUTLINECOLOR   "#666666"
+        OPACITY        50
+        WIDTH          1
+      END
+    END
+
+    CLASS
+      NAME            "< 1800"
+      EXPRESSION      ([bouwjaar] < 1800 AND [bouwjaar] != 1005)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#A50026"
+        OUTLINECOLOR   "#A50026"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1800-1850"
+      EXPRESSION      ([bouwjaar] >= 1800 AND [bouwjaar] < 1850)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#D73027"
+        OUTLINECOLOR   "#D73027"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1850-1900"
+      EXPRESSION      ([bouwjaar] >= 1850 AND [bouwjaar] < 1900)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#F46D43"
+        OUTLINECOLOR   "#F46D43"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1900-1930"
+      EXPRESSION      ([bouwjaar] >= 1900 AND [bouwjaar] < 1930)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#FDAE61"
+        OUTLINECOLOR   "#FDAE61"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1930-1945"
+      EXPRESSION      ([bouwjaar] >= 1930 AND [bouwjaar] < 1945)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#FEE090"
+        OUTLINECOLOR   "#FEE090"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1945-1960"
+      EXPRESSION      ([bouwjaar] >= 1945 AND [bouwjaar] < 1960)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#FFFFBF"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1960-1975"
+      EXPRESSION      ([bouwjaar] >= 1960 AND [bouwjaar] < 1975)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#E0F3F8"
+        OUTLINECOLOR   "#E0F3F8"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1975-1985"
+      EXPRESSION      ([bouwjaar] >= 1975 AND [bouwjaar] < 1985)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#ABD9E9"
+        OUTLINECOLOR   "#ABD9E9"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1985-1995"
+      EXPRESSION      ([bouwjaar] >= 1985 AND [bouwjaar] < 1995)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#74ADD1"
+        OUTLINECOLOR   "#74ADD1"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            "1995-2005"
+      EXPRESSION      ([bouwjaar] >= 1995 AND [bouwjaar] < 2005)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#4575B4"
+        OUTLINECOLOR   "#4575B4"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+    CLASS
+      NAME            ">= 2005"
+      EXPRESSION      ([bouwjaar] >= 2005)
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#313695"
+        OUTLINECOLOR   "#313695"
+        OPACITY        50
+        WIDTH          1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
 
 
 #=============================================================================
