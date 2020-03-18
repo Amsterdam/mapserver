@@ -17,12 +17,6 @@ MAP
     END
   END
 
-
-  SYMBOL
-    NAME 'hatch-symbol'
-    TYPE HATCH
-  END
-
   LAYER
     NAME                    "buurten"
     GROUP                   "aardgasvrij"
@@ -58,16 +52,16 @@ MAP
     LABELITEM               "bu_naam"
 
     CLASS
-      NAME          "Gasnet/Hybride: Incrementeel tot 70% gasbesparing"
-      EXPRESSION    ("[fasering3]" eq "Gasnet/Hybride: Incrementeel tot 70% gasbesparing")
+      NAME          "All Electric: gestaag aardgasvrij tussen 2020 en 2040"
+      EXPRESSION    ("[fasering3]" eq "All Electric: Incrementeel aardgasvrij tussen 2020 en 2048")
 
       STYLE
           ANTIALIAS    true
-          COLOR        "#b27f19"
-          OPACITY      50
+          COLOR        "#0072bc"
+          OPACITY      25
       END
       STYLE
-          OUTLINECOLOR "#b27f19"
+          OUTLINECOLOR "#0072bc"
           OPACITY      100
           WIDTH        2
       END
@@ -88,17 +82,17 @@ MAP
     END
 
     CLASS
-      NAME          "All Electric: Incrementeel aardgasvrij tussen 2020 en 2048"
-      EXPRESSION    ("[fasering3]" eq "All Electric: Incrementeel aardgasvrij tussen 2020 en 2048")
+      NAME          "Aardgasvrij gasnet: gestaag tot 70% gasbesparing tot 2040"
+      EXPRESSION    ("[fasering3]" eq "Gasnet/Hybride: Incrementeel tot 70% gasbesparing")
 
       STYLE
           ANTIALIAS    true
-          COLOR        "#0084a8"
-          OPACITY      33
+          COLOR        "#faa61a"
+          OPACITY      25
       END
       STYLE
-          OUTLINECOLOR "#0084a8"
-          OPACITY      70
+          OUTLINECOLOR "#faa61a"
+          OPACITY      100
           WIDTH        2
       END
 
@@ -118,17 +112,17 @@ MAP
     END
 
     CLASS
-      NAME          "Warmtenetbuurt: aardgasvrij 2024 - 2032"
-      EXPRESSION    ("[fasering3]" eq "Warmtenetbuurt: aardgasvrij 2024 - 2032")
+      NAME          "Al (bijna) volledig op het warmtenet"
+      EXPRESSION    ("[fasering3]" eq "Reeds (bijna) volledig op het warmtenet")
 
       STYLE
           ANTIALIAS    true
-          COLOR        "#406407"
-          OPACITY      33
+          COLOR        "#f37053"
+          OPACITY      25
       END
       STYLE
-          OUTLINECOLOR "#406407"
-          OPACITY      70
+          OUTLINECOLOR "#f37053"
+          OPACITY      100
           WIDTH        2
       END
 
@@ -148,19 +142,17 @@ MAP
     END
 
     CLASS
-      NAME          "Warmtenetbuurt: starten vanaf 2028"
-      EXPRESSION    ("[fasering3]" eq "Warmtenetbuurt: starten vanaf 2028")
+      NAME          "Lokale bronnetten en warmtenet: gestaag aardgasvrij tussen 2020 en 2032"
+      EXPRESSION    ("[fasering3]" eq "Lokale W&K en warmtenet: aardgasvrij 2020 - 2032")
 
       STYLE
           ANTIALIAS    true
-          COLOR        "#78A210"
-          # COLOR        "#e2e1ae"
-          OPACITY      33
+          COLOR        "#74305f"
+          OPACITY      25
       END
       STYLE
-          OUTLINECOLOR "#669200"
-
-          OPACITY      70
+          OUTLINECOLOR "#74305f"
+          OPACITY      100
           WIDTH        2
       END
 
@@ -180,18 +172,142 @@ MAP
     END
 
     CLASS
-      NAME          "Lokale W&K: Incrementeel aardgasvrij tussen 2020 en 2048"
+      NAME          "Lokale bronnetten: gestaag aardgasvrij tussen 2020 en 2040"
       EXPRESSION    ("[fasering3]" eq "Lokale W&K: Incrementeel aardgasvrij tussen 2020 en 2048")
 
       STYLE
           ANTIALIAS    true
-          COLOR        "#a66a8e"
-          OPACITY      33
+          COLOR        "#ed3694"
+          OPACITY      25
       END
       STYLE
-          OUTLINECOLOR "#a66a8e"
-          OPACITY      70
+          OUTLINECOLOR "#ed3694"
+          OPACITY      100
           WIDTH        2
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME          "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2020 en 2030"
+      EXPRESSION    ("[fasering3]" eq "Warmtenetbuurt: aardgasvrij 2020 - 2028")
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        "#007a48"
+          OPACITY      25
+      END
+      STYLE
+          OUTLINECOLOR "#007a48"
+          OPACITY      100
+          WIDTH        2
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME          "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2020 en 2032"
+      EXPRESSION    ("[fasering3]" eq "Warmtenetbuurt: aardgasvrij 2024 - 2032")
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        "#72bf44"
+          OPACITY      30
+      END
+      STYLE
+          OUTLINECOLOR "#72bf44"
+          OPACITY      100
+          WIDTH        2
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME          "Warmtenetbuurt: gefaseerd starten vanaf 2030"
+      EXPRESSION    ("[fasering3]" eq "Warmtenetbuurt: starten vanaf 2028")
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        "#dfe672"
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR "#dfe672"
+          OPACITY      100
+          WIDTH        2
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+    CLASS
+      NAME          "Nieuwbouw- en transformatiegebied: volgt de fasering van de gebiedsontwikkeling"
+      EXPRESSION    ("[fasering3]" eq "Nieuwbouw- en transformatiegebied: volgt de fasering van de gebiedsontwikkeling")
+
+     STYLE
+          ANTIALIAS     true
+          SYMBOL        'hatchsymbol'
+          COLOR         "#a58437"
+          ANGLE         45
+          SIZE          6
+          WIDTH         2
+          OPACITY       50
+      END
+      STYLE
+          OUTLINECOLOR  "#a58437"
+          OPACITY       100
+          WIDTH         2
       END
 
       LABEL
@@ -214,151 +330,17 @@ MAP
       EXPRESSION    ("[fasering3]" eq "Grotendeels onbebouwd")
 
       STYLE
-          ANTIALIAS    true
-          COLOR        "#828282"
-          OPACITY      33
+          SYMBOL        "stip"
+          ANTIALIAS     true
+          COLOR         "#414042"
+          SIZE          3
+          GAP           6
+          OPACITY       50
       END
       STYLE
-          OUTLINECOLOR "#828282"
-          OPACITY      70
-          WIDTH        2
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  10000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-    END
-
-    CLASS
-      NAME          "Lokale W&K en warmtenet: aardgasvrij 2020 - 2032"
-      EXPRESSION    ("[fasering3]" eq "Lokale W&K en warmtenet: aardgasvrij 2020 - 2032")
-
-      STYLE
-          ANTIALIAS    true
-          COLOR        "#793455"
-          OPACITY      33
-      END
-      STYLE
-          OUTLINECOLOR "#793455"
-          OPACITY      70
-          WIDTH        2
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  10000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-    END
-
-    CLASS
-      NAME          "Reeds (bijna) volledig op het warmtenet"
-      EXPRESSION    ("[fasering3]" eq "Reeds (bijna) volledig op het warmtenet")
-
-      STYLE
-          ANTIALIAS    true
-          COLOR        "#e64c00"
-          OPACITY      33
-      END
-      STYLE
-          OUTLINECOLOR "#e64c00"
-          OPACITY      70
-          WIDTH        2
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  10000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-    END
-
-
-    CLASS
-      NAME          "Nieuwbouw- en transformatiegebied: volgt de fasering van de gebiedsontwikkeling"
-      EXPRESSION    ("[fasering3]" eq "Nieuwbouw- en transformatiegebied: volgt de fasering van de gebiedsontwikkeling")
-
-#      STYLE
-#          ANTIALIAS    true
-#          COLOR        "#e7a6a9"
-#          OPACITY      33
-#      END
-#      STYLE
-#          OUTLINECOLOR "#e7a6a9"
-#          OPACITY      70
-#          WIDTH        2
-#      END
-      STYLE
-          ANTIALIAS    true
-          SYMBOL 'hatch-symbol'
-          COLOR "#e7a6a9"
-          # BACKGROUNDCOLOR "#689002"
-          ANGLE 45
-          SIZE 6
-          WIDTH 2
-          OPACITY      70
-      END
-      STYLE
-          OUTLINECOLOR "#e7a6a9"
-          OPACITY      70
-          WIDTH        2
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  10000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-    END
-
-
-    CLASS
-      NAME          "Warmtenetbuurt: aardgasvrij 2020 - 2028"
-      EXPRESSION    ("[fasering3]" eq "Warmtenetbuurt: aardgasvrij 2020 - 2028")
-
-      STYLE
-          ANTIALIAS    true
-          COLOR        "#547b05"
-          OPACITY      33
-      END
-      STYLE
-          OUTLINECOLOR "#547b05"
-          OPACITY      70
-          WIDTH        2
+         OUTLINECOLOR "#000000"
+         OPACITY      100
+         WIDTH        1
       END
 
       LABEL
@@ -415,13 +397,12 @@ MAP
       EXPRESSION    ("[kookgasopg]" eq ">20% van warmteaansluitingen nog op kookgas")
 
       STYLE
-          ANTIALIAS    true
-          SYMBOL 'hatch-symbol'
-          COLOR        "#a0a047"
-          ANGLE 45
-          SIZE 6
-          WIDTH 2
-          OPACITY      70
+          SYMBOL        "stip"
+          ANTIALIAS     true
+          COLOR         "#6f4d9f"
+          SIZE          6
+          GAP           12
+          OPACITY       70
       END
     END
 
@@ -465,11 +446,15 @@ MAP
       NAME          "Buurtinitiatieven"
 
       STYLE
-        SYMBOL         'stip'
-        SIZE           10
-        OUTLINECOLOR   "#779c0e"
-        COLOR          "#98e600"
-        WIDTH          2
+        MINSCALEDENOM  10001
+        SYMBOL         'roos_groen'
+        SIZE           16
+      END
+
+      STYLE
+        MAXSCALEDENOM  10000
+        SYMBOL         'roos_groen'
+        SIZE           32
       END
 
       LABEL
