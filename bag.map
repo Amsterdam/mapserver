@@ -6,7 +6,7 @@
 #==============================================================================
 
 MAP
-  NAME "BAG"
+  NAME "bagmap"  # Should differ from the group name!
   INCLUDE "header.inc"
 
 
@@ -28,6 +28,7 @@ MAP
 
   LAYER
     NAME            "openbareruimte"
+    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_openbareruimte_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -41,6 +42,7 @@ MAP
 
     METADATA
       "ows_title"           "Openbareruimte"
+      "ows_group_title"     "BAG"
       "ows_abstract"        "BAG openbare ruimtes van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -132,6 +134,7 @@ MAP
 
   LAYER
     NAME            "pand"
+    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_pand_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -144,6 +147,7 @@ MAP
 
     METADATA
       "ows_title"           "Pand"
+      "ows_group_title"     "BAG"
       "ows_abstract"        "BAG panden van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -166,6 +170,7 @@ MAP
 
   LAYER
     NAME            "ligplaats"
+    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -178,6 +183,7 @@ MAP
 
     METADATA
       "ows_title"           "Ligplaats"
+      "ows_group_title"     "BAG"
       "ows_abstract"        "BAG ligplaatsen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -200,6 +206,7 @@ MAP
 
   LAYER
     NAME            "standplaats"
+    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -212,6 +219,7 @@ MAP
 
     METADATA
       "ows_title"           "Standplaats"
+      "ows_group_title"     "BAG"
       "ows_abstract"        "BAG standplaatsen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -234,6 +242,7 @@ MAP
 
   LAYER
     NAME            "verblijfsobject"
+    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_verblijfsobject_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -246,6 +255,7 @@ MAP
 
     METADATA
       "ows_title"           "Verblijfsobject"
+      "ows_group_title"     "BAG"
       "ows_abstract"        "BAG verblijfsobjecten van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -268,7 +278,8 @@ MAP
 
 
   LAYER
-    NAME            "pandbouwjaar"
+    NAME            "pand leeftijden"
+    GROUP           "bouwjaar"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM (SELECT
         landelijk_id AS id,
@@ -291,6 +302,7 @@ MAP
 
     METADATA
       "ows_title"           "Panden naar bouwjaar"
+      "ows_group_title"     "Overig"
       "ows_abstract"        "BAG panden van de gemeente Amsterdam, met leeftijd codering"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
