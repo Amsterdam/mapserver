@@ -4,12 +4,6 @@
 # doel: algemene header-informatie dat voor alle map-bestanden gelijk is.
 #
 #==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# Rob Kromwijk          07-09-2015    schepping
-#
-#==============================================================================
 
 
 
@@ -58,6 +52,7 @@
       "ows_srs"                      "EPSG:28992 EPSG:4326 EPSG:3857 EPSG:4258"
       "ows_feature_info_mime_type"   "application/json"
       "wms_format"                   "image/png"
+
       "wfs_encoding"                 "UTF-8"
       "wfs_maxfeatures"              "500000"
       "wfs_getfeature_formatlist"    "gml,geojson,csv,shapezip,spatialzip"
@@ -65,11 +60,12 @@
       # verplicht om aan de OGC standaard te voldoen:
       "ows_contactorganization"      "gemeente Amsterdam"
       "ows_contactperson"            "Onderzoek, Informatie en Statistiek"
-
     END
+
     IMAGEPATH                        "/srv/mapserver/tmp_img/"
     IMAGEURL                         "/ms_tmp/"
     BROWSEFORMAT                     "image/svg+xml"
+
     VALIDATION
       "MAP_RESOLUTION"               "^[0-9]{1,3}$"
       "DPI"                          "^[0-9]{1,3}$"
@@ -89,14 +85,14 @@
   # UITVOERFORMATEN
   #-------------------------------------------------------------------
 
-OUTPUTFORMAT
-   NAME           png
-   DRIVER         "AGG/PNG"
-   MIMETYPE       "image/png"
-   IMAGEMODE      RGB
-   EXTENSION      "png"
-   FORMATOPTION   "INTERLACE=OFF"
-   FORMATOPTION   "QUANTIZE_FORCE=ON"
+  OUTPUTFORMAT
+    NAME           png
+    DRIVER         "AGG/PNG"
+    MIMETYPE       "image/png"
+    IMAGEMODE      RGB
+    EXTENSION      "png"
+    FORMATOPTION   "INTERLACE=OFF"
+    FORMATOPTION   "QUANTIZE_FORCE=ON"
   END
 
   OUTPUTFORMAT
@@ -150,7 +146,6 @@ OUTPUTFORMAT
     IMAGEMODE   RGB
     EXTENSION   "kmz"
   END
-
 
   OUTPUTFORMAT
     NAME           shapezip
