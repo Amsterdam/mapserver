@@ -4,14 +4,6 @@
 # doel: serveren van BAG
 #
 #==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# Rob Kromwijk          07-09-2015    schepping
-# Rob Kromwijk          21-10-2015    group toegevoegd
-# Rob Kromwijk          07-12-2015    openbare ruimte toegevoegd
-#
-#==============================================================================
 
 MAP
   NAME "BAG"
@@ -22,6 +14,9 @@ MAP
     METADATA
       "ows_title"    "BAG"
       "ows_abstract" "BAG objecten met een geografische component, waarvan Amsterdam de bronhouder is"
+
+      # Avoid top-level layer querying, exposes sublayers in QGis:
+      "wms_rootlayer_name" ""
     END
   END
 
@@ -33,7 +28,6 @@ MAP
 
   LAYER
     NAME            "openbareruimte"
-    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_openbareruimte_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -46,8 +40,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "openbareruimte"
-      "ows_group_title"     "bag"
+      "ows_title"           "Openbareruimte"
       "ows_abstract"        "BAG openbare ruimtes van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -139,7 +132,6 @@ MAP
 
   LAYER
     NAME            "pand"
-    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_pand_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -151,8 +143,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "pand"
-      "ows_group_title"     "bag"
+      "ows_title"           "Pand"
       "ows_abstract"        "BAG panden van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -175,7 +166,6 @@ MAP
 
   LAYER
     NAME            "ligplaats"
-    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -187,8 +177,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "ligplaats"
-      "ows_group_title"     "bag"
+      "ows_title"           "Ligplaats"
       "ows_abstract"        "BAG ligplaatsen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -211,7 +200,6 @@ MAP
 
   LAYER
     NAME            "standplaats"
-    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -223,8 +211,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "standplaats"
-      "ows_group_title"     "bag"
+      "ows_title"           "Standplaats"
       "ows_abstract"        "BAG standplaatsen van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -247,7 +234,6 @@ MAP
 
   LAYER
     NAME            "verblijfsobject"
-    GROUP           "bag"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM public.geo_bag_verblijfsobject_mat USING srid=28992 USING UNIQUE id"
     TYPE            POINT
@@ -259,8 +245,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "verblijfsobject"
-      "ows_group_title"     "bag"
+      "ows_title"           "Verblijfsobject"
       "ows_abstract"        "BAG verblijfsobjecten van de gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
@@ -283,8 +268,7 @@ MAP
 
 
   LAYER
-    NAME            "pand leeftijden"
-    GROUP           "bag"
+    NAME            "pandbouwjaar"
     INCLUDE         "connection_bag.inc"
     DATA            "geometrie FROM (SELECT
         landelijk_id AS id,
@@ -306,8 +290,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "pand leeftijd"
-      "ows_group_title"     "loodkaart"
+      "ows_title"           "Panden naar bouwjaar"
       "ows_abstract"        "BAG panden van de gemeente Amsterdam, met leeftijd codering"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
