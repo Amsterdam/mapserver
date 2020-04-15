@@ -45,6 +45,7 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh various_small_datasets <your-username>
 	docker-compose exec database update-db.sh parkeervakken <your-username>
 	docker-compose exec database update-db.sh afvalcontainers <your-username>
+	docker-compose exec database update-db.sh dataservices <your-username>
 
 
 	
