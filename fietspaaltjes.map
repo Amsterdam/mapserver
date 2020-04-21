@@ -1,0 +1,46 @@
+#==============================================================================
+#
+# fietspaaltjes.map
+# doel: serveren locaties fietspaaltjes
+#
+#==============================================================================
+
+MAP
+    NAME "fietspaaltjes"
+    INCLUDE "header.inc"
+    DEBUG 1
+
+    WEB
+      METADATA
+        "ows_title"           "fietspaaltjes"
+        "ows_abstract"        "fietspaaltjes"
+        "wms_extent"          "100000 450000 150000 500000"
+      END
+    END
+
+    LAYER
+        NAME        "fietspaaltjes"
+        TYPE        POINT
+        INCLUDE     "connection_dataservices.inc"
+        DATA        "geometry from public.fietspaaltjes_fietspaaltjes USING srid=28992 USING UNIQUE id"
+
+        CLASS
+            STYLE
+                COLOR 200 50 50
+                ANTIALIAS TRUE
+                SYMBOL 'stip'
+                SIZE 10
+            END
+        END
+        METADATA
+          "wms_enable_request"  "*"
+          "wms_group_title"     "Buurten"
+          "wms_abstract"        "Aardgasvrij status per buurt"
+          "wms_srs"             "EPSG:28992"
+          "wms_name"            "buurten"
+          "wms_format"          "image/png"
+          "wms_server_version"  "1.1.1"
+          "wms_extent"          "100000 450000 150000 500000"
+        END
+    END
+END
