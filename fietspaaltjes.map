@@ -18,6 +18,11 @@ MAP
       END
     END
 
+    LEGEND
+       STATUS ON
+       KEYSIZE 17 17
+    END
+
     LAYER
         NAME        "fietspaaltjes"
         TYPE        POINT
@@ -25,11 +30,27 @@ MAP
         DATA        "geometry from public.fietspaaltjes_fietspaaltjes USING srid=28992 USING UNIQUE id"
 
         CLASS
+            NAME          "fietspaaltjes"
             STYLE
                 SYMBOL         'cirkel_paars'
                 SIZE           16
             END
+
+            LABEL
+              MINSCALEDENOM  10
+              MAXSCALEDENOM  10000
+              COLOR          0 0 0
+              OUTLINECOLOR   255 255 255
+              OUTLINEWIDTH   3
+              FONT           "Ubuntu-MI"
+              TYPE           truetype
+              SIZE           10
+              POSITION       AUTO
+              PARTIALS       FALSE
+              OFFSET         -60 10
+            END
         END
+
         METADATA
           "wfs_title"           "Fietspaaltjes"
           "wfs_srs"             "EPSG:28992"
