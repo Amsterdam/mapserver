@@ -16,7 +16,7 @@ MAP
     METADATA
       "ows_title"           "grondexploitatie"
       "ows_abstract"        "Grondexploitatie Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_extent"          "100000 450000 150000 500000"
     END
   END
 
@@ -30,14 +30,14 @@ MAP
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.grex USING srid=4326 USING UNIQUE id"
+    DATA                    "geometry FROM public.grex_projecten USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     METADATA
       "wfs_title"           "grexplannen"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Grondexploitatie plannen polygons Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "id"
@@ -46,11 +46,12 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "grexplannen"
       "wms_abstract"        "Grondexploitatie plannen polygons  Amsterdam"
-      "wms_srs"             "EPSG:4326"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "grexplannen_polygon"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_extent"          "100000 450000 150000 500000"
+      "ows_geomtype"        "Geometry"
     END
 
     LABELITEM               "plannaam"
