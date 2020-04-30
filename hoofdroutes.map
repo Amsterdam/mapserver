@@ -146,4 +146,147 @@ MAP
       END
     END
   END
+
+
+  LAYER
+    NAME                    "gevaarlijke_stoffen"
+    GROUP                   "hoofdroutes"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.hoofdroutes_routes_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
+    TYPE                    LINE
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "Gevaarlijke stoffen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Gevaarlijke stoffen"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "Gevaarlijke stoffen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Gevaarlijke stoffen"
+      "wms_abstract"        "Gevaarlijke stoffen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "gevaarlijke_stoffen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME          "Gevaarlijke stoffen"
+
+      STYLE
+          WIDTH        2
+          COLOR        160 0 120
+          OUTLINECOLOR 160 0 120
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "tunnels"
+    GROUP                   "hoofdroutes"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.hoofdroutes_tunnels_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "Tunnels gevaarlijke stoffen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Tunnels gevaarlijke stoffen"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "Tunnels gevaarlijke stoffen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Tunnels gevaarlijke stoffen"
+      "wms_abstract"        "Tunnels gevaarlijke stoffen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "tunnels"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME          "Tunnels gevaarlijke stoffen"
+
+      STYLE
+          SYMBOL         'cirkel_paars'
+          SIZE           16
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "u_routes"
+    GROUP                   "hoofdroutes"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.hoofdroutes_u_routes USING srid=28992 USING UNIQUE id"
+    TYPE                    LINE
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "U routes"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "U routes"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "U routes"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "U routes"
+      "wms_abstract"        "U routes"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "u_routes"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME          "U routes"
+
+      STYLE
+          WIDTH        2
+          COLOR        160 0 120
+          OUTLINECOLOR 160 0 120
+      END
+    END
+  END
 END
