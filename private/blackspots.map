@@ -1,0 +1,80 @@
+MAP
+  NAME "blackspots"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"    "Blackspots"
+      "ows_abstract" "Ongevallen punten Amsterdam"
+      "wms_extent"   "4.58565 52.03560  5.31360 52.48769"
+      "wfs_extent"   "4.58565 52.03560  5.31360 52.48769"
+    END
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME            "blackspots"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.blackspots_blackspots USING srid=4326 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:4326"
+    END
+
+    METADATA
+      "ows_title"           "Blackspots"
+      "ows_group_title"     "Blackspots"
+      "ows_abstract"        "Ongevallen punten Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "Blackspots"
+      "wms_name"            "Blackspots"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_enable_request"  "*"
+      "wfs_title"           "Blackspots"
+      "wfs_srs"             "EPSG:4326"
+      "wfs_abstract"        "Ongevallen punten Amsterdam"
+      "wfs_enable_request"  "*"
+      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wfs_extent"          "4.58565 52.03560  5.31360 52.48769"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Blackspot"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               3
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+
+  END
+END
