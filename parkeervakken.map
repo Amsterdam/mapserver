@@ -24,6 +24,413 @@ MAP
   END
 
   #=============================================================================
+  # LAYERS PARKEERVAKKEN REGIMES
+  # doel: tonen van 3 typen parkeervakken (de regimes: taxistandplaats, laden&lossen en kiss&ride) op basis van 4 standaardtijdvakken:
+  #   00:00 - 06:59
+  #   07:00 - 17:00
+  #   17.01 - 23.59
+  #   00:00 - 23:59
+  # bijzonderheden: per locatie, afhankelijk van een tijdsperiode, kan een parkeervak een bepaald regime aannemen. 
+  #                 Bijvoorbeeld Osdorplein is van 00:00 t/m 07:59 vrij van regime, van 08:00 t/m 20:00 een laad & los plek, en van 20:01 t/m 23:59 vrij van regime.
+  #                   
+  #=============================================================================
+
+  # Regime Taxistandplaats
+
+  LAYER
+    NAME            "parkeervakken_tijdvakken_taxistandplaats"
+    GROUP           "regimes"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geom FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+                        inner join (
+                              select '00:00:00_06:59:00' as tijdvak
+                              union 
+                              select '07:00:00_17:00:00' 
+                              union 
+                              select '17:01:00_23:59:00' 
+                              union 
+                              select '00:00:00_23:59:00' 
+                              ) AS TV ON 
+                                cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\1') as time)  < eind_tijd and cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\2') as time)  > begin_tijd                                
+                                and e_type = 'E5' and bord = 'Taxistandplaats'  
+                        USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %tijdvak% substitutions can only digits, underscore and semicolons
+      'default_tijdvak'  'all'
+      'tijdvak'          '^[0-9_:]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "parkeervakken_tijdvakken_taxistandplaats"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "taxistandplaats Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "tijdvak"
+      "gml_include_items"   "all"
+      "wms_title"           "parkeervakken_tijdvakken_taxistandplaats"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "regimes"
+      "wms_abstract"        "taxistandplaats Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "parkeervakken_tijdvakken_taxistandplaats"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_06:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_06:59:00" AND ( '%tijdvak%' eq '00:00:00_06:59:00'  OR '%tijdvak%' eq 'all' ))
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 160 0 120 #A00078
+       OPACITY      100
+       WIDTH        2
+      END   
+    
+      STYLE
+       ANTIALIAS    true
+       COLOR        160 0 120 #A00078
+       OPACITY      70
+       WIDTH        2
+      END   
+
+    END
+
+   CLASS
+      NAME "tijdvak_07:00_17:00"
+      EXPRESSION ("[tijdvak]" eq "07:00:00_17:00:00" AND ( '%tijdvak%' eq '07:00:00_17:00:00'  OR '%tijdvak%' eq 'all' ))
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 229 0 130 #E50082
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        229 0 130 #E50082
+       OPACITY      70
+       WIDTH        2
+      END
+         
+    END
+
+    CLASS
+      NAME "tijdvak_17:01_23:59"
+      EXPRESSION ("[tijdvak]" eq "17:01:00_23:59:00" AND ( '%tijdvak%' eq '17:01:00_23:59:00'  OR '%tijdvak%' eq 'all' ))
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 255 145 0 #FF9100
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        255 145 0 #FF9100
+       OPACITY      70
+       WIDTH        2
+      END
+
+      
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_23:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_23:59:00" AND ( '%tijdvak%' eq '00:00:00_23:59:00'  OR '%tijdvak%' eq 'all' ))
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 255 230 0 #FFE600
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        255 230 0 #FFE600
+       OPACITY      70
+       WIDTH        2
+      END
+     
+    END
+  END
+  
+  # Regime Laden & Lossen
+
+  LAYER
+    NAME            "parkeervakken_tijdvakken_laden_lossen"
+    GROUP           "regimes"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geom FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+                        inner join (
+                              select '00:00:00_06:59:00' as tijdvak
+                              union 
+                              select '07:00:00_17:00:00' 
+                              union 
+                              select '17:01:00_23:59:00' 
+                              union 
+                              select '00:00:00_23:59:00' 
+                              ) AS TV ON 
+                                cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\1') as time)  < eind_tijd and cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\2') as time)  > begin_tijd
+                                and e_type = 'E7' and bord = 'Laden & Lossen'
+                        USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %tijdvak% substitutions can only digits, underscore and semicolons
+      'default_tijdvak'  'all'
+      'tijdvak'          '^[0-9_:]+$'
+    END
+
+    METADATA
+      "wfs_title"          "parkeervakken_tijdvakken_laden_lossen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Laden & Lossen Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "tijdvak"
+      "gml_include_items"   "all"
+      "wms_title"           "parkeervakken_tijdvakken_laden_lossen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "regimes"
+      "wms_abstract"        "Laden & Lossen Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "parkeervakken_tijdvakken_laden_lossen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"       
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_06:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_06:59:00" AND ( '%tijdvak%' eq '00:00:00_06:59:00'  OR '%tijdvak%' eq 'all' ))      
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 120 120 120 #787878
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        232 232 232 #E8E8E8
+       OPACITY      70
+       WIDTH        2
+      END
+      
+    END
+
+   CLASS
+      NAME "tijdvak_07:00_17:00"
+      EXPRESSION ("[tijdvak]" eq "07:00:00_17:00:00" AND ( '%tijdvak%' eq '07:00:00_17:00:00'  OR '%tijdvak%' eq 'all' ))          
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 120 120 120 #787878
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        190 190 190 #BEBEBE
+       OPACITY      70
+       WIDTH        2
+      END      
+
+    END
+
+    CLASS
+      NAME "tijdvak_17:01_23:59"          
+      EXPRESSION ("[tijdvak]" eq "17:01:00_23:59:00"  AND ( '%tijdvak%' eq '17:01:00_23:59:00'  OR '%tijdvak%' eq 'all' ))   
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 120 120 120 #787878
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        120 120 120 #787878
+       OPACITY      70
+       WIDTH        2
+      END
+    
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_23:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_23:59:00" AND ( '%tijdvak%' eq '00:00:00_23:59:00'  OR '%tijdvak%' eq 'all' ))   
+     
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 0 0 #000000
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 0 0 #000000
+       OPACITY      70
+       WIDTH        2
+      END
+      
+    END
+  END
+
+  # Regime Kiss & Ride
+
+  LAYER
+    NAME            "parkeervakken_tijdvakken_kiss_ride"
+    GROUP           "regimes"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geom FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+                        inner join (
+                              select '00:00:00_06:59:00' as tijdvak
+                              union 
+                              select '07:00:00_17:00:00' 
+                              union 
+                              select '17:01:00_23:59:00' 
+                              union 
+                              select '00:00:00_23:59:00' 
+                              ) AS TV ON 
+                                cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\1') as time)  < eind_tijd and cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\2') as time)  > begin_tijd
+                                and e_type = 'E9' and bord = 'Kiss & Ride'
+                        USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %tijdvak% substitutions can only digits, underscore and semicolons
+      'default_tijdvak'  'all'
+      'tijdvak'          '^[0-9_:]+$'
+    END
+
+    METADATA
+      "wfs_title"           "parkeervakken_tijdvakken_kiss_ride"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Kiss & Ride Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "tijdvak"
+      "gml_include_items"   "all"
+      "wms_title"           "parkeervakken_tijdvakken_kiss_ride"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "regimes"
+      "wms_abstract"        "Kiss & Ride Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "parkeervakken_tijdvakken_kiss_ride"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"       
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_06:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_06:59:00" AND ( '%tijdvak%' eq '00:00:00_06:59:00'  OR '%tijdvak%' eq 'all' ))   
+     
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 70 153 #004699
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 70 153 #004699
+       OPACITY      70
+       WIDTH        2
+      END
+
+    END
+
+   CLASS
+      NAME "tijdvak_07:00_17:00"
+      EXPRESSION ("[tijdvak]" eq "07:00:00_17:00:00" AND ( '%tijdvak%' eq '07:00:00_17:00:00'  OR '%tijdvak%' eq 'all' ))   
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 157 230 #009DE6
+       OPACITY      100
+       WIDTH        2
+      END
+      
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 157 230 #009DE6
+       OPACITY      70
+       WIDTH        2
+      END
+
+    END
+
+    CLASS
+      NAME "tijdvak_17:01_23:59"
+      EXPRESSION ("[tijdvak]" eq "17:01:00_23:59:00" AND ( '%tijdvak%' eq '17:01:00_23:59:00'  OR '%tijdvak%' eq 'all' ))  
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 190 210 0 #BED200
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        190 210 0 #BED200
+       OPACITY      70
+       WIDTH        2
+      END
+     
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_23:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_23:59:00" AND ( '%tijdvak%' eq '00:00:00_23:59:00'  OR '%tijdvak%' eq 'all' ))  
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 160 60 #00A03C
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 160 60 #00A03C
+       OPACITY      70
+       WIDTH        2
+      END
+     
+    END
+  END
+  
+  #=============================================================================
   # LAYERS
   #=============================================================================
 
