@@ -41,7 +41,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_taxistandplaats"
     GROUP           "regimes"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geom FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union 
@@ -174,7 +174,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_laden_lossen"
     GROUP           "regimes"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geom FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union 
@@ -305,7 +305,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_kiss_ride"
     GROUP           "regimes"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geom FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union 
