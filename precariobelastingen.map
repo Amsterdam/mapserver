@@ -30,7 +30,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_bedrijfsvaartuigen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
+                      select t.ID as identifier, dense_rank() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
                       FROM public.precariobelasting_bedrijfsvaartuigen as t
                     ) sub on sub.identifier = precariobelasting_bedrijfsvaartuigen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -91,7 +91,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_passagiersvaartuigen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
+                      select t.ID as identifier, dense_rank() over (order by gebied asc, regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
                       FROM public.precariobelasting_passagiersvaartuigen as t
                     ) sub on sub.identifier = precariobelasting_passagiersvaartuigen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -169,7 +169,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_woonschepen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
+                      select t.ID as identifier, dense_rank() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
                       FROM public.precariobelasting_woonschepen as t
                     ) sub on sub.identifier = precariobelasting_woonschepen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -236,7 +236,7 @@ MAP
       END
 
     END
-   
+
   END
 
 # CATEGORIE: TERRASSEN
@@ -248,7 +248,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_terrassen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by 
+                      select t.ID as identifier, dense_rank() over (order by 
                       regexp_replace(tarief_overdekt_terras_per_jaar_per_m2, '[^[:digit:]]', '', 'g')
                       ) as tariefgebied
                       FROM public.precariobelasting_terrassen as t
@@ -348,7 +348,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_terrassen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by 
+                      select t.ID as identifier, dense_rank() over (order by 
                       regexp_replace(tarief_onoverdekt_terras_per_zomerseizoen_per_m2, '[^[:digit:]]', '', 'g')
                       ) as tariefgebied
                       FROM public.precariobelasting_terrassen as t
@@ -447,7 +447,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_terrassen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by 
+                      select t.ID as identifier, dense_rank() over (order by 
                       regexp_replace(tarief_onoverdekt_terras_per_winterseizoen_per_m2, '[^[:digit:]]', '', 'g')
                       ) as tariefgebied
                       FROM public.precariobelasting_terrassen as t
