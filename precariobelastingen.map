@@ -8,7 +8,7 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # Chris van Riel        17-06-2020    Initiatie
-#
+# Chris van Riel        22-06-2020    Het tariefbedrag geeft een precariobelastinggebied aan; query aanpast naar order by tarief
 #==============================================================================
 
 MAP
@@ -30,7 +30,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_bedrijfsvaartuigen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by id) as tariefgebied
+                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
                       FROM public.precariobelasting_bedrijfsvaartuigen as t
                     ) sub on sub.identifier = precariobelasting_bedrijfsvaartuigen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -82,23 +82,6 @@ MAP
 
     END
 
-    CLASS
-      NAME "tariefgebied_B"
-      EXPRESSION ("[tariefgebied]" eq "2" AND ( '%tariefgebied%' eq 'B'  OR '%tariefgebied%' eq 'all' ))
-            
-    STYLE
-          ANTIALIAS    true
-          COLOR        160 0 120
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR  160 0 120
-          OPACITY      100
-          WIDTH        1
-      END
-
-    END
-
   END
 
 # CATEGORIE: PASSAGIERSVAARTUIGEN
@@ -108,7 +91,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_passagiersvaartuigen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by id) as tariefgebied
+                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
                       FROM public.precariobelasting_passagiersvaartuigen as t
                     ) sub on sub.identifier = precariobelasting_passagiersvaartuigen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -186,7 +169,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_woonschepen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by id) as tariefgebied
+                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
                       FROM public.precariobelasting_woonschepen as t
                     ) sub on sub.identifier = precariobelasting_woonschepen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -253,34 +236,21 @@ MAP
       END
 
     END
-
-    CLASS
-      NAME "tariefgebied_C"
-      EXPRESSION ("[tariefgebied]" eq "3" AND ( '%tariefgebied%' eq 'C'  OR '%tariefgebied%' eq 'all' ))
-        
-      STYLE
-          ANTIALIAS    true
-          COLOR        255 230 0
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR  255 230 0
-          OPACITY      100
-          WIDTH        1
-      END
-
-    END
-
+   
   END
 
 # CATEGORIE: TERRASSEN
+# OVERDEKT
 
   LAYER
-    NAME            "precariobelastinggebieden_terrassen"
+    NAME            "precariobelastinggebieden_terrassen_overdekt"
+    GROUP           "terrassen"
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_terrassen 
                     INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by id) as tariefgebied
+                      select t.ID as identifier, row_number() over (order by 
+                      regexp_replace(tarief_overdekt_terras_per_jaar_per_m2, '[^[:digit:]]', '', 'g')
+                      ) as tariefgebied
                       FROM public.precariobelasting_terrassen as t
                     ) sub on sub.identifier = precariobelasting_terrassen.ID
                     USING srid=28992 USING UNIQUE id"
@@ -299,15 +269,115 @@ MAP
     END
 
     METADATA
-      "wfs_title"           "Terrassen"
+      "wfs_title"           "Terrassen overdekt"
       "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Terrassen"
+      "wfs_abstract"        "Terrassen overdekt"
       "wfs_enable_request"  "*"
       "gml_featureid"       "tariefgebied"
       "gml_include_items"   "all"
-      "wms_title"           "Terrassen"
+      "wms_title"           "Terrassen overdekt"
       "wms_enable_request"  "*"
-      "wms_abstract"        "Terrassen"
+      "wms_abstract"        "Terrassen overdekt"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Terrassen overdekt"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tariefgebied_A"
+      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        0 157 230
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR 0 157 230
+          OPACITY      100
+          WIDTH        1
+      END
+
+    END
+
+    CLASS
+      NAME "tariefgebied_B"
+      EXPRESSION ("[tariefgebied]" eq "2" AND ( '%tariefgebied%' eq 'B'  OR '%tariefgebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        160 0 120
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  160 0 120
+          OPACITY      100
+          WIDTH        1
+      END
+
+    END
+
+    CLASS
+      NAME "tariefgebied_C"
+      EXPRESSION ("[tariefgebied]" eq "3" AND ( '%tariefgebied%' eq 'C'  OR '%tariefgebied%' eq 'all' ))
+        
+      STYLE
+          ANTIALIAS    true
+          COLOR        0 160 60
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  0 160 60
+          OPACITY      100
+          WIDTH        1
+      END
+
+    END
+
+  END
+
+
+# CATEGORIE: TERRASSEN
+# ONOVERDEKT ZOMER
+
+   LAYER
+    NAME            "precariobelastinggebieden_terrassen_onoverdekt_zomer"
+    GROUP           "terrassen"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.precariobelasting_terrassen 
+                    INNER JOIN (
+                      select t.ID as identifier, row_number() over (order by 
+                      regexp_replace(tarief_onoverdekt_terras_per_zomerseizoen_per_m2, '[^[:digit:]]', '', 'g')
+                      ) as tariefgebied
+                      FROM public.precariobelasting_terrassen as t
+                    ) sub on sub.identifier = precariobelasting_terrassen.ID
+                    USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %tariefgebied% substitutions can only digits and capitals
+      'default_tariefgebied'  'all'
+      'tariefgebied'          '^[0-9A-Z]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "Terrassen onoverdekt zomer"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Terrassen  onoverdekt zomer"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "tariefgebied"
+      "gml_include_items"   "all"
+      "wms_title"           "Terrassen onoverdekt zomer"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Terrassen onoverdekt zomer"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "Terrassen"
       "wms_format"          "image/png"
@@ -367,5 +437,70 @@ MAP
     END
 
   END
+
+# CATEGORIE: TERRASSEN
+# ONOVERDEKT WINTER
+
+   LAYER
+    NAME            "precariobelastinggebieden_terrassen_onoverdekt_winter"
+    GROUP           "terrassen"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.precariobelasting_terrassen 
+                    INNER JOIN (
+                      select t.ID as identifier, row_number() over (order by 
+                      regexp_replace(tarief_onoverdekt_terras_per_winterseizoen_per_m2, '[^[:digit:]]', '', 'g')
+                      ) as tariefgebied
+                      FROM public.precariobelasting_terrassen as t
+                    ) sub on sub.identifier = precariobelasting_terrassen.ID
+                    USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %tariefgebied% substitutions can only digits and capitals
+      'default_tariefgebied'  'all'
+      'tariefgebied'          '^[0-9A-Z]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "Terrassen onverdekt winter"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Terrassen  onverdekt winter"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "tariefgebied"
+      "gml_include_items"   "all"
+      "wms_title"           "Terrassen  onverdekt winter"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Terrassen  onverdekt winter"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Terrassen  onverdekt winter"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tariefgebied_A"
+      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        0 157 230
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR 0 157 230
+          OPACITY      100
+          WIDTH        1
+      END
+
+    END
+
+ END
 #=============================================================================
 END
