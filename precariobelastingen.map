@@ -28,12 +28,7 @@ MAP
   LAYER
     NAME            "precariobelastinggebieden_bedrijfsvaartuigen"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geometry FROM public.precariobelasting_bedrijfsvaartuigen 
-                    INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
-                      FROM public.precariobelasting_bedrijfsvaartuigen as t
-                    ) sub on sub.identifier = precariobelasting_bedrijfsvaartuigen.ID
-                    USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.precariobelasting_bedrijfsvaartuigen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -42,9 +37,9 @@ MAP
     END
 
     VALIDATION
-      # %tariefgebied% substitutions can only digits and capitals
-      'default_tariefgebied'  'all'
-      'tariefgebied'          '^[0-9A-Z]+$'
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
           
     END
 
@@ -53,7 +48,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Bedrijfsvaartuigen"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "tariefgebied"
+      "gml_featureid"       "gebied"
       "gml_include_items"   "all"
       "wms_title"           "Bedrijfsvaartuigen"
       "wms_enable_request"  "*"
@@ -66,8 +61,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_A"
-      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_A"
+      EXPRESSION ("[gebied]" ~ "A" AND ( '%gebied%' eq 'A'  OR '%gebied%' eq 'all' ))
             
      STYLE
           ANTIALIAS    true
@@ -89,12 +84,7 @@ MAP
   LAYER
     NAME            "precariobelastinggebieden_passagiersvaartuigen"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geometry FROM public.precariobelasting_passagiersvaartuigen 
-                    INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
-                      FROM public.precariobelasting_passagiersvaartuigen as t
-                    ) sub on sub.identifier = precariobelasting_passagiersvaartuigen.ID
-                    USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.precariobelasting_passagiersvaartuigen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -103,9 +93,9 @@ MAP
     END
 
     VALIDATION
-      # %tariefgebied% substitutions can only digits and capitals
-      'default_tariefgebied'  'all'
-      'tariefgebied'          '^[0-9A-Z]+$'
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
           
     END
 
@@ -114,7 +104,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Passagiersvaartuigen"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "tariefgebied"
+      "gml_featureid"       "gebied"
       "gml_include_items"   "all"
       "wms_title"           "Passagiersvaartuigen"
       "wms_enable_request"  "*"
@@ -127,8 +117,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_A"
-      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_1"
+      EXPRESSION ("[gebied]" ~ "1" AND ( '%gebied%' eq '1'  OR '%gebied%' eq 'all' ))
             
        STYLE
           ANTIALIAS    true
@@ -144,8 +134,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_B"
-      EXPRESSION ("[tariefgebied]" eq "2" AND ( '%tariefgebied%' eq 'B'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_2"
+      EXPRESSION ("[gebied]" ~ "2" AND ( '%gebied%' eq '2'  OR '%gebied%' eq 'all' ))
             
       STYLE
           ANTIALIAS    true
@@ -167,12 +157,7 @@ MAP
   LAYER
     NAME            "precariobelastinggebieden_woonschepen"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geometry FROM public.precariobelasting_woonschepen 
-                    INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by regexp_replace(tarief_per_jaar_per_m2, '[^[:digit:]]', '', 'g')) as tariefgebied
-                      FROM public.precariobelasting_woonschepen as t
-                    ) sub on sub.identifier = precariobelasting_woonschepen.ID
-                    USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.precariobelasting_woonschepen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -181,9 +166,9 @@ MAP
     END
 
     VALIDATION
-      # %tariefgebied% substitutions can only digits and capitals
-      'default_tariefgebied'  'all'
-      'tariefgebied'          '^[0-9A-Z]+$'
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
           
     END
 
@@ -192,7 +177,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Woonschepen"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "tariefgebied"
+      "gml_featureid"       "gebied"
       "gml_include_items"   "all"
       "wms_title"           "Woonschepen"
       "wms_enable_request"  "*"
@@ -205,8 +190,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_A"
-      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_A"
+      EXPRESSION ("[gebied]" ~ "A" AND ( '%gebied%' eq 'A'  OR '%gebied%' eq 'all' ))
             
       STYLE
           ANTIALIAS    true
@@ -221,8 +206,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_B"
-      EXPRESSION ("[tariefgebied]" eq "2" AND ( '%tariefgebied%' eq 'B'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_B"
+      EXPRESSION ("[gebied]" ~ "B" AND ( '%gebied%' eq 'B'  OR '%gebied%' eq 'all' ))
             
       STYLE
           ANTIALIAS    true
@@ -236,24 +221,16 @@ MAP
       END
 
     END
-   
+
   END
 
 # CATEGORIE: TERRASSEN
 # OVERDEKT
 
   LAYER
-    NAME            "precariobelastinggebieden_terrassen_overdekt"
-    GROUP           "Terrassen"
+    NAME            "precariobelastinggebieden_terrassen"
     INCLUDE         "connection_dataservices.inc"
-    DATA            "geometry FROM public.precariobelasting_terrassen 
-                    INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by 
-                      regexp_replace(tarief_overdekt_terras_per_jaar_per_m2, '[^[:digit:]]', '', 'g')
-                      ) as tariefgebied
-                      FROM public.precariobelasting_terrassen as t
-                    ) sub on sub.identifier = precariobelasting_terrassen.ID
-                    USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.precariobelasting_terrassen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -262,122 +239,22 @@ MAP
     END
 
     VALIDATION
-      # %tariefgebied% substitutions can only digits and capitals
-      'default_tariefgebied'  'all'
-      'tariefgebied'          '^[0-9A-Z]+$'
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
           
     END
 
     METADATA
-      "wfs_title"           "Terrassen overdekt"
+      "wfs_title"           "Terrassen"
       "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Terrassen overdekt"
+      "wfs_abstract"        "Terrassen"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "tariefgebied"
+      "gml_featureid"       "gebied"
       "gml_include_items"   "all"
-      "wms_title"           "Terrassen overdekt"
+      "wms_title"           "Terrassen"
       "wms_enable_request"  "*"
-      "wms_abstract"        "Terrassen overdekt"
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Terrassen overdekt"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "100000 450000 150000 500000"  
-    END
-
-    CLASS
-      NAME "tariefgebied_A"
-      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
-            
-      STYLE
-          ANTIALIAS    true
-          COLOR        0 157 230
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR 0 157 230
-          OPACITY      100
-          WIDTH        1
-      END
-
-    END
-
-    CLASS
-      NAME "tariefgebied_B"
-      EXPRESSION ("[tariefgebied]" eq "2" AND ( '%tariefgebied%' eq 'B'  OR '%tariefgebied%' eq 'all' ))
-            
-      STYLE
-          ANTIALIAS    true
-          COLOR        160 0 120
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR  160 0 120
-          OPACITY      100
-          WIDTH        1
-      END
-
-    END
-
-    CLASS
-      NAME "tariefgebied_C"
-      EXPRESSION ("[tariefgebied]" eq "3" AND ( '%tariefgebied%' eq 'C'  OR '%tariefgebied%' eq 'all' ))
-        
-      STYLE
-          ANTIALIAS    true
-          COLOR        0 160 60
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR  0 160 60
-          OPACITY      100
-          WIDTH        1
-      END
-
-    END
-
-  END
-
-
-# CATEGORIE: TERRASSEN
-# ONOVERDEKT ZOMER
-
-   LAYER
-    NAME            "precariobelastinggebieden_terrassen_onoverdekt_zomer"
-    GROUP           "Terrassen"
-    INCLUDE         "connection_dataservices.inc"
-    DATA            "geometry FROM public.precariobelasting_terrassen 
-                    INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by 
-                      regexp_replace(tarief_onoverdekt_terras_per_zomerseizoen_per_m2, '[^[:digit:]]', '', 'g')
-                      ) as tariefgebied
-                      FROM public.precariobelasting_terrassen as t
-                    ) sub on sub.identifier = precariobelasting_terrassen.ID
-                    USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION      "init=epsg:28992"
-    END
-
-    VALIDATION
-      # %tariefgebied% substitutions can only digits and capitals
-      'default_tariefgebied'  'all'
-      'tariefgebied'          '^[0-9A-Z]+$'
-          
-    END
-
-    METADATA
-      "wfs_title"           "Terrassen onoverdekt zomer"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Terrassen  onoverdekt zomer"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "tariefgebied"
-      "gml_include_items"   "all"
-      "wms_title"           "Terrassen onoverdekt zomer"
-      "wms_enable_request"  "*"
-      "wms_abstract"        "Terrassen onoverdekt zomer"
+      "wms_abstract"        "Terrassen"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "Terrassen"
       "wms_format"          "image/png"
@@ -386,8 +263,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_A"
-      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_A"
+      EXPRESSION ("[gebied]" ~ "A" AND ( '%gebied%' eq 'A'  OR '%gebied%' eq 'all' ))
             
       STYLE
           ANTIALIAS    true
@@ -403,8 +280,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_B"
-      EXPRESSION ("[tariefgebied]" eq "2" AND ( '%tariefgebied%' eq 'B'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_B"
+      EXPRESSION ("[gebied]" ~ "B" AND ( '%gebied%' eq 'B'  OR '%gebied%' eq 'all' ))
             
       STYLE
           ANTIALIAS    true
@@ -420,8 +297,8 @@ MAP
     END
 
     CLASS
-      NAME "tariefgebied_C"
-      EXPRESSION ("[tariefgebied]" eq "3" AND ( '%tariefgebied%' eq 'C'  OR '%tariefgebied%' eq 'all' ))
+      NAME "gebied_C"
+      EXPRESSION ("[gebied]" ~ "C" AND ( '%gebied%' eq 'C'  OR '%gebied%' eq 'all' ))
         
       STYLE
           ANTIALIAS    true
@@ -437,70 +314,6 @@ MAP
     END
 
   END
-
-# CATEGORIE: TERRASSEN
-# ONOVERDEKT WINTER
-
-   LAYER
-    NAME            "precariobelastinggebieden_terrassen_onoverdekt_winter"
-    GROUP           "Terrassen"
-    INCLUDE         "connection_dataservices.inc"
-    DATA            "geometry FROM public.precariobelasting_terrassen 
-                    INNER JOIN (
-                      select t.ID as identifier, row_number() over (order by 
-                      regexp_replace(tarief_onoverdekt_terras_per_winterseizoen_per_m2, '[^[:digit:]]', '', 'g')
-                      ) as tariefgebied
-                      FROM public.precariobelasting_terrassen as t
-                    ) sub on sub.identifier = precariobelasting_terrassen.ID
-                    USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION      "init=epsg:28992"
-    END
-
-    VALIDATION
-      # %tariefgebied% substitutions can only digits and capitals
-      'default_tariefgebied'  'all'
-      'tariefgebied'          '^[0-9A-Z]+$'
-          
-    END
-
-    METADATA
-      "wfs_title"           "Terrassen onoverdekt winter"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Terrassen  onoverdekt winter"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "tariefgebied"
-      "gml_include_items"   "all"
-      "wms_title"           "Terrassen  onoverdekt winter"
-      "wms_enable_request"  "*"
-      "wms_abstract"        "Terrassen  onoverdekt winter"
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Terrassen  onoverdekt winter"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "100000 450000 150000 500000"  
-    END
-
-    CLASS
-      NAME "tariefgebied_A"
-      EXPRESSION ("[tariefgebied]" eq "1" AND ( '%tariefgebied%' eq 'A'  OR '%tariefgebied%' eq 'all' ))
-            
-      STYLE
-          ANTIALIAS    true
-          COLOR        0 157 230
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR 0 157 230
-          OPACITY      100
-          WIDTH        1
-      END
-
-    END
-
- END
+END
 #=============================================================================
 END
