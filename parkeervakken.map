@@ -430,6 +430,138 @@ MAP
     END
   END
   
+
+ # Regime vrachtwagens
+ 
+    LAYER
+    NAME            "parkeervakken_vrachtwagens"
+    GROUP           "regimes"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
+                        inner join (
+                              select '00:00:00_06:59:00' as tijdvak
+                              union 
+                              select '07:00:00_17:00:00' 
+                              union 
+                              select '17:01:00_23:59:00' 
+                              union 
+                              select '00:00:00_23:59:00' 
+                              ) AS TV ON 
+                                cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\1') as time)  < eind_tijd and cast(regexp_replace(tijdvak, '^([^_]+)_([^_]+)', '\2') as time)  > begin_tijd
+                                and e_type = 'E8' and bord = 'Vrachtwagens'
+                    USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %tijdvak% substitutions can only digits, underscore and semicolons
+      'default_tijdvak'  'all'
+      'tijdvak'          '^[0-9_:]+$'
+    END
+
+    METADATA
+      "wfs_title"           "parkeervakken_tijdvakken_vrachtwagens"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Vrachtwagenparkeervakken Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "tijdvak"
+      "gml_include_items"   "all"
+      "wms_title"           "parkeervakken_tijdvakken_vrachtwagens"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "regimes"
+      "wms_abstract"        "Vrachtwagenparkeervakken Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "parkeervakken_tijdvakken_vrachtwagens"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+      CLASS
+      NAME "tijdvak_00:00_06:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_06:59:00" AND ( '%tijdvak%' eq '00:00:00_06:59:00'  OR '%tijdvak%' eq 'all' ))   
+     
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 70 153 #004699
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 70 153 #004699
+       OPACITY      70
+       WIDTH        2
+      END
+
+    END
+
+   CLASS
+      NAME "tijdvak_07:00_17:00"
+      EXPRESSION ("[tijdvak]" eq "07:00:00_17:00:00" AND ( '%tijdvak%' eq '07:00:00_17:00:00'  OR '%tijdvak%' eq 'all' ))   
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 157 230 #009DE6
+       OPACITY      100
+       WIDTH        2
+      END
+      
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 157 230 #009DE6
+       OPACITY      70
+       WIDTH        2
+      END
+
+    END
+
+    CLASS
+      NAME "tijdvak_17:01_23:59"
+      EXPRESSION ("[tijdvak]" eq "17:01:00_23:59:00" AND ( '%tijdvak%' eq '17:01:00_23:59:00'  OR '%tijdvak%' eq 'all' ))  
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 190 210 0 #BED200
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        190 210 0 #BED200
+       OPACITY      70
+       WIDTH        2
+      END
+     
+    END
+
+    CLASS
+      NAME "tijdvak_00:00_23:59"
+      EXPRESSION ("[tijdvak]" eq "00:00:00_23:59:00" AND ( '%tijdvak%' eq '00:00:00_23:59:00'  OR '%tijdvak%' eq 'all' ))  
+      
+      STYLE
+       ANTIALIAS    true
+       OUTLINECOLOR 0 160 60 #00A03C
+       OPACITY      100
+       WIDTH        2
+      END
+
+      STYLE
+       ANTIALIAS    true
+       COLOR        0 160 60 #00A03C
+       OPACITY      70
+       WIDTH        2
+      END
+     
+    END
+  END
+
   #=============================================================================
   # LAYERS
   #=============================================================================
