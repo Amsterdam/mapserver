@@ -25,7 +25,7 @@ MAP
 
   #=============================================================================
   # LAYERS PARKEERVAKKEN REGIMES
-  # doel: tonen van 3 typen parkeervakken (de regimes: taxistandplaats, laden&lossen en kiss&ride) op basis van 4 standaardtijdvakken:
+  # doel: tonen van 4 typen parkeervakken (de regimes: taxistandplaats, laden&lossen, kiss&ride en vrachtwagens) op basis van 4 standaardtijdvakken:
   #   00:00 - 06:59
   #   07:00 - 17:00
   #   17.01 - 23.59
@@ -434,7 +434,7 @@ MAP
  # Regime vrachtwagens
  
     LAYER
-    NAME            "parkeervakken_vrachtwagens"
+    NAME            "parkeervakken_tijdvakken_vrachtwagens"
     GROUP           "regimes"
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id 
