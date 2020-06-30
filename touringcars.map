@@ -1,0 +1,403 @@
+#==============================================================================
+#
+# touringcars.map
+# doel: Tonen van de 6 touringcars gerelateerde categorieën: 
+# (1) aanbevolenroutes, 
+# (2) verplichteroutes, 
+# (3) parkeerplaatsen, 
+# (4) in -en uitstaphaltes, 
+# (5) wegwerkzaamheden (tijdelijke verkeershinder)
+# (6) doorrijhoogtes
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Chris van Riel        29-06-2020    Initiatie
+#
+#==============================================================================
+
+MAP
+  NAME "Touringcars categorieën"
+  INCLUDE "header.inc"
+
+
+  WEB
+    METADATA
+      "ows_titel"    "Touringcars categorieën"
+      "ows_abstract" "Touringcars categorieën waarvan Amsterdam de bronhouder is"
+    END
+  END
+
+ ########################## LAYER - DOORRIJHOOGTES (MAXIMALE DOORRIJHOOGTES) ##################################
+
+  LAYER
+    NAME            "touringcars_doorrijhoogtes"
+    PROJECTION      "init=epsg:28992"
+  END
+
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.touringcars_doorrijhoogtes USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   400000
+  
+
+    METADATA
+      "wfs_titel"           "doorrijhoogtes"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "doorrijhoogtes"
+      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_titel"           "doorrijhoogtes"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "doorrijhoogtes"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "doorrijhoogtes"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+      
+    LABELITEM               "titel"
+
+    CLASS
+      NAME                  "maximale doorrijhoogtes"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       200000
+        SYMBOL              'cirkel_oranje'
+        SIZE                16        
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  25000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 5
+      END
+    END 
+  END
+
+########################## LAYER - WERKZAAMHEDEN (TIJDELIJKE VERKEERSHINDER) ##################################
+
+  LAYER
+    NAME            "touringcars_wegwerkzaamheden"
+    PROJECTION      "init=epsg:28992"
+  END
+
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.touringcars_wegwerkzaamheden USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   400000
+  
+
+    METADATA
+      "wfs_titel"           "wegwerkzaamheden"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "wegwerkzaamheden"
+      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_titel"           "wegwerkzaamheden"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "wegwerkzaamheden"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "wegwerkzaamheden"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+      
+    LABELITEM               "titel"
+
+    FILTER                 ("1" = '1')
+
+    CLASS
+      NAME                  "tijdelijke verkeershinder"
+     
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       200000
+        SYMBOL              'cirkel_rood'
+        SIZE                16        
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  25000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 5
+      END
+    END
+  END
+
+  ########################## LAYER - PARKEERPLAATSEN ##################################
+
+  LAYER
+    NAME            "touringcars_parkeerplaatsen"
+    PROJECTION      "init=epsg:28992"
+  END
+
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.touringcars_parkeerplaatsen USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   400000
+  
+
+    METADATA
+      "wfs_titel"           "parkeerplaatsen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "parkeerplaatsen"
+      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_titel"           "parkeerplaatsen"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "parkeerplaatsen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "parkeerplaatsen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+      
+    LABELITEM               "titel"
+
+    FILTER                 ("1" = '1')
+
+    CLASS
+      NAME                  "parkeerplaatsen"
+     
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       200000
+        SYMBOL              'cirkel_groen'
+        SIZE                16        
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  25000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 5
+      END
+    END
+  END
+
+  ########################## LAYER - HALTES (in -en uitstaphaltes) ##################################
+
+  LAYER
+    NAME            "touringcars_haltes"
+    PROJECTION      "init=epsg:28992"
+  END
+
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.touringcars_haltes USING srid=28992 USING UNIQUE id"
+    TYPE            POINT
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   400000
+  
+
+    METADATA
+      "wfs_titel"           "in -en uitstaphaltes"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "in -en uitstaphaltes"
+      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_titel"           "in -en uitstaphaltes"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "in -en uitstaphaltes"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "in -en uitstaphaltes"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+      
+    LABELITEM               "titel"
+
+    FILTER                 ("1" = '1')
+
+    CLASS
+      NAME                  "in -en uitstaphaltes"
+     
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       200000
+        SYMBOL              'cirkel_lichtblauw'
+        SIZE                16        
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  25000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 5
+      END
+    END
+  END
+
+  ########################## LAYERS* - AANBEVOLENROUTES ##################################
+
+  LAYER
+    NAME            "touringcars_aanbevolenroutes"
+    PROJECTION      "init=epsg:28992"
+  END
+
+    INCLUDE         "connection_dataservices.inc"   
+    DATA            "geometry FROM public.touringcars_aanbevolenroutes USING srid=28992 USING UNIQUE id"
+    TYPE            LINE
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   400000
+  
+    VALIDATION
+      # %titel% substitutions can only characters
+      'default_titel'  'all'
+      'titel'          '^[A-Za-z]+$'
+    END
+
+    METADATA
+      "wfs_titel"           "touringcars_aanbevolenroutes"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "touringcars_aanbevolenroutes"
+      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_titel"           "touringcars_aanbevolenroutes"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Aanbevolenroutes"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "touringcars_aanbevolenroutes"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+         
+      
+    LABELITEM               "titel"
+
+    CLASS
+      NAME                  "touringcars_aanbevolenroutes"
+          
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       200000
+        WIDTH               2
+        COLOR               204 0 204
+        OUTLINECOLOR        102 0 102
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  25000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 5
+      END
+    END
+  END
+
+
+
+  ########################## LAYER - VERPLICHTEROUTES ##################################
+
+  LAYER
+    NAME            "touringcars_verplichteroutes"
+    PROJECTION      "init=epsg:28992"
+  END
+
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.touringcars_verplichteroutes USING srid=28992 USING UNIQUE id"
+    TYPE            LINE
+    MINSCALEDENOM   10
+    MAXSCALEDENOM   400000
+  
+
+    METADATA
+      "wfs_titel"           "verplichteroutes"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "verplichteroutes"
+      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_titel"           "verplichteroutes"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "verplichteroutes"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "verplichteroutes"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+      
+    LABELITEM               "titel"
+
+    FILTER                 ("1" = '1')
+
+    CLASS
+      NAME                  "verplichteroutes"
+     
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       200000
+        WIDTH               2
+        COLOR               255 0 0
+        OUTLINECOLOR        204 0 0        
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  25000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 5
+      END
+    END
+  END
+#=============================================================================
+END
