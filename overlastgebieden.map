@@ -384,6 +384,86 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "COVID19_alcoholverkoopverbod"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='AVV')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "COVID19_alcoholverkoopverbod"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "COVID19 alcoholverkoopverbod van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "COVID19_alcoholverkoopverbod"
+      STYLE
+       ANTIALIAS    true
+       COLOR        153 153 0
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 153 153 0
+       WIDTH        2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "COVID19_straatartiestenverbod"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='SAV')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "COVID19 straatartiestenverbod"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "COVID19 straatartiestenverbod van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "COVID19_straatartiestenverbod"
+      STYLE
+       ANTIALIAS    true
+       COLOR        153 255 153
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 153 255 153
+       WIDTH        2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
 
   LAYER
@@ -971,6 +1051,137 @@ MAP
 
   END
 
+#-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "COVID19_straatartiestenverbod_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='SAV')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "COVID19_straatartiestenverbod_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "COVID19 straatartiestenverbod van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "COVID19_straatartiestenverbod_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          153 255 153
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          153 255 153
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          153 255 153
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "COVID19_alcoholverkoopverbod_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_overlastgebieden.inc"
+    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    FILTER          ([overlastgebied_type]='AVV')
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "COVID19_alcoholverkoopverbod_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "COVID19 alcoholverkoopverbod label van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      TEXT             '[naam]'
+      NAME             "COVID19_alcoholverkoopverbod_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          153 153 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          153 153 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          153 153 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
 
 #==============================================================================
 END
