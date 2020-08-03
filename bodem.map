@@ -172,7 +172,7 @@ MAP
 
     CLASS
       NAME                  "-10 - 0 mg/kg"
-      EXPRESSION            ([concentratie] < 0)
+      EXPRESSION            ([waarde_concentratie] < 0)
       STYLE
         SYMBOL              "stip"
         COLOR               "#0075b9"
@@ -182,7 +182,7 @@ MAP
 
     CLASS
       NAME                  "0,1 - 10 mg/kg"
-      EXPRESSION            (([concentratie] >= 0.1) && ([concentratie] < 10.1))
+      EXPRESSION            (([waarde_concentratie] >= 0.1) && ([waarde_concentratie] < 10.1))
       STYLE
         SYMBOL              "stip"
         COLOR               "#8d8dff"
@@ -192,7 +192,7 @@ MAP
 
     CLASS
       NAME                  "10,1 - 100 mg/kg"
-      EXPRESSION            (([concentratie] >= 10.1) && ([concentratie] < 100.1))
+      EXPRESSION            (([waarde_concentratie] >= 10.1) && ([waarde_concentratie] < 100.1))
       STYLE
         SYMBOL              "stip"
         COLOR               "#7500ff"
@@ -202,7 +202,7 @@ MAP
 
     CLASS
       NAME                  "> 100,1 mg/kg"
-      EXPRESSION            ([concentratie] >= 100.1)
+      EXPRESSION            ([waarde_concentratie] >= 100.1)
       STYLE
         SYMBOL              "stip"
         COLOR               "#6c0000"
