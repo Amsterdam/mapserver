@@ -31,8 +31,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_bominslag_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_bominslag USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -161,8 +161,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_verdachtgebied_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_verdachtgebied USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -255,8 +255,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_gevrijwaardgebied_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_gevrijwaardgebied USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -307,8 +307,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_uitgevoerdonderzoek_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_uitgevoerdonderzoek USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
