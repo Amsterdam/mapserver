@@ -36,7 +36,7 @@ MAP
             "wms_style"                             "default"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaart.png"
+            "wms_style_default_legendurl_href"      "http://mapserver/legend/legendabasiskaart.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -58,7 +58,7 @@ MAP
             "wms_style"                             "default"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartlight.png"
+            "wms_style_default_legendurl_href"      "http://mapserver/legend/legendabasiskaartlight.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -80,7 +80,7 @@ MAP
             "wms_style"                             "default"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
+            "wms_style_default_legendurl_href"      "http://mapserver/legend/legendabasiskaartzwartwit.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -98,7 +98,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           20000
@@ -125,7 +125,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           20000
@@ -136,7 +136,7 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - Light"
             "wms_srs"             "EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_light.xml"
+            "wms_sld_url"         "http://mapserver/sld/kbk50_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -153,7 +153,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           20000
@@ -164,7 +164,7 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_zw.xml"
+            "wms_sld_url"         "http://mapserver/sld/kbk50_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -185,7 +185,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
         MINSCALEDENOM           3500
@@ -212,7 +212,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
         MINSCALEDENOM           3500
@@ -223,7 +223,7 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam -Light"
             "wms_srs"             "EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_light.xml"
+            "wms_sld_url"         "http://mapserver/sld/kbk10_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -240,7 +240,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
         MINSCALEDENOM           3500
@@ -251,7 +251,7 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_zw.xml"
+            "wms_sld_url"         "http://mapserver/sld/kbk10_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -272,7 +272,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           3500
         MINSCALEDENOM           0
@@ -299,7 +299,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           3500
         MINSCALEDENOM           0
@@ -310,7 +310,7 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - Light"
             "wms_srs"             "EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_light.xml"
+            "wms_sld_url"         "http://mapserver/sld/bgt_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -327,7 +327,7 @@ MAP
           "init=epsg:28992"
         END
         TYPE                      RASTER
-        CONNECTION                "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION                "http://mapserver/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE            WMS
         MAXSCALEDENOM             3500
         MINSCALEDENOM             0
@@ -338,7 +338,7 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_zw.xml"
+            "wms_sld_url"         "http://mapserver/sld/bgt_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -359,7 +359,7 @@ MAP
            "init=epsg:28992"
            END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           0
@@ -386,7 +386,7 @@ MAP
            "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           0
@@ -413,7 +413,7 @@ MAP
            "init=epsg:28992"
            END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://mapserver/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           0
