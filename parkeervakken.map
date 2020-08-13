@@ -654,7 +654,7 @@ MAP
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.parkeervakken_parkeervakken
                               join (select parent_id, string_agg(bord, ',') as bord from parkeervakken_parkeervakken_regimes
-                              where bord is not null and bord <> '' group by parent_id) pvr
+                              where e_type <> 'E6b' and bord is not null and bord <> '' group by parent_id) pvr
                               on ID = pvr.parent_id USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   10
@@ -710,13 +710,15 @@ MAP
        'categorie'     '^[0-9a-z_,]{1,256}$'
     END
 
-    DATA            "geometry FROM public.parkeervakken_parkeervakken
+    DATA            "geometry FROM public.parkeervakken_parkeervakken pv
                               join (select parent_id
                                          , string_agg(nullif(opmerking, ''), ',') as opmerkingen
                                          , string_agg(nullif(bord, ''), ',') as bord
-                              from parkeervakken_parkeervakken_regimes
-                              group by parent_id) pvr
-                              on ID = pvr.parent_id
+                              from parkeervakken_parkeervakken_regimes pvr
+                              where (pvr.begin_datum is not null and current_date between pvr.begin_datum and pvr.eind_datum)
+                              or (pvr.begin_datum is null and nullif(pvr.e_type,'') is not null)
+                              group by parent_id) pvr1
+                              on pv.id = pvr1.parent_id
                     USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
