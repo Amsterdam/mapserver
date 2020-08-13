@@ -711,7 +711,9 @@ MAP
     END
 
     DATA            "geometry FROM public.parkeervakken_parkeervakken
-                              join (select parent_id, string_agg(opmerking, ',') as opmerkingen, string_agg(bord, ',') as bord
+                              join (select parent_id
+                                         , string_agg(nullif(opmerking, ''), ',') as opmerkingen
+                                         , string_agg(nullif(bord, ''), ',') as bord
                               from parkeervakken_parkeervakken_regimes
                               group by parent_id) pvr
                               on ID = pvr.parent_id
