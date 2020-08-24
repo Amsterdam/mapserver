@@ -106,7 +106,7 @@ MAP
         NAME            "gebiedsverbodparken"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_gebiedsverbodparken USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_verbodparken USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='GVP')
         TYPE            POLYGON
         MINSCALEDENOM   100
