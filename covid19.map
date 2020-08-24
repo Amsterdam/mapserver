@@ -29,7 +29,7 @@ MAP
         NAME            "alcoholverkoopverbodgebied"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_alcoholverkoopverbod USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='AVV')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -67,7 +67,7 @@ MAP
         NAME            "straatartiestenverbod"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_straatartiestverbod USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='SAV')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -106,7 +106,7 @@ MAP
         NAME            "gebiedsverbodparken"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_gebiedsverbodparken USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='GVP')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -144,7 +144,7 @@ MAP
         NAME            "mondmaskerverplichting"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_mondmaskerverplichting USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='MMP')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -182,7 +182,7 @@ MAP
         NAME            "aanlegverbod"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_aanlegverbod USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='ALV')
         TYPE            POLYGON
         MINSCALEDENOM   100
