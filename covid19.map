@@ -29,7 +29,7 @@ MAP
         NAME            "alcoholverkoopverbodgebied"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_alcoholverkoopverbod USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='AVV')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -67,7 +67,7 @@ MAP
         NAME            "straatartiestenverbod"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_straatartiestverbod USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='SAV')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -103,10 +103,10 @@ MAP
 
 
     LAYER
-        NAME            "gebiedsverbodparken"
+        NAME            "gebiedsverbod"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_gebiedsverbod USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='GVP')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -117,15 +117,15 @@ MAP
     END
 
     METADATA
-      "ows_title"           "COVID19 gebiedsverbodparken"
+      "ows_title"           "COVID19 gebiedsverbod"
       "ows_group_title"     "COVID19 gebiedsrestricties"
-      "ows_abstract"        "COVID19 gebiedsverbodparken gemeente Amsterdam"
+      "ows_abstract"        "COVID19 gebiedsverbod gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
     CLASS
-        NAME          "gebiedsverbodparken"
+        NAME          "gebiedsverbod"
         STYLE
             ANTIALIAS    true
             COLOR        51 0 51
@@ -144,7 +144,7 @@ MAP
         NAME            "mondmaskerverplichting"
         GROUP           "gebiedsrestricties"
         INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.covid_19_mondmaskerverplichting USING srid=28992 USING UNIQUE id"
         FILTER          ([type]='MMP')
         TYPE            POLYGON
         MINSCALEDENOM   100
@@ -171,44 +171,6 @@ MAP
         END
         STYLE
             OUTLINECOLOR 255 128 17
-            WIDTH        2
-        END
-      END
-    END
-
-# ----- CATEGORIE: AANLEGVERBOD ------
-
-    LAYER
-        NAME            "aanlegverbod"
-        GROUP           "gebiedsrestricties"
-        INCLUDE         "connection_dataservices.inc"
-        DATA            "geometry FROM public.covid_19_covid_19 USING srid=28992 USING UNIQUE id"
-        FILTER          ([type]='ALV')
-        TYPE            POLYGON
-        MINSCALEDENOM   100
-        MAXSCALEDENOM   400000
-        TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-        PROJECTION
-        "init=epsg:28992"
-    END
-
-    METADATA
-        "ows_title"           "COVID19 aanlegverbod"
-        "ows_group_title"     "COVID19 aanlegverbod"
-        "ows_abstract"        "COVID19 aanlegverbod gemeente Amsterdam"
-        "gml_featureid"       "ID"
-        "gml_include_items"   "all"
-    END
-
-    CLASS
-        NAME          "aanlegverbod"
-        STYLE
-            ANTIALIAS    true
-            COLOR        204 204 0
-            OPACITY      20
-        END
-        STYLE
-            OUTLINECOLOR 51 51 0
             WIDTH        2
         END
       END
