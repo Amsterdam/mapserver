@@ -22,15 +22,16 @@
 #
 # -----------------------------------------
 #
-# From 2018 the luchtfotos files need to be translated first to remove an alpha layer. Run this in the dir of the external harddrive
+# In 2018/2019 the luchtfotos files need to be translated first to remove an alpha layer. Run this in the dir of the external harddrive
+# In the 2020 dataset this layer does not seem to exist anymore.
 #
 # for i in *.tif; do
 #     [ -f "$i" ] || break
-#     gdal_translate $i /mnt/lufo2019/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
+#     gdal_translate $i /mnt/lufo2020/$i -b 1 -b 2 -b 3 -mask 4 --config GDAL_TIFF_INTERNAL_MASK YES
 # done
 #
-# cp -a *.aux /mnt/lufo2019
-# cp -a *.tfw /mnt/lufo2019
+# cp -a *.aux /mnt/lufo2020
+# cp -a *.tfw /mnt/lufo2020
 
 SOURCEDIR=$1
 DESTDIR_ROOT=$2
@@ -46,9 +47,9 @@ fi
 
 ls $SOURCEDIR/*.tif > /tmp/list.txt
 
-if [ -d $DESTDIR ] ; then
-    rm -rf $DESTDIR
-fi
+#if [ -d $DESTDIR ] ; then
+#    rm -rf $DESTDIR
+#fi
 
 mkdir -p $DESTDIR/0
 gdal_retile.py -v -r cubic -levels 5 -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR --optfile /tmp/list.txt
