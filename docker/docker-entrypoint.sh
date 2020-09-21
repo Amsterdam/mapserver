@@ -236,4 +236,6 @@ mkdir -p /srv/mapserver/config
 python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
 
 echo Starting server
+# Apache gets grumpy about PID files pre-existing
+rm -f /var/run/apache2/apache2.pid
 apachectl -D FOREGROUND
