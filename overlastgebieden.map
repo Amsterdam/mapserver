@@ -397,7 +397,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "algemeen_overlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -461,7 +461,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "cameratoezichtgebied_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -525,7 +525,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "dealeroverlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -589,7 +589,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "uitgaansoverlastgebied_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -653,7 +653,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "alcoholverbodsgebied_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -717,7 +717,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "taxi-standplaatsgebied_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -766,7 +766,6 @@ MAP
     GROUP           "overlastgebieden"
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='VVZ')
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -782,7 +781,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "vuurwerkvrijezone_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -848,7 +847,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "barbecueverbodsgebieden_label"
       LABEL
         MAXSCALEDENOM  3000
@@ -914,7 +913,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam]'
+      TEXT             '[oov_naam]'
       NAME             "rondleidingverbodsgebieden_label"
       LABEL
         MAXSCALEDENOM  3000
