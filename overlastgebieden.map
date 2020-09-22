@@ -29,9 +29,8 @@ MAP
     LAYER
     NAME            "algemeen_overlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='AOG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -69,9 +68,8 @@ MAP
   LAYER
     NAME            "cameratoezichtgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='CTG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -109,9 +107,8 @@ MAP
   LAYER
     NAME            "dealeroverlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='DOG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -149,9 +146,8 @@ MAP
   LAYER
     NAME            "uitgaansoverlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='UOG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -189,9 +185,8 @@ MAP
   LAYER
     NAME            "alcoholverbodsgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='AVG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -229,9 +224,8 @@ MAP
   LAYER
     NAME            "taxi-standplaatsgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='TAXI')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -269,9 +263,8 @@ MAP
   LAYER
     NAME            "vuurwerkvrijezone"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='VVZ')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -309,9 +302,8 @@ MAP
   LAYER
     NAME            "barbecueverbodsgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='BBQ')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -349,9 +341,8 @@ MAP
   LAYER
     NAME            "rondleidingverbodsgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='RLV')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
@@ -383,173 +374,15 @@ MAP
 
   END
 
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "COVID19_alcoholverkoopverbod"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='AVV')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19_alcoholverkoopverbod"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 alcoholverkoopverbod van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "COVID19_alcoholverkoopverbod"
-      STYLE
-       ANTIALIAS    true
-       COLOR        229 0 130
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 229 0 130
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "COVID19_straatartiestenverbod"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='SAV')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19 straatartiestenverbod"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 straatartiestenverbod van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "COVID19_straatartiestenverbod"
-      STYLE
-       ANTIALIAS    true
-       COLOR        0 157 230
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 0 157 230
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "COVID19_gebiedsverbodparken"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='GVP')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19_gebiedsverbodparken"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 Gebiedsverbodparken van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "COVID19_gebiedsverbodparken"
-      STYLE
-       ANTIALIAS    true
-       COLOR        51 0 51
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 51 0 51
-       WIDTH        2
-      END
-    END
-
-  END
-
-#-----------------------------------------------------------------------------
-
-   LAYER
-    NAME            "COVID19_mondmaskerverplichting"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='MMP')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19 mondmaskerverplichting"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 Mondmaskerverplichting van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "COVID19_mondmaskerverplichting"
-      STYLE
-       ANTIALIAS    true
-       COLOR        255 128 17
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 255 128 17
-       WIDTH        2
-      END
-    END
-
-  END
-
+ 
   #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
 
   LAYER
     NAME            "algemeen_overlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='AOG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MAXSCALEDENOM   8000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -611,9 +444,8 @@ MAP
   LAYER
     NAME            "cameratoezichtgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='CTG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -676,9 +508,8 @@ MAP
   LAYER
     NAME            "dealeroverlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='DOG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -741,9 +572,8 @@ MAP
   LAYER
     NAME            "uitgaansoverlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='UOG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -806,9 +636,8 @@ MAP
   LAYER
     NAME            "alcoholverbodsgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='AVG')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -871,9 +700,8 @@ MAP
   LAYER
     NAME            "taxi-standplaatsgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='TAXI')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -936,8 +764,8 @@ MAP
   LAYER
     NAME            "vuurwerkvrijezone_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"
     FILTER          ([overlastgebied_type]='VVZ')
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1001,9 +829,8 @@ MAP
   LAYER
     NAME            "barbecueverbodsgebieden_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='BBQ')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -1068,9 +895,8 @@ MAP
   LAYER
     NAME            "rondleidingverbodsgebieden_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='RLV')
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id"    
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -1129,268 +955,5 @@ MAP
 
   END
 
-#-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "COVID19_straatartiestenverbod_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='SAV')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19_straatartiestenverbod_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 straatartiestenverbod van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[naam]'
-      NAME             "COVID19_straatartiestenverbod_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          153 255 153
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          153 255 153
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          153 255 153
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "COVID19_alcoholverkoopverbod_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='AVV')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19_alcoholverkoopverbod_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 alcoholverkoopverbod label van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[naam]'
-      NAME             "COVID19_alcoholverkoopverbod_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          229 0 130
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          229 0 130
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          229 0 130
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-   #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "COVID19_mondmaskerverplichting_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='MMP')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19_mondmaskerverplichting_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 mondmaskerverplichting label van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[naam]'
-      NAME             "COVID19_mondmaskerverplichting_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          255 128 17
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          255 128 17
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          255 128 17
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
- #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "COVID19_gebiedsverbodparken_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection_overlastgebieden.inc"
-    DATA            "geometrie FROM public.geo_overlastgebieden USING srid=28992 USING UNIQUE id"
-    FILTER          ([overlastgebied_type]='GVP')
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "COVID19_gebiedsverbodparken_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "COVID19 gebiedsverbodparken label van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[naam]'
-      NAME             "COVID19_gebiedsverbodparken_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          51 0 51
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          51 0 51
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          51 0 51
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
 #==============================================================================
 END
