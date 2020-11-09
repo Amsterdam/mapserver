@@ -3108,4 +3108,845 @@ MAP
     END
   END
 
+#-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "pand_loopafstand"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM ( 
+                            SELECT bol.id
+                            , bol.geometrie
+                            , lac.loopafstand_categorie_omschrijving
+                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
+                            ON bol.loopafstand_categorie_id = lac.id
+                            WHERE 1=1 
+                            AND bol.fractie_omschrijving = 'Rest'
+                            ) rest USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "Rest container"
+      "wms_enable_request"  "*"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_group_title"     "loopafstand (per pand)"
+      "wms_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wms_srs"             "EPSG:28992"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_name"            "Rest container"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+      CLASS
+      NAME                  "<= 30 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "0 - 30 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        50 114 48
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "30 - 90 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "30 - 90 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        77 175 74
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "90 - 120 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "90 - 120 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        157 175 157
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "120 - 150 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "120 - 150 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 127 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  128 62 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "150 - 210 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "150 - 210 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 75 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  209 59 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "210 - 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "210 - 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        110 110 110
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  200 200 200
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "> 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        252 3 3
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  94 0 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+     CLASS
+      NAME                  "geen afstand bepaald"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "geen afstand bepaald")
+      STYLE
+            ANTIALIAS    true
+            COLOR        204 204 204
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  194 194 194
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "pand_loopafstand"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM ( 
+                            SELECT bol.id
+                            , bol.geometrie
+                            , lac.loopafstand_categorie_omschrijving
+                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
+                            ON bol.loopafstand_categorie_id = lac.id
+                            WHERE 1=1 
+                            AND bol.fractie_omschrijving = 'Papier'
+                            ) rest USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "Papier container"
+      "wms_enable_request"  "*"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_group_title"     "loopafstand (per pand)"
+      "wms_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wms_srs"             "EPSG:28992"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_name"            "Papier container"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+      CLASS
+      NAME                  "<= 30 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "0 - 30 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        50 114 48
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "30 - 90 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "30 - 90 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        77 175 74
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "90 - 120 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "90 - 120 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        157 175 157
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "120 - 150 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "120 - 150 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 127 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  128 62 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "150 - 210 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "150 - 210 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 75 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  209 59 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "210 - 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "210 - 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        110 110 110
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  200 200 200
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "> 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        252 3 3
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  94 0 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+     CLASS
+      NAME                  "geen afstand bepaald"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "geen afstand bepaald")
+      STYLE
+            ANTIALIAS    true
+            COLOR        204 204 204
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  194 194 194
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "pand_loopafstand"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM ( 
+                            SELECT bol.id
+                            , bol.geometrie
+                            , lac.loopafstand_categorie_omschrijving
+                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
+                            ON bol.loopafstand_categorie_id = lac.id
+                            WHERE 1=1 
+                            AND bol.fractie_omschrijving = 'Glas'
+                            ) rest USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "Papier container"
+      "wms_enable_request"  "*"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_group_title"     "loopafstand (per pand)"
+      "wms_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wms_srs"             "EPSG:28992"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_name"            "Papier container"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+      CLASS
+      NAME                  "<= 30 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "0 - 30 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        50 114 48
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "30 - 90 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "30 - 90 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        77 175 74
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "90 - 120 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "90 - 120 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        157 175 157
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "120 - 150 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "120 - 150 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 127 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  128 62 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "150 - 210 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "150 - 210 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 75 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  209 59 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "210 - 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "210 - 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        110 110 110
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  200 200 200
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "> 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        252 3 3
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  94 0 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+     CLASS
+      NAME                  "geen afstand bepaald"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "geen afstand bepaald")
+      STYLE
+            ANTIALIAS    true
+            COLOR        204 204 204
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  194 194 194
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+  END
+
+ #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "pand_loopafstand"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM ( 
+                            SELECT bol.id
+                            , bol.geometrie
+                            , lac.loopafstand_categorie_omschrijving
+                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
+                            ON bol.loopafstand_categorie_id = lac.id
+                            WHERE 1=1 
+                            AND bol.fractie_omschrijving = 'Plastic'
+                            ) rest USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "Papier container"
+      "wms_enable_request"  "*"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_group_title"     "loopafstand (per pand)"
+      "wms_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wms_srs"             "EPSG:28992"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_name"            "Papier container"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+      CLASS
+      NAME                  "<= 30 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "0 - 30 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        50 114 48
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "30 - 90 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "30 - 90 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        77 175 74
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "90 - 120 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "90 - 120 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        157 175 157
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "120 - 150 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "120 - 150 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 127 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  128 62 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "150 - 210 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "150 - 210 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 75 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  209 59 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "210 - 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "210 - 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        110 110 110
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  200 200 200
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "> 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        252 3 3
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  94 0 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+     CLASS
+      NAME                  "geen afstand bepaald"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "geen afstand bepaald")
+      STYLE
+            ANTIALIAS    true
+            COLOR        204 204 204
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  194 194 194
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+  END
+
+#-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "pand_loopafstand"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM ( 
+                            SELECT bol.id
+                            , bol.geometrie
+                            , lac.loopafstand_categorie_omschrijving
+                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
+                            ON bol.loopafstand_categorie_id = lac.id
+                            WHERE 1=1 
+                            AND bol.fractie_omschrijving = 'Textiel'
+                            ) rest USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "Papier container"
+      "wms_enable_request"  "*"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_group_title"     "loopafstand (per pand)"
+      "wms_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wms_srs"             "EPSG:28992"
+      #"wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_name"            "Papier container"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+      CLASS
+      NAME                  "<= 90 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "0 - 90 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        50 114 48
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "90 - 180 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "90 - 180 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        77 175 74
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "180 - 350 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "180 - 350 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        157 175 157
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  56 128 54
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "350 - 370 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "350 - 370 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 127 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  128 62 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "370 - 480 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "370 - 480 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        255 75 0
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  209 59 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "480 - 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        110 110 110
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  200 200 200
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+    CLASS
+      NAME                  "> 1000 m"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "480 - 1000 M")
+      STYLE
+            ANTIALIAS    true
+            COLOR        252 3 3
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  94 0 0
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+     CLASS
+      NAME                  "geen afstand bepaald"
+      EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "geen afstand bepaald")
+      STYLE
+            ANTIALIAS    true
+            COLOR        204 204 204
+            OPACITY      100
+        END
+        STYLE
+            OUTLINECOLOR  194 194 194
+            OPACITY      100
+            WIDTH        1
+        END
+    END
+
+  END
+
+
 END
