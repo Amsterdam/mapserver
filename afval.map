@@ -42,19 +42,18 @@ MAP
   LAYER
     NAME                    "container_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM public.container_locations USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
-      "wfs_title"           "containers"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_title"           "containers"      
       "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -62,11 +61,9 @@ MAP
       "gml_types"           "auto"
       "wms_title"           "container_coordinaten"
       "wms_enable_request"  "*"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_extent"			    "100000 450000 150000 500000"
       "wms_group_title"     "kilogram"
-      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_srs"             "EPSG:4326"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"           
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -109,30 +106,30 @@ MAP
   LAYER
     NAME                    "gfe_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='GFT') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='GFT') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "gfe"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "kca_coordinaten"
+      "wms_title"           "gft_coordinaten"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -171,19 +168,19 @@ MAP
   LAYER
     NAME                    "kca_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='KCA') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='KCA') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "kca"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -193,8 +190,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28922"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -236,19 +233,19 @@ MAP
   LAYER
     NAME                    "textiel_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Textiel') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Textiel') as foo USING srid=4326 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "textiel"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -258,8 +255,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -299,19 +296,19 @@ MAP
   LAYER
     NAME                    "papier_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Papier') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Papier') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "papier"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -321,8 +318,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_srs"             "EPSG:4326"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_srs"             "EPSG:28992"
+      "wms_extent"			    "100000 450000 150000 500000"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -361,19 +358,19 @@ MAP
   LAYER
     NAME                    "glas_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Glas') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Glas') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "glas"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Rest container coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -383,8 +380,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Glas container coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -424,19 +421,19 @@ MAP
   LAYER
     NAME                    "plastic_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Plastic') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Plastic') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "plastic"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Plastic container coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -446,8 +443,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Plastic container coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -487,19 +484,19 @@ MAP
   LAYER
     NAME                    "rest_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.container_locations WHERE waste_name='Rest') as foo USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Rest') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "rest"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Rest container coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -509,8 +506,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -543,149 +540,15 @@ MAP
 
     END
   END
-
-
+  
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME                    "well_coordinaten"
+    NAME                    "brood_coordinaten"
     GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM public.afvalcontainers_well USING srid=4326 USING UNIQUE id"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Brood') as foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
-
-    PROJECTION
-      "init=epsg:4326"
-    END
-
-    METADATA
-      "wfs_title"           "well_coordinaten"
-      "wfs_srs"             "EPSG:4326"
-      "wfs_adstract"        "well coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "well_coordinaten"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Well coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
-      "wms_name"            "well_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    LABELITEM               "id"
-
-    CLASS
-      NAME                  "Well"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               102 102 102
-        SIZE                10
-        OUTLINECOLOR        0 0 0
-        WIDTH               1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          102 102 102
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "site_points"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "centroid FROM public.afvalcontainers_site USING srid=4326 USING UNIQUE id"
-    TYPE                    POINT
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
-
-    PROJECTION
-      "init=epsg:4326"
-    END
-
-    METADATA
-      "wfs_title"           "site_coordinaten"
-      "wfs_srs"             "EPSG:4326"
-      "wfs_adstract"        "site coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "site_coordinaten"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Site coordinaten Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
-      "wms_name"            "site_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    LABELITEM               "short_id"
-
-    CLASS
-      NAME                  "Site"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               102 102 102
-        SIZE                10
-        OUTLINECOLOR        0 0 0
-        WIDTH               1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  2000
-        COLOR          102 102 102
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "site_circle"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "geometrie FROM public.afvalcontainers_site USING srid=28992 USING UNIQUE id"
-    TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
@@ -694,40 +557,38 @@ MAP
     END
 
     METADATA
-      "wfs_title"           "site_geometrie"
+      "wfs_title"           "brood"
       "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "site geometrie Amsterdam"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "site_geometrie"
+      "wms_title"           "brood_coordinaten"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Site geometrie Amsterdam"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
       "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "site_geometrie"
+      "wms_name"            "afvalcontainers_coordinaten"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
     END
 
-    LABELITEM               "short_id"
+    LABELITEM               "id"
 
     CLASS
-      NAME                  "Site"
+      NAME                  "Broodcontainer"
       STYLE
+        SIZE                30
         MINSCALEDENOM       10
         MAXSCALEDENOM       500001
-        COLOR               102 102 102
-        SIZE                10
-        OUTLINECOLOR        0 0 0
-        WIDTH               1
+        SYMBOL              'circle_purple'
       END
 
       LABEL
         MINSCALEDENOM  10
-        MAXSCALEDENOM  2000
+        MAXSCALEDENOM  4000
         COLOR          102 102 102
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -742,7 +603,193 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+ #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "PMD_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='PMD') as foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "PMD"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "PMD_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "BMPcontainer"
+      STYLE
+        SIZE                30
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'circle_pink'
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+ #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "grof_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='Grof') as foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "grof"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "grof_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Grofcontainer"
+      STYLE
+        SIZE                30
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'circle_red'
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+#-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "onbekend_coordinaten"
+    GROUP                   "afvalcontainers"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.huishoudelijkafval_container WHERE fractie_omschrijving='onbekend') as foo USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "onbekend"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "onbekend_coordinaten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "afvalcontainers"
+      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "afvalcontainers_coordinaten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "Onbekendcontainer"
+      STYLE
+        SIZE                30
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'circle_grey'
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+  
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    "enevo_site_points"
@@ -807,745 +854,31 @@ MAP
 
     END
   END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "kca"
-    GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "wkb_geometry FROM public.pand_distance_to_kca USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           4000000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "kca_pand_distance"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "kca afstanden Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "KCA_afstanden"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "KCA afstanden Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "kca_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    CLASS
-      NAME                  "< 100 m"
-      EXPRESSION ([st_distance] < 100)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               0 104 55
-      END
-    END
-
-    CLASS
-      NAME                  "< 200 m"
-      EXPRESSION ([st_distance] < 200)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               26 152 80
-      END
-    END
-
-    CLASS
-      NAME                  "< 400 m"
-      EXPRESSION ([st_distance] < 400)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               102 189 99
-      END
-    END
-
-    CLASS
-      NAME                  "< 500 m"
-      EXPRESSION ([st_distance] < 500)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "kca"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               252  42 102
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "glas"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "wkb_geometry FROM public.pand_distance_to_glas USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           4000000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "glas_pand_distance"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "glas afstanden Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "Glas_afstanden"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Glas afstanden Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "glas_afstanden"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    CLASS
-      NAME                  "< 40 m"
-      EXPRESSION ([st_distance] < 40)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               0 104 55
-      END
-    END
-
-    CLASS
-      NAME                  "< 60 m"
-      EXPRESSION ([st_distance] < 60)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               26 152 80
-      END
-    END
-
-    CLASS
-      NAME                  "< 80 m"
-      EXPRESSION ([st_distance] < 80)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               102 189 99
-      END
-    END
-
-    CLASS
-      NAME                  "< 90 m"
-      EXPRESSION ([st_distance] < 90)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "< 105 m"
-      EXPRESSION ([st_distance] < 105)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               217 239 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 120 m"
-      EXPRESSION ([st_distance] < 120)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               254 224 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 140 m"
-      EXPRESSION ([st_distance] < 140)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               253 174 97
-      END
-    END
-
-    CLASS
-      NAME                  "< 170 m"
-      EXPRESSION ([st_distance] < 170)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               244 109 67
-      END
-    END
-
-    CLASS
-      NAME                  "< 190 m"
-      EXPRESSION ([st_distance] < 190)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               215 48 39
-      END
-    END
-
-    CLASS
-      NAME                  "glas"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               165 0 38
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "papier"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "wkb_geometry FROM public.pand_distance_to_papier USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           4000000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "papier_pand_distance"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "papier afstanden Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "Papier_afstanden"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Papier afstanden Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "papier_afstanden"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    CLASS
-      NAME                  "< 40 m"
-      EXPRESSION ([st_distance] < 40)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               0 104 55
-      END
-    END
-
-    CLASS
-      NAME                  "< 60 m"
-      EXPRESSION ([st_distance] < 60)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               26 152 80
-      END
-    END
-
-    CLASS
-      NAME                  "< 80 m"
-      EXPRESSION ([st_distance] < 80)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               102 189 99
-      END
-    END
-
-    CLASS
-      NAME                  "< 90 m"
-      EXPRESSION ([st_distance] < 90)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "< 105 m"
-      EXPRESSION ([st_distance] < 105)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               217 239 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 120 m"
-      EXPRESSION ([st_distance] < 120)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               254 224 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 140 m"
-      EXPRESSION ([st_distance] < 140)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               253 174 97
-      END
-    END
-
-    CLASS
-      NAME                  "< 170 m"
-      EXPRESSION ([st_distance] < 170)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               244 109 67
-      END
-    END
-
-    CLASS
-      NAME                  "< 190 m"
-      EXPRESSION ([st_distance] < 190)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               215 48 39
-      END
-    END
-
-    CLASS
-      NAME                  "papier"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               165 0 38
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "rest"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "wkb_geometry FROM public.pand_distance_to_rest USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           4000000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "rest_pand_distance"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "rest afstanden Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "Rest_afstanden"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Rest afstanden Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "rest_afstanden"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    CLASS
-      NAME                  "< 20 m"
-      EXPRESSION ([st_distance] < 20)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               0 104 55
-      END
-    END
-
-    CLASS
-      NAME                  "< 40 m"
-      EXPRESSION ([st_distance] < 40)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               26 152 80
-      END
-    END
-
-    CLASS
-      NAME                  "< 60 m"
-      EXPRESSION ([st_distance] < 60)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               102 189 99
-      END
-    END
-
-    CLASS
-      NAME                  "< 90 m"
-      EXPRESSION ([st_distance] < 90)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "< 105 m"
-      EXPRESSION ([st_distance] < 105)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               217 239 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 120 m"
-      EXPRESSION ([st_distance] < 120)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               254 224 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 140 m"
-      EXPRESSION ([st_distance] < 140)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               253 174 97
-      END
-    END
-
-    CLASS
-      NAME                  "< 170 m"
-      EXPRESSION ([st_distance] < 170)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               244 109 67
-      END
-    END
-
-    CLASS
-      NAME                  "< 190 m"
-      EXPRESSION ([st_distance] < 190)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               215 48 39
-      END
-    END
-
-    CLASS
-      NAME                  "rest"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               165 0 38
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "textiel"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "wkb_geometry FROM public.pand_distance_to_textiel USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           4000000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "textiel_pand_distance"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "textiel afstanden Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "Textiel_afstanden"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Textiel afstanden Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "textiel_afstanden"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    CLASS
-      NAME                  "< 100 m"
-      EXPRESSION ([st_distance] < 100)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               0 104 55
-      END
-    END
-
-    CLASS
-      NAME                  "< 200 m"
-      EXPRESSION ([st_distance] < 200)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               26 152 80
-      END
-    END
-
-    CLASS
-      NAME                  "< 400 m"
-      EXPRESSION ([st_distance] < 400)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               102 189 99
-      END
-    END
-
-    CLASS
-      NAME                  "< 500 m"
-      EXPRESSION ([st_distance] < 500)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "textiel"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               165 0 38
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "plastic"
-    GROUP                   "afvalcontainers"
-
-    INCLUDE                 "connection_afvalcontainers.inc"
-    DATA                    "wkb_geometry FROM public.pand_distance_to_plastic USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           4000000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "plastic_pand_distance"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "plastic afstanden Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "Plastic_afstanden"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Plastic afstanden Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_extent"          "94000 465000 170000 514000"
-      "wms_name"            "plastic_afstanden"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    CLASS
-      NAME                  "< 40 m"
-      EXPRESSION ([st_distance] < 40)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               0 104 55
-      END
-    END
-
-    CLASS
-      NAME                  "< 60 m"
-      EXPRESSION ([st_distance] < 60)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               26 152 80
-      END
-    END
-
-    CLASS
-      NAME                  "< 80 m"
-      EXPRESSION ([st_distance] < 80)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               102 189 99
-      END
-    END
-
-    CLASS
-      NAME                  "< 90 m"
-      EXPRESSION ([st_distance] < 90)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               166 217 106
-      END
-    END
-
-    CLASS
-      NAME                  "< 105 m"
-      EXPRESSION ([st_distance] < 105)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               217 239 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 120 m"
-      EXPRESSION ([st_distance] < 120)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               254 224 139
-      END
-    END
-
-    CLASS
-      NAME                  "< 140 m"
-      EXPRESSION ([st_distance] < 140)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               253 174 97
-      END
-    END
-
-    CLASS
-      NAME                  "< 170 m"
-      EXPRESSION ([st_distance] < 170)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               244 109 67
-      END
-    END
-
-    CLASS
-      NAME                  "< 190 m"
-      EXPRESSION ([st_distance] < 190)
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       50001
-        COLOR               215 48 39
-      END
-    END
-
-    CLASS
-      NAME                  "> 190"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               165 0 38
-      END
-    END
-
-  END
-
+  
   #-----------------------------------------------------------------------------
 
   LAYER
     NAME                    "wegingen_rest"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_kilogram.inc"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM (
-    				select * from
-				public.kilogram_weigh_measurement
-				where fractie = 'Rest'
-				AND \"weigh_at\" > (NOW() - INTERVAL '6 months')
-				ORDER BY weigh_at desc
-				) USING srid=4326 USING UNIQUE id"
+                                select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Rest'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+                              ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "Rest kilogram wegingen"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Weging coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -1555,8 +888,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "kilogram"
       "wms_abstract"        "Rest Wegingen Amsterdam"
-      "wms_srs"             "EPSG:4326"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
+      "wms_srs"             "EPSG:28992"
+      "wms_extent"			    "100000 450000 150000 500000"
       "wms_name"            "Kilogram"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -1566,7 +899,7 @@ MAP
 
     CLASS
       NAME                  "< 50 kg"
-      EXPRESSION ([net_weight] < 50)
+      EXPRESSION ([netto_gewicht] < 50)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1578,7 +911,7 @@ MAP
 
     CLASS
       NAME                  "< 90 kg"
-      EXPRESSION ([net_weight] < 90)
+      EXPRESSION ([netto_gewicht] < 90)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1590,7 +923,7 @@ MAP
 
     CLASS
       NAME                  "< 130 kg"
-      EXPRESSION ([net_weight] < 130)
+      EXPRESSION ([netto_gewicht] < 130)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1602,7 +935,7 @@ MAP
 
     CLASS
       NAME                  "< 170 m"
-      EXPRESSION ([net_weight] < 170)
+      EXPRESSION ([netto_gewicht] < 170)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1614,7 +947,7 @@ MAP
 
     CLASS
       NAME                  "< 210 kg"
-      EXPRESSION ([net_weight] < 210)
+      EXPRESSION ([netto_gewicht] < 210)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1626,7 +959,7 @@ MAP
 
     CLASS
       NAME                  "< 260 kg"
-      EXPRESSION ([net_weight] < 260)
+      EXPRESSION ([netto_gewicht] < 260)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1638,7 +971,7 @@ MAP
 
     CLASS
       NAME                  "< 310 kg"
-      EXPRESSION ([net_weight] < 310)
+      EXPRESSION ([netto_gewicht] < 310)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1650,7 +983,7 @@ MAP
 
     CLASS
       NAME                  "< 390 kg"
-      EXPRESSION ([net_weight] < 390)
+      EXPRESSION ([netto_gewicht] < 390)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1662,7 +995,7 @@ MAP
 
     CLASS
       NAME                  "< 500 kg"
-      EXPRESSION ([net_weight] < 500)
+      EXPRESSION ([netto_gewicht] < 500)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1713,27 +1046,30 @@ MAP
     END
   END
 
+#------------------------------------------------------------------------
+
   LAYER
     NAME                    "wegingen_glas"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_kilogram.inc"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM (
-    				select * from
-				public.kilogram_weigh_measurement
-				where fractie = 'Glas'
-				ORDER BY weigh_at desc
-				) as subquery USING srid=4326 USING UNIQUE id"
+                                select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Glas'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "glas wegingen"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Weging coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -1743,8 +1079,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "kilogram"
       "wms_abstract"        "Glas Wegingen Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "Kilogram"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -1754,7 +1090,7 @@ MAP
 
     CLASS
       NAME                  "< 50 kg"
-      EXPRESSION ([net_weight] < 50)
+      EXPRESSION ([netto_gewicht] < 50)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1766,7 +1102,7 @@ MAP
 
     CLASS
       NAME                  "< 90 kg"
-      EXPRESSION ([net_weight] < 90)
+      EXPRESSION ([netto_gewicht] < 90)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1778,7 +1114,7 @@ MAP
 
     CLASS
       NAME                  "< 130 kg"
-      EXPRESSION ([net_weight] < 130)
+      EXPRESSION ([netto_gewicht] < 130)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1790,7 +1126,7 @@ MAP
 
     CLASS
       NAME                  "< 170 m"
-      EXPRESSION ([net_weight] < 170)
+      EXPRESSION ([netto_gewicht] < 170)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1802,7 +1138,7 @@ MAP
 
     CLASS
       NAME                  "< 210 kg"
-      EXPRESSION ([net_weight] < 210)
+      EXPRESSION ([netto_gewicht] < 210)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1814,7 +1150,7 @@ MAP
 
     CLASS
       NAME                  "< 260 kg"
-      EXPRESSION ([net_weight] < 260)
+      EXPRESSION ([netto_gewicht] < 260)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1826,7 +1162,7 @@ MAP
 
     CLASS
       NAME                  "< 310 kg"
-      EXPRESSION ([net_weight] < 310)
+      EXPRESSION ([netto_gewicht] < 310)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1838,7 +1174,7 @@ MAP
 
     CLASS
       NAME                  "< 390 kg"
-      EXPRESSION ([net_weight] < 390)
+      EXPRESSION ([netto_gewicht] < 390)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1850,7 +1186,7 @@ MAP
 
     CLASS
       NAME                  "< 500 kg"
-      EXPRESSION ([net_weight] < 500)
+      EXPRESSION ([netto_gewicht] < 500)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1902,28 +1238,30 @@ MAP
     END
   END
 
+#-------------------------------------------------------
 
   LAYER
     NAME                    "wegingen_papier"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_kilogram.inc"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM (
-    				select * from
-				public.kilogram_weigh_measurement
-				where fractie = 'Papier'
-				ORDER BY weigh_at desc
-				) as subquery USING srid=4326 USING UNIQUE id"
+    			                      select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Papier'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "kilogram wegingen_papier"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Weging coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -1933,8 +1271,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "kilogram"
       "wms_abstract"        "Papier Wegingen Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "Kilogram"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -1944,7 +1282,7 @@ MAP
 
     CLASS
       NAME                  "< 50 kg"
-      EXPRESSION ([net_weight] < 50)
+      EXPRESSION ([netto_gewicht] < 50)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1956,7 +1294,7 @@ MAP
 
     CLASS
       NAME                  "< 90 kg"
-      EXPRESSION ([net_weight] < 90)
+      EXPRESSION ([netto_gewicht] < 90)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1968,7 +1306,7 @@ MAP
 
     CLASS
       NAME                  "< 130 kg"
-      EXPRESSION ([net_weight] < 130)
+      EXPRESSION ([netto_gewicht] < 130)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1980,7 +1318,7 @@ MAP
 
     CLASS
       NAME                  "< 170 m"
-      EXPRESSION ([net_weight] < 170)
+      EXPRESSION ([netto_gewicht] < 170)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -1992,7 +1330,7 @@ MAP
 
     CLASS
       NAME                  "< 210 kg"
-      EXPRESSION ([net_weight] < 210)
+      EXPRESSION ([netto_gewicht] < 210)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -2004,7 +1342,7 @@ MAP
 
     CLASS
       NAME                  "< 260 kg"
-      EXPRESSION ([net_weight] < 260)
+      EXPRESSION ([netto_gewicht] < 260)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -2016,7 +1354,7 @@ MAP
 
     CLASS
       NAME                  "< 310 kg"
-      EXPRESSION ([net_weight] < 310)
+      EXPRESSION ([netto_gewicht] < 310)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -2028,7 +1366,7 @@ MAP
 
     CLASS
       NAME                  "< 390 kg"
-      EXPRESSION ([net_weight] < 390)
+      EXPRESSION ([netto_gewicht] < 390)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -2040,7 +1378,7 @@ MAP
 
     CLASS
       NAME                  "< 500 kg"
-      EXPRESSION ([net_weight] < 500)
+      EXPRESSION ([netto_gewicht] < 500)
       STYLE
         SYMBOL              'stip'
         SIZE                6
@@ -2090,28 +1428,29 @@ MAP
 
     END
   END
-
+#------------------------------------------------------------------------
   LAYER
     NAME                    "wegingen_plastic"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_kilogram.inc"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM (
-    				select * from
-				public.kilogram_weigh_measurement
-				where fractie = 'Plastic'
-				ORDER BY weigh_at desc
-				) as subquery USING srid=4326 USING UNIQUE id"
+                               select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Plastic'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "wegingen_plastic"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Weging coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -2121,8 +1460,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "kilogram"
       "wms_abstract"        "Plastic Wegingen Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "Kilogram"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -2132,7 +1471,7 @@ MAP
 
     CLASS
       NAME                  "< 50 kg"
-      EXPRESSION ([net_weight] < 50)
+      EXPRESSION ([netto_gewicht] < 50)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2144,7 +1483,7 @@ MAP
 
     CLASS
       NAME                  "< 90 kg"
-      EXPRESSION ([net_weight] < 90)
+      EXPRESSION ([netto_gewicht] < 90)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2156,7 +1495,7 @@ MAP
 
     CLASS
       NAME                  "< 130 kg"
-      EXPRESSION ([net_weight] < 130)
+      EXPRESSION ([netto_gewicht] < 130)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2168,7 +1507,7 @@ MAP
 
     CLASS
       NAME                  "< 170 m"
-      EXPRESSION ([net_weight] < 170)
+      EXPRESSION ([netto_gewicht] < 170)
       STYLE
         SYMBOL              'stip'
         MINSCALEDENOM       10
@@ -2179,7 +1518,7 @@ MAP
 
     CLASS
       NAME                  "< 210 kg"
-      EXPRESSION ([net_weight] < 210)
+      EXPRESSION ([netto_gewicht] < 210)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2191,7 +1530,7 @@ MAP
 
     CLASS
       NAME                  "< 260 kg"
-      EXPRESSION ([net_weight] < 260)
+      EXPRESSION ([netto_gewicht] < 260)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2203,7 +1542,7 @@ MAP
 
     CLASS
       NAME                  "< 310 kg"
-      EXPRESSION ([net_weight] < 310)
+      EXPRESSION ([netto_gewicht] < 310)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2215,7 +1554,7 @@ MAP
 
     CLASS
       NAME                  "< 390 kg"
-      EXPRESSION ([net_weight] < 390)
+      EXPRESSION ([netto_gewicht] < 390)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2227,7 +1566,7 @@ MAP
 
     CLASS
       NAME                  "< 500 kg"
-      EXPRESSION ([net_weight] < 500)
+      EXPRESSION ([netto_gewicht] < 500)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2277,27 +1616,30 @@ MAP
     END
   END
 
+#---------------------------------------------------------------
+
   LAYER
     NAME                    "wegingen_textiel"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_kilogram.inc"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM (
-    				select * from
-				public.kilogram_weigh_measurement
-				where fractie = 'Textiel'
-				ORDER BY weigh_at desc
-				) as subquery USING srid=4326 USING UNIQUE id"
+    			                      select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Textiel'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     PROJECTION
-      "init=epsg:4326"
+      "init=epsg:28992"
     END
 
     METADATA
       "wfs_title"           "Textiel kilogram wegingen"
-      "wfs_srs"             "EPSG:4326"
+      "wfs_srs"             "EPSG:28992"
       "wfs_adstract"        "Weging coordinaten Amsterdam"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
@@ -2307,8 +1649,8 @@ MAP
       "wms_enable_request"  "*"
       "wms_group_title"     "kilogram"
       "wms_abstract"        "Textiel Wegingen Amsterdam"
-      "wms_extent"          "4.58565 52.03560  5.31360 52.48769"
-      "wms_srs"             "EPSG:4326"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
       "wms_name"            "Kilogram"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -2318,7 +1660,7 @@ MAP
 
     CLASS
       NAME                  "< 50 kg"
-      EXPRESSION ([net_weight] < 50)
+      EXPRESSION ([netto_gewicht] < 50)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2330,7 +1672,7 @@ MAP
 
     CLASS
       NAME                  "< 90 kg"
-      EXPRESSION ([net_weight] < 90)
+      EXPRESSION ([netto_gewicht] < 90)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2342,7 +1684,7 @@ MAP
 
     CLASS
       NAME                  "< 130 kg"
-      EXPRESSION ([net_weight] < 130)
+      EXPRESSION ([netto_gewicht] < 130)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2354,7 +1696,7 @@ MAP
 
     CLASS
       NAME                  "< 170 m"
-      EXPRESSION ([net_weight] < 170)
+      EXPRESSION ([netto_gewicht] < 170)
       STYLE
         SYMBOL              'stip'
         MINSCALEDENOM       10
@@ -2365,7 +1707,7 @@ MAP
 
     CLASS
       NAME                  "< 210 kg"
-      EXPRESSION ([net_weight] < 210)
+      EXPRESSION ([netto_gewicht] < 210)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2377,7 +1719,7 @@ MAP
 
     CLASS
       NAME                  "< 260 kg"
-      EXPRESSION ([net_weight] < 260)
+      EXPRESSION ([netto_gewicht] < 260)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2389,7 +1731,7 @@ MAP
 
     CLASS
       NAME                  "< 310 kg"
-      EXPRESSION ([net_weight] < 310)
+      EXPRESSION ([netto_gewicht] < 310)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2401,7 +1743,7 @@ MAP
 
     CLASS
       NAME                  "< 390 kg"
-      EXPRESSION ([net_weight] < 390)
+      EXPRESSION ([netto_gewicht] < 390)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2413,7 +1755,385 @@ MAP
 
     CLASS
       NAME                  "< 500 kg"
-      EXPRESSION ([net_weight] < 500)
+      EXPRESSION ([netto_gewicht] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        MINSCALEDENOM       10
+        SYMBOL              'stip'
+        SIZE                4
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+#---------------------------------------------------------------
+
+  LAYER
+    NAME                    "wegingen_grof"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (
+    			                      select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Grof'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "Grof kilogram wegingen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "grof_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "kilogram"
+      "wms_abstract"        "Grof Wegingen Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([netto_gewicht] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([netto_gewicht] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([netto_gewicht] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([netto_gewicht] < 170)
+      STYLE
+        SYMBOL              'stip'
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([netto_gewicht] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([netto_gewicht] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([netto_gewicht] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([netto_gewicht] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([netto_gewicht] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        MINSCALEDENOM       10
+        SYMBOL              'stip'
+        SIZE                4
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+#---------------------------------------------------------------
+
+  LAYER
+    NAME                    "wegingen_PMD"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (
+    			                      select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'PMD'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "PMD kilogram wegingen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "PMD_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "kilogram"
+      "wms_abstract"        "PMD Wegingen Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([netto_gewicht] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([netto_gewicht] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([netto_gewicht] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([netto_gewicht] < 170)
+      STYLE
+        SYMBOL              'stip'
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([netto_gewicht] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([netto_gewicht] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([netto_gewicht] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([netto_gewicht] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([netto_gewicht] < 500)
       STYLE
         SYMBOL              'stip'
         SIZE                4
@@ -2464,6 +2184,387 @@ MAP
   END
 
 
+#---------------------------------------------------------------
+
+  LAYER
+    NAME                    "wegingen_brood"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (
+    			                      select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'Brood'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "Brood kilogram wegingen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "brood_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "kilogram"
+      "wms_abstract"        "Brood Wegingen Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([netto_gewicht] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([netto_gewicht] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([netto_gewicht] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([netto_gewicht] < 170)
+      STYLE
+        SYMBOL              'stip'
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([netto_gewicht] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([netto_gewicht] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([netto_gewicht] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([netto_gewicht] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([netto_gewicht] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        MINSCALEDENOM       10
+        SYMBOL              'stip'
+        SIZE                4
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+#---------------------------------------------------------------
+
+  LAYER
+    NAME                    "wegingen_onbekend"
+    GROUP                   "kilogram"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM (
+    			                      select * from
+                                public.huishoudelijkafval_weging
+                                where fractie_omschrijving = 'onbekend'
+                                AND datum_weging > (NOW() - INTERVAL '6 months')
+                                ORDER BY datum_weging desc
+				) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wfs_title"           "onbekend kilogram wegingen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_adstract"        "Weging coordinaten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_title"           "onbekend_wegingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "kilogram"
+      "wms_abstract"        "onbekend Wegingen Amsterdam"
+      "wms_extent"			    "100000 450000 150000 500000"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Kilogram"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+      NAME                  "< 50 kg"
+      EXPRESSION ([netto_gewicht] < 50)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 104 55
+      END
+    END
+
+    CLASS
+      NAME                  "< 90 kg"
+      EXPRESSION ([netto_gewicht] < 90)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 152 80
+      END
+    END
+
+    CLASS
+      NAME                  "< 130 kg"
+      EXPRESSION ([netto_gewicht] < 130)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               102 189 99
+      END
+    END
+
+    CLASS
+      NAME                  "< 170 m"
+      EXPRESSION ([netto_gewicht] < 170)
+      STYLE
+        SYMBOL              'stip'
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               166 217 106
+      END
+    END
+
+    CLASS
+      NAME                  "< 210 kg"
+      EXPRESSION ([netto_gewicht] < 210)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               217 239 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 260 kg"
+      EXPRESSION ([netto_gewicht] < 260)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               254 224 139
+      END
+    END
+
+    CLASS
+      NAME                  "< 310 kg"
+      EXPRESSION ([netto_gewicht] < 310)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               253 174 97
+      END
+    END
+
+    CLASS
+      NAME                  "< 390 kg"
+      EXPRESSION ([netto_gewicht] < 390)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               244 109 67
+      END
+    END
+
+    CLASS
+      NAME                  "< 500 kg"
+      EXPRESSION ([netto_gewicht] < 500)
+      STYLE
+        SYMBOL              'stip'
+        SIZE                4
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       50001
+        COLOR               215 48 39
+      END
+    END
+
+    CLASS
+      NAME                  "> 500 kg"
+      STYLE
+        MINSCALEDENOM       10
+        SYMBOL              'stip'
+        SIZE                4
+        MAXSCALEDENOM       500001
+        COLOR               165 0 38
+      END
+    END
+
+    CLASS
+      NAME                  "Weging"
+      STYLE
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        SYMBOL              'stip'
+        COLOR               255 255 255
+        SIZE                8
+        OUTLINECOLOR        0 0 0
+        WIDTH               1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  1000
+        COLOR          102 102 102
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+
+    END
+  END
+
+
+#----------------------------------------------------------------------------------------------
   LAYER
     NAME                    "sidcon_perscontainers_live"
     GROUP                   "kilogram"
@@ -2676,7 +2777,7 @@ MAP
 
     END
   END
-
+#----------------------------------------------------------------------------------
   LAYER
     NAME                    "sidcon_perscontainers_history"
     GROUP                   "kilogram"
@@ -3940,8 +4041,6 @@ MAP
             WIDTH        1
         END
     END
-
   END
-
 
 END
