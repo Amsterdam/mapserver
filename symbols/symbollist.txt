@@ -668,7 +668,6 @@ SYMBOL
 END
 
 #=================================================================
-
 SYMBOL
   NAME      "vierkant"
   TYPE      vector
@@ -692,7 +691,8 @@ SYMBOL
     0.0 2.0
     4.0 2.0
   END
-  FILLED    true
+  FILLED    false
+  ANCHORPOINT 0.5 0.5
 END
 
 SYMBOL
@@ -708,7 +708,18 @@ SYMBOL
   FILLED   false
 END
 
-
+SYMBOL  
+  NAME        "gekanteld_kruis"
+  TYPE        vector   
+  POINTS
+    0.35 0.35
+    0.65 0.65
+    -99 -99
+    0.35 0.65
+    0.65 0.35
+  END   
+  FILLED TRUE 
+END 
 
 SYMBOL
   NAME "pentagon"
