@@ -240,15 +240,19 @@ MAP
       NAME          "Warmtenet, 2022-2032"
       EXPRESSION    ("[legenda]" eq "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2022 en 2032")
 
-      STYLE
-          ANTIALIAS    true
-          COLOR        "#72bf44"
-          OPACITY      30
+       STYLE
+          ANTIALIAS     true
+          SYMBOL        'hatchsymbol'
+          COLOR         "#72BF44"
+          ANGLE         135
+          SIZE          6
+          WIDTH         2
+          OPACITY       70
       END
       STYLE
-          OUTLINECOLOR "#72bf44"
-          OPACITY      100
-          WIDTH        2
+          OUTLINECOLOR  "#72BF44"
+          OPACITY       100
+          WIDTH         2
       END
 
       LABEL
@@ -270,16 +274,28 @@ MAP
       NAME          "Warmtenet, vanaf 2030"
       EXPRESSION    ("[legenda]" eq "Warmtenetbuurt: gefaseerd starten vanaf 2030")
 
-      STYLE
+      STYLE          
           ANTIALIAS    true
-          COLOR        "#dfe672"
-          OPACITY      35
+          COLOR        "#E0E572"
+          OPACITY      30
       END
-      STYLE
-          OUTLINECOLOR "#dfe672"
+
+       STYLE          
+          ANTIALIAS    true
+          OUTLINECOLOR "#E0E572"
           OPACITY      100
           WIDTH        2
       END
+
+      STYLE
+          ANTIALIAS    true
+          SYMBOL       "gekanteld_kruis"
+          SIZE 10
+          WIDTH 2
+          COLOR         "#E0E572"
+          OUTLINECOLOR  "#E0E572"
+          OPACITY      100
+      END 
 
       LABEL
         MINSCALEDENOM  10
