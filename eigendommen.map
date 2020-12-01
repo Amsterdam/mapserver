@@ -27,8 +27,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]{1,2}$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]{1,2}|all$'
     END
 
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly eigendom,
@@ -43,7 +43,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "niet_eigendom_zoomed"
@@ -79,8 +79,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]{1,2}$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]{1,2}|all$'
     END
 
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly eigendom,
@@ -95,7 +95,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "eigendom_zoomed"
@@ -130,8 +130,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]{1,2}$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]{1,2}|all$'
     END
 
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_point eigendom,
@@ -148,7 +148,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "eigendom_zoomed_punt"
@@ -217,8 +217,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]{1,2}$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]{1,2}|all$'
     END
 
     DATA            "geometrie FROM public.geo_brk_eigendom_point USING srid=4326 USING UNIQUE id"
@@ -232,7 +232,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "eigendom_zoomed_punt_aantal"
@@ -314,8 +314,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]{1,2}$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]{1,2}|all$'
     END
 
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly_all eigendom,
@@ -330,7 +330,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "niet_eigendom"
@@ -366,8 +366,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]{1,2}$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]{1,2}|all$'
     END
 
     DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly_all eigendom,
@@ -382,7 +382,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "eigendomvlak"

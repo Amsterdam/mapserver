@@ -27,8 +27,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]|all$'
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_rond_erfpacht_poly erfpacht,
@@ -42,7 +42,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "rond_erfpacht_zoomed"
@@ -78,8 +78,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]|all$'
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_poly erfpacht,
@@ -93,7 +93,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "erfpacht_zoomed"
@@ -128,8 +128,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]|all$'
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_point erfpacht,
@@ -145,7 +145,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "erfpacht_zoomed_punt"
@@ -214,8 +214,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]|all$'
     END
 
     DATA            "geometrie FROM public.geo_brk_erfpacht_point USING srid=4326 USING UNIQUE id"
@@ -229,7 +229,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "erfpacht_zoomed_punt_aantal"
@@ -311,8 +311,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]|all$'
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_rond_erfpacht_poly_all erfpacht,
@@ -326,7 +326,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "rond_erfpacht"
@@ -361,8 +361,8 @@ MAP
 
     VALIDATION
       # %categorie% substitutions can only have letters
-	    'default_categorie' '1'
-      'categorie'     '^[0-9]$'
+	  'default_categorie' 'all'
+      'categorie'     '^[0-9]|all$'
     END
 
     DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_poly_all erfpacht,
@@ -376,7 +376,7 @@ MAP
       "init=epsg:4326"
     END
 
-    FILTER ("[cat_id]" = '%categorie%')
+    FILTER ('%categorie%' eq 'all' OR "[cat_id]" = '%categorie%')
 
     METADATA
       "ows_title"           "erfpachtvlak"
