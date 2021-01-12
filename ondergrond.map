@@ -1,18 +1,18 @@
 #==============================================================================
-# Dataset: historische onderzoeken
+# Dataset: ondergrond
 #
 #==============================================================================
 
 
 MAP
-  NAME                      "historische_onderzoeken"
+  NAME                      "ondergrond"
   INCLUDE                   "header.inc"
   DEBUG 1
 
   WEB
     METADATA
-      "ows_title"           "historische_onderzoeken"
-      "ows_abstract"        "historische_onderzoeken"
+      "ows_title"           "ondergrond"
+      "ows_abstract"        "ondergrond"
       "wms_extent"          "100000 450000 150000 500000"
     END
   END
@@ -27,7 +27,7 @@ MAP
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM historischeonderzoeken_historischeonderzoeken USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
