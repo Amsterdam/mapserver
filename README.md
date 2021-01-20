@@ -37,7 +37,7 @@ De laatste versie van de database kan opgehaald worden met:
 
 	docker-compose exec database update-db.sh nap
 	docker-compose exec database update-db.sh milieuthemas
-	docker-compose exec database update-db.sh bag
+	docker-compose exec database update-db.sh bag_v11
 	docker-compose exec database update-db.sh handelsregister
 	docker-compose exec database update-db.sh monumenten
 	docker-compose exec database update-db.sh overlastgebieden
