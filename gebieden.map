@@ -196,7 +196,7 @@ MAP
     END
 
   END
-  
+
 
   #-----------------------------------------------------------------------------
 
@@ -951,7 +951,7 @@ MAP
     GROUP           "gsg4"
     INCLUDE         "connection_dataservices.inc"
 
-    DATA            "wkb_geometry FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE ogc_fid"
+    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -964,7 +964,7 @@ MAP
       "ows_title"           "gsg4_gsp"
       "ows_group_title"     "gsg4"
       "ows_abstract"        "Grootstedelijke gebieden regie Gemeente Amsterdam"
-      "gml_featureid"       "OGC_FID"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
@@ -1016,7 +1016,7 @@ MAP
     GROUP           "gsg4"
     INCLUDE         "connection_dataservices.inc"
 
-    DATA            "wkb_geometry FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE ogc_fid"
+    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -1029,7 +1029,7 @@ MAP
       "ows_title"           "gsg4_od"
       "ows_group_title"     "gsg4"
       "ows_abstract"        "Grootstedelijke gebieden regie Omgevingsdienst"
-      "gml_featureid"       "OGC_FID"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
@@ -1081,7 +1081,7 @@ MAP
     GROUP           "gsg4"
     INCLUDE         "connection_dataservices.inc"
 
-    DATA            "wkb_geometry FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE ogc_fid"
+    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -1094,7 +1094,7 @@ MAP
       "ows_title"           "gsg4_phs"
       "ows_group_title"     "gsg4"
       "ows_abstract"        "Grootstedelijke gebieden Programma Hoogfrequent Spoor"
-      "gml_featureid"       "OGC_FID"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
@@ -1145,7 +1145,7 @@ MAP
     GROUP           "gsg4"
     INCLUDE         "connection_dataservices.inc"
 
-    DATA            "wkb_geometry FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE ogc_fid"
+    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -1158,7 +1158,7 @@ MAP
       "ows_title"           "gsg4_phsod"
       "ows_group_title"     "gsg4"
       "ows_abstract"        "Grootstedelijke gebieden Programma Hoogfrequent Spoor Regie Omgevingsdienst"
-      "gml_featureid"       "OGC_FID"
+      "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
