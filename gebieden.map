@@ -947,11 +947,11 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "gsg4_gsp"
+    NAME            "gsg4_phsod"
     GROUP           "gsg4"
     INCLUDE         "connection_dataservices.inc"
 
-    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -961,148 +961,18 @@ MAP
     END
 
     METADATA
-      "ows_title"           "gsg4_gsp"
+      "ows_title"           "gsg4_phsod"
       "ows_group_title"     "gsg4"
-      "ows_abstract"        "Grootstedelijke gebieden regie Gemeente Amsterdam"
+      "ows_abstract"        "PHS regie Omgevingsdiens"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
-    FILTER  ("[type]" eq 'GSP')
+    FILTER  ("[type]" eq 'PHSOD')
 
     CLASS
       TEXT             '[naam]'
-      NAME              "Regie Gemeente Amsterdam"
-
-      STYLE
-        ANTIALIAS       true
-        OUTLINECOLOR    160 0 120
-        COLOR           160 0 120
-        OPACITY         35
-        WIDTH           2
-      END
-
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50001
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  50001
-        MAXSCALEDENOM  100001
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "gsg4_od"
-    GROUP           "gsg4"
-    INCLUDE         "connection_dataservices.inc"
-
-    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "gsg4_od"
-      "ows_group_title"     "gsg4"
-      "ows_abstract"        "Grootstedelijke gebieden regie Omgevingsdienst"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    FILTER  ("[type]" eq 'OD')
-
-    CLASS
-      TEXT             '[naam]'
-      NAME              "Regie Omgevingsdienst"
-
-      STYLE
-        ANTIALIAS       true
-        OUTLINECOLOR    0 160 60
-        COLOR           0 160 60
-        OPACITY         35
-        WIDTH           2
-      END
-
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50001
-        COLOR          0 160 60
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  50001
-        MAXSCALEDENOM  100001
-        COLOR          0 160 60
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "gsg4_phs"
-    GROUP           "gsg4"
-    INCLUDE         "connection_dataservices.inc"
-
-    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "gsg4_phs"
-      "ows_group_title"     "gsg4"
-      "ows_abstract"        "Grootstedelijke gebieden Programma Hoogfrequent Spoor"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    FILTER  ("[type]" eq 'PHS')
-
-    CLASS
-      TEXT             '[naam]'
-      NAME              "Programma Hoogfrequent Spoor"
+      NAME              "PHS regie Omgevingsdienst"
 
       STYLE
         ANTIALIAS       true
@@ -1140,12 +1010,13 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
+
   LAYER
-    NAME            "gsg4_phsod"
+    NAME            "gsg4_phs"
     GROUP           "gsg4"
     INCLUDE         "connection_dataservices.inc"
 
-    DATA            "geometrie FROM public.gbd_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -1155,18 +1026,18 @@ MAP
     END
 
     METADATA
-      "ows_title"           "gsg4_phsod"
+      "ows_title"           "gsg4_phs"
       "ows_group_title"     "gsg4"
-      "ows_abstract"        "Grootstedelijke gebieden Programma Hoogfrequent Spoor Regie Omgevingsdienst"
+      "ows_abstract"        "PHS regie Gemeente Amsterdam"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
-    FILTER  ("[type]" eq 'PHSOD')
+    FILTER  ("[type]" eq 'PHS')
 
     CLASS
       TEXT             '[naam]'
-      NAME              "Programma Hoogfrequent Spoor Regie Omgevingsdienst"
+      NAME              "PHS regie Gemeente Amsterdam"
 
       STYLE
         ANTIALIAS       true
@@ -1192,6 +1063,135 @@ MAP
         MINSCALEDENOM  50001
         MAXSCALEDENOM  100001
         COLOR          160 16 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "gsg4_od"
+    GROUP           "gsg4"
+    INCLUDE         "connection_dataservices.inc"
+
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "gsg4_od"
+      "ows_group_title"     "gsg4"
+      "ows_abstract"        "Grootstedelijke gebieden regie Omgevingsdienst"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    FILTER  ("[type]" eq 'OD')
+
+    CLASS
+      TEXT             '[naam]'
+      NAME              "regie Omgevingsdienst"
+
+      STYLE
+        ANTIALIAS       true
+        OUTLINECOLOR    0 160 60
+        COLOR           0 160 60
+        OPACITY         35
+        WIDTH           2
+      END
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  50001
+        COLOR          0 160 60
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  50001
+        MAXSCALEDENOM  100001
+        COLOR          0 160 60
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME            "gsg4_gsp"
+    GROUP           "gsg4"
+    INCLUDE         "connection_dataservices.inc"
+
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   100001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "gsg4_gsp"
+      "ows_group_title"     "gsg4"
+      "ows_abstract"        "Grootstedelijke gebieden regie Gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    FILTER  ("[type]" eq 'GSP')
+
+    CLASS
+      TEXT             '[naam]'
+      NAME              "regie Gemeente Amsterdam"
+
+      STYLE
+        ANTIALIAS       true
+        OUTLINECOLOR    160 0 120
+        COLOR           160 0 120
+        OPACITY         35
+        WIDTH           2
+      END
+
+      LABEL
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  50001
+        COLOR          160 0 120
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  50001
+        MAXSCALEDENOM  100001
+        COLOR          160 0 120
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
