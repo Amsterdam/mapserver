@@ -1,0 +1,241 @@
+#==============================================================================
+# Dataset: Programma Varen
+# Specs: https://wiki.data.amsterdam.nl/doku.php?id=start:toepassingen:datasquad_ruimte:programma_varen:kaartlagen
+#==============================================================================
+
+MAP
+  NAME                      "varen"
+  INCLUDE                   "header.inc"
+  DEBUG 1
+
+  WEB
+    METADATA
+      "ows_title"           "varen"
+      "ows_abstract"        "varen"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+  # Layers
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "ligplaatssegmenten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM varen_ligplaats USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "ligplaatssegmenten"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "ligplaatssegmenten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "cluster_id"
+      "gml_include_items"   "all"
+      "wms_title"           "ligplaatssegmenten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "ligplaatssegmenten"
+      "wms_abstract"        "ligplaatssegmenten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "ligplaatssegmenten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "ligplaats_segment"
+
+
+    CLASS
+      NAME                  "Groot:vanaf_16m"
+      EXPRESSION ("[ligplaats_segment]" eq "Groot [v.a. 16m]")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 12 0
+      END
+    END
+
+     CLASS
+      NAME                  "Middel:10_tm_15,99m"
+      EXPRESSION ("[ligplaats_segment]" eq "Middel [10 t/m 15,99m]")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 162 0
+      END
+    END
+
+     CLASS
+      NAME                  "Klein:<_10m"
+      EXPRESSION ("[ligplaats_segment]" eq "Klein [< 10m]")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 251 0
+      END
+    END
+
+     CLASS
+      NAME                  "Onbemand"
+      EXPRESSION ("[ligplaats_segment]" eq "Onbemand")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               0 54 255
+      END
+    END
+
+    CLASS
+      NAME                  "Waterfietsen"
+      EXPRESSION ("[ligplaats_segment]" eq "Waterfietsen")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               89 255 0
+      END
+    END
+  END
+
+#---------------------------------------------------------------------------------------------------------------------#
+
+ LAYER
+    NAME                    "opafstapplaats"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM varen_opafstapplaats USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "opafstapplaats"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "opafstapplaats Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "cluster_id"
+      "gml_include_items"   "all"
+      "wms_title"           "opafstapplaats"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "opafstapplaats"
+      "wms_abstract"        "opafstapplaats Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "opafstapplaats"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "kleur_op_kaart"
+
+
+    CLASS
+      NAME                  "Op&afstapplaats_passagiersvaart"
+      EXPRESSION ("[kleur_op_kaart]" eq "Openbare op- en afstapplaats passagiersvaart")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               26 194 5
+      END
+    END
+
+     CLASS
+      NAME                  "Op&afstapplaats_passagiersvaart_en_laden&lossen"
+      EXPRESSION ("[kleur_op_kaart]" eq "Openbare op- en afstapplaats passagiersvaart + laden en lossen transport")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 135 40
+      END
+    END
+
+     CLASS
+      NAME                  "Op&afstapplaats_passagiersvaart_actie_benodigd"
+      EXPRESSION ("[kleur_op_kaart]" eq "Openbare op- en afstapplaats passagiersvaart, actie benodigd")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               252 237 2
+      END
+    END
+
+    CLASS
+      NAME                  "Op&afstaplocatie_passagiersvaart_exclusieve"
+      EXPRESSION ("[kleur_op_kaart]" eq "Exclusieve op- en afstaplocatie passagiersvaart")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               104 5 150
+      END
+    END
+
+     CLASS
+      NAME                  "Geen_op&afstapplaats"
+      EXPRESSION ("[kleur_op_kaart]" eq "Geen op- en afstapplaats")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 53 40
+      END
+    END
+
+    CLASS
+      NAME                  "Wenslocatie"
+      EXPRESSION ("[kleur_op_kaart]" eq "Wenslocatie")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               20 65 232
+      END
+    END
+
+
+CLASS
+      NAME                  "Laden&lossen_transport_over_water"
+      EXPRESSION ("[kleur_op_kaart]" eq "Laden en lossen transport over water")
+      STYLE
+        SYMBOL              'stip'
+        SIZE                6
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               69 184 249
+      END
+    END
+  END
+
+#---------------------------------------------------------------------------------------------------------#
+END
