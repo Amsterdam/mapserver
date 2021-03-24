@@ -27,19 +27,16 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM (
-                              select verkeerstype, geometry, id FROM public.milieuzones_vrachtauto
-                              UNION ALL
-                              select verkeerstype, geometry, id from public.milieuzones_bestelbus
-                              UNION ALL
-                              select verkeerstype, geometry, id from public.milieuzones_taxi
-                              UNION ALL
-                              select verkeerstype, geometry, id from public.milieuzones_touringcar
-                              UNION ALL
-                              select verkeerstype, geometry, id from public.milieuzones_bromensnorfiets
-                              ) union_
-                              USING srid=28992 USING UNIQUE id"
+      # id is one of  63363 63362  63361 63360 63324
+    VALIDATION
+      'id' '^[0-9]{5}$'
+      'default_id' '63362'
+    END
+
+    FILTER          ('[id]' = '%id%')
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.milieuzones USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -65,7 +62,7 @@ MAP
 
     CLASS
       NAME          "Bestelauto"
-      EXPRESSION    ("[verkeerstype]" eq "bestel")
+      EXPRESSION    ("[id]" = "63363")
 
       STYLE
           ANTIALIAS    true
@@ -81,7 +78,7 @@ MAP
 
     CLASS
       NAME          "Vrachtauto"
-      EXPRESSION    ("[verkeerstype]" eq "vracht")
+      EXPRESSION    ("[id]" = "63362")
 
       STYLE
           ANTIALIAS    true
@@ -97,7 +94,7 @@ MAP
 
     CLASS
       NAME          "Touringcar"
-      EXPRESSION    ("[verkeerstype]" eq "touringcar")
+      EXPRESSION    ("[id]" = "63361")
 
       STYLE
           ANTIALIAS    true
@@ -113,7 +110,7 @@ MAP
 
     CLASS
       NAME          "Taxi"
-      EXPRESSION    ("[verkeerstype]" eq "taxi")
+      EXPRESSION    ("[id]" = "63360")
 
       STYLE
           ANTIALIAS    true
@@ -129,7 +126,7 @@ MAP
 
     CLASS
       NAME          "Brom- en snorfiets"
-      EXPRESSION    ("[verkeerstype]" eq "brom- en snorfiets")
+      EXPRESSION    ("[id]" = "63324")
 
       STYLE
           ANTIALIAS    true
