@@ -7,7 +7,7 @@
 # 2. Create pyramids in the destination directory using this script
 # 3. Upload pyramid results to blob storage
 # 4. Add lufoYYYY.map file
-# 5. Enable lufo comments in lufo.map file
+# 5. Enable lufo layer in lufo.map file
 # 6. Run mapproxy Lufo tiles generation (see mapproxy config)
 # 7. Upload tiles to blob storage
 #
