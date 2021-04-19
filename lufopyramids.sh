@@ -53,8 +53,7 @@ fi
 
 ### Create pyramid base dir and retile to create pyramid with 5 levels in fixed tile sizes
 mkdir -p $DESTDIR/0
-gdal_retile.py -v -r cubic -resume -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR $DESTDIR_ROOT/overview.vrt
-# gdal_retile.py -v -r cubic -levels 5 -resume -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR $DESTDIR_ROOT/overview.vrt
+gdal_retile.py -v -r cubic -levels 5 -resume -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR $DESTDIR_ROOT/overview.vrt
 
 ### Put original resolution images in their own subdirectory
 mv $DESTDIR/*.tif $DESTDIR/0
