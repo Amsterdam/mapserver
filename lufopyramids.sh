@@ -31,39 +31,6 @@
 #
 
 ### Set local vars
-SOURCEDIR=$1#!/bin/bash
-
-# -----------------------------------------
-# Purpose:
-# -----------------------------------------
-# 1. Place the TIF files in the source directory
-# 2. Create pyramids in the destination directory using this script
-# 3. Upload pyramid results to blob storage
-# 4. Add lufoYYYY.map file
-# 5. Enable lufo comments in lufo.map file
-# 6. Run mapproxy Lufo tiles generation (see mapproxy config)
-# 7. Upload tiles to blob storage
-#
-# Requirements:
-# -----------------------------------------
-# sudo apt-get install -y gdal-bin python-gdal
-#
-# -----------------------------------------
-# Usage:
-# -----------------------------------------
-# ./lufopyramids.sh <source dir of tiffs> <destination dir of result> <YYYY> <infrarood | luchtfotos>
-# ./lufopyramids.sh /mnt/lufo/2004 /mnt/lufo 2004 luchtfotos
-# OR
-# ./lufopyramids.sh /mnt/infrarood2018 /mnt/infrarood 2018 infrarood
-# -----------------------------------------
-#
-#
-# When using ECW files, translate to GeoTiff manually:
-# https://hub.docker.com/r/ginetto/gdal
-# docker run --rm -it --name gdalecw -v /mnt/lufo/lufo2009/ams:/home/datafolder ginetto/gdal:2.4.4_ECW gdal_translate /home/datafolder/Amsterdam_groot.ecw /home/datafolder/lufo2009.tif
-#
-
-### Set local vars
 SOURCEDIR=$1
 DESTDIR_ROOT=$2
 DESTDIR=$2/pyramid
