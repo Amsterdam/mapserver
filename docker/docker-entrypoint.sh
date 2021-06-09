@@ -238,4 +238,8 @@ python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.
 echo Starting server
 # Apache gets grumpy about PID files pre-existing
 rm -f /var/run/apache2/apache2.pid
+# Also remove any socket files that may linger.
+# These may cause EADDRINUSE (Address already in use) if the new Apache's
+# PID matches that of a previous instance.
+rm -f /var/run/apache2/cgisock.*
 apachectl -D FOREGROUND
