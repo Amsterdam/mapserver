@@ -260,56 +260,547 @@ MAP
 
   END
 
+  #==================== BOUWSTROOMPUNT: MARKT =========================
 
-  #=============================================================================  
   LAYER
-      NAME            "bouwstroompunten"
-      GROUP           "energie"
-      TYPE            POINT
-      INCLUDE         "connection_dataservices.inc"
-      DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"     
-      TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-      PROJECTION      "init=epsg:28992"
-    END   
-    
-    METADATA
-          "wfs_title"           "Bouwstroompunten"
-          "wfs_srs"             "EPSG:28992"
-          "wfs_abstract"        "Bouwstroompunten in Amsterdam"
-          "wfs_enable_request"  "*"
-          "wms_group_title"     "Bouwstroompunten"
-          "wms_abstract"        "Bouwstroompunten in Amsterdam"
-          "wms_enable_request"  "*"
-          "wms_srs"             "EPSG:28992"
-          "wms_name"            "bouwstroompunten"
-          "wms_format"          "image/png"
-          "wms_server_version"  "1.1.1"
-          "wms_extent"          "100000 450000 150000 500000"    
+    NAME            "Markt: groter of gelijk aan 3 x 80 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
     END
-      
-      CLASS
-          NAME          "bouwstroompunten"
-          STYLE
-              SYMBOL         'circle_orange'
-              SIZE           16
-          END
 
-          LABEL
-            MINSCALEDENOM  10
-            MAXSCALEDENOM  10000
-            COLOR          0 0 0
-            OUTLINECOLOR   255 255 255
-            OUTLINEWIDTH   3
-            FONT           "Ubuntu-MI"
-            TYPE           truetype
-            SIZE           10
-            POSITION       AUTO
-            PARTIALS       FALSE
-            OFFSET         -60 10
-            END
-            
-        END     
+    METADATA
+        "wfs_title"           "Markt: groter of gelijk aan 3 x 80 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Markt: groter of gelijk aan 3 x 80 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Markt: groter of gelijk aan 3 x 80 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Markt: groter of gelijk aan 3 x 80 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+  CLASS
+        NAME       "groter of gelijk aan 3 x 80 A"
+        EXPRESSION (("[capaciteit]" eq "3 x 80 A" or "[capaciteit]" eq "3 x 160 A" or "[capaciteit]" eq "3 x 250 A") and "[primaire_functie]" eq "Markt")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 51 153 #purple
+      END
     END
   END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Markt: 3 x 40 A tot 3 x 63 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Markt: 3 x 40 A tot 3 x 63 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Markt: 3 x 40 A tot 3 x 63 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Markt: 3 x 40 A tot 3 x 63 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Markt: 3 x 40 A tot 3 x 63 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "3 x 40 A tot 3 x 63 A"
+        EXPRESSION (("[capaciteit]" eq "3 x 40 A" or "[capaciteit]" eq "3 X 50 A" or "[capaciteit]" eq "3 x 63 A") and "[primaire_functie]" eq "Markt")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 0 0 #rood
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Markt: 3 x 25 A tot 3 x 40 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Markt: 3 x 25 A tot 3 x 40 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Markt: 3 x 25 A tot 3 x 40 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Markt: 3 x 25 A tot 3 x 40 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Markt: 3 x 25 A tot 3 x 40 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "3 x 25 A tot 3 x 40 A"
+        EXPRESSION (("[capaciteit]" eq "3 X 25 A"  or "[capaciteit]" eq "3 x 35 A" or "[capaciteit]" eq "3 x 40 A") and "[primaire_functie]" eq "Markt")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 255 0 #yellow
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Markt: tot 3 x 25 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Markt: tot 3 x 25 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Markt: tot 3 x 25 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Markt: tot 3 x 25 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Markt: tot 3 x 25 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "tot 3 x 25 A"
+        EXPRESSION (("[capaciteit]" eq "1 X 10 A" or "[capaciteit]" eq "1 X 35 A") and "[primaire_functie]" eq "Markt")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               128 255 0 #green
+      END
+    END
+  END
+
+  #==================== BOUWSTROOMPUNT: EVENEMENT =========================
+  LAYER
+    NAME            "Evenement: groter of gelijk aan 3 x 80 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Evenement: groter of gelijk aan 3 x 80 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Evenement: groter of gelijk aan 3 x 80 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Evenement: groter of gelijk aan 3 x 80 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Evenement: groter of gelijk aan 3 x 80 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+  CLASS
+        NAME       "groter of gelijk aan 3 x 80 A"
+        EXPRESSION (("[capaciteit]" eq "3 x 80 A" or "[capaciteit]" eq "3 x 160 A" or "[capaciteit]" eq "3 x 250 A") and "[primaire_functie]" eq "Evenement")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 51 153 #purple
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Evenement: 3 x 40 A tot 3 x 63 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Evenement: 3 x 40 A tot 3 x 63 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Evenement: 3 x 40 A tot 3 x 63 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Evenement: 3 x 40 A tot 3 x 63 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Evenement: 3 x 40 A tot 3 x 63 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "3 x 40 A tot 3 x 63 A"
+        EXPRESSION (("[capaciteit]" eq "3 x 40 A" or "[capaciteit]" eq "3 X 50 A" or "[capaciteit]" eq "3 x 63 A") and "[primaire_functie]" eq "Evenement")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 0 0 #rood
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Evenement: 3 x 25 A tot 3 x 40 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Evenement: 3 x 25 A tot 3 x 40 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Evenement: 3 x 25 A tot 3 x 40 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Evenement: 3 x 25 A tot 3 x 40 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Evenement: 3 x 25 A tot 3 x 40 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "3 x 25 A tot 3 x 40 A"
+        EXPRESSION (("[capaciteit]" eq "3 x 25 A"  or "[capaciteit]" eq "3 x 35 A" or "[capaciteit]" eq "3 x 40 A") and "[primaire_functie]" eq "Evenement")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 255 0 #yellow
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Evenement: tot 3 x 25 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Evenement: tot 3 x 25 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Evenement: tot 3 x 25 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Evenement: tot 3 x 25 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Evenement: tot 3 x 25 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "tot 3 x 25 A"
+        EXPRESSION (("[capaciteit]" eq "1 X 10 A" or "[capaciteit]" eq "1 X 35 A") and "[primaire_functie]" eq "Evenement")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               128 255 0 #green
+      END
+    END
+  END
+
+  #==================== BOUWSTROOMPUNT: BOUWSTROOMPUNT =========================
+
+  LAYER
+    NAME            "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM (
+                                select *
+                                from public.bouwstroompunten_bouwstroompunten
+                                where primaire_functie is null
+                              ) as subquery USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+  CLASS
+        NAME       "groter of gelijk aan 3 x 80 A"
+        EXPRESSION ("[capaciteit]" eq "3 x 80 A" or "[capaciteit]" eq "3 x 160 A" or "[capaciteit]" eq "3 x 250 A")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 51 153 #purple
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Bouwstroompunt: 3 x 40 A tot 3 x 63 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM (
+                                select *
+                                from public.bouwstroompunten_bouwstroompunten
+                                where primaire_functie is null
+                              ) as subquery USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Bouwstroompunt: 3 x 40 A tot 3 x 63 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Bouwstroompunt: 3 x 40 A tot 3 x 63 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Bouwstroompunt: 3 x 40 A tot 3 x 63 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Bouwstroompunt: 3 x 40 A tot 3 x 63 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "3 x 40 A tot 3 x 63 A"
+        EXPRESSION ("[capaciteit]" eq "3 x 40 A" or "[capaciteit]" eq "3 X 50 A" or "[capaciteit]" eq "3 x 63 A")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 0 0 #rood
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Bouwstroompunt: 3 x 25 A tot 3 x 40 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM (
+                                select *
+                                from public.bouwstroompunten_bouwstroompunten
+                                where primaire_functie is null
+                              ) as subquery USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Bouwstroompunt: 3 x 25 A tot 3 x 40 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Bouwstroompunt: 3 x 25 A tot 3 x 40 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Bouwstroompunt: 3 x 25 A tot 3 x 40 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Bouwstroompunt: 3 x 25 A tot 3 x 40 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "3 x 25 A tot 3 x 40 A"
+        EXPRESSION ("[capaciteit]" eq "3 X 25 A"  or "[capaciteit]" eq "3 x 35 A" or "[capaciteit]" eq "3 x 40 A")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               255 255 0 #yellow
+      END
+    END
+  END
+
+  #-------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME            "Bouwstroompunt: tot 3 x 25 A"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM (
+                                select *
+                                from public.bouwstroompunten_bouwstroompunten
+                                where primaire_functie is null
+                              ) as subquery USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "Bouwstroompunt: tot 3 x 25 A"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "Bouwstroompunt: tot 3 x 25 A"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "Bouwstroompunt: tot 3 x 25 A"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Bouwstroompunt: tot 3 x 25 A"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+        NAME       "tot 3 x 25 A"
+        EXPRESSION ("[capaciteit]" eq "1 X 10 A" or "[capaciteit]" eq "1 X 35 A")
+        STYLE
+        SYMBOL              'stip'
+        SIZE                10
+        MINSCALEDENOM       10
+        MAXSCALEDENOM       500001
+        COLOR               128 255 0 #green
+      END
+    END
+  END
+
+
+  #=========================BOUWSTROOMPUNT: ONBEKEND ======================================
+
+  LAYER
+    NAME            "onbekend"
+    GROUP           "bouwstroompunten"
+    TYPE            POINT
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM (
+                                select *
+                                from public.bouwstroompunten_bouwstroompunten
+                                where capaciteit is null
+                              ) as subquery USING srid=28992 USING UNIQUE id"
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    METADATA
+        "wfs_title"           "onbekend"
+        "wfs_srs"             "EPSG:28992"
+        "wfs_abstract"        "onbekend"
+        "wfs_enable_request"  "*"
+        "wms_group_title"     "bouwstroompunten"
+        "wms_abstract"        "onbekend"
+        "wms_enable_request"  "*"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "onbekend"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
+    END
+
+  CLASS
+        NAME                "onbekend"
+        STYLE
+          SYMBOL              'driehoek'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               0 0 0 #zwart
+        END
+      END
+  END
+
 #=============================================================================
+END
+
+
 
