@@ -54,7 +54,7 @@ MAP
       "ows_abstract"        "Kleinschalige Basiskaart 50k"
     END
   END
-  
+
   IMAGECOLOR                "#fefafa"
 
 
@@ -79,7 +79,7 @@ MAP
     MINSCALEDENOM           20000
       STYLE
         COLOR               "#95c6d5"
-      END 
+      END
     END
   END
 
@@ -1079,58 +1079,58 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    SBL_trein_ongeelektrificeerd-line
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           25000
-    MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-    MAXSCALEDENOM           25000
-    MINSCALEDENOM           20000
-      STYLE
-        WIDTH 3
-        COLOR "#9d9d9d"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+  # DOES NOT EXISTS IN DE KB50 ANYMORE
+  #LAYER
+  #  NAME                    SBL_trein_ongeelektrificeerd-line
+  #  GROUP                   "lijnen"
+  #  MAXSCALEDENOM           25000
+  #  MINSCALEDENOM           20000
+  #  INCLUDE                 "connection_basiskaart.inc"
+  #  DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
+  #  TYPE                    LINE
+  #  PROJECTION
+  #    "init=epsg:28992"
+  #  END
+  #  CLASS
+  #  MAXSCALEDENOM           25000
+  #  MINSCALEDENOM           20000
+  #    STYLE
+  #      WIDTH 3
+  #      COLOR "#9d9d9d"
+  #      LINECAP BUTT
+  #      LINEJOIN MITER
+  #    END
+  #  END
+  #END
 
   #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    SBL_trein_ongeelektrificeerd-dash
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           25000
-    MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    CLASS
-    MAXSCALEDENOM           25000
-    MINSCALEDENOM           20000
-      STYLE
-        WIDTH 1.5
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+  #LAYER
+  #  NAME                    SBL_trein_ongeelektrificeerd-dash
+  #  GROUP                   "lijnen"
+  #  MAXSCALEDENOM           25000
+  #  MINSCALEDENOM           20000
+  #  INCLUDE                 "connection_basiskaart.inc"
+  #  DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
+  #  TYPE LINE
+  #  PROJECTION
+  #    "init=epsg:28992"
+  #  END
+  #  CLASS
+  #  MAXSCALEDENOM           25000
+  #  MINSCALEDENOM           20000
+  #    STYLE
+  #      WIDTH 1.5
+  #      PATTERN
+  #        8
+  #        8
+  #      END
+  #      COLOR "#ffffff"
+  #      LINECAP BUTT
+  #      LINEJOIN MITER
+  #    END
+  #  END
+  #END
 
   #-----------------------------------------------------------------------------
 
