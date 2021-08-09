@@ -124,3 +124,9 @@ Monumenten
 * wms kaart:
 http://localhost:8989/maps/monumenten&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=119160,485473,124004,489948&CRS=EPSG:28992&WIDTH=1217&HEIGHT=1217&LAYERS=monument_coordinaten&STYLES=&FORMAT=image/png&DPI=72&MAP_RESOLUTION=72&FORMAT_OPTIONS=dpi:72&TRANSPARENT=false
 http://localhost:8989/maps/monumenten&SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&BBOX=119160,485473,124004,489948&CRS=EPSG:28992&WIDTH=1217&HEIGHT=1217&LAYERS=monument_geometrie&STYLES=&FORMAT=image/png&DPI=72&MAP_RESOLUTION=72&FORMAT_OPTIONS=dpi:72&TRANSPARENT=false
+
+Tiles generator for background in data.amsterdam.nl
+----
+Currently in Jenkis there are several jobs available that generate the tiles (.png's) for RD (normal,light and ZW). These tiles are generated based on data in the basiskaart database. Depending on the needed detail level (for instance level 9), they will used the schema KBK10 or KBK50. If there is a table selection error, like a table is missing, then the tiles generation cannot be completed with succes. The generator process will finish but the tiles will show a white space. Instead of a picture of the map. One way of debugging if that is the case, is to retreive a tile based upon the BBOX (as specified below). If there is an issue, it will be displayed as an error in the image itself (at top):
+
+https://<URL OF MAPSERVER>/cgi-bin/mapserv?map=/srv/mapserver/topografie.map&SERVICE=WMS&VERSION=1.1.0&REQUEST=GetMap&BBOX=94100,464250,170000,514160&SRS=EPSG:28992&WIDTH=884&HEIGHT=884&LAYERS=basiskaart&STYLES=&FORMAT=image/png&DPI=96&MAP_RESOLUTION=6&FORMAT_OPTIONS=dpi:96&TRANSPARENT=TRUE
