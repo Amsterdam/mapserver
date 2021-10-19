@@ -1,0 +1,161 @@
+MAP
+  NAME "INFRAROOD2021"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "INFRAROOD 2021"
+      "ows_abstract"        "Infrarood foto's van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif"
+  CONFIG "GDAL_DISABLE_READDIR_ON_OPEN"     "TRUE"
+
+  #-------------------------------------------------------------------
+  # UITVOERFORMATEN
+  #-------------------------------------------------------------------
+
+  OUTPUTFORMAT
+    NAME "GTiff"
+    DRIVER GDAL/GTiff
+    MIMETYPE "image/tiff"
+    IMAGEMODE RGB
+    EXTENSION "tif"
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME                    "infrarood2021-5"
+    GROUP                   "infrarood2021"
+    TILEINDEX               "/srv/mapserver/infrarood/imagery-2021-5.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 5 - 10 RD
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           8000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood's 2021"
+      "ows_group_title"     "infrarood2021"
+      "ows_abstract"        "Infrarood foto's van 2021 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "infrarood2021-4"
+    GROUP                   "infrarood2021"
+    TILEINDEX               "/srv/mapserver/infrarood/imagery-2021-4.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 11 RD
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood's 2021"
+      "ows_group_title"     "infrarood2021"
+      "ows_abstract"        "Infrarood foto's van 2021 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "infrarood2021-3"
+    GROUP                   "infrarood2021"
+    TILEINDEX               "/srv/mapserver/infrarood/imagery-2021-3.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 12 RD
+    MAXSCALEDENOM           4000
+    MINSCALEDENOM           2000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood's 2021"
+      "ows_group_title"     "infrarood2021"
+      "ows_abstract"        "Infrarood foto's van 2021 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "infrarood2021-2"
+    GROUP                   "infrarood2021"
+    TILEINDEX               "/srv/mapserver/infrarood/imagery-2021-2.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 13 RD
+    MAXSCALEDENOM           2000
+    MINSCALEDENOM           1000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood's 2021"
+      "ows_group_title"     "infrarood2021"
+      "ows_abstract"        "Infrarood foto's van 2021 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "infrarood2021-1"
+    GROUP                   "infrarood2021"
+    TILEINDEX               "/srv/mapserver/infrarood/imagery-2021-1.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 14 RD
+    MAXSCALEDENOM           1000
+    MINSCALEDENOM           500
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood's 2021"
+      "ows_group_title"     "infrarood2021"
+      "ows_abstract"        "Infrarood foto's van 2021 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "infrarood2021-0"
+    GROUP                   "infrarood2021"
+    TILEINDEX               "/srv/mapserver/infrarood/imagery-2021-0.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 15-17 RD
+    MAXSCALEDENOM           500
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood's 2021"
+      "ows_group_title"     "infrarood2021"
+      "ows_abstract"        "Infrarood foto's van 2021 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+#=============================================================================
+END

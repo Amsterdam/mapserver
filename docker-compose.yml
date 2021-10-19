@@ -19,8 +19,8 @@ services:
       - "database:database"
     volumes:
 #     Lufo mount is only for annual local luchtfoto tiles
-      - /tmp/srv/lufo:/mnt/lufo
-      - /tmp/srv/infrarood:/mnt/infrarood
+      - /mnt/lufo:/mnt/lufo
+      - /mnt/infrarood:/mnt/infrarood
       - .:/srv/mapserver
     environment:
       BAG_V11_DB_NAME: bag_v11
