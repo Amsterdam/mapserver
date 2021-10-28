@@ -175,18 +175,6 @@ MAP
       END
     END
 
-     CLASS
-      NAME                  "Op&afstapplaats_passagiersvaart_actie_benodigd"
-      EXPRESSION ("[kleur_op_kaart]" eq "Openbare op- en afstapplaats passagiersvaart, actie benodigd")
-      STYLE
-        SYMBOL              'driehoek'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               252 237 2
-      END
-    END
-
     CLASS
       NAME                  "Op&afstaplocatie_passagiersvaart_exclusieve"
       EXPRESSION ("[kleur_op_kaart]" eq "Exclusieve op- en afstaplocatie passagiersvaart")
@@ -199,32 +187,7 @@ MAP
       END
     END
 
-     CLASS
-      NAME                  "Geen_op&afstapplaats"
-      EXPRESSION ("[kleur_op_kaart]" eq "Geen op- en afstapplaats")
-      STYLE
-        SYMBOL              'driehoek'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 53 40
-      END
-    END
-
     CLASS
-      NAME                  "Wenslocatie"
-      EXPRESSION ("[kleur_op_kaart]" eq "Wenslocatie")
-      STYLE
-        SYMBOL              'driehoek'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               20 65 232
-      END
-    END
-
-
-CLASS
       NAME                  "Laden&lossen_transport_over_water"
       EXPRESSION ("[kleur_op_kaart]" eq "Laden en lossen transport over water")
       STYLE
