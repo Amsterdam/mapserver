@@ -24,11 +24,6 @@
 # ./lufopyramids.sh /mnt/infrarood2018 /mnt/infrarood 2018 infrarood
 # -----------------------------------------
 #
-#
-# When using ECW files, translate to GeoTiff manually:
-# https://hub.docker.com/r/ginetto/gdal
-# docker run --rm -it --name gdalecw -v /mnt/lufo/lufo2009/ams:/home/datafolder ginetto/gdal:2.4.4_ECW gdal_translate /home/datafolder/Amsterdam_groot.ecw /home/datafolder/lufo2009.tif
-#
 
 ### Set local vars
 SOURCEDIR=$1
@@ -38,10 +33,10 @@ YEAR=$3
 TYPE=$4
 
 ### Reset all tifs to use 3 bands:
-for i in $SOURCEDIR/*.tif; do
-    [ -f "$i" ] || break
-    gdal_translate $i $DESTDIR_ROOT/$(basename $i) -a_srs "EPSG:28992" -b 1 -b 2 -b 3
-done
+# for i in $SOURCEDIR/*.tif; do
+#     [ -f "$i" ] || break
+#     gdal_translate $i $DESTDIR_ROOT/$(basename $i) -a_srs "EPSG:28992" -b 1 -b 2 -b 3
+# done
 
 # ### Create a list of images in the source directory
 gdalbuildvrt -overwrite -resolution highest -r cubic -hidenodata -srcnodata "255 255 255" $DESTDIR_ROOT/overview.vrt $DESTDIR_ROOT/*.tif
@@ -54,6 +49,8 @@ fi
 ### Create pyramid base dir and retile to create pyramid with 5 levels in fixed tile sizes
 mkdir -p $DESTDIR/0
 gdal_retile.py -v -r cubic -levels 5 -resume -ps 8192 8192 -co TILED=YES -co COMPRESS=JPEG -co PHOTOMETRIC=YCBCR -s_srs "EPSG:28992" -targetDir $DESTDIR $DESTDIR_ROOT/overview.vrt
+
+# TODO: Add gdal translate to add -co PHOTOMETRIC=YCBCR also for level 0
 
 ### Put original resolution images in their own subdirectory
 mv $DESTDIR/*.tif $DESTDIR/0
