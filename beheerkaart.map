@@ -1,12 +1,19 @@
 #==============================================================================
 #
 # beheerkaart.map
-# doel: De beheerkaart toont de publieke ruimte uitgesplitst
-# 		naar zakelijk recht. Het laat zien welk zakelijk recht
-# 		de Gemeente Amsterdam heeft op een kadastraal object en of 
-# 		dit recht belast is met opstal en/of erfpacht.
-# 		Zodat duidelijk is voor welk deel van de publieke ruimte
-# 		de Gemeente Amsterdam beheersverantwoordlijkheid draagt.
+# doel: 	De beheerkaart toont de publieke ruimte uitgesplitst
+# 			naar zakelijk recht. Het laat zien welk zakelijk recht
+# 			de Gemeente Amsterdam heeft op een kadastraal object en of 
+# 			dit recht belast is met opstal en/of erfpacht.
+# 			Zodat duidelijk is voor welk deel van de publieke ruimte
+# 			de Gemeente Amsterdam beheersverantwoordlijkheid draagt.
+#
+# opmerking: 	Belaste objecten met bgt_fysiekvoorkomen=erf zijn geen
+#				deel van de publieke ruimte en worden uit de data gefilterd.
+#				Dat deze businesslogica hier is ondergebracht is niet
+#				wenselijk en aangekaart bij de datateams.
+#
+# contact: 	Nico de Graaff n.degraaff@amsterdam.nl
 #
 #==============================================================================
 
@@ -32,7 +39,8 @@ MAP
 		NAME                    belast
 		GROUP                   bgt
 		INCLUDE                 "connection_dataservices.inc"
-		DATA                    "geometrie FROM (SELECT * FROM public.beheerkaart_basis_kaart WHERE agg_indicatie_belast_recht = true AND objecteindtijd is NULL) as SUBQUERY USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		# Let op: Hier wordt geselecteerd op bgt_fysiekvoorkomen!=erf. (Zie opmerking bovenaan)
+		DATA                    "geometrie FROM (SELECT * FROM public.beheerkaart_basis_kaart WHERE agg_indicatie_belast_recht = true AND objecteindtijd is NULL AND bgt_fysiekvoorkomen != 'erf') as SUBQUERY USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "agg_belast_door_zrt_code"
 		MAXSCALEDENOM           50000
