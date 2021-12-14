@@ -33,7 +33,7 @@ MAP
     DATA                    "geometrie FROM public.brandkranen_brandkranen USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           500001
 
     METADATA
       "wfs_title"           "brandkranen_coordinaten"
@@ -59,10 +59,9 @@ MAP
       NAME                  "Brandkraan"
       STYLE
         MINSCALEDENOM       10
-        MAXSCALEDENOM       5001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
+        MAXSCALEDENOM       14501
+        SYMBOL              'cirkel_brandkraan_png'
+        SIZE                12
         OUTLINECOLOR        0 0 0
         WIDTH               3
       END
