@@ -43,7 +43,6 @@ De laatste versie van de database kan opgehaald worden met:
 	docker-compose exec database update-db.sh overlastgebieden
 	docker-compose exec database update-db.sh dataselectie
 	docker-compose exec database update-db.sh various_small_datasets
-	docker-compose exec database update-db.sh parkeervakken
 	docker-compose exec database update-db.sh afvalcontainers
 	docker-compose exec database update-db.sh dataservices
 

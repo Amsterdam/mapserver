@@ -34,7 +34,7 @@ run from a Docker container.
 
 Create a ``docker-compose.yml`` file that can start your database and web
 service. Add an entry for the Mapserver (in our example application it is
-called ``mapserver``). An example from the ``reistijdenauto`` project:
+called ``mapserver``). An example from the ``reistijdenauto`` project (NOTE: This project has been discontinued):
 ```yaml
 version: "3.0"
 services:
