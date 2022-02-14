@@ -21,13 +21,13 @@ MAP
 
   LAYER
     NAME                    "binnen"
-    GROUP                   "zone zwaarverkeer"
+    GROUP                   "zone zwaar verkeer"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.wegenbestand_zone_zwaarverkeer_binnen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.wegenbestand_zone_zwaar_verkeer_binnen USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -42,8 +42,8 @@ MAP
       "gml_include_items"   "all"
       "wms_title"           "binnen"
       "wms_enable_request"  "*"
-      "wms_group_title"     "zone zwaarverkeer"
-      "wms_abstract"        "binnen"
+      "wms_group_title"     "zone zwaar verkeer"
+      "wms_abstract"        "wegen die vallen binnen de zone zwaar verkeer"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "binnen"
       "wms_format"          "image/png"
@@ -56,8 +56,8 @@ MAP
 
       STYLE
           WIDTH        2
-          COLOR        204 0 153
-          OUTLINECOLOR 204 0 153
+          COLOR        180 55 229
+          OUTLINECOLOR 180 55 229
       END
     END
   END
@@ -66,13 +66,13 @@ MAP
 
   LAYER
     NAME                    "buiten"
-    GROUP                   "zone zwaarverkeer"
+    GROUP                   "zone zwaar verkeer"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.wegenbestand_zone_zwaarverkeer_buiten USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.wegenbestand_zone_zwaar_verkeer_buiten USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -87,8 +87,8 @@ MAP
       "gml_include_items"   "all"
       "wms_title"           "buiten"
       "wms_enable_request"  "*"
-      "wms_group_title"     "zone zwaarverkeer"
-      "wms_abstract"        "buiten"
+      "wms_group_title"     "zone zwaar verkeer"
+      "wms_abstract"        "wegen die vallen buiten de zone zwaar verkeer"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "buiten"
       "wms_format"          "image/png"
@@ -101,8 +101,8 @@ MAP
 
       STYLE
           WIDTH        2
-          COLOR        0 51 204
-          OUTLINECOLOR 0 51 204
+          COLOR        40 167 69
+          OUTLINECOLOR 40 167 69
       END
     END
   END
@@ -111,13 +111,13 @@ MAP
 
   LAYER
     NAME                    "buiten - breed_opgezette_wegen"
-    GROUP                   "zone zwaarverkeer"
+    GROUP                   "zone zwaar verkeer"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.wegenbestand_zone_zwaarverkeer_breed_opgezette_wegen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.wegenbestand_zone_zwaar_verkeer_breed_opgezette_wegen USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -132,7 +132,7 @@ MAP
       "gml_include_items"   "all"
       "wms_title"           "buiten - breed_opgezette_wegen"
       "wms_enable_request"  "*"
-      "wms_group_title"     "zone zwaarverkeer"
+      "wms_group_title"     "zone zwaar verkeer"
       "wms_abstract"        "buiten - breed_opgezette_wegen"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "buiten - breed_opgezette_wegen"
@@ -146,8 +146,8 @@ MAP
 
       STYLE
           WIDTH        3
-          COLOR        255 0 0
-          OUTLINECOLOR 255 0 0
+          COLOR        83 2 46
+          OUTLINECOLOR 83 2 46
       END
     END
   END
@@ -156,13 +156,13 @@ MAP
 
   LAYER
     NAME                    "gevaarlijke_stoffen"
-    GROUP                   "zone zwaarverkeer"
+    GROUP                   "zone zwaar verkeer"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.wegenbestand_zone_zwaarverkeer_routes_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.wegenbestand_routes_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -177,7 +177,7 @@ MAP
       "gml_include_items"   "all"
       "wms_title"           "Gevaarlijke stoffen"
       "wms_enable_request"  "*"
-      "wms_group_title"     "zone zwaarverkeer"
+      "wms_group_title"     "zone zwaar verkeer"
       "wms_abstract"        "Gevaarlijke stoffen"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "gevaarlijke_stoffen"
@@ -201,13 +201,13 @@ MAP
 
   LAYER
     NAME                    "tunnels"
-    GROUP                   "zone zwaarverkeer"
+    GROUP                   "zone zwaar verkeer"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.wegenbestand_zone_zwaarverkeer_tunnels_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.wegenbestand_tunnels_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -222,7 +222,7 @@ MAP
       "gml_include_items"   "all"
       "wms_title"           "Tunnels gevaarlijke stoffen"
       "wms_enable_request"  "*"
-      "wms_group_title"     "zone zwaarverkeer"
+      "wms_group_title"     "zone zwaar verkeer"
       "wms_abstract"        "Tunnels gevaarlijke stoffen"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "tunnels"
