@@ -72,7 +72,9 @@ MAP
     END
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometry FROM public.wegenbestand_zone_zwaar_verkeer_buiten USING srid=28992 USING UNIQUE id"
+    # mapserver treats in the `EXPRESSION` clause on the `CLASS` NULL values as integer zero. In this case we do not want that
+    # and translate NULL values to an integer of 4 (or more). Hence the `COALESCE` in the `DATA` query below.
+    DATA                    "geometry FROM (SELECT *, COALESCE(weg_functie, 4) weg_functie_null_trans FROM public.wegenbestand_zone_zwaar_verkeer_buiten) as SUBQUERY USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -98,7 +100,7 @@ MAP
 
     CLASS
       NAME          "buiten-wegfunctie-kleiner-dan-4"
-      EXPRESSION    ([weg_functie] < 4)
+      EXPRESSION    ([weg_functie_null_trans] < 4)
 
       STYLE
           WIDTH        2.5
@@ -110,7 +112,7 @@ MAP
 
     CLASS
       NAME          "buiten-wegfunctie-4-of-groter"
-      EXPRESSION    ([weg_functie] >= 4)
+      EXPRESSION    ([weg_functie_null_trans] >= 4)
 
       STYLE
           WIDTH        1
