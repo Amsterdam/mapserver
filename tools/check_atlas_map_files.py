@@ -231,7 +231,7 @@ def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(script_dir)
 
-    public_mapfiles = glob('../*.map')
+    public_mapfiles = glob('../public/*.map')
     private_mapfiles = glob('../private/*.map')
     mapfiles = list(public_mapfiles)
     mapfiles.extend(private_mapfiles)

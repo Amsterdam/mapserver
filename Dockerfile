@@ -9,7 +9,7 @@ RUN apt-get install -y gdal-bin gdal-data libgdal20
 RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 
 # Enable these Apache modules
-RUN  a2enmod actions cgid headers rewrite
+RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf

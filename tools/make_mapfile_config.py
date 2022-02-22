@@ -160,13 +160,13 @@ def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(script_dir)
 
-    public_mapfiles = glob('../*.map')
+    public_mapfiles = glob('../public/*.map')
     mapfiles = list(public_mapfiles)
     if os.getenv('ACCESS_SCOPE', 'public') == 'private':
         private_mapfiles = glob('../private/*.map')
         mapfiles.extend(private_mapfiles)
 
-    for mapfile in mapfiles:
+    for mapfile in sorted(mapfiles): # sorting for easier debugging through logs
         if re.search(r'lufo', mapfile):
             continue
         scan_map_file(mapfile)
