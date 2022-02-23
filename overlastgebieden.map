@@ -220,6 +220,44 @@ MAP
 
   #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME            "straatartiestverbod"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "straatartiestverbod"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME          "Straatartiestverbod"
+      STYLE
+       ANTIALIAS    true
+       COLOR        153 0 51
+       OPACITY      20
+      END
+      STYLE
+       OUTLINECOLOR 153 0 51
+       WIDTH        2
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
 
   LAYER
     NAME            "taxi-standplaatsgebied"
@@ -1021,6 +1059,72 @@ MAP
         MINSCALEDENOM  6000
         MAXSCALEDENOM  8000
         COLOR          0 210 180
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+
+  LAYER
+    NAME            "straatartiestverbod_label"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   8001
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "straatartiestverbod_label"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      TEXT             '[oov_naam]'
+      NAME             "straatartiestverbod_label"
+      LABEL
+        MAXSCALEDENOM  3000
+        COLOR          153 0 51
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           14
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  3000
+        MAXSCALEDENOM  6000
+        COLOR          153 0 51
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   1
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           12
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+      LABEL
+        MINSCALEDENOM  6000
+        MAXSCALEDENOM  8000
+        COLOR          153 0 51
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   1
         FONT           "Ubuntu-M"
