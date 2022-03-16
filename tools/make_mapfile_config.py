@@ -160,7 +160,7 @@ def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(script_dir)
 
-    public_mapfiles = glob('../public/*.map')
+    public_mapfiles = glob('../*.map')
     mapfiles = list(public_mapfiles)
     if os.getenv('ACCESS_SCOPE', 'public') == 'private':
         private_mapfiles = glob('../private/*.map')
