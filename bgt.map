@@ -1,0 +1,3165 @@
+#==============================================================================
+# bgt.map
+#==============================================================================
+# doel: serveren van bgt kaart wms
+#
+#==============================================================================
+
+MAP
+	NAME                      "bgt"
+	INCLUDE                   "header.inc"
+
+	WEB
+		METADATA
+			"ows_title"           "bgt"
+			"ows_abstract"        "Basisregistratie Grootschalige Topografie"
+		END
+	END
+
+	IMAGECOLOR                "#FEFAFA"
+
+
+#==============================================================================
+# VLAKKEN
+#==============================================================================
+
+#==============================================================================
+# WATER
+#==============================================================================
+
+# Water 0
+	LAYER
+		NAME                    waterdeel_vlak0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.waterdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"           "waterdeel_vlak"
+			"wms_group_title"     "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM         3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR               "#95C6D5"
+				OUTLINECOLOR        "#95C6D5"
+			END
+		END
+	END
+
+
+
+
+#==============================================================================
+## HOOGTELIGGING 0
+#==============================================================================
+
+# Terreindeel 0
+	LAYER
+		NAME                    terreindeel_vlak0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.terreindeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_fysiekvoorkomen"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "terreindeel_vlak0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {erf,onverhard,rietland,zand,houtwal}
+			STYLE
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   2000
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+			END
+			STYLE
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM   0
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {groenvoorziening,grasland overig,grasland agrarisch,struiken}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#DCEACF"
+				OUTLINECOLOR  "#DCEACF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      /^(oever|kwelder).*$/
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard,perron,strekdam}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {loofbos,gemengd bos,bouwland,moeras,fruitteelt,boomteelt,naaldbos}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#CBE0B8"
+				OUTLINECOLOR  "#CBE0B8"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "heide"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#ddd6e5"
+				OUTLINECOLOR  "#ddd6e5"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Overbrugging 0
+
+	LAYER
+		NAME                    spoorbaan_overbrugging
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.\"BGT_ODL_overbruggingsdeel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "spoorbaan_overbrugging"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM		0
+			STYLE
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Berm achter 0
+
+	LAYER
+		NAME                    berm_achter_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM           0
+		FILTER 					"berm"
+		FILTERITEM				"bgt_functie"
+		CLASSITEM				"bgt_fysiekvoorkomen"
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "berm_achter_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION     {groenvoorziening,onverhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Berm voor 0
+
+	LAYER
+		NAME                    berm_voor_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM           0
+		FILTER 					"berm"
+		FILTERITEM				"bgt_functie"
+		CLASSITEM				"bgt_fysiekvoorkomen"
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "berm_voor_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard}
+			MAXSCALEDENOM   		3500
+			MINSCALEDENOM           0
+			STYLE
+				COLOR         "#F6F3F4"
+			END
+		END
+		CLASS
+			EXPRESSION     	{groenvoorziening,onverhard}
+			MAXSCALEDENOM   		3500
+			MINSCALEDENOM           0
+			STYLE
+				COLOR         "#DCEACF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Rijbanen achter 0
+
+	LAYER
+			NAME                    rijbanen_achter_0
+			GROUP                   hoogte0
+			INCLUDE                 "connection_basiskaart.inc"
+			DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			TYPE                    POLYGON
+			CLASSITEM               "bgt_functie"
+			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			PROJECTION
+				"init=epsg:28992"
+			END
+			METADATA
+				"wms_title"            "rijbanen_achter_0"
+				"wms_group_title"      "hoogte0"
+			END
+			CLASS
+				EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+				MAXSCALEDENOM   3500
+				MINSCALEDENOM			0
+				STYLE
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
+					WIDTH         1
+					LINECAP       BUTT
+					LINEJOIN      MITER
+				END
+			END
+		END
+
+  #-----------------------------------------------------------------------------
+  # Rijbanen voor 0
+
+	LAYER
+		NAME                    rijbanen_voor_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "rijbanen_voor_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#FFFFFF"
+			END
+		END
+		CLASS
+			EXPRESSION      "baan voor vliegverkeer"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#D3D2CF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers achter 0
+
+	LAYER
+		NAME                    voetganers_achter_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetganers_achter_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {voetpad,verkeerseiland,voetpad op trap,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers voor 0
+
+	LAYER
+		NAME                    voetgangers_voor_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetgangers_voor_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {voetpad,verkeerseiland,voetpad op trap,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#f7f3f5"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Inrichtingselement vlak 0
+
+	LAYER
+		NAME                    inrichtingselement_vlak0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		FILTER (((("[bgt_type]" = "steiger") OR (("[bgt_type]" = "sluis") Or (("[bgt_type]" = "gemaal") Or ("[bgt_type]" = "stuw"))) OR ("[bgt_type]" = "muur"))))
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "inrichtingselement_vlak0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION           "muur"
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION           {sluis,gemaal,stuw}
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR  "#C9C7C2"
+			END
+		END
+		CLASS
+			EXPRESSION           "steiger"
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR             "#F2F1EE"
+				OUTLINECOLOR      "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR             "#FFFFFF"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Gebouw 0
+
+	LAYER
+		NAME                    gebouw_vlak0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.gebouw_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouw_vlak0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {niet-bgt,transitie,lage trafo,open loods,opslagtank,bassin,windturbine,bezinkbak}
+			STYLE
+				MAXSCALEDENOM   3500
+				MINSCALEDENOM	0
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "overkapping"
+			MAXSCALEDENOM   3500
+			STYLE
+				OPACITY       50
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro achter 0
+
+	LAYER
+		NAME                    metro_achter0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+				MAXSCALEDENOM           3500
+				MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+				MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro voor 0
+
+	LAYER
+		NAME                    metro_voor0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+		MINSCALEDENOM		0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Tram 0
+
+	LAYER
+		NAME                    tram0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"tram"
+		MAXSCALEDENOM           3500
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "tram0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH         1.5
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+
+				WIDTH         2
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein achter 0
+
+	LAYER
+		NAME                    trein_achter0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_achter0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein voor 0
+
+	LAYER
+		NAME                    trein_voor0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_voor0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg achter 0
+
+	LAYER
+		NAME                    snelweg_achter_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTERITEM              "bgt_functie"
+		FILTER					"rijbaan autosnelweg"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "snelweg_achter_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			STYLE
+			COLOR         "#C9C7C2"
+			OUTLINECOLOR  "#C9C7C2"
+			WIDTH         1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg voor 0
+
+	LAYER
+		NAME                    snelweg_voor_0
+		GROUP                   hoogte0
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTERITEM              "bgt_functie"
+		FILTER					"rijbaan autosnelweg"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "snelweg_voor_0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+		  MAXSCALEDENOM 3500
+		  MINSCALEDENOM			0
+		  STYLE
+			COLOR         "#FEFAFA"
+		  END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+
+   LAYER
+     NAME            "ligplaats"
+     GROUP           "hoogte0"
+     INCLUDE         "connection_bag.inc"
+     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
+     TYPE            POLYGON
+     MAXSCALEDENOM   3500
+     PROJECTION
+     "init=epsg:28992"
+     END
+
+     METADATA
+       "wms_title"           "ligplaats"
+       "wms_group_title"     "hoogte0"
+     END
+
+     CLASS
+       STYLE
+         ANTIALIAS      true
+         COLOR         "#E5E3DE"
+         OUTLINECOLOR  "#C9C7C2"
+         WIDTH          1
+         OPACITY        60
+       END
+     END
+
+   END
+
+   #-----------------------------------------------------------------------------
+
+   LAYER
+     NAME            "standplaats"
+     GROUP           "hoogte0"
+     INCLUDE         "connection_bag.inc"
+     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
+     TYPE            POLYGON
+     MAXSCALEDENOM   3500
+     PROJECTION
+     "init=epsg:28992"
+     END
+
+     METADATA
+       "wms_title"           "standplaats"
+       "wms_group_title"     "hoogte0"
+     END
+
+     CLASS
+       STYLE
+         ANTIALIAS      true
+         COLOR         "#E5E3DE"
+         OUTLINECOLOR  "#C9C7C2"
+         WIDTH          1
+         OPACITY        60
+       END
+     END
+
+  END
+
+
+
+
+
+#==============================================================================
+## HOOGTELIGGING 1
+#==============================================================================
+
+# Tunnel -1
+
+	LAYER
+		NAME                    wegdeel_vlak_tunnel
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or ("[bgt_functie]" = "rijbaan regionale weg"))))))
+		MAXSCALEDENOM           3500
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "wegdeel_vlak_tunnel"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {rijbaan autoweg,rijbaan regionale weg,rijbaan lokale weg}
+			MAXSCALEDENOM   3500
+			STYLE
+				OPACITY        30
+				COLOR         "#FFFFFF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Terreindeel 1
+
+	LAYER
+		NAME                    terreindeel_vlak1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.terreindeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_fysiekvoorkomen"
+		FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "terreindeel_vlak1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {erf,onverhard,rietland,zand,houtwal}
+			STYLE
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   2000
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+			END
+			STYLE
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM   0
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {groenvoorziening,grasland overig,grasland agrarisch,struiken}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#DCEACF"
+				OUTLINECOLOR  "#DCEACF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      /^(oever|kwelder).*$/
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard,perron,strekdam}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {loofbos,gemengd bos,bouwland,moeras,fruitteelt,boomteelt,naaldbos}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#CBE0B8"
+				OUTLINECOLOR  "#CBE0B8"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "heide"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#ddd6e5"
+				OUTLINECOLOR  "#ddd6e5"
+				WIDTH         0.1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Berm achter 1
+
+	LAYER
+		NAME                    berm_achter_1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM           0
+		FILTER 					"berm"
+		FILTERITEM				"bgt_functie"
+		CLASSITEM				"bgt_fysiekvoorkomen"
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "berm_achter_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION     {groenvoorziening,onverhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Berm voor 1
+
+	LAYER
+		NAME                    berm_voor_1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM           0
+		FILTER 					"berm"
+		FILTERITEM				"bgt_functie"
+		CLASSITEM				"bgt_fysiekvoorkomen"
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "berm_voor_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#F6F3F4"
+			END
+		END
+		CLASS
+			EXPRESSION     {groenvoorziening,onverhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#DCEACF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Rijbanen achter 1
+
+	LAYER
+		NAME                    rijbanen_achter_1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "rijbanen_achter_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1.8
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+  #-----------------------------------------------------------------------------
+  # Rijbanen voor 1
+
+	LAYER
+		NAME                    rijbanen_voor_1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "rijbanen_voor_1"
+			"wms_group_title"      "hoogte1"
+		END
+		 CLASS
+			EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#FFFFFF"
+			END
+		END
+		CLASS
+			EXPRESSION      "baan voor vliegverkeer"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#D3D2CF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers achter 1
+
+	LAYER
+		NAME                    voetganers_achter_1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetganers_achter_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {voetpad,verkeerseiland,voetpad op trap,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+  #-----------------------------------------------------------------------------
+  # Voetgangers voor 1
+
+	LAYER
+		NAME                    voetgangers_voor_1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetgangers_voor_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      {voetpad,verkeerseiland,voetpad op trap,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#f7f3f5"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Gebouw 1
+
+	LAYER
+		NAME                    gebouw_vlak1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.gebouw_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouw_vlak1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      "overkapping"
+			MAXSCALEDENOM   3500
+			STYLE
+				OPACITY       50
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {niet-bgt,transitie,lage trafo,open loods,opslagtank,bassin,windturbine,bezinkbak}
+			STYLE
+				MAXSCALEDENOM   3500
+				MINSCALEDENOM	0
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Inrichtingselement vlak 1
+
+	LAYER
+		NAME                    inrichtingselement_vlak1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		FILTER (((("[bgt_type]" = "steiger") OR (("[bgt_type]" = "sluis") Or (("[bgt_type]" = "gemaal") Or ("[bgt_type]" = "stuw"))) OR ("[bgt_type]" = "muur"))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "inrichtingselement_vlak1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION           "muur"
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION           {sluis,gemaal,stuw}
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR  "#C9C7C2"
+			END
+		END
+		CLASS
+			EXPRESSION           "steiger"
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR             "#F2F1EE"
+				OUTLINECOLOR      "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR             "#FFFFFF"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro achter 1
+
+	LAYER
+		NAME                    metro_achter1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+				MAXSCALEDENOM           3500
+				MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+				MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro voor 1
+
+	LAYER
+		NAME                    metro_voor1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+		MINSCALEDENOM		0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Tram 1
+
+	LAYER
+		NAME                    tram1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"tram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "tram1"
+			"wms_group_title"      "hoogte1"
+		END
+			CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH         1.5
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+
+				WIDTH         2
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein achter 1
+
+	LAYER
+		NAME                    trein_achter1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_achter1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein voor 1
+
+	LAYER
+		NAME                    trein_voor1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_voor1"
+			"wms_group_title"      "hoogte1"
+		END
+			CLASS
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg achter 1
+
+	LAYER
+		NAME                    snelweg_achter1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTERITEM              "bgt_functie"
+		FILTER					"rijbaan autosnelweg"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "snelweg_achter_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			STYLE
+			COLOR         "#C9C7C2"
+			OUTLINECOLOR  "#C9C7C2"
+			WIDTH         1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg voor 1
+
+	LAYER
+		NAME                    snelweg_voor1
+		GROUP                   hoogte1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTERITEM              "bgt_functie"
+		FILTER					"rijbaan autosnelweg"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "snelweg_voor_1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+		 MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+		  STYLE
+			COLOR         "#FEFAFA"
+		  END
+		END
+	END
+
+
+
+#==============================================================================
+## HOOGTELIGGING 2
+#==============================================================================
+
+# Terreindeel 2
+	LAYER
+		NAME                    terreindeel_vlak2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.terreindeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_fysiekvoorkomen"
+	FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "terreindeel_vlak2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {transitie,perron,open verharding,gesloten verharding,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {erf,onverhard}
+			STYLE
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   2000
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+			END
+			STYLE
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM   0
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {groenvoorziening,struiken}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#DCEACF"
+				OUTLINECOLOR  "#DCEACF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Berm achter 2
+
+	LAYER
+		NAME                    berm_achter_2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM           0
+		FILTER 					"berm"
+		FILTERITEM				"bgt_functie"
+		CLASSITEM				"bgt_fysiekvoorkomen"
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "berm_achter_2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION     {groenvoorziening,onverhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Berm voor 2
+
+	LAYER
+		NAME                    berm_voor_2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM           0
+		FILTER 					"berm"
+		FILTERITEM				"bgt_functie"
+		CLASSITEM				"bgt_fysiekvoorkomen"
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "berm_voor_2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#F6F3F4"
+			END
+		END
+		CLASS
+			EXPRESSION     {groenvoorziening,onverhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM    0
+			STYLE
+				COLOR         "#DCEACF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Rijbanen achter 2
+
+	LAYER
+			NAME                    rijbanen_achter_2
+			GROUP                   hoogte2
+			INCLUDE                 "connection_basiskaart.inc"
+			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			TYPE                    POLYGON
+			CLASSITEM               "bgt_functie"
+			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			PROJECTION
+				"init=epsg:28992"
+			END
+			METADATA
+				"wms_title"            "rijbanen_achter_2"
+				"wms_group_title"      "hoogte2"
+			END
+			CLASS
+				EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+				MAXSCALEDENOM   3500
+				MINSCALEDENOM			0
+				STYLE
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
+					WIDTH         1.8
+					LINECAP       BUTT
+					LINEJOIN      MITER
+				END
+			END
+		END
+  #-----------------------------------------------------------------------------
+  # Rijbanen voor 2
+
+	LAYER
+		NAME                    rijbanen_voor_2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "rijbanen_voor_2"
+			"wms_group_title"      "hoogte2"
+		END
+		 CLASS
+			EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#FFFFFF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers achter 2
+
+	LAYER
+		NAME                    voetgangers_achter_2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetgangers_achter_2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {voetpad op trap,voetpad,verkeerseiland,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers voor 2
+
+	LAYER
+		NAME                    voetgangers_voor_2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		CLASSITEM               "bgt_functie"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetgangers_voor_2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {voetpad op trap,voetpad,verkeerseiland,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#f7f3f5"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Gebouw 2
+
+	LAYER
+		NAME                    gebouw_vlak2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.gebouw_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouw_vlak2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {niet-bgt,transitie,lage trafo,open loods,opslagtank,bassin,windturbine,bezinkbak}
+			STYLE
+				MAXSCALEDENOM   3500
+				MINSCALEDENOM	0
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "overkapping"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				OPACITY       50
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Inrichtingselement vlak 2
+
+	LAYER
+		NAME                    inrichtingselement_vlak2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTER (((("[bgt_type]" = "steiger") OR (("[bgt_type]" = "sluis") Or (("[bgt_type]" = "gemaal") Or ("[bgt_type]" = "stuw"))) OR ("[bgt_type]" = "muur"))))
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "inrichtingselement_vlak2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION           "steiger"
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR             "#F2F1EE"
+				OUTLINECOLOR      "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION           "muur"
+			MAXSCALEDENOM 3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro achter 2
+
+	LAYER
+		NAME                    metro_achter2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+				MAXSCALEDENOM           3500
+				MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+				MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro voor 2
+
+	LAYER
+		NAME                    metro_voor2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+		MINSCALEDENOM		0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein achter 2
+
+	LAYER
+		NAME                    trein_achter2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_achter2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein voor 2
+
+	LAYER
+		NAME                    trein_voor2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		FILTERITEM               "bgt_functie"
+		FILTER					"trein"
+		TYPE 					LINE
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_voor2"
+			"wms_group_title"      "hoogte2"
+		END
+			CLASS
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg achter 2
+
+	LAYER
+			NAME                    snelweg_achter_2
+			GROUP                   hoogte2
+			INCLUDE                 "connection_basiskaart.inc"
+			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			TYPE                    POLYGON
+			FILTERITEM              "bgt_functie"
+			FILTER					"rijbaan autosnelweg"
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			PROJECTION
+				"init=epsg:28992"
+			END
+			METADATA
+				"wms_title"            "snelweg_achter_2"
+				"wms_group_title"      "hoogte2"
+			END
+			CLASS
+				MAXSCALEDENOM           3500
+				MINSCALEDENOM			0
+				STYLE
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
+					WIDTH         1
+					LINECAP       BUTT
+					LINEJOIN      MITER
+				END
+			END
+		END
+  #-----------------------------------------------------------------------------
+  # Snelweg voor 2
+
+	LAYER
+		NAME                    snelweg_voor_2
+		GROUP                   hoogte2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTERITEM              "bgt_functie"
+		FILTER					"rijbaan autosnelweg"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "snelweg_voor_2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+		 MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+		  STYLE
+			COLOR         "#FEFAFA"
+		  END
+		END
+	END
+
+#==============================================================================
+## HOOGTELIGGING 3
+#==============================================================================
+
+# Terreindeel 3
+
+	LAYER
+		NAME                    terreindeel_vlak3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.terreindeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
+		CLASSITEM               "bgt_fysiekvoorkomen"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "terreindeel_vlak3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			EXPRESSION      "perron"
+			MAXSCALEDENOM   3500
+			STYLE
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Rijbanen achter 3
+
+	LAYER
+			NAME                    rijbanen_achter_3
+			GROUP                   hoogte3
+			INCLUDE                 "connection_basiskaart.inc"
+			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+			TYPE                    POLYGON
+			CLASSITEM               "bgt_functie"
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			PROJECTION
+				"init=epsg:28992"
+			END
+			METADATA
+				"wms_title"            "rijbanen_achter_3"
+				"wms_group_title"      "hoogte3"
+			END
+			CLASS
+				EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+				MAXSCALEDENOM   3500
+								MINSCALEDENOM			0
+				STYLE
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
+					WIDTH         1.8
+					LINECAP       BUTT
+					LINEJOIN      MITER
+				END
+			END
+		END
+
+  #-----------------------------------------------------------------------------
+  # Rijbanen voor 3
+
+	LAYER
+		NAME                    rijbanen_voor_3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "rijbanen_voor_3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#FFFFFF"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers achter 3
+
+	LAYER
+		NAME                    voetganers_achter_3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		CLASSITEM               "bgt_functie"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetganers_achter_3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			EXPRESSION      {voetpad op trap,voetpad,verkeerseiland,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Voetgangers voor 3
+
+	LAYER
+		NAME                    voetgangers_voor_3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		CLASSITEM               "bgt_functie"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetgangers_voor_3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			EXPRESSION      {voetpad op trap,voetpad,verkeerseiland,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				COLOR         "#f7f3f5"
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Gebouw 3
+
+	LAYER
+		NAME                    gebouw_vlak3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.gebouw_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouw_vlak3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			EXPRESSION      "overkapping"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				OPACITY       50
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "niet-bgt"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro achter 3
+
+	LAYER
+		NAME                    metro_achter3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM               "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter3"
+			"wms_group_title"      "hoogte3"
+		END
+			CLASS
+				MAXSCALEDENOM           3500
+				MINSCALEDENOM			2000
+			STYLE
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+				MAXSCALEDENOM           2000
+				MINSCALEDENOM			0
+			STYLE
+				WIDTH 3.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro voor 3
+
+	LAYER
+		NAME                    metro_voor3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM              "bgt_functie"
+		FILTER					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor2"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+		MAXSCALEDENOM           2000
+		MINSCALEDENOM		0
+			STYLE
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg achter 3
+
+	LAYER
+			NAME                    snelweg_achter3
+			GROUP                   hoogte3
+			INCLUDE                 "connection_basiskaart.inc"
+			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			TYPE                    POLYGON
+			FILTERITEM              "bgt_functie"
+			FILTER					"rijbaan autosnelweg"
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+			PROJECTION
+				"init=epsg:28992"
+			END
+			METADATA
+				"wms_title"            "snelweg_achter_3"
+				"wms_group_title"      "hoogte3"
+			END
+			CLASS
+				MAXSCALEDENOM           3500
+				MINSCALEDENOM			0
+				STYLE
+					COLOR         "#C9C7C2"
+					OUTLINECOLOR  "#C9C7C2"
+					WIDTH         1
+					LINECAP       BUTT
+					LINEJOIN      MITER
+				END
+			END
+		END
+
+  #-----------------------------------------------------------------------------
+  # Snelweg voor 3
+
+	LAYER
+		NAME                    snelweg_voor3
+		GROUP                   hoogte3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		FILTERITEM              "bgt_functie"
+		FILTER					"rijbaan autosnelweg"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "snelweg_voor_3"
+			"wms_group_title"      "vlakken"
+		END
+		CLASS
+		 MAXSCALEDENOM           3500
+			MINSCALEDENOM			0
+		  STYLE
+			COLOR         "#FEFAFA"
+		  END
+		END
+	END
+
+
+#==============================================================================
+## HOOGTELIGGING 4
+#==============================================================================
+
+
+  #-----------------------------------------------------------------------------
+  # Gebouw 4
+
+	LAYER
+		NAME                    gebouw_vlak4
+		GROUP                   hoogte4
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.gebouw_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_type"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouw_vlak4"
+			"wms_group_title"      "hoogte4"
+		END
+		CLASS
+			EXPRESSION      "overkapping"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				OPACITY       50
+				COLOR         "#E0DED8"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+
+
+#==============================================================================
+# LIJNEN
+#==============================================================================
+
+#==============================================================================
+## HOOGTELIGGING -3
+#==============================================================================
+
+# Metro -3
+	LAYER
+		NAME                    metro_3
+		GROUP                   hoogte_3
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_3"
+			"wms_group_title"      "hoogte_3"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				WIDTH 1.5
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM	0
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+
+
+#==============================================================================
+## HOOGTELIGGING -2
+#==============================================================================
+
+# Metro -2
+	LAYER
+		NAME                    metro_2
+		GROUP                   hoogte_2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_2"
+			"wms_group_title"      "hoogte_2"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				WIDTH 1.5
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM	0
+			STYLE
+
+				WIDTH 2
+				OUTLINECOLOR "#FC7F7F"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein -2
+
+	LAYER
+		NAME                    trein_2
+		GROUP                   hoogte_2
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_2"
+			"wms_group_title"      "hoogte_2"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+
+				OPACITY 50
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 50
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+
+
+#==============================================================================
+## HOOGTELIGGING -1
+#==============================================================================
+
+# Metro achter -1
+	LAYER
+		NAME                    metro_achter_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_achter_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				OPACITY 50
+				WIDTH 2.5
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM	0
+			STYLE
+				OPACITY 50
+				WIDTH 3
+				OUTLINECOLOR "#FC7F7F"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Metro voor -1
+
+	LAYER
+		NAME                    metro_voor_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"sneltram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "metro_voor_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				OPACITY 60
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 60
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					7
+					7
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Tram  -1
+
+	LAYER
+		NAME                    tram_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"tram"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "tram_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	2000
+			STYLE
+				OPACITY       50
+				WIDTH         1.5
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+				PATTERN
+					5
+					5
+				END
+			END
+		END
+		CLASS
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY       50
+				WIDTH         2
+				COLOR         "#FC7F7F"
+				LINECAP       BUTT
+				LINEJOIN      MITER
+				PATTERN
+					5
+					5
+				END
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein achter -1
+
+	LAYER
+		NAME                    trein_achter_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_achter_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				OPACITY 50
+				WIDTH 3
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 50
+				WIDTH 3.5
+				OUTLINECOLOR "#9D9D9D"
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+  # Trein voor -1
+
+	LAYER
+		NAME                    trein_voor_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection_basiskaart.inc"
+		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    LINE
+		FILTERITEM				"bgt_functie"
+		FILTER 					"trein"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "trein_voor_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM           3500
+			MINSCALEDENOM			2000
+			STYLE
+				OPACITY 60
+				WIDTH 2
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+		CLASS
+			MAXSCALEDENOM           2000
+			MINSCALEDENOM			0
+			STYLE
+				OPACITY 60
+				WIDTH 2.5
+				OUTLINECOLOR "#FFFFFF"
+				PATTERN
+					8
+					8
+				END
+				LINECAP BUTT
+				LINEJOIN MITER
+			END
+		END
+	END
+
+
+
+#=============================================================================
+END

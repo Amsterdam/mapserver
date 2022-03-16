@@ -1,0 +1,396 @@
+#==============================================================================
+#
+# planologischezonesschiphol.map
+# doel: serveren van Planologische zones Schiphol
+#
+#==============================================================================
+
+MAP
+  NAME                      "planologischezonesschiphol"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Planologische zones Schiphol"
+      "ows_abstract"        "Planologische zones Schiphol"
+    END
+  END
+
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+  LAYER
+    NAME                    "maatgevendetoetshoogteschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_maatgevendetoetshoogte_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Schiphol - maatgevende toetshoogtes"
+      "ows_abstract"        "Schiphol - maatgevende toetshoogtes"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+    
+    CLASS
+      NAME                  "-10 - 0m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= -10) AND ([hoogte_nap_klasse] < 0))
+      STYLE
+        COLOR               "#E99493"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#E99493"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "0 - 20m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 0) AND ([hoogte_nap_klasse] < 20))
+      STYLE
+        COLOR               "#FEC1BD"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#FEC1BD"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "20 - 40m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 20) AND ([hoogte_nap_klasse] < 40))
+      STYLE
+        COLOR               "#FBCE99"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#FBCE99"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "40 - 60m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 40) AND ([hoogte_nap_klasse] < 60))
+      STYLE
+        COLOR               "#FAF498"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#FAF498"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "60 - 80m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 60) AND ([hoogte_nap_klasse] < 80))
+      STYLE
+        COLOR               "#BCFC96"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#BCFC96"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "80 - 100m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 80) AND ([hoogte_nap_klasse] < 100))
+      STYLE
+        COLOR               "#9FF0D0"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#9FF0D0"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "100 - 140m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 100) AND ([hoogte_nap_klasse] < 140))
+      STYLE
+        COLOR               "#C3F6FE"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#C3F6FE"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "140m NAP"
+      EXPRESSION            ([hoogte_nap_klasse] eq 140)
+      STYLE
+        COLOR               "#C9D2FE"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#C9D2FE"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "Hoger dan 140m NAP"
+      EXPRESSION            ([hoogte_nap_klasse] > 140)
+      STYLE
+        COLOR               "#DFC3EF"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#DFC3EF"
+        WIDTH               1
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME                    "toetshoogteradarschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_hoogtebeperkingradar_polygon USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Schiphol - toetshoogte radar"
+      "ows_abstract"        "Schiphol - toetshoogte radar"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "-10 - 0m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= -10) AND ([hoogte_nap_klasse] < 0))
+      STYLE
+        COLOR               "#E99493"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#E99493"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "0 - 20m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 0) AND ([hoogte_nap_klasse] < 20))
+      STYLE
+        COLOR               "#FEC1BD"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#FEC1BD"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "20 - 40m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 20) AND ([hoogte_nap_klasse] < 40))
+      STYLE
+        COLOR               "#FBCE99"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#FBCE99"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "40 - 60m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 40) AND ([hoogte_nap_klasse] < 60))
+      STYLE
+        COLOR               "#FAF498"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#FAF498"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "60 - 80m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 60) AND ([hoogte_nap_klasse] < 80))
+      STYLE
+        COLOR               "#BCFC96"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#BCFC96"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "80 - 100m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 80) AND ([hoogte_nap_klasse] < 100))
+      STYLE
+        COLOR               "#9FF0D0"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#9FF0D0"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "100 - 140m NAP"
+      EXPRESSION            (([hoogte_nap_klasse] >= 100) AND ([hoogte_nap_klasse] < 140))
+      STYLE
+        COLOR               "#C3F6FE"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#C3F6FE"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "140m NAP"
+      EXPRESSION            ([hoogte_nap_klasse] eq 140)
+      STYLE
+        COLOR               "#C9D2FE"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#C9D2FE"
+        WIDTH               1
+      END
+    END
+
+
+    CLASS
+      NAME                  "Hoger dan 140m NAP"
+      EXPRESSION            ([hoogte_nap_klasse] > 140)
+      STYLE
+        COLOR               "#DFC3EF"
+        OPACITY             40
+      END
+      STYLE
+        OUTLINECOLOR        "#DFC3EF"
+        WIDTH               1
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME                    "geluidszoneschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_geluidzone USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Schiphol - Ruimtelijke beperkingen"
+      "ows_abstract"        "Schiphol - Ruimtelijke beperkingen"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASSITEM               "geo_id"
+
+    CLASS
+      NAME                  "X LIB-4: beperkingengebied geluidgevoelige gebouwen"
+      EXPRESSION            "30004"
+      STYLE
+       ANTIALIAS            true
+       COLOR                "#00A03C"
+       OPACITY              40
+      END
+      STYLE
+       ANTIALIAS            true
+       OUTLINECOLOR         "#00A03C"
+       OUTLINEWIDTH         2
+      END
+    END
+
+    CLASS
+      NAME                  "X LIB-5: Afwegingsgebied geluid en externe veiligheid (voorheen 20-Ke)"
+      EXPRESSION            "30005"
+      STYLE
+       ANTIALIAS            true
+       COLOR                "#FFD700"
+       OPACITY              50
+      END
+      STYLE
+       ANTIALIAS            true
+       OUTLINECOLOR         "#FFD700"
+       OUTLINEWIDTH         2
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME                    "vogelvrijwaringsgebiedschiphol"
+    INCLUDE                 "connection_milieu.inc"
+    DATA                    "geometrie FROM public.geo_schiphol_vogelvrijwaringsgebied USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992" 
+    END
+    
+    METADATA
+      "ows_title"           "Schiphol - Vogelvrijwaringsgebied"
+      "ows_abstract"        "Schiphol - Vogelvrijwaringsgebied"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Vogelvrijwaringsgebied"
+      STYLE
+        SYMBOL              "chess"
+        COLOR               "#e0afb9"
+        SIZE                4
+      END
+    END
+
+  END
+
+#=============================================================================
+END

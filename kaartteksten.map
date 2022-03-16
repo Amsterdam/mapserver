@@ -1,0 +1,1588 @@
+#==============================================================================
+#
+# kaartteksten.map
+# doel: serveren van kaartteksten ten behoeve van de basiskaart
+
+#==============================================================================
+
+MAP
+  NAME                      "kaartteksten"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "wms_title"           "kaartteksten"
+      "wms_abstract"        "Kaartteksten op de referentiekaart"
+    END
+  END
+
+  IMAGECOLOR                "#fefafa"
+
+
+# kbk50: 50000-20000
+  # kbk50_lbl_gebied
+  # kbk50_lbl_gemeente
+  # kbk50_lbl_plaats
+  # kbk50_lbl_provincie
+  # kbk50_lbl_stadsdeel
+  # kbk50_lbl_water
+  # kbk50_lbl_weg
+# kbk25: 20000-7000
+  # kbk25_lbl_gebied
+  # kbk25_lbl_gemeente
+  # kbk25_lbl_kunstwerk
+  # kbk25_lbl_park
+  # kbk25_lbl_plaats
+  # kbk25_lbl_polder
+  # kbk25_lbl_provincie
+  # kbk25_lbl_stadsdeel
+  # kbk25_lbl_water
+  # kbk25_lbl_weg
+# kbk10: 7000-2000
+  # kbk10_lbl_gemeente
+  # kbk10_lbl_kunstwerk
+  # kbk10_lbl_park
+  # kbk10_lbl_plaats
+  # kbk10_lbl_polder
+  # kbk10_lbl_provincie
+  # kbk10_lbl_stadsdeel
+  # kbk10_lbl_water
+  # kbk10_lbl_weg
+  # kbk10_lbl_wijk
+# bgt:   2000-0
+
+
+
+  #=============================================================================
+  # LAYER KBK50 LABEL
+  #=============================================================================
+
+  LAYER
+    NAME            "kbk50_lbl_gebied"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_gebied\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   25000
+    MAXSCALEDENOM   40000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_gebied"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van gebieden"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk50_lbl_gemeente"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   25000
+    MAXSCALEDENOM   40000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_gemeente"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van gemeenten"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk50_lbl_plaats"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_plaats\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   25000
+    MAXSCALEDENOM   50000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_plaats"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van plaatsen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk50_lbl_provincie"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_provincie\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   25000
+    MAXSCALEDENOM   40000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_provincie"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van provincies"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk50_lbl_stadsdeel"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   14000
+    MAXSCALEDENOM   40000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_stadsdeel"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van stadsdelen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk50_lbl_water"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_water\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   15000
+    MAXSCALEDENOM   30000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_water"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van wateren"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk50_lbl_weg"
+    GROUP           "kbk50_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk50.\"KBK50_LBL_weg\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   25000
+    MAXSCALEDENOM   30000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk50_lbl_weg"
+      "wms_group_title"     "kbk50_label"
+      "wms_abstract"        "KBK50 labels van weg"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#ffffff"
+        OUTLINECOLOR   "#ffffff"
+        WIDTH          3
+      END
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#5a5a5a"
+        OUTLINECOLOR   "#5a5a5a"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+
+
+
+
+  #=============================================================================
+  # LAYER KBK25 LABEL
+  #=============================================================================
+
+  LAYER
+    NAME            "kbk25_lbl_gebied"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_gebied\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   7000
+    MAXSCALEDENOM   15000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_gebied"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van gebieden"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_gemeente"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   10000
+    MAXSCALEDENOM   25000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_gemeente"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van gemeenten"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_kunstwerk"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   10000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_kunstwerk"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van kunstwerken"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_park"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_park\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   6000
+    MAXSCALEDENOM   15000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_park"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van parken"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_plaats"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_plaats\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   7000
+    MAXSCALEDENOM   25000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_plaats"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van plaatsen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_polder"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_polder\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   15000
+    MAXSCALEDENOM   25000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_polder"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van polders"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_provincie"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_provincie\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   6000
+    MAXSCALEDENOM   10000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_provincie"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van provincies"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_stadsdeel"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   7000
+    MAXSCALEDENOM   14000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_stadsdeel"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van stadsdelen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_water"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_water\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   15000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_water"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van wateren"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk25_lbl_weg"
+    GROUP           "kbk25_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk25.\"KBK25_LBL_weg\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   14000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk25_lbl_weg"
+      "wms_group_title"     "kbk25_label"
+      "wms_abstract"        "KBK25 labels van wegen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+
+
+  #=============================================================================
+  # LAYER KBK10 LABEL
+  #=============================================================================
+
+  LAYER
+    NAME            "kbk10_lbl_gemeente"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   10000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_gemeente"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van gemeenten"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_kunstwerk"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   2000
+    MAXSCALEDENOM   3250
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_kunstwerk"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van kunstwerken"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_plaats"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_plaats\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   4000
+    MAXSCALEDENOM   7000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_plaats"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van plaatsen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_park"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_park\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   2000
+    MAXSCALEDENOM   5000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_park"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van parken"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_polder"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_polder\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   6000
+    MAXSCALEDENOM   15000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_polder"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van polder"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_provincie"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_provincie\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   2000
+    MAXSCALEDENOM   6000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_provincie"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van provincies"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_stadsdeel"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   2000
+    MAXSCALEDENOM   7000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_stadsdeel"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van stadsdelen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_water"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_water\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   2000
+    MAXSCALEDENOM   4000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_water"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van wateren"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_weg"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_weg\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   2000
+    MAXSCALEDENOM   4000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_weg"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van wegen"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "kbk10_lbl_wijk"
+    GROUP           "kbk10_label"
+    INCLUDE         "connection_basiskaart.inc"
+    DATA            "geom FROM kbk10.\"KBK10_LBL_wijk\" USING srid=28992 using unique ogc_fid"
+    TYPE            POLYGON
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   10000
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "kbk10_lbl_wijk"
+      "wms_group_title"     "kbk10_label"
+      "wms_abstract"        "KBK10 labels van wijken"
+    END
+
+    CLASS
+      STYLE
+        ANTIALIAS      true
+        COLOR          "#787878"
+        OUTLINECOLOR   "#787878"
+        WIDTH          0.5
+      END
+    END
+
+  END
+
+
+
+  #=============================================================================
+  # LAYER BGT LABEL
+  #=============================================================================
+
+  LAYER
+    NAME                    BGT_LBL_weg
+    GROUP                   bgt_label
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, upper(tekst) as tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 using unique identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_weg"
+	 "wms_group_title"      "bgt_label"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       1250
+        MAXSCALEDENOM       2000
+        SIZE                8
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                10
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                15
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
+        SIZE                19
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_water
+    GROUP                   bgt_label
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, upper(tekst) as tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992 using unique identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_water"
+	 "wms_group_title"      "bgt_label"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       1250
+        MAXSCALEDENOM       2000
+        SIZE                8
+        COLOR               "#474747"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                10
+        COLOR               "#474747"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                13
+        COLOR               "#474747"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                15
+        COLOR               "#474747"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
+        SIZE                19
+        COLOR               "#474747"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_terrein
+    GROUP                   bgt_label
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992 using unique identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_terrein"
+	 "wms_group_title"      "bgt_label"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       1250
+        MAXSCALEDENOM       2000
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                12
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                14
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                16
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
+        SIZE                20
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_kunstwerk
+    GROUP                   bgt_label
+    MAXSCALEDENOM           500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992 using unique identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_kunstwerk"
+	 "wms_group_title"      "bgt_label"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
+        SIZE                15
+        COLOR               "#787878"
+        FONT                "Univers-I"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_administratief_gebied
+    GROUP                   bgt_label
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992 using unique identificatie_lokaalid"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_administratief_gebied"
+	 "wms_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       1250
+        MAXSCALEDENOM       2000
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                12
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                14
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                16
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
+        SIZE                20
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_landschappelijk_gebied
+    GROUP                   bgt_label
+    MAXSCALEDENOM           2000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992 using unique identificatie_lokaalid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_landschappelijk_gebied"
+	 "wms_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       1250
+        MAXSCALEDENOM       2000
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                12
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       500
+        MAXSCALEDENOM       750
+        SIZE                14
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       250
+        MAXSCALEDENOM       500
+        SIZE                16
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       250
+        SIZE                20
+        COLOR               "#787878"
+        FONT                "Univers"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BGT_LBL_nummeraanduidingreeks
+    GROUP                   bgt_label
+    MAXSCALEDENOM           1000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BGT_LBL_nummeraanduidingreeks"
+	 "wms_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst_afk"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1000
+        SIZE                9
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       600
+        MAXSCALEDENOM       750
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       450
+        MAXSCALEDENOM       600
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       300
+        MAXSCALEDENOM       450
+        SIZE                15
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       200
+        MAXSCALEDENOM       300
+        SIZE                17
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       200
+        SIZE                19
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BAG_LBL_ligplaatsnummeraanduidingreeks
+    GROUP                   bgt_label
+    MAXSCALEDENOM           1000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BAG_LBL_Ligplaatsnummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BAG_LBL_ligplaatsnummeraanduidingreeks"
+	 "wms_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1000
+        SIZE                9
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       600
+        MAXSCALEDENOM       750
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       450
+        MAXSCALEDENOM       600
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       300
+        MAXSCALEDENOM       450
+        SIZE                15
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       200
+        MAXSCALEDENOM       300
+        SIZE                17
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       200
+        SIZE                19
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+  #------------------------------------------------------------------------------------------------
+
+  LAYER
+    NAME                    BAG_LBL_standplaatsnummeraanduidingreeks
+    GROUP                   bgt_label
+    MAXSCALEDENOM           1000
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BAG_LBL_Standplaatsnummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
+	PROCESSING              "CLOSE_CONNECTION=DEFER"
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+     "wms_title"            "BAG_LBL_standplaatsnummeraanduidingreeks"
+	 "wms_group_title"      "bgt"
+    END
+
+    LABELITEM               "tekst"
+
+    CLASS
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1000
+        SIZE                9
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       600
+        MAXSCALEDENOM       750
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       450
+        MAXSCALEDENOM       600
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       300
+        MAXSCALEDENOM       450
+        SIZE                15
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       200
+        MAXSCALEDENOM       300
+        SIZE                17
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       200
+        SIZE                19
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
+
+  END
+
+
+#=============================================================================
+
+END

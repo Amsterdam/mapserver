@@ -1,0 +1,441 @@
+#==============================================================================
+#
+# percariobelastingen.map
+# doel: tonen van de precariobelastinggebieden voor de categorieën: (1) bedrijfsvaartuigen, (2) passagiersvaartuigen, (3) woonschepen en (4) terrassen.
+#
+#==============================================================================
+#
+# naam                  datum         wijziging
+# ------------------    ----------    -----------------------------------------
+# Chris van Riel        17-06-2020    Initiatie
+# Chris van Riel        22-06-2020    Het tariefbedrag geeft een precariobelastinggebied aan; query aanpast naar order by tarief
+#==============================================================================
+
+MAP
+  NAME "PRECARIOBELASTINGgebiedEN"
+  INCLUDE "header.inc"
+
+
+  WEB
+    METADATA
+      "ows_title"    "Precariobelastinggebieden"
+      "ows_abstract" "Precariobelastinggebieden waarvan Amsterdam de bronhouder is"
+    END
+  END
+
+  # CATEGORIE: BEDRIJFSVAARTUIGEN
+
+  LAYER
+    NAME            "precariobelastinggebieden_bedrijfsvaartuigen"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.precariobelasting_bedrijfsvaartuigen USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "Bedrijfsvaartuigen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Bedrijfsvaartuigen"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "gebied"
+      "gml_include_items"   "all"
+      "wms_title"           "Bedrijfsvaartuigen"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Bedrijfsvaartuigen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Bedrijfsvaartuigen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tariefgebied_A"
+      EXPRESSION ("[gebied]" ~ "A" AND ( '%gebied%' eq 'A'  OR '%gebied%' eq 'all' ))
+            
+     STYLE
+          ANTIALIAS    true
+          COLOR        0 160 60
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  0 160 60
+          OPACITY      100
+          WIDTH        1
+      END
+
+      
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied A"
+      END
+     
+    END
+
+  END
+
+# CATEGORIE: PASSAGIERSVAARTUIGEN
+
+  LAYER
+    NAME            "precariobelastinggebieden_passagiersvaartuigen"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.precariobelasting_passagiersvaartuigen USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "Passagiersvaartuigen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Passagiersvaartuigen"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "gebied"
+      "gml_include_items"   "all"
+      "wms_title"           "Passagiersvaartuigen"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Passagiersvaartuigen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Passagiersvaartuigen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tariefgebied_1"
+      EXPRESSION ("[gebied]" ~ "1" AND ( '%gebied%' eq '1'  OR '%gebied%' eq 'all' ))
+            
+       STYLE
+          ANTIALIAS    true
+          COLOR        0 157 230
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR 0 157 230
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied 1"
+      END
+
+    END 
+
+    CLASS
+      NAME "tariefgebied_2"
+      EXPRESSION ("[gebied]" ~ "2" AND ( '%gebied%' eq '2'  OR '%gebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        236 0 0
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  236 0 0
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied 2"
+      END
+
+    END
+
+  END
+
+# CATEGORIE: WOONSCHEPEN
+
+  LAYER
+    NAME            "precariobelastinggebieden_woonschepen"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.precariobelasting_woonschepen USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "Woonschepen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Woonschepen"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "gebied"
+      "gml_include_items"   "all"
+      "wms_title"           "Woonschepen"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Woonschepen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Woonschepen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tariefgebied_A"
+      EXPRESSION ("[gebied]" ~ "A" AND ( '%gebied%' eq 'A'  OR '%gebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        236 0 0
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  236 0 0
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied A"
+      END
+
+    END
+
+    CLASS
+      NAME "tariefgebied_B"
+      EXPRESSION ("[gebied]" ~ "B" AND ( '%gebied%' eq 'B'  OR '%gebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        255 145 0
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  255 145 0
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied B"
+      END
+
+    END
+
+  END
+
+# CATEGORIE: TERRASSEN
+# OVERDEKT
+
+  LAYER
+    NAME            "precariobelastinggebieden_terrassen"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.precariobelasting_terrassen USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   400000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION      "init=epsg:28992"
+    END
+
+    VALIDATION
+      # %gebied% substitutions can only digits and capitals
+      'default_gebied'  'all'
+      'gebied'          '^[0-9A-Z]+$'
+          
+    END
+
+    METADATA
+      "wfs_title"           "Terrassen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Terrassen"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "gebied"
+      "gml_include_items"   "all"
+      "wms_title"           "Terrassen"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Terrassen"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Terrassen"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"  
+    END
+
+    CLASS
+      NAME "tariefgebied_A"
+      EXPRESSION ("[gebied]" ~ "A" AND ( '%gebied%' eq 'A'  OR '%gebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        0 157 230
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR 0 157 230
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied A"
+      END
+
+    END
+
+    CLASS
+      NAME "tariefgebied_B"
+      EXPRESSION ("[gebied]" ~ "B" AND ( '%gebied%' eq 'B'  OR '%gebied%' eq 'all' ))
+            
+      STYLE
+          ANTIALIAS    true
+          COLOR        160 0 120
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  160 0 120
+          OPACITY      100
+          WIDTH        1
+      END
+
+       LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied B"
+      END
+
+
+    END
+
+    CLASS
+      NAME "tariefgebied_C"
+      EXPRESSION ("[gebied]" ~ "C" AND ( '%gebied%' eq 'C'  OR '%gebied%' eq 'all' ))
+        
+      STYLE
+          ANTIALIAS    true
+          COLOR        0 160 60
+          OPACITY      35
+      END
+      STYLE
+          OUTLINECOLOR  0 160 60
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+          COLOR          0 0 0
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-MI"
+          TYPE           truetype
+          SIZE           11
+          POSITION       AUTO
+          PARTIALS       FALSE
+          OFFSET         -4 -5
+          ANTIALIAS      true
+          ALIGN          center
+          TEXT           "Tariefgebied C"
+      END
+
+    END
+
+  END
+END
+#=============================================================================

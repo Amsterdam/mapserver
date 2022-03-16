@@ -1,0 +1,235 @@
+#==============================================================================
+#
+# beheerkaart.map
+# doel: 	De beheerkaart toont de publieke ruimte uitgesplitst
+# 			naar zakelijk recht. Het laat zien welk zakelijk recht
+# 			de Gemeente Amsterdam heeft op een kadastraal object en of 
+# 			dit recht belast is met opstal en/of erfpacht.
+# 			Zodat duidelijk is voor welk deel van de publieke ruimte
+# 			de Gemeente Amsterdam beheersverantwoordlijkheid draagt.
+#
+# opmerking: 	Belaste objecten met bgt_fysiekvoorkomen=erf zijn geen
+#				deel van de publieke ruimte en worden uit de data gefilterd.
+#				Dat deze businesslogica hier is ondergebracht is niet
+#				wenselijk en aangekaart bij de datateams.
+#
+# contact: 	Nico de Graaff n.degraaff@amsterdam.nl
+#
+#==============================================================================
+
+
+
+MAP
+	NAME                      "beheerkaart"
+	INCLUDE                   "header.inc"
+  
+	WEB
+		METADATA
+			"ows_title"           "beheerkaart"
+			"ows_abstract"        "Zakelijk recht publieke ruimte Amsterdam"
+			"wms_extent"          "100000 450000 150000 500000"
+		END
+	END
+  
+#==============================================================================
+# Gebieden met belast zakelijk recht
+#==============================================================================
+
+	LAYER
+		NAME                    belast
+		GROUP                   bgt
+		INCLUDE                 "connection_dataservices.inc"
+		# Let op: Hier wordt geselecteerd op bgt_fysiekvoorkomen!=erf. (Zie opmerking bovenaan)
+		DATA                    "geometrie FROM (SELECT * FROM public.beheerkaart_basis_kaart WHERE agg_indicatie_belast_recht = true AND objecteindtijd is NULL AND bgt_fysiekvoorkomen != 'erf') as SUBQUERY USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "agg_belast_door_zrt_code"
+		MAXSCALEDENOM           50000
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"           "Zakelijk recht van Gemeente belast"
+			"wms_group_title"     "publieke ruimte"
+		END
+
+		CLASS
+			EXPRESSION      "3"
+			NAME			"met Erfpacht"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				MAXSCALEDENOM	3500
+				OUTLINECOLOR 	"#B35A2A"
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				ANTIALIAS    true
+				COLOR        "#B35A2A"
+				OPACITY      50
+				WIDTH        2
+			END
+		END
+
+		CLASS
+			EXPRESSION      "7"
+			NAME			"met Opstal"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				MAXSCALEDENOM   3500
+				OUTLINECOLOR 	"#CA9679"
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				SYMBOL       	"gekanteld_kruis"
+					SIZE 			10
+					WIDTH 			2
+					COLOR         	"#CA9679"
+					OUTLINECOLOR  	"#CA9679"
+					OPACITY     	80
+			END
+		END
+
+		CLASS
+			EXPRESSION      "13"
+			NAME			"met Erfpacht & Opstal"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				MAXSCALEDENOM   3500
+				OUTLINECOLOR 	"#CA9679"
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				SYMBOL       	"gekanteld_kruis"
+					SIZE 			10
+					WIDTH 			2
+					COLOR         	"#CA9679"
+					OUTLINECOLOR  	"#CA9679"
+					OPACITY      	80
+			END
+		END
+	END
+
+	  
+#==============================================================================
+# Gebieden met onbelast zakelijk recht
+#==============================================================================
+
+	LAYER
+		NAME                    onbelast
+		GROUP                   bgt
+		INCLUDE                 "connection_dataservices.inc"
+		DATA                    "geometrie FROM (SELECT * FROM public.beheerkaart_basis_kaart WHERE agg_indicatie_belast_recht = false AND objecteindtijd is NULL) as SUBQUERY USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		TYPE                    POLYGON
+		CLASSITEM               "agg_aard_zakelijk_recht_code"
+		MAXSCALEDENOM           50000
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"           "Gemeente heeft onbelast recht"
+			"wms_group_title"     "publieke ruimte"
+		END
+
+		CLASS
+			EXPRESSION      "2"
+			NAME			"van Eigendom"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				OUTLINECOLOR 	"#809678"
+				MAXSCALEDENOM   3500
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				ANTIALIAS    true
+				COLOR        "#809678"
+				OPACITY      50
+				WIDTH        2
+				ANTIALIAS    true
+			END
+		END
+
+		CLASS
+			EXPRESSION      "3"
+			NAME			"van Erfpacht"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				OUTLINECOLOR  	"#94D180"
+				MAXSCALEDENOM   3500
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				ANTIALIAS    true
+				COLOR        "#94D180"
+				OPACITY      50
+				WIDTH        2
+			END
+		END
+
+		CLASS
+			EXPRESSION      "7"
+			NAME			"van Opstal"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				OUTLINECOLOR 	"#94D180"
+				MAXSCALEDENOM   3500
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				SYMBOL      	"gekanteld_kruis"
+				SIZE 			10
+				WIDTH 			2
+				COLOR       	"#94D180"
+				OUTLINECOLOR  	"#94D180"
+				OPACITY      	80
+			END
+		END
+
+		CLASS
+			EXPRESSION      "13"
+			NAME			"van Erfpacht & Opstal"
+			MAXSCALEDENOM   50000
+			MINSCALEDENOM	0
+			STYLE
+				ANTIALIAS    	true
+				OUTLINECOLOR 	"#94D180"
+				MAXSCALEDENOM   3500
+				OPACITY      	100
+				WIDTH        	2
+			END
+		 
+			STYLE
+				SYMBOL       	"gekanteld_kruis"
+				SIZE 			10
+				WIDTH 			2
+				COLOR         	"#94D180"
+				OUTLINECOLOR  	"#94D180"
+				OPACITY      	80
+			END
+		END
+	END
+END

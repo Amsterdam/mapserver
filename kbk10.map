@@ -1,0 +1,1639 @@
+#==============================================================================
+#
+# basiskaart10-11.map
+# doel: serveren van kaartlagen ten behoeve van de basiskaart
+#       op zoomniveaus 10 t/m 11 van het Nederlandse tiling schema
+#       op zoomniveau 16 van het Google Maps tiling schema
+#
+# Volgorde van aanroepen:
+# WDL_breed_water
+# WDL_haven
+# TRN_aanlegsteiger
+# TRN_basaltblokken_steenglooiing
+# TRN_grasland
+# TRN_akkerland
+# TRN_overig
+# TRN_bedrijfsterrein
+# TRN_openbaar_groen
+# TRN_zand
+# WGL_startbaan_landingsbaan
+# TRN_spoorbaanlichaam
+# TRN_bos-loofbos
+# TRN_bos-naaldbos
+# TRN_bos-gemengd_bos
+# TRN_bos-griend
+# TRN_boomgaard
+# TRN_boomkwekerij
+# TRN_dodenakker
+# TRN_dodenakker_met_bos
+# TRN_fruitkwekerij
+# GBW_overdekt
+# GBW_gebouw
+# GBW_hoogbouw
+# GBW_kas_warenhuis
+# TRN_binnentuin-case
+# TRN_binnentuin-fill
+# WDL_waterbassin
+# WDL_smal_water_3_tot_6m
+# WDL_smal_water_tot_3m
+# KRT_tunnelcontour
+# IRT_aanlegsteiger_smal
+# WGL_smalle_weg-case
+# WGL_smalle_weg-fill
+# SBL_metro_overdekt
+# SBL_tram_overdekt
+# SBL_trein_overdekt_1sp-line
+# SBL_trein_overdekt_nsp-line
+# SBL_trein_overdekt_1sp-dash
+# SBL_trein_overdekt_nsp-dash
+# SBL_metro_nietoverdekt_1sp
+# SBL_metro_nietoverdekt_nsp
+# SBL_tram_nietoverdekt
+# SBL_trein_ongeelektrificeerd-line
+# SBL_trein_ongeelektrificeerd-dash
+# SBL_trein_nietoverdekt_1sp-line
+# SBL_trein_nietoverdekt_nsp-line
+# SBL_trein_nietoverdekt_1sp-dash
+# SBL_trein_nietoverdekt_nsp-dash
+
+#==============================================================================
+
+MAP
+  NAME                      "kbk10"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "kbk10"
+      "ows_abstract"        "Kleinschalige Basiskaart 10k"
+    END
+  END
+
+  IMAGECOLOR                "#fefafa"
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME                    WDL_breed_water
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WDL_breed_water\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#95c6d5"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WDL_haven
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WDL_haven\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#95c6d5"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_aanlegsteiger
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_aanlegsteiger\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac"
+        COLOR "#f6f6f4"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_basaltblokken_steenglooiing
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_basaltblokken_steenglooiing\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#f6f6f4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_grasland
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_grasland\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#dceacf"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_akkerland
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_akkerland\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#dceacf"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_overig
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_overig\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#f2ecee"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bedrijfsterrein
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_bedrijfsterrein\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#f6f6f4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_openbaar_groen
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_openbaar_groen\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#f9f9e7"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_zand
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_zand\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#fbf0de"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WGL_startbaan_landingsbaan
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WGL_startbaan_landingsbaan\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#dddcda"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_spoorbaanlichaam
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_spoorbaanlichaam\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#dddcda"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bos-loofbos
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_bos-loofbos\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#cbe0b8"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bos-naaldbos
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_bos-naaldbos\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#cbe0b8"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bos-gemengd_bos
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_bos-gemengd_bos\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#cbe0b8"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_bos-griend
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_bos-griend\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#cbe0b8"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_boomgaard
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_boomgaard\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#d4e5c4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_boomkwekerij
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_boomkwekerij\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#d4e5c4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_dodenakker
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_dodenakker\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#d4e5c4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_dodenakker_met_bos
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_dodenakker_met_bos\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#d4e5c4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_fruitkwekerij
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_fruitkwekerij\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#d4e5c4"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    GBW_overdekt
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"GBW_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      STYLE
+        COLOR "#e5e3de"
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    GBW_gebouw
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"GBW_gebouw\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#e5e3de"
+        WIDTH 0.9
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    GBW_hoogbouw
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"GBW_hoogbouw\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#e6e5e0"
+        WIDTH 0.5
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    GBW_kas_warenhuis
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           10000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"GBW_kas_warenhuis\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#e3dbd3"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_binnentuin-case
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_binnentuin\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    TRN_binnentuin-fill
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"TRN_binnentuin\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#f9f9e7"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WDL_waterbassin
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WDL_waterbassin\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        COLOR "#95c6d5"
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WDL_smal_water_3_tot_6m
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WDL_smal_water_3_tot_6m\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        COLOR "#95c6d5"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WDL_smal_water_tot_3m
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WDL_smal_water_tot_3m\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 1
+        COLOR "#95c6d5"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+  
+  LAYER
+    NAME                    KRT_tunnelcontour
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"KRT_tunnelcontour\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM           3500
+      STYLE
+        OPACITY        30
+        WIDTH 6
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    IRT_aanlegsteiger_smal
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"IRT_aanlegsteiger_smal\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#acacac80"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WGL_smalle_weg-case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WGL_smalle_weg\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        COLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WGL_smalle_weg-fill
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WGL_smalle_weg\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_overdekt_case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 6
+        INITIALGAP 3
+        OUTLINECOLOR "#fc7f7f"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 4
+        INITIALGAP 2
+        OUTLINECOLOR "#fc7f7f"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_overdekt_line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_tram_overdekt
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_tram_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 1
+        PATTERN
+            8
+            8
+        END
+        COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_overdekt_1sp-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_overdekt_nsp-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#9d9d9d"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_overdekt_1sp-dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_overdekt_nsp-dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	   MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+            8
+            8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_nietoverdekt_1sp_case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_nietoverdekt_1sp_dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_nietoverdekt_nsp_case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_nietoverdekt_nsp_dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_tram_nietoverdekt
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_tram_nietoverdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 1
+        COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_ongeelektrificeerd-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        COLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        COLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_ongeelektrificeerd-dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        PATTERN
+          8
+          8
+        END
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        PATTERN
+          8
+          8
+        END
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_nietoverdekt_1sp-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_nietoverdekt_nsp-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        OUTLINECOLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        OUTLINECOLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_nietoverdekt_1sp-dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_trein_nietoverdekt_nsp-dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        OUTLINECOLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WGL_autosnelweg_lijn-case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WGL_hartlijn\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    FILTER "autosnelweg"
+    FILTERITEM "TYPEWEG"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+        WIDTH 5
+        COLOR "#fa0000"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 6
+        COLOR "#fa0000"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    WGL_autosnelweg_lijn-fill
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           3500
+    INCLUDE                 "connection_basiskaart.inc"
+    DATA                    "geom FROM kbk10.\"WGL_hartlijn\" USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    LINE
+    FILTER "autosnelweg"
+    FILTERITEM "TYPEWEG"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 8000
+      STYLE
+      WIDTH 3
+        COLOR "#fefafa"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+      MINSCALEDENOM 3500
+      STYLE
+        WIDTH 4
+        COLOR "#fefafa"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+
+
+#=============================================================================
+END

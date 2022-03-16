@@ -1,0 +1,354 @@
+#==============================================================================
+#
+# topografie.map
+# doel: serveren van kaartlagen ten behoeve van referentiekaarten
+#
+#==============================================================================
+
+MAP
+    NAME                      "topografie"
+    INCLUDE                   "header.inc"
+
+    WEB
+        METADATA
+            "ows_title"           "topografie"
+            "ows_abstract"        "Basiskaart Amsterdam"
+        END
+    END
+
+    #=============================================================================
+    # LAYERS KBK50
+    #=============================================================================
+
+    LAYER
+        NAME                    "kbk50"
+        GROUP                   "basiskaart"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           400000
+        MINSCALEDENOM           20000
+        METADATA
+            "wms_title"           "kbk50"
+            "wms_group_title"     "basiskaart"
+            "wms_abstract"        "Basiskaart Amsterdam"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "vlakken,lijnen"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME                    "kbk50-light"
+        GROUP                   "basiskaart-light"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           400000
+        MINSCALEDENOM           20000
+        METADATA
+            "wms_title"           "kbk50-light"
+            "wms_group_title"     "basiskaart-light"
+            "wms_abstract"        "Basiskaart Amsterdam - Light"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "vlakken,lijnen"
+            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_light.xml"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME                    "kbk50-zw"
+        GROUP                   "basiskaart-zwartwit"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           400000
+        MINSCALEDENOM           20000
+        METADATA
+            "wms_title"           "kbk50-zw"
+            "wms_group_title"     "basiskaart-zw"
+            "wms_abstract"        "Basiskaart Amsterdam - ZW"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "vlakken,lijnen"
+            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_zw.xml"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+
+
+    #=============================================================================
+    # LAYERS KBK10
+    #=============================================================================
+
+    LAYER
+        NAME                    "kbk10"
+        GROUP                   "basiskaart"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           20000
+        MINSCALEDENOM           3500
+        METADATA
+            "wms_title"           "kbk10"
+            "wms_group_title"     "basiskaart"
+            "wms_abstract"        "Basiskaart Amsterdam"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "vlakken,lijnen"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME                    "kbk10-light"
+        GROUP                   "basiskaart-light"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           20000
+        MINSCALEDENOM           3500
+        METADATA
+            "wms_title"           "kbk10-light"
+            "wms_group_title"     "basiskaart-light"
+            "wms_abstract"        "Basiskaart Amsterdam -Light"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "vlakken,lijnen"
+            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_light.xml"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME                    "kbk10-zw"
+        GROUP                   "basiskaart-zwartwit"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           20000
+        MINSCALEDENOM           3500
+        METADATA
+            "wms_title"           "kbk10-zw"
+            "wms_group_title"     "basiskaart-zw"
+            "wms_abstract"        "Basiskaart Amsterdam - ZW"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "vlakken,lijnen"
+            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_zw.xml"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+
+
+    #=============================================================================
+    # LAYERS BGT
+    #=============================================================================
+
+    LAYER
+        NAME                    "bgt"
+        GROUP                   "basiskaart"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           3500
+        MINSCALEDENOM           0
+        METADATA
+            "wms_title"           "bgt"
+            "wms_group_title"     "basiskaart"
+            "wms_abstract"        "Basiskaart Amsterdam"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "hoogte_2,hoogte_1,hoogte0,hoogte1,hoogte2,hoogte3,hoogte4"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME                    "bgt-light"
+        GROUP                   "basiskaart-light"
+        PROJECTION
+            "init=epsg:3857"
+        END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           3500
+        MINSCALEDENOM           0
+        METADATA
+            "wms_title"           "bgt-light"
+            "wms_group_title"     "basiskaart-light"
+            "wms_abstract"        "Basiskaart Amsterdam - Light"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "hoogte_2,hoogte_1,hoogte0,hoogte1,hoogte2,hoogte3,hoogte4"
+            "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_light.xml"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME                      "bgt-zw"
+        GROUP                     "basiskaart-zwartwit"
+        PROJECTION
+          "init=epsg:3857"
+        END
+        TYPE                      RASTER
+        CONNECTION                "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE            WMS
+        MAXSCALEDENOM             3500
+        MINSCALEDENOM             0
+        METADATA
+            "wms_title"           "bgt-zw"
+            "wms_group_title"     "basiskaart-zw"
+            "wms_abstract"        "Basiskaart Amsterdam - ZW"
+            "wms_srs"             "EPSG:3857"
+            "wms_name"            "hoogte_2,hoogte_1,hoogte0,hoogte1,hoogte2,hoogte3,hoogte4"
+            "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_zw.xml"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.1.1"
+            "wms_transparent"     "false"
+            "wms_bgcolor"         "0xFFFFFF"
+        END
+      END
+
+
+
+    #=============================================================================
+    # LAYERS TEKST
+    #=============================================================================
+
+    LAYER
+        NAME                    "tekst"
+        GROUP                   "basiskaart"
+        PROJECTION
+           "init=epsg:3857"
+           END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           400000
+        MINSCALEDENOM           0
+        METADATA
+           "wms_title"          "tekst"
+           "wms_group_title"    "basiskaart"
+           "wms_abstract"       "Basiskaart Amsterdam"
+           "wms_srs"            "EPSG:3857"
+           "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
+           "wms_format"         "image/png"
+           "wms_server_version" "1.1.1"
+           "wms_transparant"    "true"
+           "wms_bgcolor"        "0xFFFFFF"
+           END
+    END
+
+    #--------------------------------------------------------------------------
+
+           LAYER
+               NAME                    "tekst"
+               GROUP                   "basiskaart-light"
+               PROJECTION
+                  "init=epsg:3857"
+                  END
+               TYPE                    RASTER
+               CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+               CONNECTIONTYPE          WMS
+               MAXSCALEDENOM           400000
+               MINSCALEDENOM           0
+               METADATA
+                  "wms_title"          "tekst"
+                  "wms_group_title"    "basiskaart-light"
+                  "wms_abstract"       "Basiskaart Amsterdam light"
+                  "wms_srs"            "EPSG:3857"
+                  "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
+                  "wms_format"         "image/png"
+                  "wms_server_version" "1.1.1"
+                  "wms_transparant"    "true"
+                  "wms_bgcolor"        "0xFFFFFF"
+                  END
+           END
+
+    #--------------------------------------------------------------------------
+
+    LAYER
+        NAME                    "tekst"
+        GROUP                   "basiskaart-zwartwit"
+        PROJECTION
+           "init=epsg:3857"
+           END
+        TYPE                    RASTER
+        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTIONTYPE          WMS
+        MAXSCALEDENOM           400000
+        MINSCALEDENOM           0
+        METADATA
+           "wms_title"          "tekst"
+           "wms_group_title"    "basiskaart-zwartwit"
+           "wms_abstract"       "Basiskaart Amsterdam zwartwit"
+           "wms_srs"            "EPSG:3857"
+           "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
+           "wms_format"         "image/png"
+           "wms_server_version" "1.1.1"
+           "wms_transparant"    "true"
+           "wms_bgcolor"        "0xFFFFFF"
+           END
+    END
+
+
+
+#=============================================================================
+END

@@ -1,0 +1,69 @@
+#==============================================================================
+#
+# fietspaaltjes.map
+# doel: serveren locaties fietspaaltjes
+#
+#==============================================================================
+
+MAP
+    NAME "fietspaaltjes"
+    INCLUDE "header.inc"
+    DEBUG 1
+
+    WEB
+      METADATA
+        "ows_title"           "fietspaaltjes"
+        "ows_abstract"        "fietspaaltjes"
+        "wms_extent"          "100000 450000 150000 500000"
+      END
+    END
+
+    LEGEND
+       STATUS ON
+       KEYSIZE 17 17
+    END
+
+    LAYER
+        NAME        "fietspaaltjes"
+        TYPE        POINT
+        INCLUDE     "connection_dataservices.inc"
+        DATA        "geometry from public.fietspaaltjes_fietspaaltjes USING srid=28992 USING UNIQUE id"
+
+        CLASS
+            NAME          "fietspaaltjes"
+            STYLE
+                SYMBOL         'cirkel_paars'
+                SIZE           16
+            END
+
+            LABEL
+              MINSCALEDENOM  10
+              MAXSCALEDENOM  10000
+              COLOR          0 0 0
+              OUTLINECOLOR   255 255 255
+              OUTLINEWIDTH   3
+              FONT           "Ubuntu-MI"
+              TYPE           truetype
+              SIZE           10
+              POSITION       AUTO
+              PARTIALS       FALSE
+              OFFSET         -60 10
+            END
+        END
+
+        METADATA
+          "wfs_title"           "Fietspaaltjes"
+          "wfs_srs"             "EPSG:28992"
+          "wfs_abstract"        "Fietspaaltjes in Amsterdam"
+          "wfs_enable_request"  "*"
+          "wms_group_title"     "Fietspaaltjes"
+          "wms_abstract"        "Fietspaaltjes in Amsterdam"
+          "wms_enable_request"  "*"
+          "wms_srs"             "EPSG:28992"
+          "wms_name"            "fietspaaltjes"
+          "wms_format"          "image/png"
+          "wms_server_version"  "1.1.1"
+          "wms_extent"          "100000 450000 150000 500000"
+        END
+    END
+END

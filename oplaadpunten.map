@@ -1,0 +1,261 @@
+#==============================================================================
+#
+# Dataset: oplaadpunten
+# Doel: Oplaadpunten
+#
+#==============================================================================
+
+MAP
+  NAME                      "oplaadpunten"
+  INCLUDE                   "header.inc"
+  DEBUG 1
+
+  WEB
+    METADATA
+      "ows_title"           "Oplaadpunten"
+      "ows_abstract"        "Oplaadpunten Amsterdam"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+  END
+
+  LEGEND
+     STATUS ON
+     KEYSIZE 17 17
+  END
+
+  LAYER
+    NAME                    "normaal_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] < 50.0))
+
+    METADATA
+      "wfs_title"           "Normaal beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Normale beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "Normaal beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Normale beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "normaal_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "name"
+
+    CLASS
+      NAME          "Normaal beschikbaar"
+
+      STYLE
+        SIZE          17
+        SYMBOL        "oplaadpunt_normaal_beschikbaar"
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "normaal_niet_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] < 50.0))
+
+    METADATA
+      "wfs_title"           "Normaal niet beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Normale, niet beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "Normaal niet beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Normale niet beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "normaal_niet_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "name"
+
+    CLASS
+      NAME          "Normaal niet beschikbaar"
+
+      STYLE
+        SIZE          17
+        SYMBOL        "oplaadpunt_normaal_niet_beschikbaar"
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "snel_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (("[status]" ~ "Available") AND ([charging_cap_max] >= 50.0))
+
+    METADATA
+      "wfs_title"           "Snel beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Snelle beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "Snel beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Snelle beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "snel_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "name"
+
+    CLASS
+      NAME          "Snel beschikbaar"
+
+      STYLE
+        SIZE          17
+        SYMBOL        "oplaadpunt_snel_beschikbaar"
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "snel_niet_beschikbaar"
+    GROUP                   "oplaadpunten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM public.oplaadpunten USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER (( NOT ("[status]" ~ "Available")) AND ([charging_cap_max] >= 50.0))
+
+    METADATA
+      "wfs_title"           "Snel niet beschikbaar"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Snelle, niet beschikbare oplaadpunten Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "name"
+      "gml_include_items"   "all"
+      "wms_title"           "Snel niet beschikbaar"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Oplaadpunten"
+      "wms_abstract"        "Snelle, niet beschikbare oplaadpunten Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "snel_niet_beschikbaar"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "name"
+
+    CLASS
+      NAME          "Snel niet beschikbaar"
+
+      STYLE
+        SIZE          17
+        SYMBOL        "oplaadpunt_snel_niet_beschikbaar"
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  4000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+END

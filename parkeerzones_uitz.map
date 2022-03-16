@@ -1,0 +1,77 @@
+MAP
+  NAME                      "parkeerzones_uitz"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Parkeerzones uitzonderingen"
+      "ows_abstract"        "Parkeerzones uitzonderingen Amsterdam"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+  END
+
+  LAYER
+    NAME                    "parkeerzones_uitz"
+    GROUP                   "parkeerzones_uitz"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_various_small_datasets.inc"
+    DATA                    "wkb_geometry FROM  public.parkeerzones_uitz  USING srid=28992 USING UNIQUE ogc_fid"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    FILTER                  ([show] = 'TRUE')
+
+    METADATA
+      "wfs_title"           "Parkeerzones uitzonderingen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Parkeerzones uitzonderingen Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "gebied_code"
+      "gml_include_items"   "all"
+      "wms_title"           "Parkeerzones uitzonderingen"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Parkeerzones"
+      "wms_abstract"        "Parkeerzones uitzonderingen Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "parkeerzones_uitz"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "gebied_code"
+
+    CLASS
+      NAME          "Parkeerzones uitzonderingen"
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        "#FFE600"
+          OPACITY      55
+      END
+      STYLE
+          OUTLINECOLOR        "#FFE600"
+          OPACITY      100
+          WIDTH        1
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  10000
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         -60 10
+      END
+    END
+  END
+END
