@@ -12,12 +12,12 @@ map_file_dict = {'mapfiles': []}
 expected_state = {
     'MAP': None,
     'LAYER': 'MAP',
-    'PROJECTION': 'LAYER',
+    'PROJECTION': ['LAYER', 'MAP'],
     'WEB': 'MAP',
     'OUTPUTFORMAT': 'MAP',
     'SYMBOL': 'MAP',
     'LEGEND': 'MAP',
-    'POINTS': 'SYMBOL',
+    'POINTS': ['SYMBOL', 'FEATURE'],
     'METADATA': ['LAYER', 'WEB'],
     'CLASS': 'LAYER',
     'COMPOSITE': 'LAYER',
@@ -25,6 +25,7 @@ expected_state = {
     'STYLE': ['CLASS', 'LABEL'],
     'LABEL': 'CLASS',
     'PATTERN': 'STYLE',
+    'FEATURE': 'LAYER',
 }
 
 name_elements = ('MAP', 'LAYER', 'CLASS')
@@ -72,7 +73,6 @@ def scan_map_file(mapfile):
     dict_stack = []
     element = re.compile(r'"[^"]*"|\S+')
     comment = re.compile(r'\s*#')
-    ws = re.compile(r'(\s+)')
     count = 0
     try:
         with open(mapfile, encoding='utf-8') as file:
@@ -86,15 +86,9 @@ def scan_map_file(mapfile):
 
                 if comment.match(line):
                     continue
-                m = ws.match(line)
-                if m:
-                    ws_count = len(m.group(1))
-                else:
-                    ws_count = 0
                 elements = element.findall(line)
                 if len(elements) == 0:
                     continue
-                # print(ws_count, elements)
                 if elements[0] in expected_state:
                     expected = expected_state[elements[0]]
                     if expected is not None and len(state) == 0:
@@ -150,7 +144,7 @@ def scan_map_file(mapfile):
 
                 # In one case the END is on the line itself
                 if len(elements) > 1 and elements[-1] == 'END':
-                    popped = state.pop()
+                    state.pop()
     except UnicodeDecodeError as e:
         eprint(f"Error {e} at {mapfile} {count}")
 
