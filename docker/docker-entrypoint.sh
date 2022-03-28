@@ -53,7 +53,7 @@ EOF
 
 cat > /srv/mapserver/connection_nap.inc <<EOF
 CONNECTIONTYPE postgis
-CONNECTION "host=${NAP_DB_HOST} dbname=${NAP_DB_NAME} user=${NAP_DB_USER} password=${/mnt/secrets-store/nap-db-password} port=${NAP_DB_PORT}"
+CONNECTION "host=${NAP_DB_HOST} dbname=${NAP_DB_NAME} user=${NAP_DB_USER} password=${cat /mnt/secrets-store/nap-db-password} port=${NAP_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
