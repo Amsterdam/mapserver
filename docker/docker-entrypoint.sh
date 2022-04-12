@@ -102,7 +102,7 @@ EOF
 # In azure, this needs to be ${DATASERVICES_DB_USER}@${DATASERVICES_DB_HOST}
 cat > /srv/mapserver/connection_dataservices.inc <<EOF
 CONNECTIONTYPE postgis
-CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${DATASERVICES_DB_USER} password=$(cat /mnt/secrets-store/mdbdataservices-read) port=${DATASERVICES_DB_PORT}"
+CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${DATASERVICES_DB_USER} password=$(cat /mnt/secrets-store/mdbdataservices-read-password) port=${DATASERVICES_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
