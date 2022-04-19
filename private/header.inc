@@ -34,8 +34,8 @@
   STATUS      ON
 
   # VPS06
-  FONTSET     "fonts/fontlist.txt"
-  SYMBOLSET   "symbols/symbollist.txt"
+  FONTSET     "../fonts/fontlist.txt"
+  SYMBOLSET   "../symbols/symbollist.txt"
   # SHAPEPATH ""
 
 

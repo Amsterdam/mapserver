@@ -1,3 +1,5 @@
+# Services for local development
+
 version: "3.0"
 services:
   database:
@@ -6,13 +8,14 @@ services:
       - "5403:5432"
     environment:
       POSTGRES_PASSWORD: insecure
+      # used by apache to allow complete access for dev envs
+      LOCAL: t
     volumes:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
   map:
     build:
       context: .
-      dockerfile: Dockerfile
     ports:
       - "8383:80"
     links:
