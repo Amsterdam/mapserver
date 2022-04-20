@@ -1,4 +1,4 @@
-FROM amsterdam/python:3.9.6-slim-bullseye-minimal
+FROM amsterdam/python:3.9.6-bullseye
 LABEL maintainer="datapunt@amsterdam.nl"
 
 RUN apt-get update && apt-get install -my curl wget gnupg -y
