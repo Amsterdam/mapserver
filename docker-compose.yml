@@ -7,9 +7,7 @@ services:
     ports:
       - "5403:5432"
     environment:
-      POSTGRES_PASSWORD: insecure
-      # used by apache to allow complete access for dev envs
-      LOCAL: t
+      - POSTGRES_PASSWORD=insecure
     volumes:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
 
@@ -23,6 +21,8 @@ services:
     environment:
       # Uncomment the following line to have private maps served
       ACCESS_SCOPE: private 
+      # Used by apache to allow complete access for local dev
+      LOCAL: "true"
       BAG_V11_DB_NAME: bag_v11
       BAG_V11_DB_USER: postgres
       BAG_V11_DB_PASSWORD: insecure
