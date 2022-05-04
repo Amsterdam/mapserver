@@ -8,6 +8,7 @@
 MAP
 	NAME                      "bgt_inrichtingselementen"
 	INCLUDE                   "header.inc"
+	DEBUG 5
 
 	WEB
 		METADATA
@@ -179,7 +180,7 @@ MAP
 		END
 
 		CLASS
-			EXPRESSION		{benzine-_olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
+			EXPRESSION		{benzine- / olieput,brandkraan / -put,drainageput,gasput,inspectie- / rioolput,waterleidingput}
 			MAXSCALEDENOM 	2000
 			MINSCALEDENOM 	1500
 			STYLE
