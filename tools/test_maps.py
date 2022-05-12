@@ -1,18 +1,20 @@
 #!/bin/env python3
 
 import argparse
+import hashlib
 import json
-import mappyfile
 import logging
-from urllib3.util import Url
-from requests import Session, Request
-from typing import Optional
-from lark.exceptions import UnexpectedInput
 from pathlib import Path
+from typing import Optional
+from urllib.parse import parse_qsl
+from xml.dom.minidom import Element
 from xml.etree import ElementTree as ET
+from json.decoder import JSONDecodeError
 
-# set with env var
-logging.basicConfig(level=logging.INFO)
+import mappyfile
+from lark.exceptions import UnexpectedInput
+from requests import Request, Session
+from urllib3.util import Url, parse_url
 
 description = """
 This script runs basic tests for all maps in this repository, it does this by
@@ -24,13 +26,12 @@ making the following assertions for each layer in each map.
     - the response of the GetMap request is an image
 
 Optionally, the script compares the hashes of the GetMap images in the response with the hashes stored
-at `checksum_input`.
+locally (with -s).
 
 The stored checksums are named after their complete URL path and querystring. If there is no matching
 checksum name for a retrieved image-file, the check cannot occur.
 
-As parameters to the WMS request, we take the max. zoom denominator of the layer
-and the center of Amsterdam as bounding box.
+As parameters to the WMS GetMap request, we take all layers and the center of Amsterdam as bounding box.
 """
 
 SCRIPT_DIR = Path(__file__).parent.absolute()
@@ -39,13 +40,14 @@ WORKING_DIR = Path.cwd().absolute()
 
 # Namespaces for searching WMS XML responses
 XML_DEFAULT_NAMESPACE = "http://www.opengis.net/wms"
+XML_XLINK_NAMESPACE = "http://www.w3.org/1999/xlink"
 XML_NAMESPACES = {
     "default": XML_DEFAULT_NAMESPACE,
-    "xlink": "http://www.w3.org/1999/xlink",
+    "xlink": XML_XLINK_NAMESPACE,
 }
 
 parser = argparse.ArgumentParser(description=description)
-parser.add_argument("-u", "--url", default="https://map.data.amsterdam.nl/maps")
+parser.add_argument("-u", "--url", default="https://map.data.amsterdam.nl")
 parser.add_argument(
     "-m",
     "--maps_path",
@@ -67,6 +69,18 @@ parser.add_argument(
     help="Match the checksums of the retrieved maps with the stored checksums",
 )
 parser.add_argument(
+    "-v",
+    "--verbose",
+    action="store_true",
+    help="Show detailed output of failed tests",
+)
+parser.add_argument(
+    "-p",
+    "--private",
+    action="store_true",
+    help="Include private maps in testing",
+)
+parser.add_argument(
     "mapfiles",
     nargs="*",
     help="Specify mapfiles that should be processed (the .map extension must be omitted).",
@@ -74,35 +88,43 @@ parser.add_argument(
 
 
 def get_capabilities_request(base_url: str, map_name: str, wms_version: str) -> Request:
+    host = parse_url(base_url).host
     url = Url(
         scheme="https",
-        host=base_url.removeprefix("https://").removesuffix("/"),
-        path=map_name,
+        host=host,
+        path=f"maps/{map_name}",
     )
     return Request(
         "GET",
         url,
         params={"service": "wms", "version": wms_version, "request": "GetCapabilities"},
+        headers={
+            "Host": host,  # haproxy uses 'Host' for routing
+            "User-Agent": "mapserver/testscript",  # to avoid hitting OWASP3.1 913101
+        },
     )
 
 
-def get_map_request(base_url: str, wms_version: str, map_path: Path, layer: str) -> Request:
+def get_map_request(
+    base_url: str, wms_version: str, map_path: str, layer: str
+) -> Request:
     """A GetMap request that uses the Mapserver CGI interface"""
+    host = parse_url(base_url).host
     url = Url(
         scheme="https",
-        host=base_url.removeprefix("https://").removesuffix("/maps"),
+        host=host,
         path="cgi-bin/mapserv",
     )
     return Request(
         "GET",
         url,
         params={
-            "map": map_path.absolute(),
+            "map": map_path,
             "service": "wms",
             "version": wms_version,
             "request": "GetMap",
-            "bbox": "52.36585716840382787,4.898649147373815183,52.3698249470350774,4.910043532111592945", # centered on Waterlooplein
-            "crs": "EPSG:4326", # WGS84
+            "bbox": "52.36585716840382787,4.898649147373815183,52.3698249470350774,4.910043532111592945",  # centered on Waterlooplein
+            "crs": "EPSG:4326",  # WGS84
             "width": 1852,
             "height": 645,
             "layers": layer,
@@ -112,10 +134,26 @@ def get_map_request(base_url: str, wms_version: str, map_path: Path, layer: str)
             "format_options": "dpi:96",
             "transparent": True,
         },
+        headers={
+            "Host": host,  # haproxy uses 'Host' for routing
+            "User-Agent": "mapserver/testscript",  # to avoid hitting OWASP3.1 913101
+        },
     )
 
 
-args = parser.parse_args()
+def map_param_from_tag(e: Element):
+    links = e.find("./default:Request/default:GetMap//*[@xlink:href]", XML_NAMESPACES)
+    return parse_qsl(links.attrib.get(f"{{{XML_XLINK_NAMESPACE}}}href"))[0][1]
+
+
+def get_checksums():
+    try:
+        with open(CHECKSUMS_LOCATION) as fh:
+            checksums = json.load(fh)
+    except (FileNotFoundError, JSONDecodeError):
+        checksums = {}
+    return checksums
+
 
 def run_tests(
     url: str,
@@ -123,6 +161,7 @@ def run_tests(
     wms_version: str,
     store_checksums: bool,
     check_checksums: bool,
+    private: bool,
     maps: Optional[list[str]] = None,
 ):
     if maps:
@@ -132,7 +171,17 @@ def run_tests(
     else:
         paths = sorted(maps_path.glob("**/*.map"))
 
+    # TODO: If we include private maps and there is a private and public map
+    # with the same name, give preference to the private map (this is the case for externeveiligheid)
+    if not private:
+        paths = [p for p in paths if "private" not in str(p)]
+
     failed = []
+
+    checksums = {}
+    if check_checksums:
+        checksums = get_checksums()
+
     with Session() as session:
         for path in paths:
             logging.info(f"Testing {path}")
@@ -140,6 +189,7 @@ def run_tests(
                 mapfile = mappyfile.open(path)
             except UnexpectedInput:
                 logging.warning(f"Skipping {path} because parsing failed.")
+                continue
 
             # the URL path is derived from the mapfile name
             map_url_path = str(path).removesuffix(".map").split("/")[-1]
@@ -148,30 +198,136 @@ def run_tests(
                 get_capabilities_request(url, map_url_path, wms_version)
             )
             response = session.send(request)
-            assert response.status_code == 200
+            if response.status_code == 200:
+                payload = ET.fromstring(response.content)
+            else:
+                # Responses other than 200 do not provide XML output
+                failed.append(
+                    (
+                        path,
+                        "GetCapabilities",
+                        response.content,
+                        f"Status code is {response.status_code}",
+                    )
+                )
+                continue
 
-            payload = ET.fromstring(response.content)
             try:
-                assert payload.tag == f"{{{XML_DEFAULT_NAMESPACE}}}WMS_Capabilities"
+                assert (
+                    payload.tag == f"{{{XML_DEFAULT_NAMESPACE}}}WMS_Capabilities"
+                ), "Root tag has unexpected name"
 
                 service_tag = payload.find("default:Service", XML_NAMESPACES)
                 capability_tag = payload.find("default:Capability", XML_NAMESPACES)
-                assert service_tag is not None
-                assert capability_tag is not None
-            except AssertionError:
-                failed.append((path, "GetCapabilities", payload))
-                
-            # TODO: Deeper assertions?
-    logging.info(failed)
-    logging.info(f"{len(failed)} of {len(paths)} maps failed")
+                assert service_tag is not None, "No Service tag found"
+                assert capability_tag is not None, "No Capability tag found"
+                # Only include Layers that are a child of the root Layer, i.e.: all Groups and Layers
+                server_layers = set(
+                    [
+                        x.text
+                        for x in capability_tag.findall(
+                            "./default:Layer//default:Layer/default:Name",
+                            XML_NAMESPACES,
+                        )
+                    ]
+                )
+
+                # can be replaced with ET.findunique when
+                # https://github.com/geographika/mappyfile/pull/153 gets released
+                groups = set(
+                    [item.get("group", None) for item in mapfile["layers"]]
+                ) - {
+                    None,
+                }
+
+                mapfile_layers = {x["name"] for x in mapfile["layers"]} | groups
+                assert (
+                    server_layers == mapfile_layers
+                ), f"Layers dont match; server has {len(server_layers)}, mapfile has {len(mapfile_layers)}"
+            except AssertionError as e:
+                failed.append((path, "GetCapabilities", ET.tostring(payload), str(e)))
+                continue
+
+            # We get the file path of the map from the XML document because it may not
+            # be the same as our local path
+            map_param = map_param_from_tag(capability_tag)
+
+            # We need to run a separate query for each layer because querying multiple layers
+            # (even when sorted) does not guarantee a deterministic rendering order
+            for layer in server_layers - groups:
+                request = session.prepare_request(
+                    get_map_request(url, wms_version, map_param, layer)
+                )
+
+                response = session.send(request, stream=True)  # lazy download
+
+                if (
+                    response.status_code != 200
+                    or response.headers["Content-Type"] != "image/png"
+                ):
+                    ct = response.headers["Content-Type"]
+                    failed.append(
+                        (
+                            path,
+                            "GetMap",
+                            response.content,
+                            f"Status code is {response.status_code} and Content-Type is {ct}",
+                        )
+                    )
+                    continue
+
+                if store_checksums or check_checksums:
+                    key = response.request.path_url
+                    server_checksum = hashlib.md5(response.content).hexdigest()
+                    if check_checksums:
+                        stored_checksum = checksums.get(key, None)
+                        try:
+                            assert stored_checksum == server_checksum
+                        except AssertionError:
+                            failed.append(
+                                (
+                                    path,
+                                    "GetMap",
+                                    response.content,
+                                    f"Checksums dont match, server: {server_checksum} stored: {stored_checksum}",
+                                )
+                            )
+                    if store_checksums:
+                        checksums[key] = server_checksum
+
+    if store_checksums:
+        CHECKSUMS_LOCATION.touch(exist_ok=True)
+        with open(CHECKSUMS_LOCATION, "r+") as fh:
+            try:
+                payload = json.load(fh)
+            except JSONDecodeError:
+                payload = {}
+            fh.seek(0)
+            json.dump(payload | checksums, fh)
+
+    for f in failed:
+        logging.info(f"{f[1]} failed for {f[0]}. Error: {f[3]}  ")
+        logging.debug(f"Payload:\n {f[2]}")
+
+    logging.info(
+        f"Testresults: {len(paths) - len(failed)} of {len(paths)} maps succeeded"
+    )
 
 
 if __name__ == "__main__":
+    args = parser.parse_args()
+
+    if args.verbose:
+        logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.INFO)
+
     run_tests(
         args.url,
         args.maps_path,
         args.wms_version,
         args.store_checksums,
         args.check_checksums,
+        args.private,
         args.mapfiles,
     )
