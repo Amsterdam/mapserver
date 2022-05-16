@@ -1,6 +1,7 @@
 #!/bin/env python3
 
 import argparse
+from email.mime import base
 import hashlib
 import json
 import logging
@@ -37,6 +38,7 @@ As parameters to the WMS GetMap request, we take all layers and the center of Am
 SCRIPT_DIR = Path(__file__).parent.absolute()
 CHECKSUMS_LOCATION = SCRIPT_DIR / "map_checksums.json"
 WORKING_DIR = Path.cwd().absolute()
+HOST_KEY = "HOST"
 
 # Namespaces for searching WMS XML responses
 XML_DEFAULT_NAMESPACE = "http://www.opengis.net/wms"
@@ -47,7 +49,7 @@ XML_NAMESPACES = {
 }
 
 parser = argparse.ArgumentParser(description=description)
-parser.add_argument("-u", "--url", default="https://map.data.amsterdam.nl")
+parser.add_argument("-u", "--url", default="https://acc.map.data.amsterdam.nl")
 parser.add_argument(
     "-m",
     "--maps_path",
@@ -146,12 +148,12 @@ def map_param_from_tag(e: Element):
     return parse_qsl(links.attrib.get(f"{{{XML_XLINK_NAMESPACE}}}href"))[0][1]
 
 
-def get_checksums():
+def get_checksums(base_url: str):
     try:
         with open(CHECKSUMS_LOCATION) as fh:
             checksums = json.load(fh)
     except (FileNotFoundError, JSONDecodeError):
-        checksums = {}
+        checksums = {HOST_KEY: base_url}
     return checksums
 
 
@@ -177,10 +179,11 @@ def run_tests(
         paths = [p for p in paths if "private" not in str(p)]
 
     failed = []
+    n_processed = 0
 
     checksums = {}
     if check_checksums:
-        checksums = get_checksums()
+        checksums = get_checksums(url)
 
     with Session() as session:
         for path in paths:
@@ -255,6 +258,7 @@ def run_tests(
             # We need to run a separate query for each layer because querying multiple layers
             # (even when sorted) does not guarantee a deterministic rendering order
             for layer in server_layers - groups:
+                n_processed += 1
                 request = session.prepare_request(
                     get_map_request(url, wms_version, map_param, layer)
                 )
@@ -286,7 +290,7 @@ def run_tests(
                         except AssertionError:
                             failed.append(
                                 (
-                                    path,
+                                    f"{path} - {layer}",
                                     "GetMap",
                                     response.content,
                                     f"Checksums dont match, server: {server_checksum} stored: {stored_checksum}",
@@ -301,16 +305,21 @@ def run_tests(
             try:
                 payload = json.load(fh)
             except JSONDecodeError:
-                payload = {}
-            fh.seek(0)
-            json.dump(payload | checksums, fh)
+                payload = {HOST_KEY: url}
+            
+            if payload[HOST_KEY] == url:
+                fh.seek(0)
+                json.dump(payload | checksums, fh)
+            else:
+                logging.warning("Storing checksums would result in mixing checksums from different hosts")
+                logging.warning("skipping checksum storage.")
 
     for f in failed:
         logging.info(f"{f[1]} failed for {f[0]}. Error: {f[3]}  ")
         logging.debug(f"Payload:\n {f[2]}")
 
     logging.info(
-        f"Testresults: {len(paths) - len(failed)} of {len(paths)} maps succeeded"
+        f"Testresults: {n_processed - len(failed)} of {n_processed} maplayers succeeded"
     )
 
 
