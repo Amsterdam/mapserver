@@ -258,6 +258,7 @@ def run_tests(
             # We need to run a separate query for each layer because querying multiple layers
             # (even when sorted) does not guarantee a deterministic rendering order
             for layer in server_layers - groups:
+                layer_id = f"{path} - {layer}",
                 n_processed += 1
                 request = session.prepare_request(
                     get_map_request(url, wms_version, map_param, layer)
@@ -272,7 +273,7 @@ def run_tests(
                     ct = response.headers["Content-Type"]
                     failed.append(
                         (
-                            path,
+                            layer_id,
                             "GetMap",
                             response.content,
                             f"Status code is {response.status_code} and Content-Type is {ct}",
@@ -290,7 +291,7 @@ def run_tests(
                         except AssertionError:
                             failed.append(
                                 (
-                                    f"{path} - {layer}",
+                                    layer_id,
                                     "GetMap",
                                     response.content,
                                     f"Checksums dont match, server: {server_checksum} stored: {stored_checksum}",
@@ -318,8 +319,9 @@ def run_tests(
         logging.info(f"{f[1]} failed for {f[0]}. Error: {f[3]}  ")
         logging.debug(f"Payload:\n {f[2]}")
 
+    n_failed = len(failed)
     logging.info(
-        f"Testresults: {n_processed - len(failed)} of {n_processed} maplayers succeeded"
+        f"Testresults: {n_processed - len(failed)} of {n_processed} {round(n_failed / n_processed * 100, 2)}% maplayers succeeded"
     )
 
 
