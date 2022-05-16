@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 LABEL maintainer="datapunt@amsterdam.nl"
 
 RUN apt-get update && apt-get install -my curl wget gnupg -y
