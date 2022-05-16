@@ -321,7 +321,7 @@ def run_tests(
 
     n_failed = len(failed)
     logging.info(
-        f"Testresults: {n_processed - len(failed)} of {n_processed} {round(n_failed / n_processed * 100, 2)}% maplayers succeeded"
+        f"Testresults: {n_processed - len(failed)} of {n_processed} {round(100 - n_failed / n_processed * 100, 2)}% maplayers succeeded"
     )
 
 
