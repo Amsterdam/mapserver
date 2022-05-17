@@ -276,33 +276,6 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
-    NAME                    BGT_BTRN_kwelder
-    GROUP                   begroeidterreindeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_BTRN_kwelder\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_BTRN_kwelder"
-	 "ows_group_title"      "begroeidterreindeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
     NAME                    BGT_BTRN_loofbos
     GROUP                   begroeidterreindeel
     MAXSCALEDENOM           4000
@@ -439,38 +412,6 @@ MAP
       END
     END
   END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_BTRN_transitie
-    GROUP                   begroeidterreindeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_BTRN_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_BTRN_transitie"
-	 "ows_group_title"      "begroeidterreindeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-
-
-
 
   #=============================================================================
   # LAYERS ONBEGROEIDTERREINDEEL
@@ -625,40 +566,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_OTRN_open_verharding"
-	 "ows_group_title"      "onbegroeidterreindeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#f6f6f4"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#c9c7c2"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_OTRN_transitie
-    GROUP                   onbegroeidterreindeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_OTRN_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_OTRN_transitie"
 	 "ows_group_title"      "onbegroeidterreindeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -1035,40 +942,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_KDL_stuw_V"
-	 "ows_group_title"      "kunstwerkdeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#f6f6f4"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac80"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_KDL_transitie_V
-    GROUP                   kunstwerkdeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_KDL_transitie_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_KDL_transitie_V"
 	 "ows_group_title"      "kunstwerkdeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -1652,45 +1525,6 @@ MAP
     END
   END
 
-
-
-
-
-  #=============================================================================
-  # LAYERS ONBEKENDOBJECT
-  #=============================================================================
-
-  LAYER
-    NAME                    BGT_OOT_ongeclassificeerd
-    GROUP                   onbekendobject
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_OOT_ongeclassificeerd\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_OOT_ongeclassificeerd"
-	 "ows_group_title"      "onbekendobject"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      # Zoom{17 18 19 20 21}
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#95c6d5"
-      END
-    END
-  END
-
-
-
-
-
   #=============================================================================
   # LAYERS WATERDEEL
   #=============================================================================
@@ -1814,39 +1648,6 @@ MAP
       END
     END
   END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_OWDL_transitie
-    GROUP                   ondersteunendwaterdeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_OWDL_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_OWDL_transitie"
-	 "ows_group_title"      "ondersteunendwaterdeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      # Zoom{17 18 19 20 21}
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#95c6d5"
-      END
-    END
-  END
-
-
-
-
 
   #=============================================================================
   # LAYERS WEGDEEL
@@ -2261,40 +2062,6 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
-    NAME                    BGT_WGL_transitie
-    GROUP                   wegdeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_WGL_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_WGL_transitie"
-	 "ows_group_title"      "wegdeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#ffffff"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
     NAME                    BGT_WGL_voetgangersgebied
     GROUP                   wegdeel
     MAXSCALEDENOM           4000
@@ -2449,40 +2216,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_OWGL_berm"
-	 "ows_group_title"      "ondersteunendwegdeel"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#f6f6f4"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#acacac"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_OWGL_transitie
-    GROUP                   ondersteunendwegdeel
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_OWGL_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_OWGL_transitie"
 	 "ows_group_title"      "ondersteunendwegdeel"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -2835,40 +2568,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGT_OBW_overkapping"
-	 "ows_group_title"      "overigbouwwerk"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#ebeae6"
-      END
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGT_OBW_transitie
-    GROUP                   overigbouwwerk
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGT_OBW_transitie\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGT_OBW_transitie"
 	 "ows_group_title"      "overigbouwwerk"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -3586,37 +3285,6 @@ MAP
   #------------------------------------------------------------------------------------------------
 
   LAYER
-    NAME                    BGTPLUS_OSDG_geluidsscherm
-    GROUP                   overigescheiding
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_geluidsscherm\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_OSDG_geluidsscherm"
-	 "ows_group_title"      "overigescheiding"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        COLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
     NAME                    BGTPLUS_OSDG_hek
     GROUP                   overigescheiding
     MAXSCALEDENOM           4000
@@ -3660,126 +3328,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_OSDG_kademuur_L"
-	 "ows_group_title"      "overigescheiding"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        COLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGTPLUS_OSDG_kademuur_V
-    GROUP                   overigescheiding
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_kademuur_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_OSDG_kademuur_V"
-	 "ows_group_title"      "overigescheiding"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        COLOR "#dceacf"
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGTPLUS_OSDG_muur_L
-    GROUP                   overigescheiding
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_muur_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_OSDG_muur_L"
-	 "ows_group_title"      "overigescheiding"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        COLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGTPLUS_OSDG_muur_V
-    GROUP                   overigescheiding
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_muur_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_OSDG_muur_V"
-	 "ows_group_title"      "overigescheiding"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
-    NAME                    BGTPLUS_OSDG_onbekend_L
-    GROUP                   overigescheiding
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_onbekend_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_OSDG_onbekend_L"
 	 "ows_group_title"      "overigescheiding"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
@@ -6570,36 +6118,6 @@ MAP
     END
     METADATA
      "ows_title"            "BGTPLUS_WGI_molgoot"
-	 "ows_group_title"      "inrichtingselement"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        COLOR "#dceacf"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
- LAYER
-    NAME                    BGTPLUS_WGI_onbekend_L
-    GROUP                   inrichtingselement
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_onbekend_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_WGI_onbekend_L"
 	 "ows_group_title"      "inrichtingselement"
      "gml_include_items"    "all"
      "gml_featureid"        "identificatie_lokaalid"
