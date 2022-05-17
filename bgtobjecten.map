@@ -3254,37 +3254,6 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME                    BGTPLUS_OSDG_damwand
-    GROUP                   overigescheiding
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection_basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_damwand\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-     "ows_title"            "BGTPLUS_OSDG_damwand"
-	 "ows_group_title"      "overigescheiding"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
-    END
-
-    CLASS
-      MAXSCALEDENOM 4000
-      STYLE
-        WIDTH 1
-        COLOR "#e0ded8"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
-
-  #------------------------------------------------------------------------------------------------
-
-  LAYER
     NAME                    BGTPLUS_OSDG_hek
     GROUP                   overigescheiding
     MAXSCALEDENOM           4000
