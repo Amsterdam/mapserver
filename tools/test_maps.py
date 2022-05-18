@@ -90,11 +90,13 @@ parser.add_argument(
 
 
 def get_capabilities_request(base_url: str, map_name: str, wms_version: str) -> Request:
-    host = parse_url(base_url).host
+    parsed = parse_url(base_url)
+    host = parsed.host
     url = Url(
-        scheme="https",
+        scheme=parsed.scheme or "https", # allow scheme overrides
         host=host,
         path=f"maps/{map_name}",
+        port=parsed.port # allow port overrides
     )
     return Request(
         "GET",
@@ -111,11 +113,13 @@ def get_map_request(
     base_url: str, wms_version: str, map_path: str, layer: str
 ) -> Request:
     """A GetMap request that uses the Mapserver CGI interface"""
-    host = parse_url(base_url).host
+    parsed = parse_url(base_url)
+    host = parsed.host
     url = Url(
-        scheme="https",
+        scheme=parsed.scheme or "https", # allow scheme overrides
         host=host,
         path="cgi-bin/mapserv",
+        port=parsed.port # allow port overrides
     )
     return Request(
         "GET",
@@ -205,6 +209,7 @@ def run_tests(
                 payload = ET.fromstring(response.content)
             else:
                 # Responses other than 200 do not provide XML output
+                n_processed += 1
                 failed.append(
                     (
                         path,
@@ -248,6 +253,7 @@ def run_tests(
                     server_layers == mapfile_layers
                 ), f"Layers dont match; server has {len(server_layers)}, mapfile has {len(mapfile_layers)}"
             except AssertionError as e:
+                n_processed += 1
                 failed.append((path, "GetCapabilities", ET.tostring(payload), str(e)))
                 continue
 
