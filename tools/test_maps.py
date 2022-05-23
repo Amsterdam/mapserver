@@ -215,7 +215,7 @@ def run_tests(
                 payload = ET.fromstring(response.content)
             else:
                 # Responses other than 200 do not provide XML output
-                n_processed += 1
+                n_processed += len(mapfile["layers"])
                 failed.append(
                     (
                         path,

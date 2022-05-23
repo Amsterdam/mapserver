@@ -9,7 +9,7 @@
 MAP
   NAME                      "bommenkaart_sld"
   INCLUDE                   "header.inc"
-  DEBUG 1
+  DEBUG 5
 
   WEB
     METADATA
@@ -19,7 +19,6 @@ MAP
   END
 
   LAYER
-    DEBUG 1
     NAME                   "inslagen"
 
     # Used to generate a BoundingBox in GetCapabilities repsonse, which is mandatory in WMS 1.3.0
@@ -51,7 +50,6 @@ MAP
   END
 
   LAYER
-    DEBUG 1
     NAME                   "verdachtgebied"
 
     PROJECTION
@@ -69,11 +67,11 @@ MAP
     MINSCALEDENOM           0
 
     METADATA
-      "wms_title"           "inslagen"
-      "wms_group_title"     "inslagen"
+      "wms_title"           "verdachte gebieden"
+      "wms_group_title"     "verdachte gebeiden"
       "wms_abstract"        "Inslagen Amsterdam"
       "wms_srs"             "EPSG:28992"
-      "wms_name"            "verdachte gebieden"
+      "wms_name"            "verdachte_gebieden"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_sld_url"         "http://127.0.0.1/sld/verdachte_gebieden.sld"
