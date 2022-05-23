@@ -1,6 +1,7 @@
 #!/bin/env python3
 
 import argparse
+import io
 from email.mime import base
 import hashlib
 import json
@@ -16,6 +17,7 @@ import mappyfile
 from lark.exceptions import UnexpectedInput
 from requests import Request, Session
 from urllib3.util import Url, parse_url
+from PIL import Image
 
 description = """
 This script runs basic tests for all maps in this repository, it does this by
@@ -185,6 +187,10 @@ def run_tests(
     failed = []
     n_processed = 0
 
+    # count the number of images that have no data
+    # to estimate the quality of this testscript
+    n_blank = 0
+
     checksums = {}
     if check_checksums:
         checksums = get_checksums(url)
@@ -289,7 +295,11 @@ def run_tests(
 
                 if store_checksums or check_checksums:
                     key = response.request.path_url
-                    server_checksum = hashlib.md5(response.content).hexdigest()
+                    img_bytes = response.content
+                    if Image.open(io.BytesIO(img_bytes)).getbbox() is None:
+                        n_blank += 1
+
+                    server_checksum = hashlib.md5(img_bytes).hexdigest()
                     if check_checksums:
                         stored_checksum = checksums.get(key, None)
                         try:
@@ -327,7 +337,10 @@ def run_tests(
 
     n_failed = len(failed)
     logging.info(
-        f"Testresults: {n_processed - len(failed)} of {n_processed} {round(100 - n_failed / n_processed * 100, 2)}% maplayers succeeded"
+        f"Testresults: {n_processed - len(failed)} of {n_processed} ({round(100 - n_failed / n_processed * 100, 2)}%) maplayers succeeded"
+    )
+    logging.info(
+        f"Testresults: {n_blank} of {n_processed} images are empty ({round(100 - n_blank / n_processed * 100, 2)}%)"
     )
 
 
