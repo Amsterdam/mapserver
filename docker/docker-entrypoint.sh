@@ -43,7 +43,7 @@ DATASERVICES_DB_PORT=${DATASERVICES_DB_PORT:-5432}
 DATASERVICES_DB_NAME=${DATASERVICES_DB_NAME:-dataservices}
 DATASERVICES_DB_USER=${DATASERVICES_DB_USER:-${DATASERVICES_DB_NAME}}
 
-if [-z ${AZURE+x} ]; then
+if [ -z ${AZURE+x} ]; then
 echo Creating configuration files
 
 cat > /srv/mapserver/connection_bag.inc <<EOF
