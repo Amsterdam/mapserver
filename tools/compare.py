@@ -19,12 +19,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     checksums = get_checksums(args.url)
-    stored_host = checksums[HOST_KEY]
+    stored_host = parse_url(checksums[HOST_KEY])
     uri = [k for k, v in checksums.items() if args.map in k and args.layer in k][0]
     ref_bytes = requests.get(
-        Url(scheme="https", host=stored_host, path=uri), 
+        Url(scheme="https", host=stored_host.host, path=uri), 
         headers={
-            "Host": stored_host,  # haproxy uses 'Host' for routing
+            "Host": stored_host.host,  # haproxy uses 'Host' for routing
             "User-Agent": "mapserver/testscript",  # to avoid hitting OWASP3.1 913101
         },
         stream=True
@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     cmp_host = parse_url(args.url)
     cmp_bytes = requests.get(
-        Url(scheme=cmp_host.scheme or "https", host=cmp_host.host, path=uri, port=cmp_host.port), 
+        Url(scheme="https", host=cmp_host.host, path=uri), 
         headers={
             "Host": cmp_host.host,  # haproxy uses 'Host' for routing
             "User-Agent": "mapserver/testscript",  # to avoid hitting OWASP3.1 913101
