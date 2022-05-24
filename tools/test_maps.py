@@ -41,6 +41,7 @@ SCRIPT_DIR = Path(__file__).parent.absolute()
 CHECKSUMS_LOCATION = SCRIPT_DIR / "map_checksums.json"
 WORKING_DIR = Path.cwd().absolute()
 HOST_KEY = "HOST"
+HEALTHCHECK_MAP = "healthcheck.map"
 
 # Namespaces for searching WMS XML responses
 XML_DEFAULT_NAMESPACE = "http://www.opengis.net/wms"
@@ -197,6 +198,11 @@ def run_tests(
 
     with Session() as session:
         for path in paths:
+            if str(path).endswith(HEALTHCHECK_MAP):
+                # Healthcheck map is purely for server health and
+                # does not require testing
+                continue
+
             logging.info(f"Testing {path}")
             try:
                 mapfile = mappyfile.open(path)
