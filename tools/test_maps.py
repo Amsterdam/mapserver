@@ -335,13 +335,14 @@ def run_tests(
         logging.info(f"{f[1]} failed for {f[0]}. Error: {f[3]}  ")
         logging.debug(f"Payload:\n {f[2]}")
 
-    n_failed = len(failed)
-    logging.info(
-        f"Testresults: {n_processed - len(failed)} of {n_processed} ({round(100 - n_failed / n_processed * 100, 2)}%) maplayers succeeded"
-    )
-    logging.info(
-        f"Testresults: {n_blank} of {n_processed} images are empty ({round(100 - n_blank / n_processed * 100, 2)}%)"
-    )
+    if n_processed > 0:
+        n_failed = len(failed)
+        logging.info(
+            f"Testresults: {n_processed - len(failed)} of {n_processed} ({round(100 - n_failed / n_processed * 100, 2)}%) maplayers succeeded"
+        )
+        logging.info(
+            f"Testresults: {n_blank} of {n_processed} images are empty ({round(100 - n_blank / n_processed * 100, 2)}%)"
+        )
 
 
 if __name__ == "__main__":
