@@ -124,6 +124,4 @@ echo Starting server
 # Apache gets grumpy about PID files pre-existing
 rm -f /var/run/apache2/apache2.pid
 
-# Tell apache the names of the private mapfiles for source IP based access control
-export PRIVATE_MAPS_REGEX="($(ls /srv/mapserver/private | grep .map |  sed -r 's/(.+)\.map/\1/' | xargs | sed 's/ /\|/g' ))"
 apachectl -D FOREGROUND

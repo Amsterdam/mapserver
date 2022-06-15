@@ -21,7 +21,4 @@ COPY . /srv/mapserver/
 
 EXPOSE 80
 
-# used by make_mapfile_config.py to include private mapfiles_
-ENV ACCESS_SCOPE private
-
 CMD /bin/docker-entrypoint.sh
