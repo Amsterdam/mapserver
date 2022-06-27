@@ -35,6 +35,15 @@ The stored checksums are named after their complete URL path and querystring. If
 checksum name for a retrieved image-file, the check cannot occur.
 
 As parameters to the WMS GetMap request, we take all layers and the center of Amsterdam as bounding box.
+
+CAVEAT:
+
+Note that some layers will not be properly tested because:
+    1) there is no data in the queried bbox or
+    2) the queried zoomlevel is outside the range of the layer
+
+In both cases the layer will not render and any data or rendering issues will not be covered by the test.
+This is a known limitation of this script and a fixme.
 """
 
 SCRIPT_DIR = Path(__file__).parent.absolute()
