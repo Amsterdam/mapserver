@@ -15,7 +15,7 @@ expected_state = {
     'PROJECTION': 'LAYER',
     'WEB': 'MAP',
     'OUTPUTFORMAT': 'MAP',
-    'SYMBOL': 'MAP',
+    'SYMBOL': ['MAP', 'STYLE'],
     'LEGEND': 'MAP',
     'POINTS': 'SYMBOL',
     'METADATA': ['LAYER', 'WEB'],

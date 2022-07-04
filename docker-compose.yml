@@ -1,4 +1,9 @@
 version: "3.0"
+networks:
+  default:
+    external:
+      name: dso-api_default
+
 services:
   database:
     image: amsterdam/postgres11
@@ -14,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile_noproxy
     ports:
-      - "80:80"
+      - "8888:80"
     links:
       - "database:database"
     volumes:
@@ -69,9 +74,9 @@ services:
       VARIOUS_SMALL_DATASETS_DB_HOST: database
 
       DATASERVICES_DB_NAME: dataservices
-      DATASERVICES_DB_USER: dataservices
+      DATASERVICES_DB_USER: insecure
       DATASERVICES_DB_PASSWORD: insecure
-      DATASERVICES_DB_HOST: database
+      DATASERVICES_DB_HOST: dso-api_database_1
 
       MAP_URL: "http://mapserver"
       LEGEND_URL: "http://mapserver"

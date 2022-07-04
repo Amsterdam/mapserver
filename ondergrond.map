@@ -7,7 +7,7 @@
 MAP
   NAME                      "ondergrond"
   INCLUDE                   "header.inc"
-  DEBUG 1
+  DEBUG 5
 
   WEB
     METADATA
@@ -23,10 +23,10 @@ MAP
 
   LAYER
     NAME                    "historische_onderzoeken"
-    PROJECTION              "init=epsg:28992"
+    PROJECTION              
+      "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
@@ -64,7 +64,106 @@ MAP
                 OPACITY      100
                 WIDTH        1
             END
-        END
+    END
+  END
+  LAYER
+    DEBUG 5
+    NAME                    "kabels_en_leidingen"
+    PROJECTION              
+      "init=epsg:28992"
     END
 
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_lijn_totaal USING srid=28992 USING UNIQUE id"
+    TYPE                    LINE
+    # MINSCALEDENOM           10
+    # MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "Kabels en Leidingen Kadaster"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Kabels en Leidingen Kadaster"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Kabels en Leidingen Kadaster"
+      "wms_enable_request"  "*"
+      "wms_abstract"        ""
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Kabels en Leidingen Kadaster"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      #"wms_extent"          "100000 450000 150000 500000"
+    END
+
+    #LABELITEM               "thema"
+    #CLASSITEM               "thema"
+
+    CLASS
+        DEBUG 5
+        NAME                 "datatransport"
+        #EXPRESSION           "datatransport"
+        STYLE
+            COLOR        "#00ff00"
+            WIDTH 10.0
+        END
+    END
+    #CLASS
+        #NAME                 "gas_hoge_druk"
+        #EXPRESSION                 "gas hoge druk"
+        #STYLE
+            #OUTLINECOLOR        "#ffd750"
+            #WIDTH 10.0
+        #END
+    #END
+  END
+  LAYER
+    DEBUG 5
+    NAME                    "objecten"
+    PROJECTION              
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_punt_totaal USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    # MINSCALEDENOM           10
+    # MAXSCALEDENOM           400000
+
+
+    METADATA
+      "wfs_title"           "Objecten Kadaster"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Objecten Kadaster"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Objecten Kadaster"
+      "wms_enable_request"  "*"
+      "wms_abstract"        ""
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Objecten Kadaster"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      #"wms_extent"          "100000 450000 150000 500000"
+    END
+
+    #LABELITEM               "thema"
+    CLASSITEM               "thema"
+
+    CLASS
+        DEBUG 5
+        NAME                 "datatransport"
+        EXPRESSION           "datatransport"
+        STYLE
+            COLOR        "#00ff00"
+            SYMBOL
+              TYPE ELLIPSE
+              FILLED TRUE
+              POINTS 10 10 END # radius in x y dir
+            END
+        END
+    END
+  END
 END
