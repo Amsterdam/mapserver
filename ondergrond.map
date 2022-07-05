@@ -7,7 +7,6 @@
 MAP
   NAME                      "ondergrond"
   INCLUDE                   "header.inc"
-  DEBUG 1
 
   WEB
     METADATA
@@ -23,10 +22,10 @@ MAP
 
   LAYER
     NAME                    "historische_onderzoeken"
-    PROJECTION              "init=epsg:28992"
+    PROJECTION              
+      "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
@@ -47,7 +46,6 @@ MAP
       "wms_name"            "Historische onderzoeken"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM               "id"
@@ -64,7 +62,474 @@ MAP
                 OPACITY      100
                 WIDTH        1
             END
-        END
+    END
+  END
+
+  LAYER
+    NAME                    "kabels_en_leidingen"
+    PROJECTION              
+      "init=epsg:28992"
     END
 
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_lijn_totaal USING srid=28992 USING UNIQUE id"
+    TYPE                    LINE
+
+    METADATA
+      "wfs_title"           "Kabels en Leidingen Kadaster"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Kabels en Leidingen Kadaster"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Kabels en Leidingen Kadaster"
+      "wms_enable_request"  "*"
+      "wms_abstract"        ""
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Kabels en Leidingen Kadaster"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "thema"
+    CLASSITEM               "thema"
+
+    CLASS
+        NAME                 "datatransport"
+        EXPRESSION           "datatransport"
+        STYLE
+            COLOR        "#00ff00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "gas hoge druk"
+        EXPRESSION           "gas hoge druk"
+        STYLE
+            COLOR        "#ffd750"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "gas lage druk"
+        EXPRESSION           "gas lage druk"
+        STYLE
+            COLOR        "#ffaf3c"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "buisleiding gevaarlijke inhoud"
+        EXPRESSION           "buisleiding gevaarlijke inhoud"
+        STYLE
+            COLOR        "#ff7f00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "landelijk hoogspanningsnet"
+        EXPRESSION           "landelijk hoogspanningsnet"
+        STYLE
+            COLOR        "#ff0000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "hoogspanning"
+        EXPRESSION           "hoogspanning"
+        STYLE
+            COLOR        "#ff0000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "middenspanning"
+        EXPRESSION           "middenspanning"
+        STYLE
+            COLOR        "#c80000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "laagspanning"
+        EXPRESSION           "laagspanning"
+        STYLE
+            COLOR        "#960000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "(petro)chemie"
+        EXPRESSION           "(petro)chemie"
+        STYLE
+            COLOR        "#b64a00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "riool vrijverval"
+        EXPRESSION           "riool vrijverval"
+        STYLE
+            COLOR        "#ba38a8"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "riool onder over- of onderdruk"
+        EXPRESSION           "riool onder over- of onderdruk"
+        STYLE
+            COLOR        "#800080"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "warmte"
+        EXPRESSION           "warmte"
+        STYLE
+            COLOR        "#008080"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "water"
+        EXPRESSION           "water"
+        STYLE
+            COLOR        "#0000ff"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "wees"
+        EXPRESSION           "wees"
+        STYLE
+            COLOR        "#918a6f"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "overig"
+        EXPRESSION           "overig"
+        STYLE
+            COLOR        "#6f5c10"
+            SIZE 5
+        END
+    END
+  END
+
+  LAYER
+    NAME                    "objecten"
+    PROJECTION              
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_punt_totaal USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+
+    METADATA
+      "wfs_title"           "Objecten Kadaster"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Objecten Kadaster"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Objecten Kadaster"
+      "wms_enable_request"  "*"
+      "wms_abstract"        ""
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Objecten Kadaster"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "thema"
+    CLASSITEM               "thema"
+
+    CLASS
+        NAME                 "datatransport"
+        EXPRESSION           "datatransport"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#00ff00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "gas hoge druk"
+        EXPRESSION           "gas hoge druk"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ffd750"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "gas lage druk"
+        EXPRESSION           "gas lage druk"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ffaf3c"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "buisleiding gevaarlijke inhoud"
+        EXPRESSION           "buisleiding gevaarlijke inhoud"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ff7f00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "landelijk hoogspanningsnet"
+        EXPRESSION           "landelijk hoogspanningsnet"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ff0000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "hoogspanning"
+        EXPRESSION           "hoogspanning"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ff0000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "middenspanning"
+        EXPRESSION           "middenspanning"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#c80000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "laagspanning"
+        EXPRESSION           "laagspanning"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#960000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "(petro)chemie"
+        EXPRESSION           "(petro)chemie"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#b64a00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "riool vrijverval"
+        EXPRESSION           "riool vrijverval"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ba38a8"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "riool onder over- of onderdruk"
+        EXPRESSION           "riool onder over- of onderdruk"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#800080"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "warmte"
+        EXPRESSION           "warmte"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#008080"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "water"
+        EXPRESSION           "water"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#0000ff"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "wees"
+        EXPRESSION           "wees"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#918a6f"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "overig"
+        EXPRESSION           "overig"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#6f5c10"
+            SIZE 5
+        END
+    END
+  END
+  
+  LAYER
+    NAME                    "eisvoorzorgsmaatregelen"
+    PROJECTION              
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_vlak_totaal USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+
+    METADATA
+      "wfs_title"           "Eisvoorzorgsmaatregelen Kadaster:"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Eisvoorzorgsmaatregelen Kadaster:"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Eisvoorzorgsmaatregelen Kadaster:"
+      "wms_enable_request"  "*"
+      "wms_abstract"        ""
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Eisvoorzorgsmaatregelen Kadaster:"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+    END
+
+    LABELITEM               "thema"
+    CLASSITEM               "thema"
+
+    CLASS
+        NAME                 "datatransport"
+        EXPRESSION           "datatransport"
+        STYLE
+            COLOR        "#00ff00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "gas hoge druk"
+        EXPRESSION           "gas hoge druk"
+        STYLE
+            COLOR        "#ffd750"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "gas lage druk"
+        EXPRESSION           "gas lage druk"
+        STYLE
+            COLOR        "#ffaf3c"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "buisleiding gevaarlijke inhoud"
+        EXPRESSION           "buisleiding gevaarlijke inhoud"
+        STYLE
+            COLOR        "#ff7f00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "landelijk hoogspanningsnet"
+        EXPRESSION           "landelijk hoogspanningsnet"
+        STYLE
+            COLOR        "#ff0000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "hoogspanning"
+        EXPRESSION           "hoogspanning"
+        STYLE
+            COLOR        "#ff0000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "middenspanning"
+        EXPRESSION           "middenspanning"
+        STYLE
+            COLOR        "#c80000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "laagspanning"
+        EXPRESSION           "laagspanning"
+        STYLE
+            COLOR        "#960000"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "(petro)chemie"
+        EXPRESSION           "(petro)chemie"
+        STYLE
+            COLOR        "#b64a00"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "riool vrijverval"
+        EXPRESSION           "riool vrijverval"
+        STYLE
+            COLOR        "#ba38a8"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "riool onder over- of onderdruk"
+        EXPRESSION           "riool onder over- of onderdruk"
+        STYLE
+            COLOR        "#800080"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "warmte"
+        EXPRESSION           "warmte"
+        STYLE
+            COLOR        "#008080"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "water"
+        EXPRESSION           "water"
+        STYLE
+            COLOR        "#0000ff"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "wees"
+        EXPRESSION           "wees"
+        STYLE
+            COLOR        "#918a6f"
+            SIZE 5
+        END
+    END
+    CLASS
+        NAME                 "overig"
+        EXPRESSION           "overig"
+        STYLE
+            COLOR        "#6f5c10"
+            SIZE 5
+        END
+    END
+  END
 END

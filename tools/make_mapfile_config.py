@@ -15,7 +15,7 @@ expected_state = {
     'PROJECTION': 'LAYER',
     'WEB': 'MAP',
     'OUTPUTFORMAT': 'MAP',
-    'SYMBOL': 'MAP',
+    'SYMBOL': ['MAP', 'STYLE'],
     'LEGEND': 'MAP',
     'POINTS': 'SYMBOL',
     'METADATA': ['LAYER', 'WEB'],
@@ -116,7 +116,7 @@ def scan_map_file(mapfile):
                         # Process symbol
                         pass
                     else:
-                        raise Exception(f"Invalid {elements[0]} in {mapfile} line {count}")
+                        warn(f"Invalid {elements[0]} in {mapfile} line {count}")
                 elif elements[0] == 'END':
                     if len(state) > 0:
                         if state[-1] in name_elements and len(dict_stack) > 0:
