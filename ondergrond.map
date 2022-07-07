@@ -8,11 +8,11 @@ MAP
   NAME                      "ondergrond"
   INCLUDE                   "header.inc"
 
+
   WEB
     METADATA
       "ows_title"           "ondergrond"
       "ows_abstract"        "ondergrond"
-      "wms_extent"          "100000 450000 150000 500000"
     END
   END
 
@@ -27,6 +27,7 @@ MAP
     END
 
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
+    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -46,6 +47,7 @@ MAP
       "wms_name"            "Historische onderzoeken"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
     END
 
     LABELITEM               "id"
@@ -73,6 +75,8 @@ MAP
 
     INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM leidingeninfrastructuur_ligging_lijn_totaal USING srid=28992 USING UNIQUE id"
+    EXTENT                  110000 476394 138000 494000
+    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    LINE
 
     METADATA
@@ -80,6 +84,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Kabels en Leidingen Kadaster"
       "wfs_enable_request"  "*"
+      "wfs_extent"          "110000 476394 138000 494000"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Kabels en Leidingen Kadaster"
@@ -89,6 +94,7 @@ MAP
       "wms_name"            "Kabels en Leidingen Kadaster"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "wms_extent"          "110000 476394 138000 494000"
     END
 
     LABELITEM               "thema"
@@ -221,9 +227,11 @@ MAP
     PROJECTION              
       "init=epsg:28992"
     END
+    EXTENT 110000 476000 138000 494000
 
     INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM leidingeninfrastructuur_ligging_punt_totaal USING srid=28992 USING UNIQUE id"
+    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POINT
 
     METADATA
@@ -231,6 +239,8 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Objecten Kadaster"
       "wfs_enable_request"  "*"
+      "wfs_extent"          "110000 476000 138000 494000"
+      "wfs_use_default_extent_for_getfeature" "false" 
       "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Objecten Kadaster"
@@ -240,6 +250,7 @@ MAP
       "wms_name"            "Objecten Kadaster"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "wms_extent"          "110000 476000 138000 494000"
     END
 
     LABELITEM               "thema"
@@ -390,6 +401,8 @@ MAP
 
     INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM leidingeninfrastructuur_ligging_vlak_totaal USING srid=28992 USING UNIQUE id"
+    EXTENT                  110000 476000 170000 520000
+    PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
 
     METADATA
@@ -397,6 +410,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Eisvoorzorgsmaatregelen Kadaster:"
       "wfs_enable_request"  "*"
+      "wfs_extent"          "110000 476000 170000 52000"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Eisvoorzorgsmaatregelen Kadaster:"
@@ -406,6 +420,7 @@ MAP
       "wms_name"            "Eisvoorzorgsmaatregelen Kadaster:"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
+      "wms_extent"          "110000 476000 170000 52000"
     END
 
     LABELITEM               "thema"
