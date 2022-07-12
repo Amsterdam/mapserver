@@ -138,7 +138,7 @@ sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' /srv/mapserver/topografie.map /srv/map
 sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map
 
 mkdir -p /srv/mapserver/config
-python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
+# python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
 
 echo Starting server
 # Apache gets grumpy about PID files pre-existing

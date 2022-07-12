@@ -8,7 +8,6 @@ MAP
   NAME                      "ondergrond"
   INCLUDE                   "header.inc"
 
-
   WEB
     METADATA
       "ows_title"           "ondergrond"
@@ -22,9 +21,6 @@ MAP
 
   LAYER
     NAME                    "historische_onderzoeken"
-    PROJECTION              
-      "init=epsg:28992"
-    END
 
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
@@ -67,38 +63,14 @@ MAP
     END
   END
 
+  # --------------------- KABELS EN LEIDINGEN ----------------------
+
   LAYER
-    NAME                    "kabels_en_leidingen"
-    PROJECTION              
-      "init=epsg:28992"
-    END
-
-    INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_lijn_totaal USING srid=28992 USING UNIQUE id"
-    EXTENT                  110000 476394 138000 494000
-    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
-    TYPE                    LINE
-
+    NAME "datatransport"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     METADATA
-      "wfs_title"           "Kabels en Leidingen Kadaster"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Kabels en Leidingen Kadaster"
-      "wfs_enable_request"  "*"
-      "wfs_extent"          "110000 476394 138000 494000"
-      "gml_featureid"       "id"
-      "gml_include_items"   "all"
-      "wms_title"           "Kabels en Leidingen Kadaster"
-      "wms_enable_request"  "*"
-      "wms_abstract"        ""
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Kabels en Leidingen Kadaster"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "110000 476394 138000 494000"
+        "wms_title" "kabels en leidingen - datatransport"
     END
-
-    LABELITEM               "thema"
-    CLASSITEM               "thema"
 
     CLASS
         NAME                 "datatransport"
@@ -108,6 +80,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "gas hoge druk"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
@@ -116,6 +92,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "gas lage druk"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "gas lage druk"
         EXPRESSION           "gas lage druk"
@@ -124,6 +104,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "buisleiding gevaarlijke inhoud"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
         EXPRESSION           "buisleiding gevaarlijke inhoud"
@@ -132,6 +116,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "landelijk hoogspanningsnet"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
@@ -140,6 +128,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "hoogspanning"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "hoogspanning"
         EXPRESSION           "hoogspanning"
@@ -148,6 +140,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "middenspanning"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "middenspanning"
         EXPRESSION           "middenspanning"
@@ -156,6 +152,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "laagspanning"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "laagspanning"
         EXPRESSION           "laagspanning"
@@ -164,6 +164,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "chemie"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "(petro)chemie"
         EXPRESSION           "(petro)chemie"
@@ -172,6 +176,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "riool vrijverval"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "riool vrijverval"
         EXPRESSION           "riool vrijverval"
@@ -180,6 +188,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME                 "riool onder over- of onderdruk"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "riool onder over- of onderdruk"
         EXPRESSION           "riool onder over- of onderdruk"
@@ -188,6 +200,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "warmte"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "warmte"
         EXPRESSION           "warmte"
@@ -196,6 +212,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "water"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "water"
         EXPRESSION           "water"
@@ -204,6 +224,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "wees"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "wees"
         EXPRESSION           "wees"
@@ -212,6 +236,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "overig"
+    INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
@@ -223,38 +251,8 @@ MAP
   END
 
   LAYER
-    NAME                    "objecten"
-    PROJECTION              
-      "init=epsg:28992"
-    END
-    EXTENT 110000 476000 138000 494000
-
-    INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_punt_totaal USING srid=28992 USING UNIQUE id"
-    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
-    TYPE                    POINT
-
-    METADATA
-      "wfs_title"           "Objecten Kadaster"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Objecten Kadaster"
-      "wfs_enable_request"  "*"
-      "wfs_extent"          "110000 476000 138000 494000"
-      "wfs_use_default_extent_for_getfeature" "false" 
-      "gml_featureid"       "id"
-      "gml_include_items"   "all"
-      "wms_title"           "Objecten Kadaster"
-      "wms_enable_request"  "*"
-      "wms_abstract"        ""
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Objecten Kadaster"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "110000 476000 138000 494000"
-    END
-
-    LABELITEM               "thema"
-    CLASSITEM               "thema"
+    NAME "datatransport"
+    INCLUDE "ondergrond/objecten_layer.inc"
 
     CLASS
         NAME                 "datatransport"
@@ -265,166 +263,195 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "gas hoge druk"
+    INCLUDE "ondergrond/objecten_layer.inc"
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
         STYLE
-            SYMBOL "stip"
             COLOR        "#ffd750"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "gas lage druk"
-        EXPRESSION           "gas lage druk"
-        STYLE
             SYMBOL "stip"
-            COLOR        "#ffaf3c"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "buisleiding gevaarlijke inhoud"
-        EXPRESSION           "buisleiding gevaarlijke inhoud"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#ff7f00"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "landelijk hoogspanningsnet"
-        EXPRESSION           "landelijk hoogspanningsnet"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#ff0000"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "hoogspanning"
-        EXPRESSION           "hoogspanning"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#ff0000"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "middenspanning"
-        EXPRESSION           "middenspanning"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#c80000"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "laagspanning"
-        EXPRESSION           "laagspanning"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#960000"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "(petro)chemie"
-        EXPRESSION           "(petro)chemie"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#b64a00"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "riool vrijverval"
-        EXPRESSION           "riool vrijverval"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#ba38a8"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "riool onder over- of onderdruk"
-        EXPRESSION           "riool onder over- of onderdruk"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#800080"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "warmte"
-        EXPRESSION           "warmte"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#008080"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "water"
-        EXPRESSION           "water"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#0000ff"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "wees"
-        EXPRESSION           "wees"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#918a6f"
-            SIZE 5
-        END
-    END
-    CLASS
-        NAME                 "overig"
-        EXPRESSION           "overig"
-        STYLE
-            SYMBOL "stip"
-            COLOR        "#6f5c10"
             SIZE 5
         END
     END
   END
+  LAYER
+    NAME "gas lage druk"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "gas lage druk"
+        EXPRESSION           "gas lage druk"
+        STYLE
+            COLOR        "#ffaf3c"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "buisleiding gevaarlijke inhoud"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "buisleiding gevaarlijke inhoud"
+        EXPRESSION           "buisleiding gevaarlijke inhoud"
+        STYLE
+            COLOR        "#ff7f00"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "landelijk hoogspanningsnet"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "landelijk hoogspanningsnet"
+        EXPRESSION           "landelijk hoogspanningsnet"
+        STYLE
+            COLOR        "#ff0000"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "hoogspanning"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "hoogspanning"
+        EXPRESSION           "hoogspanning"
+        STYLE
+            COLOR        "#ff0000"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "middenspanning"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "middenspanning"
+        EXPRESSION           "middenspanning"
+        STYLE
+            COLOR        "#c80000"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "laagspanning"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "laagspanning"
+        EXPRESSION           "laagspanning"
+        STYLE
+            COLOR        "#960000"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "chemie"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "(petro)chemie"
+        EXPRESSION           "(petro)chemie"
+        STYLE
+            COLOR        "#b64a00"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "riool vrijverval"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "riool vrijverval"
+        EXPRESSION           "riool vrijverval"
+        STYLE
+            COLOR        "#ba38a8"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME                 "riool onder over- of onderdruk"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "riool onder over- of onderdruk"
+        EXPRESSION           "riool onder over- of onderdruk"
+        STYLE
+            COLOR        "#800080"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "warmte"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "warmte"
+        EXPRESSION           "warmte"
+        STYLE
+            COLOR        "#008080"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "water"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "water"
+        EXPRESSION           "water"
+        STYLE
+            COLOR        "#0000ff"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "wees"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "wees"
+        EXPRESSION           "wees"
+        STYLE
+            COLOR        "#918a6f"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+  LAYER
+    NAME "overig"
+    INCLUDE "ondergrond/objecten_layer.inc"
+    CLASS
+        NAME                 "overig"
+        EXPRESSION           "overig"
+        STYLE
+            COLOR        "#6f5c10"
+            SYMBOL "stip"
+            SIZE 5
+        END
+    END
+  END
+
+  # --------------------- EISVOORZORGSMAATREGELEN ----------------------
   
   LAYER
-    NAME                    "eisvoorzorgsmaatregelen"
-    PROJECTION              
-      "init=epsg:28992"
-    END
-
-    INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_vlak_totaal USING srid=28992 USING UNIQUE id"
-    EXTENT                  110000 476000 170000 520000
-    PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
-
-    METADATA
-      "wfs_title"           "Eisvoorzorgsmaatregelen Kadaster:"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Eisvoorzorgsmaatregelen Kadaster:"
-      "wfs_enable_request"  "*"
-      "wfs_extent"          "110000 476000 170000 52000"
-      "gml_featureid"       "id"
-      "gml_include_items"   "all"
-      "wms_title"           "Eisvoorzorgsmaatregelen Kadaster:"
-      "wms_enable_request"  "*"
-      "wms_abstract"        ""
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Eisvoorzorgsmaatregelen Kadaster:"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "110000 476000 170000 52000"
-    END
-
-    LABELITEM               "thema"
-    CLASSITEM               "thema"
+    NAME "datatransport"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
 
     CLASS
         NAME                 "datatransport"
@@ -434,6 +461,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "gas hoge druk"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
@@ -442,6 +473,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "gas lage druk"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "gas lage druk"
         EXPRESSION           "gas lage druk"
@@ -450,6 +485,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "buisleiding gevaarlijke inhoud"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
         EXPRESSION           "buisleiding gevaarlijke inhoud"
@@ -458,6 +497,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "landelijk hoogspanningsnet"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
@@ -466,6 +509,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "hoogspanning"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "hoogspanning"
         EXPRESSION           "hoogspanning"
@@ -474,6 +521,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "middenspanning"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "middenspanning"
         EXPRESSION           "middenspanning"
@@ -482,6 +533,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "laagspanning"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "laagspanning"
         EXPRESSION           "laagspanning"
@@ -490,6 +545,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "chemie"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "(petro)chemie"
         EXPRESSION           "(petro)chemie"
@@ -498,6 +557,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "riool vrijverval"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "riool vrijverval"
         EXPRESSION           "riool vrijverval"
@@ -506,6 +569,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME                 "riool onder over- of onderdruk"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "riool onder over- of onderdruk"
         EXPRESSION           "riool onder over- of onderdruk"
@@ -514,6 +581,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "warmte"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "warmte"
         EXPRESSION           "warmte"
@@ -522,6 +593,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "water"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "water"
         EXPRESSION           "water"
@@ -530,6 +605,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "wees"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "wees"
         EXPRESSION           "wees"
@@ -538,6 +617,10 @@ MAP
             SIZE 5
         END
     END
+  END
+  LAYER
+    NAME "overig"
+    INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
@@ -547,4 +630,5 @@ MAP
         END
     END
   END
+
 END
