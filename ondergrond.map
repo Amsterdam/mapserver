@@ -18,16 +18,16 @@ MAP
   #-----------------------------------------------------------------------------
   # Layers
   #-----------------------------------------------------------------------------
+  
+  # --------------------- HISTORISCHE ONDERZOEKEN ----------------------
 
   LAYER
     NAME                    "historische_onderzoeken"
-
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
-    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
+    PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
-
 
     METADATA
       "wfs_title"           "Historische onderzoeken"
@@ -66,8 +66,12 @@ MAP
   # --------------------- KABELS EN LEIDINGEN ----------------------
 
   LAYER
-    NAME "kabels en leidingen - datatransport"
+    NAME "kabels_en_leidingen_datatransport"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - datatransport"
+      "wfs_title"   "kabels en leidingen - datatransport"
+    END
 
     CLASS
         NAME                 "datatransport"
@@ -79,8 +83,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - gas hoge druk"
+    NAME "kabels_en_leidingen_gas_hoge_druk"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - gas hoge druk"
+      "wfs_title"   "kabels en leidingen - gas hoge druk"
+    END
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
@@ -317,6 +325,9 @@ MAP
   LAYER
     NAME "objecten - hoogspanning"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "stinkie"
+    END
     CLASS
         NAME                 "hoogspanning"
         EXPRESSION           "hoogspanning"
@@ -626,6 +637,49 @@ MAP
             COLOR        "#6f5c10"
             SIZE 5
         END
+    END
+  END
+
+  # ------------------------- RIOOLKNOPEN ---------------------------[
+  LAYER
+    NAME                    "rioolknopen"
+    DATA                    "geometrie FROM leidingeninfrastructuur_waternet_rioolknopen USING srid=7415 USING UNIQUE id"
+    PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    METADATA
+      "wfs_title"           "Historische onderzoeken"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Historische onderzoeken Amsterdam"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Historische onderzoeken"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Historische onderzoeken Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Historische onderzoeken"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+        NAME                 "historische onderzoeken"
+            STYLE
+                ANTIALIAS    true
+                COLOR        0 153 0
+                OPACITY      60
+            END
+            STYLE
+                OUTLINECOLOR  0 153 0
+                OPACITY      100
+                WIDTH        1
+            END
     END
   END
 
