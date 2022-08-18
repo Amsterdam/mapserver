@@ -2,7 +2,7 @@
 
     INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM leidingeninfrastructuur_ligging_vlak_totaal USING srid=28992 USING UNIQUE id"
-    EXTENT                  110000 476000 169999 520000
+    #EXTENT                  110000 476000 169999 520000
     PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
 
@@ -21,7 +21,7 @@
       "wms_group_name"      "Eisvoorzorgsmaatregelen Kadaster"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
-      "wms_extent"          "110000 476000 169999 52000"
+      #"wms_extent"          "110000 476000 169999 52000"
     END
 
     LABELITEM               "thema"
