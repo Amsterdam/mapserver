@@ -6,7 +6,7 @@
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    LINE
     MAXSCALEDENOM 20000
-        METADATA
+    METADATA
       "wfs_group_title"           "Kabels en Leidingen Kadaster"
       "wfs_srs"             "EPSG:28992"
       "wfs_group_abstract"        "Kabels en Leidingen Kadaster"

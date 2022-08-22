@@ -18,16 +18,17 @@ MAP
   #-----------------------------------------------------------------------------
   # Layers
   #-----------------------------------------------------------------------------
+  
+  # --------------------- HISTORISCHE ONDERZOEKEN ----------------------
 
   LAYER
     NAME                    "historische_onderzoeken"
-
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
-    PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
+    PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
-
 
     METADATA
       "wfs_title"           "Historische onderzoeken"
@@ -66,8 +67,12 @@ MAP
   # --------------------- KABELS EN LEIDINGEN ----------------------
 
   LAYER
-    NAME "kabels en leidingen - datatransport"
+    NAME "kabels_en_leidingen_datatransport"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - datatransport"
+      "wfs_title"   "kabels en leidingen - datatransport"
+    END
 
     CLASS
         NAME                 "datatransport"
@@ -79,8 +84,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - gas hoge druk"
+    NAME "kabels_en_leidingen_gas_hoge_druk"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - gas hoge druk"
+      "wfs_title"   "kabels en leidingen - gas hoge druk"
+    END
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
@@ -91,8 +100,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - gas lage druk"
+    NAME "kabels_en_leidingen_gas_lage_druk"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - gas lage druk"
+      "wfs_title"   "kabels en leidingen - gas lage druk"
+    END
     CLASS
         NAME                 "gas lage druk"
         EXPRESSION           "gas lage druk"
@@ -103,8 +116,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - buisleiding gevaarlijke inhoud"
+    NAME "kabels_en_leidingen_buisleiding_gevaarlijke_inhoud"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - buisleiding gevaarlijke inhoud"
+      "wfs_title"   "kabels en leidingen - buisleiding gevaarlijke inhoud"
+    END
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
         EXPRESSION           "buisleiding gevaarlijke inhoud"
@@ -115,8 +132,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - landelijk hoogspanningsnet"
+    NAME "kabels_en_leidingen_landelijk_hoogspanningsnet"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - landelijk hoogspanningsnet"
+      "wfs_title"   "kabels en leidingen - landelijk hoogspanningsnet"
+    END
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
@@ -127,8 +148,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - hoogspanning"
+    NAME "kabels_en_leidingen_hoogspanning"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - hoogspanning"
+      "wfs_title"   "kabels en leidingen - hoogspanning"
+    END
     CLASS
         NAME                 "hoogspanning"
         EXPRESSION           "hoogspanning"
@@ -139,8 +164,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - middenspanning"
+    NAME "kabels_en_leidingen_middenspanning"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - middenspanning"
+      "wfs_title"   "kabels en leidingen - middenspanning"
+    END
     CLASS
         NAME                 "middenspanning"
         EXPRESSION           "middenspanning"
@@ -151,8 +180,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - laagspanning"
+    NAME "kabels_en_leidingen_laagspanning"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - laagspanning"
+      "wfs_title"   "kabels en leidingen - laagspanning"
+    END
     CLASS
         NAME                 "laagspanning"
         EXPRESSION           "laagspanning"
@@ -163,8 +196,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - chemie"
+    NAME "kabels_en_leidingen_chemie"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - chemie"
+      "wfs_title"   "kabels en leidingen - chemie"
+    END
     CLASS
         NAME                 "(petro)chemie"
         EXPRESSION           "(petro)chemie"
@@ -175,8 +212,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - riool vrijverval"
+    NAME "kabels_en_leidingen_riool_vrijverval"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - rioolvrijverval"
+      "wfs_title"   "kabels en leidingen - rioolvrijverval"
+    END
     CLASS
         NAME                 "riool vrijverval"
         EXPRESSION           "riool vrijverval"
@@ -187,8 +228,12 @@ MAP
     END
   END
   LAYER
-    NAME                 "kabels en leidingen - riool onder over- of onderdruk"
+    NAME                 "kabels_en_leidingen_riool_over_of_onderdruk"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - riool over- of onderdruk"
+      "wfs_title"   "kabels en leidingen - riool over- of onderdruk"
+    END
     CLASS
         NAME                 "riool onder over- of onderdruk"
         EXPRESSION           "riool onder over- of onderdruk"
@@ -199,8 +244,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - warmte"
+    NAME "kabels_en_leidingen_warmte"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - warmte"
+      "wfs_title"   "kabels en leidingen - warmte"
+    END
     CLASS
         NAME                 "warmte"
         EXPRESSION           "warmte"
@@ -211,8 +260,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - water"
+    NAME "kabels_en_leidingen_water"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - water"
+      "wfs_title"   "kabels en leidingen - water"
+    END
     CLASS
         NAME                 "water"
         EXPRESSION           "water"
@@ -223,8 +276,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - wees"
+    NAME "kabels_en_leidingen_wees"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - wees"
+      "wfs_title"   "kabels en leidingen - wees"
+    END
     CLASS
         NAME                 "wees"
         EXPRESSION           "wees"
@@ -235,8 +292,12 @@ MAP
     END
   END
   LAYER
-    NAME "kabels en leidingen - overig"
+    NAME "kabels_en_leidingen_overig"
     INCLUDE "ondergrond/kabels_en_leidingen_layer.inc"
+    METADATA
+      "wms_title"   "kabels en leidingen - overig"
+      "wfs_title"   "kabels en leidingen - overig"
+    END
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
@@ -249,8 +310,12 @@ MAP
 
   # --------------------- OBJECTEN ----------------------
   LAYER
-    NAME "objecten - datatransport"
+    NAME "objecten_datatransport"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - datatransport"
+      "wfs_title"   "objecten - datatransport"
+    END
 
     CLASS
         NAME                 "datatransport"
@@ -263,8 +328,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - gas hoge druk"
+    NAME "objecten_gas_hoge_druk"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - gas hoge druk"
+      "wfs_title"   "objecten - gas hoge druk"
+    END
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
@@ -276,8 +345,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - gas lage druk"
+    NAME "objecten_gas_lage_druk"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - gas lage druk"
+      "wfs_title"   "objecten - gas lage druk"
+    END
     CLASS
         NAME                 "gas lage druk"
         EXPRESSION           "gas lage druk"
@@ -289,8 +362,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - buisleiding gevaarlijke inhoud"
+    NAME "objecten_buisleiding_gevaarlijke_inhoud"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - buisleiding gevaarlijke inhoud"
+      "wfs_title"   "objecten - buisleiding gevaarlijke inhoud"
+    END
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
         EXPRESSION           "buisleiding gevaarlijke inhoud"
@@ -302,8 +379,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - landelijk hoogspanningsnet"
+    NAME "objecten_landelijk_hoogspanningsnet"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - landelijk hoogspanningsnet"
+      "wfs_title"   "objecten - landelijk hoogspanningsnet"
+    END
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
@@ -315,8 +396,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - hoogspanning"
+    NAME "objecten_hoogspanning"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - hoogspanning"
+      "wfs_title"   "objecten - hoogspanning"
+    END
     CLASS
         NAME                 "hoogspanning"
         EXPRESSION           "hoogspanning"
@@ -328,8 +413,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - middenspanning"
+    NAME "objecten_middenspanning"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - middenspanning"
+      "wfs_title"   "objecten - middenspanning"
+    END
     CLASS
         NAME                 "middenspanning"
         EXPRESSION           "middenspanning"
@@ -341,8 +430,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - laagspanning"
+    NAME "objecten_laagspanning"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - laagspanning"
+      "wfs_title"   "objecten - laagspanning"
+    END
     CLASS
         NAME                 "laagspanning"
         EXPRESSION           "laagspanning"
@@ -354,8 +447,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - chemie"
+    NAME "objecten_chemie"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - chemie"
+      "wfs_title"   "objecten - chemie"
+    END
     CLASS
         NAME                 "(petro)chemie"
         EXPRESSION           "(petro)chemie"
@@ -367,8 +464,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - riool vrijverval"
+    NAME "objecten_riool_vrijverval"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - riool vrijverval"
+      "wfs_title"   "objecten - riool vrijverval"
+    END
     CLASS
         NAME                 "riool vrijverval"
         EXPRESSION           "riool vrijverval"
@@ -380,8 +481,12 @@ MAP
     END
   END
   LAYER
-    NAME                 "objecten - riool onder over- of onderdruk"
+    NAME                 "objecten_riool_over_of_onderdruk"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - riool over- of onderdruk"
+      "wfs_title"   "objecten - riool over- of onderdruk"
+    END
     CLASS
         NAME                 "riool onder over- of onderdruk"
         EXPRESSION           "riool onder over- of onderdruk"
@@ -393,8 +498,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - warmte"
+    NAME "objecten_warmte"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - warmte"
+      "wfs_title"   "objecten - warmte"
+    END
     CLASS
         NAME                 "warmte"
         EXPRESSION           "warmte"
@@ -406,8 +515,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - water"
+    NAME "objecten_water"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - water"
+      "wfs_title"   "objecten - water"
+    END
     CLASS
         NAME                 "water"
         EXPRESSION           "water"
@@ -419,8 +532,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - wees"
+    NAME "objecten_wees"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - wees"
+      "wfs_title"   "objecten - wees"
+    END
     CLASS
         NAME                 "wees"
         EXPRESSION           "wees"
@@ -432,8 +549,12 @@ MAP
     END
   END
   LAYER
-    NAME "objecten - overig"
+    NAME "objecten_overig"
     INCLUDE "ondergrond/objecten_layer.inc"
+    METADATA
+      "wms_title"   "objecten - overig"
+      "wfs_title"   "objecten - overig"
+    END
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
@@ -448,8 +569,12 @@ MAP
   # --------------------- EISVOORZORGSMAATREGELEN ----------------------
   
   LAYER
-    NAME "eisvoorzorgsmaatregelen - datatransport"
+    NAME "eisvoorzorgsmaatregelen_datatransport"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - datatransport"
+      "wfs_title"   "eisvoorzorgsmaatregelen - datatransport"
+    END
 
     CLASS
         NAME                 "datatransport"
@@ -461,8 +586,12 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - gas hoge druk"
+    NAME "eisvoorzorgsmaatregelen_gas_hoge_druk"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - gas hoge druk"
+      "wfs_title"   "eisvoorzorgsmaatregelen - gas hoge druk"
+    END
     CLASS
         NAME                 "gas hoge druk"
         EXPRESSION           "gas hoge druk"
@@ -473,8 +602,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - gas lage druk"
+    NAME "eisvoorzorgsmaatregelen_gas_lage_druk"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - gas lage druk"
+      "wfs_title"   "eisvoorzorgsmaatregelen - gas lage druk"
+    END
+
     CLASS
         NAME                 "gas lage druk"
         EXPRESSION           "gas lage druk"
@@ -485,8 +619,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - buisleiding gevaarlijke inhoud"
+    NAME "eisvoorzorgsmaatregelen_buisleiding_gevaarlijke_inhoud"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - buisleiding gevaarlijke inhoud"
+      "wfs_title"   "eisvoorzorgsmaatregelen - buisleiding gevaarlijke inhoud"
+    END
+
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
         EXPRESSION           "buisleiding gevaarlijke inhoud"
@@ -497,8 +636,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - landelijk hoogspanningsnet"
+    NAME "eisvoorzorgsmaatregelen_landelijk_hoogspanningsnet"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - landelijk hoogspanningsnet"
+      "wfs_title"   "eisvoorzorgsmaatregelen - landelijk hoogspanningsnet"
+    END
+
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
@@ -509,8 +653,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - hoogspanning"
+    NAME "eisvoorzorgsmaatregelen_hoogspanning"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - hoogspanning"
+      "wfs_title"   "eisvoorzorgsmaatregelen - hoogspanning"
+    END
+  
     CLASS
         NAME                 "hoogspanning"
         EXPRESSION           "hoogspanning"
@@ -521,8 +670,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - middenspanning"
+    NAME "eisvoorzorgsmaatregelen_middenspanning"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - middenspanning"
+      "wfs_title"   "eisvoorzorgsmaatregelen - middenspanning"
+    END
+  
     CLASS
         NAME                 "middenspanning"
         EXPRESSION           "middenspanning"
@@ -533,8 +687,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - laagspanning"
+    NAME "eisvoorzorgsmaatregelen_laagspanning"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - laagspanning"
+      "wfs_title"   "eisvoorzorgsmaatregelen - laagspanning"
+    END
+  
     CLASS
         NAME                 "laagspanning"
         EXPRESSION           "laagspanning"
@@ -545,8 +704,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - chemie"
+    NAME "eisvoorzorgsmaatregelen_chemie"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - chemie"
+      "wfs_title"   "eisvoorzorgsmaatregelen - chemie"
+    END
+  
     CLASS
         NAME                 "(petro)chemie"
         EXPRESSION           "(petro)chemie"
@@ -557,8 +721,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - riool vrijverval"
+    NAME "eisvoorzorgsmaatregelen_riool_vrijverval"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - riool vrijverval"
+      "wfs_title"   "eisvoorzorgsmaatregelen - riool vrijverval"
+    END
+  
     CLASS
         NAME                 "riool vrijverval"
         EXPRESSION           "riool vrijverval"
@@ -569,8 +738,13 @@ MAP
     END
   END
   LAYER
-    NAME                 "eisvoorzorgsmaatregelen - riool onder over- of onderdruk"
+    NAME                 "eisvoorzorgsmaatregelen_riool_over_of_onderdruk"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - riool over- of onderdruk"
+      "wfs_title"   "eisvoorzorgsmaatregelen - riool over- of onderdruk"
+    END
+  
     CLASS
         NAME                 "riool onder over- of onderdruk"
         EXPRESSION           "riool onder over- of onderdruk"
@@ -581,8 +755,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - warmte"
+    NAME "eisvoorzorgsmaatregelen_warmte"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - warmte"
+      "wfs_title"   "eisvoorzorgsmaatregelen - warmte"
+    END
+  
     CLASS
         NAME                 "warmte"
         EXPRESSION           "warmte"
@@ -593,8 +772,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - water"
+    NAME "eisvoorzorgsmaatregelen_water"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - water"
+      "wfs_title"   "eisvoorzorgsmaatregelen - water"
+    END
+  
     CLASS
         NAME                 "water"
         EXPRESSION           "water"
@@ -605,8 +789,13 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - wees"
+    NAME "eisvoorzorgsmaatregelen_wees"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - wees"
+      "wfs_title"   "eisvoorzorgsmaatregelen - wees"
+    END
+  
     CLASS
         NAME                 "wees"
         EXPRESSION           "wees"
@@ -617,13 +806,57 @@ MAP
     END
   END
   LAYER
-    NAME "eisvoorzorgsmaatregelen - overig"
+    NAME "eisvoorzorgsmaatregelen_overig"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
+    METADATA
+      "wms_title"   "eisvoorzorgsmaatregelen - overig"
+      "wfs_title"   "eisvoorzorgsmaatregelen - overig"
+    END
+  
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
         STYLE
             COLOR        "#6f5c10"
+            SIZE 5
+        END
+    END
+  END
+
+  # ------------------------- RIOOLKNOPEN ---------------------------[
+  LAYER
+    NAME                    "rioolknopen"
+    INCLUDE                 "connection_dataservices.inc"
+    DATA                    "geometrie FROM leidingeninfrastructuur_waternet_rioolknopen USING srid=7415 USING UNIQUE id"
+    PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
+    TYPE                    POINT
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+    METADATA
+      "wfs_title"           "Rioolknopen"
+      "wfs_srs"             "EPSG:28992"
+      "wfs_abstract"        "Rioolknopen Waternet"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Rioolknopen Waternet"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Rioolknopen Waternet"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Rioolknopen Waternet"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "id"
+
+    CLASS
+        NAME                 "rioolknopen"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ff0000"
             SIZE 5
         END
     END
