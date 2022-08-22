@@ -835,7 +835,7 @@ MAP
 
     METADATA
       "wfs_title"           "Rioolknopen"
-      "wfs_srs"             "EPSG:28992"
+      "wfs_srs"             "EPSG:7415"
       "wfs_abstract"        "Rioolknopen Waternet"
       "wfs_enable_request"  "*"
       "gml_featureid"       "id"
@@ -843,7 +843,7 @@ MAP
       "wms_title"           "Rioolknopen Waternet"
       "wms_enable_request"  "*"
       "wms_abstract"        "Rioolknopen Waternet"
-      "wms_srs"             "EPSG:28992"
+      "wms_srs"             "EPSG:7415"
       "wms_name"            "Rioolknopen Waternet"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
@@ -861,5 +861,113 @@ MAP
         END
     END
   END
+  
+  # ------------------------- RIOOLLEIDINGEN ---------------------------[
+  LAYER
+    NAME                    "rioolleidingen"
+    INCLUDE                 "connection_dataservices.inc"
+    PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
+    TYPE                    LINE
+    SYMBOLSCALEDENOM        10000
+    
+    VALIDATION
+      "stelsel_type"            "^Gemengd|Hemelwaterstelsel|Polderrioolstelsel|Verb\. gemengd|Verb\. gescheiden|Vuilwaterstelsel|Onbekend$"
+      "default_stelsel_type"    ""
+    END
+    DATA                    "geometrie FROM (
+                                SELECT id, geometrie, status, jaar_gelegd, soort, type_leiding, vorm, diameter, breedte, hoogte, materiaal, funderingstype, COALESCE(stelsel_type, 'Onbekend') AS stelsel_type
+                                FROM leidingeninfrastructuur_waternet_rioolleidingen a
+                                WHERE 
+                                  length('%stelsel_type%') = 0 OR
+                                  ('%stelsel_type%' = 'Onbekend' AND a.stelsel_type ISNULL) OR
+                                  a.stelsel_type = '%stelsel_type%'
+                                ) AS query 
+                              USING srid=7415 USING UNIQUE id"
+                              
+    METADATA
+      "wfs_title"           "Rioolleidingen"
+      "wfs_srs"             "EPSG:7415"
+      "wfs_abstract"        "Rioolknopen Waternet"
+      "wfs_enable_request"  "*"
+      "gml_featureid"       "id"
+      "gml_include_items"   "all"
+      "wms_title"           "Rioolleidingen Waternet"
+      "wms_enable_request"  "*"
+      "wms_abstract"        "Rioolleidingen Waternet"
+      "wms_srs"             "EPSG:7415"
+      "wms_name"            "Rioolleidingen Waternet"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM               "id"
+    CLASSITEM               "stelsel_type"
+
+    CLASS
+        NAME                 "Gemengd"
+        EXPRESSION           "Gemengd"
+        STYLE
+            COLOR        "#ff99cc"
+            MINWIDTH 0.5
+            MAXWIDTH 40
+        END
+    END
+    CLASS
+        NAME                 "Hemelwaterstelsel"
+        EXPRESSION           "Hemelwaterstelsel"
+        STYLE
+            MINWIDTH 0.5
+            MAXWIDTH 40
+            COLOR        "#ff9933"
+        END
+    END
+    CLASS
+        NAME                 "Polderrioolstelsel"
+        EXPRESSION           "Polderrioolstelsel"
+        STYLE
+            MINWIDTH 0.5
+            MAXWIDTH 40
+            COLOR        "#ffff00"
+        END
+    END
+    CLASS
+        NAME                 "Verb. gemengd"
+        EXPRESSION           "Verb. gemengd"
+        STYLE
+            MINWIDTH 0.5
+            MAXWIDTH 40
+            COLOR        "#00cc00"
+        END
+    END
+    CLASS
+        NAME                 "Verb. gescheiden"
+        EXPRESSION           "Verb. gescheiden"
+        STYLE
+            MINWIDTH 0.5
+            MAXWIDTH 40
+            COLOR        "#00ffff"
+        END
+    END
+    CLASS
+        NAME                 "Vuilwaterstelsel"
+        EXPRESSION           "Vuilwaterstelsel"
+        STYLE
+            MINWIDTH 0.5
+            MAXWIDTH 40
+            COLOR        "#0000ff"
+        END
+    END
+    CLASS
+        NAME                 "Onbekend"
+        EXPRESSION           "Onbekend"
+        STYLE
+            MINWIDTH 0.5
+            MAXWIDTH 40
+            COLOR        "#990099"
+        END
+    END
+  END
+
 
 END
