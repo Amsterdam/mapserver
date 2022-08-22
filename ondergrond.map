@@ -23,6 +23,7 @@ MAP
 
   LAYER
     NAME                    "historische_onderzoeken"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
     PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POLYGON
@@ -825,24 +826,25 @@ MAP
   # ------------------------- RIOOLKNOPEN ---------------------------[
   LAYER
     NAME                    "rioolknopen"
+    INCLUDE                 "connection_dataservices.inc"
     DATA                    "geometrie FROM leidingeninfrastructuur_waternet_rioolknopen USING srid=7415 USING UNIQUE id"
     PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
-    TYPE                    POLYGON
+    TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
     METADATA
-      "wfs_title"           "Historische onderzoeken"
+      "wfs_title"           "Rioolknopen"
       "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Historische onderzoeken Amsterdam"
+      "wfs_abstract"        "Rioolknopen Waternet"
       "wfs_enable_request"  "*"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
-      "wms_title"           "Historische onderzoeken"
+      "wms_title"           "Rioolknopen Waternet"
       "wms_enable_request"  "*"
-      "wms_abstract"        "Historische onderzoeken Amsterdam"
+      "wms_abstract"        "Rioolknopen Waternet"
       "wms_srs"             "EPSG:28992"
-      "wms_name"            "Historische onderzoeken"
+      "wms_name"            "Rioolknopen Waternet"
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
@@ -851,17 +853,12 @@ MAP
     LABELITEM               "id"
 
     CLASS
-        NAME                 "historische onderzoeken"
-            STYLE
-                ANTIALIAS    true
-                COLOR        0 153 0
-                OPACITY      60
-            END
-            STYLE
-                OUTLINECOLOR  0 153 0
-                OPACITY      100
-                WIDTH        1
-            END
+        NAME                 "rioolknopen"
+        STYLE
+            SYMBOL "stip"
+            COLOR        "#ff0000"
+            SIZE 5
+        END
     END
   END
 
