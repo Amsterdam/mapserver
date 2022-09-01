@@ -1,7 +1,13 @@
     GROUP                    "kabels_en_leidingen"
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_lijn_totaal USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (
+                                SELECT *
+                                FROM leidingeninfrastructuur_ligging_lijn_totaal a
+                                WHERE 
+                                  a.thema = '%thema%'
+                                ) AS query 
+                              USING srid=28992 USING UNIQUE id"
     EXTENT                  110000 476394 138000 494000
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    LINE
