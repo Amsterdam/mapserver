@@ -1,7 +1,7 @@
     GROUP                    "eisvoorzorgsmaatregelen"
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_ligging_vlak_totaal USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM leidingeninfrastructuur_klic_eisvoorzorgsmaatregelen USING srid=28992 USING UNIQUE id"
     #EXTENT                  110000 476000 169999 520000
     PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON

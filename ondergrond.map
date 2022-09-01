@@ -74,9 +74,13 @@ MAP
       "wfs_title"   "kabels en leidingen - datatransport"
     END
 
+    VALIDATION
+      "thema"            "^datatransport$"
+      "default_thema"            "datatransport"
+    END
+
     CLASS
         NAME                 "datatransport"
-        EXPRESSION           "datatransport"
         STYLE
             COLOR        "#00ff00"
             SIZE 5
@@ -90,9 +94,14 @@ MAP
       "wms_title"   "kabels en leidingen - gas hoge druk"
       "wfs_title"   "kabels en leidingen - gas hoge druk"
     END
+
+    VALIDATION
+      "thema"            "^gas hoge druk$"
+      "default_thema"            "gas hoge druk"
+    END
+
     CLASS
         NAME                 "gas hoge druk"
-        EXPRESSION           "gas hoge druk"
         STYLE
             COLOR        "#ffd750"
             SIZE 5
@@ -106,9 +115,12 @@ MAP
       "wms_title"   "kabels en leidingen - gas lage druk"
       "wfs_title"   "kabels en leidingen - gas lage druk"
     END
+    VALIDATION
+      "thema"            "^gas lage druk$"
+      "default_thema"            "gas lage druk"
+    END
     CLASS
         NAME                 "gas lage druk"
-        EXPRESSION           "gas lage druk"
         STYLE
             COLOR        "#ffaf3c"
             SIZE 5
@@ -122,9 +134,12 @@ MAP
       "wms_title"   "kabels en leidingen - buisleiding gevaarlijke inhoud"
       "wfs_title"   "kabels en leidingen - buisleiding gevaarlijke inhoud"
     END
+    VALIDATION
+      "thema"            "^buisleiding gevaarlijke inhoud$"
+      "default_thema"            "buisleiding gevaarlijke inhoud"
+    END
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
-        EXPRESSION           "buisleiding gevaarlijke inhoud"
         STYLE
             COLOR        "#ff7f00"
             SIZE 5
@@ -137,6 +152,10 @@ MAP
     METADATA
       "wms_title"   "kabels en leidingen - landelijk hoogspanningsnet"
       "wfs_title"   "kabels en leidingen - landelijk hoogspanningsnet"
+    END
+    VALIDATION
+      "thema"            "^landelijk hoogspanningsnet$"
+      "default_thema"            "landelijk hoogspanningsnet"
     END
     CLASS
         NAME                 "landelijk hoogspanningsnet"
@@ -154,9 +173,12 @@ MAP
       "wms_title"   "kabels en leidingen - hoogspanning"
       "wfs_title"   "kabels en leidingen - hoogspanning"
     END
+    VALIDATION
+      "thema"            "^hoogspanning$"
+      "default_thema"            "hoogspanning"
+    END
     CLASS
         NAME                 "hoogspanning"
-        EXPRESSION           "hoogspanning"
         STYLE
             COLOR        "#ff0000"
             SIZE 5
@@ -170,9 +192,12 @@ MAP
       "wms_title"   "kabels en leidingen - middenspanning"
       "wfs_title"   "kabels en leidingen - middenspanning"
     END
+    VALIDATION
+      "thema"            "^middenspanning$"
+      "default_thema"            "middenspanning"
+    END
     CLASS
         NAME                 "middenspanning"
-        EXPRESSION           "middenspanning"
         STYLE
             COLOR        "#c80000"
             SIZE 5
@@ -186,9 +211,12 @@ MAP
       "wms_title"   "kabels en leidingen - laagspanning"
       "wfs_title"   "kabels en leidingen - laagspanning"
     END
+    VALIDATION
+      "thema"            "^laagspanning$"
+      "default_thema"            "laagspanning"
+    END
     CLASS
         NAME                 "laagspanning"
-        EXPRESSION           "laagspanning"
         STYLE
             COLOR        "#960000"
             SIZE 5
@@ -202,9 +230,12 @@ MAP
       "wms_title"   "kabels en leidingen - chemie"
       "wfs_title"   "kabels en leidingen - chemie"
     END
+    VALIDATION
+      "thema"            "^\(petro\)chemie$"
+      "default_thema"            "(petro)chemie"
+    END
     CLASS
         NAME                 "(petro)chemie"
-        EXPRESSION           "(petro)chemie"
         STYLE
             COLOR        "#b64a00"
             SIZE 5
@@ -218,9 +249,12 @@ MAP
       "wms_title"   "kabels en leidingen - rioolvrijverval"
       "wfs_title"   "kabels en leidingen - rioolvrijverval"
     END
+    VALIDATION
+      "thema"            "^riool vrijverval druk$"
+      "default_thema"            "riool vrijverval druk"
+    END
     CLASS
         NAME                 "riool vrijverval"
-        EXPRESSION           "riool vrijverval"
         STYLE
             COLOR        "#ba38a8"
             SIZE 5
@@ -234,9 +268,12 @@ MAP
       "wms_title"   "kabels en leidingen - riool over- of onderdruk"
       "wfs_title"   "kabels en leidingen - riool over- of onderdruk"
     END
+    VALIDATION
+      "thema"            "^riool onder over- of onderdruk$"
+      "default_thema"            "riool onder over- of onderdruk"
+    END
     CLASS
         NAME                 "riool onder over- of onderdruk"
-        EXPRESSION           "riool onder over- of onderdruk"
         STYLE
             COLOR        "#800080"
             SIZE 5
@@ -250,9 +287,12 @@ MAP
       "wms_title"   "kabels en leidingen - warmte"
       "wfs_title"   "kabels en leidingen - warmte"
     END
+    VALIDATION
+      "thema"            "^warmte$"
+      "default_thema"            "warmte"
+    END
     CLASS
         NAME                 "warmte"
-        EXPRESSION           "warmte"
         STYLE
             COLOR        "#008080"
             SIZE 5
@@ -266,9 +306,12 @@ MAP
       "wms_title"   "kabels en leidingen - water"
       "wfs_title"   "kabels en leidingen - water"
     END
+    VALIDATION
+      "thema"            "^water$"
+      "default_thema"            "water"
+    END
     CLASS
         NAME                 "water"
-        EXPRESSION           "water"
         STYLE
             COLOR        "#0000ff"
             SIZE 5
@@ -282,9 +325,12 @@ MAP
       "wms_title"   "kabels en leidingen - wees"
       "wfs_title"   "kabels en leidingen - wees"
     END
+    VALIDATION
+      "thema"            "^wees$"
+      "default_thema"            "wees"
+    END
     CLASS
         NAME                 "wees"
-        EXPRESSION           "wees"
         STYLE
             COLOR        "#918a6f"
             SIZE 5
@@ -297,6 +343,10 @@ MAP
     METADATA
       "wms_title"   "kabels en leidingen - overig"
       "wfs_title"   "kabels en leidingen - overig"
+    END
+    VALIDATION
+      "thema"            "^overig$"
+      "default_thema"            "overig"
     END
     CLASS
         NAME                 "overig"
@@ -864,103 +914,161 @@ MAP
   
   # ------------------------- RIOOLLEIDINGEN ---------------------------[
   LAYER
-    NAME                    "rioolleidingen"
-    INCLUDE                 "connection_dataservices.inc"
-    PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
-    TYPE                    LINE
-    SYMBOLSCALEDENOM        10000
+    NAME                    "rioolleidingen_gemengd"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - gemengd"
+      "wms_title" "rioolleidingen - gemengd"
+    END
     
     VALIDATION
-      "stelsel_type"            "^Gemengd|Hemelwaterstelsel|Polderrioolstelsel|Verb\. gemengd|Verb\. gescheiden|Vuilwaterstelsel|Onbekend$"
-      "default_stelsel_type"    ""
+      "stelsel_type"            "^Gemengd$"
+      "default_stelsel_type"    "Gemengd"
     END
-    DATA                    "geometrie FROM (
-                                SELECT id, geometrie, status, jaar_gelegd, soort, type_leiding, vorm, diameter, breedte, hoogte, materiaal, funderingstype, COALESCE(stelsel_type, 'Onbekend') AS stelsel_type
-                                FROM leidingeninfrastructuur_waternet_rioolleidingen a
-                                WHERE 
-                                  length('%stelsel_type%') = 0 OR
-                                  ('%stelsel_type%' = 'Onbekend' AND a.stelsel_type ISNULL) OR
-                                  a.stelsel_type = '%stelsel_type%'
-                                ) AS query 
-                              USING srid=7415 USING UNIQUE id"
-                              
-    METADATA
-      "wfs_title"           "Rioolleidingen"
-      "wfs_srs"             "EPSG:7415"
-      "wfs_abstract"        "Rioolknopen Waternet"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "id"
-      "gml_include_items"   "all"
-      "wms_title"           "Rioolleidingen Waternet"
-      "wms_enable_request"  "*"
-      "wms_abstract"        "Rioolleidingen Waternet"
-      "wms_srs"             "EPSG:7415"
-      "wms_name"            "Rioolleidingen Waternet"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "100000 450000 150000 500000"
-    END
-
-    LABELITEM               "id"
-    CLASSITEM               "stelsel_type"
 
     CLASS
         NAME                 "Gemengd"
-        EXPRESSION           "Gemengd"
         STYLE
             COLOR        "#ff99cc"
             MINWIDTH 0.5
             MAXWIDTH 40
         END
     END
+  END
+  
+  LAYER
+    NAME                    "rioolleidingen_hemelwaterstelsel"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - hemelwaterstelsel"
+      "wms_title" "rioolleidingen - hemelwaterstelsel"
+    END
+    
+    VALIDATION
+      "stelsel_type"            "^Hemelwaterstelsel$"
+      "default_stelsel_type"    "Hemelwaterstelsel"
+    END
+
     CLASS
         NAME                 "Hemelwaterstelsel"
-        EXPRESSION           "Hemelwaterstelsel"
         STYLE
             MINWIDTH 0.5
             MAXWIDTH 40
             COLOR        "#ff9933"
         END
     END
+  END
+
+  LAYER
+    NAME                    "rioolleidingen_polderrioolstelsel"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - polderrioolstelsel"
+      "wms_title" "rioolleidingen - polderrioolstelsel"
+    END
+    
+    VALIDATION
+      "stelsel_type"            "^Polderrioolstelsel$"
+      "default_stelsel_type"    "Polderrioolstelsel"
+    END
+
     CLASS
         NAME                 "Polderrioolstelsel"
-        EXPRESSION           "Polderrioolstelsel"
         STYLE
             MINWIDTH 0.5
             MAXWIDTH 40
             COLOR        "#ffff00"
         END
     END
+  END
+  LAYER
+    NAME                    "rioolleidingen_verb_gemengd"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - verb. gemengd"
+      "wms_title" "rioolleidingen - verb. gemengd"
+    END
+    
+    VALIDATION
+      "stelsel_type"            "^Verb. gemengd"
+      "default_stelsel_type"    "Verb. gemengd"
+    END
+
     CLASS
         NAME                 "Verb. gemengd"
-        EXPRESSION           "Verb. gemengd"
         STYLE
             MINWIDTH 0.5
             MAXWIDTH 40
             COLOR        "#00cc00"
         END
     END
+  END
+  LAYER
+    NAME                    "rioolleidingen_verb_gescheiden"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - verb. gescheiden"
+      "wms_title" "rioolleidingen - verb. gescheiden"
+    END
+    
+    VALIDATION
+      "stelsel_type"            "^Verb. gescheiden"
+      "default_stelsel_type"    "Verb. gescheiden"
+    END
+
     CLASS
         NAME                 "Verb. gescheiden"
-        EXPRESSION           "Verb. gescheiden"
         STYLE
             MINWIDTH 0.5
             MAXWIDTH 40
             COLOR        "#00ffff"
         END
     END
+  END
+  LAYER
+    NAME                    "rioolleidingen_vuilwaterstelsel"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - vuilwaterstelsel"
+      "wms_title" "rioolleidingen - vuilwaterstelsel"
+    END
+    
+    VALIDATION
+      "stelsel_type"            "^Vuilwaterstelsel$"
+      "default_stelsel_type"    "Vuilwaterstelsel"
+    END
+
     CLASS
         NAME                 "Vuilwaterstelsel"
-        EXPRESSION           "Vuilwaterstelsel"
         STYLE
             MINWIDTH 0.5
             MAXWIDTH 40
             COLOR        "#0000ff"
         END
     END
+  END
+  LAYER
+    NAME                    "rioolleidingen_onbekend"
+    INCLUDE                 "ondergrond/rioolleidingen_layer.inc"
+
+    METADATA
+      "wfs_title" "rioolleidingen - onbekend"
+      "wms_title" "rioolleidingen - onbekend"
+    END
+    
+    VALIDATION
+      "stelsel_type"            "^Onbekend$"
+      "default_stelsel_type"    "Onbekend"
+    END
+
     CLASS
         NAME                 "Onbekend"
-        EXPRESSION           "Onbekend"
         STYLE
             MINWIDTH 0.5
             MAXWIDTH 40
@@ -968,6 +1076,4 @@ MAP
         END
     END
   END
-
-
 END
