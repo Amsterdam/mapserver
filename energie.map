@@ -66,6 +66,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}" and [primaire_functie] eq "Markt")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -87,7 +88,6 @@ MAP
 
   CLASS
         NAME       "groter of gelijk aan 3 x 80 A"
-        EXPRESSION (("[capaciteit]" eq "3 x 80 A" or "[capaciteit]" eq "3 x 160 A" or "[capaciteit]" eq "3 x 250 A") and "[primaire_functie]" eq "Markt")
         STYLE
         SYMBOL              'stip'
         SIZE                10
@@ -105,6 +105,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = "{3 x 160 A}" and [primaire_functie] eq "Markt")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -126,13 +127,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 63 A"
-        EXPRESSION (("[capaciteit]" eq "3 x 50 A" or "[capaciteit]" eq "3 x 63 A") and "[primaire_functie]" eq "Markt")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 0 0 #rood
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 0 0 #rood
       END
     END
   END
@@ -145,6 +145,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = "{3 x 40 A}" and [primaire_functie] eq "Markt")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -166,13 +167,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 40 A"
-        EXPRESSION (("[capaciteit]" eq "3 x 35 A" or "[capaciteit]" eq "3 x 40 A") and "[primaire_functie]" eq "Markt")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 255 0 #yellow
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 255 0 #yellow
       END
     END
   END
@@ -185,6 +185,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = "{3 x 25 A}" and [primaire_functie] eq "Markt")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -206,13 +207,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 25 A"
-        EXPRESSION (("[capaciteit]" eq "1 x 10 A" or "[capaciteit]" eq "3 x 25 A") and "[primaire_functie]" eq "Markt")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               128 255 0 #green
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               128 255 0 #green
       END
     END
   END
@@ -224,6 +224,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}" and [primaire_functie] eq "Evenement")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -245,13 +246,12 @@ MAP
 
   CLASS
         NAME       "groter of gelijk aan 3 x 80 A"
-        EXPRESSION (("[capaciteit]" eq "3 x 80 A" or "[capaciteit]" eq "3 x 160 A" or "[capaciteit]" eq "3 x 250 A") and "[primaire_functie]" eq "Evenement")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 51 153 #purple
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 51 153 #purple
       END
     END
   END
@@ -264,6 +264,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}' and [primaire_functie] eq "Evenement")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -285,13 +286,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 63 A"
-        EXPRESSION (("[capaciteit]" eq "3 x 50 A" or "[capaciteit]" eq "3 x 63 A") and "[primaire_functie]" eq "Evenement")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 0 0 #rood
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 0 0 #rood
       END
     END
   END
@@ -304,6 +304,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}' and [primaire_functie] eq "Evenement")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -325,13 +326,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 40 A"
-        EXPRESSION (("[capaciteit]" eq "3 x 35 A" or "[capaciteit]" eq "3 x 40 A") and "[primaire_functie]" eq "Evenement")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 255 0 #yellow
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 255 0 #yellow
       END
     END
   END
@@ -344,6 +344,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection_dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}' and [primaire_functie] eq "Evenement")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -365,13 +366,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 25 A"
-        EXPRESSION (("[capaciteit]" eq "1 x 10 A" or "[capaciteit]" eq "3 x 25 A") and "[primaire_functie]" eq "Evenement")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               128 255 0 #green
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               128 255 0 #green
       END
     END
   END
@@ -388,6 +388,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten
                                 where primaire_functie is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = '{3 x 160 A}' or [capaciteit] = '{3 x 250 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -409,13 +410,12 @@ MAP
 
   CLASS
         NAME       "groter of gelijk aan 3 x 80 A"
-        EXPRESSION ("[capaciteit]" eq "3 x 80 A" or "[capaciteit]" eq "3 x 160 A" or "[capaciteit]" eq "3 x 250 A")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 51 153 #purple
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 51 153 #purple
       END
     END
   END
@@ -432,6 +432,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten
                                 where primaire_functie is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -453,13 +454,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 63 A"
-        EXPRESSION ("[capaciteit]" eq "3 x 50 A" or "[capaciteit]" eq "3 x 63 A")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 0 0 #rood
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 0 0 #rood
       END
     END
   END
@@ -476,6 +476,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten
                                 where primaire_functie is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -497,13 +498,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 40 A"
-        EXPRESSION ("[capaciteit]" eq "3 x 35 A" or "[capaciteit]" eq "3 x 40 A")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               255 255 0 #yellow
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               255 255 0 #yellow
       END
     END
   END
@@ -520,6 +520,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten
                                 where primaire_functie is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -541,13 +542,12 @@ MAP
 
     CLASS
         NAME       "tot 3 x 25 A"
-        EXPRESSION ("[capaciteit]" eq "1 x 10 A" or "[capaciteit]" eq "3 x 25 A")
         STYLE
-        SYMBOL              'stip'
-        SIZE                10
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        COLOR               128 255 0 #green
+          SYMBOL              'stip'
+          SIZE                10
+          MINSCALEDENOM       10
+          MAXSCALEDENOM       500001
+          COLOR               128 255 0 #green
       END
     END
   END
@@ -563,7 +563,7 @@ MAP
     DATA            "geometry FROM (
                                 select *
                                 from public.bouwstroompunten_bouwstroompunten
-                                where capaciteit is null
+                                where capaciteit[1] is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
