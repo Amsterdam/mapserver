@@ -1,7 +1,13 @@
     GROUP                    "eisvoorzorgsmaatregelen"
 
     INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_klic_eisvoorzorgsmaatregelen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (
+                                SELECT *
+                                FROM leidingeninfrastructuur_klic_eisvoorzorgsmaatregelen a
+                                WHERE 
+                                  a.thema = '%thema%'
+                                ) AS query 
+                              USING srid=28992 USING UNIQUE id"
     #EXTENT                  110000 476000 169999 520000
     PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POLYGON
@@ -11,7 +17,7 @@
       "wfs_srs"             "EPSG:28992"
       "wfs_group_abstract"  "Eisvoorzorgsmaatregelen Kadaster"
       "wfs_enable_request"  "*"
-      "wfs_extent"          "110000 476000 169999 52000"
+      #"wfs_extent"          "110000 476000 169999 52000"
       "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_group_title"     "Eisvoorzorgsmaatregelen Kadaster"
@@ -25,4 +31,3 @@
     END
 
     LABELITEM               "thema"
-    CLASSITEM               "thema"

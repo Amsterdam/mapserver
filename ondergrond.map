@@ -250,8 +250,8 @@ MAP
       "wfs_title"   "kabels en leidingen - rioolvrijverval"
     END
     VALIDATION
-      "thema"            "^riool vrijverval druk$"
-      "default_thema"            "riool vrijverval druk"
+      "thema"            "^riool vrijverval$"
+      "default_thema"            "riool vrijverval"
     END
     CLASS
         NAME                 "riool vrijverval"
@@ -359,6 +359,7 @@ MAP
   END
 
   # --------------------- OBJECTEN ----------------------
+
   LAYER
     NAME "objecten_datatransport"
     INCLUDE "ondergrond/objecten_layer.inc"
@@ -367,12 +368,16 @@ MAP
       "wfs_title"   "objecten - datatransport"
     END
 
+    VALIDATION
+      "thema"            "^datatransport$"
+      "default_thema"            "datatransport"
+    END
+
     CLASS
         NAME                 "datatransport"
-        EXPRESSION           "datatransport"
         STYLE
-            SYMBOL "stip"
             COLOR        "#00ff00"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -384,12 +389,17 @@ MAP
       "wms_title"   "objecten - gas hoge druk"
       "wfs_title"   "objecten - gas hoge druk"
     END
+
+    VALIDATION
+      "thema"            "^gas hoge druk$"
+      "default_thema"            "gas hoge druk"
+    END
+
     CLASS
         NAME                 "gas hoge druk"
-        EXPRESSION           "gas hoge druk"
         STYLE
             COLOR        "#ffd750"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -401,12 +411,15 @@ MAP
       "wms_title"   "objecten - gas lage druk"
       "wfs_title"   "objecten - gas lage druk"
     END
+    VALIDATION
+      "thema"            "^gas lage druk$"
+      "default_thema"            "gas lage druk"
+    END
     CLASS
         NAME                 "gas lage druk"
-        EXPRESSION           "gas lage druk"
         STYLE
             COLOR        "#ffaf3c"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -418,12 +431,15 @@ MAP
       "wms_title"   "objecten - buisleiding gevaarlijke inhoud"
       "wfs_title"   "objecten - buisleiding gevaarlijke inhoud"
     END
+    VALIDATION
+      "thema"            "^buisleiding gevaarlijke inhoud$"
+      "default_thema"            "buisleiding gevaarlijke inhoud"
+    END
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
-        EXPRESSION           "buisleiding gevaarlijke inhoud"
         STYLE
             COLOR        "#ff7f00"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -435,12 +451,16 @@ MAP
       "wms_title"   "objecten - landelijk hoogspanningsnet"
       "wfs_title"   "objecten - landelijk hoogspanningsnet"
     END
+    VALIDATION
+      "thema"            "^landelijk hoogspanningsnet$"
+      "default_thema"            "landelijk hoogspanningsnet"
+    END
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
         STYLE
             COLOR        "#ff0000"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -452,12 +472,15 @@ MAP
       "wms_title"   "objecten - hoogspanning"
       "wfs_title"   "objecten - hoogspanning"
     END
+    VALIDATION
+      "thema"            "^hoogspanning$"
+      "default_thema"            "hoogspanning"
+    END
     CLASS
         NAME                 "hoogspanning"
-        EXPRESSION           "hoogspanning"
         STYLE
             COLOR        "#ff0000"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -469,12 +492,15 @@ MAP
       "wms_title"   "objecten - middenspanning"
       "wfs_title"   "objecten - middenspanning"
     END
+    VALIDATION
+      "thema"            "^middenspanning$"
+      "default_thema"            "middenspanning"
+    END
     CLASS
         NAME                 "middenspanning"
-        EXPRESSION           "middenspanning"
         STYLE
             COLOR        "#c80000"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -486,12 +512,15 @@ MAP
       "wms_title"   "objecten - laagspanning"
       "wfs_title"   "objecten - laagspanning"
     END
+    VALIDATION
+      "thema"            "^laagspanning$"
+      "default_thema"            "laagspanning"
+    END
     CLASS
         NAME                 "laagspanning"
-        EXPRESSION           "laagspanning"
         STYLE
             COLOR        "#960000"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -503,12 +532,15 @@ MAP
       "wms_title"   "objecten - chemie"
       "wfs_title"   "objecten - chemie"
     END
+    VALIDATION
+      "thema"            "^\(petro\)chemie$"
+      "default_thema"            "(petro)chemie"
+    END
     CLASS
         NAME                 "(petro)chemie"
-        EXPRESSION           "(petro)chemie"
         STYLE
             COLOR        "#b64a00"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -517,15 +549,18 @@ MAP
     NAME "objecten_riool_vrijverval"
     INCLUDE "ondergrond/objecten_layer.inc"
     METADATA
-      "wms_title"   "objecten - riool vrijverval"
-      "wfs_title"   "objecten - riool vrijverval"
+      "wms_title"   "objecten - rioolvrijverval"
+      "wfs_title"   "objecten - rioolvrijverval"
+    END
+    VALIDATION
+      "thema"            "^riool vrijverval$"
+      "default_thema"            "riool vrijverval"
     END
     CLASS
         NAME                 "riool vrijverval"
-        EXPRESSION           "riool vrijverval"
         STYLE
             COLOR        "#ba38a8"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -537,12 +572,15 @@ MAP
       "wms_title"   "objecten - riool over- of onderdruk"
       "wfs_title"   "objecten - riool over- of onderdruk"
     END
+    VALIDATION
+      "thema"            "^riool onder over- of onderdruk$"
+      "default_thema"            "riool onder over- of onderdruk"
+    END
     CLASS
         NAME                 "riool onder over- of onderdruk"
-        EXPRESSION           "riool onder over- of onderdruk"
         STYLE
             COLOR        "#800080"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -554,12 +592,15 @@ MAP
       "wms_title"   "objecten - warmte"
       "wfs_title"   "objecten - warmte"
     END
+    VALIDATION
+      "thema"            "^warmte$"
+      "default_thema"            "warmte"
+    END
     CLASS
         NAME                 "warmte"
-        EXPRESSION           "warmte"
         STYLE
             COLOR        "#008080"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -571,12 +612,15 @@ MAP
       "wms_title"   "objecten - water"
       "wfs_title"   "objecten - water"
     END
+    VALIDATION
+      "thema"            "^water$"
+      "default_thema"            "water"
+    END
     CLASS
         NAME                 "water"
-        EXPRESSION           "water"
         STYLE
             COLOR        "#0000ff"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -588,12 +632,15 @@ MAP
       "wms_title"   "objecten - wees"
       "wfs_title"   "objecten - wees"
     END
+    VALIDATION
+      "thema"            "^wees$"
+      "default_thema"            "wees"
+    END
     CLASS
         NAME                 "wees"
-        EXPRESSION           "wees"
         STYLE
             COLOR        "#918a6f"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -605,12 +652,16 @@ MAP
       "wms_title"   "objecten - overig"
       "wfs_title"   "objecten - overig"
     END
+    VALIDATION
+      "thema"            "^overig$"
+      "default_thema"            "overig"
+    END
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
         STYLE
             COLOR        "#6f5c10"
-            SYMBOL "stip"
+            SYMBOL        "stip"
             SIZE 5
         END
     END
@@ -626,9 +677,13 @@ MAP
       "wfs_title"   "eisvoorzorgsmaatregelen - datatransport"
     END
 
+    VALIDATION
+      "thema"            "^datatransport$"
+      "default_thema"            "datatransport"
+    END
+
     CLASS
         NAME                 "datatransport"
-        EXPRESSION           "datatransport"
         STYLE
             COLOR        "#00ff00"
             SIZE 5
@@ -642,9 +697,14 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - gas hoge druk"
       "wfs_title"   "eisvoorzorgsmaatregelen - gas hoge druk"
     END
+
+    VALIDATION
+      "thema"            "^gas hoge druk$"
+      "default_thema"            "gas hoge druk"
+    END
+
     CLASS
         NAME                 "gas hoge druk"
-        EXPRESSION           "gas hoge druk"
         STYLE
             COLOR        "#ffd750"
             SIZE 5
@@ -658,10 +718,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - gas lage druk"
       "wfs_title"   "eisvoorzorgsmaatregelen - gas lage druk"
     END
-
+    VALIDATION
+      "thema"            "^gas lage druk$"
+      "default_thema"            "gas lage druk"
+    END
     CLASS
         NAME                 "gas lage druk"
-        EXPRESSION           "gas lage druk"
         STYLE
             COLOR        "#ffaf3c"
             SIZE 5
@@ -675,10 +737,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - buisleiding gevaarlijke inhoud"
       "wfs_title"   "eisvoorzorgsmaatregelen - buisleiding gevaarlijke inhoud"
     END
-
+    VALIDATION
+      "thema"            "^buisleiding gevaarlijke inhoud$"
+      "default_thema"            "buisleiding gevaarlijke inhoud"
+    END
     CLASS
         NAME                 "buisleiding gevaarlijke inhoud"
-        EXPRESSION           "buisleiding gevaarlijke inhoud"
         STYLE
             COLOR        "#ff7f00"
             SIZE 5
@@ -692,7 +756,10 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - landelijk hoogspanningsnet"
       "wfs_title"   "eisvoorzorgsmaatregelen - landelijk hoogspanningsnet"
     END
-
+    VALIDATION
+      "thema"            "^landelijk hoogspanningsnet$"
+      "default_thema"            "landelijk hoogspanningsnet"
+    END
     CLASS
         NAME                 "landelijk hoogspanningsnet"
         EXPRESSION           "landelijk hoogspanningsnet"
@@ -709,10 +776,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - hoogspanning"
       "wfs_title"   "eisvoorzorgsmaatregelen - hoogspanning"
     END
-  
+    VALIDATION
+      "thema"            "^hoogspanning$"
+      "default_thema"            "hoogspanning"
+    END
     CLASS
         NAME                 "hoogspanning"
-        EXPRESSION           "hoogspanning"
         STYLE
             COLOR        "#ff0000"
             SIZE 5
@@ -726,10 +795,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - middenspanning"
       "wfs_title"   "eisvoorzorgsmaatregelen - middenspanning"
     END
-  
+    VALIDATION
+      "thema"            "^middenspanning$"
+      "default_thema"            "middenspanning"
+    END
     CLASS
         NAME                 "middenspanning"
-        EXPRESSION           "middenspanning"
         STYLE
             COLOR        "#c80000"
             SIZE 5
@@ -743,10 +814,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - laagspanning"
       "wfs_title"   "eisvoorzorgsmaatregelen - laagspanning"
     END
-  
+    VALIDATION
+      "thema"            "^laagspanning$"
+      "default_thema"            "laagspanning"
+    END
     CLASS
         NAME                 "laagspanning"
-        EXPRESSION           "laagspanning"
         STYLE
             COLOR        "#960000"
             SIZE 5
@@ -760,10 +833,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - chemie"
       "wfs_title"   "eisvoorzorgsmaatregelen - chemie"
     END
-  
+    VALIDATION
+      "thema"            "^\(petro\)chemie$"
+      "default_thema"            "(petro)chemie"
+    END
     CLASS
         NAME                 "(petro)chemie"
-        EXPRESSION           "(petro)chemie"
         STYLE
             COLOR        "#b64a00"
             SIZE 5
@@ -774,13 +849,15 @@ MAP
     NAME "eisvoorzorgsmaatregelen_riool_vrijverval"
     INCLUDE "ondergrond/eisvoorzorgsmaatregelen_layer.inc"
     METADATA
-      "wms_title"   "eisvoorzorgsmaatregelen - riool vrijverval"
-      "wfs_title"   "eisvoorzorgsmaatregelen - riool vrijverval"
+      "wms_title"   "eisvoorzorgsmaatregelen - rioolvrijverval"
+      "wfs_title"   "eisvoorzorgsmaatregelen - rioolvrijverval"
     END
-  
+    VALIDATION
+      "thema"            "^riool vrijverval$"
+      "default_thema"            "riool vrijverval"
+    END
     CLASS
         NAME                 "riool vrijverval"
-        EXPRESSION           "riool vrijverval"
         STYLE
             COLOR        "#ba38a8"
             SIZE 5
@@ -794,10 +871,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - riool over- of onderdruk"
       "wfs_title"   "eisvoorzorgsmaatregelen - riool over- of onderdruk"
     END
-  
+    VALIDATION
+      "thema"            "^riool onder over- of onderdruk$"
+      "default_thema"            "riool onder over- of onderdruk"
+    END
     CLASS
         NAME                 "riool onder over- of onderdruk"
-        EXPRESSION           "riool onder over- of onderdruk"
         STYLE
             COLOR        "#800080"
             SIZE 5
@@ -811,10 +890,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - warmte"
       "wfs_title"   "eisvoorzorgsmaatregelen - warmte"
     END
-  
+    VALIDATION
+      "thema"            "^warmte$"
+      "default_thema"            "warmte"
+    END
     CLASS
         NAME                 "warmte"
-        EXPRESSION           "warmte"
         STYLE
             COLOR        "#008080"
             SIZE 5
@@ -828,10 +909,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - water"
       "wfs_title"   "eisvoorzorgsmaatregelen - water"
     END
-  
+    VALIDATION
+      "thema"            "^water$"
+      "default_thema"            "water"
+    END
     CLASS
         NAME                 "water"
-        EXPRESSION           "water"
         STYLE
             COLOR        "#0000ff"
             SIZE 5
@@ -845,10 +928,12 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - wees"
       "wfs_title"   "eisvoorzorgsmaatregelen - wees"
     END
-  
+    VALIDATION
+      "thema"            "^wees$"
+      "default_thema"            "wees"
+    END
     CLASS
         NAME                 "wees"
-        EXPRESSION           "wees"
         STYLE
             COLOR        "#918a6f"
             SIZE 5
@@ -862,7 +947,10 @@ MAP
       "wms_title"   "eisvoorzorgsmaatregelen - overig"
       "wfs_title"   "eisvoorzorgsmaatregelen - overig"
     END
-  
+    VALIDATION
+      "thema"            "^overig$"
+      "default_thema"            "overig"
+    END
     CLASS
         NAME                 "overig"
         EXPRESSION           "overig"
@@ -931,8 +1019,7 @@ MAP
         NAME                 "Gemengd"
         STYLE
             COLOR        "#ff99cc"
-            MINWIDTH 0.5
-            MAXWIDTH 40
+            SIZE 5
         END
     END
   END
@@ -954,9 +1041,8 @@ MAP
     CLASS
         NAME                 "Hemelwaterstelsel"
         STYLE
-            MINWIDTH 0.5
-            MAXWIDTH 40
             COLOR        "#ff9933"
+            SIZE 5
         END
     END
   END
@@ -978,8 +1064,7 @@ MAP
     CLASS
         NAME                 "Polderrioolstelsel"
         STYLE
-            MINWIDTH 0.5
-            MAXWIDTH 40
+            SIZE 5
             COLOR        "#ffff00"
         END
     END
@@ -1001,8 +1086,7 @@ MAP
     CLASS
         NAME                 "Verb. gemengd"
         STYLE
-            MINWIDTH 0.5
-            MAXWIDTH 40
+            SIZE 5
             COLOR        "#00cc00"
         END
     END
@@ -1024,8 +1108,7 @@ MAP
     CLASS
         NAME                 "Verb. gescheiden"
         STYLE
-            MINWIDTH 0.5
-            MAXWIDTH 40
+            SIZE 5
             COLOR        "#00ffff"
         END
     END
@@ -1047,8 +1130,7 @@ MAP
     CLASS
         NAME                 "Vuilwaterstelsel"
         STYLE
-            MINWIDTH 0.5
-            MAXWIDTH 40
+            SIZE 5
             COLOR        "#0000ff"
         END
     END
@@ -1070,8 +1152,7 @@ MAP
     CLASS
         NAME                 "Onbekend"
         STYLE
-            MINWIDTH 0.5
-            MAXWIDTH 40
+            SIZE 5
             COLOR        "#990099"
         END
     END

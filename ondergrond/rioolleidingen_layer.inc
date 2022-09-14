@@ -1,7 +1,6 @@
     GROUP "rioolleidingen"
     INCLUDE                 "connection_dataservices.inc"
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
-    SYMBOLSCALEDENOM        10000
     TYPE                    LINE
     DATA                    "geometrie FROM (
                                 SELECT id, geometrie, status, jaar_gelegd, soort, type_leiding, vorm, diameter, breedte, hoogte, materiaal, funderingstype, COALESCE(stelsel_type, 'Onbekend') AS stelsel_type

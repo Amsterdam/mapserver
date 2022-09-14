@@ -11,7 +11,7 @@
     EXTENT                  110000 476394 138000 494000
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    LINE
-    MAXSCALEDENOM 20000
+    MAXSCALEDENOM 30000
     METADATA
       "wfs_group_title"           "Kabels en Leidingen Kadaster"
       "wfs_srs"             "EPSG:28992"
@@ -30,4 +30,3 @@
     END
 
     LABELITEM               "thema"
-    CLASSITEM               "thema"
