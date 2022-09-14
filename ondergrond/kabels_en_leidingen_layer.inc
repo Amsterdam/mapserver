@@ -30,4 +30,3 @@
     END
 
     LABELITEM               "thema"
-    CLASSITEM               "thema"
