@@ -11,7 +11,7 @@
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     EXTENT 110000 476000 138000 494000
     TYPE                    POINT
-    MAXSCALEDENOM 20000
+    MAXSCALEDENOM 30000
 
     METADATA
       "wfs_group_title"           "Objecten Kadaster"
