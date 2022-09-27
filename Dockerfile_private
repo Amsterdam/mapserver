@@ -20,6 +20,7 @@ COPY docker/docker-entrypoint.sh /bin
 COPY . /srv/mapserver/
 RUN rm -rf /srv/mapserver/private
 
+# Add private maps to mapserver directory, overwriting any identically named maps
 COPY /private/ /srv/mapserver/
 
 EXPOSE 80
