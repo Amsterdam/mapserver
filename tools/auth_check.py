@@ -2,19 +2,18 @@
 
 import argparse
 import glob
-from pathlib import Path
-from typing import Optional, Callable
-from types import SimpleNamespace
-import re
-
 import logging
+import re
+from pathlib import Path
+from types import SimpleNamespace
+from typing import Optional
+
 import mappyfile as mf
-import sqlparse
 from mappyfile.parser import Parser
-from mappyfile.transformer import MapfileToDict
 from mappyfile.pprint import PrettyPrinter
-from schematools.utils import dataset_schemas_from_url
+from mappyfile.transformer import MapfileToDict
 from schematools.types import DatasetSchema
+from schematools.utils import dataset_schemas_from_url
 
 SCHEMA_URL = "https://schemas.data.amsterdam.nl/datasets"
 ACC_SCHEMA_URL = "https://acc.schemas.data.amsterdam.nl/datasets"
@@ -63,47 +62,6 @@ def parse_private(fname: Path | str):
     return m.transform(ast)
 
 
-def get_table_identifiers(data_expr: str) -> set[str]:
-    """Given a data expression from a mapfile DATA parameter,
-    get all the table identifiers used in FROM and JOIN clauses.
-
-    This logic assumes that data expressions consist of a single statement,
-    i.e: everything after the first semicolon is ignored.
-    """
-    if len(data_expr) == 0:
-        return set()
-
-    table_clauses = {
-        "FROM",
-        "LEFT OUTER JOIN",
-        "INNER JOIN",
-        "RIGHT OUTER JOIN",
-        "FULL OUTER JOIN",
-        "JOIN",
-        "RIGHT JOIN",
-        "LEFT JOIN",
-        "FULL JOIN",
-    }
-
-    tokens = [x for x in sqlparse.parse(data_expr)[0].flatten() if not x.is_whitespace]
-    identifiers = set()
-
-    for i, token in enumerate(tokens):
-        try:
-            if (
-                tokens[i - 1].is_keyword
-                and tokens[i - 1].value.upper() in table_clauses
-            ):
-                if type(token) == sqlparse.sql.Identifier:
-                    identifiers.add(token.value)
-        except IndexError:
-            # the Identifier token occurs at the beginning of the statement
-            # in which case it can not be part of a FROM or JOIN clause
-            continue
-
-    return identifiers
-
-
 SCOPE_OPENBAAR = "OPENBAAR"
 SCOPE_FP_MDW = "FP/MDW"
 
@@ -116,11 +74,14 @@ def scope_too_high(scope: str, highest_scope: str) -> bool:
 
     return False
 
+
 azure_pattern = re.compile(".*dbname=mdbdataservices.*")
 cloudvps_pattern = re.compile(".*dbname=dataservices.*")
 
+
 def is_reference_db_conn(dsn: str) -> bool:
     return bool(azure_pattern.match(dsn) or cloudvps_pattern.match(dsn))
+
 
 def auth_from_layer(
     map_name: str,
@@ -152,7 +113,7 @@ def auth_from_layer(
                     table=table.db_name,
                     table_scopes=set(),
                     field_scopes=[],
-                    max_scope=highest_scope
+                    max_scope=highest_scope,
                 )
                 for scope in dataset.auth:
                     if scope_too_high(scope, highest_scope):
@@ -200,7 +161,9 @@ def run_check(
 
         for layer in map_["layers"]:
             # private maps must not contain scopes higher than FP/MDW
-            prohibited_queries.extend(auth_from_layer(map_["name"], layer, schemas, SCOPE_FP_MDW))
+            prohibited_queries.extend(
+                auth_from_layer(map_["name"], layer, schemas, SCOPE_FP_MDW)
+            )
     if prohibited_queries:
 
         logger.info(
@@ -224,7 +187,9 @@ def run_check(
 
         for layer in map_["layers"]:
             # public maps must not contain scopes higher than OPENBAAR
-            prohibited_queries.extend(auth_from_layer(map_["name"], layer, schemas, SCOPE_OPENBAAR))
+            prohibited_queries.extend(
+                auth_from_layer(map_["name"], layer, schemas, SCOPE_OPENBAAR)
+            )
 
     if prohibited_queries:
         logger.info(
