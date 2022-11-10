@@ -69,10 +69,7 @@ SCOPE_FP_MDW = "FP/MDW"
 def scope_too_high(scope: str, highest_scope: str) -> bool:
     ordering = {SCOPE_OPENBAAR: 0, SCOPE_FP_MDW: 1}
 
-    if ordering.get(scope, 999) > ordering[highest_scope]:
-        return True
-
-    return False
+    return ordering.get(scope, 999) > ordering[highest_scope]
 
 
 azure_pattern = re.compile(".*dbname=mdbdataservices.*")
