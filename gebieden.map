@@ -963,12 +963,12 @@ MAP
     METADATA
       "ows_title"           "gsg4_phsod"
       "ows_group_title"     "gsg4"
-      "ows_abstract"        "PHS regie Omgevingsdiens"
+      "ows_abstract"        "PHS regie Omgevingsdienst"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
 
-    FILTER  ("[type]" eq 'PHSOD')
+    FILTER  ("[type]" eq 'PS_OD')
 
     CLASS
       TEXT             '[naam]'
@@ -1033,7 +1033,7 @@ MAP
       "gml_include_items"   "all"
     END
 
-    FILTER  ("[type]" eq 'PHS')
+    FILTER  ("[type]" eq 'PS_GSP')
 
     CLASS
       TEXT             '[naam]'
