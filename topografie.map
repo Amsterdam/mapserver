@@ -37,7 +37,7 @@ MAP
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
             "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaart.png"
-            "wms_style_default_legendurl_format"    "image/png"
+            "wms_style_default
         END
         TYPE POINT
     END
@@ -94,6 +94,7 @@ MAP
 
     LAYER
         NAME                    "kbk50"
+											
         PROJECTION
             "init=epsg:28992"
         END
@@ -121,6 +122,7 @@ MAP
 
     LAYER
         NAME                    "kbk50-light"
+												  
         PROJECTION
             "init=epsg:28992"
         END
@@ -149,6 +151,7 @@ MAP
 
     LAYER
         NAME                    "kbk50-zw"
+													 
         PROJECTION
             "init=epsg:28992"
         END
@@ -181,6 +184,7 @@ MAP
 
     LAYER
         NAME                    "kbk10"
+											
         PROJECTION
             "init=epsg:28992"
         END
@@ -208,6 +212,7 @@ MAP
 
     LAYER
         NAME                    "kbk10-light"
+												  
         PROJECTION
             "init=epsg:28992"
         END
@@ -236,6 +241,7 @@ MAP
 
     LAYER
         NAME                    "kbk10-zw"
+													 
         PROJECTION
             "init=epsg:28992"
         END
@@ -268,6 +274,7 @@ MAP
 
     LAYER
         NAME                    "bgt"
+											
         PROJECTION
             "init=epsg:28992"
         END
@@ -282,7 +289,7 @@ MAP
             "wms_group_title"     "basiskaart"
             "wms_abstract"        "Basiskaart Amsterdam"
             "wms_srs"             "EPSG:28992"
-            "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
+            "wms_name"            "hoogte_2,hoogte_1,hoogte0,hoogte1,hoogte2,hoogte3,hoogte4"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
@@ -295,6 +302,7 @@ MAP
 
     LAYER
         NAME                    "bgt-light"
+												  
         PROJECTION
             "init=epsg:28992"
         END
@@ -309,7 +317,7 @@ MAP
             "wms_group_title"     "basiskaart-light"
             "wms_abstract"        "Basiskaart Amsterdam - Light"
             "wms_srs"             "EPSG:28992"
-            "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
+            "wms_name"            "hoogte_2,hoogte_1,hoogte0,hoogte1,hoogte2,hoogte3,hoogte4"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
@@ -323,6 +331,7 @@ MAP
 
     LAYER
         NAME                      "bgt-zw"
+													   
         PROJECTION
           "init=epsg:28992"
         END
@@ -337,7 +346,7 @@ MAP
             "wms_group_title"     "basiskaart-zw"
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:28992"
-            "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
+            "wms_name"            "hoogte_2,hoogte_1,hoogte0,hoogte1,hoogte2,hoogte3,hoogte4"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
@@ -355,6 +364,7 @@ MAP
 
     LAYER
         NAME                    "tekst"
+											
         PROJECTION
            "init=epsg:28992"
            END
@@ -372,7 +382,7 @@ MAP
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
-           "wms_transparant"    "true"
+           "wms_transparent"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            "ows_enable_request"  "!GetCapabilities"
        END
@@ -382,6 +392,7 @@ MAP
 
     LAYER
         NAME                    "tekst"
+														 
         PROJECTION
            "init=epsg:28992"
         END
@@ -399,7 +410,7 @@ MAP
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
-           "wms_transparant"    "true"
+           "wms_transparent"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            "ows_enable_request"  "!GetCapabilities"
         END
@@ -409,6 +420,7 @@ MAP
 
     LAYER
         NAME                    "tekst"
+													 
         PROJECTION
            "init=epsg:28992"
            END
@@ -426,7 +438,7 @@ MAP
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
-           "wms_transparant"    "true"
+           "wms_transparent"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            "ows_enable_request"  "!GetCapabilities"
        END
