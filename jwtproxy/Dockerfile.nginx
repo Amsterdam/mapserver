@@ -1,0 +1,18 @@
+FROM python:3.10-slim-bullseye
+
+RUN apt-get update && apt-get install nginx -y
+
+COPY supervisord.conf /etc
+
+WORKDIR /app
+COPY src jwtproxy
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/server.conf /etc/nginx/conf.d/server.conf
+COPY requirements.txt .
+
+RUN pip install supervisor
+RUN pip install -r requirements.txt
+
+EXPOSE 8000
+
+ENTRYPOINT [ "/bin/sh", "-c", "/usr/local/bin/supervisord; nginx -g 'daemon off;'"]

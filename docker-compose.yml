@@ -10,14 +10,23 @@ services:
       - POSTGRES_PASSWORD=insecure
     volumes:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
-
+  proxy:
+    build:
+      context: jwtproxy
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 8000:8000
+    volumes:
+      - ./jwtproxy/src:/app/jwtproxy
+    environment:
+      PROXY_URL: http://map
+      JWKS_PATH: /app/jwtproxy/test_jwk.json
+      LOG_LEVEL: DEBUG
   map:
     build:
       context: .
     ports:
       - "8383:80"
-    links:
-      - "database:database"
     environment:
       # Uncomment the following line to have private maps served
       ACCESS_SCOPE: private 
