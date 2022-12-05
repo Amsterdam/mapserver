@@ -13,8 +13,12 @@ logger = logging.getLogger("aiohttp.server.jwtproxy")
 
 CHUNK_SIZE = 1024
 
-def get_jwk():
+async def get_jwk():
     # https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys
+    if env.get("JWKS_URI"):
+        pass
+
+
     return JWKSet.from_json(open(env.get("JWKS_PATH")).read())
 
 async def handle(req):
