@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
+import argparse
+import gzip
 import logging
+from functools import lru_cache
 from os import environ as env
 
-import argparse
-import atexit
-from aiohttp import ClientSession, web, DummyCookieJar, TCPConnector, ClientTimeout
+from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
 from jwcrypto.jwt import JWT, JWKSet
 from yarl import URL
-import gzip
-
 
 logger = logging.getLogger("aiohttp.server.jwtproxy")
 
@@ -44,6 +43,11 @@ class SessionManager:
         logger.debug("no session to close")
 
 
+async def on_shutdown(app):
+    await SessionManager.close()
+
+
+@lru_cache
 async def get_jwk():
     """If we can get the pubkey from a URL, get it from there.
     Otherwise, default to the filesystem."""
@@ -124,7 +128,7 @@ async def main(*argv):
     app.router.add_route("GET", "/{path:.*?}", handle)
     app.router.add_route("POST", "/{path:.*?}", handle)
 
-    app.on_shutdown.append(SessionManager.close)
+    app.on_shutdown.append(on_shutdown)
     return app
 
 
