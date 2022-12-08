@@ -13,16 +13,16 @@ services:
   proxy:
     build:
       context: jwtproxy
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile.dev
     ports:
-      - 8000:8000
+      - 9191:8000
     volumes:
       - ./jwtproxy/src:/app/jwtproxy
     environment:
       PROXY_URL: http://map
       JWKS_PATH: /app/jwtproxy/test_jwk.json
       LOG_LEVEL: DEBUG
-      JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
+      # JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
   map:
     build:
       context: .

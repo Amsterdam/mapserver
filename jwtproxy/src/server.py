@@ -134,4 +134,9 @@ async def main(*argv):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    web.run_app(main(), host="0.0.0.0", path=args.path)
+
+    # support listening on unix domain sockets and ports
+    if args.path:
+        web.run_app(main(), host="0.0.0.0", path=args.path)
+    else:
+        web.run_app(main(), host="0.0.0.0", port=args.port)
