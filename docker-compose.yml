@@ -10,14 +10,24 @@ services:
       - POSTGRES_PASSWORD=insecure
     volumes:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
-
+  proxy:
+    build:
+      context: jwtproxy
+      dockerfile: Dockerfile.dev
+    ports:
+      - 9191:8000
+    volumes:
+      - ./jwtproxy/src:/app/jwtproxy
+    environment:
+      PROXY_URL: http://map
+      JWKS_PATH: /app/jwtproxy/test_jwk.json
+      LOG_LEVEL: DEBUG
+      # JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
   map:
     build:
       context: .
     ports:
       - "8383:80"
-    links:
-      - "database:database"
     environment:
       # Uncomment the following line to have private maps served
       ACCESS_SCOPE: private 
