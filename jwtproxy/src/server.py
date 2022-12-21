@@ -3,7 +3,6 @@
 import argparse
 import gzip
 import logging
-from functools import lru_cache
 from os import environ as env
 
 from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
@@ -46,12 +45,15 @@ class SessionManager:
 async def on_shutdown(app):
     await SessionManager.close()
 
+cached_jwk = None
 
-@lru_cache
 async def get_jwk():
     """If we can get the pubkey from a URL, get it from there.
     Otherwise, default to the filesystem."""
     # https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys
+    if cached_jwk is not None:
+        return cached_jwk
+
     url = env.get("JWKS_URL")
     if url:
         async with SessionManager.session().get(
@@ -62,7 +64,8 @@ async def get_jwk():
     else:
         payload = open(env.get("JWKS_PATH")).read()
 
-    return JWKSet.from_json(payload)
+    cached_jwk = JWKSet.from_json(payload)
+    return cached_jwk
 
 
 async def handle(req):
