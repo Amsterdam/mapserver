@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
 import argparse
+import asyncio
 import gzip
 import logging
 from os import environ as env
 
-from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
+from aiohttp import (ClientSession, ClientTimeout, DummyCookieJar,
+                     TCPConnector, web)
 from jwcrypto.jwt import JWT, JWKSet
 from yarl import URL
 
@@ -45,27 +47,31 @@ class SessionManager:
 async def on_shutdown(app):
     await SessionManager.close()
 
+
+lock = asyncio.Lock()
 cached_jwk = None
+
 
 async def get_jwk():
     """If we can get the pubkey from a URL, get it from there.
     Otherwise, default to the filesystem."""
     # https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys
-    if cached_jwk is not None:
+    async with lock:
+        global cached_jwk
+        if cached_jwk is not None:
+            return cached_jwk
+
+        url = env.get("JWKS_URL")
+        if url:
+            async with SessionManager.session().get(
+                url,
+                timeout=ClientTimeout(sock_connect=3, sock_read=3),
+            ) as resp:
+                payload = gzip.decompress(await resp.read()).decode()
+        else:
+            payload = open(env.get("JWKS_PATH")).read()
+        cached_jwk = JWKSet.from_json(payload)
         return cached_jwk
-
-    url = env.get("JWKS_URL")
-    if url:
-        async with SessionManager.session().get(
-            url,
-            timeout=ClientTimeout(sock_connect=3, sock_read=3),
-        ) as resp:
-            payload = gzip.decompress(await resp.read()).decode()
-    else:
-        payload = open(env.get("JWKS_PATH")).read()
-
-    cached_jwk = JWKSet.from_json(payload)
-    return cached_jwk
 
 
 async def handle(req):
