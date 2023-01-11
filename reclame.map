@@ -3,18 +3,16 @@ MAP
     LAYER
         NAME "reclamebelasting"
         TYPE POLYGON
-        DATA "wkb_geometry from reclamebelasting USING srid=28992 USING UNIQUE ogc_fid"
-         
-        VALIDATION
-          'default_tarief' '1'
-          'tarief'     '^[A-C]{1}$'
-        END
+        DATA "geometrie from belastingen_reclame USING srid=28992 USING UNIQUE id"
 
-        FILTER ("[tarief]" = 'Tariefgebied %tarief%')
+        VALIDATION
+          "tariefgebied"            "^.*[A-C]{1}$"
+          "default_tariefgebied"    "all"
+        END
 
         CLASS
             NAME "Tariefgebied A"
-            EXPRESSION ('[tarief]' ~* 'A$')
+            EXPRESSION ("[tariefgebied]" ~ "A$" AND ( '%tariefgebied%' eq 'Tariefgebied A'  OR '%tariefgebied%' eq 'all' ))
             STYLE
                 COLOR 236 0 0
                 OPACITY 50
@@ -42,7 +40,7 @@ MAP
         END
         CLASS
             NAME "Tariefgebied B"
-            EXPRESSION ('[tarief]' ~* 'B$')
+            EXPRESSION ("[tariefgebied]" ~ "B$" AND ( '%tariefgebied%' eq 'Tariefgebied B'  OR '%tariefgebied%' eq 'all' ))
             STYLE
                 COLOR 255 145 0
                 OPACITY 50
@@ -70,7 +68,7 @@ MAP
         END
         CLASS
             NAME "Tariefgebied C"
-            EXPRESSION ('[tarief]' ~* 'C$')
+            EXPRESSION ("[tariefgebied]" ~ "C$" AND ( '%tariefgebied%' eq 'Tariefgebied C'  OR '%tariefgebied%' eq 'all' ))
             STYLE
                 COLOR 255 230 0
                 OPACITY 30
@@ -96,7 +94,7 @@ MAP
                 TEXT           "Tariefgebied C"
             END
         END
-        INCLUDE "connection_various_small_datasets.inc"
+        INCLUDE "connection_dataservices.inc"
         METADATA
             "ows_title" "Reclame belastingtarieven"
             "ows_group_title" "reclamebelasting"
