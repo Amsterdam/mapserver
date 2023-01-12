@@ -6,13 +6,13 @@ MAP
         DATA "geometrie from belastingen_reclame USING srid=28992 USING UNIQUE id"
 
         VALIDATION
-          "tariefgebied"            "^.*[A-C]{1}$"
-          "default_tariefgebied"    "all"
+          "tarief"            "^[A-C]{1}$"
+          "default_tarief"    "all"
         END
 
         CLASS
             NAME "Tariefgebied A"
-            EXPRESSION ("[tariefgebied]" ~ "A$" AND ( '%tariefgebied%' eq 'Tariefgebied A'  OR '%tariefgebied%' eq 'all' ))
+            EXPRESSION ("[tariefgebied]" ~ "A$" AND ( '%tarief%' eq 'A'  OR '%tarief%' eq 'all' ))
             STYLE
                 COLOR 236 0 0
                 OPACITY 50
@@ -40,7 +40,7 @@ MAP
         END
         CLASS
             NAME "Tariefgebied B"
-            EXPRESSION ("[tariefgebied]" ~ "B$" AND ( '%tariefgebied%' eq 'Tariefgebied B'  OR '%tariefgebied%' eq 'all' ))
+            EXPRESSION ("[tariefgebied]" ~ "B$" AND ( '%tarief%' eq 'B'  OR '%tarief%' eq 'all' ))
             STYLE
                 COLOR 255 145 0
                 OPACITY 50
@@ -68,7 +68,7 @@ MAP
         END
         CLASS
             NAME "Tariefgebied C"
-            EXPRESSION ("[tariefgebied]" ~ "C$" AND ( '%tariefgebied%' eq 'Tariefgebied C'  OR '%tariefgebied%' eq 'all' ))
+            EXPRESSION ("[tariefgebied]" ~ "C$" AND ( '%tarief%' eq 'C'  OR '%tarief%' eq 'all' ))
             STYLE
                 COLOR 255 230 0
                 OPACITY 30
