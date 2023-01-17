@@ -22,7 +22,6 @@ services:
       PROXY_URL: http://map
       JWKS_PATH: /app/jwtproxy/test_jwk.json
       LOG_LEVEL: DEBUG
-      # JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
   map:
     build:
       context: .

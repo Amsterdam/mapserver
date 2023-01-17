@@ -2,7 +2,6 @@
 
 import argparse
 import asyncio
-import gzip
 import logging
 from os import environ as env
 
@@ -67,7 +66,7 @@ async def get_jwk():
                 url,
                 timeout=ClientTimeout(sock_connect=3, sock_read=3),
             ) as resp:
-                payload = gzip.decompress(await resp.read()).decode()
+                payload = await resp.read()
         else:
             payload = open(env.get("JWKS_PATH")).read()
         cached_jwk = JWKSet.from_json(payload)
