@@ -65,8 +65,9 @@ async def get_jwk():
             async with SessionManager.session().get(
                 url,
                 timeout=ClientTimeout(sock_connect=3, sock_read=3),
+                skip_auto_headers=["Accept-Encoding"]  # we dont need a compressed jwks
             ) as resp:
-                payload = await resp.read()
+                payload = await resp.text()
         else:
             payload = open(env.get("JWKS_PATH")).read()
         cached_jwk = JWKSet.from_json(payload)
@@ -77,7 +78,7 @@ async def handle(req):
     path = req.match_info["path"]
     target_url = URL("".join([env["PROXY_URL"].rstrip("/"), "/", path.lstrip("/")]))
 
-    logger.info("Proxy-URL: \n%s", target_url)
+    logger.debug("Proxy-URL: \n%s", target_url)
     logger.debug("Request params: \n %s", req.rel_url.query)
     logger.debug("Request headers: \n %s", req.headers)
 
@@ -107,7 +108,7 @@ async def handle(req):
     async with SessionManager.session().request(
         req.method, target_url, headers=req.headers, params=req.rel_url.query
     ) as resp:
-        logger.info("Response status from mapserver: %s", resp.status)
+        logger.debug("Response status from mapserver: %s", resp.status)
         logger.debug("Headers from mapserver: \n %s", resp.headers)
         logger.debug("Params from mapserver: \n %s", req.rel_url.query)
 
