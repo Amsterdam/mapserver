@@ -838,7 +838,7 @@ MAP
      NAME            "ligplaats"
      GROUP           "hoogte0"
      INCLUDE         "connection_bag.inc"
-     DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
+     DATA            "geometrie FROM public.bag_ligplaats USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
      PROJECTION
@@ -868,7 +868,7 @@ MAP
      NAME            "standplaats"
      GROUP           "hoogte0"
      INCLUDE         "connection_bag.inc"
-     DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
+     DATA            "geometrie FROM public.bag_standplaats USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
      PROJECTION
