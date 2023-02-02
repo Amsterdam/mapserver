@@ -3,17 +3,65 @@
 import argparse
 import asyncio
 import logging
+import json
 from os import environ as env
 
-from aiohttp import (ClientSession, ClientTimeout, DummyCookieJar,
-                     TCPConnector, web)
+from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
 from jwcrypto.jwt import JWT, JWKSet
 from yarl import URL
 
-logger = logging.getLogger("aiohttp.server.jwtproxy")
+app_logger = logging.getLogger("jwtproxy.applogs")
+audit_logger = logging.getLogger("jwtproxy.auditlogs")
 
 CHUNK_SIZE = 1024
 CONN_POOL_SIZE = 100
+AZURE_APPLICATIONINSIGHTS_CONNSTRING = env.get("AZURE_APPLICATIONINSIGHTS_CONNSTRING")
+
+
+async def audit(req: web.Request):
+    # Note that this function only supports token formats issued by
+    # the iam KeyCloak server.
+    try:
+        auth = req.headers["Authorization"]
+    except KeyError:
+        raise web.HTTPForbidden(reason="No JWT present in Authorization header")
+
+    bearer = "bearer "
+    if not auth[: len(bearer)].lower() == bearer:
+        raise web.HTTPForbidden(
+            reason="Authorization header format is 'Bearer <token>'"
+        )
+
+    token = auth[len(bearer) :]
+    j = JWT()
+    jwks = await get_jwk()
+
+    try:
+        j.deserialize(token, key=jwks)
+    except Exception as e:
+        app_logger.warning(e)
+        raise web.HTTPForbidden(reason="Invalid token")
+
+    claims = json.loads(j.claims)
+    try:
+        assert "fp_mdw" in claims["realm_access"]["roles"]
+    except (KeyError, AssertionError):
+        audit_logger.info(
+            "Access to %s (%s) denied for subject %s (username: %s)",
+            req.url,
+            req.method,
+            claims.get("email"),
+            claims.get("preferred_username"),
+        )
+        raise web.HTTPUnauthorized(reason="Insufficient access privilege")
+
+    audit_logger.info(
+        "Access to %s (%s) granted to subject %s (username: %s)",
+        req.url,
+        req.method,
+        claims.get("email"),
+        claims.get("preferred_username"),
+    )
 
 
 class SessionManager:
@@ -22,7 +70,7 @@ class SessionManager:
     @classmethod
     def session(cls):
         if cls._session is None:
-            # we're not reading any payloads so we don't need to
+            # We're not reading any payloads so we don't need to decompress.
             # Also, we don't want to process any cookies
             # (cookies are shared between session requests)
             cls._session = ClientSession(
@@ -30,7 +78,7 @@ class SessionManager:
                 cookie_jar=DummyCookieJar(),
                 connector=TCPConnector(limit=CONN_POOL_SIZE),
             )
-            logger.debug("created new client Session")
+            app_logger.debug("created new client Session")
         return cls._session
 
     @classmethod
@@ -39,8 +87,8 @@ class SessionManager:
         if session is not None and not session.closed:
             await session.close()
             cls._session = None
-            logger.debug("successfully closed session")
-        logger.debug("no session to close")
+            app_logger.debug("successfully closed session")
+        app_logger.debug("no session to close")
 
 
 async def on_shutdown(app):
@@ -65,7 +113,7 @@ async def get_jwk():
             async with SessionManager.session().get(
                 url,
                 timeout=ClientTimeout(sock_connect=3, sock_read=3),
-                skip_auto_headers=["Accept-Encoding"]  # we dont need a compressed jwks
+                skip_auto_headers=["Accept-Encoding"],  # we dont need a compressed jwks
             ) as resp:
                 payload = await resp.text()
         else:
@@ -74,43 +122,22 @@ async def get_jwk():
         return cached_jwk
 
 
-async def handle(req):
+async def handle(req: web.Request):
     path = req.match_info["path"]
     target_url = URL("".join([env["PROXY_URL"].rstrip("/"), "/", path.lstrip("/")]))
 
-    logger.debug("Proxy-URL: \n%s", target_url)
-    logger.debug("Request params: \n %s", req.rel_url.query)
-    logger.debug("Request headers: \n %s", req.headers)
-
-    try:
-        auth = req.headers["Authorization"]
-    except KeyError:
-        raise web.HTTPForbidden(reason="No JWT present in Authorization header")
-
-    bearer = "bearer "
-    if not auth[: len(bearer)].lower() == bearer:
-        raise web.HTTPForbidden(
-            reason="Authorization header format is 'Bearer <token>'"
-        )
-
-    token = auth[len(bearer) :]
-    j = JWT()
-    jwks = await get_jwk()
-
-    try:
-        j.deserialize(token, key=jwks)
-    except Exception as e:
-        logger.warning(e)
-        raise web.HTTPForbidden(reason="Invalid token")
-
-    logger.debug("Token: %s", repr(j))
+    app_logger.debug("Proxy-URL: \n%s", target_url)
+    app_logger.debug("Request params: \n %s", req.rel_url.query)
+    app_logger.debug("Request headers: \n %s", req.headers)
 
     async with SessionManager.session().request(
         req.method, target_url, headers=req.headers, params=req.rel_url.query
     ) as resp:
-        logger.debug("Response status from mapserver: %s", resp.status)
-        logger.debug("Headers from mapserver: \n %s", resp.headers)
-        logger.debug("Params from mapserver: \n %s", req.rel_url.query)
+        app_logger.debug("Response status from upstream: %s", resp.status)
+        app_logger.debug("Headers from upstream: \n %s", resp.headers)
+        app_logger.debug("Params from upstream: \n %s", req.rel_url.query)
+
+        await audit(req)
 
         server_resp = web.StreamResponse(headers=resp.headers, status=resp.status)
 
@@ -128,9 +155,62 @@ parser = argparse.ArgumentParser(description="jwt-proxy server")
 parser.add_argument("--path")
 parser.add_argument("--port", default=8080, type=int)
 
+base_log_fmt = {
+    "time": "%(asctime)s",
+    "name": "%(name)s",
+    "level": "%(levelname)s",
+    "message": "%(message)s",
+}
+log_fmt = base_log_fmt.copy()
+
+audit_log_fmt = {"audit": True}
+audit_log_fmt.update(log_fmt)
+
 
 async def main(*argv):
-    logging.basicConfig(level=env.get("LOG_LEVEL", logging.INFO))
+    level = env.get("LOG_LEVEL", logging.INFO)
+
+    log_cfg = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "json": {"format": json.dumps(log_fmt)},
+            "json-audit": {"format": json.dumps(audit_log_fmt)},
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "json",
+                "level": level,
+            },
+            "appinsights": {
+                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+                "connection_string": AZURE_APPLICATIONINSIGHTS_CONNSTRING,
+                "formatter": "json-audit",
+                "level": "DEBUG",
+            },
+        },
+        "loggers": {
+            "jwtproxy.applogs": {
+                "propagate": False,
+                "handlers": ["console"],
+                "level": level,
+            },
+            "jwtproxy.auditlogs": {
+                "propagate": False,
+                "handlers": ["appinsights"],
+                "level": "DEBUG",  # Send everything
+            },
+        },
+    }
+
+    if not AZURE_APPLICATIONINSIGHTS_CONNSTRING:
+        log_cfg["handlers"].pop("appinsights")
+        log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = [
+            "console",
+
+        ]
+    logging.config.dictConfig(log_cfg)
 
     app = web.Application()
     app.router.add_route("OPTIONS", "/{path:.*?}", handle)

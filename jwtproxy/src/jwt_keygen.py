@@ -53,7 +53,9 @@ def generate_jwt(scopes, exp):
     now = int(time.time())
     claims = {
         "iat": now,
-        "scopes": scopes,
+        "realm_access": {
+            "roles": scopes
+        },
         "sub": "test@tester.nl",
     }
     if exp is not None:
