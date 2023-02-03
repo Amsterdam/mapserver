@@ -1,6 +1,6 @@
 #==============================================================================
 #
-# topografie_wm.map
+# topografie_wm_wm.map
 # doel: serveren van kaartlagen ten behoeve van referentiekaarten (in Web Mercator)
 #
 #==============================================================================
@@ -34,9 +34,10 @@ MAP
             "wms_title"                             "Basiskaart Amsterdam - Standaard"
             "ows_enable_request"                    "GetMap"
             "wms_style"                             "default"
+            "wms_extent"                            "94000 465000 170000 514000"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaart.png"
+            "wms_style_default_legendurl_href"      "MAP_URL_REPLACE/legend/legendabasiskaart.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -56,9 +57,10 @@ MAP
             "wms_title"                             "Basiskaart Amsterdam - Light"
             "ows_enable_request"                    "GetMap"
             "wms_style"                             "default"
+            "wms_extent"                            "94000 465000 170000 514000"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartlight.png"
+            "wms_style_default_legendurl_href"      "MAP_URL_REPLACE/legend/legendabasiskaartlight.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -78,9 +80,10 @@ MAP
             "wms_title"                             "Basiskaart Amsterdam - ZW"
             "ows_enable_request"                    "GetMap"
             "wms_style"                             "default"
+            "wms_extent"                            "94000 465000 170000 514000"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
+            "wms_style_default_legendurl_href"      "MAP_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -372,7 +375,7 @@ MAP
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
-           "wms_transparant"    "true"
+           "wms_transparent"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            "ows_enable_request"  "!GetCapabilities"
        END
@@ -426,7 +429,7 @@ MAP
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
-           "wms_transparant"    "true"
+           "wms_transparent"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            "ows_enable_request"  "!GetCapabilities"
        END
