@@ -1,6 +1,6 @@
 #==============================================================================
 #
-# topografie_wm.map
+# topografie_wm_wm.map
 # doel: serveren van kaartlagen ten behoeve van referentiekaarten (in Web Mercator)
 #
 #==============================================================================
@@ -37,7 +37,7 @@ MAP
             "wms_extent"                            "94000 465000 170000 514000"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "MAP_URL_REPLACE/legend/legendabasiskaart.png"
+            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaart.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -60,7 +60,7 @@ MAP
             "wms_extent"                            "94000 465000 170000 514000"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "MAP_URL_REPLACE/legend/legendabasiskaartlight.png"
+            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartlight.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -83,7 +83,7 @@ MAP
             "wms_extent"                            "94000 465000 170000 514000"
             "wms_style_default_legendurl_height"    "10"
             "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "MAP_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
+            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
             "wms_style_default_legendurl_format"    "image/png"
         END
         TYPE POINT
@@ -110,7 +110,7 @@ MAP
             "wms_title"           "kbk50"
             "wms_group_title"     "basiskaart"
             "wms_abstract"        "Basiskaart Amsterdam"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
@@ -137,7 +137,7 @@ MAP
             "wms_title"           "kbk50-light"
             "wms_group_title"     "basiskaart-light"
             "wms_abstract"        "Basiskaart Amsterdam - Light"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_light.xml"
             "wms_format"          "image/png"
@@ -165,7 +165,7 @@ MAP
             "wms_title"           "kbk50-zw"
             "wms_group_title"     "basiskaart-zw"
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_zw.xml"
             "wms_format"          "image/png"
@@ -197,7 +197,7 @@ MAP
             "wms_title"           "kbk10"
             "wms_group_title"     "basiskaart"
             "wms_abstract"        "Basiskaart Amsterdam"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
@@ -224,7 +224,7 @@ MAP
             "wms_title"           "kbk10-light"
             "wms_group_title"     "basiskaart-light"
             "wms_abstract"        "Basiskaart Amsterdam -Light"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_light.xml"
             "wms_format"          "image/png"
@@ -252,7 +252,7 @@ MAP
             "wms_title"           "kbk10-zw"
             "wms_group_title"     "basiskaart-zw"
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_zw.xml"
             "wms_format"          "image/png"
@@ -284,7 +284,7 @@ MAP
             "wms_title"           "bgt"
             "wms_group_title"     "basiskaart"
             "wms_abstract"        "Basiskaart Amsterdam"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
@@ -311,7 +311,7 @@ MAP
             "wms_title"           "bgt-light"
             "wms_group_title"     "basiskaart-light"
             "wms_abstract"        "Basiskaart Amsterdam - Light"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_light.xml"
             "wms_format"          "image/png"
@@ -339,7 +339,7 @@ MAP
             "wms_title"           "bgt-zw"
             "wms_group_title"     "basiskaart-zw"
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
-            "wms_srs"             "EPSG:3857"
+            "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
             "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_zw.xml"
             "wms_format"          "image/png"
@@ -371,7 +371,7 @@ MAP
            "wms_title"          "tekst"
            "wms_group_title"    "basiskaart"
            "wms_abstract"       "Basiskaart Amsterdam"
-           "wms_srs"            "EPSG:3857"
+           "wms_srs"            "EPSG:3857 EPSG:28992"
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
@@ -398,11 +398,11 @@ MAP
            "wms_title"          "tekst"
            "wms_group_title"    "basiskaart-light"
            "wms_abstract"       "Basiskaart Amsterdam light"
-           "wms_srs"            "EPSG:3857"
+           "wms_srs"            "EPSG:3857 EPSG:28992"
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
-           "wms_transparent"    "true"
+           "wms_transparant"    "true"
            "wms_bgcolor"        "0xFFFFFF"
            "ows_enable_request"  "!GetCapabilities"
         END
@@ -425,7 +425,7 @@ MAP
            "wms_title"          "tekst"
            "wms_group_title"    "basiskaart-zwartwit"
            "wms_abstract"       "Basiskaart Amsterdam zwartwit"
-           "wms_srs"            "EPSG:3857"
+           "wms_srs"            "EPSG:3857 EPSG:28992"
            "wms_name"           "kbk50_label,kbk25_label,kbk10_label,bgt_label"
            "wms_format"         "image/png"
            "wms_server_version" "1.1.1"
