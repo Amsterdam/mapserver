@@ -1266,8 +1266,76 @@ MAP
         PARTIALS       FALSE
       END
     END
-
   END
 
-#==============================================================================
-END
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "raamsluitingstijden"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   40000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+    "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Raamsluitingstijden"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Raamsluitingstijden van de gemeente Amsterdam"
+      "wfs_enable_request"  "none"
+    END
+
+    CLASS
+      NAME "Raamsluitingstijden"
+      STYLE
+        COLOR "#00A03C"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#00A03C"
+        WIDTH        2
+      END
+    END
+
+  END # LAYER
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME            "alcoholverkoopverbodgebied"
+    GROUP           "overlastgebieden"
+    INCLUDE         "connection_dataservices.inc"
+    DATA            "geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id"
+    TYPE            POLYGON
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   40000
+    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "alcoholverkoopverbodgebieden"
+      "ows_group_title"     "overlastgebieden"
+      "ows_abstract"        "Raamsluitingstijden van de gemeente Amsterdam"
+      "wfs_enable_request"  "none"
+    END
+
+    CLASS
+        NAME          "alcoholverkoopverbod"
+        STYLE
+            COLOR        229 0 130
+            OPACITY      20
+        END
+        STYLE
+            OUTLINECOLOR 229 0 130
+            WIDTH        2
+        END
+    END
+  END # LAYER
+END # MAP
