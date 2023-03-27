@@ -15,7 +15,10 @@ MAP
   WEB
     METADATA
       "ows_title"           "Ziekte, plagen, exoten, groen"
-      "ows_abstract"        "Kaart met gegevens over ziekten, plagen en exoten in het groen in de gemeente Amsterdam"
+      "ows_abstract"        "
+                              Kaart met gegevens over ziekten, plagen en exoten in het groen in de gemeente Amsterdam.
+                              Query parameters: 'status':('Niet in beheergebied Gemeente Amsterdam','Eikenprocessierups aanwezig (Urgent)','Gemeld','Eikenprocessierups aanwezig (Laag)','Eikenprocessierups bestreden','Geen Eikenprocessierups aanwezig','Niet bereikbaar voor bestrijding','Eikenprocessierups deels bestreden','Eikenprocessierups aanwezig (Standaard)','all')
+                            "
       "wms_extent"          "100000 450000 150000 500000"
     END
   END
@@ -44,6 +47,12 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
+    VALIDATION
+      "status"            "^[a-zA-Z() ]+$"
+      "default_status"    "all"
+    END
+
+    FILTER ('%status%' eq 'all' OR "[urgentie_status_kaartlaag]" = '%status%')
     LABELITEM               "urgentie_status_kaartlaag"
     CLASSITEM               "urgentie_status_kaartlaag"
 
