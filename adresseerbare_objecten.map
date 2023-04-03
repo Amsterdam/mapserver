@@ -1,0 +1,668 @@
+MAP
+    NAME "adresseerbare_objecten"
+    INCLUDE "header.inc"
+    WEB
+        METADATA
+            "ows_title" "adresseerbare_objecten"
+            "ows_abstract" "adresseerbare_objecten"
+        END
+    END
+
+    # ---------------------- GEBRUIKSDOEL CATEGORIES -----------------------
+    LAYER
+        NAME "verblijfsobjecten_kantoorfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "kantoorfunctie"
+            "default_layertitle" "kantoorfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#ff0000"
+                SIZE 5
+            END
+        END
+    END
+
+
+
+
+    LAYER
+        NAME "verblijfsobjecten_woonfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "woonfunctie"
+            "default_layertitle" "woonfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#ff0000"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_bijeenkomstfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "bijeenkomstfunctie"
+            "default_layertitle" "bijeenkomstfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#924900"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_winkelfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "winkelfunctie"
+            "default_layertitle" "winkelfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#ffff00"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_gezondheidszorgfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "gezondheidszorgfunctie"
+            "default_layertitle" "gezondheidszorgfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#f79646"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_industriefunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "industriefunctie"
+            "default_layertitle" "industriefunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#00b0f0"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_celfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "celfunctie"
+            "default_layertitle" "celfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#00ffff"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_logiesfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "logiesfunctie"
+            "default_layertitle" "logiesfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#0070c0"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_onderwijsfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "onderwijsfunctie"
+            "default_layertitle" "onderwijsfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#ff33cc"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_sportfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "sportfunctie"
+            "default_layertitle" "sportfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#92d050"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_overige_gebruiksfunctie"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_gebruiksdoel"
+        VALIDATION
+            "default_gebruiksdoel" "overige gebruiksfunctie"
+            "default_layertitle" "overige gebruiksfunctie"
+            "default_grouptitle" "gebruiksdoel"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#dcb9aa"
+                SIZE 5
+            END
+        END
+    END
+
+
+    LAYER
+        NAME "standplaatsen_kantoorfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "kantoorfunctie"
+            "default_layertitle" "kantoorfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#7030a0"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_woonfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "woonfunctie"
+            "default_layertitle" "woonfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#ff0000"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_bijeenkomstfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "bijeenkomstfunctie"
+            "default_layertitle" "bijeenkomstfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#924900"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_winkelfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "winkelfunctie"
+            "default_layertitle" "winkelfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#ffff00"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_gezondheidszorgfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "gezondheidszorgfunctie"
+            "default_layertitle" "gezondheidszorgfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#f79646"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_industriefunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "industriefunctie"
+            "default_layertitle" "industriefunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#00b0f0"
+            END
+        END
+        
+    END
+    LAYER
+        NAME "standplaatsen_celfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "celfunctie"
+            "default_layertitle" "celfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#00ffff"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_logiesfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "logiesfunctie"
+            "default_layertitle" "logiesfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#0070c0"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_onderwijsfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "onderwijsfunctie"
+            "default_layertitle" "onderwijsfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#ff33cc"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_sportfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "sportfunctie"
+            "default_layertitle" "sportfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#92d050"
+            END
+        END
+    END
+
+    LAYER
+        NAME "standplaatsen_overige_gebruiksfunctie"
+        INCLUDE "adresseerbare_objecten/standplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "overige gebruiksfunctie"
+            "default_layertitle" "overige gebruiksfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#dcb9aa"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_kantoorfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "kantoorfunctie"
+            "default_layertitle" "kantoorfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#7030a0"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_woonfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "woonfunctie"
+            "default_layertitle" "woonfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#ff0000"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_bijeenkomstfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "bijeenkomstfunctie"
+            "default_layertitle" "bijeenkomstfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#924900"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_winkelfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "winkelfunctie"
+            "default_layertitle" "winkelfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#ffff00"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_gezondheidszorgfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "gezondheidszorgfunctie"
+            "default_layertitle" "gezondheidszorgfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#f79646"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_industriefunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "industriefunctie"
+            "default_layertitle" "industriefunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#00b0f0"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_celfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "celfunctie"
+            "default_layertitle" "celfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#00ffff"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_logiesfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "logiesfunctie"
+            "default_layertitle" "logiesfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#0070c0"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_onderwijsfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "onderwijsfunctie"
+            "default_layertitle" "onderwijsfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#ff33cc"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_sportfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "sportfunctie"
+            "default_layertitle" "sportfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#92d050"
+            END
+        END
+    END
+
+    LAYER
+        NAME "ligplaatsen_overige_gebruiksfunctie"
+        INCLUDE "adresseerbare_objecten/ligplaatsen.inc"
+        VALIDATION
+            "default_gebruiksdoel" "overige gebruiksfunctie"
+            "default_layertitle" "overige gebruiksfunctie"
+        END
+        CLASS
+            STYLE
+                COLOR "#dcb9aa"
+            END
+        END
+    END
+
+    # -------------------------- STATUS CATEGORIES -----------------------
+
+    LAYER
+        NAME "verblijfsobjecten_verblijfsobject_ten_onrechte_opgevoerd"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Verblijfsobject ten onrechte opgevoerd"
+            "default_layertitle" "Verblijfsobject ten onrechte opgevoerd"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#ff0000"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_verblijfsobject_in_gebruik"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Verblijfsobject in gebruik"
+            "default_layertitle" "Verblijfsobject in gebruik"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "vierkant"
+                COLOR "#7030a0"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_verblijfsobject_gevormd"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Verblijfsobject gevormd"
+            "default_layertitle" "Verblijfsobject gevormd"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "vierkant"
+                ANGLE 45
+                COLOR "#924900"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_niet_gerealiseerd_verblijfsobject"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Niet gerealiseerd verblijfsobject"
+            "default_layertitle" "Niet gerealiseerd verblijfsobject"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#ffff00"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_verblijfsobject_ingetrokken"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Verblijfsobject ingetrokken"
+            "default_layertitle" "Verblijfsobject ingetrokken"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#00b0f0"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_verblijfsobject_in_gebruik_niet_ingemeten"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" " Verblijfsobject in gebruik (niet ingemeten)"
+            "default_layertitle" " Verblijfsobject in gebruik (niet ingemeten)"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "stip"
+                COLOR "#0070c0"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_verblijfsobject_buiten_gebruik"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Verblijfsobject buiten gebruik"
+            "default_layertitle" "Verblijfsobject buiten gebruik"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "rechthoek"
+                COLOR "#ff33cc"
+                SIZE 5
+            END
+        END
+    END
+
+    LAYER
+        NAME "verblijfsobjecten_verbouwing_verblijfsobject"
+        INCLUDE "adresseerbare_objecten/verblijfsobjecten.inc"
+        GROUP "verblijfsobjecten_status"
+        VALIDATION
+            "default_status" "Verbouwing verblijfsobject"
+            "default_layertitle" " Verbouwing verblijfsobject"
+            "default_grouptitle" "status"
+        END
+        CLASS
+            STYLE
+                SYMBOL "pentagon"
+                COLOR "#f79646"
+                SIZE 5
+            END
+        END
+    END
+END
