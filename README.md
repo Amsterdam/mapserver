@@ -35,19 +35,17 @@ De Postgres database is te bereiken op tcp://localhost:5403
 
 De laatste versie van de database kan opgehaald worden met:
 
-	docker-compose exec database update-db.sh nap
-	docker-compose exec database update-db.sh milieuthemas
-	docker-compose exec database update-db.sh bag_v11
-	docker-compose exec database update-db.sh handelsregister
-	docker-compose exec database update-db.sh monumenten
-	docker-compose exec database update-db.sh overlastgebieden
-	docker-compose exec database update-db.sh dataselectie
-	docker-compose exec database update-db.sh various_small_datasets
-	docker-compose exec database update-db.sh afvalcontainers
-	docker-compose exec database update-db.sh dataservices
+    datasets="nap milieuthemas bag_v11 handelsregister monumenten overlastgebieden
+        dataselectie various_small_datasets afvalcontainers dataservices"
+
+    mkdir tmpdata
+    for dataset in $datasets; do
+        (cd tmpdata && curl -O https://admin.data.amsterdam.nl/postgres/${dataset}_latest.gz)
+        docker cp tmpdata/${dataset}_latest.gz mapserver_database_1:/tmp
+        docker-compose exec database update-db.sh $dataset
+    done
 
 
-	
 De maps zijn te benaderen vanuit QGis: maak een WMS connectie met de url <http://localhost:8383/maps/YOURMAPFILE>
 b.v. http://localhost:8383/maps/monumenten
 
