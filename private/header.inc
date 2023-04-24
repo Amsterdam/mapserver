@@ -1,13 +1,6 @@
 #==============================================================================
 #
-# header.map
 # doel: algemene header-informatie dat voor alle map-bestanden gelijk is.
-#
-#==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# Rob Kromwijk          07-09-2015    schepping
 #
 #==============================================================================
 
@@ -59,8 +52,8 @@
       # verplicht om aan de OGC standaard te voldoen:
       "ows_contactorganization"      "gemeente Amsterdam"
       "ows_contactperson"            "Basisinformatie"
-
     END
+
     IMAGEPATH                        "/srv/mapserver/tmp_img/"
     IMAGEURL                         "/ms_tmp/"
     BROWSEFORMAT                     "image/svg+xml"
@@ -84,14 +77,14 @@
   # UITVOERFORMATEN
   #-------------------------------------------------------------------
 
-OUTPUTFORMAT
-   NAME           png
-   DRIVER         "AGG/PNG"
-   MIMETYPE       "image/png"
-   IMAGEMODE      RGB
-   EXTENSION      "png"
-   FORMATOPTION   "INTERLACE=OFF"
-   FORMATOPTION   "QUANTIZE_FORCE=ON"
+  OUTPUTFORMAT
+    NAME           png
+    DRIVER         "AGG/PNG"
+    MIMETYPE       "image/png"
+    IMAGEMODE      RGB
+    EXTENSION      "png"
+    FORMATOPTION   "INTERLACE=OFF"
+    FORMATOPTION   "QUANTIZE_FORCE=ON"
   END
 
   OUTPUTFORMAT
@@ -145,7 +138,6 @@ OUTPUTFORMAT
     IMAGEMODE   RGB
     EXTENSION   "kmz"
   END
-
 
   OUTPUTFORMAT
     NAME           shapezip
