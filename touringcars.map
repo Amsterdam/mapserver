@@ -37,7 +37,7 @@ MAP
     PROJECTION      "init=epsg:28992"
   END
 
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.touringcars_doorrijhoogtes USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
@@ -95,7 +95,7 @@ MAP
     PROJECTION      "init=epsg:28992"
   END
 
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.touringcars_wegwerkzaamheden USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
@@ -156,7 +156,7 @@ MAP
     PROJECTION      "init=epsg:28992"
   END
 
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.touringcars_parkeerplaatsen USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
@@ -217,7 +217,7 @@ MAP
     PROJECTION      "init=epsg:28992"
   END
 
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.touringcars_haltes USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
@@ -278,7 +278,7 @@ MAP
     PROJECTION      "init=epsg:28992"
   END
 
-    INCLUDE         "connection_dataservices.inc"   
+    INCLUDE         "connection/dataservices.inc"   
     DATA            "geometry FROM public.touringcars_aanbevolenroutes USING srid=28992 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   10
@@ -346,7 +346,7 @@ MAP
     PROJECTION      "init=epsg:28992"
   END
 
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.touringcars_verplichteroutes USING srid=28992 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   10

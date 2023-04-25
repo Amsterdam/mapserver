@@ -28,7 +28,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_various_small_datasets.inc"
+    INCLUDE                 "connection/various_small_datasets.inc"
     DATA                    "cluster_geometrie FROM afval_cluster USING srid=28992 USING UNIQUE cluster_id"
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -92,7 +92,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_various_small_datasets.inc"
+    INCLUDE                 "connection/various_small_datasets.inc"
     DATA                    "container_geometrie FROM  public.afval_container  USING srid=28992 USING UNIQUE container_id"
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -157,7 +157,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_various_small_datasets.inc"
+    INCLUDE                 "connection/various_small_datasets.inc"
     DATA                    "weging_geometrie FROM  public.afval_weging  USING srid=28992 USING UNIQUE weging_id"
     TYPE                    POINT
     MINSCALEDENOM           10

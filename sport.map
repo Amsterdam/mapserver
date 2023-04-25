@@ -36,7 +36,7 @@ MAP
   
     LAYER
         NAME            "zwembaden"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_zwembad USING srid=28992 USING UNIQUE id"
         TYPE            POINT        
 
@@ -61,7 +61,7 @@ MAP
   
     LAYER
         NAME            "hardlooproutes"       
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_hardlooproute USING srid=28992 USING UNIQUE id"
         TYPE            LINE      
     
@@ -91,7 +91,7 @@ MAP
   
     LAYER
         NAME            "openbaresportplekken"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_openbaresportplek USING srid=28992 USING UNIQUE id"
         TYPE            POINT
        
@@ -116,7 +116,7 @@ MAP
   
     LAYER
         NAME            "sportaanbieders"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_sportaanbieder USING srid=28992 USING UNIQUE id"
         TYPE            POINT
           
@@ -141,7 +141,7 @@ MAP
   
     LAYER
         NAME            "sportparken"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_sportpark USING srid=28992 USING UNIQUE id"
         TYPE            POLYGON
       
@@ -171,7 +171,7 @@ MAP
   
     LAYER
         NAME            "sportvelden"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_sportveld USING srid=28992 USING UNIQUE id"
         TYPE            POLYGON
                
@@ -202,7 +202,7 @@ MAP
   
     LAYER
         NAME            "sporthallen"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.sport_sporthal USING srid=28992 USING UNIQUE id"
         TYPE            POINT
        

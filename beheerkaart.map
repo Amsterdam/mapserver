@@ -38,7 +38,7 @@ MAP
 	LAYER
 		NAME                    belast
 		GROUP                   bgt
-		INCLUDE                 "connection_dataservices.inc"
+		INCLUDE                 "connection/dataservices.inc"
 		# Let op: Hier wordt geselecteerd op bgt_fysiekvoorkomen!=erf. (Zie opmerking bovenaan)
 		DATA                    "geometrie FROM (SELECT * FROM public.beheerkaart_basis_kaart WHERE agg_indicatie_belast_recht = true AND objecteindtijd is NULL AND bgt_fysiekvoorkomen != 'erf') as SUBQUERY USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
@@ -129,7 +129,7 @@ MAP
 	LAYER
 		NAME                    onbelast
 		GROUP                   bgt
-		INCLUDE                 "connection_dataservices.inc"
+		INCLUDE                 "connection/dataservices.inc"
 		DATA                    "geometrie FROM (SELECT * FROM public.beheerkaart_basis_kaart WHERE agg_indicatie_belast_recht = false AND objecteindtijd is NULL) as SUBQUERY USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "agg_aard_zakelijk_recht_code"

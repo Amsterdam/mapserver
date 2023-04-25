@@ -30,7 +30,7 @@ MAP
   LAYER
     NAME            "meetbouten_status"
     GROUP           "meetbouten"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -83,7 +83,7 @@ MAP
   LAYER
     NAME            "meetbouten_labels"
     GROUP           "meetbouten"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -146,7 +146,7 @@ MAP
   LAYER
     NAME            "meetbout_zaksnelheid"
     GROUP           "meetbouten_zaksnelheid"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -295,7 +295,7 @@ MAP
   LAYER
     NAME            "referentiepunt"
     GROUP           "referentiepunten"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -333,7 +333,7 @@ MAP
   LAYER
     NAME            "referentiepunt_label"
     GROUP           "referentiepunten"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100

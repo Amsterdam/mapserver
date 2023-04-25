@@ -23,7 +23,7 @@ MAP
 
   LAYER
     NAME                    "historische_onderzoeken"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
     PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POLYGON
@@ -958,7 +958,7 @@ MAP
   # ------------------------- RIOOLKNOPEN ---------------------------[
   LAYER
     NAME                    "rioolknopen"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM leidingeninfrastructuur_waternet_rioolknopen USING srid=7415 USING UNIQUE id"
     PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POINT

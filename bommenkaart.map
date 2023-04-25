@@ -31,7 +31,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_bommenkaart_bominslag_point USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MAXSCALEDENOM           400000
@@ -161,7 +161,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_bommenkaart_verdachtgebied_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
@@ -255,7 +255,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_bommenkaart_gevrijwaardgebied_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
@@ -307,7 +307,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_bommenkaart_uitgevoerdonderzoek_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000

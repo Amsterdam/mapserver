@@ -65,61 +65,63 @@ DATASERVICES_DB_PASSWORD=${DATASERVICES_DB_PASSWORD:-insecure}
 
 echo Creating configuration files
 
-cat > /srv/mapserver/connection_bag.inc <<EOF
+mkdir -p /srv/mapserver/connection
+
+cat > /srv/mapserver/connection/bag.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${BAG_V11_DB_HOST} dbname=${BAG_V11_DB_NAME} user=${BAG_V11_DB_USER} password=${BAG_V11_DB_PASSWORD} port=${BAG_V11_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_nap.inc <<EOF
+cat > /srv/mapserver/connection/nap.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${NAP_DB_HOST} dbname=${NAP_DB_NAME} user=${NAP_DB_USER} password=${NAP_DB_PASSWORD} port=${NAP_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_milieu.inc <<EOF
+cat > /srv/mapserver/connection/milieu.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${MILIEUTHEMAS_DB_HOST} dbname=${MILIEUTHEMAS_DB_NAME} user=${MILIEUTHEMAS_DB_USER} password=${MILIEUTHEMAS_DB_PASSWORD} port=${MILIEUTHEMAS_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_panorama.inc <<EOF
+cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=${PANORAMA_DB_PASSWORD} port=${PANORAMA_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_monumenten.inc <<EOF
+cat > /srv/mapserver/connection/monumenten.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${MONUMENTEN_DB_HOST} dbname=${MONUMENTEN_DB_NAME} user=${MONUMENTEN_DB_USER} password=${MONUMENTEN_DB_PASSWORD} port=${MONUMENTEN_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_basiskaart.inc <<EOF
+cat > /srv/mapserver/connection/basiskaart.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${BASISKAART_DB_HOST} dbname=${BASISKAART_DB_NAME} user=${BASISKAART_DB_USER} password=${BASISKAART_DB_PASSWORD} port=${BASISKAART_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_handelsregister.inc <<EOF
+cat > /srv/mapserver/connection/handelsregister.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${HANDELSREGISTER_DB_HOST} dbname=${HANDELSREGISTER_DB_NAME} user=${HANDELSREGISTER_DB_USER} password=${HANDELSREGISTER_DB_PASSWORD} port=${HANDELSREGISTER_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_dataselectie.inc <<EOF
+cat > /srv/mapserver/connection/dataselectie.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${DATASELECTIE_DB_HOST} dbname=${DATASELECTIE_DB_NAME} user=${DATASELECTIE_DB_USER} password=${DATASELECTIE_DB_PASSWORD} port=${DATASELECTIE_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_various_small_datasets.inc <<EOF
+cat > /srv/mapserver/connection/various_small_datasets.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${VARIOUS_SMALL_DATASETS_DB_HOST} dbname=${VARIOUS_SMALL_DATASETS_DB_NAME} user=${VARIOUS_SMALL_DATASETS_DB_USER} password=${VARIOUS_SMALL_DATASETS_DB_PASSWORD} port=${VARIOUS_SMALL_DATASETS_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
-cat > /srv/mapserver/connection_dataservices.inc <<EOF
+cat > /srv/mapserver/connection/dataservices.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${DATASERVICES_DB_USER} password=${DATASERVICES_DB_PASSWORD} port=${DATASERVICES_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"

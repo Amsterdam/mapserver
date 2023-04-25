@@ -68,7 +68,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_wateroppervlak\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
     PROJECTION
@@ -96,7 +96,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_agrarisch\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     PROJECTION
@@ -123,7 +123,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_overig\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     PROJECTION
@@ -150,7 +150,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_bedrijfsterrein_dienstverlening\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     PROJECTION
@@ -183,7 +183,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_bos_groen_sport\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
     PROJECTION
@@ -210,7 +210,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"TRN_zand\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     PROJECTION
@@ -237,7 +237,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"GBW_bebouwing\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE POLYGON
     PROJECTION
@@ -274,7 +274,7 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"GBW_kassen\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     PROJECTION
@@ -301,7 +301,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           50000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_brede_waterloop\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -332,7 +332,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           50000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WDL_smalle_waterloop\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -362,7 +362,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           75000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
@@ -412,7 +412,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -477,7 +477,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -542,7 +542,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -592,7 +592,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -634,7 +634,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -709,7 +709,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           75000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
@@ -751,7 +751,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
@@ -804,7 +804,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -857,7 +857,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           75000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_straat\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -899,7 +899,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_hoofdweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -952,7 +952,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_regionale_weg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1028,7 +1028,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1063,7 +1063,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1095,7 +1095,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1129,7 +1129,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein_in_tunnel\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1163,7 +1163,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
@@ -1193,7 +1193,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           25000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_metro_sneltram\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
@@ -1227,7 +1227,7 @@ MAP
   #  GROUP                   "lijnen"
   #  MAXSCALEDENOM           25000
   #  MINSCALEDENOM           20000
-  #  INCLUDE                 "connection_basiskaart.inc"
+  #  INCLUDE                 "connection/basiskaart.inc"
   #  DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
   #  TYPE                    LINE
   #  PROJECTION
@@ -1252,7 +1252,7 @@ MAP
   #  GROUP                   "lijnen"
   #  MAXSCALEDENOM           25000
   #  MINSCALEDENOM           20000
-  #  INCLUDE                 "connection_basiskaart.inc"
+  #  INCLUDE                 "connection/basiskaart.inc"
   #  DATA                    "geom FROM kbk50.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
   #  TYPE LINE
   #  PROJECTION
@@ -1281,7 +1281,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM            20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1323,7 +1323,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           100000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"SBL_trein\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1371,7 +1371,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE LINE
     PROJECTION
@@ -1435,7 +1435,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION
@@ -1499,7 +1499,7 @@ MAP
     GROUP                   "lijnen"
     MAXSCALEDENOM           300000
     MINSCALEDENOM           20000
-    INCLUDE                 "connection_basiskaart.inc"
+    INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geom FROM kbk50.\"WGL_autosnelweg\" USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    LINE
     PROJECTION

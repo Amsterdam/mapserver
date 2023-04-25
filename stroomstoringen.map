@@ -20,7 +20,7 @@ MAP
 
   LAYER
         NAME            "stroomstoring onopgelost"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.stroomstoringen_stroomstoringen USING srid=28992 USING UNIQUE id"
         TYPE            POLYGON
 
@@ -52,7 +52,7 @@ MAP
 
   LAYER
         NAME            "stroomstoring opgelost"
-        INCLUDE         "connection_dataservices.inc"
+        INCLUDE         "connection/dataservices.inc"
         DATA            "geometry FROM public.stroomstoringen_stroomstoringen USING srid=28992 USING UNIQUE id"
         TYPE            POLYGON
 

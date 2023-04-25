@@ -29,7 +29,7 @@ MAP
     LAYER
     NAME            "algemeen_overlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -68,7 +68,7 @@ MAP
   LAYER
     NAME            "cameratoezichtgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -107,7 +107,7 @@ MAP
   LAYER
     NAME            "dealeroverlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -146,7 +146,7 @@ MAP
   LAYER
     NAME            "uitgaansoverlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -185,7 +185,7 @@ MAP
   LAYER
     NAME            "alcoholverbodsgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -223,7 +223,7 @@ MAP
   LAYER
     NAME            "straatartiestverbod"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -262,7 +262,7 @@ MAP
   LAYER
     NAME            "taxi-standplaatsgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -301,7 +301,7 @@ MAP
   LAYER
     NAME            "vuurwerkvrijezone"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -340,7 +340,7 @@ MAP
   LAYER
     NAME            "barbecueverbodsgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -379,7 +379,7 @@ MAP
   LAYER
     NAME            "rondleidingverbodsgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -419,7 +419,7 @@ MAP
    LAYER
     NAME            "messenverbodgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -458,7 +458,7 @@ MAP
    LAYER
     NAME            "groepsfietsverbodgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -498,7 +498,7 @@ MAP
   LAYER
     NAME            "algemeen_overlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MAXSCALEDENOM   8000
@@ -561,7 +561,7 @@ MAP
   LAYER
     NAME            "cameratoezichtgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -625,7 +625,7 @@ MAP
   LAYER
     NAME            "dealeroverlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -689,7 +689,7 @@ MAP
   LAYER
     NAME            "uitgaansoverlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -753,7 +753,7 @@ MAP
   LAYER
     NAME            "alcoholverbodsgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -817,7 +817,7 @@ MAP
   LAYER
     NAME            "taxi-standplaatsgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -881,7 +881,7 @@ MAP
   LAYER
     NAME            "vuurwerkvrijezone_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -945,7 +945,7 @@ MAP
   LAYER
     NAME            "barbecueverbodsgebieden_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1011,7 +1011,7 @@ MAP
   LAYER
     NAME            "rondleidingverbodsgebieden_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1077,7 +1077,7 @@ MAP
   LAYER
     NAME            "straatartiestverbod_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1143,7 +1143,7 @@ MAP
   LAYER
     NAME            "messenverbodgebieden_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1209,7 +1209,7 @@ MAP
   LAYER
     NAME            "groepsfietsverbodgebieden_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1273,7 +1273,7 @@ MAP
   LAYER
     NAME            "raamsluitingstijden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -1309,7 +1309,7 @@ MAP
   LAYER
     NAME            "alcoholverkoopverbodgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100

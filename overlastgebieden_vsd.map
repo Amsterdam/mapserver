@@ -23,7 +23,7 @@ MAP
     LAYER
     NAME            "algemeen_overlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='AOG')
     TYPE            POLYGON
@@ -63,7 +63,7 @@ MAP
   LAYER
     NAME            "cameratoezichtgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='CTG')
     TYPE            POLYGON
@@ -103,7 +103,7 @@ MAP
   LAYER
     NAME            "dealeroverlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='DOG')
     TYPE            POLYGON
@@ -143,7 +143,7 @@ MAP
   LAYER
     NAME            "uitgaansoverlastgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='UOG')
     TYPE            POLYGON
@@ -183,7 +183,7 @@ MAP
   LAYER
     NAME            "alcoholverbodsgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='AVG')
     TYPE            POLYGON
@@ -223,7 +223,7 @@ MAP
   LAYER
     NAME            "taxi-standplaatsgebied"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='TAXI')
     TYPE            POLYGON
@@ -263,7 +263,7 @@ MAP
   LAYER
     NAME            "vuurwerkvrijezone"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='VVZ')
     TYPE            POLYGON
@@ -303,7 +303,7 @@ MAP
   LAYER
     NAME            "barbecueverbodsgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='BBQ')
     TYPE            POLYGON
@@ -343,7 +343,7 @@ MAP
   LAYER
     NAME            "rondleidingverbodsgebieden"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='RLV')
     TYPE            POLYGON
@@ -383,7 +383,7 @@ MAP
   LAYER
     NAME            "algemeen_overlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='AOG')
     TYPE            POLYGON
@@ -447,7 +447,7 @@ MAP
   LAYER
     NAME            "cameratoezichtgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='CTG')
     TYPE            POLYGON
@@ -512,7 +512,7 @@ MAP
   LAYER
     NAME            "dealeroverlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='DOG')
     TYPE            POLYGON
@@ -577,7 +577,7 @@ MAP
   LAYER
     NAME            "uitgaansoverlastgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='UOG')
     TYPE            POLYGON
@@ -642,7 +642,7 @@ MAP
   LAYER
     NAME            "alcoholverbodsgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='AVG')
     TYPE            POLYGON
@@ -707,7 +707,7 @@ MAP
   LAYER
     NAME            "taxi-standplaatsgebied_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='TAXI')
     TYPE            POLYGON
@@ -772,7 +772,7 @@ MAP
   LAYER
     NAME            "vuurwerkvrijezone_label"
     GROUP           "overlastgebieden"
-    INCLUDE         "connection_various_small_datasets.inc"
+    INCLUDE         "connection/various_small_datasets.inc"
     DATA            "wkb_geometry FROM public.overlastgebieden USING srid=28992 USING UNIQUE ogc_fid"
     FILTER          ([type]='VVZ')
     TYPE            POLYGON

@@ -42,7 +42,7 @@ MAP
   LAYER
     NAME                    "container_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([status] = 1)
     TYPE                    POINT
@@ -107,7 +107,7 @@ MAP
   LAYER
     NAME                    "gfe_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'GFT' AND [status] = 1)
     TYPE                    POINT
@@ -170,7 +170,7 @@ MAP
   LAYER
     NAME                    "kca_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'KCA' AND [status] = 1)
     TYPE                    POINT
@@ -236,7 +236,7 @@ MAP
   LAYER
     NAME                    "textiel_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=4326 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Textiel' AND [status] = 1)
     TYPE                    POINT
@@ -300,7 +300,7 @@ MAP
   LAYER
     NAME                    "papier_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Papier' AND [status] = 1)
     TYPE                    POINT
@@ -363,7 +363,7 @@ MAP
   LAYER
     NAME                    "glas_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Glas' AND [status] = 1)
     TYPE                    POINT
@@ -427,7 +427,7 @@ MAP
   LAYER
     NAME                    "plastic_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Plastic' AND [status] = 1)
     TYPE                    POINT
@@ -491,7 +491,7 @@ MAP
   LAYER
     NAME                    "rest_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Rest' AND [status] = 1)
     TYPE                    POINT
@@ -554,7 +554,7 @@ MAP
   LAYER
     NAME                    "brood_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Brood' AND [status] = 1)
     TYPE                    POINT
@@ -617,7 +617,7 @@ MAP
   LAYER
     NAME                    "PMD_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'PMD' AND [status] = 1)
     TYPE                    POINT
@@ -680,7 +680,7 @@ MAP
   LAYER
     NAME                    "grof_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Grof' AND [status] = 1)
     TYPE                    POINT
@@ -743,7 +743,7 @@ MAP
   LAYER
     NAME                    "onbekend_coordinaten"
     GROUP                   "afvalcontainers"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'onbekend' AND [status] = 1)
     TYPE                    POINT
@@ -806,7 +806,7 @@ MAP
   LAYER
     NAME                    "wegingen_rest"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 select * from
                                 public.huishoudelijkafval_weging
@@ -997,7 +997,7 @@ MAP
   LAYER
     NAME                    "wegingen_glas"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 select * from
                                 public.huishoudelijkafval_weging
@@ -1189,7 +1189,7 @@ MAP
   LAYER
     NAME                    "wegingen_papier"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
@@ -1378,7 +1378,7 @@ MAP
   LAYER
     NAME                    "wegingen_plastic"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                select * from
                                 public.huishoudelijkafval_weging
@@ -1567,7 +1567,7 @@ MAP
   LAYER
     NAME                    "wegingen_textiel"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
@@ -1756,7 +1756,7 @@ MAP
   LAYER
     NAME                    "wegingen_grof"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
@@ -1945,7 +1945,7 @@ MAP
   LAYER
     NAME                    "wegingen_PMD"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
@@ -2135,7 +2135,7 @@ MAP
   LAYER
     NAME                    "wegingen_brood"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
@@ -2325,7 +2325,7 @@ MAP
   LAYER
     NAME                    "wegingen_onbekend"
     GROUP                   "kilogram"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
@@ -2514,7 +2514,7 @@ MAP
   LAYER
     NAME                    "pand loopafstand rest"
     GROUP                   "pand_loopafstand"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM ( 
                             SELECT bol.id
                             , bol.geometrie
@@ -2681,7 +2681,7 @@ MAP
   LAYER
     NAME                    "pand loopafstand papier"
     GROUP                   "pand_loopafstand"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM ( 
                             SELECT bol.id
                             , bol.geometrie
@@ -2848,7 +2848,7 @@ MAP
   LAYER
     NAME                    "pand loopafstand glas"
     GROUP                   "pand_loopafstand"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM ( 
                             SELECT bol.id
                             , bol.geometrie
@@ -3015,7 +3015,7 @@ MAP
   LAYER
     NAME                    "pand loopafstand plastic"
     GROUP                   "pand_loopafstand"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM ( 
                             SELECT bol.id
                             , bol.geometrie
@@ -3182,7 +3182,7 @@ MAP
   LAYER
     NAME                    "pand loopafstand textiel"
     GROUP                   "pand_loopafstand"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM ( 
                             SELECT bol.id
                             , bol.geometrie

@@ -25,7 +25,7 @@ MAP
 
   LAYER
     NAME                    "grondmonsters"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometry FROM public.bodem_grond USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MAXSCALEDENOM           10000
@@ -89,7 +89,7 @@ MAP
 
   LAYER
     NAME                    "grondwatermonsters"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometry FROM public.bodem_grondwater USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -152,7 +152,7 @@ MAP
 
   LAYER
     NAME                    "asbest"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometry FROM public.bodem_asbest USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MAXSCALEDENOM           10000
