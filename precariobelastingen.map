@@ -27,7 +27,7 @@ MAP
 
   LAYER
     NAME            "precariobelastinggebieden_bedrijfsvaartuigen"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_bedrijfsvaartuigen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -99,7 +99,7 @@ MAP
 
   LAYER
     NAME            "precariobelastinggebieden_passagiersvaartuigen"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_passagiersvaartuigen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -202,7 +202,7 @@ MAP
 
   LAYER
     NAME            "precariobelastinggebieden_woonschepen"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_woonschepen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -306,7 +306,7 @@ MAP
 
   LAYER
     NAME            "precariobelastinggebieden_terrassen"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.precariobelasting_terrassen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100

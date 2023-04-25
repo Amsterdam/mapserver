@@ -17,7 +17,7 @@ MAP
 
   LAYER
     NAME            "blackspots"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometry FROM public.blackspots_blackspots USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100

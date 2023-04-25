@@ -24,7 +24,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_various_small_datasets.inc"
+    INCLUDE                 "connection/various_small_datasets.inc"
     DATA                    "geo FROM public.omzettingen_quotum USING srid=28992 USING UNIQUE wijk"
     TYPE                    POLYGON
     MINSCALEDENOM           10

@@ -29,7 +29,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_monumenten.inc"
+    INCLUDE                 "connection/monumenten.inc"
     DATA                    "monumentcoordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -95,7 +95,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_monumenten.inc"
+    INCLUDE                 "connection/monumenten.inc"
     DATA                    "monumentcoordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10

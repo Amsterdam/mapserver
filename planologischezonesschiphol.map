@@ -24,7 +24,7 @@ MAP
 
   LAYER
     NAME                    "maatgevendetoetshoogteschiphol"
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_schiphol_maatgevendetoetshoogte_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -169,7 +169,7 @@ MAP
 
   LAYER
     NAME                    "toetshoogteradarschiphol"
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_schiphol_hoogtebeperkingradar_polygon USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -314,7 +314,7 @@ MAP
 
   LAYER
     NAME                    "geluidszoneschiphol"
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_schiphol_geluidzone USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -366,7 +366,7 @@ MAP
 
   LAYER
     NAME                    "vogelvrijwaringsgebiedschiphol"
-    INCLUDE                 "connection_milieu.inc"
+    INCLUDE                 "connection/milieu.inc"
     DATA                    "geometrie FROM public.geo_schiphol_vogelvrijwaringsgebied USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"

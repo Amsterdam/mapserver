@@ -26,7 +26,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM varen_ligplaats USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -123,7 +123,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM varen_opafstapplaats USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10

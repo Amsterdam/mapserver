@@ -164,7 +164,7 @@ MAP
 	LAYER 
 		NAME 		put
 		GROUP 		put
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -236,7 +236,7 @@ MAP
 	LAYER 
 		NAME 		put_kolk
 		GROUP 		put
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -308,7 +308,7 @@ MAP
 	LAYER 
 		NAME 		afvalbak
 		GROUP 		afvalbak
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -380,7 +380,7 @@ MAP
 	LAYER 
 		NAME 		bord
 		GROUP 		bord
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -452,7 +452,7 @@ MAP
 	LAYER 
 		NAME 		kast
 		GROUP 		kast
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -524,7 +524,7 @@ MAP
 	LAYER 
 		NAME 		mast
 		GROUP 		mast
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -554,7 +554,7 @@ MAP
 	LAYER 
 		NAME 		scheiding_l
 		GROUP 		scheiding
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		LINE
@@ -585,7 +585,7 @@ MAP
 	LAYER 
 		NAME 		scheiding_v
 		GROUP 		scheiding
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POLYGON
@@ -618,7 +618,7 @@ MAP
 	LAYER 
 		NAME 		paal
 		GROUP 		paal
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -647,7 +647,7 @@ MAP
 	LAYER 
 		NAME 		lichtmast
 		GROUP 		paal
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -722,7 +722,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -792,7 +792,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_reclamezuil
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -862,7 +862,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_abri
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -932,7 +932,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_kunst
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1002,7 +1002,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_herdenkingsmonument
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1072,7 +1072,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_openbaartoilet
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1144,7 +1144,7 @@ MAP
 	LAYER 
 		NAME 		sensor
 		GROUP 		sensor
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1174,7 +1174,7 @@ MAP
 	LAYER 
 		NAME 		vegetatie_p
 		GROUP 		vegetatie
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1245,7 +1245,7 @@ MAP
 	LAYER 
 		NAME 		vegetatie_l
 		GROUP 		vegetatie
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		LINE
@@ -1275,7 +1275,7 @@ MAP
 	LAYER 
 		NAME 		vegetatie_v
 		GROUP 		vegetatie
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POLYGON
@@ -1305,7 +1305,7 @@ MAP
 	LAYER 
 		NAME 		onbekend
 		GROUP 		onbekend
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1353,7 +1353,7 @@ MAP
 	LAYER 
 		NAME 		put1
 		GROUP 		put
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1423,7 +1423,7 @@ MAP
 	LAYER 
 		NAME 		put_kolk1
 		GROUP 		put
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1495,7 +1495,7 @@ MAP
 	LAYER 
 		NAME 		afvalbak1
 		GROUP 		afvalbak
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1567,7 +1567,7 @@ MAP
 	LAYER 
 		NAME 		bord1
 		GROUP 		bord
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1639,7 +1639,7 @@ MAP
 	LAYER 
 		NAME 		kast1
 		GROUP 		kast
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1711,7 +1711,7 @@ MAP
 	LAYER 
 		NAME 		mast1
 		GROUP 		mast
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1741,7 +1741,7 @@ MAP
 	LAYER 
 		NAME 		scheiding_l1
 		GROUP 		scheiding
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		LINE
@@ -1772,7 +1772,7 @@ MAP
 	LAYER 
 		NAME 		scheiding_v1
 		GROUP 		scheiding
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POLYGON
@@ -1805,7 +1805,7 @@ MAP
 	LAYER 
 		NAME 		paal1
 		GROUP 		paal
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1834,7 +1834,7 @@ MAP
 	LAYER 
 		NAME 		lichtmast1
 		GROUP 		paal
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1909,7 +1909,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair1
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -1979,7 +1979,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_reclamezuil1
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2049,7 +2049,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_abri1
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2119,7 +2119,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_kunst1
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2189,7 +2189,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_herdenkingsmonument1
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2259,7 +2259,7 @@ MAP
 	LAYER 
 		NAME 		straatmeubilair_openbaartoilet1
 		GROUP 		straatmeubilair
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2331,7 +2331,7 @@ MAP
 	LAYER 
 		NAME 		sensor1
 		GROUP 		sensor
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2361,7 +2361,7 @@ MAP
 	LAYER 
 		NAME 		vegetatie_p1
 		GROUP 		vegetatie
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT
@@ -2432,7 +2432,7 @@ MAP
 	LAYER 
 		NAME 		vegetatie_l1
 		GROUP 		vegetatie
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		LINE
@@ -2462,7 +2462,7 @@ MAP
 	LAYER 
 		NAME 		vegetatie_v1
 		GROUP 		vegetatie
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POLYGON
@@ -2492,7 +2492,7 @@ MAP
 	LAYER 
 		NAME 		onbekend1
 		GROUP 		onbekend
-		INCLUDE 	"connection_basiskaart.inc"
+		INCLUDE 	"connection/basiskaart.inc"
 		DATA		"geometrie FROM bgt.inrichtingselement_punt1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		PROCESSING 	"CLOSE_CONNECTION=DEFER"
 		TYPE		POINT

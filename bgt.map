@@ -31,7 +31,7 @@ MAP
 	LAYER
 		NAME                    waterdeel_vlak0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.waterdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -64,7 +64,7 @@ MAP
 	LAYER
 		NAME                    terreindeel_vlak0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_fysiekvoorkomen"
@@ -164,7 +164,7 @@ MAP
 	LAYER
 		NAME                    spoorbaan_overbrugging
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.\"BGT_ODL_overbruggingsdeel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -192,7 +192,7 @@ MAP
 	LAYER
 		NAME                    berm_achter_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -239,7 +239,7 @@ MAP
 	LAYER
 		NAME                    berm_voor_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -278,7 +278,7 @@ MAP
 	LAYER
 			NAME                    rijbanen_achter_0
 			GROUP                   hoogte0
-			INCLUDE                 "connection_basiskaart.inc"
+			INCLUDE                 "connection/basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			TYPE                    POLYGON
 			CLASSITEM               "bgt_functie"
@@ -312,7 +312,7 @@ MAP
 	LAYER
 		NAME                    rijbanen_voor_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -350,7 +350,7 @@ MAP
 	LAYER
 		NAME                    voetganers_achter_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -384,7 +384,7 @@ MAP
 	LAYER
 		NAME                    voetgangers_voor_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -414,7 +414,7 @@ MAP
 	LAYER
 		NAME                    inrichtingselement_vlak0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.inrichtingselement_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -479,7 +479,7 @@ MAP
 	LAYER
 		NAME                    gebouw_vlak0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -547,7 +547,7 @@ MAP
 	LAYER
 		NAME                    metro_achter0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -589,7 +589,7 @@ MAP
 	LAYER
 		NAME                    metro_voor0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -640,7 +640,7 @@ MAP
 	LAYER
 		NAME                    tram0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -683,7 +683,7 @@ MAP
 	LAYER
 		NAME                    trein_achter0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -725,7 +725,7 @@ MAP
 	LAYER
 		NAME                    trein_voor0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -776,7 +776,7 @@ MAP
 	LAYER
 		NAME                    snelweg_achter_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
@@ -809,7 +809,7 @@ MAP
 	LAYER
 		NAME                    snelweg_voor_0
 		GROUP                   hoogte0
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak0 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
@@ -837,7 +837,7 @@ MAP
    LAYER
      NAME            "ligplaats"
      GROUP           "hoogte0"
-     INCLUDE         "connection_bag.inc"
+     INCLUDE         "connection/bag.inc"
      DATA            "geometrie FROM public.bag_ligplaats USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
@@ -867,7 +867,7 @@ MAP
    LAYER
      NAME            "standplaats"
      GROUP           "hoogte0"
-     INCLUDE         "connection_bag.inc"
+     INCLUDE         "connection/bag.inc"
      DATA            "geometrie FROM public.bag_standplaats USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
@@ -905,7 +905,7 @@ MAP
 	LAYER
 		NAME                    wegdeel_vlak_tunnel
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -934,7 +934,7 @@ MAP
 	LAYER
 		NAME                    terreindeel_vlak1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_fysiekvoorkomen"
@@ -1034,7 +1034,7 @@ MAP
 	LAYER
 		NAME                    berm_achter_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -1081,7 +1081,7 @@ MAP
 	LAYER
 		NAME                    berm_voor_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -1120,7 +1120,7 @@ MAP
 	LAYER
 		NAME                    rijbanen_achter_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -1153,7 +1153,7 @@ MAP
 	LAYER
 		NAME                    rijbanen_voor_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -1191,7 +1191,7 @@ MAP
 	LAYER
 		NAME                    voetganers_achter_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -1224,7 +1224,7 @@ MAP
 	LAYER
 		NAME                    voetgangers_voor_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -1254,7 +1254,7 @@ MAP
 	LAYER
 		NAME                    gebouw_vlak1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -1322,7 +1322,7 @@ MAP
 	LAYER
 		NAME                    inrichtingselement_vlak1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -1387,7 +1387,7 @@ MAP
 	LAYER
 		NAME                    metro_achter1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -1429,7 +1429,7 @@ MAP
 	LAYER
 		NAME                    metro_voor1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -1480,7 +1480,7 @@ MAP
 	LAYER
 		NAME                    tram1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -1524,7 +1524,7 @@ MAP
 	LAYER
 		NAME                    trein_achter1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -1566,7 +1566,7 @@ MAP
 	LAYER
 		NAME                    trein_voor1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -1617,7 +1617,7 @@ MAP
 	LAYER
 		NAME                    snelweg_achter1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
@@ -1650,7 +1650,7 @@ MAP
 	LAYER
 		NAME                    snelweg_voor1
 		GROUP                   hoogte1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
@@ -1683,7 +1683,7 @@ MAP
 	LAYER
 		NAME                    terreindeel_vlak2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_fysiekvoorkomen"
@@ -1747,7 +1747,7 @@ MAP
 	LAYER
 		NAME                    berm_achter_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -1794,7 +1794,7 @@ MAP
 	LAYER
 		NAME                    berm_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
@@ -1833,7 +1833,7 @@ MAP
 	LAYER
 			NAME                    rijbanen_achter_2
 			GROUP                   hoogte2
-			INCLUDE                 "connection_basiskaart.inc"
+			INCLUDE                 "connection/basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			TYPE                    POLYGON
 			CLASSITEM               "bgt_functie"
@@ -1866,7 +1866,7 @@ MAP
 	LAYER
 		NAME                    rijbanen_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -1896,7 +1896,7 @@ MAP
 	LAYER
 		NAME                    voetgangers_achter_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -1930,7 +1930,7 @@ MAP
 	LAYER
 		NAME                    voetgangers_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -1960,7 +1960,7 @@ MAP
 	LAYER
 		NAME                    gebouw_vlak2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -2029,7 +2029,7 @@ MAP
 	LAYER
 		NAME                    inrichtingselement_vlak2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTER (((("[bgt_type]" = "steiger") OR (("[bgt_type]" = "sluis") Or (("[bgt_type]" = "gemaal") Or ("[bgt_type]" = "stuw"))) OR ("[bgt_type]" = "muur"))))
@@ -2075,7 +2075,7 @@ MAP
 	LAYER
 		NAME                    metro_achter2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -2117,7 +2117,7 @@ MAP
 	LAYER
 		NAME                    metro_voor2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -2168,7 +2168,7 @@ MAP
 	LAYER
 		NAME                    trein_achter2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -2210,7 +2210,7 @@ MAP
 	LAYER
 		NAME                    trein_voor2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		FILTERITEM               "bgt_functie"
 		FILTER					"trein"
@@ -2261,7 +2261,7 @@ MAP
 	LAYER
 			NAME                    snelweg_achter_2
 			GROUP                   hoogte2
-			INCLUDE                 "connection_basiskaart.inc"
+			INCLUDE                 "connection/basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			TYPE                    POLYGON
 			FILTERITEM              "bgt_functie"
@@ -2293,7 +2293,7 @@ MAP
 	LAYER
 		NAME                    snelweg_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
@@ -2325,7 +2325,7 @@ MAP
 	LAYER
 		NAME                    terreindeel_vlak3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.terreindeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
@@ -2358,7 +2358,7 @@ MAP
 	LAYER
 			NAME                    rijbanen_achter_3
 			GROUP                   hoogte3
-			INCLUDE                 "connection_basiskaart.inc"
+			INCLUDE                 "connection/basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
 			TYPE                    POLYGON
@@ -2392,7 +2392,7 @@ MAP
 	LAYER
 		NAME                    rijbanen_voor_3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
 		TYPE                    POLYGON
@@ -2422,7 +2422,7 @@ MAP
 	LAYER
 		NAME                    voetganers_achter_3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -2456,7 +2456,7 @@ MAP
 	LAYER
 		NAME                    voetgangers_voor_3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -2486,7 +2486,7 @@ MAP
 	LAYER
 		NAME                    gebouw_vlak3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -2555,7 +2555,7 @@ MAP
 	LAYER
 		NAME                    metro_achter3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
@@ -2597,7 +2597,7 @@ MAP
 	LAYER
 		NAME                    metro_voor3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
@@ -2648,7 +2648,7 @@ MAP
 	LAYER
 			NAME                    snelweg_achter3
 			GROUP                   hoogte3
-			INCLUDE                 "connection_basiskaart.inc"
+			INCLUDE                 "connection/basiskaart.inc"
 			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 			TYPE                    POLYGON
 			FILTERITEM              "bgt_functie"
@@ -2681,7 +2681,7 @@ MAP
 	LAYER
 		NAME                    snelweg_voor3
 		GROUP                   hoogte3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
@@ -2716,7 +2716,7 @@ MAP
 	LAYER
 		NAME                    gebouw_vlak4
 		GROUP                   hoogte4
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.gebouw_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
@@ -2758,7 +2758,7 @@ MAP
 	LAYER
 		NAME                    metro_3
 		GROUP                   hoogte_3
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -2813,7 +2813,7 @@ MAP
 	LAYER
 		NAME                    metro_2
 		GROUP                   hoogte_2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -2864,7 +2864,7 @@ MAP
 	LAYER
 		NAME                    trein_2
 		GROUP                   hoogte_2
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -2921,7 +2921,7 @@ MAP
 	LAYER
 		NAME                    metro_achter_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -2965,7 +2965,7 @@ MAP
 	LAYER
 		NAME                    metro_voor_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -3017,7 +3017,7 @@ MAP
 	LAYER
 		NAME                    tram_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -3069,7 +3069,7 @@ MAP
 	LAYER
 		NAME                    trein_achter_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
@@ -3113,7 +3113,7 @@ MAP
 	LAYER
 		NAME                    trein_voor_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection_basiskaart.inc"
+		INCLUDE                 "connection/basiskaart.inc"
 		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"

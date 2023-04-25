@@ -30,7 +30,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometry FROM public.winkelgebieden_winkelgebieden USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10

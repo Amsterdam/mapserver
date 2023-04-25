@@ -35,7 +35,7 @@ MAP
   LAYER
     NAME            "peilmerk"
     GROUP           "NAP"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -66,7 +66,7 @@ MAP
   LAYER
     NAME            "peilmerk_label"
     GROUP           "NAP"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -118,7 +118,7 @@ MAP
   LAYER
     NAME            "peilmerk_hoogte"
     GROUP           "NAP_hoogte"
-    INCLUDE         "connection_nap.inc"
+    INCLUDE         "connection/nap.inc"
     DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100

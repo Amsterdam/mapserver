@@ -23,7 +23,7 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection_various_small_datasets.inc"
+    INCLUDE                 "connection/various_small_datasets.inc"
     DATA                    "wkb_geometry FROM public.parkeerzones USING srid=28992 USING UNIQUE ogc_fid"
     TYPE                    POLYGON
     MINSCALEDENOM           10

@@ -35,7 +35,7 @@ MAP
 
     FILTER          ('[id]' = '%id%')
 
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometry FROM (
                               select geometry, id FROM public.milieuzones_vrachtauto
                               UNION ALL
