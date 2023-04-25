@@ -1,0 +1,132 @@
+# GENERATED FILE, DO NOT EDIT.
+
+
+# TEAM: SOEB
+
+MAP
+  NAME 'beschermdestadsdorpsgezichten'
+  INCLUDE 'header.inc'
+  WEB
+    METADATA
+      'ows_title' 'Beschermde stads- en dorpsgezichten'
+      'ows_abstract' 'Kaart met gegevens over beschermde stads- en dorpsgezichten in de gemeente Amsterdam'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+  END
+  LAYER
+    NAME 'Gemeentelijk beschermd stadsgezicht'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.beschermdestadsdorpsgezichten_beschermdestadsdorpsgezichten USING UNIQUE id USING srid=28992'
+    TYPE POLYGON
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Gemeentelijk beschermd stadsgezicht'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Beschermde stads- en dorpsgezichten'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Beschermde stads- en dorpsgezichten'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'status'
+    CLASSITEM 'status'
+    CLASS
+      NAME 'Gemeentelijk beschermd stadsgezicht'
+      EXPRESSION 'Gemeentelijk beschermd stadsgezicht'
+      STYLE
+        COLOR '#00008b70'
+      END
+    END
+  END
+  LAYER
+    NAME 'Gemeentelijk beschermd dorpsgezicht'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.beschermdestadsdorpsgezichten_beschermdestadsdorpsgezichten USING UNIQUE id USING srid=28992'
+    TYPE POLYGON
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Gemeentelijk beschermd dorpsgezicht'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Beschermde stads- en dorpsgezichten'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Beschermde stads- en dorpsgezichten'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'status'
+    CLASSITEM 'status'
+    CLASS
+      NAME 'Gemeentelijk beschermd dorpsgezicht'
+      EXPRESSION 'Gemeentelijk beschermd dorpsgezicht'
+      STYLE
+        COLOR '#0000cd70'
+      END
+    END
+  END
+  LAYER
+    NAME 'Rijksbeschermd stadsgezicht'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.beschermdestadsdorpsgezichten_beschermdestadsdorpsgezichten USING UNIQUE id USING srid=28992'
+    TYPE POLYGON
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Rijksbeschermd stadsgezicht'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Beschermde stads- en dorpsgezichten'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Beschermde stads- en dorpsgezichten'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'status'
+    CLASSITEM 'status'
+    CLASS
+      NAME 'Rijksbeschermd stadsgezicht'
+      EXPRESSION 'Rijksbeschermd stadsgezicht'
+      STYLE
+        COLOR '#cd000070'
+      END
+    END
+  END
+  LAYER
+    NAME 'Rijksbeschermd dorpsgezicht'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.beschermdestadsdorpsgezichten_beschermdestadsdorpsgezichten USING UNIQUE id USING srid=28992'
+    TYPE POLYGON
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Rijksbeschermd dorpsgezicht'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Beschermde stads- en dorpsgezichten'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Beschermde stads- en dorpsgezichten'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'status'
+    CLASSITEM 'status'
+    CLASS
+      NAME 'Rijksbeschermd dorpsgezicht'
+      EXPRESSION 'Rijksbeschermd dorpsgezicht'
+      STYLE
+        COLOR '#ff450070'
+      END
+    END
+  END
+END

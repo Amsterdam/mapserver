@@ -3,36 +3,7 @@
 # Generates the ziektenplagenexotengroen mapfile.
 # TODO rewrite using mappyfile, generalize.
 
-from contextlib import contextmanager
-
-indent: int = 0
-
-
-def p(*strs: list[str]):
-    print("  " * indent, end="")
-    print(strs[0], end="")
-    if len(strs) > 1:
-        print(" ", end="")
-    print_quoted(strs[1:])
-
-
-def q(*strs: list[str]):
-    print("  " * indent, end="")
-    print_quoted(strs)
-
-
-def print_quoted(strs: list[str]):
-    print(*map(repr, strs))
-
-
-@contextmanager
-def block(typ: str):
-    p(typ)
-    global indent
-    indent += 1
-    yield
-    indent -= 1
-    p("END")
+from generate import block, p, q
 
 
 layers = [
@@ -53,7 +24,6 @@ print("# TEAM: Bor / Beeldschoon\n")
 with block("MAP"):
     p("NAME", "ziektenplagenexotengroen")
     p("INCLUDE", "header.inc")
-    p("DEBUG", 5)
 
     with block("WEB"):
         with block("METADATA"):
@@ -71,7 +41,7 @@ with block("MAP"):
             with block("PROJECTION"):
                 q("init=epsg:28992")
 
-            p("INCLUDE", "connection_dataservices.inc")
+            p("INCLUDE", "connection/dataservices.inc")
             p(
                 "DATA",
                 "geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id",
