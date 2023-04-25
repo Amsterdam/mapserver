@@ -1,141 +1,287 @@
-#==============================================================================
-#
-# eikenprocessierups.map
+# GENERATED FILE, DO NOT EDIT.
+
+
 # TEAM: Bor / Beeldschoon
-#
-#==============================================================================
-
-
 
 MAP
-  NAME                      "ziektenplagenexotengroen"
-  INCLUDE                   "header.inc"
-  DEBUG 1
-
+  NAME 'ziektenplagenexotengroen'
+  INCLUDE 'header.inc'
+  DEBUG 5
   WEB
     METADATA
-      "ows_title"           "Ziekte, plagen, exoten, groen"
-      "ows_abstract"        "Kaart met gegevens over ziekten, plagen en exoten in het groen in de gemeente Amsterdam"
-      "wms_extent"          "100000 450000 150000 500000"
+      'ows_title' 'Ziekte, plagen, exoten, groen'
+      'ows_abstract' 'Kaart met gegevens over ziekten, plagen en exoten in het groen in de gemeente Amsterdam'
+      'wms_extent' '100000 450000 150000 500000'
     END
   END
-
-  #-----------------------------------------------------------------------------
-
   LAYER
-    NAME                    "eikenprocessierups"
+    NAME 'Eikenprocessierups aanwezig (Laag)'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-
-    INCLUDE                 "connection_dataservices.inc"
-    DATA                    "geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id"
-    TYPE                    POINT
-
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
     METADATA
-      "wfs_enable_request"  "none"
-      "wms_title"           "Eikenprocessierups"
-      "wms_enable_request"  "*"
-      "wms_abstract"        "Eikenprocessierups Amsterdam"
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Eikenprocessierups"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.3.0"
-      "wms_extent"          "100000 450000 150000 500000"
+      'wfs_enable_request' 'none'
+      'wms_title' 'Eikenprocessierups aanwezig (Laag)'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
     END
-
-    LABELITEM               "urgentie_status_kaartlaag"
-    CLASSITEM               "urgentie_status_kaartlaag"
-
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Eikenprocessierups aanwezig (Laag)" # Note that the name is used by the GetLegendGraphic rule parameter to identify the class
-      EXPRESSION "Eikenprocessierups aanwezig (Laag)"
-
+      NAME 'Eikenprocessierups aanwezig (Laag)'
+      EXPRESSION 'Eikenprocessierups aanwezig (Laag)'
       STYLE
-        SYMBOL              "caterpillar_blue"
-        SIZE                20
+        SYMBOL 'caterpillar_blue'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Eikenprocessierups deels bestreden'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Eikenprocessierups deels bestreden'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Eikenprocessierups deels bestreden"
-      EXPRESSION "Eikenprocessierups deels bestreden"
-
+      NAME 'Eikenprocessierups deels bestreden'
+      EXPRESSION 'Eikenprocessierups deels bestreden'
       STYLE
-        SYMBOL              "tree_orange"
-        SIZE                20
+        SYMBOL 'tree_orange'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Niet in beheergebied Gemeente Amsterdam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Niet in beheergebied Gemeente Amsterdam'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Niet in beheergebied Gemeente Amsterdam"
-      EXPRESSION "Niet in beheergebied Gemeente Amsterdam"
-
+      NAME 'Niet in beheergebied Gemeente Amsterdam'
+      EXPRESSION 'Niet in beheergebied Gemeente Amsterdam'
       STYLE
-        SYMBOL              "flag_black"
-        SIZE                20
+        SYMBOL 'flag_black'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Eikenprocessierups aanwezig (Urgent)'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Eikenprocessierups aanwezig (Urgent)'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Eikenprocessierups aanwezig (Urgent)"
-      EXPRESSION "Eikenprocessierups aanwezig (Urgent)"
-
+      NAME 'Eikenprocessierups aanwezig (Urgent)'
+      EXPRESSION 'Eikenprocessierups aanwezig (Urgent)'
       STYLE
-        SYMBOL              "caterpillar_red"
-        SIZE                20
+        SYMBOL 'caterpillar_red'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Gemeld'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Gemeld'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Gemeld"
-      EXPRESSION "Gemeld"
-
+      NAME 'Gemeld'
+      EXPRESSION 'Gemeld'
       STYLE
-        SYMBOL              "speechbubble"
-        SIZE                20
+        SYMBOL 'speechbubble'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Eikenprocessierups bestreden'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Eikenprocessierups bestreden'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Eikenprocessierups bestreden"
-      EXPRESSION "Eikenprocessierups bestreden"
-
+      NAME 'Eikenprocessierups bestreden'
+      EXPRESSION 'Eikenprocessierups bestreden'
       STYLE
-        SYMBOL              "tree_green"
-        SIZE                20
+        SYMBOL 'tree_green'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Geen Eikenprocessierups aanwezig'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Geen Eikenprocessierups aanwezig'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Geen Eikenprocessierups aanwezig"
-      EXPRESSION "Geen Eikenprocessierups aanwezig"
-
+      NAME 'Geen Eikenprocessierups aanwezig'
+      EXPRESSION 'Geen Eikenprocessierups aanwezig'
       STYLE
-        SYMBOL              "tree_black"
-        SIZE                20
+        SYMBOL 'tree_black'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Niet bereikbaar voor bestrijding'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Niet bereikbaar voor bestrijding'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Niet bereikbaar voor bestrijding"
-      EXPRESSION "Niet bereikbaar voor bestrijding"
-
+      NAME 'Niet bereikbaar voor bestrijding'
+      EXPRESSION 'Niet bereikbaar voor bestrijding'
       STYLE
-        SYMBOL              "flag_red"
-        SIZE                20
+        SYMBOL 'flag_red'
+        SIZE 20
       END
     END
-
+  END
+  LAYER
+    NAME 'Eikenprocessierups aanwezig (Standaard)'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection_dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Eikenprocessierups aanwezig (Standaard)'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Eikenprocessierups Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Eikenprocessierups'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'urgentie_status_kaartlaag'
+    CLASSITEM 'urgentie_status_kaartlaag'
     CLASS
-      NAME "Eikenprocessierups aanwezig (Standaard)"
-      EXPRESSION "Eikenprocessierups aanwezig (Standaard)"
-
+      NAME 'Eikenprocessierups aanwezig (Standaard)'
+      EXPRESSION 'Eikenprocessierups aanwezig (Standaard)'
       STYLE
-        SYMBOL              "caterpillar_orange"
-        SIZE                20
+        SYMBOL 'caterpillar_orange'
+        SIZE 20
       END
     END
-
-  END # LAYER
-END # MAP
+  END
+END
