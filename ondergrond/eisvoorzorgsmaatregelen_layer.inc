@@ -1,6 +1,6 @@
     GROUP                    "eisvoorzorgsmaatregelen"
 
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 SELECT *
                                 FROM leidingeninfrastructuur_klic_eisvoorzorgsmaatregelen a

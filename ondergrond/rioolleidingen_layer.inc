@@ -1,5 +1,5 @@
     GROUP "rioolleidingen"
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     PROCESSING "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    LINE
     DATA                    "geometrie FROM (

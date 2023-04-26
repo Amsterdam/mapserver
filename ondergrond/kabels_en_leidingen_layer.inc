@@ -1,6 +1,6 @@
     GROUP                    "kabels_en_leidingen"
 
-    INCLUDE                 "connection_dataservices.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 SELECT *
                                 FROM leidingeninfrastructuur_klic_kabels_en_leidingen a
