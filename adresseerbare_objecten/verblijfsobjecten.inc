@@ -14,7 +14,7 @@ VALIDATION
 END
 DEBUG 5
 
-INCLUDE                 "connection_dataservices.inc"
+INCLUDE                 "connection/dataservices.inc"
 DATA                    "geometrie FROM (
                             SELECT 
                               bv.id AS id,
