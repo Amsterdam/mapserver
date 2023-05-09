@@ -45,8 +45,8 @@ with block("MAP"):
             p(
                 "DATA",
                 "geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups"
-                " WHERE ranking=1"
-                " USING srid=28992 USING UNIQUE id",
+                " USING srid=28992 USING UNIQUE id"
+                " WHERE ranking=1",
             )
             p("TYPE POINT")
 
