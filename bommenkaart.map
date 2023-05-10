@@ -31,8 +31,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_bominslag_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_bominslag USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -161,8 +161,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_verdachtgebied_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_verdachtgebied USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -186,7 +186,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Munities en granaten"
+      NAME                  "Munitie en granaten"
       EXPRESSION           ("[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[detail_type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers" OR "[detail_type]" eq "Kleinkalibermunitie, Vuurwerken en Munitietoebehoren" OR "[detail_type]" eq "KKM, hand- en geweergranaten, munitie voor granaatwerpers en toebehoren van munitie" OR "[detail_type]" eq "KKM, hand- en geweergranaten, munitie voor granaatwerpers, toebehoren van munitie en geschutmunitie" OR "[detail_type]" eq "Geschutmunitie, Vuurwerken")
       STYLE
         ANTIALIAS           true
@@ -255,8 +255,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_gevrijwaardgebied_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_gevrijwaardgebied USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -307,8 +307,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_bommenkaart_uitgevoerdonderzoek_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.explosieven_uitgevoerdonderzoek USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -320,7 +320,7 @@ MAP
     METADATA
       "wms_title"           "uitgevoerde_CE_onderzoeken"
       "wms_group_title"     "uitgevoerde_CE_onderzoeken"
-      "wms_abstract"        "Uitgevoerde Conventionele Explosieven onderzoeken"
+      "wms_abstract"        "Uitgevoerde Conventionele Explosieven-onderzoeken"
       "wms_srs"             "EPSG:28992"
       "wfs_enable_request"  "*"
       "wms_enable_request"  "*"
