@@ -142,6 +142,10 @@ sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' /srv/mapserver/topografie.map /s
 mkdir -p /srv/mapserver/config
 # python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
 
+echo Make JSON index of maps
+python3 -m pip install mappyfile==0.9.7
+python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
+
 echo Starting server
 # Apache gets grumpy about PID files pre-existing
 rm -f /var/run/apache2/apache2.pid
