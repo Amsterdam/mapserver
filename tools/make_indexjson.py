@@ -24,6 +24,7 @@ def dict_get(x: Dict, *keys: str) -> Optional[object]:
 
 
 def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
+    """Parses a mapfile to extract metadata about a map."""
     m = mappyfile.open(filename)
     r = {}
     for key, path in (
@@ -34,6 +35,37 @@ def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
         if val is not None:
             r[key] = val
     return m["name"], r
+
+
+def scan_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
+    """Tries to do what parse_mapfile does for files that mappyfile won't parse.
+
+    Ugly hack up ahead.
+    """
+    keys = {
+        "NAME": "name",
+        '"ows_title"': "title",
+        '"ows_abstract"': "abstract",
+    }
+
+    r = {}
+    with open(filename) as f:
+        for ln in f:
+            ln = ln.split()
+            if len(ln) == 0:
+                continue
+
+            key = keys.get(ln[0])
+            if key is None:
+                continue
+
+            value = ln[1]
+            if value.startswith('"'):
+                value = value[1:-1]
+            r.setdefault(key, value)
+
+    name = r.pop("name")
+    return name, r
 
 
 if __name__ == "__main__":
@@ -47,8 +79,8 @@ if __name__ == "__main__":
         try:
             name, props = parse_mapfile(f)
         except Exception as e:
-            logger.error(e)
-            continue
+            logger.error("Retrying %s after %s", f, e)
+            name, props = scan_mapfile(f)
         index[name] = props
 
     json.dump(index, sys.stdout, sort_keys=True)
