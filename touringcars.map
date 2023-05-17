@@ -10,22 +10,15 @@
 # (6) doorrijhoogtes
 #
 #==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# Chris van Riel        29-06-2020    Initiatie
-# CHris van Riel        08-07-2020    Replaced field titel by omschrijving (new specs)
-#
-#==============================================================================
 
 MAP
-  NAME "Touringcars categorieën"
+  NAME "touringcars"
   INCLUDE "header.inc"
 
 
   WEB
     METADATA
-      "ows_titel"    "Touringcars categorieën"
+      "ows_title"    "Touringcars categorieën"
       "ows_abstract" "Touringcars categorieën waarvan Amsterdam de bronhouder is"
     END
   END
@@ -45,12 +38,12 @@ MAP
   
 
     METADATA
-      "wfs_titel"           "doorrijhoogtes"
+      "wfs_title"           "doorrijhoogtes"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "doorrijhoogtes"
       "wfs_enable_request"  "*"
       "gml_include_items"   "all"
-      "wms_titel"           "doorrijhoogtes"
+      "wms_title"           "doorrijhoogtes"
       "wms_enable_request"  "*"
       "wms_abstract"        "doorrijhoogtes"
       "wms_srs"             "EPSG:28992"
@@ -103,12 +96,12 @@ MAP
   
 
     METADATA
-      "wfs_titel"           "wegwerkzaamheden"
+      "wfs_title"           "wegwerkzaamheden"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "wegwerkzaamheden"
       "wfs_enable_request"  "*"
       "gml_include_items"   "all"
-      "wms_titel"           "wegwerkzaamheden"
+      "wms_title"           "wegwerkzaamheden"
       "wms_enable_request"  "*"
       "wms_abstract"        "wegwerkzaamheden"
       "wms_srs"             "EPSG:28992"
@@ -164,12 +157,12 @@ MAP
   
 
     METADATA
-      "wfs_titel"           "parkeerplaatsen"
+      "wfs_title"           "parkeerplaatsen"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "parkeerplaatsen"
       "wfs_enable_request"  "*"
       "gml_include_items"   "all"
-      "wms_titel"           "parkeerplaatsen"
+      "wms_title"           "parkeerplaatsen"
       "wms_enable_request"  "*"
       "wms_abstract"        "parkeerplaatsen"
       "wms_srs"             "EPSG:28992"
@@ -225,12 +218,12 @@ MAP
   
 
     METADATA
-      "wfs_titel"           "in -en uitstaphaltes"
+      "wfs_title"           "in -en uitstaphaltes"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "in -en uitstaphaltes"
       "wfs_enable_request"  "*"
       "gml_include_items"   "all"
-      "wms_titel"           "in -en uitstaphaltes"
+      "wms_title"           "in -en uitstaphaltes"
       "wms_enable_request"  "*"
       "wms_abstract"        "in -en uitstaphaltes"
       "wms_srs"             "EPSG:28992"
@@ -286,17 +279,17 @@ MAP
   
     VALIDATION
       # %titel% substitutions can only characters
-      'default_titel'  'all'
+      'default_title'  'all'
       'titel'          '^[A-Za-z]+$'
     END
 
     METADATA
-      "wfs_titel"           "touringcars_aanbevolenroutes"
+      "wfs_title"           "touringcars_aanbevolenroutes"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "touringcars_aanbevolenroutes"
       "wfs_enable_request"  "*"
       "gml_include_items"   "all"
-      "wms_titel"           "touringcars_aanbevolenroutes"
+      "wms_title"           "touringcars_aanbevolenroutes"
       "wms_enable_request"  "*"
       "wms_abstract"        "Aanbevolenroutes"
       "wms_srs"             "EPSG:28992"
@@ -354,12 +347,12 @@ MAP
   
 
     METADATA
-      "wfs_titel"           "verplichteroutes"
+      "wfs_title"           "verplichteroutes"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "verplichteroutes"
       "wfs_enable_request"  "*"
       "gml_include_items"   "all"
-      "wms_titel"           "verplichteroutes"
+      "wms_title"           "verplichteroutes"
       "wms_enable_request"  "*"
       "wms_abstract"        "verplichteroutes"
       "wms_srs"             "EPSG:28992"
