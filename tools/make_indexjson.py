@@ -7,6 +7,7 @@
 
 import json
 import logging
+import re
 import sys
 from typing import Dict, Optional, Tuple
 
@@ -68,6 +69,9 @@ def scan_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
     return name, r
 
 
+NAME_RE = re.compile("^[A-Za-z0-9_]+")
+
+
 if __name__ == "__main__":
     logger = logging.getLogger(sys.argv[0])
 
@@ -81,6 +85,9 @@ if __name__ == "__main__":
         except Exception as e:
             logger.error("Retrying %s after %s", f, e)
             name, props = scan_mapfile(f)
+        if not NAME_RE.match(name):
+            logger.error("Name should match %r, got %r", NAME_RE.pattern, name)
+            continue
         index[name] = props
 
     json.dump(index, sys.stdout, sort_keys=True)
