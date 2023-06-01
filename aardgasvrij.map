@@ -29,8 +29,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "wkb_geometry FROM  public.buurten  USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.aardgasvrijezones_buurt USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -54,11 +54,11 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "bu_naam"
+    LABELITEM               "buurt_naam"
 
     CLASS
-      NAME          "All Electric"
-      EXPRESSION    ("[legenda]" eq "All electric: gestaag aardgasvrij tussen 2020 en 2040")
+      NAME          "All electric"
+      EXPRESSION    ("[toelichting]" eq "All electric: gestaag aardgasvrij tussen 2020 en 2040")
 
       STYLE
           ANTIALIAS    true
@@ -88,7 +88,7 @@ MAP
 
     CLASS
       NAME          "Duurzaam gasnet"
-      EXPRESSION    ("[legenda]" eq "Aardgasvrij gasnet: gestaag 70% gasbesparing tot 2040")
+      EXPRESSION    ("[toelichting]" eq "Aardgasvrij gasnet: gestaag 70% gasbesparing tot 2040")
 
       STYLE
           ANTIALIAS    true
@@ -118,7 +118,7 @@ MAP
 
     CLASS
       NAME          "Warmtenet, al aangesloten"
-      EXPRESSION    ("[legenda]" eq "Al (bijna) volledig op het warmtenet")
+      EXPRESSION    ("[toelichting]" eq "Al (bijna) volledig op het warmtenet")
 
       STYLE
           ANTIALIAS    true
@@ -148,7 +148,7 @@ MAP
 
     CLASS
       NAME          "Bronnet, 2020-2032"
-      EXPRESSION    ("[legenda]" eq "Lokale bronnetten en warmtenet: gestaag aardgasvrij tussen 2020 en 2032")
+      EXPRESSION    ("[toelichting]" eq "Lokale bronnetten en warmtenet: gestaag aardgasvrij tussen 2020 en 2032")
 
       STYLE
           ANTIALIAS    true
@@ -178,7 +178,7 @@ MAP
 
     CLASS
       NAME          "Bronnet"
-      EXPRESSION    ("[legenda]" eq "Lokale bronnetten: gestaag aardgasvrij tussen 2020 en 2040")
+      EXPRESSION    ("[toelichting]" eq "Lokale bronnetten: gestaag aardgasvrij tussen 2020 en 2040")
 
       STYLE
           ANTIALIAS    true
@@ -208,7 +208,7 @@ MAP
 
     CLASS
       NAME          "Warmtenet, 2020-2030"
-      EXPRESSION    ("[legenda]" eq "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2020 en 2030")
+      EXPRESSION    ("[toelichting]" eq "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2020 en 2030")
 
       STYLE
           ANTIALIAS    true
@@ -238,7 +238,7 @@ MAP
 
     CLASS
       NAME          "Warmtenet, 2022-2032"
-      EXPRESSION    ("[legenda]" eq "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2022 en 2032")
+      EXPRESSION    ("[toelichting]" eq "Warmtenetbuurt: gefaseerd aardgasvrij tussen 2022 en 2032")
 
        STYLE
           ANTIALIAS     true
@@ -272,7 +272,7 @@ MAP
 
     CLASS
       NAME          "Warmtenet, vanaf 2030"
-      EXPRESSION    ("[legenda]" eq "Warmtenetbuurt: gefaseerd starten vanaf 2030")
+      EXPRESSION    ("[toelichting]" eq "Warmtenetbuurt: gefaseerd starten vanaf 2030")
 
       STYLE          
           ANTIALIAS    true
@@ -314,7 +314,7 @@ MAP
 
     CLASS
       NAME          "Nieuwbouw & transformatie"
-      EXPRESSION    ("[legenda]" eq "Nieuwbouw- en transformatiegebied: volgt de fasering van de gebiedsontwikkeling")
+      EXPRESSION    ("[toelichting]" eq "Nieuwbouw- en transformatiegebied: volgt de fasering van de gebiedsontwikkeling")
 
      STYLE
           ANTIALIAS     true
@@ -348,7 +348,7 @@ MAP
 
     CLASS
       NAME          "Onbebouwd"
-      EXPRESSION    ("[legenda]" eq "Grotendeels onbebouwd")
+      EXPRESSION    ("[toelichting]" eq "Grotendeels onbebouwd")
 
       STYLE
           SYMBOL        "stip"
@@ -388,8 +388,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "wkb_geometry FROM  public.buurten  USING srid=28992 USING UNIQUE ogc_fid WHERE kookgasopg is NOT NULL"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.aardgasvrijezones_buurt USING srid=28992 USING UNIQUE id WHERE aandeel_kookgas IS NOT NULL"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -415,7 +415,7 @@ MAP
 
     CLASS
       NAME          "Kookgas"
-      EXPRESSION    ("[kookgas]" eq ">20% van warmteaansluitingen nog op kookgas")
+      EXPRESSION    ("[aandeel_kookgas]" eq ">20% van warmteaansluitingen nog op kookgas")
 
       STYLE
           SYMBOL        "stip"
@@ -436,8 +436,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "wkb_geometry FROM  public.buurtinitiatieven  USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.aardgasvrijezones_buurtinitiatief USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -461,7 +461,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "bu_naam"
+    LABELITEM               "buurt_naam"
 
     CLASS
       NAME          "Initiatief gestart"
