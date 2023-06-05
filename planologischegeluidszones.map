@@ -24,8 +24,8 @@ MAP
 
   LAYER
     NAME                    "spoorwegen"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_geluidzone_spoorwegen USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.geluidszones_spoorwegen USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -54,8 +54,8 @@ MAP
 
   LAYER
     NAME                    "metro"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_geluidzone_metro USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.geluidszones_metro USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -92,8 +92,8 @@ MAP
   LAYER
     NAME                    "geluidzoneindustrieterrein"
     GROUP                   "milieu_geluid_planologisch_industrie"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Geluidzone industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM (SELECT * FROM public.geluidszones_industrie WHERE type = 'Geluidzone industrieterrein') AS gz USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -127,8 +127,8 @@ MAP
   LAYER
     NAME                    "gezoneerdindustrieterrein"
     GROUP                   "milieu_geluid_planologisch_industrie"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_geluidzone_industrie WHERE type = 'Gezoneerd industrieterrein') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM (SELECT * FROM public.geluidszones_industrie WHERE type = 'Gezoneerd industrieterrein') AS gz USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
