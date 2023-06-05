@@ -20,25 +20,25 @@ MAP
 
   #=============================================================================
   # LAYERS
-  #============================================================================= 
+  #=============================================================================
 
   LAYER
     NAME                    "maatgevendetoetshoogteschiphol"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_schiphol_maatgevendetoetshoogte_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.schiphol_maatgevendetoetshoogtes USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Schiphol - maatgevende toetshoogtes"
       "ows_abstract"        "Schiphol - maatgevende toetshoogtes"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
     END
-    
+
     CLASS
       NAME                  "-10 - 0m NAP"
       EXPRESSION            (([hoogte_nap_klasse] >= -10) AND ([hoogte_nap_klasse] < 0))
@@ -169,8 +169,8 @@ MAP
 
   LAYER
     NAME                    "toetshoogteradarschiphol"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_schiphol_hoogtebeperkingradar_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.schiphol_hoogtebeperkingradar USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -314,14 +314,14 @@ MAP
 
   LAYER
     NAME                    "geluidszoneschiphol"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_schiphol_geluidzone USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.schiphol_geluidzones USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Schiphol - Ruimtelijke beperkingen"
       "ows_abstract"        "Schiphol - Ruimtelijke beperkingen"
@@ -329,7 +329,7 @@ MAP
       "gml_include_items"   "all"
     END
 
-    CLASSITEM               "geo_id"
+    CLASSITEM               "id"
 
     CLASS
       NAME                  "X LIB-4: beperkingengebied geluidgevoelige gebouwen"
@@ -366,14 +366,14 @@ MAP
 
   LAYER
     NAME                    "vogelvrijwaringsgebiedschiphol"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_schiphol_vogelvrijwaringsgebied USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.schiphol_vogelvrijwaringsgebieden USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
-      "init=epsg:28992" 
+      "init=epsg:28992"
     END
-    
+
     METADATA
       "ows_title"           "Schiphol - Vogelvrijwaringsgebied"
       "ows_abstract"        "Schiphol - Vogelvrijwaringsgebied"
