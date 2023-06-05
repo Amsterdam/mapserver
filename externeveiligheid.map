@@ -23,8 +23,8 @@ MAP
   LAYER
     NAME                    "lpgstationcontouren"
     GROUP                   "milieu_veiligheid_lpg_station"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgstation_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.risicozones_lpgtankstations USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
 #    MINSCALEDENOM          100
 #    MAXSCALEDENOM          15000
@@ -61,8 +61,8 @@ MAP
   LAYER
     NAME                    "lpgstationslocaties"
     GROUP                   "milieu_veiligheid_lpg_station"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgstation_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie_punt FROM public.risicozones_lpgtankstations USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
 #    MINSCALEDENOM          100
 #    MAXSCALEDENOM          15000
@@ -98,8 +98,8 @@ MAP
   LAYER
     NAME                    "lpgvulpuntinvloedsgebied"
     GROUP                   "milieu_veiligheid_lpg_vulpunt"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgvulpunt_polygon WHERE type = 'Invloedsgebied groepsrisico') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_lpgvulpunten WHERE type_contour = 'Invloedsgebied groepsrisico') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -137,8 +137,8 @@ MAP
   LAYER
     NAME                    "lpgvulpuntplaatsgebondenrisico106"
     GROUP                   "milieu_veiligheid_lpg_vulpunt"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgvulpunt_polygon WHERE type = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_lpgvulpunten WHERE type_contour = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -176,8 +176,8 @@ MAP
   LAYER
     NAME                    "lpgvulpuntplaatsgebondenrisico105"
     GROUP                   "milieu_veiligheid_lpg_vulpunt"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgvulpunt_polygon WHERE type = 'Plaatsgebonden risico 10-5') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_lpgvulpunten WHERE type_contour = 'Plaatsgebonden risico 10-5') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -222,8 +222,8 @@ MAP
   LAYER
     NAME                    "lpgvulpuntlocaties"
     GROUP                   "milieu_veiligheid_lpg_vulpunt"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgvulpunt_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie_punt FROM public.risicozones_lpgvulpunten USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -256,8 +256,8 @@ MAP
   LAYER
     NAME                    "lpgafleverzuilplaatsgebondenrisico"
     GROUP                   "milieu_veiligheid_lpg_afleverzuil"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgafleverzuil_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.risicozones_lpgafleverzuilen USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -295,8 +295,8 @@ MAP
   LAYER
     NAME                    "lpgafleverzuillocaties"
     GROUP                   "milieu_veiligheid_lpg_afleverzuil"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_lpgafleverzuil_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie_punt FROM public.risicozones_lpgafleverzuilen USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -330,8 +330,8 @@ MAP
   LAYER
     NAME                    "lpgtankinvloedsgebied"
     GROUP                   "milieu_veiligheid_lpg_tank"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgtank WHERE kleur = '11796735') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_lpgtanks WHERE kleurcode = 11796735) AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -365,8 +365,8 @@ MAP
   LAYER
     NAME                    "lpgtankplaatsgebondenrisico"
     GROUP                   "milieu_veiligheid_lpg_tank"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgtank WHERE kleur IN ('65535', '16711680')) AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_lpgtanks WHERE kleurcode IN (65535, 16711680)) AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -404,8 +404,8 @@ MAP
   LAYER
     NAME                    "lpgtankligging"
     GROUP                   "milieu_veiligheid_lpg_tank"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_lpgtank WHERE kleur = '0') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_lpgtanks WHERE kleurcode = 0) AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -438,8 +438,8 @@ MAP
   LAYER
     NAME                    "overigerisicobedrijfscontouren"
     GROUP                   "milieu_veiligheid_bedrijf"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bedrijf_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.risicozones_bedrijven USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -475,8 +475,8 @@ MAP
   LAYER
     NAME                    "overigerisicobedrijfslocaties"
     GROUP                   "milieu_veiligheid_bedrijf"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bedrijf_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie_punt FROM public.risicozones_bedrijven USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -510,8 +510,8 @@ MAP
   LAYER
     NAME                    "overigerisicobedrijfsbronnen"
     GROUP                   "overigerisicobedrijven"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_bedrijven_bron_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.risicozones_bronnen USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -547,8 +547,8 @@ MAP
   LAYER
     NAME                    "overigerisicobedrijfplaatsgebondenrisico106"
     GROUP                   "overigerisicobedrijven"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_bedrijven_contour WHERE type_contour = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_contouren WHERE type_contour = 'Plaatsgebonden risico 10-6') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -586,8 +586,8 @@ MAP
   LAYER
     NAME                    "risicozonesbelemmeringenstrook"
     GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'zk') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_aardgasgebieden WHERE type = 'belemmeringenstrook') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -623,8 +623,8 @@ MAP
   LAYER
     NAME                    "risicozonesaardgas1let"
     GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'l1') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_aardgasgebieden WHERE type = 'letaliteitsafstand_1%') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -662,8 +662,8 @@ MAP
   LAYER
     NAME                    "risicozonesaardgas100let"
     GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'la') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_aardgasgebieden WHERE type = 'letaliteitsafstand_100%') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -701,8 +701,8 @@ MAP
   LAYER
     NAME                    "risicozonesaardgaspr106"
     GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM public.geo_risicozones_infrastructuur_aardgasgebied WHERE type = 'pr') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_aardgasgebieden WHERE type = 'plaatsgebondenrisico') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -740,8 +740,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_aardgasbuisleidingen"
     GROUP                   "milieu_veiligheid_aardgasbuisleidingen"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleiding USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.risicozones_aardgasleidingen USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -773,8 +773,8 @@ MAP
 
   LAYER
     NAME                    "milieu_veiligheid_aardgasbuisleidingen_legenda"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_aardgasleiding USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.risicozones_aardgasleidingen USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -805,8 +805,8 @@ MAP
   LAYER
     NAME                    "risicozonesspoorweg"
     GROUP                   "risicozones"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_infrastructuur WHERE type = 'spoorweg') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -826,7 +826,7 @@ MAP
 
     CLASS
       NAME                  "Invloedsgebied spoorwegen"
-      EXPRESSION            "sw"
+      EXPRESSION            "spoorweg"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#cc99cc"
@@ -847,8 +847,8 @@ MAP
   LAYER
     NAME                    "risicozonesvaarweg"
     GROUP                   "risicozones"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_infrastructuur WHERE type = 'vaarweg') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -868,7 +868,7 @@ MAP
 
     CLASS
       NAME                  "Invloedsgebied vaarwegen"
-      EXPRESSION            "vw"
+      EXPRESSION            "vaarweg"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#3399cc"
@@ -889,8 +889,8 @@ MAP
   LAYER
     NAME                    "risicozonesweg"
     GROUP                   "risicozones"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM public.geo_risicozones_infrastructuur_infrastructuur USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM public.risicozones_infrastructuur WHERE type = 'autoweg') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -910,7 +910,7 @@ MAP
 
     CLASS
       NAME                  "Invloedsgebied wegen"
-      EXPRESSION            "wg"
+      EXPRESSION            "autoweg"
       STYLE
         SYMBOL              "hatchsymbol"
         COLOR               "#996600"
@@ -931,8 +931,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_munitie"
     GROUP                   "veiligheidsafstanden"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM veiligeafstanden_veiligeafstanden WHERE type = 'Munitieopslag') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -965,8 +965,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_bunkerschepen"
     GROUP                   "veiligheidsafstanden"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM (SELECT * FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon WHERE type = 'Bunkerschip') AS foo USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM veiligeafstanden_veiligeafstanden WHERE type = 'Bunkerschip') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1002,8 +1002,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_vuurwerk"
     GROUP                   "veiligheidsafstanden"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_point USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM veiligeafstanden_veiligeafstanden WHERE type = 'Vuurwerkopslag') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1036,8 +1036,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_sluis"
     GROUP                   "veiligheidsafstanden"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM veiligeafstanden_veiligeafstanden WHERE type = 'Sluis') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1076,8 +1076,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_gasdrukregel_meetstation"
     GROUP                   "veiligheidsafstanden"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM veiligeafstanden_veiligeafstanden WHERE type = 'Gasdrukregel- en meetstation') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1110,8 +1110,8 @@ MAP
   LAYER
     NAME                    "milieu_veiligheid_wachtplaats"
     GROUP                   "veiligheidsafstanden"
-    INCLUDE                 "connection/milieu.inc"
-    DATA                    "geometrie FROM geo_veiligheidsafstanden_veiligheidsafstand_polygon USING srid=28992 USING UNIQUE id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT * FROM veiligeafstanden_veiligeafstanden WHERE type = 'Wachtplaats') AS foo USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
