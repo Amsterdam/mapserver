@@ -30,8 +30,17 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "geom FROM (select bag_pand_id, st_union(bag_pand_geometrie) as geom from public.vastgoed WHERE object_eigendomsstatus = 'volle eigendom' group by bag_pand_id) as subquery USING srid=28992 USING UNIQUE bag_pand_id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "sub.geometrie FROM (
+            SELECT DISTINCT ON (vv.pand_id) bp.geometrie FROM (
+                vastgoed_vastgoed vv INNER JOIN bag_panden bp
+                ON vv.pand_id = bp.identificatie
+            )
+            WHERE bp.begin_geldigheid < now()
+                AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
+                AND object_eigendomsstatus = 'volle eigendom'
+            )
+            AS sub"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -81,8 +90,16 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "geom FROM (select bag_pand_id, st_union(bag_pand_geometrie) as geom from public.vastgoed WHERE object_eigendomsstatus = 'appartementsrecht' group by bag_pand_id) as subquery USING srid=28992 USING UNIQUE bag_pand_id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "sub.geometrie FROM (
+            SELECT DISTINCT ON (vv.pand_id) bp.geometrie FROM (
+                vastgoed_vastgoed vv INNER JOIN bag_panden bp
+                ON vv.pand_id = bp.identificatie
+            )
+            WHERE bp.begin_geldigheid < now()
+                AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
+                AND object_eigendomsstatus = 'appartementsrecht'
+            )
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
