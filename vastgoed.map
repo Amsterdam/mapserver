@@ -100,6 +100,7 @@ MAP
                 AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
                 AND object_eigendomsstatus = 'appartementsrecht'
             )
+            AS sub"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
