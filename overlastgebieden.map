@@ -1,1341 +1,1348 @@
-#==============================================================================
-#
-# overlastgebieden.map
-# doel: serveren van Overlastgebiedens gegevens
-#
-#==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# P.Berkhout            20-07-2017    initieel
-#
-#==============================================================================
+# GENERATED FILE, DO NOT EDIT.
+
 
 MAP
-  NAME "Overlastgebieden"
-  INCLUDE "header.inc"
-
+  NAME 'Overlastgebieden'
+  INCLUDE 'header.inc'
   WEB
     METADATA
-      "ows_title"           "Overlastgebieden"
-      "ows_abstract"        "Overlastgebieden"
+      'ows_title' 'Overlastgebieden'
+      'ows_abstract' 'Overlastgebieden'
     END
   END
-
-  #=============================================================================
-  # LAYERS
-  #=============================================================================
-
-    LAYER
-    NAME            "algemeen_overlastgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "algemeen_overlastgebied"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "Algemeen overlastgebied"
-      STYLE
-       ANTIALIAS    true
-       COLOR        212 33 44
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 212 33 44
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
   LAYER
-    NAME            "cameratoezichtgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    NAME 'algemeen_overlastgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROJECTION
-    "init=epsg:28992"
+      'init=epsg:28992'
     END
-
     METADATA
-      "ows_title"           "cameratoezichtgebied"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'ows_title' 'algemeen_overlastgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
     END
-
     CLASS
-      NAME          "Cameratoezichtgebied"
+      NAME 'AlgemeenOverlastgebied'
       STYLE
-       ANTIALIAS    true
-       COLOR        51 114 41
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 51 114 41
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "dealeroverlastgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "dealeroverlastgebied"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "Dealeroverlastgebied"
-      STYLE
-       ANTIALIAS    true
-       COLOR        49 102 188
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 49 102 188
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "uitgaansoverlastgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "uitgaansoverlastgebied"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "Uitgaansoverlastgebied"
-      STYLE
-       ANTIALIAS    true
-       COLOR        255 128 17
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 255 128 17
-       WIDTH        2
-      END
-    END
-
-  END
-
- #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "alcoholverbodsgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "alcoholverbodsgebied"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "alcoholverbodsgebied"
-      STYLE
-       ANTIALIAS    true
-       COLOR        169 27 169
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 169 27 169
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "straatartiestverbod"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "straatartiestverbod"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "Straatartiestverbod"
-      STYLE
-       ANTIALIAS    true
-       COLOR        153 0 51
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 153 0 51
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "taxi-standplaatsgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "taxi-standplaatsgebied"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "taxi-standplaatsgebied"
-      STYLE
-       ANTIALIAS    true
-       COLOR        236 211 22
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 236 211 22
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "vuurwerkvrijezone"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "vuurwerkvrijezone"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "vuurwerkvrijezone"
-      STYLE
-       ANTIALIAS    true
-       COLOR        153 51 0
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 153 51 0
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "barbecueverbodsgebieden"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "barbecueverbodsgebieden"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "barbecueverbodsgebieden"
-      STYLE
-       ANTIALIAS    true
-       COLOR        160 0 120
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 160 0 120
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "rondleidingverbodsgebieden"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "rondleidingverbodsgebieden"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "rondleidingverbodsgebieden"
-      STYLE
-       ANTIALIAS    true
-       COLOR        0 210 180
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 0 210 180
-       WIDTH        2
-      END
-    END
-
-  END
-
-
-  #----------------------------------------------------------------------------------
-
-
-   LAYER
-    NAME            "messenverbodgebieden"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "messenverbodgebieden"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "messenverbodgebieden"
-      STYLE
-       ANTIALIAS    true
-       COLOR        255 0 0
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 255 0 0
-       WIDTH        2
-      END
-    END
-
-  END
-
-  #--------------------------------------------------------------------------------------------
-
-
-   LAYER
-    NAME            "groepsfietsverbodgebieden"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "groepsfietsverbodgebieden"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME          "groepsfietsverbodgebieden"
-      STYLE
-       ANTIALIAS    true
-       COLOR        255 255 0
-       OPACITY      20
-      END
-      STYLE
-       OUTLINECOLOR 255 255 0
-       WIDTH        2
-      END
-    END
-
-  END
-
-
-  #-----------------------------------------------------------------------------
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "algemeen_overlastgebied_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MAXSCALEDENOM   8000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "algemeen_overlastgebied_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de overlastgebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "algemeen_overlastgebied_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          212 33 44
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          212 33 44
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          212 33 44
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "cameratoezichtgebied_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "cameratoezichtgebied_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de cameratoezichtgebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "cameratoezichtgebied_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          51 114 41
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          51 114 41
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          51 114 41
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "dealeroverlastgebied_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "dealeroverlastgebied_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de dealeroverlastgebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "dealeroverlastgebied_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          49 102 188
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          49 102 188
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          49 102 188
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "uitgaansoverlastgebied_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "uitgaansoverlastgebied_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de uitgaansoverlastgebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "uitgaansoverlastgebied_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          196 147 13
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          196 147 13
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          196 147 13
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "alcoholverbodsgebied_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "alcoholverbodsgebied_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de alcoholverbodsgebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "alcoholverbodsgebied_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          169 27 169
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          169 27 169
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          169 27 169
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "taxi-standplaatsgebied_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "taxi-standplaatsgebied_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de taxi standplaatsgebieden van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "taxi-standplaatsgebied_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          236 211 22
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          236 211 22
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          236 211 22
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "vuurwerkvrijezone_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "vuurwerkvrijezone_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Labels van de vuurwerkvrije zones van de gemeente Amsterdam"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "vuurwerkvrijezone_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          153 51 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          153 51 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          153 51 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "barbecueverbodsgebieden_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "barbecueverbodsgebieden_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "barbecueverbodsgebieden_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "rondleidingverbodsgebieden_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "rondleidingverbodsgebieden_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "rondleidingverbodsgebieden_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "straatartiestverbod_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "straatartiestverbod_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "straatartiestverbod_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          153 0 51
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          153 0 51
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          153 0 51
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "messenverbodgebieden_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "messenverbodgebieden_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "messenverbodgebieden_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
-    NAME            "groepsfietsverbodgebieden_label"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   8001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "groepsfietsverbodgebieden_label"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Overlastgebieden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      TEXT             '[oov_naam]'
-      NAME             "groepsfietsverbodgebieden_label"
-      LABEL
-        MAXSCALEDENOM  3000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  3000
-        MAXSCALEDENOM  6000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           12
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  6000
-        MAXSCALEDENOM  8000
-        COLOR          0 210 180
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   1
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "raamsluitingstijden"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   40000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Raamsluitingstijden"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Raamsluitingstijden van de gemeente Amsterdam"
-      "wfs_enable_request"  "none"
-    END
-
-    CLASS
-      NAME "Raamsluitingstijden"
-      STYLE
-        COLOR "#00A03C"
+        ANTIALIAS true
+        COLOR 212 33 44
         OPACITY 20
       END
       STYLE
-        OUTLINECOLOR "#00A03C"
-        WIDTH        2
+        OUTLINECOLOR 212 33 44
+        WIDTH 2
       END
     END
-
-  END # LAYER
-
-  #-----------------------------------------------------------------------------
-
+  END
   LAYER
-    NAME            "alcoholverkoopverbodgebied"
-    GROUP           "overlastgebieden"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   40000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+    NAME 'cameratoezichtgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-
     METADATA
-      "ows_title"           "alcoholverkoopverbodgebieden"
-      "ows_group_title"     "overlastgebieden"
-      "ows_abstract"        "Raamsluitingstijden van de gemeente Amsterdam"
-      "wfs_enable_request"  "none"
+      'ows_title' 'cameratoezichtgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
     END
-
     CLASS
-        NAME          "alcoholverkoopverbod"
-        STYLE
-            COLOR        229 0 130
-            OPACITY      20
-        END
-        STYLE
-            OUTLINECOLOR 229 0 130
-            WIDTH        2
-        END
+      NAME 'Cameratoezichtgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 51 114 41
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 51 114 41
+        WIDTH 2
+      END
     END
-  END # LAYER
-END # MAP
+  END
+  LAYER
+    NAME 'dealeroverlastgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'dealeroverlastgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Dealeroverlastgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 49 102 188
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 49 102 188
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'uitgaansoverlastgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'uitgaansoverlastgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Uitgaansoverlastgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 255 128 17
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 255 128 17
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'alcoholverbodsgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'alcoholverbodsgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Alcoholverbodsgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 169 27 169
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 169 27 169
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'straatartiestverbod'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'straatartiestverbod'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Straatartiestverbod'
+      STYLE
+        ANTIALIAS true
+        COLOR 153 0 51
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 153 0 51
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'taxi-standplaatsgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'taxi-standplaatsgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'TaxiStandplaatsgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 236 211 22
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 236 211 22
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'vuurwerkvrijezone'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'vuurwerkvrijezone'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Vuurwerkvrijezone'
+      STYLE
+        ANTIALIAS true
+        COLOR 153 51 0
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 153 51 0
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'barbecueverbodsgebieden'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'barbecueverbodsgebieden'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Barbecueverbodsgebieden'
+      STYLE
+        ANTIALIAS true
+        COLOR 160 0 120
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 160 0 120
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'rondleidingverbodsgebieden'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'rondleidingverbodsgebieden'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Rondleidingverbodsgebieden'
+      STYLE
+        ANTIALIAS true
+        COLOR 0 210 180
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 0 210 180
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'messenverbodgebieden'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'messenverbodgebieden'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Messenverbodgebieden'
+      STYLE
+        ANTIALIAS true
+        COLOR 255 0 0
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 255 0 0
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'groepsfietsverbodgebieden'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'groepsfietsverbodgebieden'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Groepsfietsverbodgebieden'
+      STYLE
+        ANTIALIAS true
+        COLOR 255 255 0
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 255 255 0
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'raamsluitingstijden'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'raamsluitingstijden'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Raamsluitingstijden'
+      STYLE
+        ANTIALIAS true
+        COLOR 0 160 60
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 0 160 60
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'alcoholverkoopverbodgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'alcoholverkoopverbodgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Alcoholverkoopverbodgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 229 0 130
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 229 0 130
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'blowverbodsgebied'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_blowverbodsgebied USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'blowverbodsgebied'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+    END
+    CLASS
+      NAME 'Blowverbodsgebied'
+      STYLE
+        ANTIALIAS true
+        COLOR 0 157 236
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR 0 157 236
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
+    NAME 'algemeen_overlastgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'algemeen_overlastgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'algemeen_overlastgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 212 33 44
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 212 33 44
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 212 33 44
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'cameratoezichtgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'cameratoezichtgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'cameratoezichtgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 51 114 41
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 51 114 41
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 51 114 41
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'dealeroverlastgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'dealeroverlastgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'dealeroverlastgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 49 102 188
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 49 102 188
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 49 102 188
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'uitgaansoverlastgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'uitgaansoverlastgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'uitgaansoverlastgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 255 128 17
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 255 128 17
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 255 128 17
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'alcoholverbodsgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'alcoholverbodsgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'alcoholverbodsgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 169 27 169
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 169 27 169
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 169 27 169
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'straatartiestverbod_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'straatartiestverbod_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'straatartiestverbod_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 153 0 51
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 153 0 51
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 153 0 51
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'taxi-standplaatsgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'taxi-standplaatsgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'taxi-standplaatsgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 236 211 22
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 236 211 22
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 236 211 22
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'vuurwerkvrijezone_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_vuurwerkvrij USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'vuurwerkvrijezone_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'vuurwerkvrijezone_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 153 51 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 153 51 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 153 51 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'barbecueverbodsgebieden_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'barbecueverbodsgebieden_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'barbecueverbodsgebieden_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 160 0 120
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 160 0 120
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 160 0 120
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'rondleidingverbodsgebieden_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'rondleidingverbodsgebieden_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'rondleidingverbodsgebieden_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 210 180
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 0 210 180
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 0 210 180
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'messenverbodgebieden_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'messenverbodgebieden_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'messenverbodgebieden_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 255 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 255 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 255 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'groepsfietsverbodgebieden_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'groepsfietsverbodgebieden_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'groepsfietsverbodgebieden_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 255 255 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 255 255 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 255 255 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'raamsluitingstijden_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'raamsluitingstijden_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'raamsluitingstijden_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 160 60
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 0 160 60
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 0 160 60
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'alcoholverkoopverbodgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'alcoholverkoopverbodgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'alcoholverkoopverbodgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 229 0 130
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 229 0 130
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 229 0 130
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'blowverbodsgebied_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_blowverbodsgebied USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'blowverbodsgebied_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'blowverbodsgebied_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 157 236
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR 0 157 236
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR 0 157 236
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+END

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 # Generates the ziektenplagenexotengroen mapfile.
-# TODO rewrite using mappyfile, generalize.
 
 from generate import block, p, q
 
