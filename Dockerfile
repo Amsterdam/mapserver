@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-LABEL maintainer="datapunt@amsterdam.nl"
+MAINTAINER datapunt@amsterdam.nl
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential curl gnupg python3-pip software-properties-common wget
@@ -7,9 +7,10 @@ RUN add-apt-repository -y ppa:ubuntugis/ppa
 
 RUN apt-get install -y gdal-bin gdal-data libgdal20
 RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
+RUN python3 -m pip install mappyfile==0.9.7
 
 # Enable these Apache modules
-RUN  a2enmod actions cgid headers rewrite
+RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
