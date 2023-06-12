@@ -20,7 +20,7 @@ layers = [
     ("groepsfietsverbodgebieden", "groepsfietsverbod", 0xffff00),
     ("raamsluitingstijden", "raamsluitingstijdenverbod", 0x00a03c),
     ("alcoholverkoopverbodgebied", "alcoholverkoopverbod", 0xe50082),
-    ("blowverbodsgebied", "blowverbodsgebied", 0x009DEC)
+    ("blowverbodsgebied", "blowverbodsgebied", 0x009dec)
 ]
 
 print("# GENERATED FILE, DO NOT EDIT.\n\n")
