@@ -222,35 +222,6 @@ MAP
     END
 
     LAYER
-        NAME "verblijfsobjecten_geen_gebruiksdoel"
-        GROUP "verblijfsobjecten_gebruiksdoel"
-        INCLUDE "connection/dataservices.inc"
-        DATA "geometrie FROM (
-            SELECT bv.geometrie, bv.id FROM bag_verblijfsobjecten bv
-                LEFT OUTER JOIN bag_verblijfsobjecten_gebruiksdoel bvg
-                ON bvg.parent_id = bv.id
-            WHERE bvg.id IS NULL
-        ) AS query
-        USING srid=28992 USING UNIQUE id"
-        PROCESSING "CLOSE_CONNECTION=DEFER"
-        EXTENT 110000 476000 138000 494000
-        TYPE POLYGON
-        CLASS
-            NAME "verblijfsobjecten_geen_gebruiksdoel"
-            STYLE
-                COLOR "#d8e74f"
-            END
-        END
-        METADATA
-            "wms_title" "geen_gebruiksdoel"
-            "wms_group_title" 'Verblijfsobjecten gebruiksdoel'
-            "wms_enable_request" "*"
-            "wms_srs"             "EPSG:28992"
-        END
-    END
-
-
-    LAYER
         NAME "standplaatsen_kantoorfunctie"
         INCLUDE "adresseerbare_objecten/standplaatsen.inc"
         VALIDATION
@@ -416,7 +387,7 @@ MAP
     END
 
     LAYER
-        NAME "standplaatsen_geen_gebruiksdoel"
+        NAME "standplaatsen_gebruiksdoel_niet_ingevuld"
         GROUP "standplaatsen"
         INCLUDE "connection/dataservices.inc"
         DATA "geometrie FROM (
@@ -430,13 +401,13 @@ MAP
         EXTENT 110000 476000 138000 494000
         TYPE POLYGON
         CLASS
-            NAME "standplaatsen_geen_gebruiksdoel"
+            NAME "standplaatsen_gebruiksdoel_niet_ingevuld"
             STYLE
                 COLOR "#d8e74f"
             END
         END
         METADATA
-            "wms_title" "geen_gebruiksdoel"
+            "wms_title" "gebruiksdoel_niet_ingevuld"
             "wms_group_title" 'Standplaatsen'
             "wms_enable_request" "*"
             "wms_srs"             "EPSG:28992"
@@ -609,7 +580,7 @@ MAP
     END
 
     LAYER
-        NAME "ligplaatsen_geen_gebruiksdoel"
+        NAME "ligplaatsen_gebruiksdoel_niet_ingevuld"
         GROUP "ligplaatsen"
         INCLUDE "connection/dataservices.inc"
         DATA "geometrie FROM (
@@ -623,13 +594,13 @@ MAP
         EXTENT 110000 476000 138000 494000
         TYPE POLYGON
         CLASS
-            NAME "ligplaatsen_geen_gebruiksdoel"
+            NAME "ligplaatsen_gebruiksdoel_niet_ingevuld"
             STYLE
                 COLOR "#d8e74f"
             END
         END
         METADATA
-            "wms_title" "geen_gebruiksdoel"
+            "wms_title" "gebruiksdoel_niet_ingevuld"
             "wms_group_title" 'Ligplaatsen'
             "wms_enable_request" "*"
             "wms_srs"             "EPSG:28992"
