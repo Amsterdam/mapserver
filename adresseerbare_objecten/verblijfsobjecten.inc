@@ -28,6 +28,7 @@ DATA                    "geometrie FROM (
                               (lower(bv.status_omschrijving) = lower($1) OR $1 = 'all')
                               AND
                               (lower(bvg.omschrijving) = lower($2) OR $2 = 'all')
+                              AND (bv.eind_geldigheid IS NULL OR bv.eind_geldigheid > now())
                             ) AS query 
                           USING srid=28992 USING UNIQUE id"
 BINDVALS

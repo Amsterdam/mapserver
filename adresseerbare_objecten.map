@@ -395,6 +395,7 @@ MAP
                 LEFT OUTER JOIN bag_standplaatsen_gebruiksdoel bsg
                 ON bsg.parent_id = bs.id
             WHERE bsg.id IS NULL
+            AND (bl.eind_geldigheid IS NULL OR bl.eind_geldigheid > now())
         ) AS query
         USING srid=28992 USING UNIQUE id"
         PROCESSING "CLOSE_CONNECTION=DEFER"
@@ -588,6 +589,7 @@ MAP
                 LEFT OUTER JOIN bag_ligplaatsen_gebruiksdoel blg
                 ON blg.parent_id = bl.id
             WHERE blg.id IS NULL
+            AND (bl.eind_geldigheid IS NULL OR bl.eind_geldigheid > now())
         ) AS query
         USING srid=28992 USING UNIQUE id"
         PROCESSING "CLOSE_CONNECTION=DEFER"

@@ -23,6 +23,7 @@ DATA                    "geometrie FROM (
                             ON bv.id = bvg.parent_id
                             WHERE 
                               (lower(bvg.omschrijving) = lower($1) OR $1 = 'all')
+                              AND (bl.eind_geldigheid IS NULL OR bl.eind_geldigheid > now())
                             ) AS query 
                           USING srid=28992 USING UNIQUE id"
 BINDVALS
