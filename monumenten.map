@@ -30,8 +30,18 @@ MAP
     END
 
     INCLUDE                 "connection/monumenten.inc"
-    DATA                    "monumentcoordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
-    TYPE                    POINT
+    # Some monuments have a detailed monumentgeometrie; some have only
+    # POINT-typed monumentcoordinaten. Draw a 1.5m-radius circle around the
+    # latter so mapserver will display them and their labels. This isn't
+    # quite as pretty as a scale-invariant symbol, but it works.
+    DATA "
+        geometrie FROM (
+            SELECT coalesce(ST_CollectionExtract(monumentgeometrie, 3),
+                            ST_Buffer(monumentcoordinaten, 1.5)) AS geometrie,
+                   id FROM public.dataset_monument
+            ) AS query
+        USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
@@ -62,11 +72,8 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       5001
-        SYMBOL              'stip'
         COLOR               255 255 255
-        SIZE                8
         OUTLINECOLOR        0 0 0
-        WIDTH               3
       END
 
       LABEL
@@ -96,8 +103,15 @@ MAP
     END
 
     INCLUDE                 "connection/monumenten.inc"
-    DATA                    "monumentcoordinaten FROM public.dataset_monument USING srid=28992 USING UNIQUE id"
-    TYPE                    POINT
+    # See comment at previous layer.
+    DATA "
+        geometrie FROM (
+            SELECT coalesce(ST_CollectionExtract(monumentgeometrie, 3),
+                            ST_Buffer(monumentcoordinaten, 2.5)) AS geometrie,
+                   * FROM public.dataset_monument
+            ) AS query
+        USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
@@ -128,11 +142,8 @@ MAP
       STYLE
         MINSCALEDENOM       10
         MAXSCALEDENOM       5001
-        SYMBOL              'stip'
         COLOR               102 102 102
-        SIZE                10
         OUTLINECOLOR        0 0 0
-        WIDTH               1
       END
 
       LABEL
