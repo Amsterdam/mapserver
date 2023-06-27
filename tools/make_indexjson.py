@@ -1,9 +1,6 @@
 # Produces a JSON file containing an overview of available maps.
 # Usage:
 #   python3 tools/make_overview.py *.map
-#
-# This file needs to be compatible with Python 3.6 as long as our images
-# are based on Ubuntu 18.04.
 
 import json
 import logging
