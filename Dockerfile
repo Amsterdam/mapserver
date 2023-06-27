@@ -1,12 +1,19 @@
-FROM ubuntu:18.04
+FROM ubuntu:22.04
 MAINTAINER datapunt@amsterdam.nl
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y build-essential curl gnupg python3-pip software-properties-common wget
-RUN add-apt-repository -y ppa:ubuntugis/ppa
+RUN apt-get install -y \
+    apache2 \
+    cgi-mapserver \
+    curl \
+    gdal-bin \
+    gdal-data \
+    libmapcache1 \
+    libapache2-mod-mapcache \
+    mapserver-bin \
+    python3-pip \
+    wget
 
-RUN apt-get install -y gdal-bin gdal-data libgdal20
-RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 RUN python3 -m pip install mappyfile==0.9.7
 
 # Enable these Apache modules
