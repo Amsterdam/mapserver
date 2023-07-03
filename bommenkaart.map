@@ -187,7 +187,9 @@ MAP
 
     CLASS
       NAME                  "Munitie en granaten"
-      EXPRESSION           ("[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen, Munitie voor granaatwerpers" OR "[detail_type]" eq "Geschutmunitie, Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Ontstekingsinrichtingen" OR "[detail_type]" eq "Kleinkalibermunitie, Munitietoebehoren, Handgranaten, Geweergranaten, Munitie voor granaatwerpers" OR "[detail_type]" eq "Kleinkalibermunitie, Vuurwerken en Munitietoebehoren" OR "[detail_type]" eq "KKM, hand- en geweergranaten, munitie voor granaatwerpers en toebehoren van munitie" OR "[detail_type]" eq "KKM, hand- en geweergranaten, munitie voor granaatwerpers, toebehoren van munitie en geschutmunitie" OR "[detail_type]" eq "Geschutmunitie, Vuurwerken")
+      # Note: the regexps here must not match any detail_type that belongs to
+      # the other classes below.
+      EXPRESSION            ("[detail_type]" ~* "KKM" or "[detail_type]" ~* "Geschutmunitie" OR "[detail_type]" ~* "toebehoren")
       STYLE
         ANTIALIAS           true
         COLOR               255 130 0
