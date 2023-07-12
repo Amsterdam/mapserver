@@ -19,8 +19,10 @@ MAP
     NAME            "kadastraal_object"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_kadastraleobjecten
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
+    DATA            "geometrie FROM (
+                        SELECT * FROM public.brk_2_kadastraleobjecten
+                        WHERE coalesce(eind_geldigheid, now()) >= now()
+                     ) AS sub
                      USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -56,7 +58,6 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.brk_2_kadastralesecties
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            LINE
     MINSCALEDENOM   100
@@ -92,7 +93,6 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.brk_2_kadastralegemeentes
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -127,8 +127,10 @@ MAP
     NAME            "burgerlijke_gemeente"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_gemeentes
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
+    DATA            "geometrie FROM (
+                        SELECT * FROM public.brk_2_gemeentes
+                        WHERE coalesce(eind_geldigheid, now()) >= now()
+                     ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -165,8 +167,10 @@ MAP
     NAME            "kadastraal_object_label"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_kadastraleobjecten
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
+    DATA            "geometrie FROM (
+                        SELECT * FROM public.brk_2_kadastraleobjecten
+                        WHERE coalesce(eind_geldigheid, now()) >= now()
+                     ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -209,7 +213,6 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.brk_2_kadastralesecties
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   2501
@@ -252,7 +255,6 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.brk_2_kadastralegemeentes
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   12501
@@ -294,8 +296,10 @@ MAP
     NAME            "burgerlijke_gemeente_label"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_gemeentes
-                     WHERE coalesce(eind_geldigheid, now()) >= now()
+    DATA            "geometrie FROM (
+                        SELECT * FROM public.brk_2_gemeentes
+                        WHERE coalesce(eind_geldigheid, now()) >= now()
+                     ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   20000
