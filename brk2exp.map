@@ -18,8 +18,8 @@ MAP
   LAYER
     NAME            "kadastraal_object"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_kadastraleobjecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -52,8 +52,8 @@ MAP
   LAYER
     NAME            "kadastrale_sectie"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie_lines FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_kadastralesecties USING srid=28992 USING UNIQUE identificatie"
     TYPE            LINE
     MINSCALEDENOM   100
     MAXSCALEDENOM   12501
@@ -86,9 +86,9 @@ MAP
   LAYER
     NAME            "kadastrale_gemeente"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie_lines FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
-    TYPE            LINE
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_kadastralegemeentes USING srid=28992 USING UNIQUE identificatie"
+    TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -120,8 +120,8 @@ MAP
   LAYER
     NAME            "burgerlijke_gemeente"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_gemeentes USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -156,8 +156,8 @@ MAP
   LAYER
     NAME            "kadastraal_object_label"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_lki_kadastraalobject USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_kadastraleobjecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -197,8 +197,8 @@ MAP
   LAYER
     NAME            "kadastrale_sectie_label"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_lki_sectie USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_kadastralesecties USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   2501
     MAXSCALEDENOM   12501
@@ -212,10 +212,10 @@ MAP
       "ows_abstract"        "Labels van kadastrale secties"
     END
 
-    LABELITEM "volledige_code"
+    LABELITEM "identificatie"
 
     CLASS
-      NAME             "Kadastrale sectie code"
+      NAME             "Kadastrale sectiecode"
       LABEL
         MINSCALEDENOM  2501
         MAXSCALEDENOM  12501
@@ -238,8 +238,8 @@ MAP
   LAYER
     NAME            "kadastrale_gemeente_label"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_lki_kadastralegemeente USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_kadastralegemeentes USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   12501
     MAXSCALEDENOM   25001
@@ -256,7 +256,7 @@ MAP
     LABELITEM          "code"
 
     CLASS
-      NAME             "Gemeente code"
+      NAME             "Gemeentecode"
       LABEL
         MINSCALEDENOM  12501
         MAXSCALEDENOM  25001
@@ -279,8 +279,8 @@ MAP
   LAYER
     NAME            "burgerlijke_gemeente_label"
     GROUP           "kadaster"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_lki_gemeente USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.brk_2_gemeentes USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   20000
     MAXSCALEDENOM   100001
@@ -294,7 +294,7 @@ MAP
       "ows_abstract"        "Label van burgerlijke gemeentegrenzen"
     END
 
-    LABELITEM          "gemeentenaam"
+    LABELITEM          "naam"
 
     CLASS
       NAME             "Gemeentenaam"
