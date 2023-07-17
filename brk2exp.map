@@ -96,7 +96,7 @@ MAP
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
+    MAXSCALEDENOM   20000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
     "init=epsg:28992"
@@ -133,7 +133,7 @@ MAP
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
-    MINSCALEDENOM   100
+    MINSCALEDENOM   20000
     MAXSCALEDENOM   100001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -257,8 +257,8 @@ MAP
     DATA            "geometrie FROM public.brk_2_kadastralegemeentes
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
-    MINSCALEDENOM   12501
-    MAXSCALEDENOM   25001
+    MINSCALEDENOM   100
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
@@ -274,8 +274,8 @@ MAP
     CLASS
       NAME             "Gemeentenaam"
       LABEL
-        MINSCALEDENOM  12501
-        MAXSCALEDENOM  25001
+        MINSCALEDENOM  100
+        MAXSCALEDENOM  20000
         COLOR          0 140 140
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -320,25 +320,13 @@ MAP
       NAME             "Gemeentenaam"
       LABEL
         MINSCALEDENOM  20000
-        MAXSCALEDENOM  50001
-        COLOR          0 100 100
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           14
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  50001
         MAXSCALEDENOM  100001
         COLOR          0 100 100
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-M"
         TYPE           truetype
-        SIZE           11
+        SIZE           14
         POSITION       AUTO
         PARTIALS       FALSE
       END
