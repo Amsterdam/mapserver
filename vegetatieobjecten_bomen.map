@@ -1,0 +1,539 @@
+# GENERATED FILE, DO NOT EDIT.
+
+
+# TEAM: BOR
+
+MAP
+  NAME 'vegetatieobjecten'
+  INCLUDE 'header.inc'
+  DEBUG 5
+  WEB
+    METADATA
+      'ows_title' 'Vegetatieobjecten'
+      'ows_abstract' 'Dataset met actuele informatie over de bomen in beheer van gemeente Amsterdam'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+  END
+  LAYER
+    NAME 'Iep (Ulmus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Iep (Ulmus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Iep (Ulmus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Iep (Ulmus)'
+      STYLE
+        SYMBOL 'bomen_iep'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Linde (Tilia)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Linde (Tilia)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Linde (Tilia)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Linde (Tilia)'
+      STYLE
+        SYMBOL 'bomen_linde'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Esdoorn (Acer)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Esdoorn (Acer)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Esdoorn (Acer)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Esdoorn (Acer)'
+      STYLE
+        SYMBOL 'bomen_esdoorn'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Es (Fraxinus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Es (Fraxinus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Es (Fraxinus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Es (Fraxinus)'
+      STYLE
+        SYMBOL 'bomen_es'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Plataan (Platanus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Plataan (Platanus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Plataan (Platanus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Plataan (Platanus)'
+      STYLE
+        SYMBOL 'bomen_plataan'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Eik (Quercus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Eik (Quercus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Eik (Quercus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Eik (Quercus)'
+      STYLE
+        SYMBOL 'bomen_eik'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Populier (Populus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Populier (Populus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Populier (Populus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Populier (Populus)'
+      STYLE
+        SYMBOL 'bomen_populier'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Els (Alnus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Els (Alnus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Els (Alnus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Els (Alnus)'
+      STYLE
+        SYMBOL 'bomen_els'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Wilg (Salix)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Wilg (Salix)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Wilg (Salix)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Wilg (Salix)'
+      STYLE
+        SYMBOL 'bomen_wilg'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Berk (Betula)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Berk (Betula)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Berk (Betula)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Berk (Betula)'
+      STYLE
+        SYMBOL 'bomen_berk'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Kers (Prunus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Kers (Prunus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Kers (Prunus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Kers (Prunus)'
+      STYLE
+        SYMBOL 'bomen_kers'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Haagbeuk (Carpinus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Haagbeuk (Carpinus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Haagbeuk (Carpinus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Haagbeuk (Carpinus)'
+      STYLE
+        SYMBOL 'bomen_haagbeuk'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Meidoorn (Crataegus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Meidoorn (Crataegus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Meidoorn (Crataegus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Meidoorn (Crataegus)'
+      STYLE
+        SYMBOL 'bomen_meidoorn'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Acacia (Robinia)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Acacia (Robinia)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Acacia (Robinia)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Acacia (Robinia)'
+      STYLE
+        SYMBOL 'bomen_acacia'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Paardenkastanje (Aesculus)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Paardenkastanje (Aesculus)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Paardenkastanje (Aesculus)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Paardenkastanje (Aesculus)'
+      STYLE
+        SYMBOL 'bomen_paardenkastanje'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Vleugelnoot (Pterocarya)'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Vleugelnoot (Pterocarya)')) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Vleugelnoot (Pterocarya)'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Vleugelnoot (Pterocarya)'
+      STYLE
+        SYMBOL 'bomen_vleugelnoot'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Onbekende soorten'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top = 'Onbekend' OR soortnaam_top IS NULL)) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Onbekende soorten'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Onbekende soorten'
+      STYLE
+        SYMBOL 'bomen_onbekende'
+        SIZE 16
+      END
+    END
+  END
+  LAYER
+    NAME 'Overige soorten'
+    GROUP 'bomen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie FROM (   SELECT * FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'   AND type_eigenaar_plus = 'Gemeente Amsterdam'  AND (soortnaam_top != 'Iep (Ulmus)' AND soortnaam_top != 'Linde (Tilia)' AND soortnaam_top != 'Esdoorn (Acer)' AND soortnaam_top != 'Es (Fraxinus)' AND soortnaam_top != 'Plataan (Platanus)' AND soortnaam_top != 'Eik (Quercus)' AND soortnaam_top != 'Populier (Populus)' AND soortnaam_top != 'Els (Alnus)' AND soortnaam_top != 'Wilg (Salix)' AND soortnaam_top != 'Berk (Betula)' AND soortnaam_top != 'Kers (Prunus)' AND soortnaam_top != 'Haagbeuk (Carpinus)' AND soortnaam_top != 'Meidoorn (Crataegus)' AND soortnaam_top != 'Acacia (Robinia)' AND soortnaam_top != 'Paardenkastanje (Aesculus)' AND soortnaam_top != 'Vleugelnoot (Pterocarya)' AND soortnaam_top IS NOT NULL)) AS sub USING srid=28992 USING UNIQUE id"
+    TYPE POINT
+    METADATA
+      'wfs_enable_request' 'none'
+      'wms_title' 'Overige soorten'
+      'wms_enable_request' '*'
+      'wms_srs' 'EPSG:28992'
+      'wms_name' 'Bomen'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.3.0'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    LABELITEM 'soortnaam_top'
+    CLASSITEM 'soortnaam_top'
+    CLASS
+      NAME 'Overige soorten'
+      STYLE
+        SYMBOL 'bomen_overige'
+        SIZE 16
+      END
+    END
+  END
+END
