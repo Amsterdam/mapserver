@@ -9,6 +9,7 @@ services:
       POSTGRES_PASSWORD: insecure
     volumes:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
+    #command: ["postgres", "-c", "log_statement=all"]
 
   map:
     build:
