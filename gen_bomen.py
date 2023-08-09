@@ -42,8 +42,10 @@ with block("MAP"):
             q("wms_extent", "100000 450000 150000 500000")
 
     for name in layers:
+        shortname = name.split()[0].lower()
+
         with block("LAYER"):
-            p("NAME", name)
+            p("NAME", shortname)
             p("GROUP", "bomen")
 
             with block("PROJECTION"):
@@ -89,5 +91,5 @@ with block("MAP"):
                 p("NAME", name)
 
                 with block("STYLE"):
-                    p("SYMBOL", f"bomen_{name.split()[0].lower()}")
+                    p("SYMBOL", f"bomen_{shortname}")
                     p("SIZE", 16)
