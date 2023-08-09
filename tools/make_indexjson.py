@@ -11,37 +11,12 @@ import re
 import sys
 from typing import Dict, Optional, Tuple
 
-import mappyfile
-
-
-def dict_get(x: Dict, *keys: str) -> Optional[object]:
-    for key in keys:
-        # Don't use x[key] here, because mappyfile uses custom dicts
-        # that have the annoying habit of adding non-existent keys (!).
-        x = x.get(key)
-        if x is None:
-            break
-    return x
-
 
 def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
-    """Parses a mapfile to extract metadata about a map."""
-    m = mappyfile.open(filename)
-    r = {}
-    for key, path in (
-        ("title", ["web", "metadata", "ows_title"]),
-        ("abstract", ["web", "metadata", "ows_abstract"]),
-    ):
-        val = dict_get(m, *path)
-        if val is not None:
-            r[key] = val
-    return m["name"], r
+    """Parses a mapfile to extract metadata about a map.
 
-
-def scan_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
-    """Tries to do what parse_mapfile does for files that mappyfile won't parse.
-
-    Ugly hack up ahead.
+    Returns the name of the map, and a dict that possibly maps "title" and
+    "abstract" to the first ows_{title,abstract} that occur.
     """
     keys = {
         "NAME": "name",
@@ -49,6 +24,9 @@ def scan_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
         '"ows_abstract"': "abstract",
     }
 
+    # This is a bit of a hack. It would seem that using mappyfile to parse the
+    # mapfiles would be cleaner, but mappyfile doesn't support the full mapfile
+    # grammar, so we'd need this as a fallback anyway.
     r = {}
     with open(filename) as f:
         for ln in f:
@@ -77,14 +55,7 @@ if __name__ == "__main__":
 
     index = {}
     for f in sys.argv[1:]:
-        # It's tempting to just dump mappyfile.open(f) as JSON,
-        # but doing so leaks the db passwords, which mappyfile inserts
-        # when expanding the includes.
-        try:
-            name, props = parse_mapfile(f)
-        except Exception as e:
-            logger.error("Retrying %s after %s", f, e)
-            name, props = scan_mapfile(f)
+        name, props = parse_mapfile(f)
         if not NAME_RE.match(name):
             logger.error("Name should match %r, got %r", NAME_RE.pattern, name)
             continue

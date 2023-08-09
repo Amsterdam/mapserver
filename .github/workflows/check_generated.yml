@@ -40,5 +40,4 @@ jobs:
         for c in bag basiskaart dataselectie dataservices milieu monumenten nap panorama various_small_datasets; do
             echo CONNECTIONTYPE postgis > connection/$c.inc
         done
-        python3 -m pip install mappyfile
         python3 tools/make_indexjson.py *.map | jq .
