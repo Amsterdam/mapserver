@@ -28,13 +28,13 @@ print("# GENERATED FILE, DO NOT EDIT.\n\n")
 print("# TEAM: BOR\n")
 
 with block("MAP"):
-    p("NAME", "vegetatieobjecten")
+    p("NAME", "bomen")
     p("INCLUDE", "header.inc")
     p("DEBUG", 5)
 
     with block("WEB"):
         with block("METADATA"):
-            q("ows_title", "Vegetatieobjecten")
+            q("ows_title", "Objecten openbare ruimte - bomen")
             q(
                 "ows_abstract",
                 "Dataset met actuele informatie over de bomen in beheer van gemeente Amsterdam",
