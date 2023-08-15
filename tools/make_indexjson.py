@@ -28,7 +28,7 @@ def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
     # mapfiles would be cleaner, but mappyfile doesn't support the full mapfile
     # grammar, so we'd need this as a fallback anyway.
     r = {}
-    with open(filename) as f:
+    with open(filename, encoding="utf-8") as f:
         for ln in f:
             ln = ln.split()
             if len(ln) == 0:
@@ -39,7 +39,7 @@ def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
                 continue
 
             value = ln[1]
-            if value.startswith('"'):
+            if value.startswith('"') or value.startswith("'"):
                 value = value[1:-1]
             r.setdefault(key, value)
 
