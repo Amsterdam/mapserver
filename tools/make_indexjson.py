@@ -30,7 +30,7 @@ def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
     r = {}
     with open(filename, encoding="utf-8") as f:
         for ln in f:
-            ln = ln.split()
+            ln = ln.split(None, 1)
             if len(ln) == 0:
                 continue
 
@@ -39,6 +39,11 @@ def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
                 continue
 
             value = ln[1]
+            # Remove comments.
+            if "#" in value:
+                value = value[value.index("#"):]
+            value = value.strip()
+
             if value.startswith('"') or value.startswith("'"):
                 value = value[1:-1]
             r.setdefault(key, value)
