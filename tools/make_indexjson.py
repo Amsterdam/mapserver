@@ -7,19 +7,19 @@
 
 import json
 import logging
+import os.path
 import re
 import sys
 from typing import Dict, Optional, Tuple
 
 
-def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
+def parse_mapfile(filename: str) -> Dict[str, object]:
     """Parses a mapfile to extract metadata about a map.
 
-    Returns the name of the map, and a dict that possibly maps "title" and
-    "abstract" to the first ows_{title,abstract} that occur.
+    Returns a dict that possibly maps "title" and "abstract" to the first
+    ows_{title,abstract} that occur.
     """
     keys = {
-        "NAME": "name",
         '"ows_title"': "title",
         '"ows_abstract"': "abstract",
     }
@@ -48,8 +48,7 @@ def parse_mapfile(filename: str) -> Tuple[str, Dict[str, object]]:
                 value = value[1:-1]
             r.setdefault(key, value)
 
-    name = r.pop("name")
-    return name, r
+    return r
 
 
 NAME_RE = re.compile("^[A-Za-z0-9_]+")
@@ -60,7 +59,8 @@ if __name__ == "__main__":
 
     index = {}
     for f in sys.argv[1:]:
-        name, props = parse_mapfile(f)
+        props = parse_mapfile(f)
+        name = os.path.basename(f)[:-len(".map")]
         if not NAME_RE.match(name):
             logger.error("Name should match %r, got %r", NAME_RE.pattern, name)
             continue
