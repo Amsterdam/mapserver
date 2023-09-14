@@ -1,0 +1,12 @@
+ARG BASE_IMAGE
+
+FROM ${BASE_IMAGE}
+
+# used by make_mapfile_config.py to include private mapfiles in sld config
+ENV ACCESS_SCOPE private
+
+# Copy private mapfiles into the root dir so they will be served
+# Any maps that have a public and private variety will serve the
+# private variety (e.g. externeveiligheid)
+RUN rm -rf /srv/mapserver/private
+COPY /private/ /srv/mapserver/

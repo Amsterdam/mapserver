@@ -1,0 +1,35 @@
+MAP
+  CONFIG "MS_ERRORFILE" "stderr"
+  DEBUG 5
+  NAME "Healthcheck"
+  EXTENT 0 0 100 100
+  SIZE 100 100
+  PROJECTION
+    "init=epsg:28992"
+  END
+
+  WEB
+    METADATA
+      ows_title "MapServer healthcheck"
+      ows_enable_request "*"
+    END
+  END
+
+  LAYER
+    NAME 'blue_circles'
+    TYPE CIRCLE
+    STATUS ON
+    FEATURE
+      POINTS
+        10 10
+        50 50
+      END
+    END
+    CLASS
+      STYLE
+        COLOR 0 0 255
+      END
+    END
+  END
+
+END

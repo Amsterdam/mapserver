@@ -1,33 +1,34 @@
-import re
-import os
-import sys
-from warnings import warn
-from glob import glob
-import math
 import json
+import math
+import os
+import re
+import sys
+from glob import glob
+from warnings import warn
 
-map_file_dict = {'mapfiles': []}
+map_file_dict = {"mapfiles": []}
 
 
 expected_state = {
-    'MAP': None,
-    'LAYER': 'MAP',
-    'PROJECTION': 'LAYER',
-    'WEB': 'MAP',
-    'OUTPUTFORMAT': 'MAP',
-    'SYMBOL': ['MAP', 'STYLE'],
-    'LEGEND': 'MAP',
-    'POINTS': 'SYMBOL',
-    'METADATA': ['LAYER', 'WEB'],
-    'CLASS': 'LAYER',
-    'COMPOSITE': 'LAYER',
-    'VALIDATION': 'LAYER',
-    'STYLE': ['CLASS', 'LABEL'],
-    'LABEL': 'CLASS',
-    'PATTERN': 'STYLE',
+    "MAP": None,
+    "LAYER": "MAP",
+    "PROJECTION": ["LAYER", "MAP"],
+    "WEB": "MAP",
+    "OUTPUTFORMAT": "MAP",
+    "SYMBOL": "MAP",
+    "LEGEND": "MAP",
+    "POINTS": ["SYMBOL", "FEATURE"],
+    "METADATA": ["LAYER", "WEB"],
+    "CLASS": "LAYER",
+    "COMPOSITE": "LAYER",
+    "VALIDATION": "LAYER",
+    "STYLE": ["CLASS", "LABEL"],
+    "LABEL": "CLASS",
+    "PATTERN": "STYLE",
+    "FEATURE": "LAYER",
 }
 
-name_elements = ('MAP', 'LAYER', 'CLASS')
+name_elements = ("MAP", "LAYER", "CLASS")
 
 
 def eprint(*args, **kwargs):
@@ -51,106 +52,101 @@ def zoomlevel_for_scaledenom(scaledenom, domax=True):
 
 def scan_map_file(mapfile):
 
-    eprint(f'Processing {mapfile}...')
-    s = mapfile.rfind('/')
+    eprint(f"Processing {mapfile}...")
+    s = mapfile.rfind("/")
     if s > 0:
-        name = mapfile[s+1:-4]
+        name = mapfile[s + 1 : -4]
     else:
         name = mapfile[:-4]
 
     # print(name)
-    cur_map_file = {
-        'file_name': name,
-        'layers': []
-    }
+    cur_map_file = {"file_name": name, "layers": []}
 
     cur_layer = None
     cur_class = None
 
-    map_file_dict['mapfiles'].append(cur_map_file)
+    map_file_dict["mapfiles"].append(cur_map_file)
     state = []
     dict_stack = []
     element = re.compile(r'"[^"]*"|\S+')
-    comment = re.compile(r'\s*#')
-    ws = re.compile(r'(\s+)')
+    comment = re.compile(r"\s*#")
     count = 0
     try:
-        with open(mapfile, encoding='utf-8') as file:
+        with open(mapfile, encoding="utf-8") as file:
             for line in file:
                 count += 1
-                pos = line.find('#')
+                pos = line.find("#")
                 if pos == 0:
                     continue
                 elif pos > 0:
-                    line = line[0:pos-1]
+                    line = line[0 : pos - 1]
 
                 if comment.match(line):
                     continue
-                m = ws.match(line)
-                if m:
-                    ws_count = len(m.group(1))
-                else:
-                    ws_count = 0
                 elements = element.findall(line)
                 if len(elements) == 0:
                     continue
-                # print(ws_count, elements)
                 if elements[0] in expected_state:
                     expected = expected_state[elements[0]]
                     if expected is not None and len(state) == 0:
                         print(expected)
-                    elif (expected is None and len(state) == 0) or (
-                            type(expected) == list and state[-1] in expected) or expected == state[-1]:
+                    elif (
+                        (expected is None and len(state) == 0)
+                        or (type(expected) == list and state[-1] in expected)
+                        or expected == state[-1]
+                    ):
                         state.append(elements[0])
                         if state[-1] in name_elements:
-                            dict_stack.append('NEW_UNKOWN_NAME')
+                            dict_stack.append("NEW_UNKOWN_NAME")
                             # print(dict_stack)
-                            if state[-1] == 'LAYER':
-                                cur_layer = {'classes': []}
-                                cur_map_file['layers'].append(cur_layer)
-                            elif state[-1] == 'CLASS':
+                            if state[-1] == "LAYER":
+                                cur_layer = {"classes": []}
+                                cur_map_file["layers"].append(cur_layer)
+                            elif state[-1] == "CLASS":
                                 assert cur_layer is not None
                                 cur_class = {}
-                                cur_layer['classes'].append(cur_class)
-                    elif elements[0] == 'SYMBOL' and len(elements) > 1:
+                                cur_layer["classes"].append(cur_class)
+                    elif elements[0] == "SYMBOL" and len(elements) > 1:
                         # Process symbol
                         pass
                     else:
-                        warn(f"Invalid {elements[0]} in {mapfile} line {count}")
-                elif elements[0] == 'END':
+                        raise Exception(
+                            f"Invalid {elements[0]} in {mapfile} line {count}"
+                        )
+                elif elements[0] == "END":
                     if len(state) > 0:
                         if state[-1] in name_elements and len(dict_stack) > 0:
                             dict_stack.pop()
-                            if state[-1] == 'CLASS':
+                            if state[-1] == "CLASS":
                                 cur_class = None
-                            elif state[-1] == 'LAYER':
+                            elif state[-1] == "LAYER":
                                 cur_layer = None
                         state.pop()
                     else:
                         warn(f"Invalid {elements[0]} in {mapfile} line {count}")
                 # Process elements here
-                if elements[0] == 'NAME' and state[-1] in name_elements:
+                if elements[0] == "NAME" and state[-1] in name_elements:
                     name = elements[1].strip('"').strip("'")
-                    if state[-1] == 'CLASS':
-                        cur_class['name'] = name
-                    elif state[-1] == 'LAYER':
-                        cur_layer['name'] = name
-                    elif state[-1] == 'MAP':
-                        cur_map_file['name'] = name
-                elif elements[0] == 'GROUP' and state[-1] == 'LAYER':
+                    if state[-1] == "CLASS":
+                        cur_class["name"] = name
+                    elif state[-1] == "LAYER":
+                        cur_layer["name"] = name
+                    elif state[-1] == "MAP":
+                        cur_map_file["name"] = name
+                elif elements[0] == "GROUP" and state[-1] == "LAYER":
                     group = elements[1].strip('"')
                     layer = dict_stack[-1]
                     my_stack = dict_stack[0:-1]
-                elif elements[0] == 'MINSCALEDENOM' and state[-1] == 'LAYER':
+                elif elements[0] == "MINSCALEDENOM" and state[-1] == "LAYER":
                     max_zoom = zoomlevel_for_scaledenom(int(elements[1]), False)
-                    cur_layer['maxZoom'] = max_zoom
-                elif elements[0] == 'MAXSCALEDENOM' and state[-1] == 'LAYER':
+                    cur_layer["maxZoom"] = max_zoom
+                elif elements[0] == "MAXSCALEDENOM" and state[-1] == "LAYER":
                     min_zoom = zoomlevel_for_scaledenom(int(elements[1]), True)
-                    cur_layer['minZoom'] = min_zoom
+                    cur_layer["minZoom"] = min_zoom
 
                 # In one case the END is on the line itself
-                if len(elements) > 1 and elements[-1] == 'END':
-                    popped = state.pop()
+                if len(elements) > 1 and elements[-1] == "END":
+                    state.pop()
     except UnicodeDecodeError as e:
         eprint(f"Error {e} at {mapfile} {count}")
 
@@ -160,14 +156,21 @@ def main():
     script_dir = os.path.dirname(os.path.realpath(__file__))
     os.chdir(script_dir)
 
-    public_mapfiles = glob('../*.map')
-    mapfiles = list(public_mapfiles)
-    if os.getenv('ACCESS_SCOPE', 'public') == 'private':
-        private_mapfiles = glob('../private/*.map')
-        mapfiles.extend(private_mapfiles)
+    public_mapfiles = glob("../*.map")
+    private_mapfiles = []
+    if os.getenv("ACCESS_SCOPE", "public") == "private":
+        eprint("Including private mapfiles in output")
+        private_mapfiles = glob("../private/*.map")
 
-    for mapfile in mapfiles:
-        if re.search(r'lufo', mapfile):
+    eprint("Processing public mapfiles")
+    for mapfile in sorted(public_mapfiles):  # sorting for easier debugging through logs
+        if re.search(r"lufo", mapfile):
+            continue
+        scan_map_file(mapfile)
+
+    eprint("Processing private mapfiles")
+    for mapfile in sorted(private_mapfiles):
+        if re.search(r"lufo", mapfile):
             continue
         scan_map_file(mapfile)
 
@@ -176,5 +179,5 @@ def main():
     os.chdir(current_dir)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

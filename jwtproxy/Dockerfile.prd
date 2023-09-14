@@ -1,0 +1,12 @@
+FROM python:3.10-slim-bullseye
+
+COPY supervisord.conf /etc
+
+WORKDIR /app
+COPY src jwtproxy 
+COPY requirements.txt .
+
+RUN pip install supervisor
+RUN pip install -r requirements.txt
+EXPOSE 8000
+ENTRYPOINT [ "/bin/sh", "-c", "/usr/local/bin/supervisord -n"]

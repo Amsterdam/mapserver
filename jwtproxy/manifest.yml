@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld
+    cl: testing
+  name: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - image: mcr.microsoft.com/azuredocs/aks-helloworld:v1
+        imagePullPolicy: IfNotPresent
+        name: aks-helloworld
+        ports:
+          - containerPort: 80
+            name: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: proxy
+    cl: testing
+  name: proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proxy
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: proxy
+    spec:
+      containers:
+      - image: library/jwtproxy
+        imagePullPolicy: IfNotPresent
+        name: jwtproxy
+        ports:
+          - containerPort: 8080
+            name: http1
+        env:
+          - name: PROXY_URL
+            value: http://helloworld.default.svc.cluster.local
+          - name: LOG_LEVEL
+            value: DEBUG
+          - name: JWKS_PATH
+            value: /app/jwtproxy/test_jwk.json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: proxy
+    cl: testing
+  name: proxy-svc
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http1
+  selector:
+    app: proxy
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: helloworld
+    cl: testing
+  name: helloworld
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app: helloworld
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: proxy-ingress
+  labels:
+    cl: testing
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: proxy-svc
+            port:
+              name: http
+        path: /
+        pathType: Prefix

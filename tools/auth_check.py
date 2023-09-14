@@ -4,6 +4,7 @@ import argparse
 import glob
 import logging
 import re
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Optional
@@ -13,12 +14,13 @@ from mappyfile.parser import Parser
 from mappyfile.pprint import PrettyPrinter
 from mappyfile.transformer import MapfileToDict
 from schematools.types import DatasetSchema
-from schematools.utils import dataset_schemas_from_url
+
+from utils import dataset_schemas_from_url
 
 SCHEMA_URL = "https://schemas.data.amsterdam.nl/datasets"
 ACC_SCHEMA_URL = "https://acc.schemas.data.amsterdam.nl/datasets"
 
-repo_root = Path(__file__).parent.parent
+repo_root = Path.cwd()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -38,10 +40,16 @@ parser.add_argument(
     "-e",
     "--exclude",
     nargs="*",
-    help="List of mapfiles to exclude (references by the name of the file i.e.: <name>.map)",
+    help="List of mapfiles to exclude (references by the name of the file without the .map extension i.e.: '<name>.map')",
+)
+parser.add_argument(
+    "-l",
+    "--exclude-layers",
+    nargs="*",
+    help="List of layers to exclude (references by the name of the file and the layer separated by a . i.e.: '<mapname>.<layername>')",
 )
 
-logger = logging.getLogger("[Auth check script]")
+logger = logging.getLogger("authchecker")
 
 
 def parse_private(fname: Path | str):
@@ -127,11 +135,16 @@ def auth_from_layer(
     return auth_data
 
 
+def exit(check_failed: bool):
+    sys.exit(int(check_failed))
+
+
 def run_check(
     schema_url: str,
     private_only: bool,
     include_maps: Optional[list[str]],
     exclude_maps: Optional[list[str]],
+    exclude_layers: Optional[list[tuple[str]]],
 ):
     printer = PrettyPrinter()
 
@@ -140,11 +153,13 @@ def run_check(
     logger.info(
         "Found %s public and %s private maps", len(public_maps), len(private_maps)
     )
+    logger.info("Using %s as repository root", repo_root)
 
     logger.info("Loading schemas from %s", schema_url)
     schemas = dataset_schemas_from_url(schema_url)
 
     prohibited_queries = []
+    check_failed = False
 
     for fname in private_maps:
         if include_maps and Path(fname).name.removesuffix(".map") not in include_maps:
@@ -158,18 +173,20 @@ def run_check(
 
         for layer in map_["layers"]:
             # private maps must not contain scopes higher than FP/MDW
+            if (map_["name"], layer["name"]) in exclude_layers:
+                continue
             prohibited_queries.extend(
                 auth_from_layer(map_["name"], layer, schemas, SCOPE_FP_MDW)
             )
     if prohibited_queries:
-
         logger.info(
             "Found the following queries in private maps that are possibly breaching auth requirements: \n\n - %s",
             "\n - ".join(map(str, prohibited_queries)),
         )
+        check_failed = True
 
     if private_only:
-        return
+        exit(check_failed)
 
     prohibited_queries = []
     for fname in public_maps:
@@ -184,18 +201,29 @@ def run_check(
 
         for layer in map_["layers"]:
             # public maps must not contain scopes higher than OPENBAAR
+            if (map_["name"], layer["name"]) in exclude_layers:
+                continue
             prohibited_queries.extend(
                 auth_from_layer(map_["name"], layer, schemas, SCOPE_OPENBAAR)
             )
 
     if prohibited_queries:
         logger.info(
-            "Found the following queries in pulic maps that are possibly breaching auth requirements: \n\n - %s",
+            "Found the following queries in public maps that are possibly breaching auth requirements: \n\n - %s",
             "\n - ".join(map(str, prohibited_queries)),
         )
+        check_failed = True
+    exit(check_failed)
 
-
-if __name__ == "__main__":
+def run():
     args = parser.parse_args()
     logging.basicConfig(level=args.verbose)
-    run_check(args.acc, args.private, args.include, args.exclude)
+    exclude_layers = [
+        tuple(x.split("."))
+        for x in (args.exclude_layers or [])
+        if len(x.split(".")) == 2
+    ]
+    run_check(args.acc, args.private, args.include, args.exclude, exclude_layers)
+
+if __name__ == "__main__":
+    run()
