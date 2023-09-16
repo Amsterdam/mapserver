@@ -2,7 +2,7 @@
 
 # Generates the ziektenplagenexotengroen mapfile.
 
-from generate import block, p, q
+from generate import block, header, p, q
 
 
 layers = [
@@ -17,8 +17,7 @@ layers = [
     ("Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
 ]
 
-print("# GENERATED FILE, DO NOT EDIT.\n\n")
-print("# TEAM: Bor / Beeldschoon\n")
+header("Bor / Beeldschoon")
 
 with block("MAP"):
     p("NAME", "ziektenplagenexotengroen")
