@@ -28,7 +28,7 @@ MAP
     LAYER
     NAME            "rioolleidingen"
     GROUP           "rioolnetwerk"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.rioolnetwerk_rioolleidingen USING srid=28992 USING UNIQUE objnr"
     TYPE            LINE
     MINSCALEDENOM   100
@@ -66,7 +66,7 @@ MAP
     LAYER
     NAME            "rioolknopen"
     GROUP           "rioolnetwerk"
-    INCLUDE         "connection_dataservices.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.rioolnetwerk_rioolknopen USING srid=28992 USING UNIQUE objnr"
     TYPE            POINT
     MINSCALEDENOM   100
