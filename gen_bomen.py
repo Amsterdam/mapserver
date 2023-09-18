@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from generate import block, p, q
+from generate import block, header, p, q
 
 
 species = [
@@ -24,8 +24,7 @@ species = [
 
 layers = [name for name in species] + ["Onbekende soorten", "Overige soorten"]
 
-print("# GENERATED FILE, DO NOT EDIT.\n\n")
-print("# TEAM: BOR\n")
+header("BOR")
 
 with block("MAP"):
     p("NAME", "bomen")

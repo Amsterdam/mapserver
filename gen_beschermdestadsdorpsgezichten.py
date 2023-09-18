@@ -2,7 +2,7 @@
 
 # Generates the beschermdestadsdorpsgezichten mapfile.
 
-from generate import block, p, q
+from generate import block, header, p, q
 
 
 BSD_LONG = "Beschermde stads- en dorpsgezichten"
@@ -15,8 +15,7 @@ layers = [
     ("Rijksbeschermd dorpsgezicht", "#ff450070"),
 ]
 
-print("# GENERATED FILE, DO NOT EDIT.\n\n")
-print("# TEAM: SOEB\n")
+header("SOEB")
 
 with block("MAP"):
     p("NAME", BSD_SHORT)

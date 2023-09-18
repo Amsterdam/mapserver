@@ -2,7 +2,7 @@
 
 # Generates the overlastgebieden map.
 
-from generate import block, p, q
+from generate import block, header, p, q
 
 # Name, basename of table, color
 layers = [
@@ -23,7 +23,7 @@ layers = [
     ("blowverbodsgebied", "blowverbodsgebied", 0x009dec)
 ]
 
-print("# GENERATED FILE, DO NOT EDIT.\n\n")
+header()
 
 with block("MAP"):
     p("NAME", "Overlastgebieden")
