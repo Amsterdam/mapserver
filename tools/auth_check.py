@@ -20,7 +20,7 @@ from utils import dataset_schemas_from_url
 SCHEMA_URL = "https://schemas.data.amsterdam.nl/datasets"
 ACC_SCHEMA_URL = "https://acc.schemas.data.amsterdam.nl/datasets"
 
-repo_root = Path.cwd()
+repo_root = Path(__file__).parent.parent
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -52,16 +52,37 @@ parser.add_argument(
 logger = logging.getLogger("authchecker")
 
 
-def parse_private(fname: Path | str):
-    """Use the mapfile Parser directly so we can parse the file
-    while pointing the parser to the repo root dir to resolve includes.
+class UnresolvableIncludesParser(Parser):
+    """
+    Some of our mapfiles contain INCLUDE directives
+    pointing to files that are dynamically generated and
+    therefore may not exist yet at auth_checking-time.
 
-    This is required because INCLUDEs in private maps assume that the
-    maps have been copied to the repository root before opening them
-    with the mapserver parser.
+    This class allows us to walk the mapfile ast without
+    breaking on the files that do not exist, but whose
+    contents we do not need for auth checking.
+
+    The file content returned is given by an optional substitution function.
+    Note that this content must be valid mapfile syntax.
     """
 
-    parser = Parser(expand_includes=True, include_comments=False)
+    unresolvable={
+        repo_root / "connection": lambda x: f"CONNECTION \"{x}\"",
+    }
+
+    def open_file(self, fn):
+        for prefix, substitute_func in self.unresolvable.items():
+            if str(fn).startswith(str(prefix)):
+                return substitute_func(fn)
+
+        return super().open_file(fn)
+
+
+def parse(fname: Path | str):
+    parser = UnresolvableIncludesParser(
+        expand_includes=True,
+        include_comments=False,
+    )
 
     text = parser.open_file(fname)
     # pretend that the file is in the repo root
@@ -79,13 +100,12 @@ def scope_too_high(scope: str, highest_scope: str) -> bool:
 
     return ordering.get(scope, 999) > ordering[highest_scope]
 
-
-azure_pattern = re.compile(".*dbname=mdbdataservices.*")
-cloudvps_pattern = re.compile(".*dbname=dataservices.*")
-
-
-def is_reference_db_conn(dsn: str) -> bool:
-    return bool(azure_pattern.match(dsn) or cloudvps_pattern.match(dsn))
+def is_reference_db_layer(layer: str) -> bool:
+    """Connection files are injected into the repo at build time so we only
+    have access to the name of the connection file at auth checking time.
+    We assume that any file named dataservices.inc is a connection to the reference database.
+    """
+    return "connection" in layer and layer["connection"].removesuffix(".inc").endswith("dataservices")
 
 
 def auth_from_layer(
@@ -97,11 +117,7 @@ def auth_from_layer(
     """Check if the layer uses tables from the reference database that contain scopes
     that are too high according to the given highest_scope, and if so, dump the auth info in
     a namespace describing the table and field level auth scopes that are too high."""
-    # The default connectiontype is local, in which case we are consuming from a
-    # local shapefile
-    if "connectiontype" not in layer or layer["connectiontype"].lower() != "postgis":
-        return []
-    if "connection" not in layer or not is_reference_db_conn(layer["connection"]):
+    if not is_reference_db_layer(layer):
         return []
 
     data_expr = layer["data"][0]
@@ -167,7 +183,7 @@ def run_check(
         if exclude_maps and Path(fname).name.removesuffix(".map") in exclude_maps:
             continue
 
-        map_ = parse_private(fname)
+        map_ = parse(fname)
 
         logger.debug("Parsed map: \n%s", printer.pprint(map_))
 
@@ -195,7 +211,7 @@ def run_check(
         if exclude_maps and Path(fname).name.removesuffix(".map") in exclude_maps:
             continue
 
-        map_ = mf.open(fname)
+        map_ = parse(fname)
 
         logger.debug("Parsed map: \n%s", printer.pprint(map_))
 
@@ -215,6 +231,7 @@ def run_check(
         check_failed = True
     exit(check_failed)
 
+
 def run():
     args = parser.parse_args()
     logging.basicConfig(level=args.verbose)
@@ -224,6 +241,7 @@ def run():
         if len(x.split(".")) == 2
     ]
     run_check(args.acc, args.private, args.include, args.exclude, exclude_layers)
+
 
 if __name__ == "__main__":
     run()
