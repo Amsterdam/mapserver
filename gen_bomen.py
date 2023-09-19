@@ -65,7 +65,6 @@ with block("MAP"):
                 "geometrie FROM ("
                 "   SELECT * FROM public.bomen_stamgegevens"
                 "   WHERE type_soortnaam = 'Bomen'"
-                "   AND type_eigenaar_plus = 'Gemeente Amsterdam'"
                 f"  AND ({select_soort})"
                 ") AS sub"
                 " USING srid=28992"
