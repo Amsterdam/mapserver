@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 LABEL maintainer="datapunt@amsterdam.nl"
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Etc/UTC
 
 RUN apt-get update && apt-get install -my curl wget gnupg -y
 RUN apt install build-essential software-properties-common -y
