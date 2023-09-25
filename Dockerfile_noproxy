@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 MAINTAINER datapunt@amsterdam.nl
 
+COPY tools/99timeout /etc/apt/apt.conf.d/
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y build-essential curl gnupg python3-pip software-properties-common wget
 RUN add-apt-repository -y ppa:ubuntugis/ppa

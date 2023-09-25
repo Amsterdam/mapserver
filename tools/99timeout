@@ -1,0 +1,4 @@
+// apt.conf(5) file to set timeouts.
+// Needed to connect to archive.ubuntu.com, in particular.
+Acquire::http::timeout "600";
+Acquire::https::timeout "600";
