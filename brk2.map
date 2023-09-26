@@ -20,7 +20,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT * FROM public.brk_2_kadastraleobjecten
+                        SELECT id, geometrie, eind_geldigheid FROM public.brk_2_kadastraleobjecten
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE id"
@@ -168,7 +168,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT * FROM public.brk_2_kadastraleobjecten
+                        SELECT id, geometrie, eind_geldigheid FROM public.brk_2_kadastraleobjecten
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
