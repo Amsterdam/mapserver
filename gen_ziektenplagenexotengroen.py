@@ -42,7 +42,10 @@ with block("MAP"):
             p("INCLUDE", "connection/dataservices.inc")
             p(
                 "DATA",
-                "geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups"
+                "geometrie FROM"
+                # This subquery appears to do nothing, but it actually restricts
+                # the fields that mapserver sees.
+                " (SELECT id, geometrie, ranking FROM public.ziekte_plagen_exoten_groen_eikenprocessierups) AS sub"
                 " USING srid=28992 USING UNIQUE id"
                 " WHERE ranking=1",
             )
