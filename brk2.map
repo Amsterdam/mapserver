@@ -20,10 +20,10 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT id, geometrie, eind_geldigheid FROM public.brk_2_kadastraleobjecten
+                        SELECT identificatie, geometrie FROM public.brk_2_kadastraleobjecten
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
-                     USING srid=28992 USING UNIQUE id"
+                     USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -168,7 +168,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT id, geometrie, eind_geldigheid FROM public.brk_2_kadastraleobjecten
+                        SELECT identificatie, geometrie, perceelnummer FROM public.brk_2_kadastraleobjecten
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
