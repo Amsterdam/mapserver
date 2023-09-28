@@ -38,7 +38,7 @@ MAP
         geometrie FROM (
             SELECT coalesce(ST_CollectionExtract(monumentgeometrie, 3),
                             ST_Buffer(monumentcoordinaten, 1.5)) AS geometrie,
-                   id FROM public.dataset_monument
+                   * FROM public.dataset_monument
             ) AS query
         USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
