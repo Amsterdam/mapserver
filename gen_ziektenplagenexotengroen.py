@@ -45,9 +45,8 @@ with block("MAP"):
                 "geometrie FROM"
                 # This subquery appears to do nothing, but it actually restricts
                 # the fields that mapserver sees.
-                " (SELECT id, geometrie, ranking FROM public.ziekte_plagen_exoten_groen_eikenprocessierups) AS sub"
+                " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
                 " USING srid=28992 USING UNIQUE id"
-                " WHERE ranking=1",
             )
             p("TYPE POINT")
 
