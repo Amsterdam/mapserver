@@ -1,17 +1,16 @@
-FROM ubuntu:20.04
-LABEL maintainer="datapunt@amsterdam.nl"
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Etc/UTC
+FROM ubuntu:18.04
+MAINTAINER datapunt@amsterdam.nl
 
-RUN apt-get update && apt-get install -my curl wget gnupg -y
-RUN apt install build-essential software-properties-common -y
-# RUN add-apt-repository -y ppa:ubuntugis/ppa
+COPY tools/99timeout /etc/apt/apt.conf.d/
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y build-essential curl gnupg python3-pip software-properties-common wget
+RUN add-apt-repository -y ppa:ubuntugis/ppa
 
-RUN apt-get install -y gdal-bin gdal-data libgdal26
+RUN apt-get install -y gdal-bin gdal-data libgdal20
 RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 
 # Enable these Apache modules
-RUN a2enmod actions cgi alias headers rewrite env
+RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -20,7 +19,12 @@ COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
 COPY . /srv/mapserver/
+RUN rm -rf /srv/mapserver/private
+
 
 EXPOSE 80
+
+ENV HOST_IP `ifconfig | grep inet | grep Mask:255.255.255.0 | cut -d ' ' -f 12 | cut -d ':' -f 2`
+ENV ACCESS_SCOPE public
 
 CMD /bin/docker-entrypoint.sh
