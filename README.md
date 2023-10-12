@@ -1,7 +1,4 @@
-# Data en Informatie map
-
-
-MapServer configuratie voor Data en Informatie.
+MapServer-configuratie voor map.data.amsterdam.nl.
 
 
 # Development stappen
@@ -70,41 +67,6 @@ De private docker image kan worden gebouwd met :
         docker-compose -f docker-compose-private.yml run -p "8383:80" map
 
 De private maps kunnen met http://localhost:8383/maps/<map-name>?service=wfs&request=getcapabilities gevraagd worden
-
-WMS services
-------------
-
-| Set     | URL                                                                                            |
-| ------- | -----------------------------------------------------------------------------------------------|
-| BAG     | /maps/bag&service=wms&request=getcapabilities                                                  |
-| BRK     | /maps/brk&service=wms&request=getcapabilities                                                  |
-| GBKA    | /maps/gbka&service=wms&request=getcapabilities                                                 |
-| KBKA10  | /maps/kbka10&service=wms&request=getcapabilities                                               |
-| KBKA50  | /maps/kbka50&service=wms&request=getcapabilities                                               |
-| NAP     | /maps/nap&service=wms&request=getcapabilities                                                  |
-| VLGH    | /maps/**externeveiligheid**&service=wms&request=getcapabilities                                |
-| GBIEDN  | /maps/**gebieden**.map&service=wms&request=getcapabilities                                     |
-| EIGENDM | /maps/eigendommen&service=wms&request=getcapabilities                                          |
-| blackspots | /maps/blackspots&service=wms&request=getcapabilities                                          |
-
-
-WFS services
-------------
-
-| Set    | URL                                                                  |
-| ------ | ---------------------------------------------------------------------|
-| BAG    | maps/bag&service=wfs&request=getcapabilities                         |
-| BRK    | maps/brk&service=wfs&request=getcapabilities                         |
-| NAP    | maps/nap&service=wfs&request=getcapabilities                         |
-| blackspots | maps/blackspots&service=wfs&request=getcapabilities              |
-
-
-TMS services
-------------
-Topo
-Lufo
-LKI kot
-
 
 
 Test
