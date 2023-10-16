@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from generate import block, p, q
+from generate import block, header, p, q
 
 
 species = [
@@ -24,8 +24,7 @@ species = [
 
 layers = [name for name in species] + ["Onbekende soorten", "Overige soorten"]
 
-print("# GENERATED FILE, DO NOT EDIT.\n\n")
-print("# TEAM: BOR\n")
+header("BOR")
 
 with block("MAP"):
     p("NAME", "bomen")
@@ -64,9 +63,8 @@ with block("MAP"):
             p(
                 "DATA",
                 "geometrie FROM ("
-                "   SELECT * FROM public.bomen_stamgegevens"
+                "   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens"
                 "   WHERE type_soortnaam = 'Bomen'"
-                "   AND type_eigenaar_plus = 'Gemeente Amsterdam'"
                 f"  AND ({select_soort})"
                 ") AS sub"
                 " USING srid=28992"

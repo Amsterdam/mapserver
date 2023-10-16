@@ -2,7 +2,7 @@
 
 # Generates the ziektenplagenexotengroen mapfile.
 
-from generate import block, p, q
+from generate import block, header, p, q
 
 
 layers = [
@@ -17,8 +17,7 @@ layers = [
     ("Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
 ]
 
-print("# GENERATED FILE, DO NOT EDIT.\n\n")
-print("# TEAM: Bor / Beeldschoon\n")
+header("Bor / Beeldschoon")
 
 with block("MAP"):
     p("NAME", "ziektenplagenexotengroen")
@@ -43,9 +42,11 @@ with block("MAP"):
             p("INCLUDE", "connection/dataservices.inc")
             p(
                 "DATA",
-                "geometrie FROM public.ziekte_plagen_exoten_groen_eikenprocessierups"
+                "geometrie FROM"
+                # This subquery appears to do nothing, but it actually restricts
+                # the fields that mapserver sees.
+                " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
                 " USING srid=28992 USING UNIQUE id"
-                " WHERE ranking=1",
             )
             p("TYPE POINT")
 
