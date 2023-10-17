@@ -73,7 +73,7 @@ with block("MAP"):
             p("TYPE POINT")
 
             with block("METADATA"):
-                q("wfs_enable_request", "none")
+                q("wfs_enable_request", "!*")
                 q("wms_title", name)
                 q("wms_enable_request", "*")
                 q("wms_srs", "EPSG:28992")
