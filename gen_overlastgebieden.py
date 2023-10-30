@@ -13,7 +13,6 @@ layers = [
     ("alcoholverbodsgebied", "alcoholverbod", 0xa91ba9),
     ("straatartiestverbod", "straatartiestverbod", 0x990033),
     ("taxi-standplaatsgebied", "taxistandplaats", 0xecd316),
-    ("vuurwerkvrijezone", "vuurwerkvrij", 0x993300),
     ("barbecueverbodsgebieden", "barbecueverbod", 0xa00078),
     ("rondleidingverbodsgebieden", "rondleidingverbod", 0x00d2b4),
     ("messenverbodgebieden", "messenverbod", 0xff0000),
