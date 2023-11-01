@@ -104,7 +104,7 @@ EOF
 
 cat > /srv/mapserver/connection/dataservices.inc <<EOF
 CONNECTIONTYPE postgis
-CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${DATASERVICES_DB_USER} password=$(cat /mnt/secrets-store/mapserver-private) port=${DATASERVICES_DB_PORT}"
+CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${DATASERVICES_DB_USER} password=$(cat /mnt/secrets-store/mapserver-public) port=${DATASERVICES_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 fi;
