@@ -23,17 +23,19 @@ async def audit(req: web.Request):
     # Note that this function only supports token formats issued by
     # the iam KeyCloak server.
     try:
-        auth = req.headers["Authorization"]
+        auth = req.headers.get("Authorization")
+        if auth is not None:
+            bearer = "bearer "
+            if not auth[: len(bearer)].lower() == bearer:
+                raise web.HTTPForbidden(
+                    reason="Authorization header format is 'Bearer <token>'"
+                )
+            token = auth[len(bearer) :]
+        else:
+            token = req.query['access_token']
     except KeyError:
-        raise web.HTTPForbidden(reason="No JWT present in Authorization header")
+        raise web.HTTPForbidden(reason="No JWT present in Authorization header or `access_token` query string.")
 
-    bearer = "bearer "
-    if not auth[: len(bearer)].lower() == bearer:
-        raise web.HTTPForbidden(
-            reason="Authorization header format is 'Bearer <token>'"
-        )
-
-    token = auth[len(bearer) :]
     j = JWT()
     jwks = await get_jwk()
 
