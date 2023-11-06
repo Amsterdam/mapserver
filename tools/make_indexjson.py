@@ -13,6 +13,12 @@ import sys
 from typing import Dict, Optional, Tuple
 
 
+def unquote(s):
+    if len(s) >= 2 and s[0] in "'\"" and s[-1] in "'\"":
+        s = s[1 : len(s) - 1]
+    return s
+
+
 def parse_mapfile(filename: str) -> Dict[str, object]:
     """Parses a mapfile to extract metadata about a map.
 
@@ -20,8 +26,8 @@ def parse_mapfile(filename: str) -> Dict[str, object]:
     ows_{title,abstract} that occur.
     """
     keys = {
-        '"ows_title"': "title",
-        '"ows_abstract"': "abstract",
+        "ows_title": "title",
+        "ows_abstract": "abstract",
     }
 
     # This is a bit of a hack. It would seem that using mappyfile to parse the
@@ -34,14 +40,14 @@ def parse_mapfile(filename: str) -> Dict[str, object]:
             if len(ln) == 0:
                 continue
 
-            key = keys.get(ln[0])
+            key = keys.get(unquote(ln[0]))
             if key is None:
                 continue
 
             value = ln[1]
             # Remove comments.
             if "#" in value:
-                value = value[value.index("#"):]
+                value = value[value.index("#") :]
             value = value.strip()
 
             if value.startswith('"') or value.startswith("'"):
@@ -60,7 +66,7 @@ if __name__ == "__main__":
     index = {}
     for f in sys.argv[1:]:
         props = parse_mapfile(f)
-        name = os.path.basename(f)[:-len(".map")]
+        name = os.path.basename(f)[: -len(".map")]
         if not NAME_RE.match(name):
             logger.error("Name should match %r, got %r", NAME_RE.pattern, name)
             continue
