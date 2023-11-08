@@ -170,6 +170,10 @@ async def handle(req: web.Request):
         return server_resp
 
 
+async def health(req: web.Request):
+    return web.Response(text="Status OK")
+
+
 parser = argparse.ArgumentParser(description="jwt-proxy server")
 parser.add_argument("--path")
 parser.add_argument("--port", default=8080, type=int)
@@ -231,6 +235,7 @@ async def main(*argv):
     dictConfig(log_cfg)
 
     app = web.Application()
+    app.router.add_route("GET", "/status/health", health)
     app.router.add_route("OPTIONS", "/{path:.*?}", handle)
     app.router.add_route("GET", "/{path:.*?}", handle)
     app.router.add_route("POST", "/{path:.*?}", handle)
