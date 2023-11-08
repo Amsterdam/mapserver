@@ -26,6 +26,14 @@ services:
       JWKS_PATH: /app/jwtproxy/test_jwk.json
       LOG_LEVEL: DEBUG
       #JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
+
+  # Bare bones 'webserver' to behave as public loadbalancer
+  publicdummy:
+    image: python:3.11-slim-bullseye
+    ports:
+      - 8000:8000
+    command: python3 -m http.server 8000
+
   map:
     build:
       context: .

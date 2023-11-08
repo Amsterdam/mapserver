@@ -19,22 +19,33 @@ CONN_POOL_SIZE = 100
 AZURE_APPLICATIONINSIGHTS_CONNSTRING = env.get("AZURE_APPLICATIONINSIGHTS_CONNSTRING")
 
 
-async def audit(req: web.Request):
-    # Note that this function only supports token formats issued by
-    # the iam KeyCloak server.
+async def fetch_token(req: web.Request):
+    """Fetch the token from the request.
+
+    We want to do this in a separate functions,
+    because on missing token, we return None
+    so the caller can redirect to another server/endpoint
+    for that scenario.
+    """
     try:
         auth = req.headers.get("Authorization")
         if auth is not None:
             bearer = "bearer "
             if not auth[: len(bearer)].lower() == bearer:
-                raise web.HTTPForbidden(
-                    reason="Authorization header format is 'Bearer <token>'"
-                )
+                raise web.HTTPForbidden(reason="Authorization header format is 'Bearer <token>'")
             token = auth[len(bearer) :]
         else:
-            token = req.query['access_token']
+            token = req.query["access_token"]
     except KeyError:
-        raise web.HTTPForbidden(reason="No JWT present in Authorization header or `access_token` query string.")
+        app_logger.debug("No JWT present in Authorization header or `access_token` query string.")
+        return None
+    else:
+        return token
+
+
+async def audit(req: web.Request, token: str):
+    # Note that this function only supports token formats issued by
+    # the iam KeyCloak server.
 
     j = JWT()
     jwks = await get_jwk()
@@ -127,11 +138,18 @@ async def get_jwk():
 
 async def handle(req: web.Request):
     path = req.match_info["path"]
-    target_url = URL("".join([env["PROXY_URL"].rstrip("/"), "/", path.lstrip("/")]))
+    token = await fetch_token(req)
+    proxy_url = env["PRIVATE_PROXY_URL"]
+    if token is None:
+        proxy_url = env["PUBLIC_PROXY_URL"]
+    target_url = URL("".join([proxy_url.rstrip("/"), "/", path.lstrip("/")]))
 
     app_logger.debug("Proxy-URL: \n%s", target_url)
     app_logger.debug("Request params: \n %s", req.rel_url.query)
     app_logger.debug("Request headers: \n %s", req.headers)
+
+    if token is not None:
+        await audit(req, token)
 
     async with SessionManager.session().request(
         req.method, target_url, headers=req.headers, params=req.rel_url.query
@@ -139,8 +157,6 @@ async def handle(req: web.Request):
         app_logger.debug("Response status from upstream: %s", resp.status)
         app_logger.debug("Headers from upstream: \n %s", resp.headers)
         app_logger.debug("Params from upstream: \n %s", req.rel_url.query)
-
-        await audit(req)
 
         server_resp = web.StreamResponse(headers=resp.headers, status=resp.status)
 
@@ -211,7 +227,6 @@ async def main(*argv):
         log_cfg["handlers"].pop("appinsights")
         log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = [
             "console",
-
         ]
     dictConfig(log_cfg)
 
