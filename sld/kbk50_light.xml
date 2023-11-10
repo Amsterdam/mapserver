@@ -1,0 +1,930 @@
+<?xml version="1.0"?>
+<StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:gml="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://www.opengis.net/sld http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd">
+  <NamedLayer>
+    <Name>WDL_wateroppervlak</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#B2CBD9</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>TRN_agrarisch</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#E5EBD8</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>TRN_overig</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#F5F4F2</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>TRN_bedrijfsterrein_dienstverlening</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#F5F4F2</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+          <PolygonSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#F5F4F2</CssParameter>
+              <CssParameter name="stroke-width">0.50</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>TRN_bos_groen_sport</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D2E3BA</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>TRN_zand</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#E5EBD8</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>GBW_bebouwing</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D9D9D4</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#D9D9D4</CssParameter>
+              <CssParameter name="stroke-width">0.70</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D9D9D4</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>GBW_kassen</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#D9D9D4</CssParameter>
+            </Fill>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WDL_brede_waterloop</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B2CBD9</CssParameter>
+              <CssParameter name="stroke-width">0.10</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B2CBD9</CssParameter>
+              <CssParameter name="stroke-width">0.10</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WDL_smalle_waterloop</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B2CBD9</CssParameter>
+              <CssParameter name="stroke-width">0.20</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_straat_in_tunnel</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>75000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">0.75</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_hoofdweg_in_tunnel-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_regionale_weg_in_tunnel-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">5</CssParameter>
+              <CssParameter name="stroke-dasharray">4 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
+              <CssParameter name="stroke-dasharray">4 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+              <CssParameter name="stroke-dasharray">4 3 </CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_autosnelweg_in_tunnel-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">7</CssParameter>
+              <CssParameter name="stroke-dasharray">4 3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">6</CssParameter>
+              <CssParameter name="stroke-dasharray">3 3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">4.5</CssParameter>
+              <CssParameter name="stroke-dasharray">2 3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>100000</MinScaleDenominator>
+          <MaxScaleDenominator>200000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+              <CssParameter name="stroke-dasharray">1 3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>200000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_regionale_weg_in_tunnel-fill</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>200000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>200000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">0.50</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_autosnelweg_in_tunnel-fill</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">5</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>100000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_straat-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>75000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#D9D9D4</CssParameter>
+              <CssParameter name="stroke-width">1.75</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_hoofdweg-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">6</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_regionale_weg-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_straat-fill</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>75000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">0.4</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_hoofdweg-fill</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">5</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_regionale_weg-fill</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>200000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>200000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#FBFBFB</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_metro_sneltram_in_tunnel_case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_metro_sneltram_in_tunnel_line</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_trein_in_tunnel_case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_trein_in_tunnel_line</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_metro_sneltram-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_metro_sneltram-line</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_trein_ongeelektrificeerd-line</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_trein_ongeelektrificeerd-dash</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_trein-line</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>SBL_trein-dash</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#BCB7D2</CssParameter>
+              <CssParameter name="stroke-width">1</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_autosnelweg-case</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">7</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">6</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">4.50</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>100000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#B4B4B4</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_autosnelweg-fill</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>25000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">5</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>25000</MinScaleDenominator>
+          <MaxScaleDenominator>50000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">4</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>50000</MinScaleDenominator>
+          <MaxScaleDenominator>100000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">3</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+        <Rule>
+          <MinScaleDenominator>100000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke">#EAEAAE</CssParameter>
+              <CssParameter name="stroke-width">2</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+  <NamedLayer>
+    <Name>WGL_autosnelweg-centerline</Name>
+    <UserStyle>
+      <FeatureTypeStyle>
+        <Rule>
+          <MinScaleDenominator>20000</MinScaleDenominator>
+          <MaxScaleDenominator>300000</MaxScaleDenominator>
+          <LineSymbolizer>
+            <Stroke>
+              <CssParameter name="stroke-width">0</CssParameter>
+            </Stroke>
+          </LineSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
