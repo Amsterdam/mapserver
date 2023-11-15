@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 LABEL maintainer="datapunt@amsterdam.nl"
 
+RUN useradd -U -r mapserver
 RUN apt-get update && apt-get install -my curl wget gnupg -y
 RUN apt install build-essential software-properties-common -y
 RUN add-apt-repository -y ppa:ubuntugis/ppa
@@ -20,5 +21,5 @@ COPY docker/docker-entrypoint.sh /bin
 COPY . /srv/mapserver/
 
 EXPOSE 80
-
+USER mapserver
 CMD /bin/docker-entrypoint.sh
