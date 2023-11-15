@@ -34,8 +34,6 @@ with block("MAP"):
             q("ows_abstract", "Overlastgebieden")
 
     for name, basename, color in layers:
-        color = f"{(color>>16) & 0xff} {(color>>8) & 0xff} {color & 0xff}"
-
         with block("LAYER"):
             p("NAME", name)
             p("GROUP", "overlastgebieden")
@@ -59,15 +57,14 @@ with block("MAP"):
                 p("NAME", name.replace("-", "_").title().replace("_", ""))
                 with block("STYLE"):
                     p("ANTIALIAS true")
-                    p(f"COLOR {color}")
+                    p(f'COLOR "#{color:06x}"')
                     p("OPACITY 20")
                 with block("STYLE"):
-                    p(f"OUTLINECOLOR {color}")
+                    p(f'OUTLINECOLOR "#{color:06x}"')
                     p("WIDTH 2")
 
     for name, basename, color in layers:
         name += "_label"
-        color = f"{(color>>16) & 0xff} {(color>>8) & 0xff} {color & 0xff}"
 
         with block("LAYER"):
             p("NAME", name)
@@ -104,7 +101,7 @@ with block("MAP"):
                         if minscale is not None:
                             p("MINSCALEDENOM", minscale)
                         p("MAXSCALEDENOM", maxscale)
-                        p(f"COLOR {color}")
+                        p(f'COLOR "#{color:06x}"')
                         p("OUTLINECOLOR 255 255 255")
                         p("OUTLINEWIDTH 1")
                         p("FONT", "Ubuntu-M")
