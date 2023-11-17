@@ -109,7 +109,6 @@ PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 fi;
 
-
 # Configure apache to redirect errors to stderr.
 # The mapserver will redirect errors to apache errorstream (see header.inc and private/header.inc)
 # and apache will then redirect this to stderr, which will then be redirected to syslog/kibana.
@@ -117,6 +116,11 @@ fi;
 #      https://serverfault.com/questions/711168/writing-apache2-logs-to-stdout-stderr
 sed -i 's/ErrorLog .*/ErrorLog \/dev\/stderr/' /etc/apache2/apache2.conf
 sed -i 's/Timeout 300/Timeout 600/' /etc/apache2/apache2.conf
+
+# Replace actual location of the mapserver depending on the environment                                                                                                                                           
+sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map /srv/mapserver/lufo.map /srv/mapserver/infrarood.map                                                     
+sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map
+
 
 mkdir -p /srv/mapserver/config
 # python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
