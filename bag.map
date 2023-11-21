@@ -242,43 +242,6 @@ MAP
 
 
   LAYER
-    NAME            "verblijfsobject"
-    GROUP           "bag"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_verblijfsobject_mat USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    TEMPLATE     "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Verblijfsobject"
-      "ows_group_title"     "BAG"
-      "ows_abstract"        "BAG verblijfsobjecten van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME             "Verblijfsobject"
-      STYLE
-        SYMBOL         'stip'
-        COLOR          255 225 0
-        OUTLINECOLOR   0 0 0
-        WIDTH          1
-        SIZE           5
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-
-  LAYER
     NAME            "pandleeftijden"
     GROUP           "bouwjaar"
     INCLUDE         "connection/bag.inc"
