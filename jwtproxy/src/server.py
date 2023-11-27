@@ -11,12 +11,64 @@ from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, 
 from jwcrypto.jwt import JWT, JWKSet
 from yarl import URL
 
-app_logger = logging.getLogger("jwtproxy.applogs")
-audit_logger = logging.getLogger("jwtproxy.auditlogs")
 
+LOG_LEVEL = env.get("LOG_LEVEL", logging.INFO)
 CHUNK_SIZE = 1024
 CONN_POOL_SIZE = 100
 AZURE_APPLICATIONINSIGHTS_CONNSTRING = env.get("AZURE_APPLICATIONINSIGHTS_CONNSTRING")
+
+base_log_fmt = {
+    "time": "%(asctime)s",
+    "name": "%(name)s",
+    "level": "%(levelname)s",
+    "message": "%(message)s",
+}
+log_fmt = base_log_fmt.copy()
+audit_log_fmt = {"audit": True}
+audit_log_fmt.update(log_fmt)
+log_cfg = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "json": {"format": json.dumps(log_fmt)},
+        "json-audit": {"format": json.dumps(audit_log_fmt)},
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "json",
+            "level": LOG_LEVEL,
+        },
+        "appinsights": {
+            "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+            "connection_string": AZURE_APPLICATIONINSIGHTS_CONNSTRING,
+            "formatter": "json-audit",
+            "level": "DEBUG",
+        },
+    },
+    "loggers": {
+        "jwtproxy.applogs": {
+            "propagate": False,
+            "handlers": ["console"],
+            "level": LOG_LEVEL,
+        },
+        "jwtproxy.auditlogs": {
+            "propagate": False,
+            "handlers": ["appinsights"],
+            "level": "DEBUG",  # Send everything
+        },
+    },
+}
+
+if not AZURE_APPLICATIONINSIGHTS_CONNSTRING:
+    log_cfg["handlers"].pop("appinsights")
+    log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = [
+        "console",
+    ]
+dictConfig(log_cfg)
+
+app_logger = logging.getLogger("jwtproxy.applogs")
+audit_logger = logging.getLogger("jwtproxy.auditlogs")
 
 
 async def fetch_token(req: web.Request):
@@ -178,62 +230,8 @@ parser = argparse.ArgumentParser(description="jwt-proxy server")
 parser.add_argument("--path")
 parser.add_argument("--port", default=8080, type=int)
 
-base_log_fmt = {
-    "time": "%(asctime)s",
-    "name": "%(name)s",
-    "level": "%(levelname)s",
-    "message": "%(message)s",
-}
-log_fmt = base_log_fmt.copy()
-
-audit_log_fmt = {"audit": True}
-audit_log_fmt.update(log_fmt)
-
 
 async def main(*argv):
-    level = env.get("LOG_LEVEL", logging.INFO)
-
-    log_cfg = {
-        "version": 1,
-        "disable_existing_loggers": False,
-        "formatters": {
-            "json": {"format": json.dumps(log_fmt)},
-            "json-audit": {"format": json.dumps(audit_log_fmt)},
-        },
-        "handlers": {
-            "console": {
-                "class": "logging.StreamHandler",
-                "formatter": "json",
-                "level": level,
-            },
-            "appinsights": {
-                "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
-                "connection_string": AZURE_APPLICATIONINSIGHTS_CONNSTRING,
-                "formatter": "json-audit",
-                "level": "DEBUG",
-            },
-        },
-        "loggers": {
-            "jwtproxy.applogs": {
-                "propagate": False,
-                "handlers": ["console"],
-                "level": level,
-            },
-            "jwtproxy.auditlogs": {
-                "propagate": False,
-                "handlers": ["appinsights"],
-                "level": "DEBUG",  # Send everything
-            },
-        },
-    }
-
-    if not AZURE_APPLICATIONINSIGHTS_CONNSTRING:
-        log_cfg["handlers"].pop("appinsights")
-        log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = [
-            "console",
-        ]
-    dictConfig(log_cfg)
-
     app = web.Application()
     app.router.add_route("GET", "/status/health", health)
     app.router.add_route("OPTIONS", "/{path:.*?}", handle)
