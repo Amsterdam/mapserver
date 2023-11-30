@@ -1,4 +1,5 @@
-# Services for local development
+# This file is only for local development purposes. The actual deployment
+# configuration lives in a separate repository.
 
 version: "3.0"
 
@@ -11,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=insecure
     volumes:
         - "~/.ssh/datapunt.key:/root/.ssh/datapunt.key"
-    #command: ["postgres", "-c", "log_statement=all"]
+    command: ["postgres", "-c", "log_statement=all"]
 
   proxy:
     build:
@@ -93,7 +94,6 @@ services:
       DATASERVICES_DB_USER: dataservices
       DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
-
 
       MAP_URL: "http://map"
       LEGEND_URL: "http://map"
