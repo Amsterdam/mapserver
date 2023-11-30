@@ -30,9 +30,14 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/dataservices.inc"
+    INCLUDE "connection/dataservices.inc"
+
+    # Use verhuurbare_eenheid_nummer as the identifier for compatibility
+    # with Geosearch.
     DATA "geometrie FROM (
-            SELECT DISTINCT ON (vv.pand_id) bp.geometrie, vv.pand_id FROM (
+            SELECT DISTINCT ON (vv.verhuurbare_eenheid_nummer)
+                bp.geometrie, vv.pand_id, vv.verhuurbare_eenheid_nummer
+            FROM (
                 vastgoed_vastgoed vv INNER JOIN bag_panden bp
                 ON vv.pand_id = bp.identificatie
             )
@@ -40,7 +45,7 @@ MAP
                 AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
                 AND object_eigendomsstatus = 'volle eigendom'
             )
-            AS sub USING srid=28992 USING UNIQUE pand_id"
+            AS sub USING srid=28992 USING UNIQUE verhuurbare_eenheid_nummer"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -90,9 +95,14 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/dataservices.inc"
+    INCLUDE "connection/dataservices.inc"
+
+    # Use verhuurbare_eenheid_nummer as the identifier for compatibility
+    # with Geosearch.
     DATA "geometrie FROM (
-            SELECT DISTINCT ON (vv.pand_id) bp.geometrie, vv.pand_id FROM (
+            SELECT DISTINCT ON (vv.verhuurbare_eenheid_nummer)
+                bp.geometrie, vv.pand_id, vv.verhuurbare_eenheid_nummer
+            FROM (
                 vastgoed_vastgoed vv INNER JOIN bag_panden bp
                 ON vv.pand_id = bp.identificatie
             )
@@ -100,7 +110,7 @@ MAP
                 AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
                 AND object_eigendomsstatus = 'appartementsrecht'
             )
-            AS sub USING srid=28992 USING UNIQUE pand_id"
+            AS sub USING srid=28992 USING UNIQUE verhuurbare_eenheid_nummer"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
