@@ -1,0 +1,237 @@
+
+MAP
+  NAME                      "Meldingen Openbare Ruimte"
+  INCLUDE                   "header.inc"
+
+
+  WEB
+    METADATA
+      "ows_title"           "Meldingen openbare ruimte, vorig jaar"
+      "ows_abstract"        "Meldingen openbare ruimte van de gemeente Amsterdam"
+    END
+  END
+
+
+  #=============================================================================
+  # LAYERS
+  #============================================================================= 
+
+
+  LAYER
+    NAME                    "Openbare ruimte en veiligheid, afgesloten"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+      select * 
+      from public.meldingen_acc_meldingen 
+      where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
+      and thema = 'Openbare orde en Veiligheid' 
+      and externe_status = 'Afgesloten'
+    ) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT 
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Openbare ruimte en veiligheid, afgesloten"
+      "ows_abstract"        "Openbare ruimte en veiligheid, afgesloten"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Openbare ruimte en veiligheid, afgesloten"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#8da0cb"
+        SIZE                15
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "Openbare ruimte en veiligheid, openstaand"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+      select * 
+      from public.meldingen_acc_meldingen 
+      where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
+      and thema = 'Openbare orde en Veiligheid' 
+      and externe_status = 'Openstaand'
+    ) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT 
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Openbare ruimte en veiligheid, openstaand"
+      "ows_abstract"        "lekker dit"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Openbare ruimte en veiligheid, openstaand"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#8da0cb"
+        SIZE                15
+        OUTLINECOLOR        "#AB1E00"
+        WIDTH               5
+        OPACITY             80
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "Beheer en onderhoud openbare ruimte, afgesloten"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+      select * 
+      from public.meldingen_acc_meldingen 
+      where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
+      and thema = 'Beheer en onderhoud openbare ruimte' 
+      and externe_status = 'Afgesloten'
+    ) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT 
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Beheer en onderhoud openbare ruimte, afgesloten"
+      "ows_abstract"        "lekker dit"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Beheer en onderhoud openbare ruimte, afgesloten"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#66c2a5"
+        SIZE                15
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "Beheer en onderhoud openbare ruimte, openstaand"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+      select * 
+      from public.meldingen_acc_meldingen 
+      where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
+      and thema = 'Beheer en onderhoud openbare ruimte' 
+      and externe_status = 'Openstaand'
+    ) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT 
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Beheer en onderhoud openbare ruimte, openstaand"
+      "ows_abstract"        "lekker dit"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Beheer en onderhoud openbare ruimte, openstaand"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#66c2a5"
+        SIZE                15
+        OUTLINECOLOR        "#AB1E00"
+        WIDTH               5
+        OPACITY             80
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "Ophalen van afval en reinigen openbare ruimte, afgesloten"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+      select * 
+      from public.meldingen_acc_meldingen 
+      where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
+      and thema = 'Ophalen van afval en reinigen openbare ruimte' 
+      and externe_status = 'Afgesloten'
+    ) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT 
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Ophalen van afval en reinigen openbare ruimte, afgesloten"
+      "ows_abstract"        "lekker dit"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Ophalen van afval en reinigen openbare ruimte, afgesloten"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#e78ac3"
+        SIZE                15
+
+      END
+    END
+
+    
+
+  END
+
+  LAYER
+    NAME                    "Ophalen van afval en reinigen openbare ruimte, openstaand"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+      select * 
+      from public.meldingen_acc_meldingen 
+      where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
+      and thema = 'Ophalen van afval en reinigen openbare ruimte' 
+      and externe_status = 'Openstaand'
+    ) as subquery USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT 
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Ophalen van afval en reinigen openbare ruimte, openstaand"
+      "ows_abstract"        "lekker dit"
+      "gml_featureid"       "ID"
+      "gml_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "Ophalen van afval en reinigen openbare ruimte, openstaand"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#e78ac3"
+        SIZE                15
+        OUTLINECOLOR        "#AB1E00"
+        WIDTH               5
+        OPACITY             80
+      END
+    END
+
+  END
+
+
+END
