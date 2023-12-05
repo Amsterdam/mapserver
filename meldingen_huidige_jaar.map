@@ -26,6 +26,7 @@ MAP
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
       and thema = 'Openbare orde en Veiligheid' 
       and externe_status = 'Afgesloten'
+      and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -60,6 +61,7 @@ MAP
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
       and thema = 'Openbare orde en Veiligheid' 
       and externe_status = 'Openstaand'
+      and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -97,6 +99,7 @@ MAP
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
       and thema = 'Beheer en onderhoud openbare ruimte' 
       and externe_status = 'Afgesloten'
+      and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -131,6 +134,7 @@ MAP
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
       and thema = 'Beheer en onderhoud openbare ruimte' 
       and externe_status = 'Openstaand'
+      and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -168,6 +172,7 @@ MAP
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
       and externe_status = 'Afgesloten'
+      and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
@@ -205,6 +210,7 @@ MAP
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
       and externe_status = 'Openstaand'
+      and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
