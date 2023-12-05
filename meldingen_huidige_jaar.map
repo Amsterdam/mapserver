@@ -20,7 +20,7 @@ MAP
   LAYER
     NAME                    "Openbare ruimte en veiligheid, afgesloten"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (
+    DATA                    "geometrie_visualisatie FROM (
       select * 
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
@@ -54,7 +54,7 @@ MAP
   LAYER
     NAME                    "Openbare ruimte en veiligheid, openstaand"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (
+    DATA                    "geometrie_visualisatie FROM (
       select * 
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
@@ -91,7 +91,7 @@ MAP
   LAYER
     NAME                    "Beheer en onderhoud openbare ruimte, afgesloten"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (
+    DATA                    "geometrie_visualisatie FROM (
       select * 
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
@@ -125,7 +125,7 @@ MAP
   LAYER
     NAME                    "Beheer en onderhoud openbare ruimte, openstaand"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (
+    DATA                    "geometrie_visualisatie FROM (
       select * 
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
@@ -162,7 +162,7 @@ MAP
   LAYER
     NAME                    "Ophalen van afval en reinigen openbare ruimte, afgesloten"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (
+    DATA                    "geometrie_visualisatie FROM (
       select * 
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
@@ -199,7 +199,7 @@ MAP
   LAYER
     NAME                    "Ophalen van afval en reinigen openbare ruimte, openstaand"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (
+    DATA                    "geometrie_visualisatie FROM (
       select * 
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2024-01-01' and datum_melding < '2025-01-01'
