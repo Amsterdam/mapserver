@@ -26,18 +26,18 @@ MAP
 # LAYERS
 # Kleuren zijn voor alle layers hetzelfde! De (nieuwe) Amsterdamse standaard kleuren
 
-#   COLOR oranje		255 145 0
-#   COLOR geel			255 230 0
-#   COLOR lichtgroen	190 210 0
-#   COLOR lichtblauw	0 157 230
-#   COLOR donkerblauw	0 70 153
-#   COLOR paars			160 0 120
-#   COLOR roze			229 0 130
-#   COLOR blauwgroen	0 210 180
-#   COLOR groen			0 160 60
-#   COLOR lichtoranje	255 199 0
-#   COLOR roodbruin		160 0 0
-#   COLOR rood			236 0 0
+#   COLOR oranje       255 145 0
+#   COLOR geel         255 230 0
+#   COLOR lichtgroen   190 210 0
+#   COLOR lichtblauw   0 157 230
+#   COLOR donkerblauw  0 70 153
+#   COLOR paars        160 0 120
+#   COLOR roze         229 0 130
+#   COLOR blauwgroen   0 210 180
+#   COLOR groen        0 160 60
+#   COLOR lichtoranje  255 199 0
+#   COLOR roodbruin    160 0 0
+#   COLOR rood         236 0 0
 #=============================================================================
 #
 # Opzet is nu: 1 (union) layer, die 1 sub layer (de punten zelf en 
@@ -52,15 +52,15 @@ MAP
 #==============================================================================
 
   LEGEND
-  	STATUS ON
-  	KEYSIZE 16 16
+    STATUS ON
+    KEYSIZE 16 16
   END
 
   LAYER
     NAME            "vestiging"
     GROUP           "vestigingen"
     INCLUDE         "connection/handelsregister.inc"
-   DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
     MAXSCALEDENOM   9001
@@ -84,7 +84,7 @@ MAP
       STYLE
         SYMBOL         "stip"
         SIZE           10
-	# Voor all correctie = 'true' stippen
+        # Voor all correctie = 'true' stippen
         OUTLINECOLOR    99 99 99
         COLOR          255 10 10
       END
@@ -146,18 +146,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME "bouw"
-  	GROUP           "vestigingen_cbs"
+    NAME "bouw"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
-  	TYPE POINT
-  	MINSCALEDENOM   100
+    TYPE POINT
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "bouw_punten" #reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "bouw_punten" #reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -286,7 +286,7 @@ MAP
       END
     END
     
-	CLASS
+  CLASS
       NAME "Bouwinstallatie"
       EXPRESSION ("[q2]" eq "bouwinstallatie")
       STYLE
@@ -384,7 +384,7 @@ MAP
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
     PROCESSING      "CLOSE_CONNECTION=DEFER"
     STATUS          OFF
@@ -459,18 +459,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME "cultuur_sport_recreatie"
-  	GROUP           "vestigingen_cbs"
+    NAME "cultuur_sport_recreatie"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "cultuur_sport_recreatie_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "cultuur_sport_recreatie_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -718,18 +718,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME "financiele_dienstverlening_verhuur"
-  	GROUP           "vestigingen_cbs"
+    NAME "financiele_dienstverlening_verhuur"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "financiele_dienstverlening_verhuur_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "financiele_dienstverlening_verhuur_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -858,7 +858,7 @@ MAP
       END
     END
     
-	CLASS
+  CLASS
       NAME "Verhuur van- en beheer/handel in onroerend goed"
       EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
       STYLE
@@ -975,18 +975,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"handel_vervoer_opslag"
-  	GROUP           "vestigingen_cbs"
+    NAME       "handel_vervoer_opslag"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "handel_vervoer_opslag_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "handel_vervoer_opslag_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -1313,18 +1313,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"horeca"
-  	GROUP           "vestigingen_cbs"
+    NAME       "horeca"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "horeca_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "horeca_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -1652,18 +1652,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"telecommunicatie"
-  	GROUP           "vestigingen_cbs"
+    NAME       "telecommunicatie"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "telecommunicatie_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "telecommunicatie_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -1930,18 +1930,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"landbouw"
-  	GROUP           "vestigingen_cbs"
+    NAME       "landbouw"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "landbouw_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "landbouw_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -2237,18 +2237,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"overheid_onderwijs_zorg"
-  	GROUP           "vestigingen_cbs"
+    NAME       "overheid_onderwijs_zorg"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "overheid_onderwijs_zorg_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "overheid_onderwijs_zorg_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -2467,18 +2467,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"persoonlijke_dienstverlening"
-  	GROUP           "vestigingen_cbs"
+    NAME       "persoonlijke_dienstverlening"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "persoonlijke_dienstverlening_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "persoonlijke_dienstverlening_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -2771,18 +2771,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"productie_installatie_reparatie"
-  	GROUP           "vestigingen_cbs"
+    NAME       "productie_installatie_reparatie"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "productie_installatie_reparatie_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "productie_installatie_reparatie_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -3001,18 +3001,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"zakelijke_dienstverlening"
-  	GROUP           "vestigingen_cbs"
+    NAME       "zakelijke_dienstverlening"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "zakelijke_dienstverlening_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "zakelijke_dienstverlening_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
@@ -3448,18 +3448,18 @@ MAP
 #=============================================================================
 
   LAYER
-  	NAME 			"overige"
-  	GROUP           "vestigingen_cbs"
+    NAME            "overige"
+    GROUP           "vestigingen_cbs"
     INCLUDE         "connection/handelsregister.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE POINT
-  	MINSCALEDENOM   100
+    MINSCALEDENOM   100
     MAXSCALEDENOM   10001
-  	STATUS OFF
-  	CONNECTIONTYPE UNION
-  	CONNECTION "overige_punten" # reference to the source layers
-  	STYLEITEM "AUTO"
-  	PROJECTION
+    STATUS OFF
+    CONNECTIONTYPE UNION
+    CONNECTION "overige_punten" # reference to the source layers
+    STYLEITEM "AUTO"
+    PROJECTION
       "init=epsg:28992"
     END
     FILTER             "B"
