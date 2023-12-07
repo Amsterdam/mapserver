@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 
+# Checks mapfiles against Amsterdam Schemas to determine if maps bypass
+# authorisation rules.
+#
+# This script is not waterproof. It is intended as a quick check for common
+# errors before merging changes to maps or when schemas have changed at
+# https://github.com/Amsterdam/amsterdam-schema.
+
 import argparse
 import glob
 import logging
@@ -66,8 +73,8 @@ class UnresolvableIncludesParser(Parser):
     Note that this content must be valid mapfile syntax.
     """
 
-    unresolvable={
-        repo_root / "connection": lambda x: f"CONNECTION \"{x}\"",
+    unresolvable = {
+        repo_root / "connection": lambda x: f'CONNECTION "{x}"',
     }
 
     def open_file(self, fn):
@@ -100,12 +107,15 @@ def scope_too_high(scope: str, highest_scope: str) -> bool:
 
     return ordering.get(scope, 999) > ordering[highest_scope]
 
-def is_reference_db_layer(layer: str) -> bool:
+
+def is_reference_db_layer(layer: dict[str, str]) -> bool:
     """Connection files are injected into the repo at build time so we only
     have access to the name of the connection file at auth checking time.
     We assume that any file named dataservices.inc is a connection to the reference database.
     """
-    return "connection" in layer and layer["connection"].removesuffix(".inc").endswith("dataservices")
+    return "connection" in layer and layer["connection"].removesuffix(".inc").endswith(
+        "dataservices"
+    )
 
 
 def auth_from_layer(
@@ -164,7 +174,7 @@ def run_check(
 ):
     printer = PrettyPrinter()
 
-    public_maps = sorted(glob.glob(str(repo_root / f"*.map")))
+    public_maps = sorted(glob.glob(str(repo_root / "*.map")))
     private_maps = sorted(glob.glob(str(repo_root / "private/*.map")))
     logger.info(
         "Found %s public and %s private maps", len(public_maps), len(private_maps)
