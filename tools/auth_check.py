@@ -21,6 +21,7 @@ from mappyfile.parser import Parser
 from mappyfile.pprint import PrettyPrinter
 from mappyfile.transformer import MapfileToDict
 from schematools.types import DatasetSchema
+import sqlparse
 
 from utils import dataset_schemas_from_url
 
@@ -118,6 +119,43 @@ def is_reference_db_layer(layer: dict[str, str]) -> bool:
     )
 
 
+def sql_from_data(data: str) -> sqlparse.sql.Token:
+    """Mapfile DATA directives can contain filenames, URLs or MapServer's
+    pseudo-SQL expressions. Assume the latter. These expressions take the form
+
+        <geometry-field> FROM <sql-expression>
+        USING srid=<srid> USING UNIQUE <id-field>.
+
+    sqlparse parses this syntax just fine, so we can use it to extract the actual SQL.
+    """
+    data, = sqlparse.parse(data)
+    tokens = data.tokens
+
+    # Sanity check that we're looking at the right token.
+    assert isinstance(tokens[0], sqlparse.sql.Identifier)
+    assert tokens[1].ttype == sqlparse.tokens.Token.Text.Whitespace
+    assert tokens[2].ttype == sqlparse.tokens.Token.Keyword
+    assert tokens[3].ttype == sqlparse.tokens.Token.Text.Whitespace
+    assert tokens[4].ttype != sqlparse.tokens.Token.Text.Whitespace
+    assert tokens[5].ttype == sqlparse.tokens.Token.Text.Whitespace
+
+    return tokens[4]
+
+
+def sql_identifiers(sql) -> set[str]:
+    """Set of identifiers in a SQL expression."""
+    return set(_sql_identifiers(sql))
+
+
+def _sql_identifiers(sql: sqlparse.sql.Token):
+    if isinstance(sql, sqlparse.sql.Identifier):
+        ident = sql.tokens[-1]  # Skip prefixes like "public.".
+        yield ident.normalized.lower()
+    if isinstance(sql, sqlparse.sql.TokenList):
+        for tok in sql.tokens:
+            yield from _sql_identifiers(tok)
+
+
 def auth_from_layer(
     map_name: str,
     layer: dict[str, str],
@@ -133,11 +171,15 @@ def auth_from_layer(
     data_expr = layer["data"][0]
     logger.debug("Data definition for layer %s: \n\n %s", layer.get("name"), data_expr)
 
+    # Current strategy is brute-force search through the schemas
+    # for any identifier that occurs in the SQL expression.
+    # TODO improve this.
+    sql_ident = sql_identifiers(sql_from_data(data_expr))
+
     auth_data = []
-    # brute force it
     for dataset in schemas.values():
         for table in dataset.tables:
-            if table.db_name in data_expr:
+            if table.db_name in sql_ident:
                 table_auth = SimpleNamespace(
                     map_=map_name,
                     layer=layer["name"],
