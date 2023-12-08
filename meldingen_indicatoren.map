@@ -17,12 +17,12 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM 
-    (select meldingen_acc_statistieken.gbd_buurt_id, meldingen_acc_statistieken.gbd_buurt_naam, gebieden_buurten.geometrie, sum (meldingen_acc_statistieken.aantal) as aantal_meldingen
+    DATA                    "geometrie FROM
+    (select meldingen_acc_statistieken.buurt_id, meldingen_acc_statistieken.buurtnaam, gebieden_buurten.geometrie, sum (meldingen_acc_statistieken.aantal) as aantal_meldingen
     from meldingen_acc_statistieken
-    LEFT JOIN gebieden_buurten ON meldingen_acc_statistieken.gbd_buurt_id = gebieden_buurten.id
-        group by meldingen_acc_statistieken.gbd_buurt_naam, gebieden_buurten.geometrie, meldingen_acc_statistieken.gbd_buurt_id) 
-    as subquery USING srid=28992 USING UNIQUE gbd_buurt_id"
+    LEFT JOIN gebieden_buurten ON meldingen_acc_statistieken.buurt_id = gebieden_buurten.id
+        group by meldingen_acc_statistieken.buurtnaam, gebieden_buurten.geometrie, meldingen_acc_statistieken.buurt_id)
+    as subquery USING srid=28992 USING UNIQUE buurt_id"
     TYPE                    POLYGON
 
     METADATA
@@ -31,14 +31,14 @@ MAP
       "wms_enable_request"  "* !GetFeatureInfo"
     END
 
-    LABELITEM               "totaal_meldingen"
+    LABELITEM               "aantal_meldingen"
 
     CLASS
       NAME          "Meldingen Indicatoren Buurt"
 
 
       STYLE
-        RANGEITEM   "totaal_meldingen"
+        RANGEITEM   "aantal_meldingen"
         COLORRANGE  "#e0f3db" "#43a2ca"
         DATARANGE   0.0 6000
         OPACITY     80

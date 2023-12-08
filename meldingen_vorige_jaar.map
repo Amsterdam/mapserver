@@ -21,7 +21,7 @@ MAP
     NAME                    "veiligheid_afgesloten"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
-      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
+      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, buurtnaam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
       and thema = 'Openbare orde en Veiligheid' 
@@ -54,7 +54,7 @@ MAP
     NAME                    "veiligheid_openstaand"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
-      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
+      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, buurtnaam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
       and thema = 'Openbare orde en Veiligheid' 
@@ -90,7 +90,7 @@ MAP
     NAME                    "bor_afgesloten"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
-      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
+      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, buurtnaam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
       and thema = 'Beheer en onderhoud openbare ruimte' 
@@ -123,7 +123,7 @@ MAP
     NAME                    "bor_openstaand"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
-      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
+      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, buurtnaam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
       and thema = 'Beheer en onderhoud openbare ruimte' 
@@ -159,7 +159,7 @@ MAP
     NAME                    "afval_afgesloten"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
-      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
+      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, buurtnaam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
@@ -195,7 +195,7 @@ MAP
     NAME                    "afval_openstaand"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
-      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
+      select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, buurtnaam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
       from public.meldingen_acc_meldingen 
       where datum_melding >= '2023-01-01' and datum_melding < '2024-01-01'
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
