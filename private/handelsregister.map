@@ -417,7 +417,7 @@ MAP
     NAME            "bouw_label"
     GROUP           "vestigingen_cbs_label"
     INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE geometrie"
+    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
