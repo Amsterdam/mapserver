@@ -190,7 +190,7 @@ def run_tests(
         paths = sorted(maps_path.glob("**/*.map"))
 
     # TODO: If we include private maps and there is a private and public map
-    # with the same name, give preference to the private map (this is the case for externeveiligheid)
+    # with the same name, give preference to the private map.
     if not private:
         paths = [p for p in paths if "private" not in str(p)]
 
