@@ -18,10 +18,10 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM 
-    (select meldingen_acc_statistieken.gbd_buurt_id, meldingen_acc_statistieken.gbd_buurt_naam, gebieden_buurten.geometrie, sum (meldingen_acc_statistieken.aantal) as aantal_meldingen
-    from meldingen_acc_statistieken
-    LEFT JOIN gebieden_buurten ON meldingen_acc_statistieken.gbd_buurt_id = gebieden_buurten.id
-        group by meldingen_acc_statistieken.gbd_buurt_naam, gebieden_buurten.geometrie, meldingen_acc_statistieken.gbd_buurt_id) 
+    (select indicatoren_buurt.gbd_buurt_id, indicatoren_buurt.gbd_buurt_naam, gebieden_buurten.geometrie, sum (indicatoren_buurt.ind_teller::integer) as totaal_meldingen
+    from indicatoren_buurt
+    LEFT JOIN gebieden_buurten ON indicatoren_buurt.gbd_buurt_id = gebieden_buurten.identificatie 
+        group by indicatoren_buurt.gbd_buurt_naam, gebieden_buurten.geometrie, indicatoren_buurt.gbd_buurt_id) 
     as subquery USING srid=28992 USING UNIQUE gbd_buurt_id"
     TYPE                    POLYGON
 
@@ -40,7 +40,7 @@ MAP
       STYLE
         RANGEITEM   "totaal_meldingen"
         COLORRANGE  "#e0f3db" "#43a2ca"
-        DATARANGE   0.0 6000
+        DATARANGE   0.0 20000
         OPACITY     80
       END
       STYLE
@@ -51,7 +51,7 @@ MAP
 
       LABEL
         MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
+        MAXSCALEDENOM  5000
         COLOR          0 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
