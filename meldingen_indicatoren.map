@@ -18,10 +18,11 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM 
-    (select indicatoren_buurt.gbd_buurt_id, indicatoren_buurt.gbd_buurt_naam, gebieden_buurten.geometrie, sum (indicatoren_buurt.ind_teller::integer) as totaal_meldingen
+    (select distinct indicatoren_buurt.gbd_buurt_id, indicatoren_buurt.ind_noemer::int as totaal_meldingen, gebieden_buurten.geometrie 
     from indicatoren_buurt
     LEFT JOIN gebieden_buurten ON indicatoren_buurt.gbd_buurt_id = gebieden_buurten.identificatie 
-        group by indicatoren_buurt.gbd_buurt_naam, gebieden_buurten.geometrie, indicatoren_buurt.gbd_buurt_id) 
+    where indicatoren_buurt.ind_naam  like 'Aantal meldingen in het % jaar%'
+    and indicatoren_buurt.ind_temp_jaar = extract(year from current_date)) 
     as subquery USING srid=28992 USING UNIQUE gbd_buurt_id"
     TYPE                    POLYGON
 
@@ -40,7 +41,7 @@ MAP
       STYLE
         RANGEITEM   "totaal_meldingen"
         COLORRANGE  "#e0f3db" "#43a2ca"
-        DATARANGE   0.0 20000
+        DATARANGE   0.0 5000
         OPACITY     80
       END
       STYLE
