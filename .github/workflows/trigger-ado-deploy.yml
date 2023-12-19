@@ -1,0 +1,24 @@
+name: CI
+
+# Run this workflow every time a commit is pushed to main
+# The `workflow_dispatch` had been added to be able to run the
+# workflow manually (for testing purposes).
+on:
+  push:
+    branches:
+      - ls/webhook1
+  workflow_dispatch:
+
+jobs:
+    build:
+        name: Trigger Deploy pipeline on Azure DevOps.
+        runs-on: ubuntu-latest
+        steps:
+        - name: Call Azure
+          uses: amsterdam/trigger-ado-pipeline@v1
+          with:
+            pipeline-id: 829
+            organisation: CloudCompetenceCenter
+            project: 'Data Diensten'
+            pat-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+            template-params: '{"environment": "test", "branch": "main", "includePrivate": true, "msagent": true, "akscluster": "blue"}'
