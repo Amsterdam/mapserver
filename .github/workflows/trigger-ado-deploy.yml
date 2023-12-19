@@ -9,6 +9,9 @@ on:
       - ls/webhook1
     paths:
       - ".github/workflows/trigger-ado-deploy.yml"
+  pull_request:
+    branches:
+      - "main" 
   workflow_dispatch:
 
 jobs:
