@@ -120,8 +120,7 @@ RUN mkdir /usr/local/src/mapserver/build && \
 
 
 
-RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache 
-# cgi-mapserver mapserver-bin
+RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 
 # Enable these Apache modules
 RUN a2enmod actions cgi alias headers rewrite env
