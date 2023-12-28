@@ -70,7 +70,7 @@ RUN mkdir /usr/local/src/mapserver/build && \
     cd /usr/local/src/mapserver/build && \
     cmake ../ \
         -DWITH_PROJ=ON \
-        -DWITH_KML=OFF \
+        -DWITH_KML=ON \
         -DWITH_SOS=OFF \
         -DWITH_WMS=ON \
         -DWITH_FRIBIDI=ON \
