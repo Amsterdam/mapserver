@@ -10,7 +10,6 @@
 MAP
   NAME                      "monumenten"
   INCLUDE                   "header.inc"
-  DEBUG 1
 
   WEB
     METADATA
@@ -20,7 +19,7 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+  # #-----------------------------------------------------------------------------
 
   LAYER
     NAME                    "monument_coordinaten_nopand"
@@ -29,29 +28,27 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/monumenten.inc"
+    INCLUDE                 "connection/dataservices.inc"
     # Some monuments have a detailed monumentgeometrie; some have only
     # POINT-typed monumentcoordinaten. Draw a 1.5m-radius circle around the
     # latter so mapserver will display them and their labels. This isn't
     # quite as pretty as a scale-invariant symbol, but it works.
     DATA "
-        geometrie FROM (
-            SELECT coalesce(ST_CollectionExtract(monumentgeometrie, 3),
-                            ST_Buffer(monumentcoordinaten, 1.5)) AS geometrie,
-                   * FROM public.dataset_monument
-            ) AS query
-        USING srid=28992 USING UNIQUE id"
+        unified_geometrie FROM (
+          SELECT coalesce(ST_CollectionExtract(contour, 3),
+          ST_Buffer(punt_coordinaten  , 1.5)) AS unified_geometrie,
+          identificatie, monumentnummer, adressering, naam, type, status, datum_aanwijzing, datum_afvoeren, in_onderzoek, architect_ontwerp, opdrachtgever_bouw, jaar_begin_van, jaar_begin_tot, oorspronkelijke_functie, redengevende_omschrijving_publiek, beschrijving_publiek, ligt_in_monumenten_complex_id, datum_actueel_tot  
+          FROM public.monumenten_monumenten) AS query
+        USING srid=28992 USING UNIQUE identificatie"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
+    FILTER                  ([type] != 'Pand')
+    
     METADATA
-      "wfs_title"           "monument_nopand"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "Monument coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "id,external_id,monument_aanwijzingsdatum,in_onderzoek,monumentnummer,monumentnaam,display_naam,betreft_pand,heeft_als_grondslag_beperking,monumentstatus,geometry"
+      "wfs_enable_request"  "!*"
+      "gml_featureid"       "identificatie"
       "wms_title"           "monument_coordinaten_nopand"
       "wms_enable_request"  "*"
       "wms_group_title"     "monumenten"
@@ -61,11 +58,10 @@ MAP
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
+    #  "wms_layer_group"     "/monumenten_test"
     END
 
-    LABELITEM               "display_naam"
-
-    FILTER                 ("[monumenttype]" != 'Pand' and "[monumenttype]" != 'Bouwblok')
+    LABELITEM               "naam"
 
     CLASS
       NAME                  "Monument (overige)"
@@ -93,35 +89,34 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+  # #-----------------------------------------------------------------------------
 
   LAYER
     NAME                    "monument_coordinaten"
     GROUP                   "monumenten"
+
+    INCLUDE                 "connection/dataservices.inc"
+    # See comment at previous layer.
+    DATA 
+    "
+          unified_geometrie FROM (
+            SELECT coalesce(ST_CollectionExtract(contour, 3),
+            ST_Buffer(punt_coordinaten  , 1.5)) AS unified_geometrie,
+            identificatie, monumentnummer, adressering, naam, type, status, datum_aanwijzing, datum_afvoeren, in_onderzoek, architect_ontwerp, opdrachtgever_bouw, jaar_begin_van, jaar_begin_tot, oorspronkelijke_functie, redengevende_omschrijving_publiek, beschrijving_publiek, ligt_in_monumenten_complex_id, datum_actueel_tot  
+            FROM public.monumenten_monumenten) AS subquery
+        USING srid=28992 USING UNIQUE identificatie"
+    TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
-
-    INCLUDE                 "connection/monumenten.inc"
-    # See comment at previous layer.
-    DATA "
-        geometrie FROM (
-            SELECT coalesce(ST_CollectionExtract(monumentgeometrie, 3),
-                            ST_Buffer(monumentcoordinaten, 2.5)) AS geometrie,
-                   * FROM public.dataset_monument
-            ) AS query
-        USING srid=28992 USING UNIQUE id"
-    TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
+    FILTER                  ([type] = 'Pand')
+
     METADATA
-      "wfs_title"           "monument_coordinaten"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "Monument coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "id,external_id,monument_aanwijzingsdatum,in_onderzoek,monumentnummer,monumentnaam,display_naam,betreft_pand,heeft_als_grondslag_beperking,monumentstatus,geometry"
+      "wfs_enable_request"  "!*"
+      "gml_featureid"       "identificatie"
       "wms_title"           "monument_coordinaten"
       "wms_enable_request"  "*"
       "wms_group_title"     "monumenten"
@@ -131,11 +126,10 @@ MAP
       "wms_format"          "image/png"
       "wms_server_version"  "1.1.1"
       "wms_extent"          "100000 450000 150000 500000"
+    #  "wms_layer_group"     "/monumenten_test"
     END
 
-    LABELITEM               "display_naam"
-
-    FILTER                  ("[monumenttype]" = 'Pand' or "[monumenttype]" = 'Bouwblok')
+    LABELITEM               "naam"
 
     CLASS
       NAME                  "Monument (pandgerelateerd)"
