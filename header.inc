@@ -58,7 +58,7 @@
 
       # verplicht om aan de OGC standaard te voldoen:
       "ows_contactorganization"      "gemeente Amsterdam"
-      "ows_contactperson"            "Onderzoek, Informatie en Statistiek"
+      "ows_contactperson"            "N/A"
     END
 
     IMAGEPATH                        "/srv/mapserver/tmp_img/"
