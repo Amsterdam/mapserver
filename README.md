@@ -32,7 +32,7 @@ De Postgres database is te bereiken op tcp://localhost:5403
 
 De laatste versie van de database kan opgehaald worden met:
 
-    datasets="nap milieuthemas bag_v11 handelsregister monumenten overlastgebieden
+    datasets="nap milieuthemas bag_v11 handelsregister overlastgebieden
         dataselectie various_small_datasets afvalcontainers dataservices"
 
     mkdir tmpdata
