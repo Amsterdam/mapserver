@@ -36,7 +36,7 @@ MAP
     DATA "
         unified_geometrie FROM (
           SELECT coalesce(ST_CollectionExtract(contour, 3),
-          ST_Buffer(punt_coordinaten  , 1.5)) AS unified_geometrie,
+          ST_Buffer(punt_coordinaten, 1.5)) AS unified_geometrie,
           identificatie, monumentnummer, adressering, naam, type, status, datum_aanwijzing, datum_afvoeren, in_onderzoek, architect_ontwerp, opdrachtgever_bouw, jaar_begin_van, jaar_begin_tot, oorspronkelijke_functie, redengevende_omschrijving_publiek, beschrijving_publiek, ligt_in_monumenten_complex_id, datum_actueel_tot  
           FROM public.monumenten_monumenten) AS query
         USING srid=28992 USING UNIQUE identificatie"
