@@ -60,7 +60,7 @@ MAP
       from public.meldingen_meldingen 
       where extract(year from datum_melding) = extract(year from current_date)-1
       and thema = 'Openbare orde en Veiligheid' 
-      and externe_status = 'Openstaand'
+      and externe_status = 'Open'
       and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
@@ -131,7 +131,7 @@ MAP
       from public.meldingen_meldingen 
       where extract(year from datum_melding) = extract(year from current_date)-1
       and thema = 'Beheer en onderhoud openbare ruimte' 
-      and externe_status = 'Openstaand'
+      and externe_status = 'Open'
       and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
@@ -204,7 +204,7 @@ MAP
       from public.meldingen_meldingen 
       where extract(year from datum_melding) = extract(year from current_date)-1
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
-      and externe_status = 'Openstaand'
+      and externe_status = 'Open'
       and geometrie_visualisatie is not null
     ) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT 
