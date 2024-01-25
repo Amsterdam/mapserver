@@ -39,13 +39,36 @@ MAP
       "wms_enable_request"  "* !GetFeatureInfo"
     END
 
+    CLUSTER
+      MAXDISTANCE          50  # in pixels
+      REGION                "ellipse"  # can be rectangle or ellipse
+    END
+    # CLASS
+    #   NAME "Clustered points"
+    #   EXPRESSION ("[Cluster_FeatureCount]" != "1")
+    #   STYLE
+    #     SIZE 30
+    #     SYMBOL "citycircle"
+    #     COLOR 255 0 0
+    #   END
+    #   LABEL
+    #     FONT scb
+    #     TYPE TRUETYPE
+    #     SIZE 8
+    #     COLOR 255 255 255
+    #     ALIGN CENTER
+    #     PRIORITY 10
+    #     BUFFER 1
+    #     PARTIALS TRUE
+    #     POSITION cc
+    #   END
+    # END
     CLASS
       NAME                  "Openbare ruimte en veiligheid, afgesloten"
       STYLE
         SYMBOL              "stip"
         COLOR               "#8da0cb"
         SIZE                15
-        MAXSCALEDENOM       3000
         
       END
     END
