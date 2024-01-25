@@ -37,7 +37,7 @@ jobs:
       run: |
         # Create some bogus connection files, or including them will fail:
         mkdir -p connections
-        for c in bag basiskaart dataselectie dataservices milieu monumenten nap panorama various_small_datasets; do
+        for c in bag basiskaart dataselectie dataservices milieu nap panorama various_small_datasets; do
             echo CONNECTIONTYPE postgis > connection/$c.inc
         done
         python3 tools/make_indexjson.py *.map | jq . > /dev/null
@@ -51,4 +51,5 @@ jobs:
         python3 tools/auth_check.py -e \
           adresseerbare_objecten bgt_inrichtingselementen \
           bomen brk2 ondergrond ziektenplagenexotengroen \
-          meldingen_huidige_jaar meldingen_vorige_jaar meldingen_indicatoren
+          meldingen_huidige_jaar meldingen_vorige_jaar meldingen_indicatoren \
+          monumenten
