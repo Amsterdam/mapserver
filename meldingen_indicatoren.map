@@ -22,7 +22,7 @@ MAP
     from indicatoren_buurt
     LEFT JOIN gebieden_buurten ON indicatoren_buurt.gbd_buurt_id = gebieden_buurten.identificatie 
     where indicatoren_buurt.ind_naam  like 'Aantal meldingen in het % jaar%'
-    and indicatoren_buurt.ind_temp_jaar = extract(year from current_date )) 
+    and indicatoren_buurt.ind_temp_jaar = extract(year from current_date)) 
     as subquery USING srid=28992 USING UNIQUE gbd_buurt_id"
     TYPE                    POLYGON
 
@@ -52,7 +52,7 @@ MAP
 
       LABEL
         MINSCALEDENOM  10
-        MAXSCALEDENOM  5000
+        MAXSCALEDENOM  6001
         COLOR          0 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
@@ -64,13 +64,43 @@ MAP
       END
 
       LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  5000
+        MINSCALEDENOM  6001
+        MAXSCALEDENOM  8001
         COLOR          0 0 0
         OUTLINECOLOR   255 255 255
         OUTLINEWIDTH   3
         FONT           "Ubuntu-MI"
+        TYPE           truetype
+        SIZE           8
+        POSITION       AUTO
+        PARTIALS       FALSE
+      END
+
+      LABEL
+        MINSCALEDENOM  10
+        MAXSCALEDENOM  6001
         TEXT          '[gbd_buurt_naam]'
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           10
+        POSITION       AUTO
+        PARTIALS       FALSE
+        OFFSET         0 -20
+      END
+
+      LABEL
+        MINSCALEDENOM  6001
+        MAXSCALEDENOM  8001
+        TEXT          '[gbd_buurt_naam]'
+        COLOR          0 0 0
+        OUTLINECOLOR   255 255 255
+        OUTLINEWIDTH   3
+        FONT           "Ubuntu-M"
+        TYPE           truetype
+        SIZE           8
         POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         0 -20
