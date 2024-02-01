@@ -118,7 +118,7 @@ RUN mkdir /usr/local/src/mapserver/build && \
     make install && \
     ldconfig
 
-FROM ubuntu:22.04 AS builder     
+FROM ubuntu:22.04
 
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 COPY --from=builder /usr/local/lib /usr/local/lib
