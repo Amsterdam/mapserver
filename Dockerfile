@@ -1,17 +1,25 @@
 FROM ubuntu:22.04
-LABEL maintainer="datapunt@amsterdam.nl"
+MAINTAINER datapunt@amsterdam.nl
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
-RUN apt-get update && apt-get install -my curl wget gnupg -y
-RUN apt install build-essential software-properties-common -y
-# RUN add-apt-repository -y ppa:ubuntugis/ppa
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y \
+    apache2 \
+    cgi-mapserver \
+    curl \
+    gdal-bin \
+    gdal-data \
+    libmapcache1 \
+    libapache2-mod-mapcache \
+    mapserver-bin \
+    python3-pip \
+    wget
 
-RUN apt-get install -y gdal-bin gdal-data libgdal30
-RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
+RUN python3 -m pip install mappyfile==0.9.7
 
 # Enable these Apache modules
-RUN a2enmod actions cgi alias headers rewrite env
+RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
