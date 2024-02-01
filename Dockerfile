@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.04 AS builder     
 LABEL maintainer="datapunt@amsterdam.nl"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -118,7 +118,10 @@ RUN mkdir /usr/local/src/mapserver/build && \
     make install && \
     ldconfig
 
+FROM ubuntu:22.04 AS builder     
 
+COPY --from=builder /usr/local/bin/ /usr/local/bin/
+COPY --from=builder /usr/local/lib /usr/local/lib
 
 RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 
