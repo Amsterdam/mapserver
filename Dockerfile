@@ -120,24 +120,26 @@ RUN mkdir /usr/local/src/mapserver/build && \
 
 FROM ubuntu:22.04
 
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV TZ Europe/Amsterdam
+
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 COPY --from=builder /usr/local/lib /usr/local/lib
 
 RUN apt update && apt install --no-install-recommends -y \
     apache2 \
-    apache2-utils \
-    libmapcache1 \
-    libapache2-mod-mapcache \
     cgi-mapserver \
-    mapserver-bin \
     curl \
-    libmapcache1 \
-    libapache2-mod-mapcache \
     gdal-bin \
     gdal-data \
+    libmapcache1 \
+    libapache2-mod-mapcache \
     mapserver-bin \
     python3-pip \
     wget
+    
+RUN chmod o+x /usr/local/bin/mapserv
 
 # Enable these Apache modules
 RUN a2enmod actions cgi alias headers rewrite env
