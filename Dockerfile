@@ -126,7 +126,7 @@ ENV TZ Europe/Amsterdam
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 COPY --from=builder /usr/local/lib /usr/local/lib
 
-RUN apt update && apt install --no-install-recommends -y \
+RUN apt-get install -y \
     apache2 \
     cgi-mapserver \
     curl \
@@ -138,8 +138,10 @@ RUN apt update && apt install --no-install-recommends -y \
     python3-pip \
     wget
 
+RUN python3 -m pip install mappyfile==0.9.7
+
 # Enable these Apache modules
-RUN a2enmod actions cgi alias headers rewrite env
+RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
