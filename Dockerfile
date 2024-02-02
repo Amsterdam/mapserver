@@ -133,6 +133,9 @@ RUN apt update && apt install --no-install-recommends -y \
     curl \
     libmapcache1 \
     libapache2-mod-mapcache \
+    gdal-bin \
+    gdal-data \
+    mapserver-bin \
     python3-pip \
     wget
 
