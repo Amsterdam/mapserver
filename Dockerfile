@@ -129,7 +129,12 @@ RUN apt update && apt install --no-install-recommends -y \
     libmapcache1 \
     libapache2-mod-mapcache \
     cgi-mapserver \
-    mapserver-bin
+    mapserver-bin \
+    curl \
+    libmapcache1 \
+    libapache2-mod-mapcache \
+    python3-pip \
+    wget
 
 # Enable these Apache modules
 RUN a2enmod actions cgi alias headers rewrite env
