@@ -126,22 +126,14 @@ ENV TZ Europe/Amsterdam
 COPY --from=builder /usr/local/bin/ /usr/local/bin/
 COPY --from=builder /usr/local/lib /usr/local/lib
 
-RUN apt-get install -y \
-    apache2 \
-    cgi-mapserver \
-    curl \
-    gdal-bin \
-    gdal-data \
-    libmapcache1 \
-    libapache2-mod-mapcache \
-    mapserver-bin \
-    python3-pip \
-    wget
+RUN apt-get update && apt-get install -my curl wget gnupg -y
+RUN apt install build-essential software-properties-common -y
 
-RUN python3 -m pip install mappyfile==0.9.7
+RUN apt-get install -y gdal-bin gdal-data libgdal30
+RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 
 # Enable these Apache modules
-RUN a2enmod actions cgid headers rewrite
+RUN a2enmod actions cgid cgi headers rewrite alias env
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
