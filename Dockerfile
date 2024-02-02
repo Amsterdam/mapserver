@@ -120,7 +120,6 @@ RUN mkdir /usr/local/src/mapserver/build && \
 
 FROM ubuntu:22.04
 
-
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Europe/Amsterdam
 
@@ -138,8 +137,6 @@ RUN apt update && apt install --no-install-recommends -y \
     mapserver-bin \
     python3-pip \
     wget
-    
-RUN chmod o+x /usr/local/bin/mapserv
 
 # Enable these Apache modules
 RUN a2enmod actions cgi alias headers rewrite env
@@ -150,8 +147,13 @@ RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
+RUN chmod o+x /usr/local/bin/mapserv
 COPY . /srv/mapserver/
 
 EXPOSE 80
 
 CMD /bin/docker-entrypoint.sh
+
+
+    
+
