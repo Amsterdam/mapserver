@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS builder     
+FROM ubuntu:22.04
 LABEL maintainer="datapunt@amsterdam.nl"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -118,22 +118,12 @@ RUN mkdir /usr/local/src/mapserver/build && \
     make install && \
     ldconfig
 
-FROM ubuntu:22.04
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV TZ Europe/Amsterdam
 
-COPY --from=builder /usr/local/bin/ /usr/local/bin/
-COPY --from=builder /usr/local/lib /usr/local/lib
-
-RUN apt-get update && apt-get install -my curl wget gnupg -y
-RUN apt install build-essential software-properties-common -y
-
-RUN apt-get install -y gdal-bin gdal-data libgdal30
 RUN apt-get install -y apache2 apache2-utils libmapcache1 libapache2-mod-mapcache cgi-mapserver mapserver-bin
 
 # Enable these Apache modules
-RUN a2enmod actions cgid cgi headers rewrite alias env
+RUN a2enmod actions cgi alias headers rewrite env
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
@@ -141,13 +131,8 @@ RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
-RUN chmod o+x /usr/local/bin/mapserv
 COPY . /srv/mapserver/
 
 EXPOSE 80
 
 CMD /bin/docker-entrypoint.sh
-
-
-    
-
