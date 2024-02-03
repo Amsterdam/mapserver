@@ -1,8 +1,4 @@
-#==============================================================================
-# Dataset: huishoudelijkafval
-#
-#==============================================================================
-
+# TEAM: BOR
 
 MAP
   NAME                      "huishoudelijkafval"
@@ -28,8 +24,8 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "cluster_geometrie FROM afval_cluster USING srid=28992 USING UNIQUE cluster_id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM huishoudelijkafval_cluster USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -40,7 +36,7 @@ MAP
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Afvalclusters Amsterdam"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "cluster_id"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Afvalclusters"
       "wms_enable_request"  "*"
@@ -53,7 +49,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "cluster_id"
+    LABELITEM               "id"
 
     CLASS
       NAME          "Afvalclusters"
@@ -92,19 +88,24 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "container_geometrie FROM  public.afval_container  USING srid=28992 USING UNIQUE container_id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "geometrie FROM (
+        SELECT hc.*, ct.naam AS containertype_naam FROM
+            public.huishoudelijkafval_container hc,
+            public.huishoudelijkafval_containertype ct
+        WHERE
+            hc.type_id = ct.id
+    ) AS sub USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
-
 
     METADATA
       "wfs_title"           "Afvalcontainers"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Afvalcontainers Amsterdam"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "container_id"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Afvalcontainers"
       "wms_enable_request"  "*"
@@ -149,7 +150,6 @@ MAP
     END
   END
 
-
   LAYER
     NAME                    "afvalwegingen"
     GROUP                   "huishoudelijkafval"
@@ -157,19 +157,18 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "weging_geometrie FROM  public.afval_weging  USING srid=28992 USING UNIQUE weging_id"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.huishoudelijkafval_weging USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
-
 
     METADATA
       "wfs_title"           "Afvalwegingen"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Afvalwegingen Amsterdam"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "weging_id"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Afvalwegingen"
       "wms_enable_request"  "*"
@@ -182,7 +181,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "weging_id"
+    LABELITEM               "id"
 
     CLASS
       NAME          "Afvalwegingen"
@@ -213,6 +212,5 @@ MAP
       END
     END
   END
-
 
 END
