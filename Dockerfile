@@ -76,7 +76,7 @@ RUN mkdir /usr/local/src/mapserver/build && \
         -DWITH_FRIBIDI=ON \
         -DWITH_HARFBUZZ=ON \
         -DWITH_ICONV=ON \
-        -DWITH_CAIRO=ON \z
+        -DWITH_CAIRO=ON \
         -DWITH_SVGCAIRO=OFF \
         -DWITH_RSVG=ON \
         -DWITH_MYSQL=OFF \
