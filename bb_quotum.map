@@ -1,9 +1,4 @@
-#==============================================================================
-# Dataset: bb_quotum
-# Doel: Bed and Breakfast per wijk
-#
-#==============================================================================
-
+# TEAM: Beeldschoon/BOR
 
 MAP
   NAME                      "bb_quotum"
@@ -25,19 +20,18 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "geo FROM  public.bb_quotum  USING srid=28992 USING UNIQUE wijk"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.vergunningen_bedandbreakfast USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
-
 
     METADATA
       "wfs_title"           "Vergunningen B&B"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Vergunningen B&B per wijk"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "wijk"
+      "gml_featureid"       "id"
       "gml_include_items"   "all"
       "wms_title"           "Vergunningen B&B"
       "wms_enable_request"  "*"
@@ -50,11 +44,11 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "wijk"
+    LABELITEM               "wijk_naam"
 
     CLASS
       NAME          "Niet beschikbaar"
-      EXPRESSION    ("[availability_color]" eq "red")
+      EXPRESSION    ("[categorie_kleur]" eq "red")
 
       STYLE
           ANTIALIAS    true
@@ -84,7 +78,7 @@ MAP
 
     CLASS
       NAME          "Beperkt beschikbaar"
-      EXPRESSION    ("[availability_color]" eq "orange")
+      EXPRESSION    ("[categorie_kleur]" eq "orange")
 
       STYLE
           ANTIALIAS    true
@@ -114,7 +108,7 @@ MAP
 
     CLASS
       NAME          "Beschikbaar"
-      EXPRESSION    ("[availability_color]" eq "green")
+      EXPRESSION    ("[categorie_kleur]" eq "green")
 
       STYLE
           ANTIALIAS    true

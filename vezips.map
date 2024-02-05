@@ -1,10 +1,4 @@
-#==============================================================================
-#
-# Dataset: vezips
-# Doel: Verzinkbare palen
-#
-#==============================================================================
-
+# TEAM: BOR
 
 MAP
   NAME                      "vezips"
@@ -35,19 +29,18 @@ MAP
       "init=epsg:28992"
     END
 
-    INCLUDE                 "connection/various_small_datasets.inc"
-    DATA                    "wkb_geometry FROM public.vezips USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.verzinkbarepalen USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
-
 
     METADATA
       "wfs_title"           "Verzinkbare palen"
       "wfs_srs"             "EPSG:28992"
       "wfs_abstract"        "Verzinkbare palen Amsterdam"
       "wfs_enable_request"  "*"
-      "gml_featureid"       "vezip_nummer"
+      "gml_featureid"       "nummer"
       "gml_include_items"   "all"
       "wms_title"           "Verzinkbare palen"
       "wms_enable_request"  "*"
@@ -60,7 +53,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "vezip_nummer"
+    LABELITEM               "nummer"
 
     CLASS
       NAME          "Verzinkbare palen"
