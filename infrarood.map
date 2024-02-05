@@ -30,6 +30,28 @@ MAP
   #============================================================================= 
 
   LAYER
+    NAME                    "infrarood2023"
+    GROUP                   "infrarood"
+    CONNECTION              "MAP_URL_REPLACE/maps/infrarood2023"
+    CONNECTIONTYPE          WMS
+    TYPE                    RASTER
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "infrarood2023"
+      "ows_group_title"     "infrarood"
+      "ows_abstract"        "Luchtfoto's van 2023 van het grondgebied van de gemeente Amsterdam"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "infrarood2023"
+      "wms_format"          "image/tiff"
+      "wms_server_version"  "1.1.1"
+    END
+  END
+
+  # --------------------------------------------------------------------------
+  LAYER
     NAME                    "infrarood2022"
     GROUP                   "infrarood"
     CONNECTION              "MAP_URL_REPLACE/maps/infrarood2022"
