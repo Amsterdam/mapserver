@@ -19,7 +19,6 @@ RUN apt-get -y update && \
         locales \
         make \
         patch \
-        openssh-server \
         protobuf-compiler \
         protobuf-c-compiler \
         software-properties-common \
