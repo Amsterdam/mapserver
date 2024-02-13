@@ -309,7 +309,7 @@ MAP
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}' and [primaire_functie] eq "Evenement")
+    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}' or [capaciteit] = '{3 X 16 A}' and [primaire_functie] eq "Evenement")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
