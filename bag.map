@@ -29,8 +29,11 @@ MAP
   LAYER
     NAME            "openbareruimte"
     GROUP           "bag"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_openbareruimte_mat USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA "geometrie FROM (
+        SELECT * FROM public.bag_openbareruimtes
+        WHERE coalesce(eind_geldigheid, now()) >= now()
+    ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   40001
@@ -49,11 +52,9 @@ MAP
       "ows_geomtype"        "Geometry"
     END
 
-    CLASSITEM "opr_type"
-
     CLASS
       NAME       "Weg"
-      EXPRESSION /01/
+      EXPRESSION ([type_code] = 1)
       STYLE
         ANTIALIAS      true
         COLOR          200 200 200
@@ -64,7 +65,7 @@ MAP
 
     CLASS
       NAME       "Water"
-      EXPRESSION /02/
+      EXPRESSION ([type_code] = 2)
       STYLE
         ANTIALIAS      true
         COLOR          100 200 255
@@ -75,7 +76,7 @@ MAP
 
     CLASS
       NAME       "Spoorbaan"
-      EXPRESSION /03/
+      EXPRESSION ([type_code] = 3)
       STYLE
         ANTIALIAS      true
         COLOR          150 150 150
@@ -86,7 +87,7 @@ MAP
 
     CLASS
       NAME       "Terrein"
-      EXPRESSION /04/
+      EXPRESSION ([type_code] = 4)
       STYLE
         ANTIALIAS      true
         COLOR          100 255 100
@@ -97,7 +98,7 @@ MAP
 
     CLASS
       NAME       "Kunstwerk"
-      EXPRESSION /05/
+      EXPRESSION ([type_code] = 5)
       STYLE
         ANTIALIAS      true
         COLOR          255 175 100
@@ -108,7 +109,7 @@ MAP
 
     CLASS
       NAME       "Landschappelijk gebied"
-      EXPRESSION /06/
+      EXPRESSION ([type_code] = 6)
       STYLE
         ANTIALIAS      true
         COLOR          200 100 255
@@ -119,7 +120,7 @@ MAP
 
     CLASS
       NAME       "Administratief gebied"
-      EXPRESSION /07/
+      EXPRESSION ([type_code] = 7)
       STYLE
         ANTIALIAS      true
         COLOR          255 255 100
@@ -136,8 +137,11 @@ MAP
   LAYER
     NAME            "pand"
     GROUP           "bag"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_pand_mat USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA "geometrie FROM (
+        SELECT * FROM public.bag_panden
+        WHERE coalesce(eind_geldigheid, now()) >= now()
+    ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -172,8 +176,11 @@ MAP
   LAYER
     NAME            "ligplaats"
     GROUP           "bag"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_ligplaats_mat USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA "geometrie FROM (
+        SELECT * FROM public.bag_ligplaatsen
+        WHERE coalesce(eind_geldigheid, now()) >= now()
+    ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -208,8 +215,11 @@ MAP
   LAYER
     NAME            "standplaats"
     GROUP           "bag"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_standplaats_mat USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA "geometrie FROM (
+        SELECT * FROM public.bag_standplaatsen
+        WHERE coalesce(eind_geldigheid, now()) >= now()
+    ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   2501
@@ -244,19 +254,21 @@ MAP
   LAYER
     NAME            "pandleeftijden"
     GROUP           "bouwjaar"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM (SELECT
-        landelijk_id AS id,
-        bouwjaar,
-        geometrie,
-        ligging,
-        type_woonobject,
-        ('https://api.data.amsterdam.nl/bag/v1.1/pand/' || landelijk_id::text || '/'::text) AS uri
-        FROM public.bag_pand
-      ) AS subquery USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA "geometrie FROM (
+        SELECT
+            id,
+            oorspronkelijk_bouwjaar,
+            geometrie,
+            ligging_omschrijving,
+            type_woonobject,
+            ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri
+        FROM public.bag_panden
+        WHERE coalesce(eind_geldigheid, now()) >= now()
+    ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    CLASSITEM       "bouwjaar"
-    LABELITEM       "bouwjaar"
+    CLASSITEM       "oorspronkelijk_bouwjaar"
+    LABELITEM       "oorspronkelijk_bouwjaar"
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -272,9 +284,10 @@ MAP
       "gml_include_items"   "all"
     END
 
+    # 1005 is the conventional unknown year of construction.
     CLASS
       NAME            "onbekend"
-      EXPRESSION      ([bouwjaar] == 1005)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] == 1005)
       STYLE
         ANTIALIAS      true
         COLOR          "#767676"
@@ -286,7 +299,7 @@ MAP
 
     CLASS
       NAME            "< 1800"
-      EXPRESSION      ([bouwjaar] < 1800 AND [bouwjaar] != 1005)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] < 1800 AND [oorspronkelijk_bouwjaar] != 1005)
       STYLE
         ANTIALIAS      true
         COLOR          "#610000"
@@ -311,7 +324,7 @@ MAP
 
     CLASS
       NAME            "1800-1850"
-      EXPRESSION      ([bouwjaar] >= 1800 AND [bouwjaar] < 1850)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1800 AND [oorspronkelijk_bouwjaar] < 1850)
       STYLE
         ANTIALIAS      true
         COLOR          "#A00000"
@@ -336,7 +349,7 @@ MAP
 
     CLASS
       NAME            "1850-1900"
-      EXPRESSION      ([bouwjaar] >= 1850 AND [bouwjaar] < 1900)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1850 AND [oorspronkelijk_bouwjaar] < 1900)
       STYLE
         ANTIALIAS      true
         COLOR          "#EC0000"
@@ -361,7 +374,7 @@ MAP
 
     CLASS
       NAME            "1900-1930"
-      EXPRESSION      ([bouwjaar] >= 1900 AND [bouwjaar] < 1930)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1900 AND [oorspronkelijk_bouwjaar] < 1930)
       STYLE
         ANTIALIAS      true
         COLOR          "#F14600"
@@ -386,7 +399,7 @@ MAP
 
     CLASS
       NAME            "1930-1945"
-      EXPRESSION      ([bouwjaar] >= 1930 AND [bouwjaar] < 1945)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1930 AND [oorspronkelijk_bouwjaar] < 1945)
       STYLE
         ANTIALIAS      true
         COLOR          "#FBAA00"
@@ -411,7 +424,7 @@ MAP
 
     CLASS
       NAME            "1945-1960"
-      EXPRESSION      ([bouwjaar] >= 1945 AND [bouwjaar] < 1960)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1945 AND [oorspronkelijk_bouwjaar] < 1960)
       STYLE
         ANTIALIAS      true
         COLOR          "#FFE600"
@@ -436,7 +449,7 @@ MAP
 
     CLASS
       NAME            "1960-1975"
-      EXPRESSION      ([bouwjaar] >= 1960 AND [bouwjaar] < 1975)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1960 AND [oorspronkelijk_bouwjaar] < 1975)
       STYLE
         ANTIALIAS      true
         COLOR          "#E5F2FC"
@@ -461,7 +474,7 @@ MAP
 
     CLASS
       NAME            "1975-1985"
-      EXPRESSION      ([bouwjaar] >= 1975 AND [bouwjaar] < 1985)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1975 AND [oorspronkelijk_bouwjaar] < 1985)
       STYLE
         ANTIALIAS      true
         COLOR          "#B1D9F5"
@@ -486,7 +499,7 @@ MAP
 
     CLASS
       NAME            "1985-1995"
-      EXPRESSION      ([bouwjaar] >= 1985 AND [bouwjaar] < 1995)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1985 AND [oorspronkelijk_bouwjaar] < 1995)
       STYLE
         ANTIALIAS      true
         COLOR          "#71BDEE"
@@ -511,7 +524,7 @@ MAP
 
     CLASS
       NAME            "1995-2005"
-      EXPRESSION      ([bouwjaar] >= 1995 AND [bouwjaar] < 2005)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1995 AND [oorspronkelijk_bouwjaar] < 2005)
       STYLE
         ANTIALIAS      true
         COLOR          "#007EC5"
@@ -536,7 +549,7 @@ MAP
 
     CLASS
       NAME            ">= 2005"
-      EXPRESSION      ([bouwjaar] >= 2005)
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 2005)
       STYLE
         ANTIALIAS      true
         COLOR          "#004699"
