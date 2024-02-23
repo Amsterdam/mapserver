@@ -13,8 +13,8 @@ MAP
   WEB
     METADATA
       "ows_title"    "energie"
-      "ows_abstract" "Gas / elektra - verbruiks gegevens. BAG gecombineerd met Alliander open data"
-      "wms_extent"          "100000 450000 150000 500000"
+      "ows_abstract" "Markt-, bouw- en evenementenstroompunten"
+      "wms_extent"   "100000 450000 150000 500000"
      END
   END
 
@@ -30,8 +30,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}" and [primaire_functie] eq "Markt")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Markt'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -69,8 +73,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = "{3 x 160 A}" and [primaire_functie] eq "Markt")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Markt'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = "{3 x 160 A}")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -109,8 +117,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = "{3 x 40 A}" and [primaire_functie] eq "Markt")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Markt'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = "{3 x 40 A}")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -149,8 +161,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = "{3 x 25 A}" and [primaire_functie] eq "Markt")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Markt'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = "{3 x 25 A}")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -188,8 +204,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}" and [primaire_functie] eq "Evenement")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Evenement'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}")
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -228,8 +248,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}' and [primaire_functie] eq "Evenement")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Evenement'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -268,8 +292,12 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}' and [primaire_functie] eq "Evenement")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Evenement'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -308,8 +336,13 @@ MAP
     GROUP           "Stroompunten"
     TYPE            POINT
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry from public.bouwstroompunten_bouwstroompunten USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}' and [primaire_functie] eq "Evenement")
+    DATA "geometry FROM (
+            SELECT * FROM public.bouwstroompunten_bouwstroompunten
+            WHERE primaire_functie = 'Evenement'
+        ) AS sub
+        USING srid=28992 USING UNIQUE id"
+    # Note: the middle value actually has to have 'X' instead of 'x'.
+    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 X 16 A}' or [capaciteit] = '{3 x 25 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
