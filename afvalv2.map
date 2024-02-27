@@ -39,67 +39,71 @@ MAP
 
   #-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    "container_coordinaten"
-    GROUP                   "afvalcontainers"
-    INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
-    FILTER                  ([status] = 1)
-    TYPE                    POINT
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
+  # Deze laag toont alle afvalcontainers, wanneer deze mee gaat met de group, komen alle IDs dubbel in beeld.. Is dit nodig?
 
-    PROJECTION
-      "init=epsg:28992"
-    END
 
-    METADATA
-      "wfs_title"           "containers"      
-      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "container_coordinaten"
-      "wms_enable_request"  "*"
-      "wms_extent"			    "100000 450000 150000 500000"
-      "wms_group_title"     "kilogram"
-      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"           
-      "wms_name"            "afvalcontainers_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
+  # LAYER
+  #   NAME                    "container_coordinaten"
+  #   GROUP                   "afvalcontainers"
+  #   INCLUDE                 "connection/dataservices.inc"
+  #   DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+  #   FILTER                  ([status] = 1)
+  #   TYPE                    POINT
+  #   MINSCALEDENOM           10
+  #   MAXSCALEDENOM           400000
 
-    LABELITEM               "id_nummer"
+  #   PROJECTION
+  #     "init=epsg:28992"
+  #   END
 
-    CLASS
-      NAME                  "Afvalcontainer"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
-      END
+  #   METADATA
+  #     "wfs_title"           "containers"      
+  #     "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
+  #     "wfs_enable_request"  "*"
+  #     "gml_featureid"       "ID"
+  #     "gml_include_items"   "all"
+  #     "gml_types"           "auto"
+  #     "wms_title"           "container_coordinaten"
+  #     "wms_enable_request"  "*"
+  #     "wms_extent"			    "100000 450000 150000 500000"
+  #     "wms_group_title"     "afvalcontainers"
+  #     "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
+  #     "wms_srs"             "EPSG:28992"
+  #     "wms_name"            "afvalcontainers_coordinaten"
+  #     "wms_format"          "image/png"
+  #     "wms_server_version"  "1.1.1"
+  #   END
 
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          102 102 102
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10 
-      END
+  #   LABELITEM               "id_nummer"
 
-    END
-  END
+  #   CLASS
+  #     NAME                  "Afvalcontainer"
+  #     STYLE
+  #       MINSCALEDENOM       10
+  #       MAXSCALEDENOM       500001
+  #       SYMBOL              'stip'
+  #       COLOR               255 255 255
+  #       SIZE                8
+  #       OUTLINECOLOR        0 0 0
+  #       WIDTH               3
+  #     END
+
+  #     LABEL
+  #       MINSCALEDENOM  10
+  #       MAXSCALEDENOM  1000
+  #       COLOR          102 102 102
+  #       OUTLINECOLOR   255 255 255
+  #       OUTLINEWIDTH   3
+  #       FONT           "Ubuntu-M"
+  #       TYPE           truetype
+  #       SIZE           10
+  #       POSITION       AUTO
+  #       PARTIALS       FALSE
+  #       OFFSET         -60 10 
+  #     END
+
+  #   END
+  # END
 
 
   #-----------------------------------------------------------------------------
@@ -165,71 +169,6 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "kca_coordinaten"
-    GROUP                   "afvalcontainers"
-    INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
-    FILTER                  ([fractie_omschrijving] = 'KCA' AND [status] = 1)
-    TYPE                    POINT
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "kca"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "kca_coordinaten"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_extent"			    "100000 450000 150000 500000"
-      "wms_srs"             "EPSG:28922"
-      "wms_name"            "afvalcontainers_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    LABELITEM               "id_nummer"
-
-    CLASS
-      NAME                  "Kcacontainer"
-      STYLE
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        SYMBOL              'stip'
-        COLOR               255 255 255
-        SIZE                8
-        OUTLINECOLOR        0 0 0
-        WIDTH               3
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  4000
-        COLOR          102 102 102
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-
-    END
-  END
 
   #-----------------------------------------------------------------------------
 
@@ -413,71 +352,7 @@ MAP
         FONT           "Ubuntu-M"
         TYPE           truetype
         SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-
-    END
-  END
-
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "plastic_coordinaten"
-    GROUP                   "afvalcontainers"
-    INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
-    FILTER                  ([fractie_omschrijving] = 'Plastic' AND [status] = 1)
-    TYPE                    POINT
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "plastic"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "Plastic container coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "plastic_coordinaten"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Plastic container coordinaten Amsterdam"
-      "wms_extent"			    "100000 450000 150000 500000"
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "afvalcontainers_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    LABELITEM               "id_nummer"
-
-    CLASS
-      NAME                  "Plasticcontainer"
-      STYLE
-        SIZE                30
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        SYMBOL              'plastic'
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  4000
-        COLOR          102 102 102
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
+       POSITION       AUTO
         PARTIALS       FALSE
         OFFSET         -60 10
       END
@@ -612,68 +487,6 @@ MAP
     END
   END
 
- #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "PMD_coordinaten"
-    GROUP                   "afvalcontainers"
-    INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
-    FILTER                  ([fractie_omschrijving] = 'PMD' AND [status] = 1)
-    TYPE                    POINT
-    MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
-
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wfs_title"           "PMD"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wfs_enable_request"  "*"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "gml_types"           "auto"
-      "wms_title"           "PMD_coordinaten"
-      "wms_enable_request"  "*"
-      "wms_group_title"     "afvalcontainers"
-      "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
-      "wms_extent"			    "100000 450000 150000 500000"
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "afvalcontainers_coordinaten"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-    END
-
-    LABELITEM               "id_nummer"
-
-    CLASS
-      NAME                  "PMDcontainer"
-      STYLE
-        SIZE                30
-        MINSCALEDENOM       10
-        MAXSCALEDENOM       500001
-        SYMBOL              'PMD'
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  4000
-        COLOR          102 102 102
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-      END
-
-    END
-  END
 
  #-----------------------------------------------------------------------------
 
@@ -744,8 +557,8 @@ MAP
     NAME                    "onbekend_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
-    FILTER                  ([fractie_omschrijving] = 'onbekend' AND [status] = 1)
+                            #Bij deze is een subquery gebruikt ipv filter omdat NULL niet als filter geldt binnen mapserver, alleen in subquery.
+    DATA                    "geometrie FROM (select * FROM public.huishoudelijkafval_container where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -2329,7 +2142,7 @@ MAP
     DATA                    "geometrie FROM (
     			                      select * from
                                 public.huishoudelijkafval_weging
-                                where fractie_omschrijving = 'onbekend'
+                                where fractie_omschrijving is null
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
 				) as subquery USING srid=28992 USING UNIQUE id"
