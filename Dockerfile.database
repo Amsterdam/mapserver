@@ -1,0 +1,7 @@
+# Dockerfile for PostgreSQL in dev environment only.
+
+# TODO upgrade to a newer Postgres. Trouble is that the hack to move
+# PostGIS doesn't work with newer versions.
+FROM amsterdam/postgres11
+
+ADD docker/initdb.d/* /docker-entrypoint-initdb.d/
