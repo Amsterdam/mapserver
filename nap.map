@@ -8,6 +8,7 @@
 # naam                  datum         wijziging
 # ------------------    ----------    -----------------------------------------
 # S. Zaat               25-01-2016    schepping
+# D. Oldenburg          19-02-2024    Omzetten naar RefDB
 #
 #==============================================================================
 
@@ -35,8 +36,8 @@ MAP
   LAYER
     NAME            "peilmerk"
     GROUP           "NAP"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.nap_peilmerken USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -66,8 +67,9 @@ MAP
   LAYER
     NAME            "peilmerk_label"
     GROUP           "NAP"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (
+      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken) AS query USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -81,7 +83,7 @@ MAP
       "wms_abstract"        "Labels van NAP peilmerken"
     END
 
-    LABELITEM          "id"
+    LABELITEM          "identificatie"
 
     CLASS
       LABEL
@@ -118,8 +120,9 @@ MAP
   LAYER
     NAME            "peilmerk_hoogte"
     GROUP           "NAP_hoogte"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_nap_peilmerk USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (
+      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken) AS query USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -136,7 +139,7 @@ MAP
 
     CLASS
       NAME "lager dan -1,5 m"
-      EXPRESSION ([hoogte] < -1.5)
+      EXPRESSION ([hoogte_tov_nap] < -1.5)
       STYLE
         SYMBOL         'vierkant_trap1_donkerblauw'
         SIZE           16
@@ -145,7 +148,7 @@ MAP
 
     CLASS
       NAME "-1,5 m tot -0,5 m"
-      EXPRESSION (([hoogte] >= -1.5) AND ([hoogte] < -0.5))
+      EXPRESSION (([hoogte_tov_nap] >= -1.5) AND ([hoogte_tov_nap] < -0.5))
       STYLE
         SYMBOL         'vierkant_trap2_lichtblauw'
         SIZE           16
@@ -154,7 +157,7 @@ MAP
 
     CLASS
       NAME "-0,5 m tot 0 m"
-      EXPRESSION (([hoogte] >= -0.5) AND ([hoogte] < 0))
+      EXPRESSION (([hoogte_tov_nap] >= -0.5) AND ([hoogte_tov_nap] < 0))
       STYLE
         SYMBOL         'vierkant_trap3_lichtblauwgroen'
         SIZE           16
@@ -163,7 +166,7 @@ MAP
 
     CLASS
       NAME "0 m tot 1 m"
-      EXPRESSION (([hoogte] >= 0) AND ([hoogte] < 1))
+      EXPRESSION (([hoogte_tov_nap] >= 0) AND ([hoogte_tov_nap] < 1))
       STYLE
         SYMBOL         'vierkant_trap4_lichtgroen'
         SIZE           16
@@ -172,7 +175,7 @@ MAP
 
     CLASS
       NAME "1 m tot 1,5 m"
-      EXPRESSION (([hoogte] >= 1) AND ([hoogte] < 1.5))
+      EXPRESSION (([hoogte_tov_nap] >= 1) AND ([hoogte_tov_nap] < 1.5))
       STYLE
         SYMBOL         'vierkant_trap5_geel'
         SIZE           16
@@ -181,7 +184,7 @@ MAP
 
     CLASS
       NAME "1,5 m tot 2 m"
-      EXPRESSION (([hoogte] >= 1.5) AND ([hoogte] < 2))
+      EXPRESSION (([hoogte_tov_nap] >= 1.5) AND ([hoogte_tov_nap] < 2))
       STYLE
         SYMBOL         'vierkant_trap6_geeloranje'
         SIZE           16
@@ -190,7 +193,7 @@ MAP
 
     CLASS
       NAME "2 m tot 3,5 m"
-      EXPRESSION (([hoogte] >= 2) AND ([hoogte] < 3.5))
+      EXPRESSION (([hoogte_tov_nap] >= 2) AND ([hoogte_tov_nap] < 3.5))
       STYLE
         SYMBOL         'vierkant_trap7_oranje'
         SIZE           16
@@ -199,7 +202,7 @@ MAP
 
     CLASS
       NAME "hoger dan 3,5 m"
-      EXPRESSION ([hoogte] >= 3.5)
+      EXPRESSION ([hoogte_tov_nap] >= 3.5)
       STYLE
         SYMBOL         'vierkant_trap8_rood'
         SIZE           16
