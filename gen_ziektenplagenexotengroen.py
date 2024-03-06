@@ -40,14 +40,21 @@ with block("MAP"):
                 q("init=epsg:28992")
 
             p("INCLUDE", "connection/dataservices.inc")
+
+            # Filter results and restrict the fields that mapserver sees.
+            query = """
+                SELECT id, geometrie, urgentie_status_kaartlaag
+                FROM public.ziekte_plagen_exoten_groen_eikenprocessierups
+                WHERE
+                    date_part('year', datum_melding) = date_part('year', current_date)
+                    AND ranking=1
+            """
+            query = " ".join(query.split())  # Normalize whitespace.
             p(
                 "DATA",
-                "geometrie FROM"
-                # This subquery appears to do nothing, but it actually restricts
-                # the fields that mapserver sees.
-                " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
-                " USING srid=28992 USING UNIQUE id"
+                f"geometrie FROM ({query}) AS sub USING srid=28992 USING UNIQUE id",
             )
+
             p("TYPE POINT")
 
             with block("METADATA"):
