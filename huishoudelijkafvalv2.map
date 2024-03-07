@@ -130,7 +130,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "gft_coordinaten"
+      "wms_title"           "Gftafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -144,7 +144,7 @@ MAP
     LABELITEM               "id_nummer"
 
     CLASS
-      NAME                  "Gfecontainer"
+      NAME                  "Gftcontainer"
       STYLE
         SIZE                30
         MINSCALEDENOM       10
@@ -194,7 +194,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "textiel_coordinaten"
+      "wms_title"           "Textielafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -258,7 +258,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "papier_coordinaten"
+      "wms_title"           "Papierafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -321,7 +321,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "glas_coordinaten"
+      "wms_title"           "Glasafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Glas container coordinaten Amsterdam"
@@ -385,7 +385,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "rest_coordinaten"
+      "wms_title"           "Restafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -448,7 +448,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "brood_coordinaten"
+      "wms_title"           "Broodafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -512,7 +512,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "grof_coordinaten"
+      "wms_title"           "Grofafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -575,7 +575,7 @@ MAP
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "onbekend_coordinaten"
+      "wms_title"           "Onbekend"
       "wms_enable_request"  "*"
       "wms_group_title"     "afvalcontainers"
       "wms_abstract"        "Afvalcontainer coordinaten Amsterdam"
@@ -2351,12 +2351,12 @@ MAP
     METADATA
       "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "Rest container"
+      "wms_title"           "Loopafstand tot restafvalcontainer"
       "wms_enable_request"  "*"
       "wms_group_title"     "loopafstand (per pand)"
       "wms_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
@@ -2460,7 +2460,7 @@ MAP
     END
 
     CLASS
-      NAME                  "> 1000 m"
+      NAME                  "vanaf 1000 m"
       EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
       STYLE
         ANTIALIAS    true
@@ -2503,12 +2503,12 @@ MAP
     METADATA
       "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "Papier container"
+      "wms_title"           "Loopafstand tot papierafvalcontainer"
       "wms_enable_request"  "*"
       #"wms_extent"			"100000 450000 150000 500000"
       "wms_group_title"     "loopafstand (per pand)"
@@ -2612,7 +2612,7 @@ MAP
     END
 
     CLASS
-      NAME                  "> 1000 m"
+      NAME                  "vanaf 1000 m"
       EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
       STYLE
         ANTIALIAS    true
@@ -2655,12 +2655,12 @@ MAP
     METADATA
       "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "Glas container"
+      "wms_title"           "Loopafstand tot glasafvalcontainer"
       "wms_enable_request"  "*"
       #"wms_extent"					"100000 450000 150000 500000"
       "wms_group_title"     "loopafstand (per pand)"
@@ -2764,7 +2764,7 @@ MAP
     END
 
     CLASS
-      NAME                  "> 1000 m"
+      NAME                  "vanaf 1000 m"
       EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
       STYLE
         ANTIALIAS    true
@@ -2806,12 +2806,12 @@ MAP
     METADATA
       "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "GFT container"
+      "wms_title"           "Loopafstand tot gftafvalcontainer"
       "wms_enable_request"  "*"
       #"wms_extent"			"100000 450000 150000 500000"
       "wms_group_title"     "loopafstand (per pand)"
@@ -2915,7 +2915,7 @@ MAP
     END
 
     CLASS
-      NAME                  "> 1000 m"
+      NAME                  "vanaf 1000 m"
       EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "meer dan 1000 M")
       STYLE
         ANTIALIAS    true
@@ -2958,12 +2958,12 @@ MAP
     METADATA
       "wfs_title"           "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_srs"             "EPSG:28992"
-      "wfs_adstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
+      "wfs_abstract"        "pand loopafstand tot dichtsbijzijnde container in meters"
       "wfs_enable_request"  "*"
       "gml_featureid"       "ID"
       "gml_include_items"   "all"
       "gml_types"           "auto"
-      "wms_title"           "Textiel container"
+      "wms_title"           "Loopafstand tot textielafvalcontainer"
       "wms_enable_request"  "*"
       "wms_extent"			"100000 450000 150000 500000"
       "wms_group_title"     "loopafstand (per pand)"
@@ -3067,7 +3067,7 @@ MAP
     END
 
     CLASS
-      NAME                  "> 1500 m"
+      NAME                  "vanaf 1500 m"
       EXPRESSION ("[loopafstand_categorie_omschrijving]" eq "Vanaf 1500 M")
       STYLE
         ANTIALIAS    true
