@@ -8,8 +8,5 @@ ENV ACCESS_SCOPE private
 # Copy private mapfiles into the root dir so they will be served
 # Any maps that have a public and private variety will serve the
 # private variety.
-# RUN sed -i s/DATASERVICES_DB_USER/DATASERVICES_DB_USER_PRIVATE/ /bin/docker-entrypoint.sh 
-RUN sed -i s/\$\{DATASERVICES_DB_USER\}/mapserver_private/ /bin/docker-entrypoint.sh 
-RUN sed -i s/mapserver-public/mapserver-private/ /bin/docker-entrypoint.sh
 RUN rm -rf /srv/mapserver/private
 COPY /private/ /srv/mapserver/
