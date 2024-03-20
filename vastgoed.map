@@ -32,15 +32,10 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA "geometrie FROM (
-            SELECT DISTINCT ON (vv.pand_id) bp.geometrie, vv.pand_id FROM (
-                vastgoed_vastgoed vv INNER JOIN bag_panden bp
-                ON vv.pand_id = bp.identificatie
+            SELECT * from vastgoed_gemeentelijk
+            WHERE object_eigendomsstatus = 'volle eigendom'
             )
-            WHERE bp.begin_geldigheid < now()
-                AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
-                AND object_eigendomsstatus = 'volle eigendom'
-            )
-            AS sub USING srid=28992 USING UNIQUE pand_id"
+            AS sub USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -92,15 +87,10 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA "geometrie FROM (
-            SELECT DISTINCT ON (vv.pand_id) bp.geometrie, vv.pand_id FROM (
-                vastgoed_vastgoed vv INNER JOIN bag_panden bp
-                ON vv.pand_id = bp.identificatie
+            SELECT * from vastgoed_gemeentelijk
+            WHERE object_eigendomsstatus = 'appartementsrecht'
             )
-            WHERE bp.begin_geldigheid < now()
-                AND (bp.eind_geldigheid IS NULL OR bp.eind_geldigheid  > now())
-                AND object_eigendomsstatus = 'appartementsrecht'
-            )
-            AS sub USING srid=28992 USING UNIQUE pand_id"
+            AS sub USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
