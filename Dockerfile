@@ -4,6 +4,7 @@ MAINTAINER datapunt@amsterdam.nl
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
     apache2 \
+    cgi-mapserver \
     proj-data \
     curl \
     gdal-bin \
