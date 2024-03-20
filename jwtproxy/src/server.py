@@ -2,10 +2,11 @@
 
 import argparse
 import asyncio
+import json
 import logging
 from logging.config import dictConfig
-import json
 from os import environ as env
+import re
 
 from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
 from jwcrypto.jwt import JWT, JWKSet
@@ -16,6 +17,10 @@ LOG_LEVEL = env.get("LOG_LEVEL", logging.INFO)
 CHUNK_SIZE = 1024
 CONN_POOL_SIZE = 100
 AZURE_APPLICATIONINSIGHTS_CONNSTRING = env.get("AZURE_APPLICATIONINSIGHTS_CONNSTRING")
+PRIVATE_MAPS = env.get("PRIVATE_MAPS", "asbest blackspots brandkranen handelsregister")
+_map_paths = "|".join(f"maps/{m}" for m in PRIVATE_MAPS.split())
+PRIVATE_MAPS_RE_PATTERN = re.compile(f"^({_map_paths})(/|$)")
+
 
 base_log_fmt = {
     "time": "%(asctime)s",
@@ -188,11 +193,17 @@ async def get_jwk():
         return cached_jwk
 
 
+async def check_protection(path):
+    if PRIVATE_MAPS_RE_PATTERN.match(path) is not None:
+        raise web.HTTPForbidden(reason=f"Accessing `{path}` without a JWT token is not allowed.")
+
+
 async def handle(req: web.Request):
     path = req.match_info["path"]
     token = await fetch_token(req)
     proxy_url = env["PRIVATE_PROXY_URL"]
     if token is None:
+        await check_protection(path)
         proxy_url = env["PUBLIC_PROXY_URL"]
     target_url = URL("".join([proxy_url.rstrip("/"), "/", path.lstrip("/")]))
 
