@@ -1,9 +1,10 @@
-FROM pdok/mapserver:7.6.4-patch-5-5
+FROM ubuntu:22.04
 MAINTAINER datapunt@amsterdam.nl
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
     apache2 \
+    proj-data \
     curl \
     gdal-bin \
     gdal-data \
