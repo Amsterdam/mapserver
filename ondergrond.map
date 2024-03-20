@@ -68,7 +68,7 @@ MAP
   LAYER
     NAME                    "rioolknopen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM leidingeninfrastructuur_waternet_rioolknopen USING srid=7415 USING UNIQUE id"
+    DATA                    "geometrie FROM leidingeninfrastructuur_waternet_rioolknopen USING srid=7415 USING UNIQUE objectnummer"
     PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -91,7 +91,7 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "id"
+    LABELITEM               "objectnummer"
 
     CLASS
         NAME                 "rioolknopen"
