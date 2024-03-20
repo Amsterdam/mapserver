@@ -117,7 +117,7 @@ MAP
     LAYER
         NAME            "sportaanbieders"
         INCLUDE         "connection/dataservices.inc"
-        DATA            "geometry FROM public.sport_sportaanbieder USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.sport_aanbieder USING srid=28992 USING UNIQUE id"
         TYPE            POINT
           
         METADATA
@@ -172,7 +172,7 @@ MAP
     LAYER
         NAME            "sportvelden"
         INCLUDE         "connection/dataservices.inc"
-        DATA            "geometry FROM public.sport_sportveld USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.sport_veld USING srid=28992 USING UNIQUE id"
         TYPE            POLYGON
                
         METADATA
@@ -203,7 +203,7 @@ MAP
     LAYER
         NAME            "sporthallen"
         INCLUDE         "connection/dataservices.inc"
-        DATA            "geometry FROM public.sport_sporthal USING srid=28992 USING UNIQUE id"
+        DATA            "geometry FROM public.sport_hal USING srid=28992 USING UNIQUE id"
         TYPE            POINT
        
         METADATA
