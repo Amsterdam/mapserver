@@ -13,7 +13,7 @@ from jwcrypto.jwt import JWT, JWKSet
 from yarl import URL
 
 
-LOG_LEVEL = env.get("LOG_LEVEL", logging.INFO)
+LOG_LEVEL = env.get("LOG_LEVEL", "INFO")
 CHUNK_SIZE = 1024
 CONN_POOL_SIZE = 100
 AZURE_APPLICATIONINSIGHTS_CONNSTRING = env.get("AZURE_APPLICATIONINSIGHTS_CONNSTRING")
@@ -194,6 +194,7 @@ async def get_jwk():
 
 
 async def check_protection(path):
+    app_logger.debug("Checking protection for `%s`", path)
     if PRIVATE_MAPS_RE_PATTERN.match(path) is not None:
         raise web.HTTPForbidden(reason=f"Accessing `{path}` without a JWT token is not allowed.")
 
