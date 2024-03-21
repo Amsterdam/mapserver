@@ -4,6 +4,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
 RUN apt-get update && apt-get upgrade -y
+RUN apt install build-essential software-properties-common -y
+RUN add-apt-repository -y ppa:ubuntugis/ppa
 RUN apt-get install -y \
     apache2 \
     cgi-mapserver \
