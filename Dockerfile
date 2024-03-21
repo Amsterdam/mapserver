@@ -8,7 +8,7 @@ RUN apt install build-essential software-properties-common libcairo2 -y
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu focal main universe restricted multiverse"
 RUN apt-get install -y \
     apache2 \
-    cgi-mapserver \
+    cgi-mapserver/focal \
     curl \
     gdal-bin \
     gdal-data \
