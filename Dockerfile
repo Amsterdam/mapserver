@@ -4,6 +4,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Etc/UTC
 
 RUN apt-get update && apt-get upgrade -y
+RUN apt install build-essential software-properties-common libcairo2 -y
+RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu focal main universe restricted multiverse"
 RUN apt-get install -y \
     apache2 \
     cgi-mapserver \
@@ -12,7 +14,7 @@ RUN apt-get install -y \
     gdal-data \
     libmapcache1 \
     libapache2-mod-mapcache \
-    mapserver-bin \
+    mapserver-bin/focal \
     python3-pip \
     wget
 
