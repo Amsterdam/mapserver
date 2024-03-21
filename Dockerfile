@@ -6,6 +6,7 @@ ENV TZ=Etc/UTC
 RUN apt-get update && apt-get upgrade -y
 RUN apt install build-essential software-properties-common libcairo2 -y
 RUN add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu focal main universe restricted multiverse"
+RUN apt-get install -y --allow-downgrades proj-data/focal 
 RUN apt-get install -y \
     apache2 \
     proj-bin/focal \
@@ -19,7 +20,6 @@ RUN apt-get install -y \
     python3-pip \
     wget
 
-RUN apt-get install -y --allow-downgrades proj-data/focal 
 
 RUN python3 -m pip install mappyfile==0.9.7
 
