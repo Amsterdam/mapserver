@@ -19,6 +19,8 @@ RUN apt-get install -y \
     python3-pip \
     wget
 
+RUN apt-get install -y --allow-downgrades proj-data/focal 
+
 RUN python3 -m pip install mappyfile==0.9.7
 
 # Enable these Apache modules
