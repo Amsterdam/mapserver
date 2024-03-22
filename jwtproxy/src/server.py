@@ -17,7 +17,7 @@ LOG_LEVEL = env.get("LOG_LEVEL", logging.INFO)
 CHUNK_SIZE = 1024
 CONN_POOL_SIZE = 100
 AZURE_APPLICATIONINSIGHTS_CONNSTRING = env.get("AZURE_APPLICATIONINSIGHTS_CONNSTRING")
-PRIVATE_MAPS = env.get("PRIVATE_MAPS", "asbest blackspots brandkranen handelsregister")
+PRIVATE_MAPS = env.get("PRIVATE_MAPS", "blackspots brandkranen handelsregister")
 _map_paths = "|".join(f"maps/{m}" for m in PRIVATE_MAPS.split())
 PRIVATE_MAPS_RE_PATTERN = re.compile(f"^({_map_paths})(/|$)")
 
