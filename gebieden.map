@@ -33,8 +33,8 @@ MAP
   LAYER
     NAME            "buurt"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_buurt USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_buurten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -62,46 +62,46 @@ MAP
 
   END
 
-  LAYER
-    NAME            "buurt_simple"
-    GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_buurt_simple USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
+  # LAYER
+  #   NAME            "buurt_simple"
+  #   GROUP           "bestuurlijke_gebieden"
+  #   INCLUDE         "connection/bag.inc"
+  #   DATA            "geometrie FROM public.geo_bag_buurt_simple USING srid=28992 USING UNIQUE id"
+  #   TYPE            POLYGON
+  #   MINSCALEDENOM   100
+  #   MAXSCALEDENOM   100001
+  #   TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+  #   PROJECTION
+  #   "init=epsg:28992"
+  #   END
 
-    METADATA
-      "ows_title"           "buurt_simple"
-      "ows_group_title"     "bestuurlijke_gebieden"
-      "ows_abstract"        "Buurten met simpele geometrie van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
+  #   METADATA
+  #     "ows_title"           "buurt_simple"
+  #     "ows_group_title"     "bestuurlijke_gebieden"
+  #     "ows_abstract"        "Buurten met simpele geometrie van de gemeente Amsterdam"
+  #     "gml_featureid"       "ID"
+  #     "gml_include_items"   "all"
+  #   END
 
-    CLASS
-      NAME          Buurt
-      STYLE
-       ANTIALIAS    true
-       OUTLINECOLOR 210 150 50
-       WIDTH        2
-      END
-    END
+  #   CLASS
+  #     NAME          Buurt
+  #     STYLE
+  #      ANTIALIAS    true
+  #      OUTLINECOLOR 210 150 50
+  #      WIDTH        2
+  #     END
+  #   END
 
-  END
+  # END
 
-  #-----------------------------------------------------------------------------
+  # #-----------------------------------------------------------------------------
 
 
   LAYER
     NAME            "buurtcombinatie"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_buurtcombinatie USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_buurten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -129,37 +129,37 @@ MAP
 
   END
 
-  LAYER
-    NAME            "buurtcombinatie_simple"
-    GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_buurtcombinatie_simple USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
+  # LAYER
+  #   NAME            "buurtcombinatie_simple"
+  #   GROUP           "bestuurlijke_gebieden"
+  #   INCLUDE         "connection/bag.inc"
+  #   DATA            "geometrie FROM public.geo_bag_buurtcombinatie_simple USING srid=28992 USING UNIQUE id"
+  #   TYPE            POLYGON
+  #   MINSCALEDENOM   100
+  #   MAXSCALEDENOM   100001
+  #   TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+  #   PROJECTION
+  #   "init=epsg:28992"
+  #   END
 
-    METADATA
-      "ows_title"           "buurtcombinatie_simple"
-      "ows_group_title"     "bestuurlijke_gebieden"
-      "ows_abstract"        "Wijken van de gemeente Amsterdam (versimpelde geo)"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
+  #   METADATA
+  #     "ows_title"           "buurtcombinatie_simple"
+  #     "ows_group_title"     "bestuurlijke_gebieden"
+  #     "ows_abstract"        "Wijken van de gemeente Amsterdam (versimpelde geo)"
+  #     "gml_featureid"       "ID"
+  #     "gml_include_items"   "all"
+  #   END
 
-    CLASS
-      NAME          Wijk
-      STYLE
-       ANTIALIAS    true
-       OUTLINECOLOR 210 100 50
-       WIDTH        2
-      END
-    END
+  #   CLASS
+  #     NAME          Wijk
+  #     STYLE
+  #      ANTIALIAS    true
+  #      OUTLINECOLOR 210 100 50
+  #      WIDTH        2
+  #     END
+  #   END
 
-  END
+  # END
 
 
   #-----------------------------------------------------------------------------
@@ -168,8 +168,8 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerken"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_ggwgebieden USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -204,8 +204,8 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerkenpraktijkgebieden"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_ggpgebieden USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -239,8 +239,8 @@ MAP
   LAYER
     NAME            "stadsdeel"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_stadsdeel USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_stadsdelen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -274,8 +274,8 @@ MAP
   LAYER
     NAME            "bouwblok"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_bouwblok USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_bouwblokken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -309,8 +309,8 @@ MAP
   LAYER
     NAME            "grootstedelijkgebied"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -344,8 +344,8 @@ MAP
   LAYER
     NAME            "unesco"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_unesco USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.monumenten_unesco USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   20001
@@ -359,7 +359,7 @@ MAP
       "ows_title"           "unesco"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Unesco werelderfgoedgrens van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "identificatie"
       "gml_include_items"   "all"
     END
 
@@ -395,8 +395,8 @@ MAP
   LAYER
     NAME            "buurt_label"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_buurt USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_buurten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -443,13 +443,13 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
+#TODO: naam veranderen naar wijken.
 
   LAYER
     NAME            "buurtcombinatie_label"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_buurtcombinatie USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_wijken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   5000
     MAXSCALEDENOM   15001
@@ -465,7 +465,7 @@ MAP
     END
 
     CLASS
-      TEXT             '[naam] ([vollcode])'
+      TEXT             '[naam] ([code])'
       NAME             "Buurtcombinatie code"
       LABEL
         MINSCALEDENOM  5000
@@ -501,8 +501,8 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerken_label"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerken USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_ggwgebieden USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   40001
@@ -554,8 +554,8 @@ MAP
   LAYER
     NAME            "gebiedsgerichtwerkenpraktijkgebieden_label"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_gebiedsgerichtwerkenpraktijkgebieden USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_ggpgebieden USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   40001
@@ -607,8 +607,8 @@ MAP
   LAYER
     NAME            "stadsdeel_label"
     GROUP           "bestuurlijke_gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_stadsdeel USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_stadsdelen USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   15000
     MAXSCALEDENOM   100001
@@ -660,8 +660,8 @@ MAP
   LAYER
     NAME            "bouwblok_label"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_bouwblok USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_bouwblokken USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -708,13 +708,13 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-  # DEPRECATED : to be replaced by grootstedelijk_regio_amsterdam and grootstedelijk_regio_omgevingsdienst
+  # # DEPRECATED : to be replaced by grootstedelijk_regio_amsterdam and grootstedelijk_regio_omgevingsdienst
 
   LAYER
     NAME            "grootstedelijkgebied_label"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   100001
@@ -758,16 +758,16 @@ MAP
       END
     END
 
-  END
+   END
 
-  #-----------------------------------------------------------------------------
+  # #-----------------------------------------------------------------------------
 
 
   LAYER
     NAME            "unesco_label"
     GROUP           "gebieden"
-    INCLUDE         "connection/bag.inc"
-    DATA            "geometrie FROM public.geo_bag_unesco USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.monumenten_unesco USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   20001
@@ -818,9 +818,9 @@ MAP
   LAYER
     NAME            "grootstedelijk_regio_amsterdam"
     GROUP           "grootstedelijkgebieden"
-    INCLUDE         "connection/bag.inc"
+    INCLUDE         "connection/dataservices.inc"
 
-    DATA            "geometrie FROM public.bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -837,7 +837,7 @@ MAP
       "gml_include_items"   "all"
     END
 
-    FILTER  ("[gsg_type]" eq 'GSP')
+    FILTER  ("[type]" eq 'GSP')
 
     CLASS
       TEXT             '[naam]'
@@ -883,9 +883,9 @@ MAP
   LAYER
     NAME            "grootstedelijk_regio_omgevingsdienst"
     GROUP           "grootstedelijkgebieden"
-    INCLUDE         "connection/bag.inc"
+    INCLUDE         "connection/dataservices.inc"
 
-    DATA            "geometrie FROM public.bag_grootstedelijkgebied USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -902,7 +902,7 @@ MAP
       "gml_include_items"   "all"
     END
 
-    FILTER  ("[gsg_type]" eq 'OD')
+    FILTER  ("[type]" eq 'OD')
 
     CLASS
       TEXT             '[naam]'
