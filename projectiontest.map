@@ -1,0 +1,44 @@
+MAP
+  NAME                      "projectiontest"
+  INCLUDE                   "header.inc"
+  DEBUG 1
+
+  SYMBOL
+    NAME "circle"
+    TYPE ellipse
+    FILLED true
+    POINTS
+      10 10
+    END 
+  END 
+
+  WEB
+    METADATA
+      "ows_title"           "Projection Test"
+      "ows_abstract"        "MAP-File om de projectie-parameters te testen."
+      "wms_extent"          "100000 450000 150000 500000"
+      "ows_enable_request"  "*"
+    END
+  END
+
+  LAYER
+    NAME                    "feature"
+    PROJECTION
+        "init=epsg:28992"
+    END
+    TYPE POINT
+    STATUS ON
+    FEATURE
+      POINTS
+        121369 486445
+      END
+    END
+    CLASS
+      STYLE
+        COLOR 229 77 3
+        SYMBOL "circle"
+        SIZE 6        
+      END
+    END
+  END
+END
