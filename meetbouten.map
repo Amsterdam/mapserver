@@ -30,8 +30,8 @@ MAP
   LAYER
     NAME            "meetbouten_status"
     GROUP           "meetbouten"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.meetbouten_meetbouten USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -50,7 +50,7 @@ MAP
 
     CLASS
       NAME "Actueel"
-      EXPRESSION ("[status]" eq "A")
+      EXPRESSION ("[status_omschrijving]" eq "Actueel")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -64,7 +64,7 @@ MAP
 
     CLASS
       NAME "Vervallen"
-      EXPRESSION ("[status]" eq "V")
+      EXPRESSION ("[status_omschrijving]" eq "Vervallen")
       STYLE
         MINSCALEDENOM  100
         MAXSCALEDENOM  5001
@@ -83,8 +83,8 @@ MAP
   LAYER
     NAME            "meetbouten_labels"
     GROUP           "meetbouten"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.meetbouten_meetbouten USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -98,11 +98,11 @@ MAP
       "ows_abstract"        "Labels van meetbouten"
     END
 
-    LABELITEM          "id"
+    LABELITEM          "identificatie"
 
     CLASS
       NAME "Actueel"
-      EXPRESSION ("[status]" eq "A")
+      EXPRESSION ("[status_omschrijving]" eq "Actueel")
 
       LABEL
         MINSCALEDENOM  100
@@ -122,7 +122,7 @@ MAP
 
     CLASS
       NAME "Vervallen"
-      EXPRESSION ("[status]" eq "V")
+      EXPRESSION ("[status_omschrijving]" eq "Vervallen")
 
       LABEL
         MINSCALEDENOM  100
@@ -295,8 +295,8 @@ MAP
   LAYER
     NAME            "referentiepunt"
     GROUP           "referentiepunten"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.meetbouten_referentiepunten USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -309,7 +309,7 @@ MAP
       "ows_title"           "referentiepunt"
       "ows_group_title"     "referentiepunten"
       "ows_abstract"        "Meetbouten"
-      "gml_featureid"       "ID"
+      "gml_featureid"       "identificatie"
       "gml_include_items"   "all"
     END
 
@@ -333,8 +333,8 @@ MAP
   LAYER
     NAME            "referentiepunt_label"
     GROUP           "referentiepunten"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_referentiepunt USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM public.meetbouten_referentiepunten USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -348,7 +348,7 @@ MAP
       "ows_abstract"        "Labels van meetbouten referenties"
     END
 
-    LABELITEM          "id"
+    LABELITEM          "identificatie"
 
     CLASS
       LABEL
