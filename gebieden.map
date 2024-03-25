@@ -34,7 +34,10 @@ MAP
     NAME            "buurt"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_buurten USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_buurten
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -69,7 +72,10 @@ MAP
     NAME            "wijk"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_buurten USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_wijken
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -105,7 +111,10 @@ MAP
     NAME            "gebiedsgerichtwerken"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_ggwgebieden USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_ggwgebieden
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -142,7 +151,10 @@ MAP
     NAME            "stadsdeel"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stadsdelen USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_stadsdelen
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -177,7 +189,10 @@ MAP
     NAME            "bouwblok"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_bouwblokken USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_bouwblokken
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -298,7 +313,10 @@ MAP
     NAME            "buurt_label"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_buurten USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_buurten
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   8001
@@ -351,7 +369,10 @@ MAP
     NAME            "wijk_label"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_wijken USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_wijken
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   5000
     MAXSCALEDENOM   15001
@@ -404,7 +425,10 @@ MAP
     NAME            "gebiedsgerichtwerken_label"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_ggwgebieden USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_ggwgebieden
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   40001
@@ -457,7 +481,10 @@ MAP
     NAME            "stadsdeel_label"
     GROUP           "bestuurlijke_gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stadsdelen USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_stadsdelen
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   15000
     MAXSCALEDENOM   100001
@@ -510,7 +537,10 @@ MAP
     NAME            "bouwblok_label"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_bouwblokken USING srid=28992 USING UNIQUE id"
+    DATA            "geometrie FROM (
+        	          select *
+                    from public.gebieden_bouwblokken
+                    where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
