@@ -15,7 +15,6 @@ RUN apt-get update -y \
         wget \
     && apt-get clean
 
-RUN python3 -m pip install mappyfile==0.9.7
 
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
