@@ -220,7 +220,6 @@ with block("MAP"):
             for code, descr, color in sbi[group]:
                 slug = slugify(descr)
 
-                # TODO label werkend maken?
 
 
                 with block("CLASS"):
@@ -233,11 +232,11 @@ with block("MAP"):
                         p("SIZE 16")
                         p(f"COLOR '{color}'")
                         p('OUTLINECOLOR 0 0 0')
-                        p ('WIDTH 2')
+                        p ('WIDTH 1')
 
                     with block("LABEL"):
                         p("MINSCALEDENOM 100")
-                        p("MAXSCALEDENOM 20000")
+                        p("MAXSCALEDENOM 500")
                         p("COLOR 0 0 0")
                         p("OUTLINECOLOR 255 255 255")
                         p("OUTLINEWIDTH 3")
@@ -247,41 +246,3 @@ with block("MAP"):
                         p("POSITION AUTO")
                         p("PARTIALS FALSE")
                         p("OFFSET -60 10")
-                
-
-
-            # with block("LAYER"):
-            #     p("NAME", slug + "_label")
-            #     p("GROUP", group)
-            #     p("INCLUDE", "connection/dataservices.inc")
-            #     p("DATA", sql)
-            #     p("TYPE POINT")
-            #     # p("MINSCALEDENOM 100")
-            #     # p("MAXSCALEDENOM 1001")
-            #     p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-            #     p("PROCESSING", "CLOSE_CONNECTION=DEFER")
-            #     p("STATUS OFF")
-
-            #     with block("PROJECTION"):
-            #         q("init=epsg:28992")
-
-            #     with block("METADATA"):
-            #         q("ows_title", slug + "_label")
-            #         q("ows_group_title", "vestigingen_cbs_label")
-            #         q("ows_abstract", "Labels van vestigingen")
-
-            #     p("LABELITEM", "naam")
-
-            #     with block("CLASS"):
-            #         with block("LABEL"):
-            #             # p("MINSCALEDENOM 100")
-            #             # p("MAXSCALEDENOM 1001")
-            #             p("COLOR 0 0 0")
-            #             p("OUTLINECOLOR 255 255 255")
-            #             p("OUTLINEWIDTH 3")
-            #             p("FONT", "Ubuntu-M")
-            #             p("TYPE truetype")
-            #             p("SIZE 10")
-            #             p("POSITION AUTO")
-            #             p("PARTIALS FALSE")
-            #             p("OFFSET -60 10")

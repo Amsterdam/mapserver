@@ -1,0 +1,2541 @@
+MAP
+  NAME 'Handelsregister'
+  INCLUDE 'header.inc'
+  DEBUG 5
+  WEB
+    METADATA
+      'ows_title' 'Handelsregister'
+      'ows_abstract' 'Vestigingen in de gemeente Amsterdam uit het Handelsregister'
+    END
+  END
+  LEGEND
+    STATUS ON
+    KEYSIZE 16 16
+  END
+  LAYER
+    NAME 'a_landbouw_bosbouw_en_visserij'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'A Landbouw, bosbouw en visserij'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'landbouw_jacht_en_dienstverlening_voor_de_landbouw_en_jacht'
+EXPRESSION ("[sbi_code_group]" eq "01")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF0000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'bosbouw_exploitatie_van_bossen_en_dienstverlening_voor_de_bosbouw'
+EXPRESSION ("[sbi_code_group]" eq "02")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'visserij_en_kweken_van_vis_en_schaaldieren'
+EXPRESSION ("[sbi_code_group]" eq "03")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#0000FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'b_winning_van_delfstoffen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'B Winning van delfstoffen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'winning_van_aardolie_en_aardgas'
+EXPRESSION ("[sbi_code_group]" eq "06")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFFF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'winning_van_delfstoffen_geen_olie_en_gas'
+EXPRESSION ("[sbi_code_group]" eq "08")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'dienstverlening_voor_de_winning_van_delfstoffen'
+EXPRESSION ("[sbi_code_group]" eq "09")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'c_industrie'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'C Industrie'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'vervaardiging_van_voedingsmiddelen'
+EXPRESSION ("[sbi_code_group]" eq "10")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_dranken'
+EXPRESSION ("[sbi_code_group]" eq "11")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_tabaksproducten'
+EXPRESSION ("[sbi_code_group]" eq "12")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF4500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_textiel'
+EXPRESSION ("[sbi_code_group]" eq "13")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#228B22'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_kleding'
+EXPRESSION ("[sbi_code_group]" eq "14")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4169E1'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_leer_lederwaren_en_schoenen'
+EXPRESSION ("[sbi_code_group]" eq "15")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF69B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'primaire_houtbewerking_en_vervaardiging_van_artikelen_van_hout_kurk_riet_en_vlechtwerk_geen_meubels'
+EXPRESSION ("[sbi_code_group]" eq "16")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#32CD32'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_papier_karton_en_papier_en_kartonwaren'
+EXPRESSION ("[sbi_code_group]" eq "17")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8A2BE2'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'drukkerijen_reproductie_van_opgenomen_media'
+EXPRESSION ("[sbi_code_group]" eq "18")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#DC143C'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_cokesovenproducten_en_aardolieverwerking'
+EXPRESSION ("[sbi_code_group]" eq "19")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00CED1'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_chemische_producten'
+EXPRESSION ("[sbi_code_group]" eq "20")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFD700'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_farmaceutische_grondstoffen_en_producten'
+EXPRESSION ("[sbi_code_group]" eq "21")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#808000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_producten_van_rubber_en_kunststof'
+EXPRESSION ("[sbi_code_group]" eq "22")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4682B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_niet_metaalhoudende_minerale_producten'
+EXPRESSION ("[sbi_code_group]" eq "23")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF7F'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_metalen_in_primaire_vorm'
+EXPRESSION ("[sbi_code_group]" eq "24")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8B008B'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_producten_van_metaal_geen_machines_en_apparaten'
+EXPRESSION ("[sbi_code_group]" eq "25")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF6347'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_computers_en_van_elektronische_en_optische_apparatuur'
+EXPRESSION ("[sbi_code_group]" eq "26")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#556B2F'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_elektrische_apparatuur'
+EXPRESSION ("[sbi_code_group]" eq "27")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_machines_en_apparaten'
+EXPRESSION ("[sbi_code_group]" eq "28")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#9932CC'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_auto_s_aanhangwagens_en_opleggers'
+EXPRESSION ("[sbi_code_group]" eq "29")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#20B2AA'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_transportmiddelen'
+EXPRESSION ("[sbi_code_group]" eq "30")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FA8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_meubels'
+EXPRESSION ("[sbi_code_group]" eq "31")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#2E8B57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_goederen'
+EXPRESSION ("[sbi_code_group]" eq "32")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#6A5ACD'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reparatie_en_installatie_van_machines_en_apparaten'
+EXPRESSION ("[sbi_code_group]" eq "33")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#B22222'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'd_productie_en_distributie_van_en_handel_in_elektriciteit_aardgas_stoom_en_gekoelde_lucht'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'D Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'productie_en_distributie_van_en_handel_in_elektriciteit_aardgas_stoom_en_gekoelde_lucht'
+EXPRESSION ("[sbi_code_group]" eq "35")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4682B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'e_winning_en_distributie_van_water_afval_en_afvalwaterbeheer_en_sanering'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'E Winning en distributie van water; afval- en afvalwaterbeheer en sanering'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'winning_en_distributie_van_water'
+EXPRESSION ("[sbi_code_group]" eq "36")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'afvalwaterinzameling_en_behandeling'
+EXPRESSION ("[sbi_code_group]" eq "37")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'afvalinzameling_en_behandeling_voorbereiding_tot_recycling'
+EXPRESSION ("[sbi_code_group]" eq "38")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3377FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'sanering_en_overig_afvalbeheer'
+EXPRESSION ("[sbi_code_group]" eq "39")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF33FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'f_bouwnijverheid'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'F Bouwnijverheid'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'algemene_burgerlijke_en_utiliteitsbouw_en_projectontwikkeling'
+EXPRESSION ("[sbi_code_group]" eq "41")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'grond_water_en_wegenbouw_geen_grondverzet'
+EXPRESSION ("[sbi_code_group]" eq "42")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'gespecialiseerde_werkzaamheden_in_de_bouw'
+EXPRESSION ("[sbi_code_group]" eq "43")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3377FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'g_groot_en_detailhandel_reparatie_van_auto_s'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' "G Groot- en detailhandel; reparatie van auto's"
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'handel_in_en_reparatie_van_auto_s_motorfietsen_en_aanhangers'
+EXPRESSION ("[sbi_code_group]" eq "45")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'groothandel_en_handelsbemiddeling_niet_in_auto_s_en_motorfietsen'
+EXPRESSION ("[sbi_code_group]" eq "46")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'detailhandel_niet_in_auto_s'
+EXPRESSION ("[sbi_code_group]" eq "47")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3366FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'h_vervoer_en_opslag'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'H Vervoer en opslag'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'vervoer_over_land'
+EXPRESSION ("[sbi_code_group]" eq "49")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervoer_over_water'
+EXPRESSION ("[sbi_code_group]" eq "50")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'luchtvaart'
+EXPRESSION ("[sbi_code_group]" eq "51")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3366FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'opslag_en_dienstverlening_voor_vervoer'
+EXPRESSION ("[sbi_code_group]" eq "52")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF33FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'post_en_koeriers'
+EXPRESSION ("[sbi_code_group]" eq "53")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFFF33'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'i_logies_maaltijd_en_drankverstrekking'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'I Logies-, maaltijd- en drankverstrekking'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'logiesverstrekking'
+EXPRESSION ("[sbi_code_group]" eq "55")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF8080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'eet_en_drinkgelegenheden'
+EXPRESSION ("[sbi_code_group]" eq "56")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BFBFBF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'j_informatie_en_communicatie'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'J Informatie en communicatie'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'uitgeverijen'
+EXPRESSION ("[sbi_code_group]" eq "58")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF80FD'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'productie_en_distributie_van_films_en_televisieprogramma_s_maken_en_uitgeven_van_geluidsopnamen'
+EXPRESSION ("[sbi_code_group]" eq "59")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF80BF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'verzorgen_en_uitzenden_van_radio_en_televisieprogramma_s'
+EXPRESSION ("[sbi_code_group]" eq "60")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF8040'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'telecommunicatie'
+EXPRESSION ("[sbi_code_group]" eq "61")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BFBF80'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'dienstverlenende_activiteiten_op_het_gebied_van_informatietechnologie'
+EXPRESSION ("[sbi_code_group]" eq "62")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BFBFBF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'dienstverlenende_activiteiten_op_het_gebied_van_informatie'
+EXPRESSION ("[sbi_code_group]" eq "63")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF8080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'k_financiele_instellingen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'K Financiële instellingen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'financiele_instellingen_geen_verzekeringen_en_pensioenfondsen'
+EXPRESSION ("[sbi_code_group]" eq "64")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF6347'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'verzekeringen_en_pensioenfondsen_geen_verplichte_sociale_verzekeringen'
+EXPRESSION ("[sbi_code_group]" eq "65")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4682B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'overige_financiele_dienstverlening'
+EXPRESSION ("[sbi_code_group]" eq "66")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#9400D3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'l_verhuur_van_en_handel_in_onroerend_goed'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'L Verhuur van en handel in onroerend goed'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'verhuur_van_en_handel_in_onroerend_goed'
+EXPRESSION ("[sbi_code_group]" eq "68")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'm_advisering_onderzoek_en_overige_specialistische_zakelijke_dienstverlening'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'M Advisering, onderzoek en overige specialistische zakelijke dienstverlening'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'rechtskundige_dienstverlening_accountancy_belastingadvisering_en_administratie'
+EXPRESSION ("[sbi_code_group]" eq "69")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'holdings_geen_financiele_concerndiensten_binnen_eigen_concern_en_managementadvisering'
+EXPRESSION ("[sbi_code_group]" eq "70")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF7F'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'architecten_ingenieurs_en_technisch_ontwerp_en_advies_keuring_en_controle'
+EXPRESSION ("[sbi_code_group]" eq "71")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#000080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'speur_en_ontwikkelingswerk'
+EXPRESSION ("[sbi_code_group]" eq "72")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8B0000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reclame_en_marktonderzoek'
+EXPRESSION ("[sbi_code_group]" eq "73")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'industrieel_ontwerp_en_vormgeving_fotografie_vertaling_en_overige_consultancy'
+EXPRESSION ("[sbi_code_group]" eq "74")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4B0082'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'veterinaire_dienstverlening'
+EXPRESSION ("[sbi_code_group]" eq "75")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFD700'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'n_verhuur_van_roerende_goederen_en_overige_zakelijke_dienstverlening'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'N Verhuur van roerende goederen en overige zakelijke dienstverlening'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'verhuur_en_lease_van_auto_s_consumentenartikelen_machines_en_overige_roerende_goederen'
+EXPRESSION ("[sbi_code_group]" eq "77")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'arbeidsbemiddeling_uitzendbureaus_en_personeelsbeheer'
+EXPRESSION ("[sbi_code_group]" eq "78")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF4500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reisbemiddeling_reisorganisatie_toeristische_informatie_en_reserveringsbureaus'
+EXPRESSION ("[sbi_code_group]" eq "79")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'beveiliging_en_opsporing'
+EXPRESSION ("[sbi_code_group]" eq "80")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#0000FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'facility_management_reiniging_en_landschapsverzorging'
+EXPRESSION ("[sbi_code_group]" eq "81")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'overige_zakelijke_dienstverlening'
+EXPRESSION ("[sbi_code_group]" eq "82")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFFF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'o_openbaar_bestuur_overheidsdiensten_en_verplichte_sociale_verzekeringen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'O Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'openbaar_bestuur_overheidsdiensten_en_verplichte_sociale_verzekeringen'
+EXPRESSION ("[sbi_code_group]" eq "84")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#808080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'p_onderwijs'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'P Onderwijs'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'onderwijs'
+EXPRESSION ("[sbi_code_group]" eq "85")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'q_gezondheids_en_welzijnszorg'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'Q Gezondheids- en welzijnszorg'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'gezondheidszorg'
+EXPRESSION ("[sbi_code_group]" eq "86")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'verpleging_verzorging_en_begeleiding_met_overnachting'
+EXPRESSION ("[sbi_code_group]" eq "87")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'maatschappelijke_dienstverlening_zonder_overnachting'
+EXPRESSION ("[sbi_code_group]" eq "88")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'r_cultuur_sport_en_recreatie'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'R Cultuur, sport en recreatie'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'kunst'
+EXPRESSION ("[sbi_code_group]" eq "90")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'culturele_uitleencentra_openbare_archieven_musea_dieren_en_plantentuinen_natuurbehoud'
+EXPRESSION ("[sbi_code_group]" eq "91")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'loterijen_en_kansspelen'
+EXPRESSION ("[sbi_code_group]" eq "92")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#000080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'sport_en_recreatie'
+EXPRESSION ("[sbi_code_group]" eq "93")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 's_overige_dienstverlening'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'S Overige dienstverlening'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'levensbeschouwelijke_en_politieke_organisaties_belangen_en_ideele_organisaties_hobbyclubs'
+EXPRESSION ("[sbi_code_group]" eq "94")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reparatie_van_computers_en_consumentenartikelen'
+EXPRESSION ("[sbi_code_group]" eq "95")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'wellness_en_overige_dienstverlening_uitvaartbranche'
+EXPRESSION ("[sbi_code_group]" eq "96")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#0000FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 't_huishoudens_als_werkgever_niet_gedifferentieerde_productie_van_goederen_en_diensten_door_huishoudens_voor_eigen_gebruik'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'T Huishoudens als werkgever; niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'huishoudens_als_werkgever_van_huishoudelijk_personeel'
+EXPRESSION ("[sbi_code_group]" eq "97")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'niet_gespecificeerde_productie_van_goederen_en_diensten_door_particuliere_huishoudens_voor_eigen_gebruik'
+EXPRESSION ("[sbi_code_group]" eq "98")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'u_extraterritoriale_organisaties_en_lichamen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'U Extraterritoriale organisaties en lichamen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'extraterritoriale_organisaties_en_lichamen'
+EXPRESSION ("[sbi_code_group]" eq "99")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+END
