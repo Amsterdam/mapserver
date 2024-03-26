@@ -19,7 +19,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -49,7 +49,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -79,7 +79,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -109,7 +109,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -139,7 +139,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -169,7 +169,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -199,7 +199,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -229,7 +229,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -259,7 +259,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE date_part('year', datum_melding) = date_part('year', current_date) AND ranking=1) AS sub USING srid=28992 USING UNIQUE id"
+    DATA 'geometrie FROM (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
