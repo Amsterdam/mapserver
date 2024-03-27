@@ -224,7 +224,7 @@ MAP
   # DEPRECATED : to be replaced by grootstedelijk_regio_amsterdam and grootstedelijk_regio_omgevingsdienst
 
   LAYER
-    NAME            "Stedelijke gebieden projecten en belangen"
+    NAME            "Stedelijk gebied, project of belang"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
@@ -237,7 +237,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "stedelijke_gebieden_projecten_en _belangen"
+      "ows_title"           "stedelijk_gebied_project_of_belang"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Stedelijke Gebieden van de gemeente Amsterdam"
       "gml_featureid"       "identificatie"
@@ -590,7 +590,7 @@ MAP
   # # DEPRECATED : to be replaced by grootstedelijk_regio_amsterdam and grootstedelijk_regio_omgevingsdienst
 
   LAYER
-    NAME            "Stedelijke gebieden projecten en belangen_label"
+    NAME            "Stedelijk gebied, project of belang label"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
@@ -603,7 +603,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "stedelijke_gebieden_projecten_en _belangen_label"
+      "ows_title"           "stedelijk_gebied_project_of_belang_label"
       "ows_group_title"     "gebieden"
       "ows_abstract"        "Labels van grootstedelijke gebieden van de gemeente Amsterdam"
     END
