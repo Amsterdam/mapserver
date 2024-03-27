@@ -27,19 +27,20 @@ MAP
 
   LAYER
     NAME            "lood"
-    INCLUDE         "connection/bag.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (SELECT
-        landelijk_id AS id,
-        bouwjaar,
+        id,
+        oorspronkelijk_bouwjaar,
         geometrie,
-        ligging,
+        ligging_omschrijving ,
         type_woonobject,
-        ('https://api.data.amsterdam.nl/bag/v1.1/pand/' || landelijk_id::text || '/'::text) AS uri
-        FROM public.bag_pand
+        ('https://api.data.amsterdam.nl/bag/v1.1/pand/' || identificatie::text || '/'::text) AS uri
+        FROM public.bag_panden
+        WHERE eind_geldigheid is null
       ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
-    CLASSITEM       "bouwjaar"
-    LABELITEM       "bouwjaar"
+    CLASSITEM       "oorspronkelijk_bouwjaar"
+    LABELITEM       "oorspronkelijk_bouwjaar"
     MINSCALEDENOM   100
     MAXSCALEDENOM   400000
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -62,7 +63,7 @@ MAP
 
     CLASS
       NAME            "onbekend"
-      EXPRESSION      ([bouwjaar] == 1005 AND ('%categorie%' ~ 'onbekend' OR '%categorie%' eq 'all'))
+      EXPRESSION      ([oorspronkelijk_bouwjaar] == 1005 AND ('%categorie%' ~ 'onbekend' OR '%categorie%' eq 'all'))
       STYLE
         ANTIALIAS      true
         COLOR          "#767676"
@@ -74,7 +75,7 @@ MAP
 
     CLASS
       NAME            "< 1960"
-      EXPRESSION      ([bouwjaar] < 1960 AND [bouwjaar] != 1005 AND ('%categorie%' ~ 'ouder' OR '%categorie%' eq 'all'))
+      EXPRESSION      ([oorspronkelijk_bouwjaar] < 1960 AND [oorspronkelijk_bouwjaar] != 1005 AND ('%categorie%' ~ 'ouder' OR '%categorie%' eq 'all'))
       STYLE
         ANTIALIAS      true
         COLOR          "#FFE600"
@@ -99,7 +100,7 @@ MAP
 
     CLASS
       NAME            ">= 1960"
-      EXPRESSION      ([bouwjaar] >= 1960 AND ('%categorie%' ~ 'nieuwer' OR '%categorie%' eq 'all'))
+      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1960 AND ('%categorie%' ~ 'nieuwer' OR '%categorie%' eq 'all'))
       STYLE
         ANTIALIAS      true
         COLOR          "#E5F2FC"
