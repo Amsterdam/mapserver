@@ -108,7 +108,7 @@ MAP
     NAME                    "textiel_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=4326 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Textiel' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
