@@ -17,7 +17,7 @@ layers = [
     ("rondleidingverbodsgebieden", "rondleidingverbod", 0x00d2b4),
     ("messenverbodgebieden", "messenverbod", 0xff0000),
     ("groepsfietsverbodgebieden", "groepsfietsverbod", 0xffff00),
-    ("raamsluitingstijden", "raamsluitingstijdenverbod", 0x00a03c),
+    ("raamsluitingstijden", "sluitingstijdenkernwallen", 0x00a03c),
     ("alcoholverkoopverbodgebied", "alcoholverkoopverbod", 0xe50082),
     ("blowverbodsgebied", "blowverbodsgebied", 0x009dec)
 ]
