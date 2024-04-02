@@ -366,7 +366,7 @@ MAP
     NAME 'raamsluitingstijden'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_sluitingstijdenkernwallen USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -1089,7 +1089,7 @@ MAP
     NAME 'raamsluitingstijden_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_raamsluitingstijdenverbod USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_sluitingstijdenkernwallen USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
