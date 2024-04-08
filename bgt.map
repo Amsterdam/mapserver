@@ -481,6 +481,41 @@ END
   # Voetgangers voor 0
 
 	LAYER
+		NAME                    voetgangers0
+		GROUP                   hoogte0
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_functie"
+		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "voetgangers0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			EXPRESSION      {voetpad,verkeerseiland,voetpad op trap,voetgangersgebied,woonerf,ruiterpad}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM			0
+			STYLE
+				#COLOR         "#C9C7C2"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         1
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+			STYLE
+				COLOR         "#f7f3f5"
+			END
+
+		END
+	END
+
+	LAYER
 		NAME                    voetgangers_voor_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
@@ -506,7 +541,6 @@ END
 			END
 		END
 	END
-
   #-----------------------------------------------------------------------------
   # Inrichtingselement vlak 0
   #Davey: 'muur' zit niet in deze nieuwe tabel? Moet die dan toch ergens andres vandaag komen?
@@ -643,13 +677,13 @@ END
 
 	
   #-----------------------------------------------------------------------------
-	  # Panden (dit was een onderdeel van 'gebouw') (hier nu panden ingeladen) 0
+	  # Panden (dit was een onderdeel van 'gebouw') (nu hier los uit de bgt gehaald, nog even fixen)
 
 	  LAYER
-		NAME                    bouwerken_vlak0
+		NAME                    panden_vlak0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_overigebouwwerken USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM public.bgt_panden USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_status"
 		MAXSCALEDENOM           3500
@@ -972,8 +1006,8 @@ END
    LAYER
      NAME            "ligplaats"
      GROUP           "hoogte0"
-     INCLUDE         "connection/bag.inc"
-     DATA            "geometrie FROM public.bag_ligplaats USING srid=28992 USING UNIQUE id"
+     INCLUDE         "connection/dataservices.inc"
+     DATA            "geometrie from (select id, geometrie from public.bag_ligplaatsen WHERE eind_geldigheid is null)  AS sub USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
      PROJECTION
@@ -1002,8 +1036,8 @@ END
    LAYER
      NAME            "standplaats"
      GROUP           "hoogte0"
-     INCLUDE         "connection/bag.inc"
-     DATA            "geometrie FROM public.bag_standplaats USING srid=28992 USING UNIQUE id"
+     INCLUDE         "connection/dataservices.inc"
+     DATA            "geometrie from (select id, geometrie from public.bag_standplaatsen WHERE eind_geldigheid is null)  AS sub USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
      PROJECTION
