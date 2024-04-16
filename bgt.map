@@ -32,7 +32,7 @@ MAP
 		NAME                    waterdeel_vlak0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_waterdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_waterdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM			0
@@ -40,7 +40,7 @@ MAP
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"           "waterdeel_vlak"
+			"wms_title"           "waterdeel_vlak0"
 			"wms_group_title"     "hoogte0"
 		END
 		CLASS
@@ -65,7 +65,7 @@ MAP
 		NAME                    begroeideterreindelen_vlak0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_begroeideterreindelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_begroeideterreindelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_fysiek_voorkomen"
 		MAXSCALEDENOM           3500
@@ -163,7 +163,7 @@ LAYER
 	NAME                    onbegroeideterreindelen_vlak0
 	GROUP                   hoogte0
 	INCLUDE                 "connection/dataservices.inc"
-	DATA                    "geometrie FROM public.bgt_onbegroeideterreindelen USING srid=28992 USING UNIQUE id"
+	DATA                    "geometrie FROM (select * from public.bgt_onbegroeideterreindelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 	TYPE                    POLYGON
 	CLASSITEM               "bgt_fysiek_voorkomen"
 	MAXSCALEDENOM           3500
@@ -264,7 +264,7 @@ END
 		NAME                    spoorbaan_overbrugging
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_overbruggingsdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM			0
@@ -289,21 +289,19 @@ END
   # Berm achter 0
 
 	LAYER
-		NAME                    berm_achter_0
+		NAME                    ondersteunendewegdelen_achter_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_ondersteunendewegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM           0
-		FILTER 					"berm"
-		FILTERITEM				"bgt_functie"
 		CLASSITEM				"bgt_fysiek_voorkomen"
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_achter_0"
+			"wms_title"            "ondersteunendewegdelen_achter_0"
 			"wms_group_title"      "hoogte0"
 		END
 		CLASS
@@ -336,21 +334,19 @@ END
   # Berm voor 0
 
 	LAYER
-		NAME                    berm_voor_0
+		NAME                    ondersteunendewegdelen_voor_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_ondersteunendewegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM           0
-		FILTER 					"berm"
-		FILTERITEM				"bgt_functie"
 		CLASSITEM				"bgt_fysiek_voorkomen"
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_voor_0"
+			"wms_title"            "ondersteunendewegdelen_voor_0"
 			"wms_group_title"      "hoogte0"
 		END
 		CLASS
@@ -378,7 +374,7 @@ END
 			NAME                    rijbanen_achter_0
 			GROUP                   hoogte0
 			INCLUDE                 "connection/dataservices.inc"
-			DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+			DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 			TYPE                    POLYGON
 			CLASSITEM               "bgt_functie"
 			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
@@ -412,7 +408,7 @@ END
 		NAME                    rijbanen_voor_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
@@ -444,13 +440,47 @@ END
 	END
 
   #-----------------------------------------------------------------------------
+  # Parkeervlakken 0
+
+  LAYER
+	NAME                    parkeervlak0
+	GROUP                   hoogte0
+	INCLUDE                 "connection/dataservices.inc"
+	DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull and bgt_functie = 'parkeervlak') As subquery USING srid=28992 USING UNIQUE id"
+	TYPE                    POLYGON
+	MAXSCALEDENOM           3500
+	MINSCALEDENOM			0
+	PROJECTION
+		"init=epsg:28992"
+	END
+	METADATA
+		"wms_title"            "parkeervlak0"
+		"wms_group_title"      "hoogte0"
+	END
+	CLASS
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM			0
+		STYLE
+			COLOR         "#C9C7C2"
+			OUTLINECOLOR  "#C9C7C2"
+			WIDTH         1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+		STYLE
+			COLOR         "#FFFFFF"
+		END
+	END
+END
+
+  #-----------------------------------------------------------------------------
   # Voetgangers achter 0
 
 	LAYER
 		NAME                    voetganers_achter_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -481,45 +511,10 @@ END
   # Voetgangers voor 0
 
 	LAYER
-		NAME                    voetgangers0
-		GROUP                   hoogte0
-		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
-		TYPE                    POLYGON
-		CLASSITEM               "bgt_functie"
-		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "voetgangers0"
-			"wms_group_title"      "hoogte0"
-		END
-		CLASS
-			EXPRESSION      {voetpad,verkeerseiland,voetpad op trap,voetgangersgebied,woonerf,ruiterpad}
-			MAXSCALEDENOM   3500
-			MINSCALEDENOM			0
-			STYLE
-				#COLOR         "#C9C7C2"
-				OUTLINECOLOR  "#C9C7C2"
-				WIDTH         1
-				LINECAP       BUTT
-				LINEJOIN      MITER
-			END
-			STYLE
-				COLOR         "#f7f3f5"
-			END
-
-		END
-	END
-
-	LAYER
 		NAME                    voetgangers_voor_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -543,13 +538,13 @@ END
 	END
   #-----------------------------------------------------------------------------
   # Inrichtingselement vlak 0
-  #Davey: 'muur' zit niet in deze nieuwe tabel? Moet die dan toch ergens andres vandaag komen?
+  #Davey: 'muur' zit niet in deze nieuwe tabel? Moet die dan toch ergens andres vandaag komen? Perron lijkt ook hierin te zitten maar die zat nog bij terreindeel? Idk...
 
 	LAYER
 		NAME                    inrichtingselement_vlak0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_kunstwerkdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_kunstwerkdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
 		MAXSCALEDENOM           3500
@@ -614,7 +609,7 @@ END
 		NAME                    overigebouwerken_vlak0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_overigebouwwerken USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_overigebouwwerken where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
 		MAXSCALEDENOM           3500
@@ -675,15 +670,46 @@ END
 		END
 	END
 
-	
+	#-----------------------------------------------------------------------------
+	# Gebouwinstallaties (hierin vallen luivels, trappen etc)
+
+	LAYER
+		NAME                    gebouwinstallaties0
+		GROUP                   hoogte0
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_gebouwinstallaties where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouwinstallaties0"
+			"wms_group_title"      "hoogte0"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
   #-----------------------------------------------------------------------------
-	  # Panden (dit was een onderdeel van 'gebouw') (nu hier los uit de bgt gehaald, nog even fixen)
+	  # Panden (dit was een onderdeel van 'gebouw') (moet even 'PANDEN' worden.)
 
 	  LAYER
 		NAME                    panden_vlak0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_panden USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_panden where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_status"
 		MAXSCALEDENOM           3500
@@ -692,7 +718,7 @@ END
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "bouwerken_vlak0"
+			"wms_title"            "panden_vlak0"
 			"wms_group_title"      "hoogte0"
 		END
 		CLASS
@@ -717,7 +743,7 @@ END
 		NAME                    metro_achter0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_sporen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"sneltram"
@@ -759,7 +785,7 @@ END
 		NAME                    metro_voor0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_sporen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"sneltram"
@@ -810,7 +836,7 @@ END
 		NAME                    tram0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_sporen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"tram"
@@ -853,7 +879,7 @@ END
 		NAME                    trein_achter0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_sporen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"trein"
@@ -895,7 +921,7 @@ END
 		NAME                    trein_voor0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_sporen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"trein"
@@ -946,7 +972,7 @@ END
 		NAME                    snelweg_achter_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
 		FILTER					"rijbaan autosnelweg"
@@ -979,7 +1005,7 @@ END
 		NAME                    snelweg_voor_0
 		GROUP                   hoogte0
 		INCLUDE                 "connection/dataservices.inc"
-		DATA                    "geometrie FROM public.bgt_wegdelen USING srid=28992 USING UNIQUE id"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
 		FILTER					"rijbaan autosnelweg"
@@ -1007,7 +1033,7 @@ END
      NAME            "ligplaats"
      GROUP           "hoogte0"
      INCLUDE         "connection/dataservices.inc"
-     DATA            "geometrie from (select id, geometrie from public.bag_ligplaatsen WHERE eind_geldigheid is null)  AS sub USING srid=28992 USING UNIQUE id"
+	 DATA			  "geometrie FROM (select * from public.bag_ligplaatsen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
      PROJECTION
@@ -1037,7 +1063,7 @@ END
      NAME            "standplaats"
      GROUP           "hoogte0"
      INCLUDE         "connection/dataservices.inc"
-     DATA            "geometrie from (select id, geometrie from public.bag_standplaatsen WHERE eind_geldigheid is null)  AS sub USING srid=28992 USING UNIQUE id"
+	 DATA            "geometrie FROM (select * from public.bag_standplaatsen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
      TYPE            POLYGON
      MAXSCALEDENOM   3500
      PROJECTION
@@ -1069,13 +1095,13 @@ END
 ## HOOGTELIGGING 1
 #==============================================================================
 
-# Tunnel -1
+# Tunnel -1 (relatieve hoogteligging -1?)
 
 	LAYER
-		NAME                    wegdeel_vlak_tunnel
+		NAME                    wegdeel_vlak_tunnel1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '0' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER ((((("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or ("[bgt_functie]" = "rijbaan regionale weg"))))))
@@ -1084,7 +1110,7 @@ END
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "wegdeel_vlak_tunnel"
+			"wms_title"            "wegdeel_vlak_tunnel1"
 			"wms_group_title"      "hoogte1"
 		END
 		CLASS
@@ -1101,20 +1127,20 @@ END
   # Terreindeel 1
 
 	LAYER
-		NAME                    terreindeel_vlak1
+		NAME                    begroeideterreindelen_vlak1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.terreindeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_begroeideterreindelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
-		CLASSITEM               "bgt_fysiekvoorkomen"
-		FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
+		CLASSITEM               "bgt_fysiek_voorkomen"
+		FILTER (("[bgt_fysiek_voorkomen]" = "erf") Or ("[bgt_fysiek_voorkomen]" = "zand") Or ("[bgt_fysiek_voorkomen]" = "onverhard") Or ("[bgt_fysiek_voorkomen]" = "houtwal") Or ("[bgt_fysiek_voorkomen]" = "kwelder") Or ("[bgt_fysiek_voorkomen]" = "heide") Or ("[bgt_fysiek_voorkomen]" = "strekdam") Or ("[bgt_fysiek_voorkomen]" = "rietland") Or ("[bgt_fysiek_voorkomen]" = "gesloten verharding") Or ("[bgt_fysiek_voorkomen]" = "half verhard" ) Or ("[bgt_fysiek_voorkomen]" = "perron") Or ("[bgt_fysiek_voorkomen]" = "transitie") Or ("[bgt_fysiek_voorkomen]" = "open verharding" ) Or ("[bgt_fysiek_voorkomen]" = "groenvoorziening") Or ("[bgt_fysiek_voorkomen]" = "struiken") Or ("[bgt_fysiek_voorkomen]" = "grasland overig" ) Or ("[bgt_fysiek_voorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiek_voorkomen]" = "naaldbos") Or ("[bgt_fysiek_voorkomen]" = "fruitteelt") Or ("[bgt_fysiek_voorkomen]" = "loofbos") Or ("[bgt_fysiek_voorkomen]" = "bouwland") Or ("[bgt_fysiek_voorkomen]" = "gemengd bos" ) Or ("[bgt_fysiek_voorkomen]" = "moeras") Or ("[bgt_fysiek_voorkomen]" = "boomteelt") Or ("[bgt_fysiek_voorkomen]" = "oever, slootkant") )
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM			0
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "terreindeel_vlak1"
+			"wms_title"            "begroeidterreindeel_vlak1"
 			"wms_group_title"      "hoogte1"
 		END
 		CLASS
@@ -1197,25 +1223,122 @@ END
 		END
 	END
 
+	 #-----------------------------------------------------------------------------
+
+  LAYER
+	NAME                    onbegroeideterreindelen_vlak1
+	GROUP                   hoogte1
+	INCLUDE                 "connection/dataservices.inc"
+	DATA                    "geometrie FROM (select * from public.bgt_onbegroeideterreindelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+	TYPE                    POLYGON
+	CLASSITEM               "bgt_fysiek_voorkomen"
+	FILTER (("[bgt_fysiek_voorkomen]" = "erf") Or ("[bgt_fysiek_voorkomen]" = "zand") Or ("[bgt_fysiek_voorkomen]" = "onverhard") Or ("[bgt_fysiek_voorkomen]" = "houtwal") Or ("[bgt_fysiek_voorkomen]" = "kwelder") Or ("[bgt_fysiek_voorkomen]" = "heide") Or ("[bgt_fysiek_voorkomen]" = "strekdam") Or ("[bgt_fysiek_voorkomen]" = "rietland") Or ("[bgt_fysiek_voorkomen]" = "gesloten verharding") Or ("[bgt_fysiek_voorkomen]" = "half verhard" ) Or ("[bgt_fysiek_voorkomen]" = "perron") Or ("[bgt_fysiek_voorkomen]" = "transitie") Or ("[bgt_fysiek_voorkomen]" = "open verharding" ) Or ("[bgt_fysiek_voorkomen]" = "groenvoorziening") Or ("[bgt_fysiek_voorkomen]" = "struiken") Or ("[bgt_fysiek_voorkomen]" = "grasland overig" ) Or ("[bgt_fysiek_voorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiek_voorkomen]" = "naaldbos") Or ("[bgt_fysiek_voorkomen]" = "fruitteelt") Or ("[bgt_fysiek_voorkomen]" = "loofbos") Or ("[bgt_fysiek_voorkomen]" = "bouwland") Or ("[bgt_fysiek_voorkomen]" = "gemengd bos" ) Or ("[bgt_fysiek_voorkomen]" = "moeras") Or ("[bgt_fysiek_voorkomen]" = "boomteelt") Or ("[bgt_fysiek_voorkomen]" = "oever, slootkant") )
+	MAXSCALEDENOM           3500
+	MINSCALEDENOM			0
+	PROJECTION
+		"init=epsg:28992"
+	END
+	METADATA
+		"wms_title"            "onbegroeidterreindeel_vlak1"
+		"wms_group_title"      "hoogte1"
+	END
+	CLASS
+		EXPRESSION      {erf,onverhard,rietland,zand,houtwal}
+		STYLE
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM   2000
+			COLOR         "#F9F9E7"
+			OUTLINECOLOR  "#F9F9E7"
+		END
+		STYLE
+		MAXSCALEDENOM   2000
+		MINSCALEDENOM   0
+			COLOR         "#F9F9E7"
+			OUTLINECOLOR  "#C9C7C2"
+			WIDTH         0.5
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+	END
+	CLASS
+		EXPRESSION      {groenvoorziening,grasland overig,grasland agrarisch,struiken}
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM   0
+		STYLE
+			COLOR         "#DCEACF"
+			OUTLINECOLOR  "#DCEACF"
+			WIDTH         0.5
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+	END
+	CLASS
+		EXPRESSION      /^(oever|kwelder).*$/
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM   0
+		STYLE
+			COLOR         "#F9F9E7"
+			OUTLINECOLOR  "#F9F9E7"
+			WIDTH         0.1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+	END
+	CLASS
+		EXPRESSION      {open verharding,gesloten verharding,transitie,half verhard,perron,strekdam}
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM   0
+		STYLE
+			COLOR         "#FFFFFF"
+			OUTLINECOLOR  "#FFFFFF"
+			WIDTH         0.5
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+	END
+	CLASS
+		EXPRESSION      {loofbos,gemengd bos,bouwland,moeras,fruitteelt,boomteelt,naaldbos}
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM   0
+		STYLE
+			COLOR         "#CBE0B8"
+			OUTLINECOLOR  "#CBE0B8"
+			WIDTH         0.5
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+	END
+	CLASS
+		EXPRESSION      "heide"
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM   0
+		STYLE
+			COLOR         "#ddd6e5"
+			OUTLINECOLOR  "#ddd6e5"
+			WIDTH         0.1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+	END
+END
+
   #-----------------------------------------------------------------------------
   # Berm achter 1
 
 	LAYER
-		NAME                    berm_achter_1
+		NAME                    ondersteunendewegdelen_achter_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM           0
-		FILTER 					"berm"
-		FILTERITEM				"bgt_functie"
-		CLASSITEM				"bgt_fysiekvoorkomen"
+		CLASSITEM				"bgt_fysiek_voorkomen"
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_achter_1"
+			"wms_title"            "ondersteunendewegdelen_achter_1"
 			"wms_group_title"      "hoogte1"
 		END
 		CLASS
@@ -1248,21 +1371,19 @@ END
   # Berm voor 1
 
 	LAYER
-		NAME                    berm_voor_1
+		NAME                    ondersteunendewegdelen_voor_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM           0
-		FILTER 					"berm"
-		FILTERITEM				"bgt_functie"
-		CLASSITEM				"bgt_fysiekvoorkomen"
+		CLASSITEM				"bgt_fysiek_voorkomen"
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_voor_1"
+			"wms_title"            "ondersteunendewegdelen_voor_1"
 			"wms_group_title"      "hoogte1"
 		END
 		CLASS
@@ -1289,8 +1410,8 @@ END
 	LAYER
 		NAME                    rijbanen_achter_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
@@ -1322,8 +1443,8 @@ END
 	LAYER
 		NAME                    rijbanen_voor_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
@@ -1354,14 +1475,48 @@ END
 		END
 	END
 
+ #-----------------------------------------------------------------------------
+  # Parkeervlakken 1
+
+  LAYER
+	NAME                    parkeervlak1
+	GROUP                   hoogte1
+	INCLUDE                 "connection/dataservices.inc"
+	DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull and bgt_functie = 'parkeervlak') As subquery USING srid=28992 USING UNIQUE id"
+	TYPE                    POLYGON
+	MAXSCALEDENOM           3500
+	MINSCALEDENOM			0
+	PROJECTION
+		"init=epsg:28992"
+	END
+	METADATA
+		"wms_title"            "parkeervlak1"
+		"wms_group_title"      "hoogte1"
+	END
+	CLASS
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM			0
+		STYLE
+			COLOR         "#C9C7C2"
+			OUTLINECOLOR  "#C9C7C2"
+			WIDTH         1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+		STYLE
+			COLOR         "#FFFFFF"
+		END
+	END
+END
+
   #-----------------------------------------------------------------------------
   # Voetgangers achter 1
 
 	LAYER
 		NAME                    voetganers_achter_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -1393,8 +1548,8 @@ END
 	LAYER
 		NAME                    voetgangers_voor_1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -1423,8 +1578,8 @@ END
 	LAYER
 		NAME                    gebouw_vlak1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.gebouw_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_overigebouwwerken where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
 		MAXSCALEDENOM           3500
@@ -1491,8 +1646,8 @@ END
 	LAYER
 		NAME                    inrichtingselement_vlak1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.inrichtingselement_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_kunstwerkdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
 		FILTER (((("[bgt_type]" = "steiger") OR (("[bgt_type]" = "sluis") Or (("[bgt_type]" = "gemaal") Or ("[bgt_type]" = "stuw"))) OR ("[bgt_type]" = "muur"))))
@@ -1550,14 +1705,80 @@ END
 		END
 	END
 
+	#-----------------------------------------------------------------------------
+	# Gebouwinstallaties (hierin vallen luivels, trappen etc)
+
+	LAYER
+		NAME                    gebouwinstallaties1
+		GROUP                   hoogte1
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_gebouwinstallaties where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouwinstallaties1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
+	#-----------------------------------------------------------------------------
+	  # Panden (dit was een onderdeel van 'gebouw') (nu hier los uit de bgt gehaald)
+
+	LAYER
+		NAME                    panden_vlak1
+		GROUP                   hoogte1
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_panden where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_status"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "panden_vlak1"
+			"wms_group_title"      "hoogte1"
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
   #-----------------------------------------------------------------------------
   # Metro achter 1
 
 	LAYER
 		NAME                    metro_achter1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"sneltram"
@@ -1598,8 +1819,8 @@ END
 	LAYER
 		NAME                    metro_voor1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"sneltram"
@@ -1649,8 +1870,8 @@ END
 	LAYER
 		NAME                    tram1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"tram"
@@ -1693,8 +1914,8 @@ END
 	LAYER
 		NAME                    trein_achter1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"trein"
@@ -1735,9 +1956,9 @@ END
 	LAYER
 		NAME                    trein_voor1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    LINE
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE					LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"trein"
 		MAXSCALEDENOM           3500
@@ -1786,8 +2007,8 @@ END
 	LAYER
 		NAME                    snelweg_achter1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
 		FILTER					"rijbaan autosnelweg"
@@ -1819,9 +2040,9 @@ END
 	LAYER
 		NAME                    snelweg_voor1
 		GROUP                   hoogte1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    POLYGON
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE					LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"rijbaan autosnelweg"
 		MAXSCALEDENOM           3500
@@ -1848,22 +2069,86 @@ END
 ## HOOGTELIGGING 2
 #==============================================================================
 
-# Terreindeel 2
+# Terreindeel 2 (onbegroeid)
 	LAYER
-		NAME                    terreindeel_vlak2
+		NAME                    onbegroeideterreindelen_vlak2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.terreindeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_onbegroeideterreindelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
-		CLASSITEM               "bgt_fysiekvoorkomen"
-	FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
+		CLASSITEM               "bgt_fysiek_voorkomen"
+		FILTER (("[bgt_fysiek_voorkomen]" = "erf") Or ("[bgt_fysiek_voorkomen]" = "zand") Or ("[bgt_fysiek_voorkomen]" = "onverhard") Or ("[bgt_fysiek_voorkomen]" = "houtwal") Or ("[bgt_fysiek_voorkomen]" = "kwelder") Or ("[bgt_fysiek_voorkomen]" = "heide") Or ("[bgt_fysiek_voorkomen]" = "strekdam") Or ("[bgt_fysiek_voorkomen]" = "rietland") Or ("[bgt_fysiek_voorkomen]" = "gesloten verharding") Or ("[bgt_fysiek_voorkomen]" = "half verhard" ) Or ("[bgt_fysiek_voorkomen]" = "perron") Or ("[bgt_fysiek_voorkomen]" = "transitie") Or ("[bgt_fysiek_voorkomen]" = "open verharding" ) Or ("[bgt_fysiek_voorkomen]" = "groenvoorziening") Or ("[bgt_fysiek_voorkomen]" = "struiken") Or ("[bgt_fysiek_voorkomen]" = "grasland overig" ) Or ("[bgt_fysiek_voorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiek_voorkomen]" = "naaldbos") Or ("[bgt_fysiek_voorkomen]" = "fruitteelt") Or ("[bgt_fysiek_voorkomen]" = "loofbos") Or ("[bgt_fysiek_voorkomen]" = "bouwland") Or ("[bgt_fysiek_voorkomen]" = "gemengd bos" ) Or ("[bgt_fysiek_voorkomen]" = "moeras") Or ("[bgt_fysiek_voorkomen]" = "boomteelt") Or ("[bgt_fysiek_voorkomen]" = "oever, slootkant") )
+		#MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "onbegroeideterreindelen_vlak2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      {transitie,perron,open verharding,gesloten verharding,half verhard}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#FFFFFF"
+				OUTLINECOLOR  "#FFFFFF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {erf,onverhard}
+			STYLE
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   2000
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#F9F9E7"
+			END
+			STYLE
+			MAXSCALEDENOM   2000
+			MINSCALEDENOM   0
+				COLOR         "#F9F9E7"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		CLASS
+			EXPRESSION      {groenvoorziening,struiken}
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM   0
+			STYLE
+				COLOR         "#DCEACF"
+				OUTLINECOLOR  "#DCEACF"
+				WIDTH         0.5
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+	END
+
+  #-----------------------------------------------------------------------------
+
+  # Terreindeel 2 (begroeid)
+	LAYER
+		NAME                    begroeideterreindelen_vlak2
+		GROUP                   hoogte2
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_begroeideterreindelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_fysiek_voorkomen"
+		FILTER (("[bgt_fysiek_voorkomen]" = "erf") Or ("[bgt_fysiek_voorkomen]" = "zand") Or ("[bgt_fysiek_voorkomen]" = "onverhard") Or ("[bgt_fysiek_voorkomen]" = "houtwal") Or ("[bgt_fysiek_voorkomen]" = "kwelder") Or ("[bgt_fysiek_voorkomen]" = "heide") Or ("[bgt_fysiek_voorkomen]" = "strekdam") Or ("[bgt_fysiek_voorkomen]" = "rietland") Or ("[bgt_fysiek_voorkomen]" = "gesloten verharding") Or ("[bgt_fysiek_voorkomen]" = "half verhard" ) Or ("[bgt_fysiek_voorkomen]" = "perron") Or ("[bgt_fysiek_voorkomen]" = "transitie") Or ("[bgt_fysiek_voorkomen]" = "open verharding" ) Or ("[bgt_fysiek_voorkomen]" = "groenvoorziening") Or ("[bgt_fysiek_voorkomen]" = "struiken") Or ("[bgt_fysiek_voorkomen]" = "grasland overig" ) Or ("[bgt_fysiek_voorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiek_voorkomen]" = "naaldbos") Or ("[bgt_fysiek_voorkomen]" = "fruitteelt") Or ("[bgt_fysiek_voorkomen]" = "loofbos") Or ("[bgt_fysiek_voorkomen]" = "bouwland") Or ("[bgt_fysiek_voorkomen]" = "gemengd bos" ) Or ("[bgt_fysiek_voorkomen]" = "moeras") Or ("[bgt_fysiek_voorkomen]" = "boomteelt") Or ("[bgt_fysiek_voorkomen]" = "oever, slootkant") )
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM			0
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "terreindeel_vlak2"
+			"wms_title"            "begroeideterreindelen_vlak2"
 			"wms_group_title"      "hoogte2"
 		END
 		CLASS
@@ -1914,21 +2199,19 @@ END
   # Berm achter 2
 
 	LAYER
-		NAME                    berm_achter_2
+		NAME                    ondersteunendewegdelen_achter_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM           0
-		FILTER 					"berm"
-		FILTERITEM				"bgt_functie"
-		CLASSITEM				"bgt_fysiekvoorkomen"
+		CLASSITEM				"bgt_fysiek_voorkomen"
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_achter_2"
+			"wms_title"            "ondersteunendewegdelen_achter_2"
 			"wms_group_title"      "hoogte2"
 		END
 		CLASS
@@ -1961,21 +2244,19 @@ END
   # Berm voor 2
 
 	LAYER
-		NAME                    berm_voor_2
+		NAME                    ondersteunendewegdelen_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM           0
-		FILTER 					"berm"
-		FILTERITEM				"bgt_functie"
-		CLASSITEM				"bgt_fysiekvoorkomen"
+		CLASSITEM				"bgt_fysiek_voorkomen"
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "berm_voor_2"
+			"wms_title"            "ondersteunendewegdelen_voor_2"
 			"wms_group_title"      "hoogte2"
 		END
 		CLASS
@@ -2002,8 +2283,8 @@ END
 	LAYER
 			NAME                    rijbanen_achter_2
 			GROUP                   hoogte2
-			INCLUDE                 "connection/basiskaart.inc"
-			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			INCLUDE                 "connection/dataservices.inc"
+			DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 			TYPE                    POLYGON
 			CLASSITEM               "bgt_functie"
 			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
@@ -2035,8 +2316,8 @@ END
 	LAYER
 		NAME                    rijbanen_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
@@ -2059,14 +2340,48 @@ END
 		END
 	END
 
+ #-----------------------------------------------------------------------------
+  # Parkeervlakken 2
+
+  LAYER
+	NAME                    parkeervlak2
+	GROUP                   hoogte2
+	INCLUDE                 "connection/dataservices.inc"
+	DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull and bgt_functie = 'parkeervlak') As subquery USING srid=28992 USING UNIQUE id"
+	TYPE                    POLYGON
+	MAXSCALEDENOM           3500
+	MINSCALEDENOM			0
+	PROJECTION
+		"init=epsg:28992"
+	END
+	METADATA
+		"wms_title"            "parkeervlak2"
+		"wms_group_title"      "hoogte2"
+	END
+	CLASS
+		MAXSCALEDENOM   3500
+		MINSCALEDENOM			0
+		STYLE
+			COLOR         "#C9C7C2"
+			OUTLINECOLOR  "#C9C7C2"
+			WIDTH         1
+			LINECAP       BUTT
+			LINEJOIN      MITER
+		END
+		STYLE
+			COLOR         "#FFFFFF"
+		END
+	END
+END
+
   #-----------------------------------------------------------------------------
   # Voetgangers achter 2
 
 	LAYER
 		NAME                    voetgangers_achter_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
@@ -2099,8 +2414,8 @@ END
 	LAYER
 		NAME                    voetgangers_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
 		CLASSITEM               "bgt_functie"
@@ -2126,22 +2441,22 @@ END
   #-----------------------------------------------------------------------------
   # Gebouw 2
 
-	LAYER
-		NAME                    gebouw_vlak2
-		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.gebouw_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    POLYGON
-		CLASSITEM               "bgt_type"
-		MAXSCALEDENOM           3500
-		MINSCALEDENOM			0
-		PROJECTION
-			"init=epsg:28992"
-		END
-		METADATA
-			"wms_title"            "gebouw_vlak2"
-			"wms_group_title"      "hoogte2"
-		END
+  LAYER
+	NAME                    overigebouwerken_vlak2
+	GROUP                   hoogte2
+	INCLUDE                 "connection/dataservices.inc"
+	DATA                    "geometrie FROM (select * from public.bgt_overigebouwwerken where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+	TYPE                    POLYGON
+	CLASSITEM               "bgt_type"
+	MAXSCALEDENOM           3500
+	MINSCALEDENOM			0
+	PROJECTION
+		"init=epsg:28992"
+	END
+	METADATA
+		"wms_title"            "overigebouwerken_vlak2"
+		"wms_group_title"      "hoogte2"
+	END
 		CLASS
 			EXPRESSION      {niet-bgt,transitie,lage trafo,open loods,opslagtank,bassin,windturbine,bezinkbak}
 			STYLE
@@ -2192,15 +2507,82 @@ END
 		END
 	END
 
+	#-----------------------------------------------------------------------------
+	# Gebouwinstallaties (hierin vallen luivels, trappen etc)
+
+	LAYER
+		NAME                    gebouwinstallaties2
+		GROUP                   hoogte2
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_gebouwinstallaties where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouwinstallaties2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
+	  #-----------------------------------------------------------------------------
+	  # Panden (dit was een onderdeel van 'gebouw') (nu hier los uit de bgt gehaald, nog even fixen)
+
+	  LAYER
+		NAME                    panden_vlak2
+		GROUP                   hoogte2
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_panden where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_status"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "panden_vlak2"
+			"wms_group_title"      "hoogte2"
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
+
   #-----------------------------------------------------------------------------
   # Inrichtingselement vlak 2
 
 	LAYER
 		NAME                    inrichtingselement_vlak2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.inrichtingselement_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
-		TYPE                    POLYGON
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_kunstwerkdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE					POLYGON
 		FILTER (((("[bgt_type]" = "steiger") OR (("[bgt_type]" = "sluis") Or (("[bgt_type]" = "gemaal") Or ("[bgt_type]" = "stuw"))) OR ("[bgt_type]" = "muur"))))
 		CLASSITEM               "bgt_type"
 		MAXSCALEDENOM           3500
@@ -2244,8 +2626,8 @@ END
 	LAYER
 		NAME                    metro_achter2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"sneltram"
@@ -2286,8 +2668,8 @@ END
 	LAYER
 		NAME                    metro_voor2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"sneltram"
@@ -2337,8 +2719,8 @@ END
 	LAYER
 		NAME                    trein_achter2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"trein"
@@ -2379,8 +2761,8 @@ END
 	LAYER
 		NAME                    trein_voor2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		FILTERITEM               "bgt_functie"
 		FILTER					"trein"
 		TYPE 					LINE
@@ -2430,8 +2812,8 @@ END
 	LAYER
 			NAME                    snelweg_achter_2
 			GROUP                   hoogte2
-			INCLUDE                 "connection/basiskaart.inc"
-			DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			INCLUDE                 "connection/dataservices.inc"
+			DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 			TYPE                    POLYGON
 			FILTERITEM              "bgt_functie"
 			FILTER					"rijbaan autosnelweg"
@@ -2462,8 +2844,8 @@ END
 	LAYER
 		NAME                    snelweg_voor_2
 		GROUP                   hoogte2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
 		FILTER					"rijbaan autosnelweg"
@@ -2492,20 +2874,20 @@ END
 # Terreindeel 3
 
 	LAYER
-		NAME                    terreindeel_vlak3
+		NAME                    inrichtingselement_vlak3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.terreindeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_kunstwerkdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTER (("[bgt_fysiekvoorkomen]" = "erf") Or ("[bgt_fysiekvoorkomen]" = "zand") Or ("[bgt_fysiekvoorkomen]" = "onverhard") Or ("[bgt_fysiekvoorkomen]" = "houtwal") Or ("[bgt_fysiekvoorkomen]" = "kwelder") Or ("[bgt_fysiekvoorkomen]" = "heide") Or ("[bgt_fysiekvoorkomen]" = "strekdam") Or ("[bgt_fysiekvoorkomen]" = "rietland") Or ("[bgt_fysiekvoorkomen]" = "gesloten verharding") Or ("[bgt_fysiekvoorkomen]" = "half verhard" ) Or ("[bgt_fysiekvoorkomen]" = "perron") Or ("[bgt_fysiekvoorkomen]" = "transitie") Or ("[bgt_fysiekvoorkomen]" = "open verharding" ) Or ("[bgt_fysiekvoorkomen]" = "groenvoorziening") Or ("[bgt_fysiekvoorkomen]" = "struiken") Or ("[bgt_fysiekvoorkomen]" = "grasland overig" ) Or ("[bgt_fysiekvoorkomen]" = "grasland agrarisch" ) Or ("[bgt_fysiekvoorkomen]" = "naaldbos") Or ("[bgt_fysiekvoorkomen]" = "fruitteelt") Or ("[bgt_fysiekvoorkomen]" = "loofbos") Or ("[bgt_fysiekvoorkomen]" = "bouwland") Or ("[bgt_fysiekvoorkomen]" = "gemengd bos" ) Or ("[bgt_fysiekvoorkomen]" = "moeras") Or ("[bgt_fysiekvoorkomen]" = "boomteelt") Or ("[bgt_fysiekvoorkomen]" = "oever, slootkant") )
-		CLASSITEM               "bgt_fysiekvoorkomen"
+		CLASSITEM               "bgt_fysiek_voorkomen"
 		MAXSCALEDENOM           3500
 		MINSCALEDENOM			0
 		PROJECTION
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "terreindeel_vlak3"
+			"wms_title"            "inrichtingselement_vlak3"
 			"wms_group_title"      "hoogte3"
 		END
 		CLASS
@@ -2527,8 +2909,8 @@ END
 	LAYER
 			NAME                    rijbanen_achter_3
 			GROUP                   hoogte3
-			INCLUDE                 "connection/basiskaart.inc"
-			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			INCLUDE                 "connection/dataservices.inc"
+			DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 			FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
 			TYPE                    POLYGON
 			CLASSITEM               "bgt_functie"
@@ -2544,7 +2926,7 @@ END
 			CLASS
 				EXPRESSION      {parkeervlak,rijbaan lokale weg,fietspad,inrit,transitie,rijbaan autoweg,rijbaan regionale weg,OV-baan,overweg,baan voor vliegverkeer}
 				MAXSCALEDENOM   3500
-								MINSCALEDENOM			0
+				MINSCALEDENOM			0
 				STYLE
 					COLOR         "#C9C7C2"
 					OUTLINECOLOR  "#C9C7C2"
@@ -2561,8 +2943,8 @@ END
 	LAYER
 		NAME                    rijbanen_voor_3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		FILTER 					((((("[bgt_functie]" = "fietspad") Or (("[bgt_functie]" = "inrit") Or (("[bgt_functie]" = "OV-baan") Or (("[bgt_functie]" = "overweg") Or (("[bgt_functie]" = "rijbaan autoweg") Or (("[bgt_functie]" = "rijbaan lokale weg") Or (("[bgt_functie]" = "rijbaan regionale weg") Or (("[bgt_functie]" = "transitie") Or (("[bgt_functie]" = "baan voor vliegverkeer") Or ("[bgt_functie]" = "parkeervlak")))))))))))))
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_functie"
@@ -2591,8 +2973,8 @@ END
 	LAYER
 		NAME                    voetganers_achter_3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
 		CLASSITEM               "bgt_functie"
@@ -2625,8 +3007,8 @@ END
 	LAYER
 		NAME                    voetgangers_voor_3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTER ((((("[bgt_functie]" = "ruiterpad") Or (("[bgt_functie]" = "voetpad") Or (("[bgt_functie]" = "voetgangersgebied") Or (("[bgt_functie]" = "voetpad op trap") Or (("[bgt_functie]" = "woonerf") Or ("[bgt_functie]" = "verkeerseiland")))))))))
 		CLASSITEM               "bgt_functie"
@@ -2653,10 +3035,10 @@ END
   # Gebouw 3
 
 	LAYER
-		NAME                    gebouw_vlak3
+		NAME                    overigebouwerken_vlak3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.gebouw_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_overigebouwwerken where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
 		MAXSCALEDENOM           3500
@@ -2665,7 +3047,7 @@ END
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "gebouw_vlak3"
+			"wms_title"            "overigebouwerken_vlak3"
 			"wms_group_title"      "hoogte3"
 		END
 		CLASS
@@ -2718,14 +3100,80 @@ END
 		END
 	END
 
+	#-----------------------------------------------------------------------------
+	# Gebouwinstallaties (hierin vallen luivels, trappen etc)
+
+	LAYER
+		NAME                    gebouwinstallaties3
+		GROUP                   hoogte3
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_gebouwinstallaties where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouwinstallaties3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
+	#-----------------------------------------------------------------------------
+	  # Panden (dit was een onderdeel van 'gebouw') (nu hier los uit de bgt gehaald, nog even fixen)
+
+	  LAYER
+		NAME                    panden_vlak3
+		GROUP                   hoogte3
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_panden where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		CLASSITEM               "bgt_status"
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "panden_vlak3"
+			"wms_group_title"      "hoogte3"
+		END
+		CLASS
+			EXPRESSION      "bestaand"
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
   #-----------------------------------------------------------------------------
   # Metro achter 3
 
 	LAYER
 		NAME                    metro_achter3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM               "bgt_functie"
 		FILTER					"sneltram"
@@ -2766,8 +3214,8 @@ END
 	LAYER
 		NAME                    metro_voor3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM              "bgt_functie"
 		FILTER					"sneltram"
@@ -2817,8 +3265,9 @@ END
 	LAYER
 			NAME                    snelweg_achter3
 			GROUP                   hoogte3
-			INCLUDE                 "connection/basiskaart.inc"
-			DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+			INCLUDE                 "connection/dataservices.inc"
+			DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+			TYPE                    POLYGON
 			TYPE                    POLYGON
 			FILTERITEM              "bgt_functie"
 			FILTER					"rijbaan autosnelweg"
@@ -2850,8 +3299,8 @@ END
 	LAYER
 		NAME                    snelweg_voor3
 		GROUP                   hoogte3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.wegdeel_vlak3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_wegdelen where relatieve_hoogteligging = '3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		FILTERITEM              "bgt_functie"
 		FILTER					"rijbaan autosnelweg"
@@ -2880,13 +3329,13 @@ END
 
 
   #-----------------------------------------------------------------------------
-  # Gebouw 4
+  # Gebouw 4 (hoogteligging 4 bestaat alleen voor overkapping in overig bouwerk)
 
 	LAYER
-		NAME                    gebouw_vlak4
+		NAME                    overigebouwerken_vlak4
 		GROUP                   hoogte4
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.gebouw_vlak4 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_overigebouwwerken where relatieve_hoogteligging = '4' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    POLYGON
 		CLASSITEM               "bgt_type"
 		MAXSCALEDENOM           3500
@@ -2895,7 +3344,7 @@ END
 			"init=epsg:28992"
 		END
 		METADATA
-			"wms_title"            "gebouw_vlak4"
+			"wms_title"            "overigebouwerken_vlak4"
 			"wms_group_title"      "hoogte4"
 		END
 		CLASS
@@ -2923,12 +3372,12 @@ END
 ## HOOGTELIGGING -3
 #==============================================================================
 
-# Metro -3
+# Metro -3 (sporen bestaat van -3 tot 3)
 	LAYER
 		NAME                    metro_3
 		GROUP                   hoogte_3
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_3 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"sneltram"
@@ -2982,8 +3431,8 @@ END
 	LAYER
 		NAME                    metro_2
 		GROUP                   hoogte_2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"sneltram"
@@ -3033,8 +3482,8 @@ END
 	LAYER
 		NAME                    trein_2
 		GROUP                   hoogte_2
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_2 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"trein"
@@ -3086,12 +3535,46 @@ END
 ## HOOGTELIGGING -1
 #==============================================================================
 
+
+	# Gebouwinstallaties (hierin vallen luivels, trappen etc) -1 
+
+	LAYER
+		NAME                    gebouwinstallaties_1
+		GROUP                   hoogte_1
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_gebouwinstallaties where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+		TYPE                    POLYGON
+		MAXSCALEDENOM           3500
+		MINSCALEDENOM			0
+		PROJECTION
+			"init=epsg:28992"
+		END
+		METADATA
+			"wms_title"            "gebouwinstallaties_1"
+			"wms_group_title"      "hoogte_1"
+		END
+		CLASS
+			MAXSCALEDENOM   3500
+			MINSCALEDENOM	0
+			STYLE
+				COLOR         "#E5E3DE"
+				OUTLINECOLOR  "#C9C7C2"
+				WIDTH         0.9
+				LINECAP       BUTT
+				LINEJOIN      MITER
+			END
+		END
+		
+	END
+
+#===================================================================================
+
 # Metro achter -1
 	LAYER
 		NAME                    metro_achter_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"sneltram"
@@ -3134,8 +3617,8 @@ END
 	LAYER
 		NAME                    metro_voor_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"sneltram"
@@ -3186,8 +3669,8 @@ END
 	LAYER
 		NAME                    tram_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"tram"
@@ -3238,8 +3721,8 @@ END
 	LAYER
 		NAME                    trein_achter_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"trein"
@@ -3282,8 +3765,8 @@ END
 	LAYER
 		NAME                    trein_voor_1
 		GROUP                   hoogte_1
-		INCLUDE                 "connection/basiskaart.inc"
-		DATA                    "geometrie FROM bgt.spoor_lijn_1 USING srid=28992 USING UNIQUE identificatie_lokaalid"
+		INCLUDE                 "connection/dataservices.inc"
+		DATA                    "geometrie FROM (select * from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
 		TYPE                    LINE
 		FILTERITEM				"bgt_functie"
 		FILTER 					"trein"
