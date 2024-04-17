@@ -146,8 +146,24 @@ MAP
   LAYER
     NAME            "meetbout_zaksnelheid"
     GROUP           "meetbouten_zaksnelheid"
-    INCLUDE         "connection/nap.inc"
-    DATA            "geometrie FROM public.geo_meetbouten_meetbout USING srid=28992 USING UNIQUE id"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (
+          SELECT mbt.*, mtn.zakkingssnelheid
+          FROM public.meetbouten_meetbouten mbt
+          LEFT JOIN 
+          (SELECT	*
+          FROM public.meetbouten_metingen
+          WHERE
+          (datum, hoort_bij_meetbout_id) IN
+              (
+              SELECT  MAX(mt.datum) AS datum
+                  , mt.hoort_bij_meetbout_id
+              FROM public.meetbouten_metingen mt
+              GROUP BY mt.hoort_bij_meetbout_id
+              )
+          ) mtn		
+          ON mtn.hoort_bij_meetbout_id=mbt.identificatie) 
+      as subquery USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
