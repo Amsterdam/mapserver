@@ -1,17 +1,3 @@
-#==============================================================================
-#
-# meetbouten.map
-# doel: serveren van Meetbouten gegevens
-#
-#==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# S. Zaat               28-01-2016    schepping
-# S. Preeker            04-02-2016    bekeken
-#
-#==============================================================================
-
 MAP
   NAME "Meetbouten"
   INCLUDE "header.inc"
@@ -148,22 +134,18 @@ MAP
     GROUP           "meetbouten_zaksnelheid"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-          SELECT mbt.*, mtn.zakkingssnelheid
-          FROM public.meetbouten_meetbouten mbt
-          LEFT JOIN 
-          (SELECT	*
-          FROM public.meetbouten_metingen
-          WHERE
-          (datum, hoort_bij_meetbout_id) IN
-              (
-              SELECT  MAX(mt.datum) AS datum
-                  , mt.hoort_bij_meetbout_id
-              FROM public.meetbouten_metingen mt
-              GROUP BY mt.hoort_bij_meetbout_id
-              )
-          ) mtn		
-          ON mtn.hoort_bij_meetbout_id=mbt.identificatie) 
-      as subquery USING srid=28992 USING UNIQUE identificatie"
+        SELECT mbt.*, mtn.zakkingssnelheid FROM
+            public.meetbouten_meetbouten mbt, public.meetbouten_metingen mtn
+        WHERE
+            mtn.hoort_bij_meetbout_id = mbt.identificatie
+        AND
+            (mtn.datum, mtn.hoort_bij_meetbout_id) IN (
+                SELECT max(datum), hoort_bij_meetbout_id FROM
+                    public.meetbouten_metingen
+                GROUP BY hoort_bij_meetbout_id
+            )
+        )
+        AS subquery USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
