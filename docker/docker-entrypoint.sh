@@ -7,10 +7,6 @@ BAG_V11_DB_PORT=${BAG_V11_DB_PORT:-5432}
 BAG_V11_DB_NAME=${BAG_V11_DB_NAME:-bag_v11}
 BAG_V11_DB_USER=${BAG_V11_DB_USER:-${BAG_V11_DB_NAME}}
 
-NAP_DB_PORT=${NAP_DB_PORT:-5432}
-NAP_DB_NAME=${NAP_DB_NAME:-nap}
-NAP_DB_USER=${NAP_DB_USER:-${NAP_DB_NAME}}
-
 PANORAMA_DB_PORT=${PANORAMA_DB_PORT:-5432}
 PANORAMA_DB_NAME=${PANORAMA_DB_NAME:-panorama}
 PANORAMA_DB_USER=${PANORAMA_DB_USER:-${PANORAMA_DB_NAME}}
@@ -40,12 +36,6 @@ mkdir -p /srv/mapserver/connection
 cat > /srv/mapserver/connection/bag.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${BAG_V11_DB_HOST} dbname=${BAG_V11_DB_NAME} user=${BAG_V11_DB_USER} password=$(cat /mnt/secrets-store/bag-v11-db-password) port=${BAG_V11_DB_PORT}"
-PROCESSING "CLOSE_CONNECTION=DEFER"
-EOF
-
-cat > /srv/mapserver/connection/nap.inc <<EOF
-CONNECTIONTYPE postgis
-CONNECTION "host=${NAP_DB_HOST} dbname=${NAP_DB_NAME} user=${NAP_DB_USER} password=$(cat /mnt/secrets-store/nap-db-password) port=${NAP_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
