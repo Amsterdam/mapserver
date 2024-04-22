@@ -386,7 +386,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten
                                 where primaire_functie is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = '{3 x 160 A}' or [capaciteit] = '{3 x 250 A}')
+    #FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = '{3 x 160 A}' or [capaciteit] = '{3 x 250 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
