@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  check_maps:
+  check_mapfiles:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -53,3 +53,22 @@ jobs:
           bomen brk2 ondergrond ziektenplagenexotengroen \
           meldingen_huidige_jaar meldingen_vorige_jaar meldingen_indicatoren \
           monumenten hr
+
+  # Regression test. Asserts that we don't suffer from the MapServer 7.x
+  # bounding box bug https://github.com/MapServer/MapServer/issues/6478.
+  test_bbox:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run MapServer
+      run: docker-compose build map &&
+           docker-compose run -p "8383:80" \
+               -v /tmp/srv/lufo:/mnt/lufo \
+               -v /tmp/srv/infrarood/:/mnt/infrarood \
+               map
+    - name: Projection test
+      run: curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491' |
+               jq '.features | if length > 0 then . else halt_error(1) end'
+    - name: Stop MapServer
+      run: docker-compose down
+
