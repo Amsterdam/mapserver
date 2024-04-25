@@ -384,7 +384,7 @@ MAP
     DATA            "geometry FROM (
                                 select *
                                 from public.bouwstroompunten_bouwstroompunten
-                                where primaire_functie is null
+                                where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
     FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = '{3 x 160 A}' or [capaciteit] = '{3 x 250 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -428,7 +428,7 @@ MAP
     DATA            "geometry FROM (
                                 select *
                                 from public.bouwstroompunten_bouwstroompunten
-                                where primaire_functie is null
+                                where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
     FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -472,7 +472,7 @@ MAP
     DATA            "geometry FROM (
                                 select *
                                 from public.bouwstroompunten_bouwstroompunten
-                                where primaire_functie is null
+                                where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
     FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
@@ -516,7 +516,7 @@ MAP
     DATA            "geometry FROM (
                                 select *
                                 from public.bouwstroompunten_bouwstroompunten
-                                where primaire_functie is null
+                                where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
     FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
