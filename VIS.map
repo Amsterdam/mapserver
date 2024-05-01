@@ -1,0 +1,236 @@
+MAP
+  NAME                      "Verkeersinformatiesystemen"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "Verkeersinformatiesystemen"
+      "ows_abstract"        "Verkeersinformatiesystemen Amsterdam"
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "DRIP"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'DRIP')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "DRIP (Dynamisch Route Informatiepaneel)"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "DRIP (Dynamisch Route Informatiepaneel) Amsterdam"
+    END
+
+    CLASS
+      NAME                  "DRIP"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#312783"
+        SIZE                15
+      END
+    END
+  END
+
+ #==============================================================================================
+
+  LAYER
+    NAME                    "Intelligente Dynamische Afsluitingen"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Intelligente Dynamische Afsluitingen')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Intelligente Dynamische Afsluitingen"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Intelligente Dynamische Afsluitingen Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Intelligente Dynamische Afsluitingen"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#e5906b"
+        SIZE                15
+      END
+    END
+  END
+
+#==============================================================================================
+
+   LAYER
+    NAME                    "Kantelwals"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Kantelwals')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Kantelwals"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Kantelwals Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Kantelwals"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#235481"
+        SIZE                15
+      END
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "Parkeerverwijs-display"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Parkeerverwijs-display')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Parkeerverwijs-display"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Parkeerverwijs-display Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Parkeerverwijs-display"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#9a9e14"
+        SIZE                15
+      END
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "Stadsplattegrond"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Stadsplattegrond')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Stadsplattegrond"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Stadsplattegrond"
+    END
+
+    CLASS
+      NAME                  "Stadsplattegrond"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#61b190"
+        SIZE                15
+      END
+    END
+  END
+
+#==============================================================================================
+
+  LAYER
+    NAME                    "Verkeers attentie verlichting"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Verkeers attentie verlichting')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Verkeers attentie verlichting"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Verkeers attentie verlichting"
+    END
+
+    CLASS
+      NAME                  "Verkeers attentie verlichting"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#cf7caa"
+        SIZE                15
+      END
+    END
+  END
+
+#==============================================================================================
+
+  LAYER
+    NAME                    "Verkeerscamera"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Verkeerscamera')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Verkeerscamera"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Verkeerscamera"
+    END
+
+    CLASS
+      NAME                  "Verkeerscamera"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#65b32e"
+        SIZE                15
+      END
+    END
+  END
+
+#==============================================================================================
+
+  LAYER
+    NAME                    "Verkeerstelpunt"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Verkeerstelpunt')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Verkeerstelpunt"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Verkeerstelpunt"
+    END
+
+    CLASS
+      NAME                  "Verkeerstelpunt"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#9d4100"
+        SIZE                15
+      END
+    END
+  END
+
+
+END
