@@ -1,0 +1,171 @@
+MAP
+  NAME                      "nieuwbouwplannen"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "Nieuwbouwplannen"
+      "ows_abstract"        "Nieuwbouwplannen woningbouw openbaar Amsterdam"
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "Fase_1"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    FILTER                  ([plaberum_publicatie] = 'Fase 1: Verkenning')
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Fase 1: verkenning"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Fase 1: verkenning Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Fase 1"
+      STYLE
+        ANTIALIAS true
+        COLOR "#4CBC84"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#4CBC84"
+        WIDTH 2
+      END
+    END
+  END
+
+    #==============================================================================================
+
+  LAYER
+    NAME                    "Fase_2_3"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    FILTER                  ([plaberum_publicatie] = 'Fase 2&3: Haalbaarheid en ontwerp')
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Fase 2&3: Haalbaarheid en ontwerp"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Fase 2&3: Haalbaarheid en ontwerp Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Fase 2&3"
+      STYLE
+        ANTIALIAS true
+        COLOR "#4CC2E9"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#4CC2E9"
+        WIDTH 2
+      END
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "Fase_4"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    FILTER                  ([plaberum_publicatie] = 'Fase 4: Voorbereiding en uitvoering')
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Fase 4: Voorbereiding en uitvoering"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Fase 4: Voorbereiding en uitvoering Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Fase 4"
+      STYLE
+        ANTIALIAS true
+        COLOR "#FFBC4C"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#FFBC4C"
+        WIDTH 2
+      END
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "Fase_5"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    FILTER                  ([plaberum_publicatie] = 'Fase 5: Gestart')
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Fase 5: Gestart"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Fase 5: Gestart Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Fase 5"
+      STYLE
+        ANTIALIAS true
+        COLOR "#FF6262"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#FF6262"
+        WIDTH 2
+      END
+    END
+  END
+
+#==============================================================================================
+
+  LAYER
+    NAME                    "onbekend"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    FILTER                  ([plaberum_publicatie] = 'Onbekend')
+    TYPE                    POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "Onbekend"
+      "wms_srs"             "EPSG:28992"
+      "wms_abstract"        "Onbekend voortgang nieuwbouwplannen woningbouw Amsterdam"
+    END
+
+    CLASS
+      NAME                  "Onbekend"
+      STYLE
+        ANTIALIAS true
+        COLOR "#C0C0C0"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#C0C0C0"
+        WIDTH 2
+      END
+    END
+  END
+
+END
