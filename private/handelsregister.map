@@ -1,3704 +1,2541 @@
-#==============================================================================
-#
-# handelsregister.map
-# doel: serveren van handelsregister gegevens
-#
-#==============================================================================
-#
-# naam                  datum         wijziging
-# ------------------    ----------    -----------------------------------------
-# S. Preeker            20-09-2016    schepping
-# D.J. Kniep            03-10-2016    Aanpassing ivm. verschillende layers
-#==============================================================================
-
 MAP
-  NAME    "Handelsregister"
-  INCLUDE "header.inc"
-
+  NAME 'Handelsregister'
+  INCLUDE 'header.inc'
+  DEBUG 5
   WEB
     METADATA
-      "ows_title"           "Handelsregister"
-      "ows_abstract"        "Vestigingen in de gemeente Amsterdam uit het Handelsregister"
+      'ows_title' 'Handelsregister'
+      'ows_abstract' 'Vestigingen in de gemeente Amsterdam uit het Handelsregister'
     END
   END
-
-#=============================================================================
-# LAYERS
-# Kleuren zijn voor alle layers hetzelfde! De (nieuwe) Amsterdamse standaard kleuren
-
-#   COLOR oranje       255 145 0
-#   COLOR geel         255 230 0
-#   COLOR lichtgroen   190 210 0
-#   COLOR lichtblauw   0 157 230
-#   COLOR donkerblauw  0 70 153
-#   COLOR paars        160 0 120
-#   COLOR roze         229 0 130
-#   COLOR blauwgroen   0 210 180
-#   COLOR groen        0 160 60
-#   COLOR lichtoranje  255 199 0
-#   COLOR roodbruin    160 0 0
-#   COLOR rood         236 0 0
-#=============================================================================
-#
-# Opzet is nu: 1 (union) layer, die 1 sub layer (de punten zelf en 
-# de correcties) toont. Om het mogelijk te maken dat de layer met correcties 
-# over de punten heen gelegd kan worden en dit correctie icoon maar 1 keer in 
-# de legenda staat. 
-#
-# Ivm een mapserver bug dat de legenda van deze union layer niet 
-# wordt geleverd, staan de iconen van de punten en correcties ook in de union
-# layer. Ze staan er dus dubbel, zowel in de union layer, als in de sub layers.
-#
-#==============================================================================
-
   LEGEND
     STATUS ON
     KEYSIZE 16 16
   END
-
   LAYER
-    NAME            "vestiging"
-    GROUP           "vestigingen"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   10
-    MAXSCALEDENOM   9001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-      "ows_title"           "vestiging"
-      "ows_group_title"     "vestigingen"
-      "ows_abstract"        "Vestigingslocaties, bezoek- en postadressen"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "vestiging (bij benadering)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         "stip"
-        SIZE           10
-        # Voor all correctie = 'true' stippen
-        OUTLINECOLOR    99 99 99
-        COLOR          255 10 10
-      END
-    END
-
-    CLASS
-      NAME "vestiging"
-      STYLE
-        SYMBOL         "stip"
-        SIZE           10
-        OUTLINECOLOR   10  10 10
-        COLOR          10 205 10
-        WIDTH          1
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "vestiging_label"
-    GROUP           "vestigingen"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    #PROJECTION
-    #  "init=epsg:28992"
-    #END
-    METADATA
-      "ows_title"           "vestiging_label"
-      "ows_group_title"     "vestigingen_label"
-      "ows_abstract"        "Labels van vestigingslocaties, bezoek- en postadressen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
-      LABEL
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-        ANTIALIAS      true
-      END
-    END
-  END
-
-#=============================================================================
-# CBS indeling bouw
-#=============================================================================
-
-  LAYER
-    NAME "bouw"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
+    NAME 'a_landbouw_bosbouw_en_visserij'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "bouw_punten" #reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "bouw"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Bouwbedrijven"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "Afwerking van gebouwen"
-      EXPRESSION ("[q2]" eq "afwerking van gebouwen")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Bouwinstallatie"
-      EXPRESSION ("[q2]" eq "bouwinstallatie")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
-      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Dak- en overige gespecialiseerde bouw"
-      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Grond, water, wegenbouw"
-      EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige bouw"
-      EXPRESSION ("[q2]" eq "bouw overig")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "bouw_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "bouw_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Bouwbedrijven, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Afwerking van gebouwen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "afwerking van gebouwen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Afwerking van gebouwen"
-      EXPRESSION ("[q2]" eq "afwerking van gebouwen")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Bouwinstallatie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "bouwinstallatie" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Bouwinstallatie"
-      EXPRESSION ("[q2]" eq "bouwinstallatie")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Bouw/utiliteitsbouw algemeen / klusbedrijf"
-      EXPRESSION ("[q2]" eq "bouw/utiliteitsbouw algemeen")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Dak- en overige gespecialiseerde bouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Dak- en overige gespecialiseerde bouw"
-      EXPRESSION ("[q2]" eq "dak- en overige gespecialiseerde bouw")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Grond, water, wegenbouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "grond, water, wegenbouw" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Grond, water, wegenbouw"
-      EXPRESSION ("[q2]" eq "grond, water, wegenbouw")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige bouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "bouw overig" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Overige bouw"
-      EXPRESSION ("[q2]" eq "bouw overig")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
-  
-  LAYER
-    NAME            "bouw_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "bouw_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Bouwbedrijven, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "bouw_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
     METADATA
-      "ows_title"           "bouw_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
+      'wms_title' 'A Landbouw, bosbouw en visserij'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    LABELITEM          "naam"
-
     CLASS
+      NAME 'landbouw_jacht_en_dienstverlening_voor_de_landbouw_en_jacht'
+EXPRESSION ("[sbi_code_group]" eq "01")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF0000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR          0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'bosbouw_exploitatie_van_bossen_en_dienstverlening_voor_de_bosbouw'
+EXPRESSION ("[sbi_code_group]" eq "02")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'visserij_en_kweken_van_vis_en_schaaldieren'
+EXPRESSION ("[sbi_code_group]" eq "03")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#0000FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-
-
-#=============================================================================
-# CBS indeling cultuur, sport, recreatie
-#=============================================================================
-
   LAYER
-    NAME "cultuur_sport_recreatie"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
+    NAME 'b_winning_van_delfstoffen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "cultuur_sport_recreatie_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "cultuur_sport_recreatie"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van cultuur, sport en recreatie"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'B Winning van delfstoffen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    
     CLASS
-      NAME "Kunst"
-      EXPRESSION ("[q2]" eq "kunst")
+      NAME 'winning_van_aardolie_en_aardgas'
+EXPRESSION ("[sbi_code_group]" eq "06")
       STYLE
-        SYMBOL         'cirkel_lichtoranje'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFFF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Musea, Bibliotheken, Kunstuitleen"
-      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Recreatie"
-      EXPRESSION ("[q2]" eq "recreatie")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Sport"
-      EXPRESSION ("[q2]" eq "sport")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-    
-  #-----------------------------------------------------------------------------
- 
-  LAYER
-    NAME            "cultuur_sport_recreatie_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "cultuur_sport_recreatie_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van cultuur, sport en recreatie, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Kunst, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "kunst" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtoranje_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Kunst"
-      EXPRESSION ("[q2]" eq "kunst")
-      STYLE
-        SYMBOL         'cirkel_lichtoranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Musea, Bibliotheken, Kunstuitleen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Musea, Bibliotheken, Kunstuitleen"
-      EXPRESSION ("[q2]" eq "musea, bibliotheken, kunstuitleen")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Recreatie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "recreatie" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Recreatie"
-      EXPRESSION ("[q2]" eq "recreatie")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Sport, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "sport" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Sport"
-      EXPRESSION ("[q2]" eq "sport")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
- 
-  LAYER
-    NAME            "cultuur_sport_recreatie_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-
-    METADATA
-      "ows_title"           "cultuur_sport_recreatie_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van cultuur, sport en recreatie, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "cultuur_sport_recreatie_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "cultuur_sport_recreatie_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1000
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'winning_van_delfstoffen_geen_olie_en_gas'
+EXPRESSION ("[sbi_code_group]" eq "08")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'dienstverlening_voor_de_winning_van_delfstoffen'
+EXPRESSION ("[sbi_code_group]" eq "09")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling financiele dienstverlening
-#=============================================================================
-
   LAYER
-    NAME "financiele_dienstverlening_verhuur"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
+    NAME 'c_industrie'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "financiele_dienstverlening_verhuur_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "financiele_dienstverlening_verhuur"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van financiele dienstverleners en verhuur van roerende en onroerende goederen"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "Financiële dienstverlening en verzekeringen"
-      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Holdings"
-      EXPRESSION ("[q2]" eq "holdings")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Verhuur van- en beheer/handel in onroerend goed"
-      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Verhuur van roerende goederen"
-      EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "financiele_dienstverlening_verhuur_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
     METADATA
-      "ows_title"           "financiele_dienstverlening_verhuur_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van financiele dienstverleners en verhuur van roerende en onroerende goederen, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'C Industrie'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-
     CLASS
-      NAME "Financiële dienstverlening en verzekeringen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen" && '[correctie]' = 'true')
+      NAME 'vervaardiging_van_voedingsmiddelen'
+EXPRESSION ("[sbi_code_group]" eq "10")
       STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Financiële dienstverlening en verzekeringen"
-      EXPRESSION ("[q2]" eq "financiële dienstverlening en verzekeringen")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Holdings, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "holdings" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Holdings"
-      EXPRESSION ("[q2]" eq "holdings")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Verhuur van- en beheer/handel in onroerend goed, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Verhuur van- en beheer/handel in onroerend goed"
-      EXPRESSION ("[q2]" eq "verhuur van- en beheer/handel in onroerend goed")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Verhuur van roerende goederen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "verhuur van roerende goederen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "Verhuur van roerende goederen"
-      EXPRESSION ("[q2]" eq "verhuur van roerende goederen")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "financiele_dienstverlening_verhuur_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-      "ows_title"           "financiele_dienstverlening_verhuur_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van financiele dienstverleners en verhuur van roerende en onroerende goederen, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "financiele_dienstverlening_verhuur_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur_na USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "financiele_dienstverlening_verhuur_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_dranken'
+EXPRESSION ("[sbi_code_group]" eq "11")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_tabaksproducten'
+EXPRESSION ("[sbi_code_group]" eq "12")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF4500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_textiel'
+EXPRESSION ("[sbi_code_group]" eq "13")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#228B22'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_kleding'
+EXPRESSION ("[sbi_code_group]" eq "14")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4169E1'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_leer_lederwaren_en_schoenen'
+EXPRESSION ("[sbi_code_group]" eq "15")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF69B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'primaire_houtbewerking_en_vervaardiging_van_artikelen_van_hout_kurk_riet_en_vlechtwerk_geen_meubels'
+EXPRESSION ("[sbi_code_group]" eq "16")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#32CD32'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_papier_karton_en_papier_en_kartonwaren'
+EXPRESSION ("[sbi_code_group]" eq "17")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8A2BE2'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'drukkerijen_reproductie_van_opgenomen_media'
+EXPRESSION ("[sbi_code_group]" eq "18")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#DC143C'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_cokesovenproducten_en_aardolieverwerking'
+EXPRESSION ("[sbi_code_group]" eq "19")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00CED1'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_chemische_producten'
+EXPRESSION ("[sbi_code_group]" eq "20")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFD700'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_farmaceutische_grondstoffen_en_producten'
+EXPRESSION ("[sbi_code_group]" eq "21")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#808000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_producten_van_rubber_en_kunststof'
+EXPRESSION ("[sbi_code_group]" eq "22")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4682B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_niet_metaalhoudende_minerale_producten'
+EXPRESSION ("[sbi_code_group]" eq "23")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF7F'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_metalen_in_primaire_vorm'
+EXPRESSION ("[sbi_code_group]" eq "24")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8B008B'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_producten_van_metaal_geen_machines_en_apparaten'
+EXPRESSION ("[sbi_code_group]" eq "25")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF6347'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_computers_en_van_elektronische_en_optische_apparatuur'
+EXPRESSION ("[sbi_code_group]" eq "26")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#556B2F'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_elektrische_apparatuur'
+EXPRESSION ("[sbi_code_group]" eq "27")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_machines_en_apparaten'
+EXPRESSION ("[sbi_code_group]" eq "28")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#9932CC'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_auto_s_aanhangwagens_en_opleggers'
+EXPRESSION ("[sbi_code_group]" eq "29")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#20B2AA'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_transportmiddelen'
+EXPRESSION ("[sbi_code_group]" eq "30")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FA8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_meubels'
+EXPRESSION ("[sbi_code_group]" eq "31")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#2E8B57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervaardiging_van_overige_goederen'
+EXPRESSION ("[sbi_code_group]" eq "32")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#6A5ACD'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reparatie_en_installatie_van_machines_en_apparaten'
+EXPRESSION ("[sbi_code_group]" eq "33")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#B22222'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling handel, vervoer, opslag
-#=============================================================================
-
   LAYER
-    NAME       "handel_vervoer_opslag"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
+    NAME 'd_productie_en_distributie_van_en_handel_in_elektriciteit_aardgas_stoom_en_gekoelde_lucht'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "handel_vervoer_opslag_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "handel_vervoer_opslag"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'D Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    
     CLASS
-      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
-      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
+      NAME 'productie_en_distributie_van_en_handel_in_elektriciteit_aardgas_stoom_en_gekoelde_lucht'
+EXPRESSION ("[sbi_code_group]" eq "35")
       STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4682B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Dienstverlening vervoer"
-      EXPRESSION ("[q2]" eq "dienstverlening vervoer")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
-      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Handel en reparatie van auto's"
-      EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
-      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Opslag"
-      EXPRESSION ("[q2]" eq "opslag")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Vervoer"
-      EXPRESSION ("[q2]" eq "vervoer")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------  
-
-  LAYER
-    NAME            "handel_vervoer_opslag_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "handel_vervoer_opslag_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Detailhandel (verkoop aan consumenten, niet zelf vervaardigd)"
-      EXPRESSION ("[q2]" eq "detailhandel (verkoop aan consumenten, niet zelf vervaardigd)")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Dienstverlening vervoer, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "dienstverlening vervoer" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Dienstverlening vervoer"
-      EXPRESSION ("[q2]" eq "dienstverlening vervoer")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)"
-      EXPRESSION ("[q2]" eq "groothandel (verkoop aan andere ondernemingen, niet zelf vervaardigd)")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Handel en reparatie van auto's, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "handel en reparatie van auto s" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Handel en reparatie van auto's"
-      EXPRESSION ("[q2]" eq "handel en reparatie van auto s")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Handelsbemiddeling (tussenpersoon, verkoopt niet zelf)"
-      EXPRESSION ("[q2]" eq "handelsbemiddeling (tussenpersoon, verkoopt niet zelf)")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Opslag, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "opslag" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Opslag"
-      EXPRESSION ("[q2]" eq "opslag")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Vervoer, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "vervoer" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Vervoer"
-      EXPRESSION ("[q2]" eq "vervoer")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-  
-  LAYER
-    NAME            "handel_vervoer_opslag_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "handel_vervoer_opslag_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Handel, vervoer en opslag van goederen, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "handel_vervoer_opslag_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "handel_vervoer_opslag_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling horeca
-#=============================================================================
-
   LAYER
-    NAME       "horeca"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
+    NAME 'e_winning_en_distributie_van_water_afval_en_afvalwaterbeheer_en_sanering'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "horeca_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "Horeca"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Horeca vestigingen bezoek"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'E Winning en distributie van water; afval- en afvalwaterbeheer en sanering'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-
     CLASS
-      NAME "Café"
-      EXPRESSION ("[q2]" eq "café")
+      NAME 'winning_en_distributie_van_water'
+EXPRESSION ("[sbi_code_group]" eq "36")
       STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Cafetaria, Snackbar, IJssalon"
-      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hotel, Pension"
-      EXPRESSION ("[q2]" eq "hotel, pension")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hotel-restaurant"
-      EXPRESSION ("[q2]" eq "hotel-restaurant")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Kantine, Catering"
-      EXPRESSION ("[q2]" eq "kantine, catering")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Restaurant, Café-restaurant"
-      EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige horeca"
-      EXPRESSION ("[q2]" eq "overig, te weten")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "horeca_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Horeca_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Horeca vestigingen bezoek, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Café, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "café" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Café"
-      EXPRESSION ("[q2]" eq "café")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Cafetaria, Snackbar, IJssalon, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Cafetaria, Snackbar, IJssalon"
-      EXPRESSION ("[q2]" eq "cafetaria, snackbar, ijssalon")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hotel, Pension, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "hotel, pension" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hotel, Pension"
-      EXPRESSION ("[q2]" eq "hotel, pension")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hotel-restaurant, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "hotel-restaurant" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hotel-restaurant"
-      EXPRESSION ("[q2]" eq "hotel-restaurant")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Kantine, Catering, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "kantine, catering" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Kantine, Catering"
-      EXPRESSION ("[q2]" eq "kantine, catering")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Restaurant, Café-restaurant, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "restaurant, café-restaurant" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Restaurant, Café-restaurant"
-      EXPRESSION ("[q2]" eq "restaurant, café-restaurant")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige horeca, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overig, te weten" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige horeca"
-      EXPRESSION ("[q2]" eq "overig, te weten")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "horeca_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Horeca_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Horeca vestigingen bezoek, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "horeca_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "horeca_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR          0   0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
-        ANTIALIAS      true
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'afvalwaterinzameling_en_behandeling'
+EXPRESSION ("[sbi_code_group]" eq "37")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'afvalinzameling_en_behandeling_voorbereiding_tot_recycling'
+EXPRESSION ("[sbi_code_group]" eq "38")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3377FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'sanering_en_overig_afvalbeheer'
+EXPRESSION ("[sbi_code_group]" eq "39")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF33FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling telecommunicatie @nico
-#=============================================================================
-
   LAYER
-    NAME       "telecommunicatie"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
+    NAME 'f_bouwnijverheid'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "telecommunicatie_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "Telecommunicatie"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van telecommunicatie"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'F Bouwnijverheid'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-
     CLASS
-      NAME "Activiteiten op gebied van film, tv, radio, audio"
-      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio")
+      NAME 'algemene_burgerlijke_en_utiliteitsbouw_en_projectontwikkeling'
+EXPRESSION ("[sbi_code_group]" eq "41")
       STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Activiteiten op het gebied van ict"
-      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Telecommunicatie"
-      EXPRESSION ("[q2]" eq "telecommunicatie")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Uitgeverijen"
-      EXPRESSION ("[q2]" eq "uitgeverijen")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "telecommunicatie_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Telecommunicatie_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van telecommunicatie, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Activiteiten op gebied van film, tv, radio, audio, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Activiteiten op gebied van film, tv, radio, audio"
-      EXPRESSION ("[q2]" eq "activiteiten  op gebied van film, tv, radio, audio")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Activiteiten op het gebied van ict, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Activiteiten op het gebied van ict"
-      EXPRESSION ("[q2]" eq "activiteiten op het gebied van ict")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Telecommunicatie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "telecommunicatie" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Telecommunicatie"
-      EXPRESSION ("[q2]" eq "telecommunicatie")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Uitgeverijen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "uitgeverijen"  && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Uitgeverijen"
-      EXPRESSION ("[q2]" eq "uitgeverijen")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "telecommunicatie_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Telecommunicatie_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van telecommunicatie, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "telecommunicatie_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "telecommunicatie_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-
-    LABELITEM          "naam"
-
-    CLASS
-      NAME "post"
-      EXPRESSION ("[locatie_type]" eq "P")
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1000
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
-
     CLASS
-      NAME "bezoek"
-      EXPRESSION ("[locatie_type]" eq "B")
+      NAME 'grond_water_en_wegenbouw_geen_grondverzet'
+EXPRESSION ("[sbi_code_group]" eq "42")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1000
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'gespecialiseerde_werkzaamheden_in_de_bouw'
+EXPRESSION ("[sbi_code_group]" eq "43")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3377FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling landbouw
-#=============================================================================
-
   LAYER
-    NAME       "landbouw"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
+    NAME 'g_groot_en_detailhandel_reparatie_van_auto_s'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "landbouw_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Landbouw"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen landbouw organisaties"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Dienstverlening voor de land/tuinbouw"
-      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Fokken, houden dieren"
-      EXPRESSION ("[q2]" eq "fokken, houden dieren")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Gemengd bedrijf"
-      EXPRESSION ("[q2]" eq "gemengd bedrijf")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt eenjarige gewassen"
-      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt meerjarige gewassen"
-      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt sierplanten"
-      EXPRESSION ("[q2]" eq "teelt sierplanten")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "landbouw_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
     METADATA
-      "ows_title"           "Landbouw_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen landbouw organisaties, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' "G Groot- en detailhandel; reparatie van auto's"
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-
     CLASS
-      NAME "Dienstverlening voor de land/tuinbouw, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw" && '[correctie]' = 'true')
+      NAME 'handel_in_en_reparatie_van_auto_s_motorfietsen_en_aanhangers'
+EXPRESSION ("[sbi_code_group]" eq "45")
       STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Dienstverlening voor de land/tuinbouw"
-      EXPRESSION ("[q2]" eq "dienstverlening voor de land/tuinbouw")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Fokken, houden dieren, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "fokken, houden dieren" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Fokken, houden dieren"
-      EXPRESSION ("[q2]" eq "fokken, houden dieren")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Gemengd bedrijf, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "gemengd bedrijf" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Gemengd bedrijf"
-      EXPRESSION ("[q2]" eq "gemengd bedrijf")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt eenjarige gewassen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt eenjarige gewassen"
-      EXPRESSION ("[q2]" eq "teelt eenjarige gewassen")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt meerjarige gewassen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt meerjarige gewassen"
-      EXPRESSION ("[q2]" eq "teelt meerjarige gewassen")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt sierplanten, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "teelt sierplanten" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Teelt sierplanten"
-      EXPRESSION ("[q2]" eq "teelt sierplanten")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "landbouw_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    METADATA
-      "ows_title"           "Landbouw_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen landbouw organisaties, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "landbouw_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "landbouw_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'groothandel_en_handelsbemiddeling_niet_in_auto_s_en_motorfietsen'
+EXPRESSION ("[sbi_code_group]" eq "46")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'detailhandel_niet_in_auto_s'
+EXPRESSION ("[sbi_code_group]" eq "47")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3366FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling overheid, onderwijs, zorg
-#=============================================================================
-
   LAYER
-    NAME       "overheid_onderwijs_zorg"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
+    NAME 'h_vervoer_en_opslag'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "overheid_onderwijs_zorg_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "overheid_onderwijs_zorg"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "Gezondheids- en welzijnszorg"
-      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onderwijs"
-      EXPRESSION ("[q2]" eq "onderwijs")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overheid"
-      EXPRESSION ("[q2]" eq "overheid")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-    
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "overheid_onderwijs_zorg_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "overheid_onderwijs_zorg_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Gezondheids- en welzijnszorg, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Gezondheids- en welzijnszorg"
-      EXPRESSION ("[q2]" eq "gezondheids- en welzijnszorg")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onderwijs, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "onderwijs" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onderwijs"
-      EXPRESSION ("[q2]" eq "onderwijs")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overheid, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overheid" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overheid"
-      EXPRESSION ("[q2]" eq "overheid")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "overheid_onderwijs_zorg_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "overheid_onderwijs_zorg_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Overheid Onderwijs Zorg, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "overheid_onderwijs_zorg_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
     METADATA
-      "ows_title"           "overheid_onderwijs_zorg_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
+      'wms_title' 'H Vervoer en opslag'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    LABELITEM          "naam"
-
     CLASS
+      NAME 'vervoer_over_land'
+EXPRESSION ("[sbi_code_group]" eq "49")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF5733'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'vervoer_over_water'
+EXPRESSION ("[sbi_code_group]" eq "50")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#33FF57'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'luchtvaart'
+EXPRESSION ("[sbi_code_group]" eq "51")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#3366FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'opslag_en_dienstverlening_voor_vervoer'
+EXPRESSION ("[sbi_code_group]" eq "52")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF33FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'post_en_koeriers'
+EXPRESSION ("[sbi_code_group]" eq "53")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFFF33'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling persoonlijke dienstverlening
-#=============================================================================
-
   LAYER
-    NAME       "persoonlijke_dienstverlening"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    NAME 'i_logies_maaltijd_en_drankverstrekking'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "persoonlijke_dienstverlening_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "persoonlijke dienstverlening"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen persoonlijke dienstverlening"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'I Logies-, maaltijd- en drankverstrekking'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    
     CLASS
-      NAME "Kappers"
-      EXPRESSION ("[q2]" eq "kappers")
+      NAME 'logiesverstrekking'
+EXPRESSION ("[sbi_code_group]" eq "55")
       STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF8080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Sauna, solaria"
-      EXPRESSION ("[q2]" eq "sauna, solaria")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Schoonheidsverzorging"
-      EXPRESSION ("[q2]" eq "schoonheidsverzorging")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Uitvaart, crematoria"
-      EXPRESSION ("[q2]" eq "uitvaart, crematoria")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige dienstverlening"
-      EXPRESSION ("[q2]" eq "overige dienstverlening")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-    
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "persoonlijke_dienstverlening_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "persoonlijke dienstverlening_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen persoonlijke dienstverlening, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Kappers, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "kappers" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Kappers"
-      EXPRESSION ("[q2]" eq "kappers")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Sauna, solaria, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "sauna, solaria" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Sauna, solaria"
-      EXPRESSION ("[q2]" eq "sauna, solaria")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Schoonheidsverzorging, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "schoonheidsverzorging" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Schoonheidsverzorging"
-      EXPRESSION ("[q2]" eq "schoonheidsverzorging")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Uitvaart, crematoria, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "uitvaart, crematoria" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Uitvaart, crematoria"
-      EXPRESSION ("[q2]" eq "uitvaart, crematoria")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige dienstverlening, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overige dienstverlening" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige dienstverlening"
-      EXPRESSION ("[q2]" eq "overige dienstverlening")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-  
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "persoonlijke_dienstverlening_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "persoonlijke dienstverlening_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen persoonlijke dienstverlening, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "persoonlijke_dienstverlening_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "persoonlijke_dienstverlening_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
-      NAME "post"
-      EXPRESSION ("[locatie_type]" eq "P")
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
-
     CLASS
-      NAME "bezoek"
-      EXPRESSION ("[locatie_type]" eq "B")
+      NAME 'eet_en_drinkgelegenheden'
+EXPRESSION ("[sbi_code_group]" eq "56")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BFBFBF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
- END
-
-#=============================================================================
-# CBS indeling productie, installatie en reparatie
-#=============================================================================
-
+  END
   LAYER
-    NAME       "productie_installatie_reparatie"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
+    NAME 'j_informatie_en_communicatie'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "productie_installatie_reparatie_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "productie_installatie_reparatie"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "Installatie (geen bouw)"
-      EXPRESSION ("[q2]" eq "installatie (geen bouw)")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Productie"
-      EXPRESSION ("[q2]" eq "productie")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Reparatie (geen bouw)"
-      EXPRESSION ("[q2]" eq "reparatie (geen bouw)")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "productie_installatie_reparatie_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "productie_installatie_reparatie_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Installatie (geen bouw), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "installatie (geen bouw)" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Installatie (geen bouw)"
-      EXPRESSION ("[q2]" eq "installatie (geen bouw)")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Productie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "productie" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Productie"
-      EXPRESSION ("[q2]" eq "productie")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Reparatie (geen bouw), gecorrigeerd"
-      EXPRESSION ("[q2]" eq "reparatie (geen bouw)" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Reparatie (geen bouw)"
-      EXPRESSION ("[q2]" eq "reparatie (geen bouw)")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "productie_installatie_reparatie_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "productie_installatie_reparatie_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Productie, Installatie, Reparatie, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "productie_installatie_reparatie_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
     METADATA
-      "ows_title"           "productie_installatie_reparatie_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
+      'wms_title' 'J Informatie en communicatie'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    LABELITEM          "naam"
-
     CLASS
+      NAME 'uitgeverijen'
+EXPRESSION ("[sbi_code_group]" eq "58")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF80FD'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'productie_en_distributie_van_films_en_televisieprogramma_s_maken_en_uitgeven_van_geluidsopnamen'
+EXPRESSION ("[sbi_code_group]" eq "59")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF80BF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'verzorgen_en_uitzenden_van_radio_en_televisieprogramma_s'
+EXPRESSION ("[sbi_code_group]" eq "60")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF8040'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'telecommunicatie'
+EXPRESSION ("[sbi_code_group]" eq "61")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BFBF80'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'dienstverlenende_activiteiten_op_het_gebied_van_informatietechnologie'
+EXPRESSION ("[sbi_code_group]" eq "62")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BFBFBF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'dienstverlenende_activiteiten_op_het_gebied_van_informatie'
+EXPRESSION ("[sbi_code_group]" eq "63")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#BF8080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling zakelijke dienstverlening
-#=============================================================================
-
   LAYER
-    NAME       "zakelijke_dienstverlening"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
+    NAME 'k_financiele_instellingen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "zakelijke_dienstverlening_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "zakelijke_dienstverlening"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Zakelijke dienstverlening"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "Accountancy, administratie"
-      EXPRESSION ("[q2]" eq "accountancy, administratie")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Advocaten rechtskundige diensten, notarissen"
-      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
-      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Architecten"
-      EXPRESSION ("[q2]" eq "architecten")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Design"
-      EXPRESSION ("[q2]" eq "design")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Interieurarchitecten"
-      EXPRESSION ("[q2]" eq "interieurarchitecten")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Managementadvies, economisch advies"
-      EXPRESSION ("[q2]" eq "managementadvies, economisch advies")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Public relationsbureaus"
-      EXPRESSION ("[q2]" eq "public relationsbureaus")
-      STYLE
-        SYMBOL         'cirkel_blauwgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Reclame en Marktonderzoek"
-      EXPRESSION ("[q2]" eq "reclame en marktonderzoek")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Technisch ontwerp, advies, keuring/research"
-      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
-      STYLE
-        SYMBOL         'cirkel_donkerrood'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige zakelijke dienstverlening"
-      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening")
-      STYLE
-        SYMBOL         'cirkel_grijs'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-    
-  END
-  
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "zakelijke_dienstverlening_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "zakelijke_dienstverlening_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Zakelijke dienstverlening, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Accountancy, administratie, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "accountancy, administratie" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Accountancy, administratie"
-      EXPRESSION ("[q2]" eq "accountancy, administratie")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Advocaten rechtskundige diensten, notarissen, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Advocaten rechtskundige diensten, notarissen"
-      EXPRESSION ("[q2]" eq "advocaten rechtskundige diensten, notarissen")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Arbeidsbemiddeling, Uitzendbureaus, Uitleenbureaus"
-      EXPRESSION ("[q2]" eq "arbeidsbemiddeling, uitzendbureaus, uitleenbureaus")
-      STYLE
-        SYMBOL         'cirkel_lichtgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Architecten, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "architecten" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_lichtblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Architecten"
-      EXPRESSION ("[q2]" eq "architecten")
-      STYLE
-        SYMBOL         'cirkel_lichtblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Design, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "design" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Design"
-      EXPRESSION ("[q2]" eq "design")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Interieurarchitecten, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "interieurarchitecten" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_paars_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Interieurarchitecten"
-      EXPRESSION ("[q2]" eq "interieurarchitecten")
-      STYLE
-        SYMBOL         'cirkel_paars'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Managementadvies, economisch advies, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "managementadvies, economisch advies" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_roze_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Managementadvies, economisch advies"
-      EXPRESSION ("[q2]" eq "managementadvies, economisch advies")
-      STYLE
-        SYMBOL         'cirkel_roze'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Public relationsbureaus, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "public relationsbureaus" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_blauwgroen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Public relationsbureaus"
-      EXPRESSION ("[q2]" eq "public relationsbureaus")
-      STYLE
-        SYMBOL         'cirkel_blauwgroen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Reclame en Marktonderzoek, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "reclame en marktonderzoek" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Reclame en Marktonderzoek"
-      EXPRESSION ("[q2]" eq "reclame en marktonderzoek")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Technisch ontwerp, advies, keuring/research, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_donkerrood_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Technisch ontwerp, advies, keuring/research"
-      EXPRESSION ("[q2]" eq "technisch ontwerp, advies, keuring/research")
-      STYLE
-        SYMBOL         'cirkel_donkerrood'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige zakelijke dienstverlening, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_grijs_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige zakelijke dienstverlening"
-      EXPRESSION ("[q2]" eq "overige zakelijke dienstverlening")
-      STYLE
-        SYMBOL         'cirkel_grijs'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-#-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "zakelijke_dienstverlening_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "zakelijke_dienstverlening_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van Zakelijke dienstverlening, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "zakelijke_dienstverlening_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
     METADATA
-      "ows_title"           "zakelijke_dienstverlening_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
+      'wms_title' 'K Financiële instellingen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    LABELITEM          "naam"
-
     CLASS
+      NAME 'financiele_instellingen_geen_verzekeringen_en_pensioenfondsen'
+EXPRESSION ("[sbi_code_group]" eq "64")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF6347'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'verzekeringen_en_pensioenfondsen_geen_verplichte_sociale_verzekeringen'
+EXPRESSION ("[sbi_code_group]" eq "65")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4682B4'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'overige_financiele_dienstverlening'
+EXPRESSION ("[sbi_code_group]" eq "66")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#9400D3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
-# CBS indeling overig
-#=============================================================================
-
   LAYER
-    NAME            "overige"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
+    NAME 'l_verhuur_van_en_handel_in_onroerend_goed'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    CONNECTIONTYPE UNION
-    CONNECTION "overige_punten" # reference to the source layers
-    STYLEITEM "AUTO"
+    LABELITEM 'naam'
     PROJECTION
-      "init=epsg:28992"
+      'init=epsg:28992'
     END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
     METADATA
-      "ows_title"           "Overige"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van overige organisaties"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
+      'wms_title' 'L Verhuur van en handel in onroerend goed'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
     END
-
     CLASS
-      NAME "Belangenorganisaties"
-      EXPRESSION ("[q2]" eq "belangenorganisaties")
+      NAME 'verhuur_van_en_handel_in_onroerend_goed'
+EXPRESSION ("[sbi_code_group]" eq "68")
       STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
       END
-    END
-
-    CLASS
-      NAME "Hobbyclubs"
-      EXPRESSION ("[q2]" eq "hobbyclubs")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Ideële organisaties"
-      EXPRESSION ("[q2]" eq "idieële organisaties")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige"
-      EXPRESSION ("[q2]" eq "overige")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie_legenda'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "overige_punten"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Overige_punten"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van overige organisaties, punten"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME "Belangenorganisaties, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "belangenorganisaties" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_oranje_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Belangenorganisaties"
-      EXPRESSION ("[q2]" eq "belangenorganisaties")
-      STYLE
-        SYMBOL         'cirkel_oranje'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hobbyclubs, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "hobbyclubs" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_geel_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Hobbyclubs"
-      EXPRESSION ("[q2]" eq "hobbyclubs")
-      STYLE
-        SYMBOL         'cirkel_geel'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Ideële organisaties, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "idieële organisaties" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_groen_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Ideële organisaties"
-      EXPRESSION ("[q2]" eq "idieële organisaties")
-      STYLE
-        SYMBOL         'cirkel_groen'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige, gecorrigeerd"
-      EXPRESSION ("[q2]" eq "overige" && '[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_donkerblauw_correctie'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Overige"
-      EXPRESSION ("[q2]" eq "overige")
-      STYLE
-        SYMBOL         'cirkel_donkerblauw'
-        SIZE           16
-      END
-    END
-
-    CLASS
-      NAME "Onbekend"
-      STYLE
-        SYMBOL         'cirkel_onbekend'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "overige_correcties"
-    GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   10001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "Overige_correcties"
-      "ows_group_title"     "vestigingen_cbs"
-      "ows_abstract"        "Vestigingen van overige organisaties, gecorrigeerd"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-    
-    CLASS
-      NAME "(Locatie geschat)"
-      EXPRESSION ('[correctie]' = 'true')
-      STYLE
-        SYMBOL         'cirkel_correctie'
-        SIZE           16
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "overige_label"
-    GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
-    DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige_naam USING srid=28992 USING UNIQUE id"
-    TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   1001
-    PROCESSING      "CLOSE_CONNECTION=DEFER"
-    STATUS          OFF
-    PROJECTION
-      "init=epsg:28992"
-    END
-    FILTER             "B"
-    FILTERITEM         "locatie_type"
-    METADATA
-      "ows_title"           "overige_label"
-      "ows_group_title"     "vestigingen_cbs_label"
-      "ows_abstract"        "Labels van vestigingen"
-    END
-    LABELITEM          "naam"
-
-    CLASS
       LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  1001
-        COLOR           0  0  0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-        OFFSET         -60 10
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
       END
     END
   END
-
-#=============================================================================
+  LAYER
+    NAME 'm_advisering_onderzoek_en_overige_specialistische_zakelijke_dienstverlening'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'M Advisering, onderzoek en overige specialistische zakelijke dienstverlening'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'rechtskundige_dienstverlening_accountancy_belastingadvisering_en_administratie'
+EXPRESSION ("[sbi_code_group]" eq "69")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'holdings_geen_financiele_concerndiensten_binnen_eigen_concern_en_managementadvisering'
+EXPRESSION ("[sbi_code_group]" eq "70")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FF7F'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'architecten_ingenieurs_en_technisch_ontwerp_en_advies_keuring_en_controle'
+EXPRESSION ("[sbi_code_group]" eq "71")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#000080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'speur_en_ontwikkelingswerk'
+EXPRESSION ("[sbi_code_group]" eq "72")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8B0000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reclame_en_marktonderzoek'
+EXPRESSION ("[sbi_code_group]" eq "73")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'industrieel_ontwerp_en_vormgeving_fotografie_vertaling_en_overige_consultancy'
+EXPRESSION ("[sbi_code_group]" eq "74")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#4B0082'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'veterinaire_dienstverlening'
+EXPRESSION ("[sbi_code_group]" eq "75")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFD700'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'n_verhuur_van_roerende_goederen_en_overige_zakelijke_dienstverlening'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'N Verhuur van roerende goederen en overige zakelijke dienstverlening'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'verhuur_en_lease_van_auto_s_consumentenartikelen_machines_en_overige_roerende_goederen'
+EXPRESSION ("[sbi_code_group]" eq "77")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'arbeidsbemiddeling_uitzendbureaus_en_personeelsbeheer'
+EXPRESSION ("[sbi_code_group]" eq "78")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF4500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reisbemiddeling_reisorganisatie_toeristische_informatie_en_reserveringsbureaus'
+EXPRESSION ("[sbi_code_group]" eq "79")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'beveiliging_en_opsporing'
+EXPRESSION ("[sbi_code_group]" eq "80")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#0000FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'facility_management_reiniging_en_landschapsverzorging'
+EXPRESSION ("[sbi_code_group]" eq "81")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'overige_zakelijke_dienstverlening'
+EXPRESSION ("[sbi_code_group]" eq "82")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFFF00'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'o_openbaar_bestuur_overheidsdiensten_en_verplichte_sociale_verzekeringen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'O Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'openbaar_bestuur_overheidsdiensten_en_verplichte_sociale_verzekeringen'
+EXPRESSION ("[sbi_code_group]" eq "84")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#808080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'p_onderwijs'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'P Onderwijs'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'onderwijs'
+EXPRESSION ("[sbi_code_group]" eq "85")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'q_gezondheids_en_welzijnszorg'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'Q Gezondheids- en welzijnszorg'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'gezondheidszorg'
+EXPRESSION ("[sbi_code_group]" eq "86")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'verpleging_verzorging_en_begeleiding_met_overnachting'
+EXPRESSION ("[sbi_code_group]" eq "87")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'maatschappelijke_dienstverlening_zonder_overnachting'
+EXPRESSION ("[sbi_code_group]" eq "88")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'r_cultuur_sport_en_recreatie'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'R Cultuur, sport en recreatie'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'kunst'
+EXPRESSION ("[sbi_code_group]" eq "90")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008000'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'culturele_uitleencentra_openbare_archieven_musea_dieren_en_plantentuinen_natuurbehoud'
+EXPRESSION ("[sbi_code_group]" eq "91")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'loterijen_en_kansspelen'
+EXPRESSION ("[sbi_code_group]" eq "92")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#000080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'sport_en_recreatie'
+EXPRESSION ("[sbi_code_group]" eq "93")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 's_overige_dienstverlening'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'S Overige dienstverlening'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'levensbeschouwelijke_en_politieke_organisaties_belangen_en_ideele_organisaties_hobbyclubs'
+EXPRESSION ("[sbi_code_group]" eq "94")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FF00FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'reparatie_van_computers_en_consumentenartikelen'
+EXPRESSION ("[sbi_code_group]" eq "95")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#00FFFF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'wellness_en_overige_dienstverlening_uitvaartbranche'
+EXPRESSION ("[sbi_code_group]" eq "96")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#0000FF'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 't_huishoudens_als_werkgever_niet_gedifferentieerde_productie_van_goederen_en_diensten_door_huishoudens_voor_eigen_gebruik'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'T Huishoudens als werkgever; niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'huishoudens_als_werkgever_van_huishoudelijk_personeel'
+EXPRESSION ("[sbi_code_group]" eq "97")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#800080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+    CLASS
+      NAME 'niet_gespecificeerde_productie_van_goederen_en_diensten_door_particuliere_huishoudens_voor_eigen_gebruik'
+EXPRESSION ("[sbi_code_group]" eq "98")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#FFA500'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'u_extraterritoriale_organisaties_en_lichamen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROCESSING 'CLOSE_CONNECTION=DEFER'
+    STATUS OFF
+    LABELITEM 'naam'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'wms_title' 'U Extraterritoriale organisaties en lichamen'
+      'gml_include_items' 'all'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Handelsregister Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'wms_format' 'image/png'
+      'wms_server_version' '1.1.1'
+    END
+    CLASS
+      NAME 'extraterritoriale_organisaties_en_lichamen'
+EXPRESSION ("[sbi_code_group]" eq "99")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#008080'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 500
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
 END
