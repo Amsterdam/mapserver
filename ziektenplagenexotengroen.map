@@ -15,6 +15,7 @@ MAP
   END
   LAYER
     NAME 'Eikenprocessierups aanwezig (Laag)'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -30,7 +31,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -45,6 +46,7 @@ MAP
   END
   LAYER
     NAME 'Eikenprocessierups deels bestreden'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -60,7 +62,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -75,6 +77,7 @@ MAP
   END
   LAYER
     NAME 'Niet in beheergebied Gemeente Amsterdam'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -90,7 +93,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -105,6 +108,7 @@ MAP
   END
   LAYER
     NAME 'Eikenprocessierups aanwezig (Urgent)'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -120,7 +124,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -135,6 +139,7 @@ MAP
   END
   LAYER
     NAME 'Gemeld'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -150,7 +155,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -165,6 +170,7 @@ MAP
   END
   LAYER
     NAME 'Eikenprocessierups bestreden'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -180,7 +186,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -195,6 +201,7 @@ MAP
   END
   LAYER
     NAME 'Geen Eikenprocessierups aanwezig'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -210,7 +217,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -225,6 +232,7 @@ MAP
   END
   LAYER
     NAME 'Niet bereikbaar voor bestrijding'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -240,7 +248,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -255,6 +263,7 @@ MAP
   END
   LAYER
     NAME 'Eikenprocessierups aanwezig (Standaard)'
+    GROUP 'eikenprocessierups'
     PROJECTION
       'init=epsg:28992'
     END
@@ -270,7 +279,7 @@ MAP
       'wms_name' 'Eikenprocessierups'
       'wms_format' 'image/png'
       'wms_server_version' '1.3.0'
-      'wms_extent' '100000 450000 150000 500000'
+      'ows_group_title' 'Eikenprocessierups'
     END
     LABELITEM 'urgentie_status_kaartlaag'
     CLASSITEM 'urgentie_status_kaartlaag'
@@ -280,6 +289,354 @@ MAP
       STYLE
         SYMBOL 'caterpillar_orange'
         SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'gemeld'
+    GROUP 'japanse_duizendknoop_meldingen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Gemeld")
+    METADATA
+      'ows_title' 'Gemeld'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Meldingen'
+    END
+    CLASS
+      NAME 'Gemeld'
+      STYLE
+        SYMBOL 'JPD_Gemeld'
+        SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'duizendknoop_aanwezig_niet_bereikbaar'
+    GROUP 'japanse_duizendknoop_meldingen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig, niet bereikbaar")
+    METADATA
+      'ows_title' 'Duizendknoop aanwezig, niet bereikbaar'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Meldingen'
+    END
+    CLASS
+      NAME 'Duizendknoop aanwezig, niet bereikbaar'
+      STYLE
+        SYMBOL 'JPD_Duizendknoop_aanwezig_niet_bereikbaar'
+        SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'duizendknoop_aanwezig'
+    GROUP 'japanse_duizendknoop_meldingen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig")
+    METADATA
+      'ows_title' 'Duizendknoop aanwezig'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Meldingen'
+    END
+    CLASS
+      NAME 'Duizendknoop aanwezig'
+      STYLE
+        SYMBOL 'JPD_Duizendknoop_aanwezig'
+        SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'in_bestrijding'
+    GROUP 'japanse_duizendknoop_meldingen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "In bestrijding")
+    METADATA
+      'ows_title' 'In bestrijding'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Meldingen'
+    END
+    CLASS
+      NAME 'In bestrijding'
+      STYLE
+        SYMBOL 'JPD_In_bestrijding'
+        SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'monitoring'
+    GROUP 'japanse_duizendknoop_meldingen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Monitoring")
+    METADATA
+      'ows_title' 'Monitoring'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Meldingen'
+    END
+    CLASS
+      NAME 'Monitoring'
+      STYLE
+        SYMBOL 'JPD_Monitoring'
+        SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'duizendknoop_verwijderd'
+    GROUP 'japanse_duizendknoop_meldingen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Duizendknoop verwijderd")
+    METADATA
+      'ows_title' 'Duizendknoop verwijderd'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Meldingen'
+    END
+    CLASS
+      NAME 'Duizendknoop verwijderd'
+      STYLE
+        SYMBOL 'JPD_Duizendknoop_verwijderd'
+        SIZE 20
+      END
+    END
+  END
+  LAYER
+    NAME 'gemeld'
+    GROUP 'japanse_duizendknoop_inspecties'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Gemeld")
+    METADATA
+      'ows_title' 'Gemeld'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Inspecties'
+    END
+    CLASS
+      NAME 'Gemeld'
+      STYLE
+        COLOR '#004698'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#004698'
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'duizendknoop_aanwezig_niet_bereikbaar'
+    GROUP 'japanse_duizendknoop_inspecties'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig, niet bereikbaar")
+    METADATA
+      'ows_title' 'Duizendknoop aanwezig, niet bereikbaar'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Inspecties'
+    END
+    CLASS
+      NAME 'Duizendknoop aanwezig, niet bereikbaar'
+      STYLE
+        COLOR '#767676'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#767676'
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'duizendknoop_aanwezig'
+    GROUP 'japanse_duizendknoop_inspecties'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig")
+    METADATA
+      'ows_title' 'Duizendknoop aanwezig'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Inspecties'
+    END
+    CLASS
+      NAME 'Duizendknoop aanwezig'
+      STYLE
+        COLOR '#ec0000'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#ec0000'
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'in_bestrijding'
+    GROUP 'japanse_duizendknoop_inspecties'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "In bestrijding")
+    METADATA
+      'ows_title' 'In bestrijding'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Inspecties'
+    END
+    CLASS
+      NAME 'In bestrijding'
+      STYLE
+        COLOR '#fe9100'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#fe9100'
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'monitoring'
+    GROUP 'japanse_duizendknoop_inspecties'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Monitoring")
+    METADATA
+      'ows_title' 'Monitoring'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Inspecties'
+    END
+    CLASS
+      NAME 'Monitoring'
+      STYLE
+        COLOR '#029ce6'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#029ce6'
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'duizendknoop_verwijderd'
+    GROUP 'japanse_duizendknoop_inspecties'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    CLASSITEM 'status_kaartlaag'
+FILTER ("[status_kaartlaag]" = "Duizendknoop verwijderd")
+    METADATA
+      'ows_title' 'Duizendknoop verwijderd'
+      'wms_enable_request' '*'
+      'wms_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Inspecties'
+    END
+    CLASS
+      NAME 'Duizendknoop verwijderd'
+      STYLE
+        COLOR '#00a03c'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#00a03c'
+        WIDTH  2
       END
     END
   END
