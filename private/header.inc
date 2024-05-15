@@ -13,9 +13,15 @@
   #CONFIG   "MS_ERRORFILE" "/srv/mapserver/ms_error.txt"
 
   # Redirect errors to apache errorstream
-  CONFIG   "MS_ERRORFILE" stderr
+  # ENABLE for debugging purposes - quite spammy
+  # CONFIG   "MS_ERRORFILE" stderr
 
   #DEBUG    5
+  # For errors from underlying GDAL (shows SQL query issues) -- is spammy
+  # CONFIG "CPL_DEBUG" "ON"
+  # CONFIG "PROJ_DEBUG" "ON"
+
+
 
   #=============================================================================
   # MAP: algemeen
