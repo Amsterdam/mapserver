@@ -10,6 +10,7 @@ BAG_V11_DB_USER=${BAG_V11_DB_USER:-${BAG_V11_DB_NAME}}
 PANORAMA_DB_PORT=${PANORAMA_DB_PORT:-5432}
 PANORAMA_DB_NAME=${PANORAMA_DB_NAME:-panorama}
 PANORAMA_DB_USER=${PANORAMA_DB_USER:-${PANORAMA_DB_NAME}}
+PANORAMA_DB_PASSWORD_PATH=${PANORAMA_DB_PASSWORD_PATH:-'/mnt/secrets-store/mapserver-public'}
 
 BASISKAART_DB_PORT=${BASISKAART_DB_PORT:-5432}
 BASISKAART_DB_NAME=${BASISKAART_DB_NAME:-basiskaart}
@@ -41,7 +42,7 @@ EOF
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
-CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=$(cat /mnt/secrets-store/panorama-db-password) port=${PANORAMA_DB_PORT}"
+CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=$(cat ${PANORAMA_DB_PASSWORD_PATH}) port=${PANORAMA_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
@@ -78,10 +79,11 @@ fi;
 sed -i 's/ErrorLog .*/ErrorLog \/dev\/stderr/' /etc/apache2/apache2.conf
 sed -i 's/Timeout 300/Timeout 600/' /etc/apache2/apache2.conf
 
-# Replace actual location of the mapserver depending on the environment                                                                                                                                           
-sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map /srv/mapserver/lufo.map /srv/mapserver/infrarood.map                                                     
-sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map
-
+# Replace actual location of the mapserver depending on the environment   
+if [ -f "/srv/mapserver/topografie.map" ]; then                                                                                                                                        
+    sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map /srv/mapserver/lufo.map /srv/mapserver/infrarood.map                                                     
+    sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map
+fi
 
 mkdir -p /srv/mapserver/config
 # python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json

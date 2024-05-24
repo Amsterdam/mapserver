@@ -26,6 +26,7 @@ COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
 COPY . /srv/mapserver/
+RUN rm -rf /srv/mapserver/private
 COPY epsg /usr/share/proj
 
 EXPOSE 80
