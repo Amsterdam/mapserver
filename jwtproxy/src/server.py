@@ -211,12 +211,18 @@ async def handle(req: web.Request):
     app_logger.debug("Proxy-URL: \n%s", target_url)
     app_logger.debug("Request params: \n %s", req.rel_url.query)
     app_logger.debug("Request headers: \n %s", req.headers)
+    
 
     if token is not None:
         await audit(req, token)
 
+    body = None
+    if req.can_read_body:
+        body = await req.text()
+        app_logger.debug("Request body: \n %s", body)
+
     async with SessionManager.session().request(
-        req.method, target_url, headers=req.headers, params=req.rel_url.query
+        req.method, target_url, headers=req.headers, params=req.rel_url.query, data=body
     ) as resp:
         app_logger.debug("Response status from upstream: %s", resp.status)
         app_logger.debug("Headers from upstream: \n %s", resp.headers)
