@@ -1,17 +1,17 @@
 MAP
-  NAME                      "Verkeersinformatiesystemen"
+  NAME                      "verkeersinformatiesystemen"
   INCLUDE                   "header.inc"
   WEB
     METADATA
       "ows_title"           "Verkeersinformatiesystemen"
-      "ows_abstract"        "Verkeersinformatiesystemen Amsterdam"
+      "ows_abstract"        "Verkeersinformatiesystemen"
     END
   END
 
   #==============================================================================================
 
   LAYER
-    NAME                    "DRIP"
+    NAME                    "dynamische_route_informatiepanelen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'DRIP')
@@ -21,17 +21,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "DRIP (Dynamisch Route Informatiepaneel)"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "DRIP (Dynamisch Route Informatiepaneel) Amsterdam"
+      "ows_title"           "Dynamische Route-informatiepanelen (DRIPs)"
+      "ows_abstract"        "Dynamische Route-informatiepanelen (DRIPs)"
     END
 
     CLASS
-      NAME                  "DRIP"
+      NAME                  "dynamisch_route_informatiepaneel"
+      TITLE                 "Dynamisch Route-informatiepaneel (DRIP)"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#7F3C8D"
-        SIZE                15
+        COLOR               "#312783"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -39,7 +41,7 @@ MAP
  #==============================================================================================
 
   LAYER
-    NAME                    "Intelligente Dynamische Afsluitingen"
+    NAME                    "intelligente_dynamische_afsluitingen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Intelligente Dynamische Afsluitingen')
@@ -49,17 +51,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Intelligente Dynamische Afsluitingen"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Intelligente Dynamische Afsluitingen Amsterdam"
+      "ows_title"           "Intelligente Dynamische Afsluitingen (IDA's)"
+      "ows_abstract"        "Intelligente Dynamische Afsluitingen (IDA's)"
     END
 
     CLASS
-      NAME                  "Intelligente Dynamische Afsluitingen"
+      NAME                  "intelligente_dynamische_afsluiting"
+      TITLE                 "Intelligente Dynamische Afsluiting (IDA)"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#11A579"
-        SIZE                15
+        COLOR               "#E5906B"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -67,7 +71,7 @@ MAP
 #==============================================================================================
 
    LAYER
-    NAME                    "Kantelwals"
+    NAME                    "kantelwalsen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Kantelwals')
@@ -77,17 +81,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Kantelwals"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Kantelwals Amsterdam"
+      "ows_title"           "Kantelwalsen"
+      "ows_abstract"        "Kantelwalsen"
     END
 
     CLASS
-      NAME                  "Kantelwals"
+      NAME                  "kantelwals"
+      TITLE                 "Kantelwals"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#3969AC"
-        SIZE                15
+        COLOR               "#235481"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -95,7 +101,7 @@ MAP
   #==============================================================================================
 
   LAYER
-    NAME                    "Parkeerverwijs-display"
+    NAME                    "parkeerverwijsdisplays"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Parkeerverwijs-display')
@@ -105,17 +111,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Parkeerverwijs-display"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Parkeerverwijs-display Amsterdam"
+      "ows_title"           "Parkeerverwijsdisplays"
+      "ows_abstract"        "Parkeerverwijsdisplays"
     END
 
     CLASS
-      NAME                  "Parkeerverwijs-display"
+      NAME                  "parkeerverwijsdisplay"
+      TITLE                 "Parkeerverwijsdisplay"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#F2B701"
-        SIZE                15
+        COLOR               "#9A9E14"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -123,7 +131,7 @@ MAP
   #==============================================================================================
 
   LAYER
-    NAME                    "Stadsplattegrond"
+    NAME                    "stadsplattegronden"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Stadsplattegrond')
@@ -133,17 +141,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Stadsplattegrond"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Stadsplattegrond"
+      "ows_title"           "Stadsplattegronden"
+      "ows_abstract"        "Stadsplattegronden"
     END
 
     CLASS
-      NAME                  "Stadsplattegrond"
+      NAME                  "stadsplattegrond"
+      TITLE                 "Stadsplattegrond"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#E73F74"
-        SIZE                15
+        COLOR               "#61B190"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -151,7 +161,7 @@ MAP
 #==============================================================================================
 
   LAYER
-    NAME                    "Verkeers attentie verlichting"
+    NAME                    "verkeersattentieverlichting"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Verkeers attentie verlichting')
@@ -161,17 +171,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Verkeers attentie verlichting"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Verkeers attentie verlichting"
+      "ows_title"           "Verkeersattentieverlichting"
+      "ows_abstract"        "Verkeersattentieverlichting"
     END
 
     CLASS
-      NAME                  "Verkeers attentie verlichting"
+      NAME                  "verkeersattentieverlichting"
+      TITLE                 "Verkeersattentieverlichting"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#80BA5A"
-        SIZE                15
+        COLOR               "#CF7CAA"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -179,7 +191,7 @@ MAP
 #==============================================================================================
 
   LAYER
-    NAME                    "Verkeerscamera"
+    NAME                    "verkeerscameras"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Verkeerscamera')
@@ -189,17 +201,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Verkeerscamera"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Verkeerscamera"
+      "ows_title"           "Verkeerscamera's"
+      "ows_abstract"        "Verkeerscamera's"
     END
 
     CLASS
-      NAME                  "Verkeerscamera"
+      NAME                  "verkeerscamera"
+      TITLE                 "Verkeerscamera"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#E68310"
-        SIZE                15
+        COLOR               "#65B32E"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -207,7 +221,7 @@ MAP
 #==============================================================================================
 
   LAYER
-    NAME                    "Verkeerstelpunt"
+    NAME                    "verkeerstelpunten"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'Verkeerstelpunt')
@@ -217,17 +231,19 @@ MAP
     END
 
     METADATA
-      "wms_title"           "Verkeerstelpunt"
-      "wms_srs"             "EPSG:28992"
-      "wms_abstract"        "Verkeerstelpunt"
+      "ows_title"           "Verkeerstelpunten"
+      "ows_abstract"        "Verkeerstelpunten"
     END
 
     CLASS
-      NAME                  "Verkeerstelpunt"
+      NAME                  "verkeerstelpunt"
+      TITLE                 "Verkeerstelpunt"
       STYLE
         SYMBOL              "stip"
-        COLOR               "#008695"
-        SIZE                15
+        COLOR               "#9D4100"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
