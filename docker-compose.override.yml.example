@@ -1,0 +1,13 @@
+version: "3.0"
+
+services:
+  map:
+    environment:
+      - DATASERVICES_DB_NAME=postgres
+      - DATASERVICES_DB_USER=postgres
+    volumes:
+      - .:/srv/mapserver/
+
+  database:
+    volumes:
+     - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
