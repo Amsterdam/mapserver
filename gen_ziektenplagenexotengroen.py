@@ -11,31 +11,31 @@ def slugify(s: str) -> str:
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
 layers_EPR = [
-    ("Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
-    ("Eikenprocessierups deels bestreden", "tree_orange"),
-    ("Niet in beheergebied Gemeente Amsterdam", "flag_black"),
-    ("Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
-    ("Gemeld", "speechbubble"),
-    ("Eikenprocessierups bestreden", "tree_green"),
-    ("Geen Eikenprocessierups aanwezig", "tree_black"),
-    ("Niet bereikbaar voor bestrijding", "flag_red"),
-    ("Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
+    ("Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
+    ("Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
+    ("Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
+    ("Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
+    ("Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
+    ("Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
+    ("Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
+    ("Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
 ]
 
 layers_JPD = [
-    ("Japanse Duizendknoop Meldingen", "Gemeld", "JPD_Gemeld"),
-    ("Japanse Duizendknoop Meldingen", "Duizendknoop aanwezig, niet bereikbaar", "JPD_Duizendknoop_aanwezig_niet_bereikbaar"),
-    ("Japanse Duizendknoop Meldingen", "Duizendknoop aanwezig", "JPD_Duizendknoop_aanwezig"),
-    ("Japanse Duizendknoop Meldingen", "In bestrijding", "JPD_In_bestrijding"),
-    ("Japanse Duizendknoop Meldingen","Monitoring", "JPD_Monitoring"),
-    ("Japanse Duizendknoop Meldingen", "Duizendknoop verwijderd", "JPD_Duizendknoop_verwijderd"),
+    ("Japanse Duizendknoop Meldingen", "Duizendknoop gemeld (Meldingen)", "Gemeld", "JPD_Gemeld"),
+    ("Japanse Duizendknoop Meldingen", "Duizendknoop aanwezig, niet bereikbaar (Meldingen)", "Duizendknoop aanwezig, niet bereikbaar", "JPD_Duizendknoop_aanwezig_niet_bereikbaar"),
+    ("Japanse Duizendknoop Meldingen", "Duizendknoop aanwezig (Meldingen)", "Duizendknoop aanwezig", "JPD_Duizendknoop_aanwezig"),
+    ("Japanse Duizendknoop Meldingen", "Duizendknoop in bestrijding (Meldingen)", "In bestrijding", "JPD_In_bestrijding"),
+    ("Japanse Duizendknoop Meldingen", "Duizendknoop monitoring (Meldingen)", "Monitoring", "JPD_Monitoring"),
+    ("Japanse Duizendknoop Meldingen", "Duizendknoop verwijderd (Meldingen)", "Duizendknoop verwijderd", "JPD_Duizendknoop_verwijderd"),
 
-    ("Japanse Duizendknoop Inspecties", "Gemeld", "#004698"),
-    ("Japanse Duizendknoop Inspecties", "Duizendknoop aanwezig, niet bereikbaar", "#767676"),
-    ("Japanse Duizendknoop Inspecties", "Duizendknoop aanwezig", "#ec0000"),
-    ("Japanse Duizendknoop Inspecties", "In bestrijding", "#fe9100"),
-    ("Japanse Duizendknoop Inspecties","Monitoring", "#029ce6"),
-    ("Japanse Duizendknoop Inspecties", "Duizendknoop verwijderd", "#00a03c")
+    ("Japanse Duizendknoop Inspecties", "Duizendknoop gemeld (Inspecties)", "Gemeld", "#004698"),
+    ("Japanse Duizendknoop Inspecties", "Duizendknoop aanwezig, niet bereikbaar (Inspecties)", "Duizendknoop aanwezig, niet bereikbaar", "#767676"),
+    ("Japanse Duizendknoop Inspecties", "Duizendknoop aanwezig (Inspecties)", "Duizendknoop aanwezig", "#ec0000"),
+    ("Japanse Duizendknoop Inspecties", "Duizendknoop in bestrijding (Inspecties)", "In bestrijding", "#fe9100"),
+    ("Japanse Duizendknoop Inspecties", "Duizendknoop Monitoring (Inspecties)", "Monitoring", "#029ce6"),
+    ("Japanse Duizendknoop Inspecties", "Duizendknoop verwijderd (Inspecties)", "Duizendknoop verwijderd", "#00a03c")
 ]
 
 header("Bor / Beeldschoon")
@@ -54,7 +54,7 @@ with block("MAP"):
             q("wms_extent", "100000 450000 150000 500000")
 
 # dit stuk is voor de eikenprogressierups
-    for name, icon in layers_EPR:
+    for name, filter, icon in layers_EPR:
         with block("LAYER"):
             p("NAME", name)
             p("GROUP", "eikenprocessierups")
@@ -74,13 +74,10 @@ with block("MAP"):
 
             with block("METADATA"):
                 q("wfs_enable_request", "!*")
-                q("wms_title", name)
+                q("ows_title", name)
                 q("wms_enable_request", "*")
-                q("wms_abstract", "Eikenprocessierups Amsterdam")
-                q("wms_srs", "EPSG:28992")
-                q("wms_name", "Eikenprocessierups")
+                q("ows_abstract", "Eikenprocessierups Amsterdam")
                 q("wms_format", "image/png")
-                q("wms_server_version", "1.3.0")
                 q("ows_group_title", "Eikenprocessierups")
 
             p("LABELITEM", "urgentie_status_kaartlaag")
@@ -88,7 +85,7 @@ with block("MAP"):
 
             with block("CLASS"):
                 p("NAME", name)
-                p("EXPRESSION", name)
+                p("EXPRESSION", filter)
 
                 with block("STYLE"):
                     p("SYMBOL", icon)
@@ -96,9 +93,9 @@ with block("MAP"):
 
     
     #Vanaf hier is het voor de japanse duizendknoop
-    for group, filter, icon_color in layers_JPD:
+    for group, title, filter, icon_color in layers_JPD:
         with block("LAYER"):
-            p("NAME", slugify(filter))
+            p("NAME", slugify(title))
             p("GROUP", slugify(group))
 
             with block("PROJECTION"):
@@ -120,14 +117,14 @@ with block("MAP"):
                 print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
                 
                 with block("METADATA"):
-                    q("ows_title", filter)
+                    q("ows_title", title)
                     q("wms_enable_request", "*")
-                    q("wms_abstract", "Japanse Duizendknoop Amsterdam")
+                    q("ows_abstract", "Japanse Duizendknoop Amsterdam")
                     q("wms_srs", "EPSG:28992")
                     q("ows_group_title", group)
 
                 with block("CLASS"):
-                    p("NAME", filter)
+                    p("NAME", slugify(title))
 
                     with block("STYLE"):
                         p("SYMBOL", icon_color)
@@ -147,14 +144,14 @@ with block("MAP"):
                 print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
                 
                 with block("METADATA"):
-                    q("ows_title", filter)
+                    q("ows_title", title)
                     q("wms_enable_request", "*")
-                    q("wms_abstract", "Japanse Duizendknoop Amsterdam")
+                    q("ows_abstract", "Japanse Duizendknoop Amsterdam")
                     q("wms_srs", "EPSG:28992")
                     q("ows_group_title", group)
 
                 with block("CLASS"):
-                    p("NAME", filter)
+                    p("NAME", slugify(title))
 
                     with block("STYLE"):
 
