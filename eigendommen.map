@@ -23,7 +23,7 @@ MAP
   LAYER
     NAME            "niet_eigendom_zoomed"
     GROUP           "eigendommen"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -31,7 +31,7 @@ MAP
       'categorie'     '^[0-9]{1,2}|all$'
     END
 
-    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_niet_eigendom_poly eigendom,
                           (SELECT * FROM (VALUES (10, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                               (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
@@ -75,7 +75,7 @@ MAP
   LAYER
     NAME            "eigendom_zoomed"
     GROUP           "eigendommen"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -83,7 +83,7 @@ MAP
       'categorie'     '^[0-9]{1,2}|all$'
     END
 
-    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_eigendom_poly eigendom,
                           (SELECT * FROM (VALUES (10, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                               (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
@@ -126,7 +126,7 @@ MAP
   LAYER
     NAME            "eigendom_zoomed_punt"
     GROUP           "eigendommen"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -134,7 +134,7 @@ MAP
       'categorie'     '^[0-9]{1,2}|all$'
     END
 
-    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_point eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_eigendom_point eigendom,
                           (SELECT * FROM (VALUES (10, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                               (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
@@ -213,7 +213,7 @@ MAP
   LAYER
     NAME            "eigendom_zoomed_punt_aantal"
     GROUP           "eigendommen"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -221,7 +221,7 @@ MAP
       'categorie'     '^[0-9]{1,2}|all$'
     END
 
-    DATA            "geometrie FROM public.geo_brk_eigendom_point USING srid=4326 USING UNIQUE id"
+    DATA            "geometrie FROM dataselectie_legacy.geo_brk_eigendom_point USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -310,7 +310,7 @@ MAP
   LAYER
     NAME            "niet_eigendom"
     GROUP           "eigendommen"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -318,7 +318,7 @@ MAP
       'categorie'     '^[0-9]{1,2}|all$'
     END
 
-    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_niet_eigendom_poly_all eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_niet_eigendom_poly_all eigendom,
                           (SELECT * FROM (VALUES (10, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                               (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"
@@ -362,7 +362,7 @@ MAP
   LAYER
     NAME            "eigendom"
     GROUP           "eigendommen"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -370,7 +370,7 @@ MAP
       'categorie'     '^[0-9]{1,2}|all$'
     END
 
-    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from geo_brk_eigendom_poly_all eigendom,
+    DATA            "geometrie FROM (select eigendom.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_eigendom_poly_all eigendom,
                           (SELECT * FROM (VALUES (10, '#E50082'), (1, '#004699'), (2, '#BED200'), (3, '#666666'), (4, '#00A03C'), (5, '#009DE6'),
                               (6, '#FF9100'), (7, '#00D2B4'),  (8, '#FFD700'), (9, '#A00078') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = eigendom.cat_id) as subquery USING srid=4326 USING UNIQUE id"

@@ -23,7 +23,7 @@ MAP
   LAYER
     NAME            "rond_erfpacht_zoomed"
     GROUP           "erfpacht"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -31,7 +31,7 @@ MAP
       'categorie'     '^[0-9]|all$'
     END
 
-    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_rond_erfpacht_poly erfpacht,
+    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_rond_erfpacht_poly erfpacht,
                           (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
@@ -74,7 +74,7 @@ MAP
   LAYER
     NAME            "erfpacht_zoomed"
     GROUP           "erfpacht"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -82,7 +82,7 @@ MAP
       'categorie'     '^[0-9]|all$'
     END
 
-    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_poly erfpacht,
+    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_erfpacht_poly erfpacht,
                           (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
@@ -124,7 +124,7 @@ MAP
   LAYER
     NAME            "erfpacht_zoomed_punt"
     GROUP           "erfpacht"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -132,7 +132,7 @@ MAP
       'categorie'     '^[0-9]|all$'
     END
 
-    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_point erfpacht,
+    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_erfpacht_point erfpacht,
                           (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POINT
@@ -210,7 +210,7 @@ MAP
   LAYER
     NAME            "erfpacht_zoomed_punt_aantal"
     GROUP           "erfpacht"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -218,7 +218,7 @@ MAP
       'categorie'     '^[0-9]|all$'
     END
 
-    DATA            "geometrie FROM public.geo_brk_erfpacht_point USING srid=4326 USING UNIQUE id"
+    DATA            "geometrie FROM dataselectie_legacy.geo_brk_erfpacht_point USING srid=4326 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   3000
@@ -307,7 +307,7 @@ MAP
   LAYER
     NAME            "rond_erfpacht"
     GROUP           "erfpacht"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -315,7 +315,7 @@ MAP
       'categorie'     '^[0-9]|all$'
     END
 
-    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_rond_erfpacht_poly_all erfpacht,
+    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_rond_erfpacht_poly_all erfpacht,
                           (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
@@ -357,7 +357,7 @@ MAP
   LAYER
     NAME            "erfpacht"
     GROUP           "erfpacht"
-    INCLUDE         "connection/dataselectie.inc"
+    INCLUDE         "connection/dataservices.inc"
 
     VALIDATION
       # %categorie% substitutions can only have letters
@@ -365,7 +365,7 @@ MAP
       'categorie'     '^[0-9]|all$'
     END
 
-    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from geo_brk_erfpacht_poly_all erfpacht,
+    DATA            "geometrie FROM (select erfpacht.*, colors.cat_color cat_color from dataselectie_legacy.geo_brk_erfpacht_poly_all erfpacht,
                           (SELECT * FROM (VALUES (1, '#004699'), (2, '#E50082') ) AS t(cat_id, cat_color)) colors
                           WHERE colors.cat_id = erfpacht.cat_id) as subquery USING srid=4326 USING UNIQUE id"
     TYPE            POLYGON
