@@ -9,8 +9,10 @@ MapServer-configuratie voor map.data.amsterdam.nl.
 
 # Opstarten
 
+* Hernoem ``.env-example`` naar ``.env``
+* Pas in ``.env`` het pad aan waar je je Database DIR neer wil zetten.
 * Start de database: ``docker-compose up -d database``.
-* Vul de gewenste tabellen in de database, die woont op localhost, poort 5403.
+* Vul de gewenste tabellen in de database, die woont op localhost, poort 5403. 
 * Bouw Docker image met MapServer: ``docker-compose build map``.
 * Start MapServer: ``docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo -v /tmp/srv/infrarood/:/mnt/infrarood map``.
 
@@ -21,10 +23,8 @@ Test nu of MapServer werkt:
 Als dit geen foutmelding geeft, dan kunnen kaarten nu benaderd worden als WFS
 of WMS, via bijv. [QGIS](https://qgis.org). De kaarten hebben URL's zoals
 
-    http://localhost:8383/maps/meetbouten.map
+    http://localhost:8383/maps/meetbouten?service=WMS&request=GetCapabilities
 
-Benader deze URL's niet via een webbrowser, dat zal in het algemene geval niet
-werken.
 
 
 # Ontwikkelen
