@@ -1,7 +1,6 @@
 # This file is only for local development purposes. The actual deployment
 # configuration lives in a separate repository.
-
-version: "3.0"
+version: '3.8'
 
 services:
   database:
@@ -12,7 +11,10 @@ services:
       - "5403:5432"
     environment:
       - POSTGRES_PASSWORD=insecure
+      - POSTGRES_DB=dataservices
     command: ["postgres", "-c", "log_statement=all"]
+    volumes:
+      - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
 
   proxy:
     build:
@@ -77,3 +79,7 @@ services:
 
       MAP_URL: "http://map"
       LEGEND_URL: "http://map"
+
+
+    volumes:
+      - .:/srv/mapserver/
