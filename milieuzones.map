@@ -41,8 +41,6 @@ MAP
                               UNION ALL
                               select geometry, id from public.milieuzones_bestelbus
                               UNION ALL
-                              select geometry, id from public.milieuzones_taxi
-                              UNION ALL
                               select geometry, id from public.milieuzones_touringcar
                               UNION ALL
                               select geometry, id from public.milieuzones_bromensnorfiets
@@ -113,22 +111,6 @@ MAP
       END
       STYLE
           OUTLINECOLOR  255 145 0
-          OPACITY      100
-          WIDTH        3
-      END
-    END
-
-    CLASS
-      NAME          "Taxi"
-      EXPRESSION    ("[id]" = "63360")
-
-      STYLE
-          ANTIALIAS    true
-          COLOR        0 70 153
-          OPACITY      35
-      END
-      STYLE
-          OUTLINECOLOR  0 70 153
           OPACITY      100
           WIDTH        3
       END
