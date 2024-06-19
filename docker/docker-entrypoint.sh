@@ -29,7 +29,6 @@ DATASERVICES_DB_NAME=${DATASERVICES_DB_NAME:-dataservices}
 DATASERVICES_DB_USER=${DATASERVICES_DB_USER:-${DATASERVICES_DB_NAME}}
 DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-store/mapserver-public'}
 
-if [ ! -z ${AZURE+x} ]; then
 echo Creating configuration files
 
 mkdir -p /srv/mapserver/connection
@@ -69,7 +68,6 @@ CONNECTIONTYPE postgis
 CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${DATASERVICES_DB_USER} password=$(cat ${DATASERVICES_DB_PASSWORD_PATH}) port=${DATASERVICES_DB_PORT}"
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
-fi;
 
 # Configure apache to redirect errors to stderr.
 # The mapserver will redirect errors to apache errorstream (see header.inc and private/header.inc)
