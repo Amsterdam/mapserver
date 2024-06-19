@@ -154,14 +154,14 @@ sbi = {
 #header(team="BenK")
 
 with block("MAP"):
-    p("NAME", "Handelsregister")
+    p("NAME", "handelsregister")
     p("INCLUDE", "header.inc")
 
-    p("DEBUG 5")
 
     with block("WEB"):
         with block("METADATA"):
             q("ows_title", "Handelsregister")
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/hr")
             q("ows_abstract", "Vestigingen in de gemeente Amsterdam uit het Handelsregister",)
 
     with block("LEGEND"):
