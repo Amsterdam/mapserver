@@ -78,10 +78,12 @@ sed -i 's/ErrorLog .*/ErrorLog \/dev\/stderr/' /etc/apache2/apache2.conf
 sed -i 's/Timeout 300/Timeout 600/' /etc/apache2/apache2.conf
 
 # Replace actual location of the mapserver depending on the environment   
-if [ -f "/srv/mapserver/topografie.map" ]; then                                                                                                                                        
-    sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map /srv/mapserver/lufo.map /srv/mapserver/infrarood.map                                                     
-    sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' /srv/mapserver/topografie.map /srv/mapserver/topografie_wm.map
-fi
+shopt -s globstar nullglob
+
+for i in **/*.map; do
+    sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i
+    sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i
+done
 
 mkdir -p /srv/mapserver/config
 # python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
