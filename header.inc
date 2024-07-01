@@ -53,6 +53,8 @@
       "wms_format"                   "image/png"
       "wfs_encoding"                 "UTF-8"
       "wfs_maxfeatures"              "500000"
+      "wfs_namespace_prefix"         "amsterdam"
+      "wfs_namespace_uri"            "https://amsterdam.nl/"
       "wfs_getfeature_formatlist"    "gml,geojson,csv,shapezip,spatialzip"
 
       # verplicht om aan de OGC standaard te voldoen:

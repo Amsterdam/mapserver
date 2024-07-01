@@ -18,6 +18,7 @@ MAP
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 1: Verkenning')
     TYPE                    POLYGON
+    TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
@@ -26,6 +27,12 @@ MAP
       "ows_title"           "Fase 1: verkenning"
       "ows_abstract"        "Fase 1: verkenning Amsterdam"
       "wms_group_title"     "Woningbouwplannen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
@@ -52,6 +59,7 @@ MAP
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 2&3: Haalbaarheid en ontwerp')
     TYPE                    POLYGON
+    TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
@@ -60,6 +68,12 @@ MAP
       "ows_title"           "Fase 2&3: Haalbaarheid en ontwerp"
       "ows_abstract"        "Fase 2&3: Haalbaarheid en ontwerp Amsterdam"
       "wms_group_title"     "Woningbouwplannen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
@@ -86,6 +100,7 @@ MAP
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 4: Voorbereiding en uitvoering')
     TYPE                    POLYGON
+    TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
@@ -94,6 +109,12 @@ MAP
       "ows_title"           "Fase 4: Voorbereiding en uitvoering"
       "ows_abstract"        "Fase 4: Voorbereiding en uitvoering Amsterdam"
       "wms_group_title"     "Woningbouwplannen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
@@ -120,6 +141,7 @@ MAP
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 5: Gestart')
     TYPE                    POLYGON
+    TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
@@ -128,6 +150,12 @@ MAP
       "ows_title"           "Fase 5: Gestart"
       "ows_abstract"        "Fase 5: Gestart Amsterdam"
       "wms_group_title"     "Woningbouwplannen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
@@ -154,6 +182,7 @@ MAP
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Onbekend')
     TYPE                    POLYGON
+    TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
@@ -162,6 +191,12 @@ MAP
       "ows_title"           "Onbekend"
       "ows_abstract"        "Onbekend voortgang nieuwbouwplannen woningbouw Amsterdam"
       "wms_group_title"     "Woningbouwplannen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
