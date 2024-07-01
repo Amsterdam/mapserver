@@ -5,6 +5,7 @@ MAP
     METADATA
       "ows_title"           "Verkeersinformatiesystemen" #Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
       "ows_abstract"        "Verkeersinformatiesystemen" #Door datateam aanleveren
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/verkeersinformatiesystemen"
     END
   END
 
@@ -17,12 +18,13 @@ MAP
     DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
     FILTER                  ([objecttype_vis_kaart] = 'DRIP') #dit wellicht in WHERE clause, uitzoeken
     TYPE                    POINT
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "title"               "Dynamische Route-informatiepanelen (DRIPs)" #Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_title"           "Dynamische Route-informatiepanelen (DRIPs)" #Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
       "ows_abstract"        "Dynamische Route-informatiepanelen (DRIPs)" #Door datateam aanleveren
       "wms_group_title"     "Group naam"   #Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
     END
@@ -30,8 +32,8 @@ MAP
     LABELITEM               objectnummer
 
     CLASS
-      NAME                  "dynamisch_route_informatiepaneel" #lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Dynamisch Route-informatiepaneel (DRIP)" #Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      NAME                  "dynamisch_route_informatiepaneel" #lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Dynamisch Route-informatiepaneel (DRIP)" #Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
       STYLE
         SYMBOL              "stip"
         COLOR               "#312783"
