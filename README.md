@@ -14,7 +14,9 @@ MapServer-configuratie voor map.data.amsterdam.nl.
 * Start de database: ``docker-compose up -d database``.
 * Vul de gewenste tabellen in de database, die woont op localhost, poort 5403. 
 * Bouw Docker image met MapServer: ``docker-compose build map``.
-* Start MapServer: ``docker-compose run -p "8383:80" -v /tmp/srv/lufo:/mnt/lufo -v /tmp/srv/infrarood/:/mnt/infrarood map``.
+* Start de map met: ``docker-compose up -d map``.
+* Vervang het password in ``dataservices.inc`` naar ``insecure``
+
 
 Test nu of MapServer werkt:
 
