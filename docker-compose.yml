@@ -11,7 +11,8 @@ services:
       - "5403:5432"
     environment:
       - POSTGRES_PASSWORD=insecure
-      - POSTGRES_DB=dataservices
+      - POSTGRES_DB=postgres
+
     command: ["postgres", "-c", "log_statement=all"]
     volumes:
       - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
@@ -67,9 +68,9 @@ services:
       HANDELSREGISTER_DB_PASSWORD: insecure
       HANDELSREGISTER_DB_HOST: database
 
-      DATASERVICES_DB_NAME: dataservices
+      DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD: insecure
+      DATASERVICES_DB_PASSWORD_PATH: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "http://map"
