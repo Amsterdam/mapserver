@@ -12,8 +12,8 @@ MAP
   #==============================================================================================
 
   LAYER
-    NAME                    "Fase_1"
-    GROUP                   "Woningbouwplannen"
+    NAME                    "fase_1"
+    GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 1: Verkenning')
@@ -24,8 +24,8 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Fase 1: verkenning"
-      "ows_abstract"        "Fase 1: verkenning Amsterdam"
+      "ows_title"           "Fase 1: Verkenning"
+      "ows_abstract"        "Fase 1: Verkenning Amsterdam"
       "wms_group_title"     "Woningbouwplannen"
       "gml_featureid"       "id"
       "gml_geometries"      "geometry"
@@ -36,7 +36,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Fase 1"
+      NAME                  "fase_1"
       TITLE                 "Fase 1: Verkenning"
       STYLE
         ANTIALIAS           true
@@ -53,8 +53,8 @@ MAP
     #==============================================================================================
 
   LAYER
-    NAME                    "Fase_2_3"
-    GROUP                   "Woningbouwplannen"
+    NAME                    "fase_2_3"
+    GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 2&3: Haalbaarheid en ontwerp')
@@ -77,7 +77,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Fase 2&3"
+      NAME                  "fase_2_3"
       TITLE                 "Fase 2&3: Haalbaarheid en ontwerp"
       STYLE
         ANTIALIAS           true
@@ -94,8 +94,8 @@ MAP
   #==============================================================================================
 
   LAYER
-    NAME                    "Fase_4"
-    GROUP                   "Woningbouwplannen"
+    NAME                    "fase_4"
+    GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 4: Voorbereiding en uitvoering')
@@ -118,7 +118,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Fase 4"
+      NAME                  "fase_4"
       TITLE                 "Fase 4: Voorbereiding en uitvoering"
       STYLE
         ANTIALIAS           true
@@ -135,8 +135,8 @@ MAP
   #==============================================================================================
 
   LAYER
-    NAME                    "Fase_5"
-    GROUP                   "Woningbouwplannen"
+    NAME                    "fase_5"
+    GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 5: Gestart')
@@ -159,7 +159,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Fase 5"
+      NAME                  "fase_5"
       TITLE                 "Fase 5: Gestart"
       STYLE
         ANTIALIAS           true
@@ -177,7 +177,7 @@ MAP
 
   LAYER
     NAME                    "onbekend"
-    GROUP                   "Woningbouwplannen"
+    GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Onbekend')
@@ -200,7 +200,7 @@ MAP
     END
 
     CLASS
-      NAME                  "Onbekend"
+      NAME                  "onbekend"
       TITLE                 "Onbekend"
       STYLE
         ANTIALIAS           true
