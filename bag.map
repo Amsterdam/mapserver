@@ -250,10 +250,349 @@ MAP
 
   #-----------------------------------------------------------------------------
 
+  LAYER
+    NAME                    "panden_naar_status_pand_in_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Pand in gebruik')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Pand in gebruik" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Status Pand in gebruik" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "pand_in_gebruik"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Pand in gebruik"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#C1CDCD"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#C1CDCD"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "panden_naar_status_pand_in_gebruik_niet_ingemeten"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Pand in gebruik (niet ingemeten)')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Pand in gebruik (niet ingemeten)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Status Pand in gebruik (niet ingemeten)" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "pand_in_gebruik_niet_ingemeten"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Pand in gebruik (niet ingemeten)"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#838B8B"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#838B8B"
+        WIDTH               2
+      END
+    END
+
+  END
+
+
+  LAYER
+    NAME                    "panden_naar_status_verbouwing_pand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Verbouwing pand')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Verbouwing pand" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Status Verbouwing pand" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "verbouwing_pand"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Verbouwing pand"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#FFA500"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#FFA500"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "panden_naar_status_bouw_gestart"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Bouw gestart')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Bouw gestart" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Bouw gestart" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "bouw_gestart"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Bouw gestart"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#8B5A00"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#8B5A00"
+        WIDTH               2
+      END
+    END
+
+  END
+
+
+
+  LAYER
+    NAME                    "panden_naar_status_bouwvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Bouwvergunning verleend')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Bouwvergunning Verleend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Status Bouwvergunning Verleend" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "bouwvergunning_verleend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Bouwvergunning verleend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#FFDAB9"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#FFDAB9"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "panden_naar_status_sloopvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Sloopvergunning verleend')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Sloopvergunning verleend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Status Sloopvergunning verleend" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "Polyon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "sloopvergunning_verleend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Sloopvergunning verleend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#308014"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#308014"
+        WIDTH               2
+      END
+    END
+
+  END
+
+  LAYER
+    NAME                    "panden_naar_status_pand_buiten_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    DATA                    "geometrie FROM (
+            SELECT id, geometrie,status_omschrijving FROM
+                public.bag_panden
+            WHERE
+                begin_geldigheid < now()
+                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                ) AS sub
+        USING srid=28992 USING UNIQUE id"
+
+    FILTER                  ([status_omschrijving] = 'Pand buiten gebruik')            # Dit wellicht in WHERE clause, uitzoeken
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Panden naar Status: Pand buiten gebruik" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "ows_abstract"        "Actieve BAG panden naar Status Pand buiten gebruik" # Door datateam aanleveren
+      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "Polyon"                                      # Gelijk aan de TYPE van de LAYER
+      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+    END
+
+    CLASS
+      NAME                  "pand_buiten_gebruik"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+      TITLE                 "Pand buiten gebruik"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#DC143C"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#DC143C"
+        WIDTH               2
+      END
+    END
+
+  END
+
 
   LAYER
     NAME            "pandleeftijden"
-    GROUP           "bouwjaar"
+    GROUP           "overig"
     INCLUDE         "connection/dataservices.inc"
     DATA "geometrie FROM (
         SELECT
