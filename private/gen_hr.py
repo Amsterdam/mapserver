@@ -9,15 +9,6 @@ def slugify(s: str) -> str:
     s = s.replace("ë", "e")
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
-def random_colorpicker ():
-    min = 0
-    max = 255
-    red = random.randint(min, max) 
-    green = random.randint(min, max) 
-    blue = random.randint(min, max) 
-    
-    return f'{red} {green} {blue}'
-
 
 # From https://www.amsterdam.nl/stelselpedia/hr-index/catalogus-hr/domeinen/sbi-code/.
 sbi = {
@@ -95,7 +86,7 @@ sbi = {
         ("62", "Dienstverlenende activiteiten op het gebied van informatietechnologie", "#BFBFBF"),
         ("63", "Dienstverlenende activiteiten op het gebied van informatie", "#BF8080")
         ],
-        "K Financiële instellingen": [
+    "K Financiële instellingen": [
         ("64", "Financiële instellingen (geen verzekeringen en pensioenfondsen)", "#FF6347"),
         ("65", "Verzekeringen en pensioenfondsen (geen verplichte sociale verzekeringen)", "#4682B4"),
         ("66", "Overige financiële dienstverlening", "#9400D3")
@@ -151,7 +142,6 @@ sbi = {
     ]
 }
 
-#header(team="BenK")
 
 with block("MAP"):
     p("NAME", "handelsregister")
@@ -196,6 +186,7 @@ with block("MAP"):
             p("INCLUDE", "connection/dataservices.inc")
             p("DATA", sql)
             p("TYPE POINT")
+            p("GROUP", 'Handelsregister')
             # p("MINSCALEDENOM 10")
             # p("MAXSCALEDENOM 9001")
             p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
@@ -207,32 +198,32 @@ with block("MAP"):
                 q("init=epsg:28992")
             
             with block("METADATA"):
-                q("wms_title", group)
+                q("ows_title", group)
                 q("gml_include_items", "all")
                 q("wms_enable_request", "*")
-                q("wms_abstract", "Handelsregister Amsterdam")
-                q("wms_srs", "EPSG:28992")
-                q("wms_format", "image/png")
-                q("wms_server_version", "1.1.1")
-
+                q("ows_abstract", "Handelsregister Amsterdam")
+                q("gml_featureid", "vestigingsnummer")
+                q("gml_geometries", "geometry")
+                q("gml_geometry_type", "point")                
+                q("gml_types", "auto")
+                q("wms_include_items", "all")
             
 
             for code, descr, color in sbi[group]:
                 slug = slugify(descr)
 
-
-
                 with block("CLASS"):
                     p("NAME", slug)
+                    p("TITLE", descr)
 
                     # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
                     print (f'EXPRESSION ("[sbi_code_group]" eq "{code}")')
                     with block("STYLE"):
                         p("SYMBOL", "stip")
-                        p("SIZE 16")
+                        p("SIZE 14")
                         p(f"COLOR '{color}'")
-                        p('OUTLINECOLOR 0 0 0')
-                        p ('WIDTH 1')
+                        p('OUTLINECOLOR 255 255 255')
+                        p ('WIDTH 1.5')
 
                     with block("LABEL"):
                         p("MINSCALEDENOM 100")

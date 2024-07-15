@@ -17,6 +17,7 @@ MAP
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -25,23 +26,26 @@ MAP
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'A Landbouw, bosbouw en visserij'
+      'ows_title' 'A Landbouw, bosbouw en visserij'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'landbouw_jacht_en_dienstverlening_voor_de_landbouw_en_jacht'
+      TITLE 'Landbouw, jacht en dienstverlening voor de landbouw en jacht'
 EXPRESSION ("[sbi_code_group]" eq "01")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF0000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -59,13 +63,14 @@ EXPRESSION ("[sbi_code_group]" eq "01")
     END
     CLASS
       NAME 'bosbouw_exploitatie_van_bossen_en_dienstverlening_voor_de_bosbouw'
+      TITLE 'Bosbouw, exploitatie van bossen en dienstverlening voor de bosbouw'
 EXPRESSION ("[sbi_code_group]" eq "02")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FF00'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -83,13 +88,14 @@ EXPRESSION ("[sbi_code_group]" eq "02")
     END
     CLASS
       NAME 'visserij_en_kweken_van_vis_en_schaaldieren'
+      TITLE 'Visserij en kweken van vis en schaaldieren'
 EXPRESSION ("[sbi_code_group]" eq "03")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#0000FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -111,6 +117,7 @@ EXPRESSION ("[sbi_code_group]" eq "03")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -119,23 +126,26 @@ EXPRESSION ("[sbi_code_group]" eq "03")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'B Winning van delfstoffen'
+      'ows_title' 'B Winning van delfstoffen'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'winning_van_aardolie_en_aardgas'
+      TITLE 'Winning van aardolie en aardgas'
 EXPRESSION ("[sbi_code_group]" eq "06")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFFF00'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -153,13 +163,14 @@ EXPRESSION ("[sbi_code_group]" eq "06")
     END
     CLASS
       NAME 'winning_van_delfstoffen_geen_olie_en_gas'
+      TITLE 'Winning van delfstoffen (geen olie en gas)'
 EXPRESSION ("[sbi_code_group]" eq "08")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF00FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -177,13 +188,14 @@ EXPRESSION ("[sbi_code_group]" eq "08")
     END
     CLASS
       NAME 'dienstverlening_voor_de_winning_van_delfstoffen'
+      TITLE 'Dienstverlening voor de winning van delfstoffen'
 EXPRESSION ("[sbi_code_group]" eq "09")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FFFF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -205,6 +217,7 @@ EXPRESSION ("[sbi_code_group]" eq "09")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -213,23 +226,26 @@ EXPRESSION ("[sbi_code_group]" eq "09")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'C Industrie'
+      'ows_title' 'C Industrie'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'vervaardiging_van_voedingsmiddelen'
+      TITLE 'Vervaardiging van voedingsmiddelen'
 EXPRESSION ("[sbi_code_group]" eq "10")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFA500'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -247,13 +263,14 @@ EXPRESSION ("[sbi_code_group]" eq "10")
     END
     CLASS
       NAME 'vervaardiging_van_dranken'
+      TITLE 'Vervaardiging van dranken'
 EXPRESSION ("[sbi_code_group]" eq "11")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#800080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -271,13 +288,14 @@ EXPRESSION ("[sbi_code_group]" eq "11")
     END
     CLASS
       NAME 'vervaardiging_van_tabaksproducten'
+      TITLE 'Vervaardiging van tabaksproducten'
 EXPRESSION ("[sbi_code_group]" eq "12")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF4500'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -295,13 +313,14 @@ EXPRESSION ("[sbi_code_group]" eq "12")
     END
     CLASS
       NAME 'vervaardiging_van_textiel'
+      TITLE 'Vervaardiging van textiel'
 EXPRESSION ("[sbi_code_group]" eq "13")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#228B22'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -319,13 +338,14 @@ EXPRESSION ("[sbi_code_group]" eq "13")
     END
     CLASS
       NAME 'vervaardiging_van_kleding'
+      TITLE 'Vervaardiging van kleding'
 EXPRESSION ("[sbi_code_group]" eq "14")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#4169E1'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -343,13 +363,14 @@ EXPRESSION ("[sbi_code_group]" eq "14")
     END
     CLASS
       NAME 'vervaardiging_van_leer_lederwaren_en_schoenen'
+      TITLE 'Vervaardiging van leer, lederwaren en schoenen'
 EXPRESSION ("[sbi_code_group]" eq "15")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF69B4'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -367,13 +388,14 @@ EXPRESSION ("[sbi_code_group]" eq "15")
     END
     CLASS
       NAME 'primaire_houtbewerking_en_vervaardiging_van_artikelen_van_hout_kurk_riet_en_vlechtwerk_geen_meubels'
+      TITLE 'Primaire houtbewerking en vervaardiging van artikelen van hout, kurk, riet en vlechtwerk (geen meubels)'
 EXPRESSION ("[sbi_code_group]" eq "16")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#32CD32'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -391,13 +413,14 @@ EXPRESSION ("[sbi_code_group]" eq "16")
     END
     CLASS
       NAME 'vervaardiging_van_papier_karton_en_papier_en_kartonwaren'
+      TITLE 'Vervaardiging van papier, karton en papier- en kartonwaren'
 EXPRESSION ("[sbi_code_group]" eq "17")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#8A2BE2'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -415,13 +438,14 @@ EXPRESSION ("[sbi_code_group]" eq "17")
     END
     CLASS
       NAME 'drukkerijen_reproductie_van_opgenomen_media'
+      TITLE 'Drukkerijen, reproductie van opgenomen media'
 EXPRESSION ("[sbi_code_group]" eq "18")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#DC143C'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -439,13 +463,14 @@ EXPRESSION ("[sbi_code_group]" eq "18")
     END
     CLASS
       NAME 'vervaardiging_van_cokesovenproducten_en_aardolieverwerking'
+      TITLE 'Vervaardiging van cokesovenproducten en aardolieverwerking'
 EXPRESSION ("[sbi_code_group]" eq "19")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00CED1'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -463,13 +488,14 @@ EXPRESSION ("[sbi_code_group]" eq "19")
     END
     CLASS
       NAME 'vervaardiging_van_chemische_producten'
+      TITLE 'Vervaardiging van chemische producten'
 EXPRESSION ("[sbi_code_group]" eq "20")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFD700'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -487,13 +513,14 @@ EXPRESSION ("[sbi_code_group]" eq "20")
     END
     CLASS
       NAME 'vervaardiging_van_farmaceutische_grondstoffen_en_producten'
+      TITLE 'Vervaardiging van farmaceutische grondstoffen en producten'
 EXPRESSION ("[sbi_code_group]" eq "21")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#808000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -511,13 +538,14 @@ EXPRESSION ("[sbi_code_group]" eq "21")
     END
     CLASS
       NAME 'vervaardiging_van_producten_van_rubber_en_kunststof'
+      TITLE 'Vervaardiging van producten van rubber en kunststof'
 EXPRESSION ("[sbi_code_group]" eq "22")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#4682B4'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -535,13 +563,14 @@ EXPRESSION ("[sbi_code_group]" eq "22")
     END
     CLASS
       NAME 'vervaardiging_van_overige_niet_metaalhoudende_minerale_producten'
+      TITLE 'Vervaardiging van overige niet-metaalhoudende minerale producten'
 EXPRESSION ("[sbi_code_group]" eq "23")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FF7F'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -559,13 +588,14 @@ EXPRESSION ("[sbi_code_group]" eq "23")
     END
     CLASS
       NAME 'vervaardiging_van_metalen_in_primaire_vorm'
+      TITLE 'Vervaardiging van metalen in primaire vorm'
 EXPRESSION ("[sbi_code_group]" eq "24")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#8B008B'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -583,13 +613,14 @@ EXPRESSION ("[sbi_code_group]" eq "24")
     END
     CLASS
       NAME 'vervaardiging_van_producten_van_metaal_geen_machines_en_apparaten'
+      TITLE 'Vervaardiging van producten van metaal (geen machines en apparaten)'
 EXPRESSION ("[sbi_code_group]" eq "25")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF6347'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -607,13 +638,14 @@ EXPRESSION ("[sbi_code_group]" eq "25")
     END
     CLASS
       NAME 'vervaardiging_van_computers_en_van_elektronische_en_optische_apparatuur'
+      TITLE 'Vervaardiging van computers en van elektronische en optische apparatuur'
 EXPRESSION ("[sbi_code_group]" eq "26")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#556B2F'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -631,13 +663,14 @@ EXPRESSION ("[sbi_code_group]" eq "26")
     END
     CLASS
       NAME 'vervaardiging_van_elektrische_apparatuur'
+      TITLE 'Vervaardiging van elektrische apparatuur'
 EXPRESSION ("[sbi_code_group]" eq "27")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#800000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -655,13 +688,14 @@ EXPRESSION ("[sbi_code_group]" eq "27")
     END
     CLASS
       NAME 'vervaardiging_van_overige_machines_en_apparaten'
+      TITLE 'Vervaardiging van overige machines en apparaten'
 EXPRESSION ("[sbi_code_group]" eq "28")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#9932CC'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -679,13 +713,14 @@ EXPRESSION ("[sbi_code_group]" eq "28")
     END
     CLASS
       NAME 'vervaardiging_van_auto_s_aanhangwagens_en_opleggers'
+      TITLE "Vervaardiging van auto's, aanhangwagens en opleggers"
 EXPRESSION ("[sbi_code_group]" eq "29")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#20B2AA'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -703,13 +738,14 @@ EXPRESSION ("[sbi_code_group]" eq "29")
     END
     CLASS
       NAME 'vervaardiging_van_overige_transportmiddelen'
+      TITLE 'Vervaardiging van overige transportmiddelen'
 EXPRESSION ("[sbi_code_group]" eq "30")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FA8072'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -727,13 +763,14 @@ EXPRESSION ("[sbi_code_group]" eq "30")
     END
     CLASS
       NAME 'vervaardiging_van_meubels'
+      TITLE 'Vervaardiging van meubels'
 EXPRESSION ("[sbi_code_group]" eq "31")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#2E8B57'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -751,13 +788,14 @@ EXPRESSION ("[sbi_code_group]" eq "31")
     END
     CLASS
       NAME 'vervaardiging_van_overige_goederen'
+      TITLE 'Vervaardiging van overige goederen'
 EXPRESSION ("[sbi_code_group]" eq "32")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#6A5ACD'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -775,13 +813,14 @@ EXPRESSION ("[sbi_code_group]" eq "32")
     END
     CLASS
       NAME 'reparatie_en_installatie_van_machines_en_apparaten'
+      TITLE 'Reparatie en installatie van machines en apparaten'
 EXPRESSION ("[sbi_code_group]" eq "33")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#B22222'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -803,6 +842,7 @@ EXPRESSION ("[sbi_code_group]" eq "33")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -811,23 +851,26 @@ EXPRESSION ("[sbi_code_group]" eq "33")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'D Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht'
+      'ows_title' 'D Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'productie_en_distributie_van_en_handel_in_elektriciteit_aardgas_stoom_en_gekoelde_lucht'
+      TITLE 'Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht'
 EXPRESSION ("[sbi_code_group]" eq "35")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#4682B4'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -849,6 +892,7 @@ EXPRESSION ("[sbi_code_group]" eq "35")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -857,23 +901,26 @@ EXPRESSION ("[sbi_code_group]" eq "35")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'E Winning en distributie van water; afval- en afvalwaterbeheer en sanering'
+      'ows_title' 'E Winning en distributie van water; afval- en afvalwaterbeheer en sanering'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'winning_en_distributie_van_water'
+      TITLE 'Winning en distributie van water'
 EXPRESSION ("[sbi_code_group]" eq "36")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF5733'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -891,13 +938,14 @@ EXPRESSION ("[sbi_code_group]" eq "36")
     END
     CLASS
       NAME 'afvalwaterinzameling_en_behandeling'
+      TITLE 'Afvalwaterinzameling en -behandeling'
 EXPRESSION ("[sbi_code_group]" eq "37")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#33FF57'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -915,13 +963,14 @@ EXPRESSION ("[sbi_code_group]" eq "37")
     END
     CLASS
       NAME 'afvalinzameling_en_behandeling_voorbereiding_tot_recycling'
+      TITLE 'Afvalinzameling en -behandeling; voorbereiding tot recycling'
 EXPRESSION ("[sbi_code_group]" eq "38")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#3377FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -939,13 +988,14 @@ EXPRESSION ("[sbi_code_group]" eq "38")
     END
     CLASS
       NAME 'sanering_en_overig_afvalbeheer'
+      TITLE 'Sanering en overig afvalbeheer'
 EXPRESSION ("[sbi_code_group]" eq "39")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF33FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -967,6 +1017,7 @@ EXPRESSION ("[sbi_code_group]" eq "39")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -975,23 +1026,26 @@ EXPRESSION ("[sbi_code_group]" eq "39")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'F Bouwnijverheid'
+      'ows_title' 'F Bouwnijverheid'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'algemene_burgerlijke_en_utiliteitsbouw_en_projectontwikkeling'
+      TITLE 'Algemene burgerlijke en utiliteitsbouw en projectontwikkeling'
 EXPRESSION ("[sbi_code_group]" eq "41")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF5733'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1009,13 +1063,14 @@ EXPRESSION ("[sbi_code_group]" eq "41")
     END
     CLASS
       NAME 'grond_water_en_wegenbouw_geen_grondverzet'
+      TITLE 'Grond-, water- en wegenbouw (geen grondverzet)'
 EXPRESSION ("[sbi_code_group]" eq "42")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#33FF57'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1033,13 +1088,14 @@ EXPRESSION ("[sbi_code_group]" eq "42")
     END
     CLASS
       NAME 'gespecialiseerde_werkzaamheden_in_de_bouw'
+      TITLE 'Gespecialiseerde werkzaamheden in de bouw'
 EXPRESSION ("[sbi_code_group]" eq "43")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#3377FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1061,6 +1117,7 @@ EXPRESSION ("[sbi_code_group]" eq "43")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1069,23 +1126,26 @@ EXPRESSION ("[sbi_code_group]" eq "43")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' "G Groot- en detailhandel; reparatie van auto's"
+      'ows_title' "G Groot- en detailhandel; reparatie van auto's"
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'handel_in_en_reparatie_van_auto_s_motorfietsen_en_aanhangers'
+      TITLE "Handel in en reparatie van auto's, motorfietsen en aanhangers"
 EXPRESSION ("[sbi_code_group]" eq "45")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF5733'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1103,13 +1163,14 @@ EXPRESSION ("[sbi_code_group]" eq "45")
     END
     CLASS
       NAME 'groothandel_en_handelsbemiddeling_niet_in_auto_s_en_motorfietsen'
+      TITLE "Groothandel en handelsbemiddeling (niet in auto's en motorfietsen)"
 EXPRESSION ("[sbi_code_group]" eq "46")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#33FF57'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1127,13 +1188,14 @@ EXPRESSION ("[sbi_code_group]" eq "46")
     END
     CLASS
       NAME 'detailhandel_niet_in_auto_s'
+      TITLE "Detailhandel (niet in auto's)"
 EXPRESSION ("[sbi_code_group]" eq "47")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#3366FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1155,6 +1217,7 @@ EXPRESSION ("[sbi_code_group]" eq "47")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1163,23 +1226,26 @@ EXPRESSION ("[sbi_code_group]" eq "47")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'H Vervoer en opslag'
+      'ows_title' 'H Vervoer en opslag'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'vervoer_over_land'
+      TITLE 'Vervoer over land'
 EXPRESSION ("[sbi_code_group]" eq "49")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF5733'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1197,13 +1263,14 @@ EXPRESSION ("[sbi_code_group]" eq "49")
     END
     CLASS
       NAME 'vervoer_over_water'
+      TITLE 'Vervoer over water'
 EXPRESSION ("[sbi_code_group]" eq "50")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#33FF57'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1221,13 +1288,14 @@ EXPRESSION ("[sbi_code_group]" eq "50")
     END
     CLASS
       NAME 'luchtvaart'
+      TITLE 'Luchtvaart'
 EXPRESSION ("[sbi_code_group]" eq "51")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#3366FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1245,13 +1313,14 @@ EXPRESSION ("[sbi_code_group]" eq "51")
     END
     CLASS
       NAME 'opslag_en_dienstverlening_voor_vervoer'
+      TITLE 'Opslag en dienstverlening voor vervoer'
 EXPRESSION ("[sbi_code_group]" eq "52")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF33FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1269,13 +1338,14 @@ EXPRESSION ("[sbi_code_group]" eq "52")
     END
     CLASS
       NAME 'post_en_koeriers'
+      TITLE 'Post en koeriers'
 EXPRESSION ("[sbi_code_group]" eq "53")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFFF33'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1297,6 +1367,7 @@ EXPRESSION ("[sbi_code_group]" eq "53")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1305,23 +1376,26 @@ EXPRESSION ("[sbi_code_group]" eq "53")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'I Logies-, maaltijd- en drankverstrekking'
+      'ows_title' 'I Logies-, maaltijd- en drankverstrekking'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'logiesverstrekking'
+      TITLE 'Logiesverstrekking'
 EXPRESSION ("[sbi_code_group]" eq "55")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BF8080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1339,13 +1413,14 @@ EXPRESSION ("[sbi_code_group]" eq "55")
     END
     CLASS
       NAME 'eet_en_drinkgelegenheden'
+      TITLE 'Eet- en drinkgelegenheden'
 EXPRESSION ("[sbi_code_group]" eq "56")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BFBFBF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1367,6 +1442,7 @@ EXPRESSION ("[sbi_code_group]" eq "56")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1375,23 +1451,26 @@ EXPRESSION ("[sbi_code_group]" eq "56")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'J Informatie en communicatie'
+      'ows_title' 'J Informatie en communicatie'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'uitgeverijen'
+      TITLE 'Uitgeverijen'
 EXPRESSION ("[sbi_code_group]" eq "58")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BF80FD'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1409,13 +1488,14 @@ EXPRESSION ("[sbi_code_group]" eq "58")
     END
     CLASS
       NAME 'productie_en_distributie_van_films_en_televisieprogramma_s_maken_en_uitgeven_van_geluidsopnamen'
+      TITLE "Productie en distributie van films en televisieprogramma's; maken en uitgeven van geluidsopnamen"
 EXPRESSION ("[sbi_code_group]" eq "59")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BF80BF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1433,13 +1513,14 @@ EXPRESSION ("[sbi_code_group]" eq "59")
     END
     CLASS
       NAME 'verzorgen_en_uitzenden_van_radio_en_televisieprogramma_s'
+      TITLE "Verzorgen en uitzenden van radio- en televisieprogramma's"
 EXPRESSION ("[sbi_code_group]" eq "60")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BF8040'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1457,13 +1538,14 @@ EXPRESSION ("[sbi_code_group]" eq "60")
     END
     CLASS
       NAME 'telecommunicatie'
+      TITLE 'Telecommunicatie'
 EXPRESSION ("[sbi_code_group]" eq "61")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BFBF80'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1481,13 +1563,14 @@ EXPRESSION ("[sbi_code_group]" eq "61")
     END
     CLASS
       NAME 'dienstverlenende_activiteiten_op_het_gebied_van_informatietechnologie'
+      TITLE 'Dienstverlenende activiteiten op het gebied van informatietechnologie'
 EXPRESSION ("[sbi_code_group]" eq "62")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BFBFBF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1505,13 +1588,14 @@ EXPRESSION ("[sbi_code_group]" eq "62")
     END
     CLASS
       NAME 'dienstverlenende_activiteiten_op_het_gebied_van_informatie'
+      TITLE 'Dienstverlenende activiteiten op het gebied van informatie'
 EXPRESSION ("[sbi_code_group]" eq "63")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#BF8080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1533,6 +1617,7 @@ EXPRESSION ("[sbi_code_group]" eq "63")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1541,23 +1626,26 @@ EXPRESSION ("[sbi_code_group]" eq "63")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'K Financiële instellingen'
+      'ows_title' 'K Financiële instellingen'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'financiele_instellingen_geen_verzekeringen_en_pensioenfondsen'
+      TITLE 'Financiële instellingen (geen verzekeringen en pensioenfondsen)'
 EXPRESSION ("[sbi_code_group]" eq "64")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF6347'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1575,13 +1663,14 @@ EXPRESSION ("[sbi_code_group]" eq "64")
     END
     CLASS
       NAME 'verzekeringen_en_pensioenfondsen_geen_verplichte_sociale_verzekeringen'
+      TITLE 'Verzekeringen en pensioenfondsen (geen verplichte sociale verzekeringen)'
 EXPRESSION ("[sbi_code_group]" eq "65")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#4682B4'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1599,13 +1688,14 @@ EXPRESSION ("[sbi_code_group]" eq "65")
     END
     CLASS
       NAME 'overige_financiele_dienstverlening'
+      TITLE 'Overige Financiële dienstverlening'
 EXPRESSION ("[sbi_code_group]" eq "66")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#9400D3'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1627,6 +1717,7 @@ EXPRESSION ("[sbi_code_group]" eq "66")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1635,23 +1726,26 @@ EXPRESSION ("[sbi_code_group]" eq "66")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'L Verhuur van en handel in onroerend goed'
+      'ows_title' 'L Verhuur van en handel in onroerend goed'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'verhuur_van_en_handel_in_onroerend_goed'
+      TITLE 'Verhuur van en handel in onroerend goed'
 EXPRESSION ("[sbi_code_group]" eq "68")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FF00'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1673,6 +1767,7 @@ EXPRESSION ("[sbi_code_group]" eq "68")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1681,23 +1776,26 @@ EXPRESSION ("[sbi_code_group]" eq "68")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'M Advisering, onderzoek en overige specialistische zakelijke dienstverlening'
+      'ows_title' 'M Advisering, onderzoek en overige specialistische zakelijke dienstverlening'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'rechtskundige_dienstverlening_accountancy_belastingadvisering_en_administratie'
+      TITLE 'Rechtskundige dienstverlening, accountancy, belastingadvisering en administratie'
 EXPRESSION ("[sbi_code_group]" eq "69")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF00FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1715,13 +1813,14 @@ EXPRESSION ("[sbi_code_group]" eq "69")
     END
     CLASS
       NAME 'holdings_geen_financiele_concerndiensten_binnen_eigen_concern_en_managementadvisering'
+      TITLE 'Holdings (geen financi�le), concerndiensten binnen eigen concern en managementadvisering'
 EXPRESSION ("[sbi_code_group]" eq "70")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FF7F'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1739,13 +1838,14 @@ EXPRESSION ("[sbi_code_group]" eq "70")
     END
     CLASS
       NAME 'architecten_ingenieurs_en_technisch_ontwerp_en_advies_keuring_en_controle'
+      TITLE 'Architecten, ingenieurs en technisch ontwerp en advies; keuring en controle'
 EXPRESSION ("[sbi_code_group]" eq "71")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#000080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1763,13 +1863,14 @@ EXPRESSION ("[sbi_code_group]" eq "71")
     END
     CLASS
       NAME 'speur_en_ontwikkelingswerk'
+      TITLE 'Speur- en ontwikkelingswerk'
 EXPRESSION ("[sbi_code_group]" eq "72")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#8B0000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1787,13 +1888,14 @@ EXPRESSION ("[sbi_code_group]" eq "72")
     END
     CLASS
       NAME 'reclame_en_marktonderzoek'
+      TITLE 'Reclame en marktonderzoek'
 EXPRESSION ("[sbi_code_group]" eq "73")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFA500'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1811,13 +1913,14 @@ EXPRESSION ("[sbi_code_group]" eq "73")
     END
     CLASS
       NAME 'industrieel_ontwerp_en_vormgeving_fotografie_vertaling_en_overige_consultancy'
+      TITLE 'Industrieel ontwerp en vormgeving, fotografie, vertaling en overige consultancy'
 EXPRESSION ("[sbi_code_group]" eq "74")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#4B0082'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1835,13 +1938,14 @@ EXPRESSION ("[sbi_code_group]" eq "74")
     END
     CLASS
       NAME 'veterinaire_dienstverlening'
+      TITLE 'Veterinaire dienstverlening'
 EXPRESSION ("[sbi_code_group]" eq "75")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFD700'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1863,6 +1967,7 @@ EXPRESSION ("[sbi_code_group]" eq "75")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1871,23 +1976,26 @@ EXPRESSION ("[sbi_code_group]" eq "75")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'N Verhuur van roerende goederen en overige zakelijke dienstverlening'
+      'ows_title' 'N Verhuur van roerende goederen en overige zakelijke dienstverlening'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'verhuur_en_lease_van_auto_s_consumentenartikelen_machines_en_overige_roerende_goederen'
+      TITLE "Verhuur en lease van auto's, consumentenartikelen, machines en overige roerende goederen"
 EXPRESSION ("[sbi_code_group]" eq "77")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#008000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1905,13 +2013,14 @@ EXPRESSION ("[sbi_code_group]" eq "77")
     END
     CLASS
       NAME 'arbeidsbemiddeling_uitzendbureaus_en_personeelsbeheer'
+      TITLE 'Arbeidsbemiddeling, uitzendbureaus en personeelsbeheer'
 EXPRESSION ("[sbi_code_group]" eq "78")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF4500'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1929,13 +2038,14 @@ EXPRESSION ("[sbi_code_group]" eq "78")
     END
     CLASS
       NAME 'reisbemiddeling_reisorganisatie_toeristische_informatie_en_reserveringsbureaus'
+      TITLE 'Reisbemiddeling, reisorganisatie, toeristische informatie en reserveringsbureaus'
 EXPRESSION ("[sbi_code_group]" eq "79")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FFFF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1953,13 +2063,14 @@ EXPRESSION ("[sbi_code_group]" eq "79")
     END
     CLASS
       NAME 'beveiliging_en_opsporing'
+      TITLE 'Beveiliging en opsporing'
 EXPRESSION ("[sbi_code_group]" eq "80")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#0000FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -1977,13 +2088,14 @@ EXPRESSION ("[sbi_code_group]" eq "80")
     END
     CLASS
       NAME 'facility_management_reiniging_en_landschapsverzorging'
+      TITLE 'Facility management, reiniging en landschapsverzorging'
 EXPRESSION ("[sbi_code_group]" eq "81")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF00FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2001,13 +2113,14 @@ EXPRESSION ("[sbi_code_group]" eq "81")
     END
     CLASS
       NAME 'overige_zakelijke_dienstverlening'
+      TITLE 'Overige zakelijke dienstverlening'
 EXPRESSION ("[sbi_code_group]" eq "82")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFFF00'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2029,6 +2142,7 @@ EXPRESSION ("[sbi_code_group]" eq "82")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2037,23 +2151,26 @@ EXPRESSION ("[sbi_code_group]" eq "82")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'O Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen'
+      'ows_title' 'O Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'openbaar_bestuur_overheidsdiensten_en_verplichte_sociale_verzekeringen'
+      TITLE 'Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen'
 EXPRESSION ("[sbi_code_group]" eq "84")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#808080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2075,6 +2192,7 @@ EXPRESSION ("[sbi_code_group]" eq "84")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2083,23 +2201,26 @@ EXPRESSION ("[sbi_code_group]" eq "84")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'P Onderwijs'
+      'ows_title' 'P Onderwijs'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'onderwijs'
+      TITLE 'Onderwijs'
 EXPRESSION ("[sbi_code_group]" eq "85")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#008080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2121,6 +2242,7 @@ EXPRESSION ("[sbi_code_group]" eq "85")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2129,23 +2251,26 @@ EXPRESSION ("[sbi_code_group]" eq "85")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'Q Gezondheids- en welzijnszorg'
+      'ows_title' 'Q Gezondheids- en welzijnszorg'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'gezondheidszorg'
+      TITLE 'Gezondheidszorg'
 EXPRESSION ("[sbi_code_group]" eq "86")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#800000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2163,13 +2288,14 @@ EXPRESSION ("[sbi_code_group]" eq "86")
     END
     CLASS
       NAME 'verpleging_verzorging_en_begeleiding_met_overnachting'
+      TITLE 'Verpleging, verzorging en begeleiding met overnachting'
 EXPRESSION ("[sbi_code_group]" eq "87")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF00FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2187,13 +2313,14 @@ EXPRESSION ("[sbi_code_group]" eq "87")
     END
     CLASS
       NAME 'maatschappelijke_dienstverlening_zonder_overnachting'
+      TITLE 'Maatschappelijke dienstverlening zonder overnachting'
 EXPRESSION ("[sbi_code_group]" eq "88")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FFFF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2215,6 +2342,7 @@ EXPRESSION ("[sbi_code_group]" eq "88")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2223,23 +2351,26 @@ EXPRESSION ("[sbi_code_group]" eq "88")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'R Cultuur, sport en recreatie'
+      'ows_title' 'R Cultuur, sport en recreatie'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'kunst'
+      TITLE 'Kunst'
 EXPRESSION ("[sbi_code_group]" eq "90")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#008000'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2257,13 +2388,14 @@ EXPRESSION ("[sbi_code_group]" eq "90")
     END
     CLASS
       NAME 'culturele_uitleencentra_openbare_archieven_musea_dieren_en_plantentuinen_natuurbehoud'
+      TITLE 'Culturele uitleencentra, openbare archieven, musea, dieren- en plantentuinen, natuurbehoud'
 EXPRESSION ("[sbi_code_group]" eq "91")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#800080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2281,13 +2413,14 @@ EXPRESSION ("[sbi_code_group]" eq "91")
     END
     CLASS
       NAME 'loterijen_en_kansspelen'
+      TITLE 'Loterijen en kansspelen'
 EXPRESSION ("[sbi_code_group]" eq "92")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#000080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2305,13 +2438,14 @@ EXPRESSION ("[sbi_code_group]" eq "92")
     END
     CLASS
       NAME 'sport_en_recreatie'
+      TITLE 'Sport en recreatie'
 EXPRESSION ("[sbi_code_group]" eq "93")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFA500'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2333,6 +2467,7 @@ EXPRESSION ("[sbi_code_group]" eq "93")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2341,23 +2476,26 @@ EXPRESSION ("[sbi_code_group]" eq "93")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'S Overige dienstverlening'
+      'ows_title' 'S Overige dienstverlening'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'levensbeschouwelijke_en_politieke_organisaties_belangen_en_ideele_organisaties_hobbyclubs'
+      TITLE 'Levensbeschouwelijke en politieke organisaties, belangen- en ide�le organisaties, hobbyclubs'
 EXPRESSION ("[sbi_code_group]" eq "94")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FF00FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2375,13 +2513,14 @@ EXPRESSION ("[sbi_code_group]" eq "94")
     END
     CLASS
       NAME 'reparatie_van_computers_en_consumentenartikelen'
+      TITLE 'Reparatie van computers en consumentenartikelen'
 EXPRESSION ("[sbi_code_group]" eq "95")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#00FFFF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2399,13 +2538,14 @@ EXPRESSION ("[sbi_code_group]" eq "95")
     END
     CLASS
       NAME 'wellness_en_overige_dienstverlening_uitvaartbranche'
+      TITLE 'Wellness en overige dienstverlening; uitvaartbranche'
 EXPRESSION ("[sbi_code_group]" eq "96")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#0000FF'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2427,6 +2567,7 @@ EXPRESSION ("[sbi_code_group]" eq "96")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2435,23 +2576,26 @@ EXPRESSION ("[sbi_code_group]" eq "96")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'T Huishoudens als werkgever; niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik'
+      'ows_title' 'T Huishoudens als werkgever; niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'huishoudens_als_werkgever_van_huishoudelijk_personeel'
+      TITLE 'Huishoudens als werkgever van huishoudelijk personeel'
 EXPRESSION ("[sbi_code_group]" eq "97")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#800080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2469,13 +2613,14 @@ EXPRESSION ("[sbi_code_group]" eq "97")
     END
     CLASS
       NAME 'niet_gespecificeerde_productie_van_goederen_en_diensten_door_particuliere_huishoudens_voor_eigen_gebruik'
+      TITLE 'Niet-gespecificeerde productie van goederen en diensten door particuliere huishoudens voor eigen gebruik'
 EXPRESSION ("[sbi_code_group]" eq "98")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#FFA500'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
@@ -2497,6 +2642,7 @@ EXPRESSION ("[sbi_code_group]" eq "98")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
+    GROUP 'Handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2505,23 +2651,26 @@ EXPRESSION ("[sbi_code_group]" eq "98")
       'init=epsg:28992'
     END
     METADATA
-      'wms_title' 'U Extraterritoriale organisaties en lichamen'
+      'ows_title' 'U Extraterritoriale organisaties en lichamen'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
-      'wms_abstract' 'Handelsregister Amsterdam'
-      'wms_srs' 'EPSG:28992'
-      'wms_format' 'image/png'
-      'wms_server_version' '1.1.1'
+      'ows_abstract' 'Handelsregister Amsterdam'
+      'gml_featureid' 'vestigingsnummer'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_types' 'auto'
+      'wms_include_items' 'all'
     END
     CLASS
       NAME 'extraterritoriale_organisaties_en_lichamen'
+      TITLE 'Extraterritoriale organisaties en lichamen'
 EXPRESSION ("[sbi_code_group]" eq "99")
       STYLE
         SYMBOL 'stip'
-        SIZE 16
+        SIZE 14
         COLOR '#008080'
-        OUTLINECOLOR 0 0 0
-        WIDTH 1
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
       END
       LABEL
         MINSCALEDENOM 100
