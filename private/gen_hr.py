@@ -186,7 +186,7 @@ with block("MAP"):
             p("INCLUDE", "connection/dataservices.inc")
             p("DATA", sql)
             p("TYPE POINT")
-            p("GROUP", 'Handelsregister')
+            p("GROUP", 'handelsregister')
             # p("MINSCALEDENOM 10")
             # p("MAXSCALEDENOM 9001")
             p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
@@ -199,6 +199,7 @@ with block("MAP"):
             
             with block("METADATA"):
                 q("ows_title", group)
+                q("ows_group_title", 'Handelsregister')
                 q("gml_include_items", "all")
                 q("wms_enable_request", "*")
                 q("ows_abstract", "Handelsregister Amsterdam")

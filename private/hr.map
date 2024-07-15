@@ -17,7 +17,7 @@ MAP
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -27,6 +27,7 @@ MAP
     END
     METADATA
       'ows_title' 'A Landbouw, bosbouw en visserij'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -117,7 +118,7 @@ EXPRESSION ("[sbi_code_group]" eq "03")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -127,6 +128,7 @@ EXPRESSION ("[sbi_code_group]" eq "03")
     END
     METADATA
       'ows_title' 'B Winning van delfstoffen'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -217,7 +219,7 @@ EXPRESSION ("[sbi_code_group]" eq "09")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -227,6 +229,7 @@ EXPRESSION ("[sbi_code_group]" eq "09")
     END
     METADATA
       'ows_title' 'C Industrie'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -842,7 +845,7 @@ EXPRESSION ("[sbi_code_group]" eq "33")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -852,6 +855,7 @@ EXPRESSION ("[sbi_code_group]" eq "33")
     END
     METADATA
       'ows_title' 'D Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -892,7 +896,7 @@ EXPRESSION ("[sbi_code_group]" eq "35")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -902,6 +906,7 @@ EXPRESSION ("[sbi_code_group]" eq "35")
     END
     METADATA
       'ows_title' 'E Winning en distributie van water; afval- en afvalwaterbeheer en sanering'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1017,7 +1022,7 @@ EXPRESSION ("[sbi_code_group]" eq "39")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1027,6 +1032,7 @@ EXPRESSION ("[sbi_code_group]" eq "39")
     END
     METADATA
       'ows_title' 'F Bouwnijverheid'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1117,7 +1123,7 @@ EXPRESSION ("[sbi_code_group]" eq "43")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1127,6 +1133,7 @@ EXPRESSION ("[sbi_code_group]" eq "43")
     END
     METADATA
       'ows_title' "G Groot- en detailhandel; reparatie van auto's"
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1217,7 +1224,7 @@ EXPRESSION ("[sbi_code_group]" eq "47")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1227,6 +1234,7 @@ EXPRESSION ("[sbi_code_group]" eq "47")
     END
     METADATA
       'ows_title' 'H Vervoer en opslag'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1367,7 +1375,7 @@ EXPRESSION ("[sbi_code_group]" eq "53")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1377,6 +1385,7 @@ EXPRESSION ("[sbi_code_group]" eq "53")
     END
     METADATA
       'ows_title' 'I Logies-, maaltijd- en drankverstrekking'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1442,7 +1451,7 @@ EXPRESSION ("[sbi_code_group]" eq "56")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1452,6 +1461,7 @@ EXPRESSION ("[sbi_code_group]" eq "56")
     END
     METADATA
       'ows_title' 'J Informatie en communicatie'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1617,7 +1627,7 @@ EXPRESSION ("[sbi_code_group]" eq "63")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1627,6 +1637,7 @@ EXPRESSION ("[sbi_code_group]" eq "63")
     END
     METADATA
       'ows_title' 'K Financiële instellingen'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1717,7 +1728,7 @@ EXPRESSION ("[sbi_code_group]" eq "66")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1727,6 +1738,7 @@ EXPRESSION ("[sbi_code_group]" eq "66")
     END
     METADATA
       'ows_title' 'L Verhuur van en handel in onroerend goed'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1767,7 +1779,7 @@ EXPRESSION ("[sbi_code_group]" eq "68")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1777,6 +1789,7 @@ EXPRESSION ("[sbi_code_group]" eq "68")
     END
     METADATA
       'ows_title' 'M Advisering, onderzoek en overige specialistische zakelijke dienstverlening'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -1967,7 +1980,7 @@ EXPRESSION ("[sbi_code_group]" eq "75")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -1977,6 +1990,7 @@ EXPRESSION ("[sbi_code_group]" eq "75")
     END
     METADATA
       'ows_title' 'N Verhuur van roerende goederen en overige zakelijke dienstverlening'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2142,7 +2156,7 @@ EXPRESSION ("[sbi_code_group]" eq "82")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2152,6 +2166,7 @@ EXPRESSION ("[sbi_code_group]" eq "82")
     END
     METADATA
       'ows_title' 'O Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2192,7 +2207,7 @@ EXPRESSION ("[sbi_code_group]" eq "84")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2202,6 +2217,7 @@ EXPRESSION ("[sbi_code_group]" eq "84")
     END
     METADATA
       'ows_title' 'P Onderwijs'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2242,7 +2258,7 @@ EXPRESSION ("[sbi_code_group]" eq "85")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2252,6 +2268,7 @@ EXPRESSION ("[sbi_code_group]" eq "85")
     END
     METADATA
       'ows_title' 'Q Gezondheids- en welzijnszorg'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2342,7 +2359,7 @@ EXPRESSION ("[sbi_code_group]" eq "88")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2352,6 +2369,7 @@ EXPRESSION ("[sbi_code_group]" eq "88")
     END
     METADATA
       'ows_title' 'R Cultuur, sport en recreatie'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2467,7 +2485,7 @@ EXPRESSION ("[sbi_code_group]" eq "93")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2477,6 +2495,7 @@ EXPRESSION ("[sbi_code_group]" eq "93")
     END
     METADATA
       'ows_title' 'S Overige dienstverlening'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2567,7 +2586,7 @@ EXPRESSION ("[sbi_code_group]" eq "96")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2577,6 +2596,7 @@ EXPRESSION ("[sbi_code_group]" eq "96")
     END
     METADATA
       'ows_title' 'T Huishoudens als werkgever; niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
@@ -2642,7 +2662,7 @@ EXPRESSION ("[sbi_code_group]" eq "98")
     INCLUDE 'connection/dataservices.inc'
     DATA "bezoek_geopunt FROM (SELECT naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving FROM hr_ves hv INNER JOIN hr_ves_activiteiten hva ON hva.parent_id = hv.vestigingsnummer WHERE bezoek_geopunt IS NOT NULL AND is_hoofdactiviteit = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
-    GROUP 'Handelsregister'
+    GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
@@ -2652,6 +2672,7 @@ EXPRESSION ("[sbi_code_group]" eq "98")
     END
     METADATA
       'ows_title' 'U Extraterritoriale organisaties en lichamen'
+      'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
       'ows_abstract' 'Handelsregister Amsterdam'
