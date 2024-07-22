@@ -10,7 +10,9 @@ MapServer-configuratie voor map.data.amsterdam.nl.
 # Opstarten
 
 * Hernoem ``.env-example`` naar ``.env``
-* Pas in ``.env`` het pad aan waar je je Database DIR neer wil zetten.
+* Pas in ``.env`` de volgende parameters aan:
+  * het pad aan waar je je Database DIR neer wil zetten
+  * het wachtwoord om je database te verbinden
 * Start de database: ``docker-compose up -d database``.
 * Vul de gewenste tabellen in de database, die woont op localhost, poort 5403. 
 * Bouw Docker image met MapServer: ``docker-compose build map``.
