@@ -44,29 +44,13 @@ services:
     ports:
       - "8383:80"
     environment:
-      # Uncomment the following line to have private maps served
-      ACCESS_SCOPE: private 
       # Used by apache to allow complete access for local dev
       LOCAL: "true"
-      BAG_V11_DB_NAME: bag_v11
-      BAG_V11_DB_USER: postgres
-      BAG_V11_DB_PASSWORD: insecure
-      BAG_V11_DB_HOST: database
 
       PANORAMA_DB_NAME: panorama
       PANORAMA_DB_USER: postgres
       PANORAMA_DB_PASSWORD: insecure
       PANORAMA_DB_HOST: database
-
-      BASISKAART_DB_NAME: basiskaart
-      BASISKAART_DB_USER: postgres
-      BASISKAART_DB_PASSWORD: insecure
-      BASISKAART_DB_HOST: database
-
-      HANDELSREGISTER_DB_NAME: handelsregister
-      HANDELSREGISTER_DB_USER: postgres
-      HANDELSREGISTER_DB_PASSWORD: insecure
-      HANDELSREGISTER_DB_HOST: database
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
@@ -76,6 +60,51 @@ services:
       MAP_URL: "http://map"
       LEGEND_URL: "http://map"
 
+  privatemap:
+    build:
+      context: .
+      dockerfile: Dockerfile.private
+    ports:
+      - "8384:80"
+    environment:
+      # Used by apache to allow complete access for local dev
+      LOCAL: "true"
+
+      PANORAMA_DB_NAME: panorama
+      PANORAMA_DB_USER: postgres
+      PANORAMA_DB_PASSWORD: insecure
+      PANORAMA_DB_HOST: database
+
+      DATASERVICES_DB_NAME: postgres
+      DATASERVICES_DB_USER: postgres
+      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_HOST: database
+
+      MAP_URL: "http://map"
+      LEGEND_URL: "http://map"
+
+  topomap:
+    build:
+      context: .
+      dockerfile: Dockerfile.topografie
+    ports:
+      - "8385:80"
+    environment:
+      # Used by apache to allow complete access for local dev
+      LOCAL: "true"
+
+      PANORAMA_DB_NAME: panorama
+      PANORAMA_DB_USER: postgres
+      PANORAMA_DB_PASSWORD: insecure
+      PANORAMA_DB_HOST: database
+
+      DATASERVICES_DB_NAME: postgres
+      DATASERVICES_DB_USER: postgres
+      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_HOST: database
+
+      MAP_URL: "http://map"
+      LEGEND_URL: "http://map"
 
     volumes:
       - .:/srv/mapserver/
