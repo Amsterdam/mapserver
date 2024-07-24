@@ -1,0 +1,1936 @@
+MAP
+  NAME 'huishoudelijkafvalservicegebieden'
+  INCLUDE 'header.inc'
+  WEB
+    METADATA
+      'ows_title' 'Huishoudelijkafval Servicegebieden'
+      'ows_onlineresource' 'MAP_URL_REPLACE/maps/huishoudelijkafvalservicegebieden'
+      'ows_abstract' 'Servicegebieden van huishoudelijkafvalcontainers'
+    END
+  END
+  LAYER
+    NAME 'servicegebieden_rest'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Rest') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebieden'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebieden Rest'
+      'ows_group_title' 'Servicegebieden'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        COLOR "#8dd3c7"
+        OPACITY 90
+        OUTLINECOLOR "#8dd3c7"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        COLOR "#ffffb3"
+        OPACITY 90
+        OUTLINECOLOR "#ffffb3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        COLOR "#bebada"
+        OPACITY 90
+        OUTLINECOLOR "#bebada"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        COLOR "#fb8072"
+        OPACITY 90
+        OUTLINECOLOR "#fb8072"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        COLOR "#80b1d3"
+        OPACITY 90
+        OUTLINECOLOR "#80b1d3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        COLOR "#fdb462"
+        OPACITY 90
+        OUTLINECOLOR "#fdb462"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        COLOR "#b3de69"
+        OPACITY 90
+        OUTLINECOLOR "#b3de69"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        COLOR "#fccde5"
+        OPACITY 90
+        OUTLINECOLOR "#fccde5"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        COLOR "#d9d9d9"
+        OPACITY 90
+        OUTLINECOLOR "#d9d9d9"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        COLOR "#bc80bd"
+        OPACITY 90
+        OUTLINECOLOR "#bc80bd"
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebieden_glas'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Glas') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebieden'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebieden Glas'
+      'ows_group_title' 'Servicegebieden'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        COLOR "#8dd3c7"
+        OPACITY 90
+        OUTLINECOLOR "#8dd3c7"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        COLOR "#ffffb3"
+        OPACITY 90
+        OUTLINECOLOR "#ffffb3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        COLOR "#bebada"
+        OPACITY 90
+        OUTLINECOLOR "#bebada"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        COLOR "#fb8072"
+        OPACITY 90
+        OUTLINECOLOR "#fb8072"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        COLOR "#80b1d3"
+        OPACITY 90
+        OUTLINECOLOR "#80b1d3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        COLOR "#fdb462"
+        OPACITY 90
+        OUTLINECOLOR "#fdb462"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        COLOR "#b3de69"
+        OPACITY 90
+        OUTLINECOLOR "#b3de69"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        COLOR "#fccde5"
+        OPACITY 90
+        OUTLINECOLOR "#fccde5"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        COLOR "#d9d9d9"
+        OPACITY 90
+        OUTLINECOLOR "#d9d9d9"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        COLOR "#bc80bd"
+        OPACITY 90
+        OUTLINECOLOR "#bc80bd"
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebieden_papier'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Papier') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebieden'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebieden Papier'
+      'ows_group_title' 'Servicegebieden'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        COLOR "#8dd3c7"
+        OPACITY 90
+        OUTLINECOLOR "#8dd3c7"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        COLOR "#ffffb3"
+        OPACITY 90
+        OUTLINECOLOR "#ffffb3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        COLOR "#bebada"
+        OPACITY 90
+        OUTLINECOLOR "#bebada"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        COLOR "#fb8072"
+        OPACITY 90
+        OUTLINECOLOR "#fb8072"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        COLOR "#80b1d3"
+        OPACITY 90
+        OUTLINECOLOR "#80b1d3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        COLOR "#fdb462"
+        OPACITY 90
+        OUTLINECOLOR "#fdb462"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        COLOR "#b3de69"
+        OPACITY 90
+        OUTLINECOLOR "#b3de69"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        COLOR "#fccde5"
+        OPACITY 90
+        OUTLINECOLOR "#fccde5"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        COLOR "#d9d9d9"
+        OPACITY 90
+        OUTLINECOLOR "#d9d9d9"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        COLOR "#bc80bd"
+        OPACITY 90
+        OUTLINECOLOR "#bc80bd"
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebieden_textiel'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Textiel') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebieden'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebieden Textiel'
+      'ows_group_title' 'Servicegebieden'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        COLOR "#8dd3c7"
+        OPACITY 90
+        OUTLINECOLOR "#8dd3c7"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        COLOR "#ffffb3"
+        OPACITY 90
+        OUTLINECOLOR "#ffffb3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        COLOR "#bebada"
+        OPACITY 90
+        OUTLINECOLOR "#bebada"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        COLOR "#fb8072"
+        OPACITY 90
+        OUTLINECOLOR "#fb8072"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        COLOR "#80b1d3"
+        OPACITY 90
+        OUTLINECOLOR "#80b1d3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        COLOR "#fdb462"
+        OPACITY 90
+        OUTLINECOLOR "#fdb462"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        COLOR "#b3de69"
+        OPACITY 90
+        OUTLINECOLOR "#b3de69"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        COLOR "#fccde5"
+        OPACITY 90
+        OUTLINECOLOR "#fccde5"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        COLOR "#d9d9d9"
+        OPACITY 90
+        OUTLINECOLOR "#d9d9d9"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        COLOR "#bc80bd"
+        OPACITY 90
+        OUTLINECOLOR "#bc80bd"
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebieden_gft'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'GFT') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebieden'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebieden GFT'
+      'ows_group_title' 'Servicegebieden'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        COLOR "#8dd3c7"
+        OPACITY 90
+        OUTLINECOLOR "#8dd3c7"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        COLOR "#ffffb3"
+        OPACITY 90
+        OUTLINECOLOR "#ffffb3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        COLOR "#bebada"
+        OPACITY 90
+        OUTLINECOLOR "#bebada"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        COLOR "#fb8072"
+        OPACITY 90
+        OUTLINECOLOR "#fb8072"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        COLOR "#80b1d3"
+        OPACITY 90
+        OUTLINECOLOR "#80b1d3"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        COLOR "#fdb462"
+        OPACITY 90
+        OUTLINECOLOR "#fdb462"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        COLOR "#b3de69"
+        OPACITY 90
+        OUTLINECOLOR "#b3de69"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        COLOR "#fccde5"
+        OPACITY 90
+        OUTLINECOLOR "#fccde5"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        COLOR "#d9d9d9"
+        OPACITY 90
+        OUTLINECOLOR "#d9d9d9"
+        WIDTH  2
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        COLOR "#bc80bd"
+        OPACITY 90
+        OUTLINECOLOR "#bc80bd"
+        WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebiedenlocatie_rest'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Rest') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebiedenlocatie'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'aantal_woningen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebiedenlocatie Rest'
+      'ows_group_title' 'Servicegebiedenlocatie'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden locaties'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8dd3c7'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#ffffb3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bebada'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fb8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#80b1d3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fdb462'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#b3de69'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fccde5'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#d9d9d9'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bc80bd'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebiedenlocatie_glas'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Glas') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebiedenlocatie'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'aantal_woningen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebiedenlocatie Glas'
+      'ows_group_title' 'Servicegebiedenlocatie'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden locaties'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8dd3c7'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#ffffb3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bebada'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fb8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#80b1d3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fdb462'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#b3de69'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fccde5'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#d9d9d9'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bc80bd'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebiedenlocatie_papier'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Papier') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebiedenlocatie'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'aantal_woningen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebiedenlocatie Papier'
+      'ows_group_title' 'Servicegebiedenlocatie'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden locaties'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8dd3c7'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#ffffb3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bebada'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fb8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#80b1d3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fdb462'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#b3de69'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fccde5'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#d9d9d9'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bc80bd'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebiedenlocatie_textiel'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Textiel') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebiedenlocatie'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'aantal_woningen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebiedenlocatie Textiel'
+      'ows_group_title' 'Servicegebiedenlocatie'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden locaties'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8dd3c7'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#ffffb3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bebada'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fb8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#80b1d3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fdb462'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#b3de69'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fccde5'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#d9d9d9'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bc80bd'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+  END
+  LAYER
+    NAME 'servicegebiedenlocatie_gft'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'GFT') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'servicegebiedenlocatie'
+    TYPE POINT
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'aantal_woningen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'Servicegebiedenlocatie GFT'
+      'ows_group_title' 'Servicegebiedenlocatie'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Servicegebieden locaties'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'point'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'test_0'
+EXPRESSION ("[last_numeric_digit]" eq "0")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#8dd3c7'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_1'
+EXPRESSION ("[last_numeric_digit]" eq "1")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#ffffb3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_2'
+EXPRESSION ("[last_numeric_digit]" eq "2")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bebada'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_3'
+EXPRESSION ("[last_numeric_digit]" eq "3")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fb8072'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_4'
+EXPRESSION ("[last_numeric_digit]" eq "4")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#80b1d3'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_5'
+EXPRESSION ("[last_numeric_digit]" eq "5")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fdb462'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_6'
+EXPRESSION ("[last_numeric_digit]" eq "6")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#b3de69'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_7'
+EXPRESSION ("[last_numeric_digit]" eq "7")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#fccde5'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_8'
+EXPRESSION ("[last_numeric_digit]" eq "8")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#d9d9d9'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+    CLASS
+      NAME 'test_9'
+EXPRESSION ("[last_numeric_digit]" eq "9")
+      STYLE
+        SYMBOL 'stip'
+        SIZE 16
+        COLOR '#bc80bd'
+        OUTLINECOLOR 0 0 0
+        WIDTH 1
+      END
+      LABEL
+        MINSCALEDENOM 100
+        MAXSCALEDENOM 1000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -30 10
+      END
+    END
+  END
+END
