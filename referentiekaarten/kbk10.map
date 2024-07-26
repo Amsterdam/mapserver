@@ -69,8 +69,6 @@ MAP
     END
   END
 
-  IMAGECOLOR                "#fefafa"
-
   #=============================================================================
   # LAYERS
   #=============================================================================
@@ -80,8 +78,9 @@ MAP
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WDL_breed_water\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[functie]" eq "overig" || "[functie]" eq "onbekend")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -101,15 +100,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WDL_haven
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WDL_haven\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[functie]" eq "haven")
     TYPE POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -128,15 +128,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_aanlegsteiger
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_aanlegsteiger\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "aanlegsteiger")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -159,15 +160,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_basaltblokken_steenglooiing
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_basaltblokken_steenglooiing\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "basaltblokken, steenglooiing")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -186,15 +188,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_grasland
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_grasland\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "grasland")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -213,15 +216,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_akkerland
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_akkerland\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "akkerland")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -240,15 +244,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_overig
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_overig\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "overig")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -267,15 +272,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_bedrijfsterrein
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_bedrijfsterrein\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "bedrijfsterrein")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -294,15 +300,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_openbaar_groen
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_openbaar_groen\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "openbaar groen")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -321,15 +328,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_zand
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_zand\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "zand")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -348,15 +356,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WGL_startbaan_landingsbaan
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_startbaan_landingsbaan\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoofdverkeersgebruik, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[hoofdverkeersgebruik]" eq "vliegverkeer")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -375,15 +384,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_spoorbaanlichaam
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_spoorbaanlichaam\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "spoorbaanlichaam" AND [hoogteniveau] >= 0)
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -402,15 +412,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_bos-loofbos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_bos-loofbos\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "bos: loofbos")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -429,15 +440,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_bos-naaldbos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_bos-naaldbos\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "bos: naaldbos")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -456,15 +468,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_bos-gemengd_bos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_bos-gemengd_bos\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "bos: gemengd bos")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -483,15 +496,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_bos-griend
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_bos-griend\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "bos: griend")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -510,15 +524,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_boomgaard
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_boomgaard\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "boomgaard")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -537,15 +552,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_boomkwekerij
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_boomkwekerij\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "boomkwekerij")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -564,15 +580,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_dodenakker
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_dodenakker\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "dodenakker")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -591,15 +608,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_dodenakker_met_bos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_dodenakker_met_bos\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "dodenakker met bos")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -618,15 +636,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    TRN_fruitkwekerij
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_fruitkwekerij\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "fruitkwekerij")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -645,16 +664,17 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    GBW_overdekt
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"GBW_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([hoogteniveau] < 0)
+    TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -666,20 +686,22 @@ MAP
     CLASS
       STYLE
         COLOR "#e5e3de"
+        WIDTH 3
       END
     END
   END
 
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    GBW_gebouw
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"GBW_gebouw\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "laagbouw")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -702,15 +724,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    GBW_hoogbouw
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"GBW_hoogbouw\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "hoogbouw")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -733,15 +756,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    GBW_kas_warenhuis
     GROUP                   "vlakken"
     MAXSCALEDENOM           10000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"GBW_kas_warenhuis\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([hoogteniveau] >= 0 AND "[type]" eq "kas, warenhuis")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -760,72 +784,73 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    TRN_binnentuin-case
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           8000
-    MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_binnentuin\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
+#   LAYER
+#     NAME                    TRN_binnentuin-case
+#     GROUP                   "vlakken"
+#     MAXSCALEDENOM           8000
+#     MINSCALEDENOM           3500
+#     INCLUDE                 "connection/dataservices.inc"
+#     DATA                    "geom FROM brt_10_plusterreinen USING srid=28992 USING UNIQUE ogc_fid"
+#     TYPE                    POLYGON
+#     PROJECTION
+#       "init=epsg:28992"
+#     END
 
-    METADATA
-      "wms_title"           "TRN_binnentuin-case"
-    END
+#     METADATA
+#       "wms_title"           "TRN_binnentuin-case"
+#     END
 
-    CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
-      STYLE
-        WIDTH 1
-        OUTLINECOLOR "#c9c7c2"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+#     CLASS
+#       MAXSCALEDENOM 8000
+#       MINSCALEDENOM 3500
+#       STYLE
+#         WIDTH 1
+#         OUTLINECOLOR "#c9c7c2"
+#         LINECAP BUTT
+#         LINEJOIN MITER
+#       END
+#     END
+#   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    TRN_binnentuin-fill
-    GROUP                   "vlakken"
-    MAXSCALEDENOM           8000
-    MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"TRN_binnentuin\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE POLYGON
-    PROJECTION
-      "init=epsg:28992"
-    END
+#   LAYER
+#     NAME                    TRN_binnentuin-fill
+#     GROUP                   "vlakken"
+#     MAXSCALEDENOM           8000
+#     MINSCALEDENOM           3500
+#     INCLUDE                 "connection/dataservices.inc"
+#     DATA                    "geom FROM brt_10_plusterreinen USING srid=28992 USING UNIQUE ogc_fid"
+#     TYPE POLYGON
+#     PROJECTION
+#       "init=epsg:28992"
+#     END
 
-    METADATA
-      "wms_title"           "TRN_binnentuin-fill"
-    END
+#     METADATA
+#       "wms_title"           "TRN_binnentuin-fill"
+#     END
 
-    CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
-      STYLE
-        COLOR "#f9f9e7"
-      END
-    END
-  END
+#     CLASS
+#       MAXSCALEDENOM 8000
+#       MINSCALEDENOM 3500
+#       STYLE
+#         COLOR "#f9f9e7"
+#       END
+#     END
+#   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WDL_waterbassin
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WDL_waterbassin\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[functie]" eq "drinkwaterbekken" || "[functie]" eq "viskwekerij" || "[functie]" eq "waterzuivering" || "[functie]" eq "zwembad")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -844,15 +869,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WDL_smal_water_3_tot_6m
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WDL_smal_water_3_tot_6m\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[breedteklasse]" eq "3 - 6 meter" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -875,15 +901,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WDL_smal_water_tot_3m
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WDL_smal_water_tot_3m\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[breedteklasse]" eq "0,5 - 3 meter" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -905,15 +932,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    KRT_tunnelcontour
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"KRT_tunnelcontour\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -936,15 +964,48 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+
+LAYER
+  NAME                    KRT_spoortunnelcontour
+  GROUP                   "vlakken"
+  MAXSCALEDENOM           20000
+  MINSCALEDENOM           3500
+  INCLUDE                 "connection/dataservices.inc"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  FILTER                  ("[type]" eq "spoorbaanlichaam" AND [hoogteniveau] < 0)
+  TYPE                    POLYGON
+  PROJECTION
+    "init=epsg:28992"
+  END
+
+  METADATA
+    "wms_title"           "KRT_spoortunnelcontour"
+  END
+
+  CLASS
+    MAXSCALEDENOM 20000
+    MINSCALEDENOM           3500
+    STYLE
+      OPACITY        30
+      WIDTH 6
+      COLOR "#ffffff"
+      LINECAP BUTT
+      LINEJOIN MITER
+    END
+  END
+END
+
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    IRT_aanlegsteiger_smal
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"IRT_aanlegsteiger_smal\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_lijn AS geom FROM brt_10_inrichtingselementen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "aanlegsteiger")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -966,15 +1027,47 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+
+LAYER
+  NAME                    WGL_veerverbinding
+  GROUP                   "lijnen"
+  MAXSCALEDENOM           20000
+  MINSCALEDENOM           3500
+  INCLUDE                 "connection/dataservices.inc"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+#  FILTER                  ("[type]" eq "veerverbinding" AND [hoogteniveau] >= 0)
+  TYPE                    LINE
+  PROJECTION
+    "init=epsg:28992"
+  END
+
+  METADATA
+    "wms_title"           "WGL_veerverbinding"
+  END
+
+  CLASS
+    MAXSCALEDENOM 20000
+    MINSCALEDENOM 3500
+    STYLE
+      WIDTH 1
+      COLOR "#54a3bb"
+      LINECAP BUTT
+      LINEJOIN MITER
+    END
+  END
+END
+
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WGL_smalle_weg-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_smalle_weg\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "overig" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -988,7 +1081,7 @@ MAP
       MAXSCALEDENOM 20000
       MINSCALEDENOM 3500
       STYLE
-        WIDTH 3
+        WIDTH 1
         COLOR "#c9c7c2"
         LINECAP BUTT
         LINEJOIN MITER
@@ -996,15 +1089,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WGL_smalle_weg-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_smalle_weg\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "overig" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1026,15 +1120,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_metro_overdekt_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_metro_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1076,15 +1171,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_metro_overdekt_line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_metro_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1124,15 +1220,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_tram_overdekt
     GROUP                   "lijnen"
     MAXSCALEDENOM           8000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_tram_overdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "tram" AND [hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1158,15 +1255,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_overdekt_1sp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1206,15 +1304,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_overdekt_nsp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1254,15 +1353,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_overdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" = "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1302,15 +1402,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_overdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_overdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1350,15 +1451,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_metro_nietoverdekt_1sp_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel" )
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1390,15 +1492,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_metro_nietoverdekt_1sp_dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1438,15 +1541,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_metro_nietoverdekt_nsp_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1478,15 +1582,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_metro_nietoverdekt_nsp_dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_metro_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1526,15 +1631,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_tram_nietoverdekt
     GROUP                   "lijnen"
     MAXSCALEDENOM           8000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_tram_nietoverdekt\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "tram" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1556,103 +1662,104 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    SBL_trein_ongeelektrificeerd-line
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
+#   LAYER
+#     NAME                    SBL_trein_ongeelektrificeerd-line
+#     GROUP                   "lijnen"
+#     MAXSCALEDENOM           20000
+# 	  MINSCALEDENOM           3500
+#     INCLUDE                 "connection/dataservices.inc"
+#     DATA                    "geom FROM brt_10_SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
+#     TYPE                    LINE
+#     PROJECTION
+#       "init=epsg:28992"
+#     END
 
-    METADATA
-      "wms_title"           "SBL_trein_ongeelektrificeerd-line"
-    END
+#     METADATA
+#       "wms_title"           "SBL_trein_ongeelektrificeerd-line"
+#     END
 
-    CLASS
-      MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
-      STYLE
-        WIDTH 2.5
-        COLOR "#9d9d9d"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
-      STYLE
-        WIDTH 3
-        COLOR "#9d9d9d"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+#     CLASS
+#       MAXSCALEDENOM 20000
+# 	    MINSCALEDENOM 8000
+#       STYLE
+#         WIDTH 2.5
+#         COLOR "#9d9d9d"
+#         LINECAP BUTT
+#         LINEJOIN MITER
+#       END
+#     END
+#     CLASS
+#       MAXSCALEDENOM 8000
+# 	    MINSCALEDENOM 3500
+#       STYLE
+#         WIDTH 3
+#         COLOR "#9d9d9d"
+#         LINECAP BUTT
+#         LINEJOIN MITER
+#       END
+#     END
+#   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-  LAYER
-    NAME                    SBL_trein_ongeelektrificeerd-dash
-    GROUP                   "lijnen"
-    MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
+#   LAYER
+#     NAME                    SBL_trein_ongeelektrificeerd-dash
+#     GROUP                   "lijnen"
+#     MAXSCALEDENOM           20000
+# 	  MINSCALEDENOM           3500
+#     INCLUDE                 "connection/dataservices.inc"
+#     DATA                    "geom FROM brt_10_SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
+#     TYPE                    LINE
+#     PROJECTION
+#       "init=epsg:28992"
+#     END
 
-    METADATA
-      "wms_title"           "SBL_trein_ongeelektrificeerd-dash"
-    END
+#     METADATA
+#       "wms_title"           "SBL_trein_ongeelektrificeerd-dash"
+#     END
 
-    CLASS
-      MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
-      STYLE
-        WIDTH 1.5
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
-      STYLE
-        WIDTH 2
-        PATTERN
-          8
-          8
-        END
-        COLOR "#ffffff"
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-  END
+#     CLASS
+#       MAXSCALEDENOM 20000
+# 	    MINSCALEDENOM 8000
+#       STYLE
+#         WIDTH 1.5
+#         PATTERN
+#           8
+#           8
+#         END
+#         COLOR "#ffffff"
+#         LINECAP BUTT
+#         LINEJOIN MITER
+#       END
+#     END
+#     CLASS
+#       MAXSCALEDENOM 8000
+# 	    MINSCALEDENOM 3500
+#       STYLE
+#         WIDTH 2
+#         PATTERN
+#           8
+#           8
+#         END
+#         COLOR "#ffffff"
+#         LINECAP BUTT
+#         LINEJOIN MITER
+#       END
+#     END
+#   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_1sp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1684,15 +1791,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_nsp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1724,15 +1832,16 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_1sp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1773,15 +1882,16 @@ MAP
   END
 
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    SBL_trein_nietoverdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"SBL_trein_nietoverdekt_nsp\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1821,18 +1931,17 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WGL_autosnelweg_lijn-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_hartlijn\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "autosnelweg" AND [hoogteniveau] >= 0)
     TYPE                    LINE
-    FILTER "autosnelweg"
-    FILTERITEM "TYPEWEG"
     PROJECTION
       "init=epsg:28992"
     END
@@ -1863,18 +1972,17 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
   LAYER
     NAME                    WGL_autosnelweg_lijn-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geom FROM kbk10.\"WGL_hartlijn\" USING srid=28992 USING UNIQUE ogc_fid"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "autosnelweg" AND [hoogteniveau] >= 0)
     TYPE                    LINE
-    FILTER "autosnelweg"
-    FILTERITEM "TYPEWEG"
     PROJECTION
       "init=epsg:28992"
     END
