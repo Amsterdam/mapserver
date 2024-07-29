@@ -37,6 +37,8 @@
 # WDL_smal_water_3_tot_6m
 # WDL_smal_water_tot_3m
 # KRT_tunnelcontour
+# WGL_infrastructuur
+# KRT_spoortunnelcontour
 # IRT_aanlegsteiger_smal
 # WGL_smalle_weg-case
 # WGL_smalle_weg-fill
@@ -963,6 +965,36 @@ MAP
       END
     END
   END
+
+#-----------------------------------------------------------------------------
+
+
+LAYER
+  NAME                    WGL_infrastructuur
+  GROUP                   "vlakken"
+  MAXSCALEDENOM           20000
+  MINSCALEDENOM           3500
+  INCLUDE                 "connection/dataservices.inc"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  FILTER                  ([hoogteniveau] >= 0)
+  TYPE                    POLYGON
+  PROJECTION
+    "init=epsg:28992"
+  END
+
+  METADATA
+    "wms_title"           "WGL_infrastructuur"
+  END
+
+  CLASS
+    MAXSCALEDENOM 20000
+    MINSCALEDENOM 3500
+    STYLE
+      WIDTH 1
+      COLOR "#ffffff"
+    END
+  END
+END
 
 #-----------------------------------------------------------------------------
 
