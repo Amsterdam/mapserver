@@ -67,12 +67,13 @@ with block("MAP"):
                     q("gml_geometry_type", "polygon")
                     q("gml_include_items", "all")
                     q("gml_types", "auto")
+                    q("wms_enable_request", "!GetLegendGraphic")
 
                 
                 for i in range(10):
 
                     with block("CLASS"):
-                        p("NAME", f"test_{i}")
+                        p("NAME", f"{i}")
 
                         # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
                         # de laatste digit wordt gebruikt om zowel een groep te maken als een kleur uit de lijst te pakken, 
@@ -116,13 +117,13 @@ with block("MAP"):
                     q("gml_geometry_type", "point")
                     q("gml_include_items", "all")
                     q("gml_types", "auto")
-
+                    q("wms_enable_request", "!GetLegendGraphic")
                 
 
                 for i in range(10):
 
                     with block("CLASS"):
-                        p("NAME", f"test_{i}")
+                        p("NAME", f"{i}")
 
                         # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
                         # de laatste digit wordt gebruikt om zowel een groep te maken als een kleur uit de lijst te pakken, 
