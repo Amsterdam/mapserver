@@ -1664,91 +1664,93 @@ END
 
 #-----------------------------------------------------------------------------
 
-#   LAYER
-#     NAME                    SBL_trein_ongeelektrificeerd-line
-#     GROUP                   "lijnen"
-#     MAXSCALEDENOM           20000
-# 	  MINSCALEDENOM           3500
-#     INCLUDE                 "connection/dataservices.inc"
-#     DATA                    "geom FROM brt_10_SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
-#     TYPE                    LINE
-#     PROJECTION
-#       "init=epsg:28992"
-#     END
+  LAYER
+    NAME                    SBL_trein_ongeelektrificeerd-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "nee" AND [hoogteniveau] >= 0)
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#     METADATA
-#       "wms_title"           "SBL_trein_ongeelektrificeerd-line"
-#     END
+    METADATA
+      "wms_title"           "SBL_trein_ongeelektrificeerd-line"
+    END
 
-#     CLASS
-#       MAXSCALEDENOM 20000
-# 	    MINSCALEDENOM 8000
-#       STYLE
-#         WIDTH 2.5
-#         COLOR "#9d9d9d"
-#         LINECAP BUTT
-#         LINEJOIN MITER
-#       END
-#     END
-#     CLASS
-#       MAXSCALEDENOM 8000
-# 	    MINSCALEDENOM 3500
-#       STYLE
-#         WIDTH 3
-#         COLOR "#9d9d9d"
-#         LINECAP BUTT
-#         LINEJOIN MITER
-#       END
-#     END
-#   END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 2.5
+        COLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 3
+        COLOR "#9d9d9d"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
 
 #-----------------------------------------------------------------------------
 
-#   LAYER
-#     NAME                    SBL_trein_ongeelektrificeerd-dash
-#     GROUP                   "lijnen"
-#     MAXSCALEDENOM           20000
-# 	  MINSCALEDENOM           3500
-#     INCLUDE                 "connection/dataservices.inc"
-#     DATA                    "geom FROM brt_10_SBL_trein_ongeelektrificeerd\" USING srid=28992 USING UNIQUE ogc_fid"
-#     TYPE                    LINE
-#     PROJECTION
-#       "init=epsg:28992"
-#     END
+  LAYER
+    NAME                    SBL_trein_ongeelektrificeerd-dash
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+	  MINSCALEDENOM           3500
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "nee" AND [hoogteniveau] >= 0)
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#     METADATA
-#       "wms_title"           "SBL_trein_ongeelektrificeerd-dash"
-#     END
+    METADATA
+      "wms_title"           "SBL_trein_ongeelektrificeerd-dash"
+    END
 
-#     CLASS
-#       MAXSCALEDENOM 20000
-# 	    MINSCALEDENOM 8000
-#       STYLE
-#         WIDTH 1.5
-#         PATTERN
-#           8
-#           8
-#         END
-#         COLOR "#ffffff"
-#         LINECAP BUTT
-#         LINEJOIN MITER
-#       END
-#     END
-#     CLASS
-#       MAXSCALEDENOM 8000
-# 	    MINSCALEDENOM 3500
-#       STYLE
-#         WIDTH 2
-#         PATTERN
-#           8
-#           8
-#         END
-#         COLOR "#ffffff"
-#         LINECAP BUTT
-#         LINEJOIN MITER
-#       END
-#     END
-#   END
+    CLASS
+      MAXSCALEDENOM 20000
+	    MINSCALEDENOM 8000
+      STYLE
+        WIDTH 1.5
+        PATTERN
+          8
+          8
+        END
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+    CLASS
+      MAXSCALEDENOM 8000
+	    MINSCALEDENOM 3500
+      STYLE
+        WIDTH 2
+        PATTERN
+          8
+          8
+        END
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
 
 #-----------------------------------------------------------------------------
 
@@ -1758,8 +1760,8 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
-    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0)
+    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein"  AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1799,8 +1801,8 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           3500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
-    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1840,8 +1842,8 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           3500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
-    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
@@ -1890,8 +1892,8 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           3500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
-    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
