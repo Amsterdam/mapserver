@@ -79,7 +79,7 @@ MAP
     NAME                    WDL_breed_water
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[functie]" eq "overig" || "[functie]" eq "onbekend")
@@ -95,7 +95,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#95c6d5"
       END
@@ -108,7 +108,7 @@ MAP
     NAME                    WDL_haven
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[functie]" eq "haven")
@@ -123,7 +123,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#95c6d5"
       END
@@ -136,7 +136,7 @@ MAP
     NAME                    TRN_aanlegsteiger
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "aanlegsteiger")
@@ -151,7 +151,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 1
         OUTLINECOLOR "#acacac"
@@ -168,7 +168,7 @@ MAP
     NAME                    TRN_basaltblokken_steenglooiing
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "basaltblokken, steenglooiing")
@@ -183,7 +183,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#f6f6f4"
       END
@@ -196,7 +196,7 @@ MAP
     NAME                    TRN_grasland
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "grasland")
@@ -211,7 +211,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#dceacf"
       END
@@ -224,7 +224,7 @@ MAP
     NAME                    TRN_akkerland
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "akkerland")
@@ -239,7 +239,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#dceacf"
       END
@@ -252,7 +252,7 @@ MAP
     NAME                    TRN_overig
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "overig")
@@ -267,7 +267,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#f2ecee"
       END
@@ -280,7 +280,7 @@ MAP
     NAME                    TRN_bedrijfsterrein
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bedrijfsterrein")
@@ -295,7 +295,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#f6f6f4"
       END
@@ -308,7 +308,7 @@ MAP
     NAME                    TRN_openbaar_groen
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "openbaar groen")
@@ -323,7 +323,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#f9f9e7"
       END
@@ -336,7 +336,7 @@ MAP
     NAME                    TRN_zand
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "zand")
@@ -351,7 +351,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#fbf0de"
       END
@@ -364,7 +364,7 @@ MAP
     NAME                    WGL_startbaan_landingsbaan
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoofdverkeersgebruik, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[hoofdverkeersgebruik]" eq "vliegverkeer")
@@ -379,7 +379,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#dddcda"
       END
@@ -392,7 +392,7 @@ MAP
     NAME                    TRN_spoorbaanlichaam
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "spoorbaanlichaam" AND [hoogteniveau] >= 0)
@@ -407,7 +407,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#dddcda"
       END
@@ -420,7 +420,7 @@ MAP
     NAME                    TRN_bos-loofbos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: loofbos")
@@ -435,7 +435,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#cbe0b8"
       END
@@ -448,7 +448,7 @@ MAP
     NAME                    TRN_bos-naaldbos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: naaldbos")
@@ -463,7 +463,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#cbe0b8"
       END
@@ -476,7 +476,7 @@ MAP
     NAME                    TRN_bos-gemengd_bos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: gemengd bos")
@@ -491,7 +491,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#cbe0b8"
       END
@@ -504,7 +504,7 @@ MAP
     NAME                    TRN_bos-griend
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: griend")
@@ -519,7 +519,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#cbe0b8"
       END
@@ -532,7 +532,7 @@ MAP
     NAME                    TRN_boomgaard
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "boomgaard")
@@ -547,7 +547,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#d4e5c4"
       END
@@ -560,7 +560,7 @@ MAP
     NAME                    TRN_boomkwekerij
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "boomkwekerij")
@@ -575,7 +575,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#d4e5c4"
       END
@@ -588,7 +588,7 @@ MAP
     NAME                    TRN_dodenakker
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "dodenakker")
@@ -603,7 +603,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#d4e5c4"
       END
@@ -616,7 +616,7 @@ MAP
     NAME                    TRN_dodenakker_met_bos
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "dodenakker met bos")
@@ -631,7 +631,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#d4e5c4"
       END
@@ -644,7 +644,7 @@ MAP
     NAME                    TRN_fruitkwekerij
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "fruitkwekerij")
@@ -659,7 +659,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#d4e5c4"
       END
@@ -672,7 +672,7 @@ MAP
     NAME                    GBW_overdekt
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] < 0)
@@ -700,7 +700,7 @@ MAP
     NAME                    GBW_gebouw
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "laagbouw")
@@ -715,7 +715,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#e5e3de"
         WIDTH 0.9
@@ -732,7 +732,7 @@ MAP
     NAME                    GBW_hoogbouw
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "hoogbouw")
@@ -747,7 +747,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#e6e5e0"
         WIDTH 0.5
@@ -764,7 +764,7 @@ MAP
     NAME                    GBW_kas_warenhuis
     GROUP                   "vlakken"
     MAXSCALEDENOM           10000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] >= 0 AND "[type]" eq "kas, warenhuis")
@@ -779,7 +779,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 10000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#e3dbd3"
       END
@@ -791,8 +791,8 @@ MAP
 #   LAYER
 #     NAME                    TRN_binnentuin-case
 #     GROUP                   "vlakken"
-#     MAXSCALEDENOM           8000
-#     MINSCALEDENOM           3500
+#     MAXSCALEDENOM           10000
+#     MINSCALEDENOM           5000
 #     INCLUDE                 "connection/dataservices.inc"
 #     DATA                    "geom FROM brt_10_plusterreinen USING srid=28992 USING UNIQUE ogc_fid"
 #     TYPE                    POLYGON
@@ -805,8 +805,8 @@ MAP
 #     END
 
 #     CLASS
-#       MAXSCALEDENOM 8000
-#       MINSCALEDENOM 3500
+#       MAXSCALEDENOM 10000
+#       MINSCALEDENOM 5000
 #       STYLE
 #         WIDTH 1
 #         OUTLINECOLOR "#c9c7c2"
@@ -821,8 +821,8 @@ MAP
 #   LAYER
 #     NAME                    TRN_binnentuin-fill
 #     GROUP                   "vlakken"
-#     MAXSCALEDENOM           8000
-#     MINSCALEDENOM           3500
+#     MAXSCALEDENOM           10000
+#     MINSCALEDENOM           5000
 #     INCLUDE                 "connection/dataservices.inc"
 #     DATA                    "geom FROM brt_10_plusterreinen USING srid=28992 USING UNIQUE ogc_fid"
 #     TYPE POLYGON
@@ -835,8 +835,8 @@ MAP
 #     END
 
 #     CLASS
-#       MAXSCALEDENOM 8000
-#       MINSCALEDENOM 3500
+#       MAXSCALEDENOM 10000
+#       MINSCALEDENOM 5000
 #       STYLE
 #         COLOR "#f9f9e7"
 #       END
@@ -849,7 +849,7 @@ MAP
     NAME                    WDL_waterbassin
     GROUP                   "vlakken"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[functie]" eq "drinkwaterbekken" || "[functie]" eq "viskwekerij" || "[functie]" eq "waterzuivering" || "[functie]" eq "zwembad")
@@ -864,7 +864,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         COLOR "#95c6d5"
       END
@@ -877,7 +877,7 @@ MAP
     NAME                    WDL_smal_water_3_tot_6m
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[breedteklasse]" eq "3 - 6 meter" AND [hoogteniveau] >= 0)
@@ -893,7 +893,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         COLOR "#95c6d5"
@@ -909,7 +909,7 @@ MAP
     NAME                    WDL_smal_water_tot_3m
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[breedteklasse]" eq "0,5 - 3 meter" AND [hoogteniveau] >= 0)
@@ -924,7 +924,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 1
         COLOR "#95c6d5"
@@ -940,7 +940,7 @@ MAP
     NAME                    KRT_tunnelcontour
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] < 0)
@@ -955,7 +955,7 @@ MAP
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM           3500
+      MINSCALEDENOM           5000
       STYLE
         OPACITY        30
         WIDTH 6
@@ -973,7 +973,7 @@ LAYER
   NAME                    WGL_infrastructuur
   GROUP                   "vlakken"
   MAXSCALEDENOM           20000
-  MINSCALEDENOM           3500
+  MINSCALEDENOM           5000
   INCLUDE                 "connection/dataservices.inc"
   DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ([hoogteniveau] >= 0)
@@ -988,7 +988,7 @@ LAYER
 
   CLASS
     MAXSCALEDENOM 20000
-    MINSCALEDENOM 3500
+    MINSCALEDENOM 5000
     STYLE
       WIDTH 1
       COLOR "#ffffff"
@@ -1002,7 +1002,7 @@ LAYER
   NAME                    KRT_spoortunnelcontour
   GROUP                   "vlakken"
   MAXSCALEDENOM           20000
-  MINSCALEDENOM           3500
+  MINSCALEDENOM           5000
   INCLUDE                 "connection/dataservices.inc"
   DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ("[type]" eq "spoorbaanlichaam" AND [hoogteniveau] < 0)
@@ -1017,7 +1017,7 @@ LAYER
 
   CLASS
     MAXSCALEDENOM 20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     STYLE
       OPACITY        30
       WIDTH 6
@@ -1034,7 +1034,7 @@ END
     NAME                    IRT_aanlegsteiger_smal
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, geometrie_lijn AS geom FROM brt_10_inrichtingselementen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "aanlegsteiger")
@@ -1049,7 +1049,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 1
         OUTLINECOLOR "#acacac80"
@@ -1065,7 +1065,7 @@ LAYER
   NAME                    WGL_veerverbinding
   GROUP                   "lijnen"
   MAXSCALEDENOM           20000
-  MINSCALEDENOM           3500
+  MINSCALEDENOM           5000
   INCLUDE                 "connection/dataservices.inc"
   DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ("[type]" eq "veerverbinding")
@@ -1080,7 +1080,7 @@ LAYER
 
   CLASS
     MAXSCALEDENOM 20000
-    MINSCALEDENOM 3500
+    MINSCALEDENOM 5000
     STYLE
       WIDTH 1
       COLOR "#54a3bb"
@@ -1096,7 +1096,7 @@ END
     NAME                    WGL_smalle_weg-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "overig" AND [hoogteniveau] >= 0)
@@ -1111,7 +1111,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 1
         COLOR "#c9c7c2"
@@ -1127,7 +1127,7 @@ END
     NAME                    WGL_smalle_weg-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "overig" AND [hoogteniveau] >= 0)
@@ -1142,7 +1142,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 3500
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         COLOR "#ffffff"
@@ -1158,7 +1158,7 @@ END
     NAME                    SBL_metro_overdekt_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
@@ -1173,7 +1173,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 6
         INITIALGAP 3
@@ -1187,8 +1187,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 4
         INITIALGAP 2
@@ -1209,7 +1209,7 @@ END
     NAME                    SBL_metro_overdekt_line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
@@ -1224,7 +1224,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#ffffff"
@@ -1237,8 +1237,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1257,8 +1257,8 @@ END
   LAYER
     NAME                    SBL_tram_overdekt
     GROUP                   "lijnen"
-    MAXSCALEDENOM           8000
-    MINSCALEDENOM           3500
+    MAXSCALEDENOM           10000
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "tram" AND [hoogteniveau] < 0)
@@ -1272,8 +1272,8 @@ END
     END
 
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 1
         PATTERN
@@ -1293,7 +1293,7 @@ END
     NAME                    SBL_trein_overdekt_1sp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
+	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" eq "enkel")
@@ -1308,7 +1308,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
@@ -1321,8 +1321,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
@@ -1342,7 +1342,7 @@ END
     NAME                    SBL_trein_overdekt_nsp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
+	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" ne "enkel")
@@ -1357,7 +1357,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
+	    MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
@@ -1370,8 +1370,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
@@ -1391,7 +1391,7 @@ END
     NAME                    SBL_trein_overdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" = "enkel")
@@ -1406,7 +1406,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
+	    MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1419,8 +1419,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1440,7 +1440,7 @@ END
     NAME                    SBL_trein_overdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" ne "enkel")
@@ -1455,7 +1455,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	   MINSCALEDENOM 8000
+	   MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1468,8 +1468,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1489,7 +1489,7 @@ END
     NAME                    SBL_metro_nietoverdekt_1sp_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel" )
@@ -1504,7 +1504,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#fc7f7f"
@@ -1513,8 +1513,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#fc7f7f"
@@ -1530,7 +1530,7 @@ END
     NAME                    SBL_metro_nietoverdekt_1sp_dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
@@ -1545,7 +1545,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1558,8 +1558,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1579,7 +1579,7 @@ END
     NAME                    SBL_metro_nietoverdekt_nsp_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
@@ -1594,7 +1594,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#fc7f7f"
@@ -1603,8 +1603,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#fc7f7f"
@@ -1620,7 +1620,7 @@ END
     NAME                    SBL_metro_nietoverdekt_nsp_dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
@@ -1635,7 +1635,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1648,8 +1648,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1668,8 +1668,8 @@ END
   LAYER
     NAME                    SBL_tram_nietoverdekt
     GROUP                   "lijnen"
-    MAXSCALEDENOM           8000
-    MINSCALEDENOM           3500
+    MAXSCALEDENOM           10000
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "tram" AND [hoogteniveau] >= 0)
@@ -1683,8 +1683,8 @@ END
     END
 
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 1
         COLOR "#fc7f7f"
@@ -1700,7 +1700,7 @@ END
     NAME                    SBL_trein_ongeelektrificeerd-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
+	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "nee" AND [hoogteniveau] >= 0)
@@ -1715,7 +1715,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
+	    MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         COLOR "#9d9d9d"
@@ -1724,8 +1724,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         COLOR "#9d9d9d"
@@ -1741,7 +1741,7 @@ END
     NAME                    SBL_trein_ongeelektrificeerd-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
+	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "nee" AND [hoogteniveau] >= 0)
@@ -1756,7 +1756,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
+	    MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         PATTERN
@@ -1769,8 +1769,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-	    MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         PATTERN
@@ -1790,7 +1790,7 @@ END
     NAME                    SBL_trein_nietoverdekt_1sp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein"  AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0)
@@ -1805,7 +1805,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
@@ -1814,8 +1814,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
@@ -1831,7 +1831,7 @@ END
     NAME                    SBL_trein_nietoverdekt_nsp-line
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
@@ -1846,7 +1846,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 2.5
         OUTLINECOLOR "#9d9d9d"
@@ -1855,8 +1855,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 3
         OUTLINECOLOR "#9d9d9d"
@@ -1872,7 +1872,7 @@ END
     NAME                    SBL_trein_nietoverdekt_1sp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
+	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
@@ -1887,7 +1887,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
+	    MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1901,7 +1901,7 @@ END
     END
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 3500
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1922,7 +1922,7 @@ END
     NAME                    SBL_trein_nietoverdekt_nsp-dash
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-	  MINSCALEDENOM           3500
+	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
@@ -1937,7 +1937,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 8000
+	    MINSCALEDENOM 10000
       STYLE
         WIDTH 1.5
         OUTLINECOLOR "#ffffff"
@@ -1951,7 +1951,7 @@ END
     END
     CLASS
       MAXSCALEDENOM 20000
-	    MINSCALEDENOM 3500
+	    MINSCALEDENOM 5000
       STYLE
         WIDTH 2
         OUTLINECOLOR "#ffffff"
@@ -1971,7 +1971,7 @@ END
     NAME                    WGL_autosnelweg_lijn-case
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "autosnelweg" AND [hoogteniveau] >= 0)
@@ -1986,7 +1986,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
         WIDTH 5
         COLOR "#fa0000"
@@ -1995,8 +1995,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 6
         COLOR "#fa0000"
@@ -2012,7 +2012,7 @@ END
     NAME                    WGL_autosnelweg_lijn-fill
     GROUP                   "lijnen"
     MAXSCALEDENOM           20000
-    MINSCALEDENOM           3500
+    MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "autosnelweg" AND [hoogteniveau] >= 0)
@@ -2027,7 +2027,7 @@ END
 
     CLASS
       MAXSCALEDENOM 20000
-      MINSCALEDENOM 8000
+      MINSCALEDENOM 10000
       STYLE
       WIDTH 3
         COLOR "#fefafa"
@@ -2036,8 +2036,8 @@ END
       END
     END
     CLASS
-      MAXSCALEDENOM 8000
-      MINSCALEDENOM 3500
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
       STYLE
         WIDTH 4
         COLOR "#fefafa"
