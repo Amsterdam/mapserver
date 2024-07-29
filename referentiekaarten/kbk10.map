@@ -1036,7 +1036,7 @@ LAYER
   MINSCALEDENOM           3500
   INCLUDE                 "connection/dataservices.inc"
   DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
-#  FILTER                  ("[type]" eq "veerverbinding" AND [hoogteniveau] >= 0)
+  FILTER                  ("[type]" eq "veerverbinding")
   TYPE                    LINE
   PROJECTION
     "init=epsg:28992"
