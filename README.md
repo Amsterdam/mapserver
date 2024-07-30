@@ -35,6 +35,19 @@ Zorg dat de database blijft draaien en voeg daarin data toe. Na elke wijziging
 aan een mapfile moet de MapServer-container opnieuw worden opgebouwd en
 opgestart volgens de instructies hierboven.
 
+## Tips & Tricks
+
+In de file ``.mapfile_template.txt`` wordt een voorbeeld geschetst  hoe een mapfile eruit moet komen te zien.
+Hierin wordt gedefinieerd hoe bepaalde benamingen worden gedaan en hoe structuren worden gemaakt. Dit resulteert in uniformiteit binnen de WMSen.
+Zo is bijvoorbeeld de ``titel`` in Lowercase in meervoud zonder afkortingen en de ``naam`` beter leesbaar met leestekens en hoofdletters.
+
+Een ander voorbeeld is dat binnen de Mapfile verschillende manieren kunnen worden gebruikt om data op te halen. Dit omdat het SQL statement vrijheid biedt voor complexe queries.
+We geven de voorkeur aan het gebruik van een ``Filter`` blok, dit is sneller leesbaar en op de achtergrond wordt er een ``where`` binnen de SQL gedaan.
+
+Deze alinea zal worden uitgebreid met nieuwe Tips & Tricks wanneer deze uitgezocht zijn. 
+
+
+
 ## Gegenereerde mapfiles
 
 Sommige mapfiles worden gegenereerd door Python-scripts. Deze zijn te herkennen
