@@ -15,7 +15,7 @@ services:
 
     command: ["postgres", "-c", "log_statement=all"]
     volumes:
-      - ${POSTGRES_DATA_DIR}:/var/lib/postgresql/data
+      - "${POSTGRES_DATA_DIR:-/var/lib/postgresql/data}"
 
   proxy:
     build:
