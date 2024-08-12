@@ -50,6 +50,12 @@ log_cfg = {
             "formatter": "json-audit",
             "level": "DEBUG",
         },
+        "appinsightsaccess": {
+            "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
+            "connection_string": AZURE_APPLICATIONINSIGHTS_CONNSTRING,
+            "formatter": "json",
+            "level": "DEBUG",
+        },
     },
     "loggers": {
         "jwtproxy.applogs": {
@@ -62,19 +68,28 @@ log_cfg = {
             "handlers": ["appinsights"],
             "level": "DEBUG",  # Send everything
         },
+        "jwtproxy.accesslogs": {
+            "propagate": False,
+            "handlers": ["appinsightsaccess"],
+            "level": "DEBUG",  # Send everything
+        },
     },
 }
 
 if not AZURE_APPLICATIONINSIGHTS_CONNSTRING:
     log_cfg["handlers"].pop("appinsights")
+    log_cfg["handlers"].pop("appinsightsaccess")
     log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = [
+        "console",
+    ]
+    log_cfg["loggers"]["jwtproxy.accesslogs"]["handlers"] = [
         "console",
     ]
 dictConfig(log_cfg)
 
 app_logger = logging.getLogger("jwtproxy.applogs")
 audit_logger = logging.getLogger("jwtproxy.auditlogs")
-
+access_logger = logging.getLogger("jwtproxy.accesslogs")
 
 async def fetch_token(req: web.Request):
     """Fetch the token from the request.
@@ -265,6 +280,6 @@ if __name__ == "__main__":
 
     # support listening on unix domain sockets and ports
     if args.path:
-        web.run_app(main(), host="0.0.0.0", path=args.path, access_log=audit_logger)
+        web.run_app(main(), host="0.0.0.0", path=args.path, access_log=access_logger)
     else:
-        web.run_app(main(), host="0.0.0.0", port=args.port, access_log=audit_logger)
+        web.run_app(main(), host="0.0.0.0", port=args.port, access_log=access_logger)
