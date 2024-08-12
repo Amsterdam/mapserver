@@ -59,7 +59,7 @@ MAP
   LAYER
     NAME            "vestiging"
     GROUP           "vestigingen"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
@@ -108,7 +108,7 @@ MAP
   LAYER
     NAME            "vestiging_label"
     GROUP           "vestigingen"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -148,7 +148,7 @@ MAP
   LAYER
     NAME "bouw"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -239,7 +239,7 @@ MAP
   LAYER
     NAME            "bouw_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -381,7 +381,7 @@ MAP
   LAYER
     NAME            "bouw_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -416,7 +416,7 @@ MAP
   LAYER
     NAME            "bouw_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_bouw_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -461,7 +461,7 @@ MAP
   LAYER
     NAME "cultuur_sport_recreatie"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -534,7 +534,7 @@ MAP
   LAYER
     NAME            "cultuur_sport_recreatie_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -640,7 +640,7 @@ MAP
   LAYER
     NAME            "cultuur_sport_recreatie_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -677,7 +677,7 @@ MAP
   LAYER
     NAME            "cultuur_sport_recreatie_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_cultuur_sport_recreatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -720,7 +720,7 @@ MAP
   LAYER
     NAME "financiele_dienstverlening_verhuur"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -793,7 +793,7 @@ MAP
   LAYER
     NAME            "financiele_dienstverlening_verhuur_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -899,7 +899,7 @@ MAP
   LAYER
     NAME            "financiele_dienstverlening_verhuur_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -934,7 +934,7 @@ MAP
   LAYER
     NAME            "financiele_dienstverlening_verhuur_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_financiele_dienstverlening_verhuur_na USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -977,7 +977,7 @@ MAP
   LAYER
     NAME       "handel_vervoer_opslag"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -1077,7 +1077,7 @@ MAP
   LAYER
     NAME            "handel_vervoer_opslag_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1237,7 +1237,7 @@ MAP
   LAYER
     NAME            "handel_vervoer_opslag_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1272,7 +1272,7 @@ MAP
   LAYER
     NAME            "handel_vervoer_opslag_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_handel_vervoer_opslag_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1315,7 +1315,7 @@ MAP
   LAYER
     NAME       "horeca"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -1415,7 +1415,7 @@ MAP
   LAYER
     NAME            "horeca_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1575,7 +1575,7 @@ MAP
   LAYER
     NAME            "horeca_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1610,7 +1610,7 @@ MAP
   LAYER
     NAME            "horeca_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_horeca_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1654,7 +1654,7 @@ MAP
   LAYER
     NAME       "telecommunicatie"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -1727,7 +1727,7 @@ MAP
   LAYER
     NAME            "telecommunicatie_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1833,7 +1833,7 @@ MAP
   LAYER
     NAME            "telecommunicatie_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1868,7 +1868,7 @@ MAP
   LAYER
     NAME            "telecommunicatie_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_informatie_telecommunicatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -1932,7 +1932,7 @@ MAP
   LAYER
     NAME       "landbouw"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -2023,7 +2023,7 @@ MAP
   LAYER
     NAME            "landbouw_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2163,7 +2163,7 @@ MAP
   LAYER
     NAME            "landbouw_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2196,7 +2196,7 @@ MAP
   LAYER
     NAME            "landbouw_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_landbouw_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2239,7 +2239,7 @@ MAP
   LAYER
     NAME       "overheid_onderwijs_zorg"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -2303,7 +2303,7 @@ MAP
   LAYER
     NAME            "overheid_onderwijs_zorg_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2391,7 +2391,7 @@ MAP
   LAYER
     NAME            "overheid_onderwijs_zorg_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2426,7 +2426,7 @@ MAP
   LAYER
     NAME            "overheid_onderwijs_zorg_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overheid_onderwijs_zorg_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2469,7 +2469,7 @@ MAP
   LAYER
     NAME       "persoonlijke_dienstverlening"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -2551,7 +2551,7 @@ MAP
   LAYER
     NAME            "persoonlijke_dienstverlening_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2675,7 +2675,7 @@ MAP
   LAYER
     NAME            "persoonlijke_dienstverlening_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2710,7 +2710,7 @@ MAP
   LAYER
     NAME            "persoonlijke_dienstverlening_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_persoonlijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2773,7 +2773,7 @@ MAP
   LAYER
     NAME       "productie_installatie_reparatie"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -2837,7 +2837,7 @@ MAP
   LAYER
     NAME            "productie_installatie_reparatie_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2925,7 +2925,7 @@ MAP
   LAYER
     NAME            "productie_installatie_reparatie_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -2960,7 +2960,7 @@ MAP
   LAYER
     NAME            "productie_installatie_reparatie_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_productie_installatie_reparatie_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -3003,7 +3003,7 @@ MAP
   LAYER
     NAME       "zakelijke_dienstverlening"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -3140,7 +3140,7 @@ MAP
   LAYER
     NAME            "zakelijke_dienstverlening_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -3372,7 +3372,7 @@ MAP
   LAYER
     NAME            "zakelijke_dienstverlening_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -3407,7 +3407,7 @@ MAP
   LAYER
     NAME            "zakelijke_dienstverlening_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_zakelijke_dienstverlening_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -3450,7 +3450,7 @@ MAP
   LAYER
     NAME            "overige"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE POINT
     MINSCALEDENOM   100
@@ -3523,7 +3523,7 @@ MAP
   LAYER
     NAME            "overige_punten"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -3629,7 +3629,7 @@ MAP
   LAYER
     NAME            "overige_correcties"
     GROUP           "vestigingen_cbs"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
@@ -3664,7 +3664,7 @@ MAP
   LAYER
     NAME            "overige_label"
     GROUP           "vestigingen_cbs_label"
-    INCLUDE         "connection/handelsregister.inc"
+    INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM public.geo_hr_vestiging_locaties_overige_naam USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   100
