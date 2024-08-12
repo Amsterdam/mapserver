@@ -1,7 +1,5 @@
 # This file is only for local development purposes. The actual deployment
 # configuration lives in a separate repository.
-version: '3.8'
-
 services:
   database:
     build:
@@ -60,6 +58,9 @@ services:
       MAP_URL: "http://map"
       LEGEND_URL: "http://map"
 
+    volumes:
+      - .:/srv/mapserver/
+
   privatemap:
     build:
       context: .
@@ -82,6 +83,13 @@ services:
 
       MAP_URL: "http://map"
       LEGEND_URL: "http://map"
+
+    volumes:
+      - ./tools/:/srv/mapserver/tools/
+      - ./symbols/:/srv/mapserver/symbols/
+      - ./fonts/:/srv/mapserver/fonts/
+      - ./connection/:/srv/mapserver/connection/
+      - ./private:/srv/mapserver/
 
   topomap:
     build:
@@ -107,4 +115,8 @@ services:
       LEGEND_URL: "http://map"
 
     volumes:
-      - .:/srv/mapserver/
+      - ./tools/:/srv/mapserver/tools/
+      - ./symbols/:/srv/mapserver/symbols/
+      - ./fonts/:/srv/mapserver/fonts/
+      - ./connection/:/srv/mapserver/connection/
+      - ./referentiekaarten/:/srv/mapserver/
