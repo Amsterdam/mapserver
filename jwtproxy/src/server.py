@@ -265,6 +265,6 @@ if __name__ == "__main__":
 
     # support listening on unix domain sockets and ports
     if args.path:
-        web.run_app(main(), host="0.0.0.0", path=args.path)
+        web.run_app(main(), host="0.0.0.0", path=args.path, access_log=audit_logger)
     else:
-        web.run_app(main(), host="0.0.0.0", port=args.port)
+        web.run_app(main(), host="0.0.0.0", port=args.port, access_log=audit_logger)
