@@ -34,8 +34,6 @@
 ## SBL_trein_in_tunnel_line
 ## SBL_metro_sneltram-case
 ## SBL_metro_sneltram-line
-## SBL_trein_ongeelektrificeerd-line
-## SBL_trein_ongeelektrificeerd-dash
 ## SBL_trein-line
 ## SBL_trein-dash
 ## WGL_autosnelweg-case
@@ -1043,6 +1041,71 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
+    NAME                    SBL_metro_sneltram_in_tunnel_case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           40000
+    MINSCALEDENOM           20000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_50_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
+    TYPE LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "SBL_metro_sneltram_in_tunnel_case"
+    END
+
+    CLASS
+      STYLE
+        WIDTH 4
+        # INITIALGAP 2
+        PATTERN
+          8
+          8
+        END
+        COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN BEVEL
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_sneltram_in_tunnel_line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           40000
+    MINSCALEDENOM           20000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_50_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
+    TYPE LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "SBL_metro_sneltram_in_tunnel_line"
+    END
+
+    CLASS
+      STYLE
+        WIDTH 2
+        PATTERN 8 8
+        END
+        COLOR "#ffffff"
+        LINECAP BUTT
+        LINEJOIN BEVEL
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
     NAME                    SBL_trein_in_tunnel_case
     GROUP                   "lijnen"
     MAXSCALEDENOM           160000
@@ -1099,6 +1162,68 @@ MAP
     MINSCALEDENOM           20000
       STYLE
         WIDTH 1.5
+        COLOR "#ffffff"
+        PATTERN
+          8
+          8
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+   LAYER
+    NAME                    SBL_metro_sneltram-case
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           40000
+    MINSCALEDENOM           20000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_50_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0)
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "SBL_metro_sneltram-case"
+    END
+
+    CLASS
+      STYLE
+        WIDTH 3
+        COLOR "#fc7f7f"
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    SBL_metro_sneltram-line
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           40000
+    MINSCALEDENOM           20000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_50_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0)
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "SBL_metro_sneltram-line"
+    END
+
+    CLASS
+      STYLE
+        WIDTH 2
         COLOR "#ffffff"
         PATTERN
           8
