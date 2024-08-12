@@ -1045,7 +1045,7 @@ MAP
   LAYER
     NAME                    SBL_trein_in_tunnel_case
     GROUP                   "lijnen"
-    MAXSCALEDENOM           100000
+    MAXSCALEDENOM           160000
     MINSCALEDENOM           20000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, type, hoogteniveau, geometrie_lijn AS geom FROM brt_50_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
@@ -1060,7 +1060,7 @@ MAP
     END
 
     CLASS
-    MAXSCALEDENOM          100000
+    MAXSCALEDENOM          160000
     MINSCALEDENOM           20000
       STYLE
         WIDTH 2
@@ -1095,7 +1095,7 @@ MAP
     END
 
     CLASS
-    MAXSCALEDENOM          100000
+    MAXSCALEDENOM          160000
     MINSCALEDENOM           20000
       STYLE
         WIDTH 1.5
@@ -1115,7 +1115,7 @@ MAP
   LAYER
     NAME                    SBL_trein-line
     GROUP                   "lijnen"
-    MAXSCALEDENOM           100000
+    MAXSCALEDENOM           160000
     MINSCALEDENOM            20000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_50_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
