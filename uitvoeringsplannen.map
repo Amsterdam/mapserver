@@ -168,6 +168,84 @@ MAP
   END
 
   LAYER
+    NAME                    "tunnels"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Tunnels')      
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Tunnels" 
+      "ows_abstract"        "Uitvoeringsplannen Tunnels" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "tunnel"
+      TITLE                 "Tunnel"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "verhardingen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Verhardingen')      
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verhardingen" 
+      "ows_abstract"        "Uitvoeringsplannen Verhardingen" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "verharding"
+      TITLE                 "Verharding"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
     NAME                    "verlichting"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
