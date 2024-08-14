@@ -12,7 +12,7 @@ MAP
   #==============================================================================================
 
   LAYER
-    NAME                    "uitvoeringsplannen_civiel"         
+    NAME                    "civiel"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -51,7 +51,7 @@ MAP
   END
 
   LAYER
-    NAME                    "uitvoeringsplannen_groen"         
+    NAME                    "groen"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -91,7 +91,7 @@ MAP
 
 
   LAYER
-    NAME                    "uitvoeringsplannen_water_polygon"         
+    NAME                    "water_polygon"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -131,7 +131,7 @@ MAP
 
   
   LAYER
-    NAME                    "uitvoeringsplannen_spelen_straatmeubilair"         
+    NAME                    "spelen_straatmeubilair"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -168,7 +168,7 @@ MAP
   END
 
   LAYER
-    NAME                    "uitvoeringsplannen_verlichting"         
+    NAME                    "verlichting"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -205,7 +205,7 @@ MAP
   END
 
   LAYER
-    NAME                    "uitvoeringsplannen_verkeersinformatie_systemen"         
+    NAME                    "verkeersinformatiesystemen"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -229,8 +229,8 @@ MAP
     END
 
     CLASS
-      NAME                  "verkeersinformatie_systemen"
-      TITLE                 "Verkeersinformatiesystemen (VIS)"
+      NAME                  "verkeersinformatiesysteem"
+      TITLE                 "Verkeersinformatiesysteem (VIS)"
       STYLE
         SYMBOL              "stip"
         COLOR               "#ff0000"
@@ -243,7 +243,7 @@ MAP
 
 
   LAYER
-    NAME                    "uitvoeringsplannen_verkeersregel_installaties"         
+    NAME                    "verkeersregelinstallaties"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -267,8 +267,8 @@ MAP
     END
 
     CLASS
-      NAME                  "verkeersregel_installaties"
-      TITLE                 "Verkeersregelinstallaties (VRI)"
+      NAME                  "verkeersregelinstallatie"
+      TITLE                 "Verkeersregelinstallatie (VRI)"
       STYLE
         SYMBOL              'driehoek'
         COLOR               "#ff00ff"
@@ -280,7 +280,7 @@ MAP
   END
 
   LAYER
-    NAME                    "uitvoeringsplannen_water_point"         
+    NAME                    "water_point"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM (select * from public.uitvoeringsplan_uitvoeringsplan where ST_GeometryType(geometrie)='ST_Point') as SUB USING srid=28992 USING UNIQUE id"
