@@ -191,7 +191,7 @@ MAP
     FILTER          ("[type]" eq "gemeente")
     TYPE            POLYGON
     MINSCALEDENOM   10000
-    MAXSCALEDENOM   20000
+    MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
     END
@@ -286,8 +286,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   10000
+    MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
     END
@@ -316,8 +316,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "polder")
     TYPE            POLYGON
-    MINSCALEDENOM   10000
-    MAXSCALEDENOM   20000
+    MINSCALEDENOM   20000
+    MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
     END
@@ -512,8 +512,7 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "kunstwerk")
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   3250
+    MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
     END
@@ -544,8 +543,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
-    MINSCALEDENOM   4000
-    MAXSCALEDENOM   7000
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
     END
@@ -576,7 +575,7 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "park")
     TYPE            POLYGON
-    MINSCALEDENOM   2000
+    MINSCALEDENOM   2500
     MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
@@ -608,8 +607,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "polder")
     TYPE            POLYGON
-    MINSCALEDENOM   6000
-    MAXSCALEDENOM   15000
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
@@ -640,8 +639,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "provincie")
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   6000
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
     END
@@ -672,8 +671,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "stadsdeel")
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   7000
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
     END
@@ -702,8 +701,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "water")
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   4000
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
     END
@@ -734,8 +733,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "weg")
     TYPE            POLYGON
-    MINSCALEDENOM   2000
-    MAXSCALEDENOM   4000
+    MINSCALEDENOM   2500
+    MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
     END
