@@ -60,8 +60,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_gebied"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_gebied\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "gebied")
     TYPE            POLYGON
     MINSCALEDENOM   25000
     MAXSCALEDENOM   40000
@@ -91,8 +92,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_gemeente"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "gebied")
     TYPE            POLYGON
     MINSCALEDENOM   25000
     MAXSCALEDENOM   40000
@@ -122,8 +124,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_plaats"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_plaats\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
     MINSCALEDENOM   25000
     MAXSCALEDENOM   50000
@@ -153,8 +156,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_provincie"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_provincie\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "provincie")
     TYPE            POLYGON
     MINSCALEDENOM   25000
     MAXSCALEDENOM   40000
@@ -184,8 +188,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_stadsdeel"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "stadsdeel")
     TYPE            POLYGON
     MINSCALEDENOM   14000
     MAXSCALEDENOM   40000
@@ -215,8 +220,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_water"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_water\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "water")
     TYPE            POLYGON
     MINSCALEDENOM   15000
     MAXSCALEDENOM   30000
@@ -246,8 +252,9 @@ MAP
   LAYER
     NAME            "kbk50_lbl_weg"
     GROUP           "kbk50_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk50.\"KBK50_LBL_weg\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "weg")
     TYPE            POLYGON
     MINSCALEDENOM   25000
     MAXSCALEDENOM   30000
@@ -289,8 +296,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_gebied"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_gebied\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "gebied")
     TYPE            POLYGON
     MINSCALEDENOM   7000
     MAXSCALEDENOM   15000
@@ -320,8 +328,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_gemeente"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "gemeente")
     TYPE            POLYGON
     MINSCALEDENOM   10000
     MAXSCALEDENOM   25000
@@ -351,8 +360,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_kunstwerk"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "kunstwerk")
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   10000
@@ -382,8 +392,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_park"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_park\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "park")
     TYPE            POLYGON
     MINSCALEDENOM   6000
     MAXSCALEDENOM   15000
@@ -413,8 +424,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_plaats"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_plaats\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
     MINSCALEDENOM   7000
     MAXSCALEDENOM   25000
@@ -442,8 +454,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_polder"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_polder\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "polder")
     TYPE            POLYGON
     MINSCALEDENOM   15000
     MAXSCALEDENOM   25000
@@ -473,8 +486,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_provincie"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_provincie\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "provincie")
     TYPE            POLYGON
     MINSCALEDENOM   6000
     MAXSCALEDENOM   10000
@@ -504,8 +518,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_stadsdeel"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "stadsdeel")
     TYPE            POLYGON
     MINSCALEDENOM   7000
     MAXSCALEDENOM   14000
@@ -535,8 +550,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_water"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_water\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "water")
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   15000
@@ -566,8 +582,9 @@ MAP
   LAYER
     NAME            "kbk25_lbl_weg"
     GROUP           "kbk25_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk25.\"KBK25_LBL_weg\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "weg")
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   14000
@@ -601,8 +618,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_gemeente"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_gemeente\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "gemeente")
     TYPE            POLYGON
     MINSCALEDENOM   5000
     MAXSCALEDENOM   10000
@@ -632,8 +650,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_kunstwerk"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_kunstwerk\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "kunstwerk")
     TYPE            POLYGON
     MINSCALEDENOM   2000
     MAXSCALEDENOM   3250
@@ -663,8 +682,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_plaats"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_plaats\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   7000
@@ -694,8 +714,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_park"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_park\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "park")
     TYPE            POLYGON
     MINSCALEDENOM   2000
     MAXSCALEDENOM   5000
@@ -725,8 +746,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_polder"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_polder\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "polder")
     TYPE            POLYGON
     MINSCALEDENOM   6000
     MAXSCALEDENOM   15000
@@ -756,8 +778,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_provincie"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_provincie\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "provincie")
     TYPE            POLYGON
     MINSCALEDENOM   2000
     MAXSCALEDENOM   6000
@@ -787,8 +810,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_stadsdeel"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_stadsdeel\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "stadsdeel")
     TYPE            POLYGON
     MINSCALEDENOM   2000
     MAXSCALEDENOM   7000
@@ -816,8 +840,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_water"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_water\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "water")
     TYPE            POLYGON
     MINSCALEDENOM   2000
     MAXSCALEDENOM   4000
@@ -847,8 +872,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_weg"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_weg\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "weg")
     TYPE            POLYGON
     MINSCALEDENOM   2000
     MAXSCALEDENOM   4000
@@ -878,8 +904,9 @@ MAP
   LAYER
     NAME            "kbk10_lbl_wijk"
     GROUP           "kbk10_label"
-    INCLUDE         "connection/basiskaart.inc"
-    DATA            "geom FROM kbk10.\"KBK10_LBL_wijk\" USING srid=28992 using unique ogc_fid"
+    INCLUDE         "connection/dataservices.inc"
+    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
+    FILTER          ("[type]" eq "wijk")
     TYPE            POLYGON
     MINSCALEDENOM   5000
     MAXSCALEDENOM   10000
@@ -914,7 +941,7 @@ MAP
     NAME                    BGT_LBL_weg
     GROUP                   bgt_label
     MAXSCALEDENOM           2000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, upper(tekst) as tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_weg\") AS data USING srid=28992 using unique identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -989,7 +1016,7 @@ MAP
     NAME                    BGT_LBL_water
     GROUP                   bgt_label
     MAXSCALEDENOM           2000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, upper(tekst) as tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_water\") AS data USING srid=28992 using unique identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -1064,7 +1091,7 @@ MAP
     NAME                    BGT_LBL_terrein
     GROUP                   bgt_label
     MAXSCALEDENOM           2000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_terrein\") AS data USING srid=28992 using unique identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -1139,7 +1166,7 @@ MAP
     NAME                    BGT_LBL_kunstwerk
     GROUP                   bgt_label
     MAXSCALEDENOM           500
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_kunstwerk\") AS data USING srid=28992 using unique identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -1184,7 +1211,7 @@ MAP
     NAME                    BGT_LBL_administratief_gebied
     GROUP                   bgt_label
     MAXSCALEDENOM           2000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_administratief_gebied\") AS data USING srid=28992 using unique identificatie_lokaalid"
     TYPE                    POINT
     PROJECTION
@@ -1258,7 +1285,7 @@ MAP
     NAME                    BGT_LBL_landschappelijk_gebied
     GROUP                   bgt_label
     MAXSCALEDENOM           2000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, identificatie_lokaalid FROM bgt.\"BGT_LBL_landschappelijk_gebied\") AS data USING srid=28992 using unique identificatie_lokaalid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -1333,7 +1360,7 @@ MAP
     NAME                    BGT_LBL_nummeraanduidingreeks
     GROUP                   bgt_label
     MAXSCALEDENOM           1000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, tekst_afk, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BGT_LBL_nummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -1418,7 +1445,7 @@ MAP
     NAME                    BAG_LBL_ligplaatsnummeraanduidingreeks
     GROUP                   bgt_label
     MAXSCALEDENOM           1000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BAG_LBL_Ligplaatsnummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
@@ -1503,7 +1530,7 @@ MAP
     NAME                    BAG_LBL_standplaatsnummeraanduidingreeks
     GROUP                   bgt_label
     MAXSCALEDENOM           1000
-    INCLUDE                 "connection/basiskaart.inc"
+    INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BAG_LBL_Standplaatsnummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
 	PROCESSING              "CLOSE_CONNECTION=DEFER"
     TYPE                    POINT
