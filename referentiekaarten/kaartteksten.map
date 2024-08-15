@@ -19,15 +19,11 @@ MAP
   IMAGECOLOR                "#fefafa"
 
 
-# kbk50: 50000-20000
-  # kbk50_lbl_gebied
-  # kbk50_lbl_gemeente
+# kbk50: 80000-20000
   # kbk50_lbl_plaats
-  # kbk50_lbl_provincie
   # kbk50_lbl_stadsdeel
   # kbk50_lbl_water
-  # kbk50_lbl_weg
-# kbk25: 20000-7000
+# kbk25: 20000-5000
   # kbk25_lbl_gebied
   # kbk25_lbl_gemeente
   # kbk25_lbl_kunstwerk
@@ -38,7 +34,7 @@ MAP
   # kbk25_lbl_stadsdeel
   # kbk25_lbl_water
   # kbk25_lbl_weg
-# kbk10: 7000-2000
+# kbk10: 5000-2500
   # kbk10_lbl_gemeente
   # kbk10_lbl_kunstwerk
   # kbk10_lbl_park
@@ -49,7 +45,7 @@ MAP
   # kbk10_lbl_water
   # kbk10_lbl_weg
   # kbk10_lbl_wijk
-# bgt:   2000-0
+# bgt:   2500-0
 
 
 
@@ -58,78 +54,14 @@ MAP
   #=============================================================================
 
   LAYER
-    NAME            "kbk50_lbl_gebied"
-    GROUP           "kbk50_label"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
-    FILTER          ("[type]" eq "gebied")
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   40000
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "wms_title"           "kbk50_lbl_gebied"
-      "wms_group_title"     "kbk50_label"
-      "wms_abstract"        "KBK50 labels van gebieden"
-    END
-
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#787878"
-        OUTLINECOLOR   "#787878"
-        WIDTH          0.5
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "kbk50_lbl_gemeente"
-    GROUP           "kbk50_label"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
-    FILTER          ("[type]" eq "gebied")
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   40000
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "wms_title"           "kbk50_lbl_gemeente"
-      "wms_group_title"     "kbk50_label"
-      "wms_abstract"        "KBK50 labels van gemeenten"
-    END
-
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#787878"
-        OUTLINECOLOR   "#787878"
-        WIDTH          0.5
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
     NAME            "kbk50_lbl_plaats"
     GROUP           "kbk50_label"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   50000
+    MINSCALEDENOM   40000
+    MAXSCALEDENOM   80000
     PROJECTION
     "init=epsg:28992"
     END
@@ -154,45 +86,13 @@ MAP
   #-----------------------------------------------------------------------------
 
   LAYER
-    NAME            "kbk50_lbl_provincie"
-    GROUP           "kbk50_label"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
-    FILTER          ("[type]" eq "provincie")
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   40000
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "wms_title"           "kbk50_lbl_provincie"
-      "wms_group_title"     "kbk50_label"
-      "wms_abstract"        "KBK50 labels van provincies"
-    END
-
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#787878"
-        OUTLINECOLOR   "#787878"
-        WIDTH          0.5
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
     NAME            "kbk50_lbl_stadsdeel"
     GROUP           "kbk50_label"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "stadsdeel")
     TYPE            POLYGON
-    MINSCALEDENOM   14000
+    MINSCALEDENOM   20000
     MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
@@ -224,8 +124,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "water")
     TYPE            POLYGON
-    MINSCALEDENOM   15000
-    MAXSCALEDENOM   30000
+    MINSCALEDENOM   20000
+    MAXSCALEDENOM   40000
     PROJECTION
     "init=epsg:28992"
     END
@@ -247,48 +147,6 @@ MAP
 
   END
 
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "kbk50_lbl_weg"
-    GROUP           "kbk50_label"
-    INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_50_pluslabels) AS sub USING srid=28992 using unique identificatie"
-    FILTER          ("[type]" eq "weg")
-    TYPE            POLYGON
-    MINSCALEDENOM   25000
-    MAXSCALEDENOM   30000
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "wms_title"           "kbk50_lbl_weg"
-      "wms_group_title"     "kbk50_label"
-      "wms_abstract"        "KBK50 labels van weg"
-    END
-
-    CLASS
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#ffffff"
-        OUTLINECOLOR   "#ffffff"
-        WIDTH          3
-      END
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#5a5a5a"
-        OUTLINECOLOR   "#5a5a5a"
-        WIDTH          0.5
-      END
-    END
-
-  END
-
-
-
-
-
   #=============================================================================
   # LAYER KBK25 LABEL
   #=============================================================================
@@ -300,8 +158,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "gebied")
     TYPE            POLYGON
-    MINSCALEDENOM   7000
-    MAXSCALEDENOM   15000
+    MINSCALEDENOM   10000
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
@@ -333,7 +191,7 @@ MAP
     FILTER          ("[type]" eq "gemeente")
     TYPE            POLYGON
     MINSCALEDENOM   10000
-    MAXSCALEDENOM   25000
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
@@ -364,7 +222,7 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "kunstwerk")
     TYPE            POLYGON
-    MINSCALEDENOM   4000
+    MINSCALEDENOM   5000
     MAXSCALEDENOM   10000
     PROJECTION
     "init=epsg:28992"
@@ -396,8 +254,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "park")
     TYPE            POLYGON
-    MINSCALEDENOM   6000
-    MAXSCALEDENOM   15000
+    MINSCALEDENOM   5000
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
@@ -429,7 +287,7 @@ MAP
     FILTER          ("[type]" eq "plaats")
     TYPE            POLYGON
     MINSCALEDENOM   7000
-    MAXSCALEDENOM   25000
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
@@ -458,8 +316,8 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_25_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "polder")
     TYPE            POLYGON
-    MINSCALEDENOM   15000
-    MAXSCALEDENOM   25000
+    MINSCALEDENOM   10000
+    MAXSCALEDENOM   20000
     PROJECTION
     "init=epsg:28992"
     END
