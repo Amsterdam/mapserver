@@ -512,6 +512,7 @@ MAP
     DATA            "geometrie FROM (SELECT identificatie, type, geometrie_vlak AS geometrie FROM brt_10_pluslabels) AS sub USING srid=28992 using unique identificatie"
     FILTER          ("[type]" eq "kunstwerk")
     TYPE            POLYGON
+    MINSCALEDENOM   2500
     MAXSCALEDENOM   5000
     PROJECTION
     "init=epsg:28992"
