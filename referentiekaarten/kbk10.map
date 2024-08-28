@@ -31,8 +31,7 @@
 # GBW_gebouw
 # GBW_hoogbouw
 # GBW_kas_warenhuis
-# TRN_binnentuin-case
-# TRN_binnentuin-fill
+# TRN_binnentuin
 # WDL_waterbassin
 # WDL_smal_water_3_tot_6m
 # WDL_smal_water_tot_3m
@@ -788,60 +787,35 @@ MAP
 
 #-----------------------------------------------------------------------------
 
-#   LAYER
-#     NAME                    TRN_binnentuin-case
-#     GROUP                   "vlakken"
-#     MAXSCALEDENOM           10000
-#     MINSCALEDENOM           5000
-#     INCLUDE                 "connection/dataservices.inc"
-#     DATA                    "geom FROM brt_10_plusterreinen USING srid=28992 USING UNIQUE ogc_fid"
-#     TYPE                    POLYGON
-#     PROJECTION
-#       "init=epsg:28992"
-#     END
+  LAYER
+    NAME                    TRN_binnentuin
+    GROUP                   "vlakken"
+    MAXSCALEDENOM           10000
+    MINSCALEDENOM           5000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ("[type]" eq "binnentuin")
+    TYPE POLYGON
+    PROJECTION
+      "init=epsg:28992"
+    END
 
-#     METADATA
-#       "wms_title"           "TRN_binnentuin-case"
-#     END
+    METADATA
+      "wms_title"           "TRN_binnentuin"
+    END
 
-#     CLASS
-#       MAXSCALEDENOM 10000
-#       MINSCALEDENOM 5000
-#       STYLE
-#         WIDTH 1
-#         OUTLINECOLOR "#c9c7c2"
-#         LINECAP BUTT
-#         LINEJOIN MITER
-#       END
-#     END
-#   END
-
-#-----------------------------------------------------------------------------
-
-#   LAYER
-#     NAME                    TRN_binnentuin-fill
-#     GROUP                   "vlakken"
-#     MAXSCALEDENOM           10000
-#     MINSCALEDENOM           5000
-#     INCLUDE                 "connection/dataservices.inc"
-#     DATA                    "geom FROM brt_10_plusterreinen USING srid=28992 USING UNIQUE ogc_fid"
-#     TYPE POLYGON
-#     PROJECTION
-#       "init=epsg:28992"
-#     END
-
-#     METADATA
-#       "wms_title"           "TRN_binnentuin-fill"
-#     END
-
-#     CLASS
-#       MAXSCALEDENOM 10000
-#       MINSCALEDENOM 5000
-#       STYLE
-#         COLOR "#f9f9e7"
-#       END
-#     END
-#   END
+    CLASS
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
+      STYLE
+        WIDTH 1
+        OUTLINECOLOR "#c9c7c2"
+        LINECAP BUTT
+        LINEJOIN MITER        
+        COLOR "#f9f9e7"
+      END
+    END
+  END
 
 #-----------------------------------------------------------------------------
 
