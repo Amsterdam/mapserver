@@ -1039,7 +1039,6 @@ LAYER
   NAME                    WGL_veerverbinding
   GROUP                   "lijnen"
   MAXSCALEDENOM           20000
-  MINSCALEDENOM           5000
   INCLUDE                 "connection/dataservices.inc"
   DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ("[type]" eq "veerverbinding")
@@ -1053,8 +1052,6 @@ LAYER
   END
 
   CLASS
-    MAXSCALEDENOM 20000
-    MINSCALEDENOM 5000
     STYLE
       WIDTH 1
       COLOR "#54a3bb"
