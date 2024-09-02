@@ -20,7 +20,7 @@ DATASERVICES_DB_USER=${DATASERVICES_DB_USER:-${DATASERVICES_DB_NAME}}
 DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-store/mapserver-public'}
 
 echo Creating configuration files
-id; whoami
+id
 cat > /var/tmp/yay << EOF
 HERE
 EOF
