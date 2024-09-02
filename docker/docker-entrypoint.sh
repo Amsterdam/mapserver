@@ -26,6 +26,7 @@ HERE
 EOF
 
 ls -al /var/tmp
+cat /etc/apache2/envvars
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis

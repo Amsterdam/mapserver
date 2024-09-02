@@ -35,4 +35,5 @@ RUN chown -R datapunt:datapunt /etc/apache2/
 EXPOSE 80
 
 USER datapunt
+RUN mkdir /var/run/apache2
 CMD /bin/docker-entrypoint.sh
