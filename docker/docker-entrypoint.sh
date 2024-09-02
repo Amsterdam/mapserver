@@ -22,6 +22,7 @@ DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-sto
 echo Creating configuration files
 
 ls -al /srv/mapserver/
+ls -al /srv/mapserver/connection/
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
