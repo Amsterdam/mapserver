@@ -27,6 +27,7 @@ COPY docker/docker-entrypoint.sh /bin
 
 RUN useradd -M -U datapunt
 COPY . /srv/mapserver/ 
+RUN mkdir /srv/mapserver/connection && chmod 755 /srv/mapserver/connection
 RUN chown -R datapunt:datapunt /srv/ && rm -rf /srv/mapserver/private
 COPY epsg /usr/share/proj
 
