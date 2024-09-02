@@ -30,7 +30,7 @@ COPY epsg /usr/share/proj
 
 RUN useradd -M -u 999 -U datapunt
 RUN chmod 775 $(find /srv -type d)
-RUN chown -R datapunt:datapunt /srv/ && rm -rf /srv/mapserver/private
+RUN chown -R datapunt:datapunt {/srv/,/etc/apache2/} && rm -rf /srv/mapserver/private
 
 EXPOSE 80
 
