@@ -25,12 +25,10 @@ RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
-RUN useradd -M -U datapunt
-COPY . /srv/mapserver/ && chown -R datapunt:datapunt /srv/
+COPY . /srv/mapserver/
 RUN rm -rf /srv/mapserver/private
 COPY epsg /usr/share/proj
 
 EXPOSE 80
 
-USER datapunt
 CMD /bin/docker-entrypoint.sh
