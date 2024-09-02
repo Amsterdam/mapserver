@@ -31,9 +31,8 @@ COPY epsg /usr/share/proj
 RUN useradd -M -u 999 -U datapunt
 RUN chmod 775 $(find /srv -type d)
 RUN chown -R datapunt:datapunt /srv/ && rm -rf /srv/mapserver/private
-RUN chown -R datapunt:datapunt /etc/apache2/
+
 EXPOSE 80
 
 USER datapunt
-RUN mkdir /var/run/apache2
 CMD /bin/docker-entrypoint.sh
