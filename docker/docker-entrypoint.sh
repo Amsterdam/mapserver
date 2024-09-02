@@ -23,8 +23,7 @@ echo Creating configuration files
 
 mkdir -p /srv/mapserver/connection
 ls -al /srv/mapserver/
-
-echo "yay" | tee /srv/mapserver/connection/yay
+find /srv/mapserver -type d -exec chmod 0755 {} \;
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
