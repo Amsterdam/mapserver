@@ -20,9 +20,12 @@ DATASERVICES_DB_USER=${DATASERVICES_DB_USER:-${DATASERVICES_DB_NAME}}
 DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-store/mapserver-public'}
 
 echo Creating configuration files
-id
-ls -al /srv/mapserver/
-ls -al /srv/mapserver/connection/
+id; whoami
+cat > /var/tmp/yay << EOF
+HERE
+EOF
+
+ls -al /var/tmp
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
