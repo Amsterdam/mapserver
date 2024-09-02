@@ -2,6 +2,7 @@
 
 set -e
 set -u
+set -x
 
 PANORAMA_DB_PORT=${PANORAMA_DB_PORT:-5432}
 PANORAMA_DB_NAME=${PANORAMA_DB_NAME:-panorama}
@@ -21,6 +22,9 @@ DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-sto
 echo Creating configuration files
 
 mkdir -p /srv/mapserver/connection
+ls -al /srv/mapserver/
+
+echo "yay" | tee /srv/mapserver/yay
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
