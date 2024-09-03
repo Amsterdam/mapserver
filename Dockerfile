@@ -38,6 +38,6 @@ RUN rm -rf /srv/mapserver/private
 
 EXPOSE 80
 
-USER datapunt
+USER www-data
 RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2
 CMD /bin/docker-entrypoint.sh
