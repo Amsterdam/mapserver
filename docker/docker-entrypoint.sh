@@ -55,6 +55,7 @@ sed -i 's/ErrorLog .*/ErrorLog \/dev\/stderr/' /etc/apache2/apache2.conf
 sed -i 's/Timeout 300/Timeout 600/' /etc/apache2/apache2.conf
 # set listen port to non-privileged port
 sed -i '0,/Listen [0-9]*/s//Listen 8080/' /etc/apache2/ports.conf
+sed -i s/\<VirtualHost.*/VirtualHost\ \*\:8080/ /etc/apache2/sites-enabled/000-default.conf
 
 # Replace actual location of the mapserver depending on the environment   
 shopt -s globstar nullglob
