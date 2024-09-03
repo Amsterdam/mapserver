@@ -31,7 +31,6 @@ COPY epsg /usr/share/proj
 # set apache user id matching ctr user id
 RUN usermod --non-unique --uid 999 www-data
 RUN groupmod -o -g 999 www-data
-# RUN chmod 775 $(find /srv -type d)
 RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2 
 RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && chown -R 999:999 /var/log/apache2/
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
