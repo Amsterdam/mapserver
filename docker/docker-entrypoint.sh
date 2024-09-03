@@ -2,7 +2,6 @@
 
 set -e
 set -u
-set -x
 
 PANORAMA_DB_PORT=${PANORAMA_DB_PORT:-5432}
 PANORAMA_DB_NAME=${PANORAMA_DB_NAME:-panorama}
@@ -20,13 +19,6 @@ DATASERVICES_DB_USER=${DATASERVICES_DB_USER:-${DATASERVICES_DB_NAME}}
 DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-store/mapserver-public'}
 
 echo Creating configuration files
-id
-cat > /var/tmp/yay << EOF
-HERE
-EOF
-
-ls -al /var/tmp
-cat /etc/apache2/envvars
 
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
@@ -75,5 +67,4 @@ echo Starting server
 # Apache gets grumpy about PID files pre-existing
 rm -f /var/run/apache2/apache2.pid
 
-# export APACHE_RUN_USER=#$(id -u)
 apachectl -D FOREGROUND
