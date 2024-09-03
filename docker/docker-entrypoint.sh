@@ -72,4 +72,5 @@ echo Starting server
 # Apache gets grumpy about PID files pre-existing
 rm -f /var/run/apache2/apache2.pid
 
+export APACHE_RUN_USER=#$(id -u)
 apachectl -D FOREGROUND
