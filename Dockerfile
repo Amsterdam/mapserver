@@ -30,7 +30,7 @@ COPY epsg /usr/share/proj
 
 # RUN useradd -M -u 999 -U datapunt
 RUN usermod --non-unique --uid 999 www-data
-RUN groupmod --non-unique --uid 999 www-data
+RUN groupmod -o -g 999 www-data
 RUN chmod 775 $(find /srv -type d)
 # RUN chown -R datapunt:datapunt /srv/ && chown -R datapunt:datapunt /etc/apache2/ 
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/ 
