@@ -38,7 +38,7 @@ RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
 RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2
 RUN rm -rf /srv/mapserver/private
 
-EXPOSE 80
+EXPOSE 8080
 
 USER www-data
 CMD /bin/docker-entrypoint.sh
