@@ -10,3 +10,5 @@ USER root
 # private variety.
 RUN rm -rf /srv/mapserver/private
 COPY /private/ /srv/mapserver/
+RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+
