@@ -5,7 +5,7 @@ MAP
     METADATA
       "ows_title"           "Uitvoeringsplannen"
       "ows_abstract"        "Uitvoeringsplannen"
-      "ows_onlineresource"  "MAP_URL_REPLACE/maps/uitvoeringsplannen"
+      "ows_onlineresource"  "http://localhost:8383/maps/uitvoeringsplannen"
     END
   END
 
@@ -91,7 +91,7 @@ MAP
 
 
   LAYER
-    NAME                    "water_polygon"         
+    NAME                    "water"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
@@ -103,7 +103,7 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Water (Polygon)" 
+      "ows_title"           "Uitvoeringsplannen Water" 
       "ows_abstract"        "Uitvoeringsplannen Water" 
       "wms_group_title"     "Uitvoeringsplannen"                                 
       "gml_featureid"       "id"                                         
@@ -115,8 +115,8 @@ MAP
     END
 
     CLASS
-      NAME                  "water_polygon"
-      TITLE                 "Water (Polygon)"
+      NAME                  "water"
+      TITLE                 "Water"
       STYLE
         ANTIALIAS           true
         COLOR               "#33ccff"
@@ -136,7 +136,7 @@ MAP
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Spelen & straatmeubilair')            
-    TYPE                    POINT
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
@@ -158,11 +158,13 @@ MAP
       NAME                  "spelen_straatmeubilair"
       TITLE                 "Spelen & Straatmeubilair"
       STYLE
-        SYMBOL              "stip"
+        ANTIALIAS           true
         COLOR               "#999966"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#999966"
+        WIDTH               5
       END
     END
   END
@@ -251,7 +253,7 @@ MAP
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Verlichting')            
-    TYPE                    POINT
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
@@ -263,24 +265,28 @@ MAP
       "wms_group_title"     "Uitvoeringsplannen"                                 
       "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      
+      "gml_geometry_type"   "polygon"                                      
       "gml_include_items"   "all"                                        
       "gml_types"           "auto"
       "wms_include_items"   "all"                                        
     END
 
+
     CLASS
       NAME                  "verlichting"
       TITLE                 "Verlichting"
       STYLE
-        SYMBOL              "stip"
+        ANTIALIAS           true
         COLOR               "#ffff00"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               5
       END
     END
   END
+
 
   LAYER
     NAME                    "verkeersinformatiesystemen"         
@@ -288,7 +294,7 @@ MAP
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'VIS')            
-    TYPE                    POINT
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
@@ -300,7 +306,7 @@ MAP
       "wms_group_title"     "Uitvoeringsplannen"                                 
       "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      
+      "gml_geometry_type"   "polygon"                                      
       "gml_include_items"   "all"                                        
       "gml_types"           "auto"
       "wms_include_items"   "all"                                        
@@ -310,14 +316,17 @@ MAP
       NAME                  "verkeersinformatiesysteem"
       TITLE                 "Verkeersinformatiesysteem (VIS)"
       STYLE
-        SYMBOL              "stip"
+        ANTIALIAS           true
         COLOR               "#ff0000"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               5
       END
     END
   END
+
 
 
   LAYER
@@ -326,7 +335,7 @@ MAP
     GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'VRI')            
-    TYPE                    POINT
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
@@ -338,58 +347,23 @@ MAP
       "wms_group_title"     "Uitvoeringsplannen"                                 
       "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      
+      "gml_geometry_type"   "polygon"                                      
       "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        
+      "wms_include_items"   "all"                                       
     END
 
     CLASS
-      NAME                  "verkeersregelinstallatie"
-      TITLE                 "Verkeersregelinstallatie (VRI)"
+      NAME                  "uitvoeringsplannen_verkeersregelinstallaties"
+      TITLE                 "Uitvoeringsplannen Verkeersregelinstallaties (VRI)"
       STYLE
-        SYMBOL              'driehoek'
-        COLOR               "#ff00ff"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        ANTIALIAS           true
+        COLOR               "#ff00ff" 
+        OPACITY             20
       END
-    END
-  END
-
-  LAYER
-    NAME                    "water_point"         
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM (select * from public.uitvoeringsplan_uitvoeringsplan where ST_GeometryType(geometrie)='ST_Point') as SUB USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Water')            
-    TYPE                    POINT
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Uitvoeringsplannen Water (Punt)" 
-      "ows_abstract"        "Uitvoeringsplannen Water (Punt)" 
-      "wms_group_title"     "Uitvoeringsplannen"                                 
-      "gml_featureid"       "id"                                         
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      
-      "gml_include_items"   "all"                                        
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        
-    END
-
-    CLASS
-      NAME                  "water_punt"
-      TITLE                 "Water (Punt)"
       STYLE
-        SYMBOL              'stip'
-        COLOR               "#33ccff"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OUTLINECOLOR        "#ff00ff" 
+        WIDTH               5
       END
     END
   END
