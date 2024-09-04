@@ -1,22 +1,22 @@
 MAP
-  NAME                      "uitvoeringsplannen" #lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+  NAME                      "uitvoeringsplannen"
   INCLUDE                   "header.inc"
   WEB
     METADATA
-      "ows_title"           "Uitvoeringsplannen" #Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen" #Door datateam aanleveren
-     # "ows_onlineresource"  "http://map/maps/verkeersinformatiesystemen"
+      "ows_title"           "Uitvoeringsplannen"
+      "ows_abstract"        "Uitvoeringsplannen"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/uitvoeringsplannen"
     END
   END
 
   #==============================================================================================
 
   LAYER
-    NAME                    "uitvoeringsplannen_civiel"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "civiel"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Civiel')            # Dit wellicht in WHERE clause, uitzoeken
+    FILTER                  ([asset] = 'Civiel')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -24,15 +24,15 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Civiel" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Civiel" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Civiel" 
+      "ows_abstract"        "Uitvoeringsplannen Civiel" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "polygon"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                        
     END
 
     CLASS
@@ -51,11 +51,11 @@ MAP
   END
 
   LAYER
-    NAME                    "uitvoeringsplannen_groen"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "groen"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Groen')            # Dit wellicht in WHERE clause, uitzoeken
+    FILTER                  ([asset] = 'Groen')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -63,15 +63,15 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Groen" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Groen" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Groen" 
+      "ows_abstract"        "Uitvoeringsplannen Groen" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "polygon"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                        
     END
 
     CLASS
@@ -91,11 +91,11 @@ MAP
 
 
   LAYER
-    NAME                    "uitvoeringsplannen_water_polygon"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "water"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Water')            # Dit wellicht in WHERE clause, uitzoeken
+    FILTER                  ([asset] = 'Water')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -103,20 +103,20 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Water (Polygon)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Water" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Water" 
+      "ows_abstract"        "Uitvoeringsplannen Water" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "polygon"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                        
     END
 
     CLASS
-      NAME                  "water_polygon"
-      TITLE                 "Water (Polygon)"
+      NAME                  "water"
+      TITLE                 "Water"
       STYLE
         ANTIALIAS           true
         COLOR               "#33ccff"
@@ -131,187 +131,239 @@ MAP
 
   
   LAYER
-    NAME                    "uitvoeringsplannen_spelen_straatmeubilair"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "spelen_straatmeubilair"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Spelen & straatmeubilair')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POINT
+    FILTER                  ([asset] = 'Spelen & straatmeubilair')            
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Spelen & Straatmeubilair" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Spelen & Straatmeubilair" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Spelen & Straatmeubilair" 
+      "ows_abstract"        "Uitvoeringsplannen Spelen & Straatmeubilair" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                        
     END
 
     CLASS
       NAME                  "spelen_straatmeubilair"
       TITLE                 "Spelen & Straatmeubilair"
       STYLE
-        SYMBOL              "stip"
+        ANTIALIAS           true
         COLOR               "#999966"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#999966"
+        WIDTH               5
       END
     END
   END
 
   LAYER
-    NAME                    "uitvoeringsplannen_verlichting"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "tunnels"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Verlichting')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POINT
+    FILTER                  ([asset] = 'Tunnels')      
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Verlichting" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Verlichting" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Tunnels" 
+      "ows_abstract"        "Uitvoeringsplannen Tunnels" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                        
     END
+
+    CLASS
+      NAME                  "tunnel"
+      TITLE                 "Tunnel"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "verhardingen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Verhardingen')      
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verhardingen" 
+      "ows_abstract"        "Uitvoeringsplannen Verhardingen" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "verharding"
+      TITLE                 "Verharding"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "verlichting"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Verlichting')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verlichting" 
+      "ows_abstract"        "Uitvoeringsplannen Verlichting" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
 
     CLASS
       NAME                  "verlichting"
       TITLE                 "Verlichting"
       STYLE
-        SYMBOL              "stip"
+        ANTIALIAS           true
         COLOR               "#ffff00"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               5
       END
     END
   END
 
+
   LAYER
-    NAME                    "uitvoeringsplannen_verkeersinformatie_systemen"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "verkeersinformatiesystemen"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'VIS')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POINT
+    FILTER                  ([asset] = 'VIS')            
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Verkeersinformatiesystemen (VIS)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Verkeersinformatiesystemen (VIS)" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Verkeersinformatiesystemen (VIS)" 
+      "ows_abstract"        "Uitvoeringsplannen Verkeersinformatiesystemen (VIS)" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                        
     END
 
     CLASS
-      NAME                  "verkeersinformatie_systemen"
-      TITLE                 "Verkeersinformatiesystemen (VIS)"
+      NAME                  "verkeersinformatiesysteem"
+      TITLE                 "Verkeersinformatiesysteem (VIS)"
       STYLE
-        SYMBOL              "stip"
+        ANTIALIAS           true
         COLOR               "#ff0000"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               5
       END
     END
   END
 
 
+
   LAYER
-    NAME                    "uitvoeringsplannen_verkeersregel_installaties"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+    NAME                    "verkeersregelinstallaties"         
     INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+    GROUP                   "uitvoeringsplannen"                                 
     DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'VRI')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POINT
+    FILTER                  ([asset] = 'VRI')            
+    TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
     END
 
     METADATA
-      "ows_title"           "Uitvoeringsplannen Verkeersregelinstallaties (VRI)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Verkeersregelinstallaties (VRI)" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+      "ows_title"           "Uitvoeringsplannen Verkeersregelinstallaties (VRI)" 
+      "ows_abstract"        "Uitvoeringsplannen Verkeersregelinstallaties (VRI)" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
       "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
       "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+      "wms_include_items"   "all"                                       
     END
 
     CLASS
-      NAME                  "verkeersregel_installaties"
-      TITLE                 "Verkeersregelinstallaties (VRI)"
+      NAME                  "uitvoeringsplannen_verkeersregelinstallaties"
+      TITLE                 "Uitvoeringsplannen Verkeersregelinstallaties (VRI)"
       STYLE
-        SYMBOL              'driehoek'
-        COLOR               "#ff00ff"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        ANTIALIAS           true
+        COLOR               "#ff00ff" 
+        OPACITY             20
       END
-    END
-  END
-
-  LAYER
-    NAME                    "uitvoeringsplannen_water_point"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "uitvoeringsplannen"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (select * from public.uitvoeringsplan_uitvoeringsplan where ST_GeometryType(geometrie)='ST_Point') as SUB USING srid=28992 USING UNIQUE id"
-    FILTER                  ([asset] = 'Water')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POINT
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Uitvoeringsplannen Water (Punt)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Uitvoeringsplannen Water (Punt)" # Door datateam aanleveren
-      "wms_group_title"     "Uitvoeringsplannen"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "point"                                      # Type gelijk aan database: (multi-) point/line/polygon
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "water_punt"
-      TITLE                 "Water (Punt)"
       STYLE
-        SYMBOL              'stip'
-        COLOR               "#33ccff"
-        SIZE                14
-        OUTLINECOLOR        "#ffffff"
-        WIDTH               1.5
+        OUTLINECOLOR        "#ff00ff" 
+        WIDTH               5
       END
     END
   END
