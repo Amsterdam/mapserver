@@ -25,10 +25,18 @@ RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
-COPY . /srv/mapserver/
-RUN rm -rf /srv/mapserver/private
+COPY . /srv/mapserver/ 
 COPY epsg /usr/share/proj
 
-EXPOSE 80
+# set apache user id matching ctr user id
+RUN usermod --non-unique --uid 999 www-data
+RUN groupmod -o -g 999 www-data
+RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2 
+RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && chown -R 999:999 /var/log/apache2/
+RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+RUN rm -rf /srv/mapserver/private
 
+EXPOSE 8080
+
+USER www-data
 CMD /bin/docker-entrypoint.sh
