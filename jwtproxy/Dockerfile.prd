@@ -6,7 +6,14 @@ WORKDIR /app
 COPY src jwtproxy 
 COPY requirements.txt .
 
+RUN usermod --non-unique --uid 999 proxy
+RUN groupmod -o -g 999 proxy
+RUN chown -R 999:999 /app
+
 RUN pip install supervisor
 RUN pip install -r requirements.txt
+
 EXPOSE 8000
+
+USER proxy
 ENTRYPOINT [ "/bin/sh", "-c", "/usr/local/bin/supervisord -n"]
