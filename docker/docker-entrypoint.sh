@@ -15,8 +15,6 @@ DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-sto
 
 echo Creating configuration files
 
-mkdir -p /srv/mapserver/connection
-
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=$(cat ${PANORAMA_DB_PASSWORD_PATH}) port=${PANORAMA_DB_PORT}"
@@ -36,6 +34,9 @@ EOF
 #      https://serverfault.com/questions/711168/writing-apache2-logs-to-stdout-stderr
 sed -i 's/ErrorLog .*/ErrorLog \/dev\/stderr/' /etc/apache2/apache2.conf
 sed -i 's/Timeout 300/Timeout 600/' /etc/apache2/apache2.conf
+# set listen port to non-privileged port
+sed -i '0,/Listen [0-9]*/s//Listen 8080/' /etc/apache2/ports.conf
+sed -i s/\<VirtualHost.*/\<VirtualHost\ \*\:8080\>/ /etc/apache2/sites-enabled/000-default.conf
 
 # Replace actual location of the mapserver depending on the environment   
 shopt -s globstar nullglob
