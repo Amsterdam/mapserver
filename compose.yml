@@ -1,0 +1,122 @@
+# This file is only for local development purposes. The actual deployment
+# configuration lives in a separate repository.
+services:
+  database:
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    ports:
+      - "5403:5432"
+    environment:
+      - POSTGRES_PASSWORD=insecure
+      - POSTGRES_DB=postgres
+
+    command: ["postgres", "-c", "log_statement=all"]
+    volumes:
+      - "${POSTGRES_DATA_DIR:-/var/lib/postgresql/data}:/var/lib/postgresql/data"
+
+  proxy:
+    build:
+      context: jwtproxy
+      dockerfile: Dockerfile.dev
+    ports:
+      - 9191:8000
+    volumes:
+      - ./jwtproxy/src:/app/jwtproxy
+    environment:
+      PROXY_URL: http://map
+      JWKS_PATH: /app/jwtproxy/test_jwk.json
+      LOG_LEVEL: DEBUG
+      #JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
+
+  # Bare bones 'webserver' to behave as public loadbalancer
+  publicdummy:
+    image: python:3.11-slim-bullseye
+    ports:
+      - 8000:8000
+    command: python3 -m http.server 8000
+
+  map:
+    build:
+      context: .
+    ports:
+      - "8383:80"
+    environment:
+      # Used by apache to allow complete access for local dev
+      LOCAL: "true"
+
+      PANORAMA_DB_NAME: panorama
+      PANORAMA_DB_USER: postgres
+      PANORAMA_DB_PASSWORD: insecure
+      PANORAMA_DB_HOST: database
+
+      DATASERVICES_DB_NAME: postgres
+      DATASERVICES_DB_USER: postgres
+      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_HOST: database
+
+      MAP_URL: "http://map"
+      LEGEND_URL: "http://map"
+
+    volumes:
+      - .:/srv/mapserver/
+
+  privatemap:
+    build:
+      context: .
+      dockerfile: Dockerfile.private
+    ports:
+      - "8384:80"
+    environment:
+      # Used by apache to allow complete access for local dev
+      LOCAL: "true"
+
+      PANORAMA_DB_NAME: panorama
+      PANORAMA_DB_USER: postgres
+      PANORAMA_DB_PASSWORD: insecure
+      PANORAMA_DB_HOST: database
+
+      DATASERVICES_DB_NAME: postgres
+      DATASERVICES_DB_USER: postgres
+      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_HOST: database
+
+      MAP_URL: "http://map"
+      LEGEND_URL: "http://map"
+
+    volumes:
+      - ./tools/:/srv/mapserver/tools/
+      - ./symbols/:/srv/mapserver/symbols/
+      - ./fonts/:/srv/mapserver/fonts/
+      - ./connection/:/srv/mapserver/connection/
+      - ./private:/srv/mapserver/
+
+  topomap:
+    build:
+      context: .
+      dockerfile: Dockerfile.topografie
+    ports:
+      - "8385:80"
+    environment:
+      # Used by apache to allow complete access for local dev
+      LOCAL: "true"
+
+      PANORAMA_DB_NAME: panorama
+      PANORAMA_DB_USER: postgres
+      PANORAMA_DB_PASSWORD: insecure
+      PANORAMA_DB_HOST: database
+
+      DATASERVICES_DB_NAME: postgres
+      DATASERVICES_DB_USER: postgres
+      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_HOST: database
+
+      MAP_URL: "http://map"
+      LEGEND_URL: "http://map"
+
+    volumes:
+      - ./tools/:/srv/mapserver/tools/
+      - ./symbols/:/srv/mapserver/symbols/
+      - ./fonts/:/srv/mapserver/fonts/
+      - ./connection/:/srv/mapserver/connection/
+      - ./referentiekaarten/:/srv/mapserver/
