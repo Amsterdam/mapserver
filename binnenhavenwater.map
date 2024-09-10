@@ -1,0 +1,53 @@
+MAP
+  NAME                      "binnenhavenwater"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "Binnenhavenwater"
+      "ows_abstract"        "Dataset die weergeeft binnen welk gebied in Amsterdam men binnenhavengeldplichtig is."
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/binnenhavenwater"
+
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "binnenhavenwater"
+    GROUP                   "binnenhavenwater"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.water_binnenhavenwater USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Binnenhavenwater"
+      "ows_abstract"        "Dataset die weergeeft binnen welk gebied in Amsterdam men binnenhavengeldplichtig is."
+      "wms_group_title"     "Binnenhavenwater"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "binnenhavenwater"
+      TITLE                 "Binnenhavenwater"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#4c8fbc"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#4c8fbc"
+        WIDTH               2
+      END
+    END
+  END
+
+END
