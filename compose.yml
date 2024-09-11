@@ -40,7 +40,7 @@ services:
     build:
       context: .
     ports:
-      - "8383:80"
+      - "8383:8080"
     environment:
       # Used by apache to allow complete access for local dev
       LOCAL: "true"
@@ -65,8 +65,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.private
+      args:
+        BASE_IMAGE: ${BASE_IMAGE}
     ports:
-      - "8384:80"
+      - "8384:8080"
     environment:
       # Used by apache to allow complete access for local dev
       LOCAL: "true"
@@ -81,8 +83,8 @@ services:
       DATASERVICES_DB_PASSWORD_PATH: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "http://map"
-      LEGEND_URL: "http://map"
+      MAP_URL: "http://localhost:8383"
+      LEGEND_URL: "http://localhost:8383"
 
     volumes:
       - ./tools/:/srv/mapserver/tools/
@@ -95,8 +97,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.topografie
+      args:
+        BASE_IMAGE: ${BASE_IMAGE}
     ports:
-      - "8385:80"
+      - "8385:8080"
     environment:
       # Used by apache to allow complete access for local dev
       LOCAL: "true"
@@ -111,8 +115,8 @@ services:
       DATASERVICES_DB_PASSWORD_PATH: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "http://map"
-      LEGEND_URL: "http://map"
+      MAP_URL: "http://localhost:8383"
+      LEGEND_URL: "http://localhost:8383"
 
     volumes:
       - ./tools/:/srv/mapserver/tools/
