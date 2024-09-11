@@ -1,8 +1,6 @@
 FROM ubuntu:22.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ="Europe/Amsterdam"
-
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         apache2 \
@@ -10,6 +8,7 @@ RUN apt-get update -y \
         curl \
         gdal-bin \
         gdal-data \
+        gosu \
         mapserver-bin \
         python3-pip \
         wget \
@@ -38,5 +37,4 @@ RUN rm -rf /srv/mapserver/private
 
 EXPOSE 8080
 
-USER www-data
 CMD /bin/docker-entrypoint.sh

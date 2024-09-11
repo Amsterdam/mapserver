@@ -27,6 +27,8 @@ CONNECTION "host=${DATASERVICES_DB_HOST} dbname=${DATASERVICES_DB_NAME} user=${D
 PROCESSING "CLOSE_CONNECTION=DEFER"
 EOF
 
+gosu www-data bash
+
 # Configure apache to redirect errors to stderr.
 # The mapserver will redirect errors to apache errorstream (see header.inc and private/header.inc)
 # and apache will then redirect this to stderr, which will then be redirected to syslog/kibana.
