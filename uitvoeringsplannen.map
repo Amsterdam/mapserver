@@ -1,0 +1,372 @@
+MAP
+  NAME                      "uitvoeringsplannen"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "Uitvoeringsplannen"
+      "ows_abstract"        "Uitvoeringsplannen"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/uitvoeringsplannen"
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "civiel"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Civiel')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Civiel" 
+      "ows_abstract"        "Uitvoeringsplannen Civiel" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "civiel"
+      TITLE                 "Civiel"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "groen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Groen')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Groen" 
+      "ows_abstract"        "Uitvoeringsplannen Groen" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "groen"
+      TITLE                 "Groen"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#006600"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#006600"
+        WIDTH               2
+      END
+    END
+  END
+
+
+  LAYER
+    NAME                    "water"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Water')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Water" 
+      "ows_abstract"        "Uitvoeringsplannen Water" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "water"
+      TITLE                 "Water"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#33ccff"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#33ccff"
+        WIDTH               2
+      END
+    END
+  END
+
+  
+  LAYER
+    NAME                    "spelen_straatmeubilair"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Spelen & straatmeubilair')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Spelen & Straatmeubilair" 
+      "ows_abstract"        "Uitvoeringsplannen Spelen & Straatmeubilair" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "spelen_straatmeubilair"
+      TITLE                 "Spelen & Straatmeubilair"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#999966"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#999966"
+        WIDTH               5
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "tunnels"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Tunnels')      
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Tunnels" 
+      "ows_abstract"        "Uitvoeringsplannen Tunnels" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "tunnel"
+      TITLE                 "Tunnel"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "verhardingen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Verhardingen')      
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verhardingen" 
+      "ows_abstract"        "Uitvoeringsplannen Verhardingen" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "verharding"
+      TITLE                 "Verharding"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#7f7f7f"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#7f7f7f"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "verlichting"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'Verlichting')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verlichting" 
+      "ows_abstract"        "Uitvoeringsplannen Verlichting" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+
+    CLASS
+      NAME                  "verlichting"
+      TITLE                 "Verlichting"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#ffff00"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ffff00"
+        WIDTH               5
+      END
+    END
+  END
+
+
+  LAYER
+    NAME                    "verkeersinformatiesystemen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'VIS')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verkeersinformatiesystemen (VIS)" 
+      "ows_abstract"        "Uitvoeringsplannen Verkeersinformatiesystemen (VIS)" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "verkeersinformatiesysteem"
+      TITLE                 "Verkeersinformatiesysteem (VIS)"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#ff0000"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ff0000"
+        WIDTH               5
+      END
+    END
+  END
+
+
+
+  LAYER
+    NAME                    "verkeersregelinstallaties"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "uitvoeringsplannen"                                 
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    FILTER                  ([asset] = 'VRI')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitvoeringsplannen Verkeersregelinstallaties (VRI)" 
+      "ows_abstract"        "Uitvoeringsplannen Verkeersregelinstallaties (VRI)" 
+      "wms_group_title"     "Uitvoeringsplannen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                       
+    END
+
+    CLASS
+      NAME                  "uitvoeringsplannen_verkeersregelinstallaties"
+      TITLE                 "Uitvoeringsplannen Verkeersregelinstallaties (VRI)"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#ff00ff" 
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#ff00ff" 
+        WIDTH               5
+      END
+    END
+  END
+
+END
+

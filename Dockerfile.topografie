@@ -1,0 +1,11 @@
+ARG BASE_IMAGE
+
+FROM ${BASE_IMAGE}
+
+USER root
+# Copy referentiekaarten mapfiles into the root dir so they will be served
+
+RUN rm -rf /srv/mapserver/private
+COPY /referentiekaarten/ /srv/mapserver/
+RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+USER www-data

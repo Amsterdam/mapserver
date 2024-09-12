@@ -4,9 +4,12 @@ FROM ${BASE_IMAGE}
 
 # used by make_mapfile_config.py to include private mapfiles in sld config
 ENV ACCESS_SCOPE private
-
+USER root
 # Copy private mapfiles into the root dir so they will be served
 # Any maps that have a public and private variety will serve the
 # private variety.
 RUN rm -rf /srv/mapserver/private
 COPY /private/ /srv/mapserver/
+RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+USER www-data
+
