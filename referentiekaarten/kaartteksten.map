@@ -1220,7 +1220,7 @@ MAP
 
     CLASS
       LABEL
-        MINSCALEDENOM       625
+        MINSCALEDENOM       750
         MAXSCALEDENOM       1250
         SIZE                9
         COLOR               "#787878"
@@ -1288,7 +1288,7 @@ MAP
   LAYER
     NAME                    BAG_LBL_ligplaatsnummeraanduidingreeks
     GROUP                   bgt_label
-    MAXSCALEDENOM           1000
+    MAXSCALEDENOM           1250
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (SELECT geometrie_punt AS geometrie, nummeraanduidingreeks AS tekst, (360 - label_hoek::numeric) as hoek, hoort_bij_bag_ligplaats FROM bgt_ligplaatsnummeraanduidingreekslabels) AS data USING srid=28992 USING UNIQUE hoort_bij_bag_ligplaats"
     TYPE                    POINT
@@ -1296,8 +1296,8 @@ MAP
       "init=epsg:28992"
     END
     METADATA
-      "wms_title"            "BAG_LBL_ligplaatsnummeraanduidingreeks"
-	    "wms_group_title"      "bgt"
+      "wms_title"           "BAG_LBL_ligplaatsnummeraanduidingreeks"
+	    "wms_group_title"     "bgt"
     END
 
     LABELITEM               "tekst"
@@ -1305,7 +1305,7 @@ MAP
     CLASS
       LABEL
         MINSCALEDENOM       750
-        MAXSCALEDENOM       1000
+        MAXSCALEDENOM       1250
         SIZE                9
         COLOR               "#787878"
         FONT                "UniversCD"
@@ -1369,88 +1369,87 @@ MAP
 
   #------------------------------------------------------------------------------------------------
 
-  # LAYER
-  #   NAME                    BAG_LBL_standplaatsnummeraanduidingreeks
-  #   GROUP                   bgt_label
-  #   MAXSCALEDENOM           1000
-  #   INCLUDE                 "connection/dataservices.inc"
-  #   DATA                    "geometrie FROM (SELECT geometrie, tekst, (360 - hoek::numeric) as hoek, ogc_fid FROM bgt.\"BAG_LBL_Standplaatsnummeraanduidingreeks\") AS data USING srid=28992 USING UNIQUE ogc_fid"
-	# PROCESSING              "CLOSE_CONNECTION=DEFER"
-  #   TYPE                    POINT
-  #   PROJECTION
-  #     "init=epsg:28992"
-  #   END
-  #   METADATA
-  #    "wms_title"            "BAG_LBL_standplaatsnummeraanduidingreeks"
-	#  "wms_group_title"      "bgt"
-  #   END
+  LAYER
+    NAME                    BAG_LBL_standplaatsnummeraanduidingreeks
+    GROUP                   bgt_label
+    MAXSCALEDENOM           1250
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT geometrie_punt AS geometrie, nummeraanduidingreeks AS tekst, (360 - label_hoek::numeric) as hoek, hoort_bij_bag_standplaats FROM bgt_standplaatsnummeraanduidingreekslabels) AS data USING srid=28992 USING UNIQUE hoort_bij_bag_standplaats"
+	  TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "wms_title"           "BAG_LBL_standplaatsnummeraanduidingreeks"
+	    "wms_group_title"     "bgt"
+    END
 
-  #   LABELITEM               "tekst"
+    LABELITEM               "tekst"
 
-  #   CLASS
-  #     LABEL
-  #       MINSCALEDENOM       750
-  #       MAXSCALEDENOM       1000
-  #       SIZE                9
-  #       COLOR               "#787878"
-  #       FONT                "UniversCD"
-  #       TYPE                truetype
-  #       ANGLE               [hoek]
-  #       POSITION            CC
-  #     END
-  #     LABEL
-  #       MINSCALEDENOM       600
-  #       MAXSCALEDENOM       750
-  #       SIZE                11
-  #       COLOR               "#787878"
-  #       FONT                "UniversCD"
-  #       TYPE                truetype
-  #       ANGLE               [hoek]
-  #       POSITION            CC
-  #     END
-  #     LABEL
-  #       MINSCALEDENOM       450
-  #       MAXSCALEDENOM       600
-  #       SIZE                13
-  #       COLOR               "#787878"
-  #       FONT                "UniversCD"
-  #       TYPE                truetype
-  #       ANGLE               [hoek]
-  #       POSITION            CC
-  #     END
-  #     LABEL
-  #       MINSCALEDENOM       300
-  #       MAXSCALEDENOM       450
-  #       SIZE                15
-  #       COLOR               "#787878"
-  #       FONT                "UniversCD"
-  #       TYPE                truetype
-  #       ANGLE               [hoek]
-  #       POSITION            CC
-  #     END
-  #     LABEL
-  #       MINSCALEDENOM       200
-  #       MAXSCALEDENOM       300
-  #       SIZE                17
-  #       COLOR               "#787878"
-  #       FONT                "UniversCD"
-  #       TYPE                truetype
-  #       ANGLE               [hoek]
-  #       POSITION            CC
-  #     END
-  #     LABEL
-  #       MINSCALEDENOM       1
-  #       MAXSCALEDENOM       200
-  #       SIZE                19
-  #       COLOR               "#787878"
-  #       FONT                "UniversCD"
-  #       TYPE                truetype
-  #       ANGLE               [hoek]
-  #       POSITION            CC
-  #     END
-  #   END
+    CLASS
+      LABEL
+        MINSCALEDENOM       750
+        MAXSCALEDENOM       1250
+        SIZE                9
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       600
+        MAXSCALEDENOM       750
+        SIZE                11
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       450
+        MAXSCALEDENOM       600
+        SIZE                13
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       300
+        MAXSCALEDENOM       450
+        SIZE                15
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       200
+        MAXSCALEDENOM       300
+        SIZE                17
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+      LABEL
+        MINSCALEDENOM       1
+        MAXSCALEDENOM       200
+        SIZE                19
+        COLOR               "#787878"
+        FONT                "UniversCD"
+        TYPE                truetype
+        ANGLE               [hoek]
+        POSITION            CC
+      END
+    END
 
-  # END
+  END
 
 
 #=============================================================================
