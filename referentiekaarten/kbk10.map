@@ -1036,7 +1036,33 @@ END
 #-----------------------------------------------------------------------------
 
 LAYER
-  NAME                    WGL_veerverbinding
+  NAME                    WGL_veerverbinding_onder
+  GROUP                   "lijnen"
+  MAXSCALEDENOM           20000
+  INCLUDE                 "connection/dataservices.inc"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  FILTER                  ("[type]" eq "veerverbinding")
+  TYPE                    LINE
+  PROJECTION
+    "init=epsg:28992"
+  END
+
+  METADATA
+    "wms_title"           "WGL_veerverbinding"
+  END
+
+  CLASS
+    STYLE
+      WIDTH 5
+      COLOR "#a4a8b5"
+      OPACITY 20
+      LINEJOIN MITER
+    END
+  END
+END
+
+LAYER
+  NAME                    WGL_veerverbinding_dash
   GROUP                   "lijnen"
   MAXSCALEDENOM           20000
   INCLUDE                 "connection/dataservices.inc"
@@ -1054,8 +1080,10 @@ LAYER
   CLASS
     STYLE
       WIDTH 1
-      COLOR "#54a3bb"
-      LINECAP BUTT
+      COLOR "#a4a8b5"
+      PATTERN
+        5 5
+      END
       LINEJOIN MITER
     END
   END
