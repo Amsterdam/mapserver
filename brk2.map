@@ -161,7 +161,7 @@ MAP
   DATA            "geometrie FROM (
                   SELECT *
                   FROM public.brk_2_kadastraleobjecten bk
-                  WHERE bk.indexletter = 'A' and eind_geldigheid isnull) AS sub
+                  WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
                    USING srid=28992 USING UNIQUE id"
   TYPE            POINT
   MINSCALEDENOM   100
@@ -179,7 +179,6 @@ MAP
     "gml_include_items"   "all"
     "gml_types"           "auto"
     "wms_include_items"   "all"
-    "wfs_enable_request"  "*"
   END
 
     CLASS
@@ -383,7 +382,7 @@ MAP
       DATA            "geometrie FROM (
                       SELECT *
                       FROM public.brk_2_kadastraleobjecten bk
-                      WHERE bk.indexletter = 'A' and eind_geldigheid isnull) AS sub
+                      WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
                       USING srid=28992 USING UNIQUE id"
       TYPE            POINT
       MAXSCALEDENOM   1000
