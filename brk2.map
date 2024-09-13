@@ -151,6 +151,48 @@ MAP
   END
 
 
+ #-----------------------------------------------------------------------------
+
+
+ LAYER
+  NAME            "appartementsrecht"
+  GROUP           "kadaster"
+  INCLUDE         "connection/dataservices.inc"
+  DATA            "geometrie FROM (
+                  SELECT *
+                  FROM public.brk_2_kadastraleobjecten bk
+                  WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
+                   USING srid=28992 USING UNIQUE id"
+  TYPE            POINT
+  MINSCALEDENOM   100
+  MAXSCALEDENOM   10000
+  PROJECTION
+  "init=epsg:28992"
+  END
+
+  METADATA
+    "ows_abstract"        "Appartementsrecht uit de BRK2"
+    "wms_group_title"     "kadaster"
+    "gml_featureid"       "id"
+    "gml_geometries"      "geometrie"
+    "gml_geometry_type"   "point"
+    "gml_include_items"   "all"
+    "gml_types"           "auto"
+    "wms_include_items"   "all"
+  END
+
+    CLASS
+      NAME             "Appartementsrecht"
+      STYLE
+        SYMBOL 'stip'
+        SIZE 14
+        COLOR 0 140 140
+        OUTLINECOLOR 255 255 255
+        WIDTH 1.5
+      END
+    END
+
+  END
 
   #-----------------------------------------------------------------------------
   #-----------------------------------------------------------------------------
@@ -329,5 +371,50 @@ MAP
     END
 
   END
+
+#-----------------------------------------------------------------------------
+
+
+    LAYER
+      NAME            "appartementsrecht_label"
+      GROUP           "kadaster"
+      INCLUDE         "connection/dataservices.inc"
+      DATA            "geometrie FROM (
+                      SELECT *
+                      FROM public.brk_2_kadastraleobjecten bk
+                      WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
+                      USING srid=28992 USING UNIQUE id"
+      TYPE            POINT
+      MAXSCALEDENOM   1000
+      PROJECTION
+      "init=epsg:28992"
+      END
+  
+      METADATA
+        "wfs_enable_request"  "!*"
+        "ows_title"           "appartementsrecht_label"
+        "ows_group_title"     "kadaster"
+        "ows_abstract"        "Label van appartementsrechtn"
+      END
+  
+      LABELITEM          "perceelnummer"
+  
+      CLASS
+        NAME             "Appartementsrecht"
+        LABEL
+          MINSCALEDENOM  100
+          MAXSCALEDENOM  2501
+          COLOR          0 100 100
+          OUTLINECOLOR   255 255 255
+          OUTLINEWIDTH   3
+          FONT           "Ubuntu-M"
+          TYPE           truetype
+          SIZE           14
+          POSITION       AUTO
+          PARTIALS       FALSE
+        END
+      END
+  
+    END
 
 END
