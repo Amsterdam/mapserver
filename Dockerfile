@@ -8,7 +8,6 @@ RUN apt-get update -y \
         curl \
         gdal-bin \
         gdal-data \
-        gosu \
         mapserver-bin \
         python3-pip \
         wget \
@@ -37,4 +36,5 @@ RUN rm -rf /srv/mapserver/private
 
 EXPOSE 8080
 
-CMD /bin/docker-entrypoint.sh
+USER www-data
+CMD /bin/docker-entrypoint.shp
