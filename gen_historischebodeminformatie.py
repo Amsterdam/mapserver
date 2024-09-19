@@ -14,12 +14,12 @@ layers = [
     ("Bodemgebruik en obstakels", "Defensieterrein", "Defensieterrein", ('#d5587c', False)),
     ("Bodemgebruik en obstakels", "Fabriek/bedrijventerrein", "Fabriek/bedrijventerrein", ('#a78409', False)),
     ("Bodemgebruik en obstakels", "Gebouw", "Gebouw", ('#0e6f99', False)),
-    ("Bodemgebruik en obstakels", "Glastuinbouw", "Glastuinbouw", ('#9bca54', '#9bca54')),
+    ("Bodemgebruik en obstakels", "Glastuinbouw", "Glastuinbouw", ('#9bca54', False)),
     ("Bodemgebruik en obstakels", "Object", "Object", ('#03cea2', False)),
     ("Bodemgebruik en obstakels", "Overig", "Overig", ('#d00ee5', False)),
     ("Bodemgebruik en obstakels", "Spoorwegemplacement", "Spoorwegemplacement", ('#ae95b9', False)),
-    ("Bodemgebruik en obstakels", "Stookruimte/olietank", "Stookruimte/olietank", ('#713dbe', False)),\
-    ("Bodemgebruik en obstakels", "Tram- en busremises", "Tram en busremises", ('#3a15e1', '#3a15e1')),
+    ("Bodemgebruik en obstakels", "Stookruimte/olietank", "Stookruimte/olietank", ('#713dbe', False)),
+    ("Bodemgebruik en obstakels", "Tram- en busremises", "Tram en busremises", ('#3a15e1', False)),
     ("Bodemgebruik en obstakels", "Volkstuinen", "Volkstuinen", ('#06d3f7', False)),
     ("Lijnvormige obstakels", "Gasbuis", "Gasbuis", ('#bfb479', True)), #LIJN zit in 'kabels en leidingen'
     ("Lijnvormige obstakels", "Grondkering", "Grondkering", ('#d7650e',False)),
@@ -31,29 +31,33 @@ layers = [
     ("Lijnvormige obstakels", "Waterleiding", "Waterleiding", ('#3a15e1', True)),
     ("Dempingen en ophogingen", "Demping", "Demping", ('#e4d62e', False)), #dit zit uiteraard in dempingen en ophogingen
     ("Dempingen en ophogingen", "Depot/stort", "Depot/stort", ('#ce7263', False)),
-    ("Dempingen en ophogingen", "Dijk", "Dijk", ('#ce7263', False)),
-    ("Dempingen en ophogingen", "Ophoging", "Ophoging", ('#ce7263', False))
+    ("Dempingen en ophogingen", "Dijk", "Dijk", ('#66b2b1', False)),
+    ("Dempingen en ophogingen", "Ophoging", "Ophoging", ('#8c8c8b', False))
 ]
+
 
 
 with block("MAP"):
     p("NAME", "historischebodeminformatie")
     p("INCLUDE", "header.inc")
 
+    with block("PROJECTION"):
+        q("init=epsg:28992")
+
 
     with block("WEB"):
         with block("METADATA"):
             q("ows_title", "Historische Bodeminformatie")
-            #q("ows_onlineresource", "MAP_URL_REPLACE/maps/historischeelementenondergrond")
+            #q("ows_onlineresource", "MAP_URL_REPLACE/maps/historischebodeminformatie")
             q("ows_abstract", "Historische Bodeminformatie",)
 
     
     for group, layer_name, filter_value, colors in layers:
 
-        if group == 'Bodemgebruik en obstakels':
+        if group == "Bodemgebruik en obstakels":
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT * FROM historische_bodeminformatie_objecten where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
+                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
@@ -65,8 +69,6 @@ with block("MAP"):
                 p("TYPE POLYGON")
                 p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
 
-                with block("PROJECTION"):
-                    q("init=epsg:28992")
                 
                 with block("METADATA"):
                     q("ows_title", layer_name)
@@ -91,7 +93,7 @@ with block("MAP"):
                         p("WIDTH ", 2)
 
 
-        if group == 'Lijnvormige obstakels':
+        if group == "Lijnvormige obstakels":
 
             with block("LAYER"):
                 sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
@@ -105,9 +107,7 @@ with block("MAP"):
                 p('GROUP', slugify(group))
                 p("TYPE LINE")
                 p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-
-                with block("PROJECTION"):
-                    q("init=epsg:28992")    
+    
                 
                 with block("METADATA"):
                     q("ows_title", layer_name)
@@ -115,7 +115,7 @@ with block("MAP"):
                     q("wms_include_items", "all")
                     q("ows_abstract", 'Lijnvormige obstakels')
                     q("gml_featureid", "id")
-                    q("gml_geometries", "geometry")
+                    q("gml_geometries", "geometrie")
                     q("gml_geometry_type", "linestring")
                     q("gml_include_items", "all")
                     q("gml_types", "auto")
@@ -131,12 +131,13 @@ with block("MAP"):
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
                         if colors[1] == True:
-                            p("PATTERN 10 5")
+                            with block("PATTERN"):
+                                print ("10 5")
 
-        if group == 'Dempingen en ophogingen':
+        if group == "Dempingen en ophogingen":
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
+                sql = f"geometrie from (SELECT *, ST_Force2D(geometrie) as geometrie_2d FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = '{filter_value}') as subquery USING srid=7415 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
@@ -147,9 +148,7 @@ with block("MAP"):
                 p('GROUP', slugify(group))
                 p("TYPE POLYGON")
                 p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-
-                with block("PROJECTION"):
-                    q("init=epsg:28992")    
+   
                 
                 with block("METADATA"):
                     q("ows_title", layer_name)
@@ -157,7 +156,7 @@ with block("MAP"):
                     q("wms_include_items", "all")
                     q("ows_abstract", 'Dempingen en ophogingen')
                     q("gml_featureid", "id")
-                    q("gml_geometries", "geometry")
+                    q("gml_geometries", "geometrie")
                     q("gml_geometry_type", "polygon")
                     q("gml_include_items", "all")
                     q("gml_types", "auto")
@@ -172,66 +171,3 @@ with block("MAP"):
                         p("OPACITY", 40) 
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
-
-        # if group == 'Servicegebiedenlocatie':
-
-        #     with block("LAYER"):
-        #         sql = f"geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
-                
-
-        #         layer_name_slug = slugify(layer_name)
-
-        #         p("NAME", layer_name_slug)
-        #         p("INCLUDE", "connection/dataservices.inc")
-        #         p("DATA", sql)
-        #         p('GROUP', slugify(group))
-        #         p("TYPE POINT")
-        #         # p("MINSCALEDENOM 10")
-        #         # p("MAXSCALEDENOM 9001")
-        #         p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-        #         p("LABELITEM", "aantal_woningen")
-
-        #         with block("PROJECTION"):
-        #             q("init=epsg:28992")
-                
-        #         with block("METADATA"):
-        #             q("ows_title", layer_name)
-        #             q('ows_group_title', group)
-        #             q("wms_include_items", "all")
-        #             q("ows_abstract", "Servicegebieden locaties")
-        #             q("gml_featureid", "id")
-        #             q("gml_geometries", "geometry")
-        #             q("gml_geometry_type", "point")
-        #             q("gml_include_items", "all")
-        #             q("gml_types", "auto")
-        #             q("wms_enable_request", "!GetLegendGraphic")
-                
-
-        #         for i in range(10):
-
-        #             with block("CLASS"):
-        #                 p("NAME", f"{i}")
-
-        #                 # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
-        #                 # de laatste digit wordt gebruikt om zowel een groep te maken als een kleur uit de lijst te pakken, 
-        #                 #dat maakt dat zowel het cluster als het gebied dezelfde kleur krijgen.
-        #                 print (f'EXPRESSION ("[last_numeric_digit]" eq "{i}")')
-        #                 with block("STYLE"):
-        #                     p("SYMBOL", "stip")
-        #                     p("SIZE 16")
-        #                     p(f"COLOR '{colors[i]}'")
-        #                     p('OUTLINECOLOR 0 0 0')
-        #                     p ('WIDTH 1')
-
-        #                 with block("LABEL"):
-        #                     p("MINSCALEDENOM 100")
-        #                     p("MAXSCALEDENOM 1000")
-        #                     p("COLOR 0 0 0")
-        #                     p("OUTLINECOLOR 255 255 255")
-        #                     p("OUTLINEWIDTH 3")
-        #                     p("FONT", "Ubuntu-M")
-        #                     p("TYPE truetype")
-        #                     p("SIZE 10")
-        #                     p("POSITION AUTO")
-        #                     p("PARTIALS FALSE")
-        #                     p("OFFSET -30 10")
