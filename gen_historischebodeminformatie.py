@@ -41,8 +41,8 @@ with block("MAP"):
     p("NAME", "historischebodeminformatie")
     p("INCLUDE", "header.inc")
 
-    with block("PROJECTION"):
-        q("init=epsg:28992")
+    # with block("PROJECTION"):
+    #     q("init=epsg:28992")
 
 
     with block("WEB"):
@@ -68,6 +68,7 @@ with block("MAP"):
                 p('GROUP', slugify(group))
                 p("TYPE POLYGON")
                 p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+                p("LABELITEM", "beschrijving")
 
                 
                 with block("METADATA"):
@@ -92,6 +93,17 @@ with block("MAP"):
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
 
+                    with block("LABEL"):
+                        p("MAXSCALEDENOM 5000")
+                        p("COLOR 0 0 0")
+                        p("OUTLINECOLOR 255 255 255")
+                        p("OUTLINEWIDTH 3")
+                        p("FONT", "Ubuntu-M")
+                        p("TYPE truetype")
+                        p("SIZE 8")
+                        p("POSITION AUTO")
+                        p("PARTIALS FALSE")
+                        p("OFFSET -60 10")
 
         if group == "Lijnvormige obstakels":
 
@@ -107,6 +119,7 @@ with block("MAP"):
                 p('GROUP', slugify(group))
                 p("TYPE LINE")
                 p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+                p("LABELITEM", "beschrijving")
     
                 
                 with block("METADATA"):
@@ -133,11 +146,23 @@ with block("MAP"):
                         if colors[1] == True:
                             with block("PATTERN"):
                                 print ("10 5")
+                                
+                    with block("LABEL"):
+                        p("MAXSCALEDENOM 3000")
+                        p("COLOR 0 0 0")
+                        p("OUTLINECOLOR 255 255 255")
+                        p("OUTLINEWIDTH 3")
+                        p("FONT", "Ubuntu-M")
+                        p("TYPE truetype")
+                        p("SIZE 8")
+                        p("POSITION AUTO")
+                        p("PARTIALS FALSE")
+                        p("OFFSET -60 10")
 
         if group == "Dempingen en ophogingen":
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT *, ST_Force2D(geometrie) as geometrie_2d FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = '{filter_value}') as subquery USING srid=7415 USING UNIQUE id"
+                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = '{filter_value}') as subquery USING srid=7415 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
@@ -171,3 +196,32 @@ with block("MAP"):
                         p("OPACITY", 40) 
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
+                        
+                    #ik verdubbel het label omdat er twee opties zijn, ik krijg het simpeler even niet gefixt..
+                    with block("LABEL"):
+                        p("EXPRESSION ([van_minimaal_jaar] = [van_maximaal_jaar])") 
+                        p("TEXT '[van_minimaal_jaar]'") 
+                        p("MAXSCALEDENOM 3000")
+                        p("COLOR 0 0 0")
+                        p("OUTLINECOLOR 255 255 255")
+                        p("OUTLINEWIDTH 3")
+                        p("FONT", "Ubuntu-M")
+                        p("TYPE truetype")
+                        p("SIZE 8")
+                        p("POSITION AUTO")
+                        p("PARTIALS FALSE")
+                        p("OFFSET -60 10")
+
+                    with block("LABEL"):
+                        p("EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar])") 
+                        p("TEXT '[van_minimaal_jaar] - [van_maximaal_jaar]'") 
+                        p("MAXSCALEDENOM 3000")
+                        p("COLOR 0 0 0")
+                        p("OUTLINECOLOR 255 255 255")
+                        p("OUTLINEWIDTH 3")
+                        p("FONT", "Ubuntu-M")
+                        p("TYPE truetype")
+                        p("SIZE 8")
+                        p("POSITION AUTO")
+                        p("PARTIALS FALSE")
+                        p("OFFSET -60 10")
