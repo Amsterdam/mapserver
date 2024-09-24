@@ -158,10 +158,12 @@ MAP
   NAME            "appartementsrecht"
   GROUP           "kadaster"
   INCLUDE         "connection/dataservices.inc"
+  #specifieke kolommen verwijderd voor rechten.
   DATA            "geometrie FROM (
-                  SELECT *
-                  FROM public.brk_2_kadastraleobjecten bk
-                  WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
+                      select id, identificatie, volgnummer, neuron_id, kadastrale_aanduiding, aangeduid_door_brk_gemeente_id, aangeduid_door_brk_gemeente_identificatie, aangeduid_door_brk_gemeente_volgnummer, aangeduid_door_brk_kadastralegemeente_id, aangeduid_door_brk_kadastralegemeentecode_id, aangeduid_door_brk_kadastralesectie_id, perceelnummer, indexletter, indexnummer, soort_grootte_code, soort_grootte_omschrijving, grootte, referentie, oudst_digitaal_bekend, mutatie_id, meettarief_verschuldigd, toelichting_bewaarder, tijdstip_ontstaan_object, hoofdsplitsing_identificatie, afwijking_lijst_rechthebbenden, geometrie, plaatscoordinaten, perceelnummer_rotatie, perceelnummer_verschuiving_x, perceelnummer_verschuiving_y, bijpijling_geometrie, indicatie_meer_objecten, toestandsdatum, begin_geldigheid, eind_geldigheid, in_onderzoek, datum_actueel_tot, indicatie_voorlopige_kadastrale_grens, geometrie_punt, geometrie_vlak 
+                      FROM public.brk_2_kadastraleobjecten bk
+                      WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL
+                    ) AS sub
                    USING srid=28992 USING UNIQUE id"
   TYPE            POINT
   MINSCALEDENOM   100
@@ -379,10 +381,9 @@ MAP
       NAME            "appartementsrecht_label"
       GROUP           "kadaster"
       INCLUDE         "connection/dataservices.inc"
-      DATA            "geometrie FROM (
-                      SELECT *
-                      FROM public.brk_2_kadastraleobjecten bk
-                      WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
+      DATA            "geometrie FROM (select id, identificatie, volgnummer, neuron_id, kadastrale_aanduiding, aangeduid_door_brk_gemeente_id, aangeduid_door_brk_gemeente_identificatie, aangeduid_door_brk_gemeente_volgnummer, aangeduid_door_brk_kadastralegemeente_id, aangeduid_door_brk_kadastralegemeentecode_id, aangeduid_door_brk_kadastralesectie_id, perceelnummer, indexletter, indexnummer, soort_grootte_code, soort_grootte_omschrijving, grootte, referentie, oudst_digitaal_bekend, mutatie_id, meettarief_verschuldigd, toelichting_bewaarder, tijdstip_ontstaan_object, hoofdsplitsing_identificatie, afwijking_lijst_rechthebbenden, geometrie, plaatscoordinaten, perceelnummer_rotatie, perceelnummer_verschuiving_x, perceelnummer_verschuiving_y, bijpijling_geometrie, indicatie_meer_objecten, toestandsdatum, begin_geldigheid, eind_geldigheid, in_onderzoek, datum_actueel_tot, indicatie_voorlopige_kadastrale_grens, geometrie_punt, geometrie_vlak 
+                        FROM public.brk_2_kadastraleobjecten bk
+                        WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
                       USING srid=28992 USING UNIQUE id"
       TYPE            POINT
       MAXSCALEDENOM   1000
