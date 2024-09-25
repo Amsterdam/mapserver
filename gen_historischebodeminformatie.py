@@ -48,7 +48,7 @@ with block("MAP"):
     with block("WEB"):
         with block("METADATA"):
             q("ows_title", "Historische Bodeminformatie")
-            #q("ows_onlineresource", "MAP_URL_REPLACE/maps/historischebodeminformatie")
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/historischebodeminformatie")
             q("ows_abstract", "Historische Bodeminformatie",)
 
     
@@ -203,25 +203,36 @@ with block("MAP"):
                         p("TEXT '[van_minimaal_jaar]'") 
                         p("MAXSCALEDENOM 3000")
                         p("COLOR 0 0 0")
-                        p("OUTLINECOLOR 255 255 255")
-                        p("OUTLINEWIDTH 3")
+                        p(f'OUTLINECOLOR "{colors[0]}"')
+                        p("OUTLINEWIDTH 1.5")
                         p("FONT", "Ubuntu-M")
                         p("TYPE truetype")
                         p("SIZE 8")
                         p("POSITION AUTO")
                         p("PARTIALS FALSE")
-                        p("OFFSET -60 10")
 
                     with block("LABEL"):
-                        p("EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar])") 
+                        p("EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar] AND LENGTH('[van_minimaal_jaar]') > 0 AND LENGTH('[van_maximaal_jaar]') > 0)") 
                         p("TEXT '[van_minimaal_jaar] - [van_maximaal_jaar]'") 
                         p("MAXSCALEDENOM 3000")
                         p("COLOR 0 0 0")
-                        p("OUTLINECOLOR 255 255 255")
-                        p("OUTLINEWIDTH 3")
+                        p(f'OUTLINECOLOR "{colors[0]}"')
+                        p("OUTLINEWIDTH 1.5")
                         p("FONT", "Ubuntu-M")
                         p("TYPE truetype")
                         p("SIZE 8")
                         p("POSITION AUTO")
                         p("PARTIALS FALSE")
-                        p("OFFSET -60 10")
+                    
+                    with block("LABEL"):
+                        p("EXPRESSION (LENGTH('[van_maximaal_jaar]') = 0)") 
+                        p("TEXT '[van_minimaal_jaar]'") 
+                        p("MAXSCALEDENOM 3000")
+                        p("COLOR 0 0 0")
+                        p(f'OUTLINECOLOR "{colors[0]}"')
+                        p("OUTLINEWIDTH 1.5")
+                        p("FONT", "Ubuntu-M")
+                        p("TYPE truetype")
+                        p("SIZE 8")
+                        p("POSITION AUTO")
+                        p("PARTIALS FALSE")
