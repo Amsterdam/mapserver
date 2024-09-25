@@ -1,0 +1,1102 @@
+MAP
+  NAME 'historischebodeminformatie'
+  INCLUDE 'header.inc'
+  WEB
+    METADATA
+      'ows_title' 'Historische Bodeminformatie'
+      'ows_onlineresource' 'MAP_URL_REPLACE/maps/historischebodeminformatie'
+      'ows_abstract' 'Historische Bodeminformatie'
+    END
+  END
+  LAYER
+    NAME 'boerderij'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Boerderij') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Boerderij'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'boerderij'
+      TITLE 'Boerderij'
+      STYLE
+        COLOR "#ebdc56"
+        OPACITY 40
+        OUTLINECOLOR "#ebdc56"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'defensieterrein'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Defensieterrein') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Defensieterrein'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'defensieterrein'
+      TITLE 'Defensieterrein'
+      STYLE
+        COLOR "#d5587c"
+        OPACITY 40
+        OUTLINECOLOR "#d5587c"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'fabriek_bedrijventerrein'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Fabriek/bedrijventerrein') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Fabriek/bedrijventerrein'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'fabriek_bedrijventerrein'
+      TITLE 'Fabriek/bedrijventerrein'
+      STYLE
+        COLOR "#a78409"
+        OPACITY 40
+        OUTLINECOLOR "#a78409"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'gebouw'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Gebouw') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Gebouw'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'gebouw'
+      TITLE 'Gebouw'
+      STYLE
+        COLOR "#0e6f99"
+        OPACITY 40
+        OUTLINECOLOR "#0e6f99"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'glastuinbouw'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Glastuinbouw') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Glastuinbouw'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'glastuinbouw'
+      TITLE 'Glastuinbouw'
+      STYLE
+        COLOR "#9bca54"
+        OPACITY 40
+        OUTLINECOLOR "#9bca54"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'object'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Object') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Object'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'object'
+      TITLE 'Object'
+      STYLE
+        COLOR "#03cea2"
+        OPACITY 40
+        OUTLINECOLOR "#03cea2"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'overig'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Overig') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Overig'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'overig'
+      TITLE 'Overig'
+      STYLE
+        COLOR "#d00ee5"
+        OPACITY 40
+        OUTLINECOLOR "#d00ee5"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'spoorwegemplacement'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Spoorwegemplacement') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Spoorwegemplacement'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'spoorwegemplacement'
+      TITLE 'Spoorwegemplacement'
+      STYLE
+        COLOR "#ae95b9"
+        OPACITY 40
+        OUTLINECOLOR "#ae95b9"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'stookruimte_olietank'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Stookruimte/olietank') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Stookruimte/olietank'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'stookruimte_olietank'
+      TITLE 'Stookruimte/olietank'
+      STYLE
+        COLOR "#713dbe"
+        OPACITY 40
+        OUTLINECOLOR "#713dbe"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'tram_en_busremises'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Tram en busremises') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Tram- en busremises'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'tram_en_busremises'
+      TITLE 'Tram- en busremises'
+      STYLE
+        COLOR "#3a15e1"
+        OPACITY 40
+        OUTLINECOLOR "#3a15e1"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'volkstuinen'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Volkstuinen') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'bodemgebruik_en_obstakels'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Volkstuinen'
+      'ows_group_title' 'Bodemgebruik en obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Bodemgebruik en obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometry'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'volkstuinen'
+      TITLE 'Volkstuinen'
+      STYLE
+        COLOR "#06d3f7"
+        OPACITY 40
+        OUTLINECOLOR "#06d3f7"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 5000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'gasbuis'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Gasbuis') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Gasbuis'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'gasbuis'
+      TITLE 'Gasbuis'
+      STYLE
+        COLOR "#bfb479"
+        OPACITY 40
+        OUTLINECOLOR "#bfb479"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'grondkering'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Grondkering') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Grondkering'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'grondkering'
+      TITLE 'Grondkering'
+      STYLE
+        COLOR "#d7650e"
+        OPACITY 40
+        OUTLINECOLOR "#d7650e"
+        WIDTH  2
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'kabel'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Kabel') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Kabel'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'kabel'
+      TITLE 'Kabel'
+      STYLE
+        COLOR "#d67814"
+        OPACITY 40
+        OUTLINECOLOR "#d67814"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'mantelbuis'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Mantelbuis') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Mantelbuis'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'mantelbuis'
+      TITLE 'Mantelbuis'
+      STYLE
+        COLOR "#79e0d4"
+        OPACITY 40
+        OUTLINECOLOR "#79e0d4"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'persleiding'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Persleiding') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Persleiding'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'persleiding'
+      TITLE 'Persleiding'
+      STYLE
+        COLOR "#20a620"
+        OPACITY 40
+        OUTLINECOLOR "#20a620"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'riool'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Riool') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Riool'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'riool'
+      TITLE 'Riool'
+      STYLE
+        COLOR "#0e5129"
+        OPACITY 40
+        OUTLINECOLOR "#0e5129"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'spoorweg'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Spoorweg') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Spoorweg'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'spoorweg'
+      TITLE 'Spoorweg'
+      STYLE
+        COLOR "#232323"
+        OPACITY 40
+        OUTLINECOLOR "#232323"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'waterleiding'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Waterleiding') as subquery USING srid=28992 USING UNIQUE id"
+    GROUP 'lijnvormige_obstakels'
+    TYPE LINE
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    LABELITEM 'beschrijving'
+    METADATA
+      'ows_title' 'Waterleiding'
+      'ows_group_title' 'Lijnvormige obstakels'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Lijnvormige obstakels'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'linestring'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'waterleiding'
+      TITLE 'Waterleiding'
+      STYLE
+        COLOR "#3a15e1"
+        OPACITY 40
+        OUTLINECOLOR "#3a15e1"
+        WIDTH  2
+        PATTERN
+10 5
+        END
+      END
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -60 10
+      END
+    END
+  END
+  LAYER
+    NAME 'demping'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Demping') as subquery USING srid=7415 USING UNIQUE id"
+    GROUP 'dempingen_en_ophogingen'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    METADATA
+      'ows_title' 'Demping'
+      'ows_group_title' 'Dempingen en ophogingen'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Dempingen en ophogingen'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'demping'
+      TITLE 'Demping'
+      STYLE
+        COLOR "#e4d62e"
+        OPACITY 40
+        OUTLINECOLOR "#e4d62e"
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] = [van_maximaal_jaar])
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#e4d62e"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar] AND LENGTH('[van_minimaal_jaar]') > 0 AND LENGTH('[van_maximaal_jaar]') > 0)
+        TEXT '[van_minimaal_jaar] - [van_maximaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#e4d62e"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION (LENGTH('[van_maximaal_jaar]') = 0)
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#e4d62e"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'depot_stort'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Depot/stort') as subquery USING srid=7415 USING UNIQUE id"
+    GROUP 'dempingen_en_ophogingen'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    METADATA
+      'ows_title' 'Depot/stort'
+      'ows_group_title' 'Dempingen en ophogingen'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Dempingen en ophogingen'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'depot_stort'
+      TITLE 'Depot/stort'
+      STYLE
+        COLOR "#ce7263"
+        OPACITY 40
+        OUTLINECOLOR "#ce7263"
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] = [van_maximaal_jaar])
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#ce7263"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar] AND LENGTH('[van_minimaal_jaar]') > 0 AND LENGTH('[van_maximaal_jaar]') > 0)
+        TEXT '[van_minimaal_jaar] - [van_maximaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#ce7263"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION (LENGTH('[van_maximaal_jaar]') = 0)
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#ce7263"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'dijk'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Dijk') as subquery USING srid=7415 USING UNIQUE id"
+    GROUP 'dempingen_en_ophogingen'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    METADATA
+      'ows_title' 'Dijk'
+      'ows_group_title' 'Dempingen en ophogingen'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Dempingen en ophogingen'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'dijk'
+      TITLE 'Dijk'
+      STYLE
+        COLOR "#66b2b1"
+        OPACITY 40
+        OUTLINECOLOR "#66b2b1"
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] = [van_maximaal_jaar])
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#66b2b1"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar] AND LENGTH('[van_minimaal_jaar]') > 0 AND LENGTH('[van_maximaal_jaar]') > 0)
+        TEXT '[van_minimaal_jaar] - [van_maximaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#66b2b1"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION (LENGTH('[van_maximaal_jaar]') = 0)
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#66b2b1"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'ophoging'
+    INCLUDE 'connection/dataservices.inc'
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Ophoging') as subquery USING srid=7415 USING UNIQUE id"
+    GROUP 'dempingen_en_ophogingen'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    METADATA
+      'ows_title' 'Ophoging'
+      'ows_group_title' 'Dempingen en ophogingen'
+      'wms_include_items' 'all'
+      'ows_abstract' 'Dempingen en ophogingen'
+      'gml_featureid' 'id'
+      'gml_geometries' 'geometrie'
+      'gml_geometry_type' 'polygon'
+      'gml_include_items' 'all'
+      'gml_types' 'auto'
+    END
+    CLASS
+      NAME 'ophoging'
+      TITLE 'Ophoging'
+      STYLE
+        COLOR "#8c8c8b"
+        OPACITY 40
+        OUTLINECOLOR "#8c8c8b"
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] = [van_maximaal_jaar])
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#8c8c8b"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([van_minimaal_jaar] != [van_maximaal_jaar] AND LENGTH('[van_minimaal_jaar]') > 0 AND LENGTH('[van_maximaal_jaar]') > 0)
+        TEXT '[van_minimaal_jaar] - [van_maximaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#8c8c8b"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION (LENGTH('[van_maximaal_jaar]') = 0)
+        TEXT '[van_minimaal_jaar]'
+        MAXSCALEDENOM 3000
+        COLOR 0 0 0
+        OUTLINECOLOR "#8c8c8b"
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+END
