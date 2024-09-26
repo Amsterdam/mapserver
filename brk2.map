@@ -398,11 +398,11 @@ MAP
         "ows_abstract"        "Label van appartementsrechtn"
       END
   
-      LABELITEM          "perceelnummer"
   
       CLASS
-        NAME             "Appartementsrecht"
+        NAME             "Appartementsrecht"     
         LABEL
+          TEXT "[perceelnummer] - [indexnummer]"
           MINSCALEDENOM  100
           MAXSCALEDENOM  2501
           COLOR          0 100 100
@@ -413,6 +413,7 @@ MAP
           SIZE           14
           POSITION       AUTO
           PARTIALS       FALSE
+          OFFSET         5 5
         END
       END
   
