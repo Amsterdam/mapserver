@@ -19,7 +19,7 @@ layers = [
     ("Bodemgebruik en obstakels", "Overig", "Overig", ('#d00ee5', False)),
     ("Bodemgebruik en obstakels", "Spoorwegemplacement", "Spoorwegemplacement", ('#ae95b9', False)),
     ("Bodemgebruik en obstakels", "Stookruimte/olietank", "Stookruimte/olietank", ('#713dbe', False)),
-    ("Bodemgebruik en obstakels", "Tram- en busremises", "Tram en busremises", ('#3a15e1', False)),
+    ("Bodemgebruik en obstakels", "Tram- en busremises", "Tram- en busremises", ('#3a15e1', False)),
     ("Bodemgebruik en obstakels", "Volkstuinen", "Volkstuinen", ('#06d3f7', False)),
     ("Lijnvormige obstakels", "Gasbuis", "Gasbuis", ('#bfb479', True)), #LIJN zit in 'kabels en leidingen'
     ("Lijnvormige obstakels", "Grondkering", "Grondkering", ('#d7650e',False)),
@@ -90,6 +90,7 @@ with block("MAP"):
                     with block("STYLE"):
                         p(f'COLOR "{colors[0]}"')
                         p("OPACITY", 40) 
+                    with block("STYLE"):
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
 
@@ -140,12 +141,11 @@ with block("MAP"):
 
                     with block("STYLE"):
                         p(f'COLOR "{colors[0]}"')
-                        p("OPACITY", 40) 
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
                         if colors[1] == True:
                             with block("PATTERN"):
-                                print ("10 5")
+                                print ("3 3")
                                 
                     with block("LABEL"):
                         p("MAXSCALEDENOM 3000")
@@ -194,9 +194,12 @@ with block("MAP"):
                     with block("STYLE"):
                         p(f'COLOR "{colors[0]}"')
                         p("OPACITY", 40) 
+
+                    #tweede style block om te voorkomen dat de randen ook transparant worden.
+                    with block("STYLE"):
                         p(f'OUTLINECOLOR "{colors[0]}"')
                         p("WIDTH ", 2)
-                        
+
                     #ik verdubbel het label omdat er twee opties zijn, ik krijg het simpeler even niet gefixt..
                     with block("LABEL"):
                         p("EXPRESSION ([van_minimaal_jaar] = [van_maximaal_jaar])") 
