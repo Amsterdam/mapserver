@@ -65,7 +65,7 @@ MAP
                         heading,
                         timestamp,
                         _geolocation_2d_rd AS geom,
-                        'https://panorama.data.amsterdam.nl/panorama/' || path || trim(trailing '.jpg' from filename) || '/equirectangular/panorama_8000.jpg' AS url,
+                        'https://t1.data.amsterdam.nl/panorama/' || path || trim(trailing '.jpg' from filename) || '/equirectangular/panorama_8000.jpg' AS url,
                         'https://api.data.amsterdam.nl/panorama/panoramas/' || pano_id || '/' AS uri
                         -- Keep for future use:
                         -- (SELECT EXTRACT(year from MAX(timestamp)) FROM panoramas_panorama LIMIT 1) -
