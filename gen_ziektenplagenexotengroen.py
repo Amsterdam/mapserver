@@ -11,15 +11,17 @@ def slugify(s: str) -> str:
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
 layers_EPR = [
-    ("Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
-    ("Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
-    ("Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
-    ("Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
-    ("Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
-    ("Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
-    ("Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
-    ("Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
-    ("Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
+    ("Eikenprocessierups","Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
+    ("Eikenprocessierups","Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
+    ("Eikenprocessierups","Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
+    ("Eikenprocessierups","Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
+    ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
+    ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups Preventief","Eikenprocessierups Preventief", "Eikenprocessierups Preventief", "TBD"),
+
 ]
 
 layers_JPD = [
@@ -54,110 +56,143 @@ with block("MAP"):
             q("wms_extent", "100000 450000 150000 500000")
 
 # dit stuk is voor de eikenprogressierups
-    for name, filter, icon in layers_EPR:
+    for group, name, filter, icon in layers_EPR:
         with block("LAYER"):
             p("NAME", name)
-            p("GROUP", "eikenprocessierups")
-            with block("PROJECTION"):
-                q("init=epsg:28992")
-
-            p("INCLUDE", "connection/dataservices.inc")
-            p(
-                "DATA",
-                "geometrie FROM"
-                # This subquery appears to do nothing, but it actually restricts
-                # the fields that mapserver sees.
-                " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
-                " USING srid=28992 USING UNIQUE id"
-            )
-            p("TYPE POINT")
-
-            with block("METADATA"):
-                q("wfs_enable_request", "!*")
-                q("ows_title", name)
-                q("wms_enable_request", "*")
-                q("ows_abstract", "Eikenprocessierups Amsterdam")
-                q("wms_format", "image/png")
-                q("ows_group_title", "Eikenprocessierups")
-
-            p("LABELITEM", "urgentie_status_kaartlaag")
-            p("CLASSITEM", "urgentie_status_kaartlaag")
-
-            with block("CLASS"):
-                p("NAME", name)
-                p("EXPRESSION", filter)
-
-                with block("STYLE"):
-                    p("SYMBOL", icon)
-                    p("SIZE", 20)
-
-    
-    #Vanaf hier is het voor de japanse duizendknoop
-    for group, title, filter, icon_color in layers_JPD:
-        with block("LAYER"):
-            p("NAME", slugify(title))
             p("GROUP", slugify(group))
-
             with block("PROJECTION"):
                 q("init=epsg:28992")
 
             p("INCLUDE", "connection/dataservices.inc")
-            
-    #hier voor de meldingen
-            if 'Meldingen' in group:
+
+            #hier voor de gewone processierups
+            if group == "Eikenprocessierups":
                 p(
                     "DATA",
-                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id"
+                    "geometrie FROM"
+                    # This subquery appears to do nothing, but it actually restricts
+                    # the fields that mapserver sees.
+                    " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
+                    " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
 
-                p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-                p("CLASSITEM", "status_kaartlaag")
-                # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
-                print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
-                
                 with block("METADATA"):
-                    q("ows_title", title)
+                    q("wfs_enable_request", "!*")
+                    q("ows_title", name)
                     q("wms_enable_request", "*")
-                    q("ows_abstract", "Japanse Duizendknoop Amsterdam")
-                    q("wms_srs", "EPSG:28992")
+                    q("ows_abstract", "Eikenprocessierups Amsterdam")
+                    q("wms_format", "image/png")
                     q("ows_group_title", group)
 
+                p("LABELITEM", "urgentie_status_kaartlaag")
+                p("CLASSITEM", "urgentie_status_kaartlaag")
+
                 with block("CLASS"):
-                    p("NAME", slugify(title))
+                    p("NAME", name)
+                    p("EXPRESSION", filter)
 
                     with block("STYLE"):
-                        p("SYMBOL", icon_color)
+                        p("SYMBOL", icon)
                         p("SIZE", 20)
 
-    #hier voor de inspecties    
-            if 'Inspecties' in group:
+            #hier voor de preventief processierups
+            if group == "Eikenprocessierups Preventief":
                 p(
                     "DATA",
-                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id"
+                    "geometrie FROM"
+                    # This subquery appears to do nothing, but it actually restricts
+                    # the fields that mapserver sees.
+                    " (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief) AS sub"
+                    " USING srid=28992 USING UNIQUE id"
                 )
-                p("TYPE POLYGON")
+                p("TYPE POINT")
 
-                p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-                p("CLASSITEM", "status_kaartlaag")
-                # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
-                print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
-                
                 with block("METADATA"):
-                    q("ows_title", title)
+                    q("wfs_enable_request", "!*")
+                    q("ows_title", name)
                     q("wms_enable_request", "*")
-                    q("ows_abstract", "Japanse Duizendknoop Amsterdam")
-                    q("wms_srs", "EPSG:28992")
+                    q("ows_abstract", "Eikenprocessierups Preventief in Amsterdam")
+                    q("wms_format", "image/png")
                     q("ows_group_title", group)
 
                 with block("CLASS"):
-                    p("NAME", slugify(title))
+                    p("NAME", name)
 
                     with block("STYLE"):
+                        p("SYMBOL", 'stip')
+                        p("SIZE", 20)
+                        p("COLOR", "#bebada")
+                        p("OUTLINECOLOR 0 0 0")
+                        p ("WIDTH", 1)
 
-                        p("COLOR", icon_color)
-                        p("OPACITY", 20) 
+    
+    #Vanaf hier is het voor de japanse duizendknoop
+    # for group, title, filter, icon_color in layers_JPD:
+    #     with block("LAYER"):
+    #         p("NAME", slugify(title))
+    #         p("GROUP", slugify(group))
 
-                    with block("STYLE"):
-                        p("OUTLINECOLOR ", icon_color)
-                        p("WIDTH ", 2)
+    #         with block("PROJECTION"):
+    #             q("init=epsg:28992")
+
+    #         p("INCLUDE", "connection/dataservices.inc")
+            
+    #hier voor de meldingen
+            # if 'Meldingen' in group:
+            #     p(
+            #         "DATA",
+            #         "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id"
+            #     )
+            #     p("TYPE POINT")
+
+            #     p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+            #     p("CLASSITEM", "status_kaartlaag")
+            #     # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
+            #     print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
+                
+            #     with block("METADATA"):
+            #         q("ows_title", title)
+            #         q("wms_enable_request", "*")
+            #         q("ows_abstract", "Japanse Duizendknoop Amsterdam")
+            #         q("wms_srs", "EPSG:28992")
+            #         q("ows_group_title", group)
+
+            #     with block("CLASS"):
+            #         p("NAME", slugify(title))
+
+            #         with block("STYLE"):
+            #             p("SYMBOL", icon_color)
+            #             p("SIZE", 20)
+
+    #hier voor de inspecties    
+            # if 'Inspecties' in group:
+            #     p(
+            #         "DATA",
+            #         "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id"
+            #     )
+            #     p("TYPE POLYGON")
+
+            #     p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+            #     p("CLASSITEM", "status_kaartlaag")
+            #     # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
+            #     print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
+                
+            #     with block("METADATA"):
+            #         q("ows_title", title)
+            #         q("wms_enable_request", "*")
+            #         q("ows_abstract", "Japanse Duizendknoop Amsterdam")
+            #         q("wms_srs", "EPSG:28992")
+            #         q("ows_group_title", group)
+
+            #     with block("CLASS"):
+            #         p("NAME", slugify(title))
+
+            #         with block("STYLE"):
+
+            #             p("COLOR", icon_color)
+            #             p("OPACITY", 20) 
+
+            #         with block("STYLE"):
+            #             p("OUTLINECOLOR ", icon_color)
+            #             p("WIDTH ", 2)
