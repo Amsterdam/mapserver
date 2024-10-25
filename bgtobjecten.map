@@ -3398,7 +3398,7 @@ MAP
     GROUP                   inrichtingselement
     MAXSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT identificatie, geometrie_punt AS geometrie FROM bgt_bakken WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geometrie FROM (SELECT identificatie, plus_type, bronhouder, geometrie_punt AS geometrie FROM bgt_bakken WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([plus_type] = 'afvalbak')
 	  TYPE                    POINT
     PROJECTION
@@ -3435,7 +3435,7 @@ MAP
     GROUP                   inrichtingselement
     MAXSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT identificatie, geometrie_punt AS geometrie FROM bgt_bakken WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geometrie FROM (SELECT identificatie, plus_type, bronhouder, geometrie_punt AS geometrie FROM bgt_bakken WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([plus_type] = 'afval apart plaats')
 	  TYPE                    POINT
     PROJECTION
@@ -5600,7 +5600,7 @@ MAP
     GROUP                   inrichtingselement
     MAXSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT identificatie, geometrie_punt AS geometrie FROM bgt_vegetatieobjecten WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geometrie FROM (SELECT identificatie, plus_type, bronhouder, geometrie_punt AS geometrie FROM bgt_vegetatieobjecten WHERE bgt_status = 'bestaand' and geometrie_punt IS NOT NULL) as sub USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([plus_type] = 'boom')
 	  TYPE                    POINT
     PROJECTION
