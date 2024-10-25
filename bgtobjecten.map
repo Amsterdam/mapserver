@@ -8,17 +8,12 @@
 MAP
   NAME                      "bgtobjecten"
   INCLUDE                   "header.inc"
-
   WEB
     METADATA
       "ows_title"           "bgtobjecten"
       "ows_abstract"        "Basisregistratie Grootschalige Topografie, objecten"
     END
   END
-
-
-
-
 
   #=============================================================================
   # LAYERS BEGROEIDTERREINDEEL
@@ -30,8 +25,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_boomteelt\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -58,8 +52,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_bouwland\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -86,8 +79,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_fruitteelt\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -114,8 +106,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_gemengd_bos\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -142,8 +133,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_grasland_agrarisch\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -170,8 +160,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_grasland_overig\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -198,8 +187,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_groenvoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -253,8 +241,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_houtwal\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -281,8 +268,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_loofbos\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -309,8 +295,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_moeras\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -337,8 +322,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_naaldbos\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -365,8 +349,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_rietland\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -393,8 +376,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_BTRN_struiken\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -423,8 +405,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OTRN_erf\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -457,8 +438,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OTRN_gesloten_verharding\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -491,8 +471,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OTRN_half_verhard\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -525,8 +504,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OTRN_onverhard\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -559,8 +537,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OTRN_open_verharding\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -593,8 +570,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OTRN_zand\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -670,8 +646,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_gemaal\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -704,8 +679,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_hoogspanningsmast_P\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -736,8 +710,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie from bgt.\"BGT_KDL_hoogspanningsmast_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -770,8 +743,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_perron\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -804,8 +776,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_sluis\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -838,8 +809,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_steiger\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -872,8 +842,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_strekdam\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -906,8 +875,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_stuw_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -935,8 +903,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_KDL_stuw_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -969,8 +936,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_duiker_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -1000,8 +966,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_duiker_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1034,8 +999,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_faunavoorziening\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1068,8 +1032,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KDL_keermuur\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1169,8 +1132,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_LBL_kunstwerk\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -1201,8 +1163,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_LBL_landschappelijk_gebied\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -1233,8 +1194,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_LBL_nummeraanduidingreeks\" USING srid=28992 USING UNIQUE ogc_fid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -1265,8 +1225,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_LBL_terrein\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -1297,8 +1256,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_LBL_water\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -1329,8 +1287,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_LBL_weg\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -1367,8 +1324,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_ODL_overbruggingsdeel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1535,8 +1491,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WDL_greppel_droge_sloot\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1564,8 +1519,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WDL_waterloop\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1593,8 +1547,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WDL_watervlakte\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1628,8 +1581,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OWDL_oever_slootkant\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1659,8 +1611,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_baan_voor_vliegverkeer\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1693,8 +1644,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_fietspad\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1727,8 +1677,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_inrit\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1761,8 +1710,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_ov-baan\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1795,8 +1743,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_overweg\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1829,8 +1776,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_parkeervlak\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1863,8 +1809,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_rijbaan_autosnelweg\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1897,8 +1842,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FRom bgt.\"BGT_WGL_rijbaan_autoweg\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1931,8 +1875,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROm bgt.\"BGT_WGL_rijbaan_lokale_weg\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1965,8 +1908,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_rijbaan_regionale_weg\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -1999,8 +1941,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_ruiterpad\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2033,8 +1974,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_spoorbaan\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2067,8 +2007,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_voetgangersgebied\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2101,8 +2040,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_voetpad\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2135,8 +2073,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_voetpad_op_trap\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2169,8 +2106,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_WGL_woonerf\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2209,8 +2145,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OWGL_berm\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2243,8 +2178,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OWGL_verkeerseiland\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2283,8 +2217,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_PND_pand\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2391,8 +2324,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_bassin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2425,8 +2357,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_bezinkbak\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2459,8 +2390,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_lage_trafo\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2493,8 +2423,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_open_loods\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2527,8 +2456,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_opslagtank\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2561,8 +2489,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_overkapping\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2595,8 +2522,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_OBW_windturbine\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2629,8 +2555,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OBW_bunker\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2663,8 +2588,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OBW_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2697,8 +2621,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OBW_schuur\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2731,8 +2654,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OBW_voedersilo\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2771,8 +2693,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_GISE_bordes\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2805,8 +2726,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_GISE_luifel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2839,8 +2759,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_GISE_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2873,8 +2792,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_GISE_toegangstrap\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -2913,8 +2831,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_damwand\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -2944,8 +2861,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_geluidsscherm\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -2975,8 +2891,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_hek\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3006,8 +2921,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_kademuur_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3037,8 +2951,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_kademuur_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -3068,8 +2981,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_muur_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3099,8 +3011,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_muur_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -3130,8 +3041,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SDG_walbescherming\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3161,8 +3071,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SDG_draadraster\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3192,8 +3101,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SDG_faunaraster\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3259,8 +3167,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_hek\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3290,8 +3197,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_kademuur_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3321,8 +3227,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_OSDG_walbescherming\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3358,8 +3263,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SPR_sneltram\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3389,8 +3293,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SPR_tram\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3420,8 +3323,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_SPR_trein\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -3457,8 +3359,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGT_TDL_tunneldeel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -3495,23 +3396,28 @@ MAP
   LAYER
     NAME                    BGTPLUS_BAK_afvalbak
     GROUP                   inrichtingselement
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_afvalbak\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+    MAXSCALEDENOM           5000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT geometrie_punt AS geometrie FROM bgt_bakken WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([plus_type] = 'afvalbak')
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "ows_title"            "BGTPLUS_BAK_afvalbak"
-	 "ows_group_title"      "inrichtingselement"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
+      "ows_title"           "Afvalbak"
+      "ows_abstract"        "Bak of korf in de openbare ruimte met een permanent karakter; bedoeld voor het verzamelen van (meestal los) afval."
+	    "ows_group_title"     "inrichtingselement"
+      "gml_featureid"       "identificatie"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "point"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
-      MAXSCALEDENOM 4000
+      MAXSCALEDENOM 5000
       STYLE
         SYMBOL         'circle_pink'
         SIZE           8
@@ -3527,23 +3433,28 @@ MAP
   LAYER
     NAME                    BGTPLUS_BAK_afval_apart_plaats
     GROUP                   inrichtingselement
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_afval_apart_plaats\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+    MAXSCALEDENOM           5000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT geometrie_punt AS geometrie FROM bgt_bakken WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([plus_type] = 'afval apart plaats')
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "ows_title"            "BGTPLUS_BAK_afval_apart_plaats"
-	 "ows_group_title"      "inrichtingselement"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
+      "ows_title"           "Afval apart plaats"
+      "ows_abstract"        "Boven- of ondergrondse opslagplaats voor het gescheiden inzamelen van afval, met stortkoker(s) op het straatniveau."
+      "ows_group_title"     "inrichtingselement"
+      "gml_featureid"       "identificatie"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "point"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
-      MAXSCALEDENOM 4000
+      MAXSCALEDENOM 5000
       STYLE
         SYMBOL         'circle_pink'
         SIZE           8
@@ -3562,8 +3473,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_container\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -3594,8 +3504,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_drinkbak\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -3626,8 +3535,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_BAK_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -3915,8 +3823,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_ISE_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -3947,8 +3854,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_ISE_pomp\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -3985,8 +3891,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KST_cai-kast\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4017,8 +3922,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KST_elektrakast\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4266,8 +4170,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_KST_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4527,8 +4430,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_PAL_lichtmast\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4559,8 +4461,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_PAL_onbekend\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4845,8 +4746,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_PUT_brandkraan_-put\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4939,8 +4839,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_PUT_inspectie-_rioolput\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -4971,8 +4870,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_PUT_kolk\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5201,8 +5099,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_abri\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5264,8 +5161,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_betaalautomaat\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5296,8 +5192,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_bolder\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5359,8 +5254,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_fietsenrek\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5422,8 +5316,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_herdenkingsmonument\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5454,8 +5347,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_kunstobject\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5517,8 +5409,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_openbaar_toilet\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5549,8 +5440,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_picknicktafel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5581,8 +5471,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_reclamezuil\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5675,8 +5564,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_SMR_telefooncel\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -5710,23 +5598,28 @@ MAP
   LAYER
     NAME                    BGTPLUS_VGT_boom
     GROUP                   inrichtingselement
-    MAXSCALEDENOM           4000
-    INCLUDE                 "connection/basiskaart.inc"
-    DATA                    "geometrie FROM bgt.\"BGTPLUS_VGT_boom\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+    MAXSCALEDENOM           5000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (SELECT geometrie_punt AS geometrie FROM bgt_vegetatieobjecten WHERE bgt_status = 'bestaand' ) as sub USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([plus_type] = 'boom')
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-     "ows_title"            "BGTPLUS_VGT_boom"
-	 "ows_group_title"      "inrichtingselement"
-     "gml_include_items"    "all"
-     "gml_featureid"        "identificatie_lokaalid"
+      "ows_title"           "Boom"
+      "ows_abstract"        "Een markante boom die geen onderdeel uitmaakt van een ander boom- of struikbeplanting."
+      "ows_group_title"     "inrichtingselement"
+      "gml_featureid"       "identificatie"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "point"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
     END
 
     CLASS
-      MAXSCALEDENOM 4000
+      MAXSCALEDENOM 5000
       STYLE
         SYMBOL         'circle_pink'
         SIZE           8
@@ -5745,8 +5638,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_VGT_haag_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -5776,8 +5668,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_VGT_haag_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -5840,8 +5731,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WDI_geleidewerk\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -5869,8 +5759,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WDI_onbekend_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -5898,8 +5787,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WDI_remmingswerk\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -5964,8 +5852,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_balustrade\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -5993,8 +5880,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_boomspiegel_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6022,8 +5908,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_geleideconstructie_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -6111,8 +5996,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_rooster_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -6140,8 +6024,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_rooster_P\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POINT
+	  TYPE                    POINT
     PROJECTION
       "init=epsg:28992"
     END
@@ -6169,8 +6052,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_rooster_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6198,8 +6080,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wildrooster_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -6227,8 +6108,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wegmarkering_L\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    LINE
+	  TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
     END
@@ -6256,8 +6136,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wegmarkering_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6285,8 +6164,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_WGI_wildrooster_V\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6347,8 +6225,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_begraafplaats\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6382,8 +6259,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_bushalte\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6417,8 +6293,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_halte\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6452,8 +6327,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_recreatie_speeltuin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6487,8 +6361,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_recreatie_sportterrein\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
@@ -6522,8 +6395,7 @@ MAP
     MAXSCALEDENOM           4000
     INCLUDE                 "connection/basiskaart.inc"
     DATA                    "geometrie FROM bgt.\"BGTPLUS_FGD_recreatie_volkstuin\" USING srid=28992 USING UNIQUE identificatie_lokaalid"
-	PROCESSING              "CLOSE_CONNECTION=DEFER"
-    TYPE                    POLYGON
+	  TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
     END
