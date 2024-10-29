@@ -87,7 +87,15 @@ with block("MAP"):
 
             with block("CLASS"):
                 p("NAME", name)
+                p('MINSCALE', 3000)
 
                 with block("STYLE"):
                     p("SYMBOL", f"bomen_{shortname}")
                     p("SIZE", 16)
+
+
+            with block ("CLASS"):
+                p('MAXSCALE', 3000)
+                with block("STYLE"):
+                    p("SYMBOL", f"bomen_{shortname}")
+                    p("SIZE", 26)
