@@ -16,7 +16,7 @@ MAP
     NAME                    "binnenhavenwater"
     GROUP                   "binnenhavenwater"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.water_binnenhavenwater USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.water_binnenwater USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -24,9 +24,9 @@ MAP
     END
 
     METADATA
-      "ows_title"           "Binnenhavenwater"
+      "ows_title"           "Binnenwater"
       "ows_abstract"        "Dataset die weergeeft binnen welk gebied in Amsterdam men binnenhavengeldplichtig is."
-      "wms_group_title"     "Binnenhavenwater"
+      "wms_group_title"     "Binnenwater"
       "gml_featureid"       "id"
       "gml_geometries"      "geometry"
       "gml_geometry_type"   "multipolygon"
@@ -36,8 +36,8 @@ MAP
     END
 
     CLASS
-      NAME                  "binnenhavenwater"
-      TITLE                 "Binnenhavenwater"
+      NAME                  "binnenwater"
+      TITLE                 "Binnenwater"
       STYLE
         ANTIALIAS           true
         COLOR               "#4c8fbc"
