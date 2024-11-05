@@ -10,13 +10,13 @@ def slugify(s: str) -> str:
 
 # Define layers for huishoudelijkafval
 layers = [
-    {"group": "afvalcontainers", "name": "gft_coordinaten", "filter": "[fractie_omschrijving] = 'GFT' AND [status] = 1", "symbol": "gft", "title": "Gftafvalcontainer"},
+    {"group": "afvalcontainers", "name": "gft_coordinaten", "filter": "[fractie_omschrijving] = 'GFT' AND [status] = 1", "symbol": "gfe", "title": "Gftafvalcontainer"},
     {"group": "afvalcontainers", "name": "textiel_coordinaten", "filter": "[fractie_omschrijving] = 'Textiel' AND [status] = 1", "symbol": "textiel", "title": "Textielafvalcontainer"},
     {"group": "afvalcontainers", "name": "papier_coordinaten", "filter": "[fractie_omschrijving] = 'Papier' AND [status] = 1", "symbol": "papier", "title": "Papierafvalcontainer"},
     {"group": "afvalcontainers", "name": "glas_coordinaten", "filter": "[fractie_omschrijving] = 'Glas' AND [status] = 1", "symbol": "glas", "title": "Glasafvalcontainer"},
     {"group": "afvalcontainers", "name": "rest_coordinaten", "filter": "[fractie_omschrijving] = 'Rest' AND [status] = 1", "symbol": "rest", "title": "Restafvalcontainer"},
     {"group": "afvalcontainers", "name": "brood_coordinaten", "filter": "[fractie_omschrijving] = 'Brood' AND [status] = 1", "symbol": "brood", "title": "Broodafvalcontainer"},
-    {"group": "afvalcontainers", "name": "onbekend_coordinaten", "filter": "fractie_omschrijving is null and status = 1", "symbol": "onbekend", "title": "Onbekend"},
+    {"group": "afvalcontainers", "name": "onbekend_coordinaten", "filter": "fractie_omschrijving = '' and status = 1", "symbol": "onbekend", "title": "Onbekend"},
     {"group": "kilogram", "name": "wegingen_rest", "filter": "[fractie_omschrijving] = 'Rest'","symbol": "stip","title": "Rest wegingen"},
     {"group": "kilogram", "name": "wegingen_glas", "filter": "[fractie_omschrijving] = 'Glas'","symbol": "stip","title": "Glas wegingen"},
     {"group": "kilogram", "name": "wegingen_papier", "filter": "[fractie_omschrijving] = 'Papier'","symbol": "stip","title": "Papier wegingen"},
@@ -81,11 +81,62 @@ with block("MAP"):
             q("wms_extent", "4.58565 52.03560 5.31360 52.48769")
             q("wfs_extent", "4.58565 52.03560 5.31360 52.48769")
             q("gml_types", "auto")
+    with block("LEGEND"):
+            p("STATUS ON")
+            p("KEYSIZE 30 30")
 
     # Generate layers for huishoudelijkafval containers
     for layer in layers:
 
-        # if layer["group"] == 'afvalcontainers':
+        if layer["group"] == 'afvalcontainers':
+            with block("LAYER"):
+                p("NAME", slugify(layer['name']))
+                p("GROUP", f"{layer['group']}")
+                with block("PROJECTION"):
+                    q("init=epsg:28992")
+
+                p("INCLUDE", "connection/dataservices.inc")
+                if layer["name"] == 'onbekend_coordinaten':
+                    p("DATA", f"geometrie FROM (select * FROM public.huishoudelijkafval_container where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id")
+                else:
+                    p("DATA", f"geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id")
+                    print(f"FILTER ({layer["filter"]})")
+                p("TYPE POINT")
+                p("MINSCALEDENOM", 10)
+                p("MAXSCALEDENOM", 400000)
+
+                with block("METADATA"):
+                    q("ows_title", layer['title'])
+                    q("wfs_srs", "EPSG:28992")
+                    q("wfs_abstract", f"{layer['title']} in Amsterdam")
+                    q("wfs_enable_request", "*")
+
+                p("LABELITEM", "id_nummer")
+
+                with block ("CLASS"): 
+                    p("NAME", f"{slugify(layer['title'])}")
+                    p("TITLE", f"{layer['title']}")
+
+                    with block("STYLE"):
+                        p("SYMBOL", layer['symbol'])
+                        p("SIZE", 30)
+
+                    with block("LABEL"):
+                        p("MAXSCALEDENOM 4000")
+                        p("COLOR 102 102 102")
+                        p("OUTLINECOLOR 255 255 255")
+                        p("OUTLINEWIDTH 3")
+                        p("FONT", "Ubuntu-M")
+                        p("TYPE truetype")
+                        p("SIZE 10")
+                        p("POSITION AUTO")
+                        p("PARTIALS FALSE")
+                        p("OFFSET -60 10")
+            
+
+        # #vanaf hier is het voor de wegingen,
+        # DEZE IS NIET AF MAAR OP VERZOEK VAN ERGUDER IS DEZE UITGEZET
+        # if layer["group"] == 'kilogram':
         #     with block("LAYER"):
         #         p("NAME", slugify(layer['name']))
         #         p("GROUP", f"{layer['group']}")
@@ -93,7 +144,7 @@ with block("MAP"):
         #             q("init=epsg:28992")
 
         #         p("INCLUDE", "connection/dataservices.inc")
-        #         p("DATA", f"geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id")
+        #         p("DATA", """geometrie FROM (select * from public.huishoudelijkafval_weging where datum_weging > (NOW() - INTERVAL '6 months') ORDER BY datum_weging desc) as subquery USING srid=28992 USING UNIQUE id""")
         #         print(f"FILTER ({layer["filter"]})")
         #         p("TYPE POINT")
         #         p("MINSCALEDENOM", 10)
@@ -105,112 +156,21 @@ with block("MAP"):
         #             q("wfs_abstract", f"{layer['title']} in Amsterdam")
         #             q("wfs_enable_request", "*")
 
-        #         p("LABELITEM", "id_nummer")
+        #         p("LABELITEM", "id")
 
-        #         with block ("CLASS"): 
-        #             p("NAME", f"{slugify(layer['title'])}")
-        #             p("TITLE", f"{layer['title']}")
-
-        #             with block("STYLE"):
-        #                 p("SYMBOL", layer['symbol'])
-        #                 p("SIZE", 30)
-
-        #             with block("LABEL"):
-        #                 p("MAXSCALEDENOM 4000")
-        #                 p("COLOR 102 102 102")
-        #                 p("OUTLINECOLOR 255 255 255")
-        #                 p("OUTLINEWIDTH 3")
-        #                 p("FONT", "Ubuntu-M")
-        #                 p("TYPE truetype")
-        #                 p("SIZE 10")
-        #                 p("POSITION AUTO")
-        #                 p("PARTIALS FALSE")
-        #                 p("OFFSET -60 10")
-            
-
-        # #vanaf hier is het voor de wegingen
-        if layer["group"] == 'kilogram':
-            with block("LAYER"):
-                p("NAME", slugify(layer['name']))
-                p("GROUP", f"{layer['group']}")
-                with block("PROJECTION"):
-                    q("init=epsg:28992")
-
-                p("INCLUDE", "connection/dataservices.inc")
-                p("DATA", """geometrie FROM (select * from public.huishoudelijkafval_weging where datum_weging > (NOW() - INTERVAL '6 months') ORDER BY datum_weging desc) as subquery USING srid=28992 USING UNIQUE id""")
-                print(f"FILTER ({layer["filter"]})")
-                p("TYPE POINT")
-                p("MINSCALEDENOM", 10)
-                p("MAXSCALEDENOM", 400000)
-
-                with block("METADATA"):
-                    q("wfs_title", layer['title'])
-                    q("wfs_srs", "EPSG:28992")
-                    q("wfs_abstract", f"{layer['title']} in Amsterdam")
-                    q("wfs_enable_request", "*")
-
-                p("LABELITEM", "id")
-
-                for range in weight_ranges:
-                    with block ("CLASS"): 
-                        p("NAME", slugify(range["name"]))
-                        p("TITLE", range["name"])
-                        p('EXPRESSION', range['expression'])
-
-                        with block("STYLE"):
-                            p('SYMBOL', 'stip')
-                            p(f"COLOR {" ".join(map(str, range['color']))}")
-                            p("SIZE", 6)
-
-                        with block("LABEL"):
-                            p("MAXSCALEDENOM 4000")
-                            p("COLOR 102 102 102")
-                            p("OUTLINECOLOR 255 255 255")
-                            p("OUTLINEWIDTH 3")
-                            p("FONT", "Ubuntu-M")
-                            p("TYPE truetype")
-                            p("SIZE 10")
-                            p("POSITION AUTO")
-                            p("PARTIALS FALSE")
-                            p("OFFSET -60 10")
-
-
-        #vanaf hier is het voor de loopafstanden
-        # if layer["group"] == 'pand_loopafstand':
-        #     loopafstanden_ranges_selected = loopafstanden_ranges_textiel if layer['name'] == 'pand_loopafstand_textiel' else loopafstanden_ranges
-        #     for range in loopafstanden_ranges_selected:
-        #         with block("LAYER"):
-        #             p("NAME", slugify(layer['name']) + ' ' + range['name'])
-        #             p("GROUP", f"{layer['group']}")
-        #             with block("PROJECTION"):
-        #                 q("init=epsg:28992")
-
-        #             p("INCLUDE", "connection/dataservices.inc")
-        #             p("DATA", """geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id""")
-        #             print(f"FILTER ({layer["filter"]} AND {range['expression']})")
-        #             p("TYPE POLYGON")
-        #             p("MINSCALEDENOM", 10)
-        #             p("MAXSCALEDENOM", 400000)
-
-        #             with block("METADATA"):
-        #                 q("ows_title", layer['title'] + ' ' + range["name"])
-        #                 q("wfs_title", layer['title'] + ' ' + range["name"])
-        #                 q("wfs_srs", "EPSG:28992")
-        #                 q("wfs_abstract", f"{layer['title']} in Amsterdam")
-        #                 q("wfs_enable_request", "*")
-
-        #             p("LABELITEM", "id")
-
+        #         for range in weight_ranges:
         #             with block ("CLASS"): 
-        #                 p("NAME", f"{slugify(range['name'])}")
-        #                 p("TITLE", f"{range['name']}")
+        #                 p("NAME", slugify(range["name"]))
+        #                 p("TITLE", range["name"])
+        #                 p('EXPRESSION', range['expression'])
 
         #                 with block("STYLE"):
+        #                     p('SYMBOL', 'stip')
         #                     p(f"COLOR {" ".join(map(str, range['color']))}")
-        #                     p("WIDTH ", 2)
+        #                     p("SIZE", 6)
 
         #                 with block("LABEL"):
-        #                     p("MAXSCALEDENOM 500")
+        #                     p("MAXSCALEDENOM 4000")
         #                     p("COLOR 102 102 102")
         #                     p("OUTLINECOLOR 255 255 255")
         #                     p("OUTLINEWIDTH 3")
@@ -220,3 +180,52 @@ with block("MAP"):
         #                     p("POSITION AUTO")
         #                     p("PARTIALS FALSE")
         #                     p("OFFSET -60 10")
+
+
+        #vanaf hier is het voor de loopafstanden
+        if layer["group"] == 'pand_loopafstand':
+            loopafstanden_ranges_selected = loopafstanden_ranges_textiel if layer['name'] == 'pand_loopafstand_textiel' else loopafstanden_ranges
+            for range in loopafstanden_ranges_selected:
+                with block("LAYER"):
+                    p("NAME", slugify(layer['name']) + ' ' + range['name'])
+                    p("GROUP", f"{layer['group']}")
+                    with block("PROJECTION"):
+                        q("init=epsg:28992")
+
+                    p("INCLUDE", "connection/dataservices.inc")
+                    p("DATA", """geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id""")
+                    print(f"FILTER ({layer["filter"]} AND {range['expression']})")
+                    p("TYPE POLYGON")
+                    p("MINSCALEDENOM", 10)
+                    p("MAXSCALEDENOM", 400000)
+
+                    with block("METADATA"):
+                        q("ows_title", layer['title'] + ' ' + range["name"])
+                        q("wfs_title", layer['title'] + ' ' + range["name"])
+                        q("wfs_srs", "EPSG:28992")
+                        q("wfs_abstract", f"{layer['title']} in Amsterdam")
+                        q("wfs_enable_request", "*")
+
+                    p("LABELITEM", "id")
+
+                    with block ("CLASS"): 
+                        p("NAME", f"{slugify(range['name'])}")
+                        p("TITLE", f"{range['name']}")
+
+                        with block("STYLE"):
+                            p(f"COLOR {" ".join(map(str, range['color']))}")
+                            p("WIDTH ", 2)
+                            p ('OPACITY', 80)
+                            p (f'OUTLINECOLOR {" ".join(map(str, range['color']))}')
+
+                        with block("LABEL"):
+                            p("MAXSCALEDENOM 500")
+                            p("COLOR 102 102 102")
+                            p("OUTLINECOLOR 255 255 255")
+                            p("OUTLINEWIDTH 3")
+                            p("FONT", "Ubuntu-M")
+                            p("TYPE truetype")
+                            p("SIZE 10")
+                            p("POSITION AUTO")
+                            p("PARTIALS FALSE")
+                            p("OFFSET -60 10")
