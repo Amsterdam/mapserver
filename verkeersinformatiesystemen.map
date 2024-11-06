@@ -424,5 +424,56 @@ MAP
     END
   END
 
+#==============================================================================================
+
+  LAYER
+    NAME                    "wayfinding"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Wayfinding')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Wayfinding"
+      "ows_abstract"        "Wayfinding"
+    END
+
+    LABELITEM               objectnummer
+
+    CLASS
+      NAME                  "wayfinding"
+      TITLE                 "Wayfinding"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#1E90FF"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
+      END
+      LABEL
+        MAXSCALEDENOM       5000
+        COLOR               "#000000"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        SIZE                10
+        POSITION            AUTO
+        PARTIALS            FALSE
+        OUTLINECOLOR        "#ffffff"
+        MINDISTANCE         100
+        BUFFER              1
+      END
+      LEADER
+        GRIDSTEP 1
+        MAXDISTANCE 100
+        STYLE
+          COLOR "#1E90FF"
+          WIDTH 2
+        END
+      END
+    END
+  END
 
 END
