@@ -56,10 +56,17 @@
       "wfs_namespace_prefix"         "amsterdam"
       "wfs_namespace_uri"            "https://amsterdam.nl/"
       "wfs_getfeature_formatlist"    "gml,geojson,csv,shapezip,spatialzip"
-
-      # verplicht om aan de OGC standaard te voldoen:
-      "ows_contactorganization"      "gemeente Amsterdam"
-      "ows_contactperson"            "N/A"
+      "ows_contactorganization"      "Gemeente Amsterdam"
+      "ows_contactperson"            "n/a"
+      "ows_contactelectronicmailaddress" "data-helpdesk@amsterdam.nl"
+      "ows_addresstype"              "postal"
+      "ows_address"                  "n/a"
+      "ows_city"                     "Amsterdam"
+      "ows_stateorprovince"          "North-Holland"
+      "ows_postcode"                 "n/a"
+      "ows_country"                  "Netherlands"
+      "ows_fees"                     "none"
+      "ows_accessconstraints"        "none"
     END
 
     IMAGEPATH                        "/srv/mapserver/tmp_img/"
