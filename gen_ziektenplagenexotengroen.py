@@ -20,7 +20,7 @@ layers_EPR = [
     ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
     ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
     ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
-    ("Eikenprocessierups Preventief","Eikenprocessierups Preventief", "Eikenprocessierups Preventief", "TBD"),
+    ("Eikenprocessierups Preventief","Eikenprocessierups Preventief", "Eikenprocessierups Preventief", "preventief"),
 
 ]
 
@@ -120,11 +120,10 @@ with block("MAP"):
                     p("NAME", name)
 
                     with block("STYLE"):
-                        p("SYMBOL", 'stip')
-                        p("SIZE", 20)
-                        p("COLOR", "#bebada")
-                        p("OUTLINECOLOR 0 0 0")
-                        p ("WIDTH", 1)
+                        p("SYMBOL", icon)
+                        p("SIZE", 24)
+                        p("OUTLINEWIDTH", 3)
+                        p("OUTLINECOLOR", "#ffffff")
 
     
     #Vanaf hier is het voor de japanse duizendknoop
