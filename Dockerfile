@@ -36,5 +36,5 @@ RUN rm -rf /srv/mapserver/private
 
 EXPOSE 8080
 
-USER www-data
+# USER www-data
 CMD /bin/docker-entrypoint.sh
