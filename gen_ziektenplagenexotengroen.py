@@ -11,15 +11,17 @@ def slugify(s: str) -> str:
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
 layers_EPR = [
-    ("Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
-    ("Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
-    ("Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
-    ("Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
-    ("Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
-    ("Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
-    ("Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
-    ("Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
-    ("Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
+    ("Eikenprocessierups","Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
+    ("Eikenprocessierups","Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
+    ("Eikenprocessierups","Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
+    ("Eikenprocessierups","Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
+    ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
+    ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups Preventief","Eikenprocessierups Preventief", "Eikenprocessierups Preventief", "preventief"),
+
 ]
 
 layers_JPD = [
@@ -38,7 +40,7 @@ layers_JPD = [
     ("Japanse Duizendknoop Inspecties", "Duizendknoop verwijderd (Inspecties)", "Duizendknoop verwijderd", "#00a03c")
 ]
 
-header("Bor / Beeldschoon")
+header("Bor")
 
 with block("MAP"):
     p("NAME", "ziektenplagenexotengroen")
@@ -54,42 +56,74 @@ with block("MAP"):
             q("wms_extent", "100000 450000 150000 500000")
 
 # dit stuk is voor de eikenprogressierups
-    for name, filter, icon in layers_EPR:
+    for group, name, filter, icon in layers_EPR:
         with block("LAYER"):
             p("NAME", name)
-            p("GROUP", "eikenprocessierups")
+            p("GROUP", slugify(group))
             with block("PROJECTION"):
                 q("init=epsg:28992")
 
             p("INCLUDE", "connection/dataservices.inc")
-            p(
-                "DATA",
-                "geometrie FROM"
-                # This subquery appears to do nothing, but it actually restricts
-                # the fields that mapserver sees.
-                " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
-                " USING srid=28992 USING UNIQUE id"
-            )
-            p("TYPE POINT")
 
-            with block("METADATA"):
-                q("wfs_enable_request", "!*")
-                q("ows_title", name)
-                q("wms_enable_request", "*")
-                q("ows_abstract", "Eikenprocessierups Amsterdam")
-                q("wms_format", "image/png")
-                q("ows_group_title", "Eikenprocessierups")
+            #hier voor de gewone processierups
+            if group == "Eikenprocessierups":
+                p(
+                    "DATA",
+                    "geometrie FROM"
+                    # This subquery appears to do nothing, but it actually restricts
+                    # the fields that mapserver sees.
+                    " (SELECT id, geometrie, urgentie_status_kaartlaag FROM public.ziekte_plagen_exoten_groen_eikenprocessierups WHERE ranking=1) AS sub"
+                    " USING srid=28992 USING UNIQUE id"
+                )
+                p("TYPE POINT")
 
-            p("LABELITEM", "urgentie_status_kaartlaag")
-            p("CLASSITEM", "urgentie_status_kaartlaag")
+                with block("METADATA"):
+                    q("wfs_enable_request", "!*")
+                    q("ows_title", name)
+                    q("wms_enable_request", "*")
+                    q("ows_abstract", "Eikenprocessierups Amsterdam")
+                    q("wms_format", "image/png")
+                    q("ows_group_title", group)
 
-            with block("CLASS"):
-                p("NAME", name)
-                p("EXPRESSION", filter)
+                p("LABELITEM", "urgentie_status_kaartlaag")
+                p("CLASSITEM", "urgentie_status_kaartlaag")
 
-                with block("STYLE"):
-                    p("SYMBOL", icon)
-                    p("SIZE", 20)
+                with block("CLASS"):
+                    p("NAME", name)
+                    p("EXPRESSION", filter)
+
+                    with block("STYLE"):
+                        p("SYMBOL", icon)
+                        p("SIZE", 20)
+
+            #hier voor de preventief processierups
+            if group == "Eikenprocessierups Preventief":
+                p(
+                    "DATA",
+                    "geometrie FROM"
+                    # This subquery appears to do nothing, but it actually restricts
+                    # the fields that mapserver sees.
+                    " (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief) AS sub"
+                    " USING srid=28992 USING UNIQUE id"
+                )
+                p("TYPE POINT")
+
+                with block("METADATA"):
+                    q("wfs_enable_request", "!*")
+                    q("ows_title", name)
+                    q("wms_enable_request", "*")
+                    q("ows_abstract", "Eikenprocessierups Preventief in Amsterdam")
+                    q("wms_format", "image/png")
+                    q("ows_group_title", group)
+
+                with block("CLASS"):
+                    p("NAME", name)
+
+                    with block("STYLE"):
+                        p("SYMBOL", icon)
+                        p("SIZE", 24)
+                        p("OUTLINEWIDTH", 3)
+                        p("OUTLINECOLOR", "#ffffff")
 
     
     #Vanaf hier is het voor de japanse duizendknoop
