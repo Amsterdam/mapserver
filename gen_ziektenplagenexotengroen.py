@@ -40,7 +40,7 @@ layers_JPD = [
     ("Japanse Duizendknoop Inspecties", "Duizendknoop verwijderd (Inspecties)", "Duizendknoop verwijderd", "#00a03c")
 ]
 
-header("Bor / Beeldschoon")
+header("Bor")
 
 with block("MAP"):
     p("NAME", "ziektenplagenexotengroen")
@@ -127,71 +127,71 @@ with block("MAP"):
 
     
     #Vanaf hier is het voor de japanse duizendknoop
-    # for group, title, filter, icon_color in layers_JPD:
-    #     with block("LAYER"):
-    #         p("NAME", slugify(title))
-    #         p("GROUP", slugify(group))
+    for group, title, filter, icon_color in layers_JPD:
+        with block("LAYER"):
+            p("NAME", slugify(title))
+            p("GROUP", slugify(group))
 
-    #         with block("PROJECTION"):
-    #             q("init=epsg:28992")
+            with block("PROJECTION"):
+                q("init=epsg:28992")
 
-    #         p("INCLUDE", "connection/dataservices.inc")
+            p("INCLUDE", "connection/dataservices.inc")
             
     #hier voor de meldingen
-            # if 'Meldingen' in group:
-            #     p(
-            #         "DATA",
-            #         "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id"
-            #     )
-            #     p("TYPE POINT")
+            if 'Meldingen' in group:
+                p(
+                    "DATA",
+                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id"
+                )
+                p("TYPE POINT")
 
-            #     p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-            #     p("CLASSITEM", "status_kaartlaag")
-            #     # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
-            #     print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
+                p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+                p("CLASSITEM", "status_kaartlaag")
+                # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
+                print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
                 
-            #     with block("METADATA"):
-            #         q("ows_title", title)
-            #         q("wms_enable_request", "*")
-            #         q("ows_abstract", "Japanse Duizendknoop Amsterdam")
-            #         q("wms_srs", "EPSG:28992")
-            #         q("ows_group_title", group)
+                with block("METADATA"):
+                    q("ows_title", title)
+                    q("wms_enable_request", "*")
+                    q("ows_abstract", "Japanse Duizendknoop Amsterdam")
+                    q("wms_srs", "EPSG:28992")
+                    q("ows_group_title", group)
 
-            #     with block("CLASS"):
-            #         p("NAME", slugify(title))
+                with block("CLASS"):
+                    p("NAME", slugify(title))
 
-            #         with block("STYLE"):
-            #             p("SYMBOL", icon_color)
-            #             p("SIZE", 20)
+                    with block("STYLE"):
+                        p("SYMBOL", icon_color)
+                        p("SIZE", 20)
 
     #hier voor de inspecties    
-            # if 'Inspecties' in group:
-            #     p(
-            #         "DATA",
-            #         "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id"
-            #     )
-            #     p("TYPE POLYGON")
+            if 'Inspecties' in group:
+                p(
+                    "DATA",
+                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id"
+                )
+                p("TYPE POLYGON")
 
-            #     p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
-            #     p("CLASSITEM", "status_kaartlaag")
-            #     # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
-            #     print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
+                p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+                p("CLASSITEM", "status_kaartlaag")
+                # kleine aanpassing aan de print structuur om te voorkomen dat er '' om deze komt.
+                print (f'FILTER ("[status_kaartlaag]" = "{filter}")')
                 
-            #     with block("METADATA"):
-            #         q("ows_title", title)
-            #         q("wms_enable_request", "*")
-            #         q("ows_abstract", "Japanse Duizendknoop Amsterdam")
-            #         q("wms_srs", "EPSG:28992")
-            #         q("ows_group_title", group)
+                with block("METADATA"):
+                    q("ows_title", title)
+                    q("wms_enable_request", "*")
+                    q("ows_abstract", "Japanse Duizendknoop Amsterdam")
+                    q("wms_srs", "EPSG:28992")
+                    q("ows_group_title", group)
 
-            #     with block("CLASS"):
-            #         p("NAME", slugify(title))
+                with block("CLASS"):
+                    p("NAME", slugify(title))
 
-            #         with block("STYLE"):
+                    with block("STYLE"):
 
-            #             p("COLOR", icon_color)
-            #             p("OPACITY", 20) 
+                        p("COLOR", icon_color)
+                        p("OPACITY", 20) 
 
-            #         with block("STYLE"):
-            #             p("OUTLINECOLOR ", icon_color)
-            #             p("WIDTH ", 2)
+                    with block("STYLE"):
+                        p("OUTLINECOLOR ", icon_color)
+                        p("WIDTH ", 2)
