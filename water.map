@@ -1,0 +1,91 @@
+MAP
+  NAME                      "water"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "Water"
+      "ows_abstract"        "Water gerelateerde kaartlagen in de Gemeente Amsterdam"
+      #"ows_onlineresource"  "MAP_URL_REPLACE/maps/water"
+
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "binnenwater"
+    GROUP                   "water"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.water_binnenwater USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Binnenwater"
+      "ows_abstract"        "Dataset die weergeeft binnen welk gebied in Amsterdam men binnenhavengeldplichtig is."
+      "wms_group_title"     "Water"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "binnenwater"
+      TITLE                 "Binnenwater"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#4c8fbc"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#4c8fbc"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "uitstootvrije_zone_pleziervaart"
+    GROUP                   "water"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometry FROM public.water_uitstootvrije_zone_pleziervaart USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Uitstootvrije zone pleziervaart"
+      "ows_abstract"        "Dataset die weergeeft binnen welk gebied in Amsterdam een uitstootvrije zone is."
+      "wms_group_title"     "Water"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "uitstootvrije_zone_pleziervaart"
+      TITLE                 "Uitstootvrije zone pleziervaart"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#FFA500"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#FFA500"
+        WIDTH               2
+      END
+    END
+  END
+
+END
