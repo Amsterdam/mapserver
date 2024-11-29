@@ -15,6 +15,8 @@ DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-sto
 
 echo Creating configuration files
 
+mkdir -p /srv/mapserver/connection
+
 cat > /srv/mapserver/connection/panorama.inc <<EOF
 CONNECTIONTYPE postgis
 CONNECTION "host=${PANORAMA_DB_HOST} dbname=${PANORAMA_DB_NAME} user=${PANORAMA_DB_USER} password=$(cat ${PANORAMA_DB_PASSWORD_PATH}) port=${PANORAMA_DB_PORT}"
