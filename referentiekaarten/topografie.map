@@ -6,13 +6,14 @@
 #==============================================================================
 
 MAP
-    NAME                      "topografie"
-    INCLUDE                   "header.inc"
+    NAME                          "topografie"
+    INCLUDE                       "header.inc"
 
     WEB
         METADATA
-            "ows_title"         "Topografie"
-            "ows_abstract"      "Basiskaart Amsterdam"
+            "ows_title"           "Topografie"
+            "ows_abstract"        "Basiskaart Amsterdam"
+            "ows_onlineresource"  "MAP_URL_REPLACE/tiled/topografie"
         END
     END
 
@@ -101,7 +102,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           20000
@@ -128,7 +129,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           20000
@@ -156,7 +157,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           20000
@@ -188,7 +189,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
         MINSCALEDENOM           3500
@@ -215,7 +216,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
         MINSCALEDENOM           3500
@@ -243,7 +244,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
         MINSCALEDENOM           3500
@@ -275,7 +276,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           3500
         MINSCALEDENOM           0
@@ -302,7 +303,7 @@ MAP
             "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           3500
         MINSCALEDENOM           0
@@ -330,7 +331,7 @@ MAP
           "init=epsg:28992"
         END
         TYPE                      RASTER
-        CONNECTION                "MAP_URL_REPLACE/maps/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION                "MAP_URL_REPLACE/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE            WMS
         MAXSCALEDENOM             3500
         MINSCALEDENOM             0
@@ -362,7 +363,7 @@ MAP
            "init=epsg:28992"
            END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           0
@@ -389,7 +390,7 @@ MAP
            "init=epsg:28992"
         END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           0
@@ -416,7 +417,7 @@ MAP
            "init=epsg:28992"
            END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/maps/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "MAP_URL_REPLACE/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           300000
         MINSCALEDENOM           0
