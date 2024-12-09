@@ -194,7 +194,7 @@ with block("MAP"):
                         q("init=epsg:28992")
 
                     p("INCLUDE", "connection/dataservices.inc")
-                    p("DATA", """geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id""")
+                    p("DATA", "geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id")
                     print(f"FILTER ({layer['filter']} AND {range['expression']})")
                     p("TYPE POLYGON")
                     p("MINSCALEDENOM", 10)
