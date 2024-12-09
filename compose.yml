@@ -55,8 +55,8 @@ services:
       DATASERVICES_DB_PASSWORD_PATH: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "http://localhost:8383"
-      LEGEND_URL: "http://localhost:8383"
+      MAP_URL: "${MAP_URL:-http://localhost:8383}"
+      LEGEND_URL: "${LEGEND_URL:-http://localhost:8383}"
 
     volumes:
       - .:/srv/mapserver/
@@ -83,8 +83,8 @@ services:
       DATASERVICES_DB_PASSWORD_PATH: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "http://localhost:8383"
-      LEGEND_URL: "http://localhost:8383"
+      MAP_URL: "${MAP_URL:-http://localhost:8384}"
+      LEGEND_URL: "${LEGEND_URL:-http://localhost:8384}"
 
     volumes:
       - ./tools/:/srv/mapserver/tools/
@@ -115,8 +115,8 @@ services:
       DATASERVICES_DB_PASSWORD_PATH: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "http://localhost:8383"
-      LEGEND_URL: "http://localhost:8383"
+      MAP_URL: "${MAP_URL:-http://localhost:8385}"
+      LEGEND_URL: "${LEGEND_URL:-http://localhost:8385}"
 
     volumes:
       - ./tools/:/srv/mapserver/tools/
