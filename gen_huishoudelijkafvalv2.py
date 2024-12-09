@@ -71,7 +71,7 @@ loopafstanden_ranges_textiel = [
 header("Huishoudelijk Afval Mapfile")
 
 with block("MAP"):
-    p("NAME", "huishoudelijkafval")
+    p("NAME", "huishoudelijkafvalv2")
     p("INCLUDE", "header.inc")
 
     with block("WEB"):
@@ -81,6 +81,7 @@ with block("MAP"):
             q("wms_extent", "4.58565 52.03560 5.31360 52.48769")
             q("wfs_extent", "4.58565 52.03560 5.31360 52.48769")
             q("gml_types", "auto")
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/huishoudelijkafvalv2")            
     with block("LEGEND"):
             p("STATUS ON")
             p("KEYSIZE 30 30")
@@ -205,6 +206,8 @@ with block("MAP"):
                         q("wfs_srs", "EPSG:28992")
                         q("wfs_abstract", f"{layer['title']} in Amsterdam")
                         q("wfs_enable_request", "*")
+                        q("wms_group_title", "loopafstand (per pand)")
+
 
                     p("LABELITEM", "id")
 
