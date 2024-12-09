@@ -103,7 +103,7 @@ with block("MAP"):
                     p("DATA", f"geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id")
                     print(f"FILTER ({layer['filter']})")
                 p("TYPE POINT")
-                p("MINSCALEDENOM", 10)
+                p("MINSCALEDENOM", 10) 
                 p("MAXSCALEDENOM", 400000)
 
                 with block("METADATA"):
@@ -191,7 +191,7 @@ with block("MAP"):
                     p("NAME", slugify(layer['name']) + ' ' + range['name'])
                     p("GROUP", f"{layer['group']}")
                     with block("PROJECTION"):
-                        q("init=epsg:28992")
+                        q("init=epsg:28992") 
 
                     p("INCLUDE", "connection/dataservices.inc")
                     p("DATA", "geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id")
