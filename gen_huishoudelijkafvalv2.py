@@ -216,10 +216,10 @@ with block("MAP"):
                         p("TITLE", f"{range['name']}")
 
                         with block("STYLE"):
-                            p(f"COLOR {" ".join(map(str, range['color']))}")
+                            p(f"COLOR {' '.join(map(str, range['color']))}")
                             p("WIDTH ", 2)
                             p ('OPACITY', 80)
-                            p (f'OUTLINECOLOR {" ".join(map(str, range['color']))}')
+                            p (f'OUTLINECOLOR {' '.join(map(str, range['color']))}')
 
                         with block("LABEL"):
                             p("MAXSCALEDENOM 500")
