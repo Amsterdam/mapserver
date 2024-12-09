@@ -101,7 +101,7 @@ with block("MAP"):
                     p("DATA", f"geometrie FROM (select * FROM public.huishoudelijkafval_container where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id")
                 else:
                     p("DATA", f"geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id")
-                    print(f"FILTER ({layer["filter"]})")
+                    print(f"FILTER ({layer['filter']})")
                 p("TYPE POINT")
                 p("MINSCALEDENOM", 10)
                 p("MAXSCALEDENOM", 400000)
