@@ -17,94 +17,16 @@ MAP
         END
     END
 
-
-
-    #=============================================================================
-    # LAYERS GROUPS
-    #=============================================================================
-
-    LAYER
-        NAME                    "basiskaart"
-        PROJECTION
-            "init=epsg:28992"
-        END
-        MAXSCALEDENOM           300000
-        METADATA
-            "wms_layer_group"                       "/basiskaart"
-            "wms_abstract"                          "Basiskaart Amsterdam - Standaard"
-            "wms_title"                             "Basiskaart Amsterdam - Standaard"
-            "ows_enable_request"                    "GetMap"
-            "wms_style"                             "default"
-            "wms_extent"                            "94000 465000 170000 514000"
-            "wms_style_default_legendurl_height"    "10"
-            "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaart.png"
-            "wms_style_default_legendurl_format"    "image/png"
-        END
-        TYPE POINT
-    END
-
-    #-----------------------------------------------------------------------------
-
-    LAYER
-        NAME                    "basiskaart-light"
-        PROJECTION
-            "init=epsg:28992"
-        END
-        MAXSCALEDENOM           300000
-        METADATA
-            "wms_layer_group"                       "/basiskaart-light"
-            "wms_abstract"                          "Basiskaart Amsterdam - Light"
-            "wms_title"                             "Basiskaart Amsterdam - Light"
-            "ows_enable_request"                    "GetMap"
-            "wms_style"                             "default"
-            "wms_extent"                            "94000 465000 170000 514000"
-            "wms_style_default_legendurl_height"    "10"
-            "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartlight.png"
-            "wms_style_default_legendurl_format"    "image/png"
-        END
-        TYPE POINT
-    END
-
-    #-----------------------------------------------------------------------------
-
-    LAYER
-        NAME                    "basiskaart-zwartwit"
-        PROJECTION
-            "init=epsg:28992"
-        END
-        MAXSCALEDENOM           300000
-        METADATA
-            "wms_layer_group"                       "/basiskaart-zwartwit"
-            "wms_abstract"                          "Basiskaart Amsterdam - ZW"
-            "wms_title"                             "Basiskaart Amsterdam - ZW"
-            "ows_enable_request"                    "GetMap"
-            "wms_style"                             "default"
-            "wms_extent"                            "94000 465000 170000 514000"
-            "wms_style_default_legendurl_height"    "10"
-            "wms_style_default_legendurl_width"     "20"
-            "wms_style_default_legendurl_href"      "LEGEND_URL_REPLACE/legend/legendabasiskaartzwartwit.png"
-            "wms_style_default_legendurl_format"    "image/png"
-        END
-        TYPE POINT
-    END
-
-
-
     #=============================================================================
     # LAYERS KBK50
     #=============================================================================
 
     LAYER
         NAME                    "kbk50"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           300000
+        MAXSCALEDENOM           320000
         MINSCALEDENOM           20000
         METADATA
             "wms_layer_group"     "/basiskaart"
@@ -117,7 +39,6 @@ MAP
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -125,13 +46,10 @@ MAP
 
     LAYER
         NAME                    "kbk50-light"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           300000
+        MAXSCALEDENOM           320000
         MINSCALEDENOM           20000
         METADATA
             "wms_layer_group"     "/basiskaart-light"
@@ -140,12 +58,11 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - Light"
             "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_light.xml"
+            "wms_sld_url"         "http://localhost:8080/sld/kbk50_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -153,13 +70,10 @@ MAP
 
     LAYER
         NAME                    "kbk50-zw"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kbk50?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           300000
+        MAXSCALEDENOM           320000
         MINSCALEDENOM           20000
         METADATA
             "wms_layer_group"     "/basiskaart-zwartwit"
@@ -168,12 +82,11 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk50_zw.xml"
+            "wms_sld_url"         "http://localhost:8080/sld/kbk50_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -185,14 +98,11 @@ MAP
 
     LAYER
         NAME                    "kbk10"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
-        MINSCALEDENOM           3500
+        MINSCALEDENOM           5000
         METADATA
             "wms_layer_group"     "/basiskaart"
             "wms_title"           "kbk10"
@@ -204,7 +114,6 @@ MAP
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -212,14 +121,11 @@ MAP
 
     LAYER
         NAME                    "kbk10-light"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
-        MINSCALEDENOM           3500
+        MINSCALEDENOM           5000
         METADATA
             "wms_layer_group"     "/basiskaart-light"
             "wms_title"           "kbk10-light"
@@ -227,12 +133,11 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam -Light"
             "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_light.xml"
+            "wms_sld_url"         "http://localhost:8080/sld/kbk10_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -240,14 +145,11 @@ MAP
 
     LAYER
         NAME                    "kbk10-zw"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kbk10?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
         MAXSCALEDENOM           20000
-        MINSCALEDENOM           3500
+        MINSCALEDENOM           5000
         METADATA
             "wms_layer_group"     "/basiskaart-zwartwit"
             "wms_title"           "kbk10-zw"
@@ -255,12 +157,11 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "vlakken,lijnen"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/kbk10_zw.xml"
+            "wms_sld_url"         "http://localhost:8080/sld/kbk10_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -272,13 +173,10 @@ MAP
 
     LAYER
         NAME                    "bgt"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           3500
+        MAXSCALEDENOM           5000
         MINSCALEDENOM           0
         METADATA
             "wms_layer_group"     "/basiskaart"
@@ -291,7 +189,6 @@ MAP
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -299,13 +196,10 @@ MAP
 
     LAYER
         NAME                    "bgt-light"
-        PROJECTION
-            "init=epsg:28992"
-        END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           3500
+        MAXSCALEDENOM           5000
         MINSCALEDENOM           0
         METADATA
             "wms_layer_group"     "/basiskaart-light"
@@ -314,12 +208,11 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - Light"
             "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_light.xml"
+            "wms_sld_url"         "http://localhost:8080/sld/bgt_light.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
     END
 
@@ -327,13 +220,10 @@ MAP
 
     LAYER
         NAME                      "bgt-zw"
-        PROJECTION
-          "init=epsg:28992"
-        END
         TYPE                      RASTER
-        CONNECTION                "MAP_URL_REPLACE/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION                "http://localhost:8080/tiled/bgt?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE            WMS
-        MAXSCALEDENOM             3500
+        MAXSCALEDENOM             5000
         MINSCALEDENOM             0
         METADATA
             "wms_layer_group"     "/basiskaart-zwartwit"
@@ -342,12 +232,11 @@ MAP
             "wms_abstract"        "Basiskaart Amsterdam - ZW"
             "wms_srs"             "EPSG:3857 EPSG:28992"
             "wms_name"            "hoogte0,hoogte1,hoogte2,hoogte3,hoogte4,hoogte_3,hoogte_2,hoogte_1"
-            "wms_sld_url"         "MAP_URL_REPLACE/sld/bgt_zw.xml"
+            "wms_sld_url"         "http://localhost:8080/sld/bgt_zw.xml"
             "wms_format"          "image/png"
             "wms_server_version"  "1.1.1"
             "wms_transparent"     "false"
             "wms_bgcolor"         "0xFFFFFF"
-            "ows_enable_request"  "!GetCapabilities"
         END
       END
 
@@ -359,13 +248,10 @@ MAP
 
     LAYER
         NAME                    "tekst"
-        PROJECTION
-           "init=epsg:28992"
-           END
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           300000
+        MAXSCALEDENOM           320000
         MINSCALEDENOM           0
         METADATA
            "wms_layer_group"     "/basiskaart"
@@ -378,21 +264,17 @@ MAP
            "wms_server_version" "1.1.1"
            "wms_transparant"    "true"
            "wms_bgcolor"        "0xFFFFFF"
-           "ows_enable_request"  "!GetCapabilities"
        END
     END
 
     #--------------------------------------------------------------------------
 
     LAYER
-        NAME                    "tekst"
-        PROJECTION
-           "init=epsg:28992"
-        END
+        NAME                    "tekst-light"
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           300000
+        MAXSCALEDENOM           320000
         MINSCALEDENOM           0
         METADATA
            "wms_layer_group"    "/basiskaart-light"
@@ -405,21 +287,17 @@ MAP
            "wms_server_version" "1.1.1"
            "wms_transparant"    "true"
            "wms_bgcolor"        "0xFFFFFF"
-           "ows_enable_request"  "!GetCapabilities"
         END
     END
 
     #--------------------------------------------------------------------------
 
     LAYER
-        NAME                    "tekst"
-        PROJECTION
-           "init=epsg:28992"
-           END
+        NAME                    "tekst-zw"
         TYPE                    RASTER
-        CONNECTION              "MAP_URL_REPLACE/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
+        CONNECTION              "http://localhost:8080/tiled/kaartteksten?MAP_RESOLUTION=%MAP_RESOLUTION%&DPI=%DPI%"
         CONNECTIONTYPE          WMS
-        MAXSCALEDENOM           300000
+        MAXSCALEDENOM           320000
         MINSCALEDENOM           0
         METADATA
            "wms_layer_group"     "/basiskaart-zwartwit"
@@ -432,7 +310,6 @@ MAP
            "wms_server_version" "1.1.1"
            "wms_transparant"    "true"
            "wms_bgcolor"        "0xFFFFFF"
-           "ows_enable_request"  "!GetCapabilities"
        END
     END
 
