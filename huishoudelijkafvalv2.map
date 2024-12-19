@@ -21,7 +21,7 @@ MAP
     KEYSIZE 30 30
   END
   LAYER
-    NAME 'gft_coordinaten' 
+    NAME 'gft_coordinaten'
     GROUP 'afvalcontainers'
     PROJECTION
       'init=epsg:28992'
@@ -571,7 +571,7 @@ FILTER ([fractie_omschrijving] = 'Rest' AND [loopafstand_categorie_omschrijving]
     END
     INCLUDE 'connection/dataservices.inc'
     DATA 'geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id'
-FILTER ([fractie_omschrijving] = 'Rest' AND [loopafstand_categorie_omschrijving] eq 'meer dan 1000 M')
+FILTER ([fractie_omschrijving] = 'Rest' AND [loopafstand_categorie_omschrijving] eq 'Vanaf 1500 M')
     TYPE POLYGON
     MINSCALEDENOM 10
     MAXSCALEDENOM 400000
@@ -879,7 +879,7 @@ FILTER ([fractie_omschrijving] = 'Glas' AND [loopafstand_categorie_omschrijving]
     END
     INCLUDE 'connection/dataservices.inc'
     DATA 'geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id'
-FILTER ([fractie_omschrijving] = 'Glas' AND [loopafstand_categorie_omschrijving] eq 'meer dan 1000 M')
+FILTER ([fractie_omschrijving] = 'Glas' AND [loopafstand_categorie_omschrijving] eq 'Vanaf 1500 M')
     TYPE POLYGON
     MINSCALEDENOM 10
     MAXSCALEDENOM 400000
@@ -1187,7 +1187,7 @@ FILTER ([fractie_omschrijving] = 'Papier' AND [loopafstand_categorie_omschrijvin
     END
     INCLUDE 'connection/dataservices.inc'
     DATA 'geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id'
-FILTER ([fractie_omschrijving] = 'Papier' AND [loopafstand_categorie_omschrijving] eq 'meer dan 1000 M')
+FILTER ([fractie_omschrijving] = 'Papier' AND [loopafstand_categorie_omschrijving] eq 'Vanaf 1500 M')
     TYPE POLYGON
     MINSCALEDENOM 10
     MAXSCALEDENOM 400000
@@ -1803,7 +1803,7 @@ FILTER ([fractie_omschrijving] = 'GFT' AND [loopafstand_categorie_omschrijving] 
     END
     INCLUDE 'connection/dataservices.inc'
     DATA 'geometrie FROM (SELECT bol.id, bol.geometrie, bol.fractie_omschrijving, lac.loopafstand_categorie_omschrijving FROM public.huishoudelijkafval_bag_object_loopafstand_v2 bol INNER JOIN public.huishoudelijkafval_loopafstand_categorie_v2 lac ON bol.loopafstand_categorie_id = lac.id WHERE 1=1) rest USING srid=28992 USING UNIQUE id'
-FILTER ([fractie_omschrijving] = 'GFT' AND [loopafstand_categorie_omschrijving] eq 'meer dan 1000 M')
+FILTER ([fractie_omschrijving] = 'GFT' AND [loopafstand_categorie_omschrijving] eq 'Vanaf 1500 M')
     TYPE POLYGON
     MINSCALEDENOM 10
     MAXSCALEDENOM 400000
