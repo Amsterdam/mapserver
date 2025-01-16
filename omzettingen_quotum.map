@@ -47,7 +47,8 @@ MAP
     LABELITEM               "wijk_naam"
 
     CLASS
-      NAME          "Niet beschikbaar"
+      NAME          "geen_ruimte_beschikbaar"
+      TITLE         "Geen ruimte beschikbaar"
       EXPRESSION    ("[categorie_kleur]" eq "red")
 
       STYLE
@@ -77,7 +78,8 @@ MAP
     END
 
     CLASS
-      NAME          "Beperkt beschikbaar"
+      NAME           "enkel_ruimte_beschikbaar_in_het_plusquotum"
+      TITLE          "Enkel ruimte beschikbaar in het plusquotum"
       EXPRESSION    ("[categorie_kleur]" eq "orange")
 
       STYLE
@@ -107,7 +109,8 @@ MAP
     END
 
     CLASS
-      NAME          "Beschikbaar"
+      NAME           "ruimte_beschikbaar"
+      TITLE          "Ruimte beschikbaar"
       EXPRESSION    ("[categorie_kleur]" eq "green")
 
       STYLE
