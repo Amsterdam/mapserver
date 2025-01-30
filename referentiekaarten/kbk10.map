@@ -702,8 +702,8 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
-    FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "laagbouw")
+    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "laagbouw" AND "[type]" ne "kas, warenhuis")
     TYPE                    POLYGON
     PROJECTION
       "init=epsg:28992"
@@ -1533,7 +1533,7 @@ END
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
-    FILTER                  ("[type]" eq "trein" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
+    FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
       "init=epsg:28992"
