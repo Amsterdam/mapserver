@@ -905,7 +905,7 @@ MAP
         NAME                    "ligplaats"
         GROUP                   "hoogte0"
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_ligplaatsen where eind_geldigheid isnull) As subquery USING srid=28992 USING UNIQUE identificatie"
+        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_ligplaatsen where eind_geldigheid isnull and status_omschrijving != 'Plaats ingetrokken') As subquery USING srid=28992 USING UNIQUE identificatie"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         PROJECTION
@@ -932,7 +932,7 @@ MAP
         NAME                    "standplaats"
         GROUP                   "hoogte0"
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_standplaatsen where eind_geldigheid isnull) As subquery USING srid=28992 USING UNIQUE identificatie"
+        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_standplaatsen where eind_geldigheid isnull and status_omschrijving != 'Plaats ingetrokken') As subquery USING srid=28992 USING UNIQUE identificatie"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         PROJECTION
