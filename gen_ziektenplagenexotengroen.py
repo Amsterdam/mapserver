@@ -40,6 +40,21 @@ layers_JPD = [
     ("Japanse Duizendknoop Inspecties", "Duizendknoop verwijderd (Inspecties)", "Duizendknoop verwijderd", "#00a03c")
 ]
 
+layers_JPD_percelen = [
+    ("Japanse Duizendknoop Percelen", "Gemeente Amsterdam", "Gemeente Amsterdam", "#E6194B"),
+    ("Japanse Duizendknoop Percelen", "Overige gemeenten", "Overige gemeenten, niet bereikbaar", "#3CB44B"),
+    ("Japanse Duizendknoop Percelen", "Overige natuurlijke personen", "Overige natuurlijke personen", "#FFE119"),
+    ("Japanse Duizendknoop Percelen", "Overige niet-natuurlijke personen", "Overige niet-natuurlijke personen", "#0082C8"),
+    ("Japanse Duizendknoop Percelen", "Provincies", "Provincies", "#F58231"),
+    ("Japanse Duizendknoop Percelen", "Spoorwegen/ProRail", "Spoorwegen/ProRail", "#911EB4"),
+    ("Japanse Duizendknoop Percelen", "Staat", "Staat", "#46F0F0"),
+    ("Japanse Duizendknoop Percelen", "Verenigingen van eigenaren", "Verenigingen van eigenaren", "#F032E6"),
+    ("Japanse Duizendknoop Percelen", "Waterschappen", "Waterschappen", "#D2F53C"),
+    ("Japanse Duizendknoop Percelen", "Woningbouwcorporaties", "Woningbouwcorporaties", "#FABEBE"),
+    ("Japanse Duizendknoop Percelen", "meerdere categorieën", "meerdere categorieën", "#008080"),
+    ("Japanse Duizendknoop Percelen", "onbekend", "onbekend", "#E6BEFF")
+]
+
 header("Bor")
 
 with block("MAP"):
@@ -195,3 +210,69 @@ with block("MAP"):
                     with block("STYLE"):
                         p("OUTLINECOLOR ", icon_color)
                         p("WIDTH ", 2)
+
+
+    #hier voor de percelen
+    with block("LAYER"):
+        p("NAME", 'japanse_duizendknoop_percelen')
+        p("GROUP", 'japanse_duizendknoop_percelen')
+
+        with block("PROJECTION"):
+            q("init=epsg:28992")
+
+        p("INCLUDE", "connection/dataservices.inc") 
+        p(
+            "DATA",
+            "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_percelen USING srid=28992 USING UNIQUE id"
+        )
+        p("TYPE POLYGON")
+
+        p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
+        
+        with block("METADATA"):
+            q("ows_title", 'Japanse Duizendknoop Percelen')
+            q("wms_enable_request", "*")
+            q("ows_abstract", "Japanse Duizendknoop Amsterdam")
+            q("wms_srs", "EPSG:28992")
+            q("ows_group_title", 'Japanse Duizendknoop Percelen')
+
+        for group, title, filter, icon_color in layers_JPD_percelen:
+            with block("CLASS"):
+                p("NAME", slugify(title))
+                p("TITLE", title)
+                print (f'EXPRESSION ("[categorie]" = "{filter}")')
+
+                with block("STYLE"):
+
+                    p("COLOR", icon_color)
+                    p("OPACITY", 20) 
+
+                with block("STYLE"):
+                    p("OUTLINECOLOR ", icon_color)
+                    p("WIDTH ", 2)
+                
+                with block("LABEL"):
+                    p("EXPRESSION ([ligt_op_percelen] > 1)") 
+                    p("TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'") 
+                    p("MAXSCALEDENOM 750")
+                    p("COLOR 0 0 0")
+                    p("OUTLINECOLOR 255 255 255")
+                    p("OUTLINEWIDTH 1.5")
+                    p("FONT", "Ubuntu-M")
+                    p("TYPE truetype")
+                    p("SIZE 8")
+                    p("POSITION AUTO")
+                    p("PARTIALS FALSE")
+
+                with block("LABEL"):
+                    p("EXPRESSION ([ligt_op_percelen] = 1)") 
+                    p("TEXT 'insp.: [jdk_inspectielak_id]'") 
+                    p("MAXSCALEDENOM 750")
+                    p("COLOR 0 0 0")
+                    p("OUTLINECOLOR 255 255 255")
+                    p("OUTLINEWIDTH 1.5")
+                    p("FONT", "Ubuntu-M")
+                    p("TYPE truetype")
+                    p("SIZE 8")
+                    p("POSITION AUTO")
+                    p("PARTIALS FALSE")
