@@ -373,7 +373,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig")
       END
     END
   END
-  LAYER
+  LAYER 
     NAME 'duizendknoop_in_bestrijding_meldingen'
     GROUP 'japanse_duizendknoop_meldingen'
     PROJECTION
@@ -637,6 +637,492 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop verwijderd")
       STYLE
         OUTLINECOLOR  '#00a03c'
         WIDTH  2
+      END
+    END
+  END
+  LAYER
+    NAME 'japanse_duizendknoop_percelen'
+    GROUP 'japanse_duizendknoop_percelen'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_percelen USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    METADATA
+      'ows_title' 'Japanse Duizendknoop Percelen'
+      'wms_enable_request' '*'
+      'ows_abstract' 'Japanse Duizendknoop Amsterdam'
+      'wms_srs' 'EPSG:28992'
+      'ows_group_title' 'Japanse Duizendknoop Percelen'
+    END
+    CLASS
+      NAME 'gemeente_amsterdam'
+      TITLE 'Gemeente Amsterdam'
+EXPRESSION ("[categorie]" = "Gemeente Amsterdam")
+      STYLE
+        COLOR '#E6194B'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#E6194B'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'overige_gemeenten'
+      TITLE 'Overige gemeenten'
+EXPRESSION ("[categorie]" = "Overige gemeenten, niet bereikbaar")
+      STYLE
+        COLOR '#3CB44B'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#3CB44B'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'overige_natuurlijke_personen'
+      TITLE 'Overige natuurlijke personen'
+EXPRESSION ("[categorie]" = "Overige natuurlijke personen")
+      STYLE
+        COLOR '#FFE119'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#FFE119'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'overige_niet_natuurlijke_personen'
+      TITLE 'Overige niet-natuurlijke personen'
+EXPRESSION ("[categorie]" = "Overige niet-natuurlijke personen")
+      STYLE
+        COLOR '#0082C8'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#0082C8'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'provincies'
+      TITLE 'Provincies'
+EXPRESSION ("[categorie]" = "Provincies")
+      STYLE
+        COLOR '#F58231'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#F58231'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'spoorwegen_prorail'
+      TITLE 'Spoorwegen/ProRail'
+EXPRESSION ("[categorie]" = "Spoorwegen/ProRail")
+      STYLE
+        COLOR '#911EB4'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#911EB4'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'staat'
+      TITLE 'Staat'
+EXPRESSION ("[categorie]" = "Staat")
+      STYLE
+        COLOR '#46F0F0'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#46F0F0'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'verenigingen_van_eigenaren'
+      TITLE 'Verenigingen van eigenaren'
+EXPRESSION ("[categorie]" = "Verenigingen van eigenaren")
+      STYLE
+        COLOR '#F032E6'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#F032E6'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'waterschappen'
+      TITLE 'Waterschappen'
+EXPRESSION ("[categorie]" = "Waterschappen")
+      STYLE
+        COLOR '#D2F53C'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#D2F53C'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'woningbouwcorporaties'
+      TITLE 'Woningbouwcorporaties'
+EXPRESSION ("[categorie]" = "Woningbouwcorporaties")
+      STYLE
+        COLOR '#FABEBE'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#FABEBE'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'meerdere_categorieen'
+      TITLE 'meerdere categorieen'
+EXPRESSION ("[categorie]" = "meerdere categorieen")
+      STYLE
+        COLOR '#008080'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#008080'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+    CLASS
+      NAME 'onbekend'
+      TITLE 'onbekend'
+EXPRESSION ("[categorie]" = "onbekend")
+      STYLE
+        COLOR '#E6BEFF'
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR  '#E6BEFF'
+        WIDTH  2
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] > 1)
+        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        EXPRESSION ([ligt_op_percelen] = 1)
+        TEXT 'insp.: [jdk_inspectielak_id]'
+        MAXSCALEDENOM 750
+        COLOR 0 0 0
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1.5
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 8
+        POSITION AUTO
+        PARTIALS FALSE
       END
     END
   END
