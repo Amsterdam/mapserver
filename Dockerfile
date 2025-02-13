@@ -1,18 +1,15 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         apache2 \
         cgi-mapserver \
-        curl \
-        gdal-bin \
-        gdal-data \
         mapserver-bin \
         python3-pip \
-        wget \
-    && apt-get clean
-
+    && apt-get -y --purge autoremove  \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
