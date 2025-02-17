@@ -18,6 +18,204 @@ MAP
   #-----------------------------------------------------------------------------
   # Layers
   #-----------------------------------------------------------------------------
+
+     # --------------------- FUNDERINGEN ----------------------
+
+    LAYER
+      NAME                    "funderingen_volledig_van_hout"
+      GROUP                   "funderingen"
+      INCLUDE                 "connection/dataservices.inc"
+      #something goes wrong because it's not unique... it's gonna fail on this. 
+      DATA                    "geometrie from (select fpf.*, bp.geometrie from public.funderingen_pand_funderingen fpf left join public.bag_panden bp on fpf.pand_identificatie = bp.identificatie) as subquery USING srid=28992 USING UNIQUE id"
+      FILTER                  ([typeFundering] = 'Am' OR [typeFundering] = 'ro' OR [typeFundering] = 'Kespl.' OR [typeFundering] = 'spb' OR [typeFundering] = 'amro')
+      TYPE                    POLYGON
+      TEMPLATE                "empty"
+      PROJECTION
+        "init=epsg:28992"
+      END
+  
+      METADATA
+        "ows_title"           "Funderingen volledig van hout"
+        "ows_abstract"        "Funderingen volledig van hout"
+        "wms_group_title"     "Funderingen"
+        "gml_featureid"       "id"
+        "gml_geometries"      "geometry"
+        "gml_geometry_type"   "multipolygon"
+        "gml_include_items"   "all"
+        "gml_types"           "auto"
+        "wms_include_items"   "all"
+      END
+  
+      CLASS
+        NAME                  "fundering_volledig_van_hout"
+        TITLE                 "Fundering volledig van hout"
+        STYLE
+          ANTIALIAS           true
+          COLOR               "#d7bd8b"
+          OPACITY             20
+        END
+        STYLE
+          OUTLINECOLOR        "#d7bd8b"
+          WIDTH               2
+        END
+      END
+    END
+
+    LAYER
+      NAME                    "betonconstructies_op_houten_palen"
+      GROUP                   "funderingen"
+      INCLUDE                 "connection/dataservices.inc"
+      DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+      FILTER                  ([typeFundering] = 'Vds' OR [typeFundering] = 'bsop' OR [typeFundering] = 'bsp' OR [typeFundering] = 'bphp')
+      TYPE                    POLYGON
+      TEMPLATE                "empty"
+      PROJECTION
+        "init=epsg:28992"
+      END
+  
+      METADATA
+        "ows_title"           "Betonconstructies op houten palen"
+        "ows_abstract"        "Betonconstructies op houten palen"
+        "wms_group_title"     "Funderingen"
+        "gml_featureid"       "id"
+        "gml_geometries"      "geometry"
+        "gml_geometry_type"   "multipolygon"
+        "gml_include_items"   "all"
+        "gml_types"           "auto"
+        "wms_include_items"   "all"
+      END
+  
+      CLASS
+        NAME                  "betonconstructie_op_houten_palen"
+        TITLE                 "Betonconstructie op houten palen"
+        STYLE
+          ANTIALIAS           true
+          COLOR               "#009de6"
+          OPACITY             20
+        END
+        STYLE
+          OUTLINECOLOR        "#009de6"
+          WIDTH               2
+        END
+      END
+    END
+  
+    LAYER
+      NAME                    "funderingen_zonder_hout"
+      GROUP                   "funderingen"
+      INCLUDE                 "connection/dataservices.inc"
+      DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+      FILTER                  ([typeFundering] = 'bssp' OR [typeFundering] = 'bpa' OR [typeFundering] = 'stbp' OR [typeFundering] = 'bpa')
+      TYPE                    POLYGON
+      TEMPLATE                "empty"
+      PROJECTION
+        "init=epsg:28992"
+      END
+  
+      METADATA
+        "ows_title"           "Funderingen zonder hout (vanaf 1950)"
+        "ows_abstract"        "Funderingen zonder hout (vanaf 1950)"
+        "wms_group_title"     "Funderingen"
+        "gml_featureid"       "id"
+        "gml_geometries"      "geometry"
+        "gml_geometry_type"   "multipolygon"
+        "gml_include_items"   "all"
+        "gml_types"           "auto"
+        "wms_include_items"   "all"
+      END
+  
+      CLASS
+        NAME                  "fundering_zonder_hout"
+        TITLE                 "Fundering zonder hout (vanaf 1950)"
+        STYLE
+          ANTIALIAS           true
+          COLOR               "#787878"
+          OPACITY             20
+        END
+        STYLE
+          OUTLINECOLOR        "#787878"
+          WIDTH               2
+        END
+      END
+    END
+
+    LAYER
+      NAME                    "funderingen_op_staal"
+      GROUP                   "funderingen"
+      INCLUDE                 "connection/dataservices.inc"
+      DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+      FILTER                  ([typeFundering] = 'fs')
+      TYPE                    POLYGON
+      TEMPLATE                "empty"
+      PROJECTION
+        "init=epsg:28992"
+      END
+  
+      METADATA
+        "ows_title"           "Funderingen op staal (zonder palen)"
+        "ows_abstract"        "Funderingen op staal (zonder palen)"
+        "wms_group_title"     "Funderingen"
+        "gml_featureid"       "id"
+        "gml_geometries"      "geometry"
+        "gml_geometry_type"   "multipolygon"
+        "gml_include_items"   "all"
+        "gml_types"           "auto"
+        "wms_include_items"   "all"
+      END
+  
+      CLASS
+        NAME                  "fundering_op_staal"
+        TITLE                 "Fundering op staal (zonder palen)"
+        STYLE
+          ANTIALIAS           true
+          COLOR               "#a00078"
+          OPACITY             20
+        END
+        STYLE
+          OUTLINECOLOR        "#a00078"
+          WIDTH               2
+        END
+      END
+    END
+
+    LAYER
+      NAME                    "onbekend"
+      GROUP                   "funderingen"
+      INCLUDE                 "connection/dataservices.inc"
+      DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+      FILTER                  ([typeFundering] = 'Fund.h' OR [typeFundering] = 'NULL')
+      TYPE                    POLYGON
+      TEMPLATE                "empty"
+      PROJECTION
+        "init=epsg:28992"
+      END
+  
+      METADATA
+        "ows_title"           "Onbekend"
+        "ows_abstract"        "Onbekend"
+        "wms_group_title"     "Funderingen"
+        "gml_featureid"       "id"
+        "gml_geometries"      "geometry"
+        "gml_geometry_type"   "multipolygon"
+        "gml_include_items"   "all"
+        "gml_types"           "auto"
+        "wms_include_items"   "all"
+      END
+  
+      CLASS
+        NAME                  "onbekend"
+        TITLE                 "Onbekend"
+        STYLE
+          ANTIALIAS           true
+          COLOR               "#FFE000"
+          OPACITY             20
+        END
+        STYLE
+          OUTLINECOLOR        "#FFE000"
+          WIDTH               2
+        END
+      END
+    END
   
   # --------------------- HISTORISCHE ONDERZOEKEN ----------------------
 
