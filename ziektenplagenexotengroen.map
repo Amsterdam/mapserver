@@ -373,7 +373,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig")
       END
     END
   END
-  LAYER 
+  LAYER
     NAME 'duizendknoop_in_bestrijding_meldingen'
     GROUP 'japanse_duizendknoop_meldingen'
     PROJECTION
@@ -671,7 +671,7 @@ EXPRESSION ("[categorie]" = "Gemeente Amsterdam")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -684,7 +684,7 @@ EXPRESSION ("[categorie]" = "Gemeente Amsterdam")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -710,7 +710,7 @@ EXPRESSION ("[categorie]" = "Overige gemeenten, niet bereikbaar")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -723,7 +723,7 @@ EXPRESSION ("[categorie]" = "Overige gemeenten, niet bereikbaar")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -749,7 +749,7 @@ EXPRESSION ("[categorie]" = "Overige natuurlijke personen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -762,7 +762,7 @@ EXPRESSION ("[categorie]" = "Overige natuurlijke personen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -788,7 +788,7 @@ EXPRESSION ("[categorie]" = "Overige niet-natuurlijke personen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -801,7 +801,7 @@ EXPRESSION ("[categorie]" = "Overige niet-natuurlijke personen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -827,7 +827,7 @@ EXPRESSION ("[categorie]" = "Provincies")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -840,7 +840,7 @@ EXPRESSION ("[categorie]" = "Provincies")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -866,7 +866,7 @@ EXPRESSION ("[categorie]" = "Spoorwegen/ProRail")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -879,7 +879,7 @@ EXPRESSION ("[categorie]" = "Spoorwegen/ProRail")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -905,7 +905,7 @@ EXPRESSION ("[categorie]" = "Staat")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -918,7 +918,7 @@ EXPRESSION ("[categorie]" = "Staat")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -944,7 +944,7 @@ EXPRESSION ("[categorie]" = "Verenigingen van eigenaren")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -957,7 +957,7 @@ EXPRESSION ("[categorie]" = "Verenigingen van eigenaren")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -983,7 +983,7 @@ EXPRESSION ("[categorie]" = "Waterschappen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -996,7 +996,7 @@ EXPRESSION ("[categorie]" = "Waterschappen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -1022,7 +1022,7 @@ EXPRESSION ("[categorie]" = "Woningbouwcorporaties")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -1035,7 +1035,7 @@ EXPRESSION ("[categorie]" = "Woningbouwcorporaties")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -1049,8 +1049,8 @@ EXPRESSION ("[categorie]" = "Woningbouwcorporaties")
     END
     CLASS
       NAME 'meerdere_categorieen'
-      TITLE 'meerdere categorieen'
-EXPRESSION ("[categorie]" = "meerdere categorieen")
+      TITLE 'meerdere categorieën'
+EXPRESSION ("[categorie]" = "meerdere categorieën")
       STYLE
         COLOR '#008080'
         OPACITY 20
@@ -1061,7 +1061,7 @@ EXPRESSION ("[categorie]" = "meerdere categorieen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -1074,7 +1074,7 @@ EXPRESSION ("[categorie]" = "meerdere categorieen")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -1100,7 +1100,7 @@ EXPRESSION ("[categorie]" = "onbekend")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] > 1)
-        TEXT '[deel_van_inspectievlak]% van insp.: [jdk_inspectielak_id]'
+        TEXT '[deel_van_inspectievlak]% van insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
@@ -1113,7 +1113,7 @@ EXPRESSION ("[categorie]" = "onbekend")
       END
       LABEL
         EXPRESSION ([ligt_op_percelen] = 1)
-        TEXT 'insp.: [jdk_inspectielak_id]'
+        TEXT 'insp.: [japanseduizendknoop_inspecties_id]'
         MAXSCALEDENOM 750
         COLOR 0 0 0
         OUTLINECOLOR 255 255 255
