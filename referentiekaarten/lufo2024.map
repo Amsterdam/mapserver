@@ -1,0 +1,161 @@
+MAP
+  NAME "LUFO2024"
+  INCLUDE "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "LUFO'S 2024"
+      "ows_abstract"        "Luchtfoto's van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif"
+  CONFIG "GDAL_DISABLE_READDIR_ON_OPEN"     "TRUE"
+
+  #-------------------------------------------------------------------
+  # UITVOERFORMATEN
+  #-------------------------------------------------------------------
+
+  OUTPUTFORMAT
+    NAME "GTiff"
+    DRIVER GDAL/GTiff
+    MIMETYPE "image/tiff"
+    IMAGEMODE RGB
+    EXTENSION "tif"
+  END
+
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+
+  LAYER
+    NAME                    "lufo2024-5"
+    GROUP                   "lufo2024"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2024-5.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 5 - 10 RD
+    MAXSCALEDENOM           400000
+    MINSCALEDENOM           8000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2024"
+      "ows_group_title"     "lufo2024"
+      "ows_abstract"        "Luchtfoto's van 2024 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2024-4"
+    GROUP                   "lufo2024"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2024-4.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 11 RD
+    MAXSCALEDENOM           8000
+    MINSCALEDENOM           4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2024"
+      "ows_group_title"     "lufo2024"
+      "ows_abstract"        "Luchtfoto's van 2024 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2024-3"
+    GROUP                   "lufo2024"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2024-3.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 12 RD
+    MAXSCALEDENOM           4000
+    MINSCALEDENOM           2000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2024"
+      "ows_group_title"     "lufo2024"
+      "ows_abstract"        "Luchtfoto's van 2024 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2024-2"
+    GROUP                   "lufo2024"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2024-2.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 13 RD
+    MAXSCALEDENOM           2000
+    MINSCALEDENOM           1000
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2024"
+      "ows_group_title"     "lufo2024"
+      "ows_abstract"        "Luchtfoto's van 2024 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2024-1"
+    GROUP                   "lufo2024"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2024-1.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 14 RD
+    MAXSCALEDENOM           1000
+    MINSCALEDENOM           500
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2024"
+      "ows_group_title"     "lufo2024"
+      "ows_abstract"        "Luchtfoto's van 2024 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+
+  LAYER
+    NAME                    "lufo2024-0"
+    GROUP                   "lufo2024"
+    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2024-0.shp"
+    TILEITEM                "location"
+    TYPE                    RASTER
+    # Zoom 15-17 RD
+    MAXSCALEDENOM           500
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "lufo's 2024"
+      "ows_group_title"     "lufo2024"
+      "ows_abstract"        "Luchtfoto's van 2024 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+
+#=============================================================================
+END
