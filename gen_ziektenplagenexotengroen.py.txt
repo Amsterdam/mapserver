@@ -41,18 +41,18 @@ layers_JPD = [
 ]
 
 layers_JPD_percelen = [
-    ("Japanse Duizendknoop Percelen", "Gemeente Amsterdam", "Gemeente Amsterdam", "#E6194B"),
-    ("Japanse Duizendknoop Percelen", "Overige gemeenten", "Overige gemeenten, niet bereikbaar", "#3CB44B"),
-    ("Japanse Duizendknoop Percelen", "Overige natuurlijke personen", "Overige natuurlijke personen", "#FFE119"),
-    ("Japanse Duizendknoop Percelen", "Overige niet-natuurlijke personen", "Overige niet-natuurlijke personen", "#0082C8"),
-    ("Japanse Duizendknoop Percelen", "Provincies", "Provincies", "#F58231"),
-    ("Japanse Duizendknoop Percelen", "Spoorwegen/ProRail", "Spoorwegen/ProRail", "#911EB4"),
-    ("Japanse Duizendknoop Percelen", "Staat", "Staat", "#46F0F0"),
-    ("Japanse Duizendknoop Percelen", "Verenigingen van eigenaren", "Verenigingen van eigenaren", "#F032E6"),
-    ("Japanse Duizendknoop Percelen", "Waterschappen", "Waterschappen", "#D2F53C"),
-    ("Japanse Duizendknoop Percelen", "Woningbouwcorporaties", "Woningbouwcorporaties", "#FABEBE"),
-    ("Japanse Duizendknoop Percelen", "meerdere categorieën", "meerdere categorieën", "#008080"),
-    ("Japanse Duizendknoop Percelen", "onbekend", "onbekend", "#E6BEFF")
+    ("Japanse Duizendknoop Percelen", "Gemeente Amsterdam", "Gemeente Amsterdam", "#004699"),
+    ("Japanse Duizendknoop Percelen", "Overige gemeenten", "Overige gemeenten, niet bereikbaar", "#BED200"),
+    ("Japanse Duizendknoop Percelen", "Overige natuurlijke personen", "Overige natuurlijke personen", "#E50082"),
+    ("Japanse Duizendknoop Percelen", "Overige niet-natuurlijke personen", "Overige niet-natuurlijke personen", "#A00078"),
+    ("Japanse Duizendknoop Percelen", "Provincies", "Provincies", "#00A03C"),
+    ("Japanse Duizendknoop Percelen", "Spoorwegen/ProRail", "Spoorwegen/ProRail", "#FFD700"),
+    ("Japanse Duizendknoop Percelen", "Staat", "Staat", "#666666"),
+    ("Japanse Duizendknoop Percelen", "Verenigingen van eigenaren", "Verenigingen van eigenaren", "#00D2B4"),
+    ("Japanse Duizendknoop Percelen", "Waterschappen", "Waterschappen", "#009DE6"),
+    ("Japanse Duizendknoop Percelen", "Woningbouwcorporaties", "Woningbouwcorporaties", "#FF9100"),
+    ("Japanse Duizendknoop Percelen", "Meerdere Categorieën", "meerdere categorieën", "#008080"),
+    ("Japanse Duizendknoop Percelen", "Onbekend", "onbekend", "#E6BEFF")
 ]
 
 header("Bor")
@@ -260,7 +260,7 @@ with block("MAP"):
                     p("OUTLINEWIDTH 1.5")
                     p("FONT", "Ubuntu-M")
                     p("TYPE truetype")
-                    p("SIZE 8")
+                    p("SIZE 10")
                     p("POSITION AUTO")
                     p("PARTIALS FALSE")
 
@@ -273,6 +273,6 @@ with block("MAP"):
                     p("OUTLINEWIDTH 1.5")
                     p("FONT", "Ubuntu-M")
                     p("TYPE truetype")
-                    p("SIZE 8")
+                    p("SIZE 10")
                     p("POSITION AUTO")
                     p("PARTIALS FALSE")
