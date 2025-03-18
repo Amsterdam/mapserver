@@ -9,11 +9,10 @@
 MAP
   NAME                      "Gemeentelijk Vastgoed"
   INCLUDE                   "header.inc"
-  DEBUG 1
 
   WEB
     METADATA
-      "ows_title"           "gemeentelijk_vastgoed"
+      "ows_title"           "Gemeentelijk Vastgoed"
       "ows_abstract"        "Vastgoed van de Gemeente Amsterdam"
       "wms_extent"          "100000 450000 150000 500000"
     END
@@ -35,21 +34,21 @@ MAP
             SELECT * from gemeentelijk_vastgoed_gebouwobjecten
             WHERE eigendom = 'Volle eigendom'
             )
-            AS sub USING srid=28992 USING UNIQUE id"
+            AS sub USING srid=28992 USING UNIQUE object_id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
 
     METADATA
-      "wfs_title"           "Volle eigendom"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Vastgoed van de gemeente Amsterdam - Volle eigendom"
-      "wfs_enable_request"  "*"
+#      "wfs_title"           "Volle eigendom"
+#      "wfs_srs"             "EPSG:28992"
+#      "wfs_abstract"        "Vastgoed van de gemeente Amsterdam - Volle eigendom"
+#      "wfs_enable_request"  "*"
       "gml_include_items"   "all"
       "wms_title"           "Volle eigendom"
       "wms_enable_request"  "*"
-      "wms_group_title"     "gebouwobjecten"
+      "wms_group_title"     "Gebouwobjecten"
       "wms_abstract"        "Vastgoed van de Gemeente Amsterdam - Volle eigendom"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "gebouwobjecten_volle_eigendom"
@@ -64,12 +63,12 @@ MAP
       STYLE
           ANTIALIAS    true
           COLOR        157 177 203
-          OPACITY      33
+          OPACITY      50
       END
       STYLE
           OUTLINECOLOR        157 177 203
-          OPACITY      70
-          WIDTH        1
+          OPACITY      100
+          WIDTH        2
       END
     END
   END
@@ -90,21 +89,21 @@ MAP
             SELECT * from gemeentelijk_vastgoed_gebouwobjecten
             WHERE eigendom = 'Appartementsrecht'
             )
-            AS sub USING srid=28992 USING UNIQUE id"
+            AS sub USING srid=28992 USING UNIQUE object_id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
 
 
     METADATA
-      "wfs_title"           "Appartementsrechten"
-      "wfs_srs"             "EPSG:28992"
-      "wfs_abstract"        "Vastgoed van de gemeente Amsterdam - Appartementsrechten"
-      "wfs_enable_request"  "*"
+#      "wfs_title"           "Appartementsrechten"
+#      "wfs_srs"             "EPSG:28992"
+#      "wfs_abstract"        "Vastgoed van de gemeente Amsterdam - Appartementsrechten"
+#      "wfs_enable_request"  "*"
       "gml_include_items"   "all"
       "wms_title"           "Appartementsrechten"
       "wms_enable_request"  "*"
-      "wms_group_title"     "gebouwobjecten"
+      "wms_group_title"     "Gebouwobjecten"
       "wms_abstract"        "Vastgoed van de gemeente Amsterdam - Appartementsrechten"
       "wms_srs"             "EPSG:28992"
       "wms_name"            "gebouwobjecten_appartementsrechten"
@@ -119,12 +118,12 @@ MAP
       STYLE
           ANTIALIAS    true
           COLOR        228 151 190
-          OPACITY      33
+          OPACITY      50
       END
       STYLE
           OUTLINECOLOR        228 151 190
-          OPACITY      70
-          WIDTH        1
+          OPACITY      100
+          WIDTH        2
       END
     END
   END
