@@ -1,0 +1,130 @@
+#==============================================================================
+#
+# Dataset: Gemeentelijk Vastgoed
+# Doel: Gemeentelijk Vastgoed Amsterdam met volle eigendommen en Appartementsrechten
+#
+#==============================================================================
+
+
+MAP
+  NAME                      "Gemeentelijk Vastgoed"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "ows_title"           "Gemeentelijk Vastgoed"
+      "ows_abstract"        "Vastgoed van de Gemeente Amsterdam"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+  # Multiple layers with a filter are supported but we now have only one class
+  # per layer
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME                    "volle_eigendom"
+    GROUP                   "gebouwobjecten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "geometrie FROM (
+            SELECT * from gemeentelijk_vastgoed_gebouwobjecten
+            WHERE eigendom = 'Volle eigendom'
+            )
+            AS sub USING srid=28992 USING UNIQUE object_id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+#      "wfs_title"           "Volle eigendom"
+#      "wfs_srs"             "EPSG:28992"
+#      "wfs_abstract"        "Vastgoed van de gemeente Amsterdam - Volle eigendom"
+#      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_title"           "Volle eigendom"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Gebouwobjecten"
+      "wms_abstract"        "Vastgoed van de Gemeente Amsterdam - Volle eigendom"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "gebouwobjecten_volle_eigendom"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME          "Gebouwobjecten Volle eigendom"
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        157 177 203
+          OPACITY      50
+      END
+      STYLE
+          OUTLINECOLOR        157 177 203
+          OPACITY      100
+          WIDTH        2
+      END
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+  # Multiple layers with a filter are supported but we now have only one class
+  # per layer
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME                    "Appartementsrecht"
+    GROUP                   "gebouwobjecten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "geometrie FROM (
+            SELECT * from gemeentelijk_vastgoed_gebouwobjecten
+            WHERE eigendom = 'Appartementsrecht'
+            )
+            AS sub USING srid=28992 USING UNIQUE object_id"
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           400000
+
+
+    METADATA
+#      "wfs_title"           "Appartementsrechten"
+#      "wfs_srs"             "EPSG:28992"
+#      "wfs_abstract"        "Vastgoed van de gemeente Amsterdam - Appartementsrechten"
+#      "wfs_enable_request"  "*"
+      "gml_include_items"   "all"
+      "wms_title"           "Appartementsrechten"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Gebouwobjecten"
+      "wms_abstract"        "Vastgoed van de gemeente Amsterdam - Appartementsrechten"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "gebouwobjecten_appartementsrechten"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    CLASS
+      NAME          "Gebouwobjecten Appartementsrechten"
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        228 151 190
+          OPACITY      50
+      END
+      STYLE
+          OUTLINECOLOR        228 151 190
+          OPACITY      100
+          WIDTH        2
+      END
+    END
+  END
+END
