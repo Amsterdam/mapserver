@@ -13,6 +13,7 @@ RUN apt-get update -y \
         wget \
     && apt-get clean
 
+RUN python3 -m pip install --upgrade pip setuptools
 
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
