@@ -272,7 +272,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief) AS sub USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief_v3) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -299,7 +299,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -326,7 +326,7 @@ FILTER ("[status_kaartlaag]" = "Gemeld")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -353,7 +353,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig, niet bereikbaar")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -380,7 +380,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -407,7 +407,7 @@ FILTER ("[status_kaartlaag]" = "In bestrijding")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -434,7 +434,7 @@ FILTER ("[status_kaartlaag]" = "Monitoring")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -461,7 +461,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop verwijderd")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -492,7 +492,7 @@ FILTER ("[status_kaartlaag]" = "Gemeld")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -523,7 +523,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig, niet bereikbaar")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -554,7 +554,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop aanwezig")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -585,7 +585,7 @@ FILTER ("[status_kaartlaag]" = "In bestrijding")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -616,7 +616,7 @@ FILTER ("[status_kaartlaag]" = "Monitoring")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     CLASSITEM 'status_kaartlaag'
@@ -647,7 +647,7 @@ FILTER ("[status_kaartlaag]" = "Duizendknoop verwijderd")
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_percelen USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_percelen_v2 USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     METADATA
@@ -1049,8 +1049,8 @@ EXPRESSION ("[categorie]" = "Woningbouwcorporaties")
     END
     CLASS
       NAME 'meerdere_categorieen'
-      TITLE 'Meerdere CategorieÃ«n'
-EXPRESSION ("[categorie]" = "meerdere categorieÃ«n")
+      TITLE 'Meerdere Categorieën'
+EXPRESSION ("[categorie]" = "meerdere categorieën")
       STYLE
         COLOR '#008080'
         OPACITY 20
