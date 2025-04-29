@@ -4,6 +4,17 @@
 default_language_version:
   python: python3.13
 repos:
+  - repo: local
+    hooks:
+      - id: validate-maps
+        name: validate maps
+        entry: mappyfile validate
+        language: python
+        types: [ map ]
+        pass_filenames: true
+        args:
+          - --no-expand
+          - --version=7.6
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
