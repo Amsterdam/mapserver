@@ -7,7 +7,7 @@
 
 
 MAP
-  NAME                      "Objecten Openbare Ruimte"
+  NAME                      "objecten_openbare_ruimte"
   INCLUDE                   "header.inc"
 
   WEB
@@ -15,6 +15,7 @@ MAP
       "ows_title"           "Objecten Openbare Ruimte"
       "ows_abstract"        "Objecten in de openbare ruimte die beheerd worden door de Gemeente Amsterdam"
       "wms_extent"          "100000 450000 150000 500000"
+    "ows_onlineresource"  "MAP_URL_REPLACE/maps/objecten_openbare_ruimte"
     END
   END
 
@@ -26,7 +27,7 @@ MAP
   #-----------------------------------------------------------------------------    
     LAYER
     NAME                    "groenobjecten"
-    #GROUP                   "Beheer objecten"
+    GROUP                   "objecten_openbare_ruimte"
     PROJECTION
       "init=epsg:28992"
     END
@@ -49,7 +50,7 @@ MAP
       "gml_include_items"   "all"
       "wms_title"           "Groenobjecten"
       "wms_enable_request"  "*"
-#      "wms_group_title"     "Beheerobjecten Openbare Ruimte"
+      "wms_group_title"     "Objecten Openbare Ruimte"
       "wms_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met aaneengesloten vegetatie."
       "wms_srs"             "EPSG:28992"
       "wms_name"            "Groenobjecten"
@@ -82,7 +83,7 @@ MAP
   #-----------------------------------------------------------------------------
   LAYER
     NAME                    "terreindeel"
-  #  GROUP                   "nvt"
+    GROUP                   "objecten_openbare_ruimte"
     PROJECTION
       "init=epsg:28992"
     END
@@ -98,20 +99,20 @@ MAP
 
 
     METADATA
-#      "wfs_title"           "Terreindelen"
-#      "wfs_srs"             "EPSG:28992"
-#      "wfs_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein, dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met of zonder aaneengesloten vegetatie."
-#      "wfs_enable_request"  "*"
-      "gml_include_items"   "all"
-      "wms_title"           "Terreindelen"
-      "wms_enable_request"  "*"
-#      "wms_group_title"     "Terreindelen"
-      "wms_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein, dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met of zonder aaneengesloten vegetatie."
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Terreindelen"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "100000 450000 150000 500000"
+        #      "wfs_title"           "Terreindelen"
+        #      "wfs_srs"             "EPSG:28992"
+        #      "wfs_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein, dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met of zonder aaneengesloten vegetatie."
+        #      "wfs_enable_request"  "*"
+        "gml_include_items"   "all"
+        "wms_title"           "Terreindelen"
+        "wms_enable_request"  "*"
+            "wms_group_title"     "Objecten Openbare Ruimte"
+        "wms_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein, dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met of zonder aaneengesloten vegetatie."
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Terreindelen"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
     END
 
     CLASS
@@ -129,7 +130,6 @@ MAP
       END
     END
   END
-END
 
   #-----------------------------------------------------------------------------
   # Multiple layers with a filter are supported but we now have only one class
@@ -139,7 +139,7 @@ END
   #-----------------------------------------------------------------------------    
   LAYER
     NAME                    "verhardingen"
-#    GROUP                   "nvt"
+    GROUP                   "objecten_openbare_ruimte"
     PROJECTION
       "init=epsg:28992"
     END
@@ -151,24 +151,24 @@ END
             AS sub USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
-    MAXSCALEDENOM           400000
+    MAXSCALEDENOM           5000
 
 
     METADATA
-#      "wfs_title"           "verhardingen"
-#      "wfs_srs"             "EPSG:28992"
-#      "wfs_abstract"        "Verharde lagen van een weglichaam, speel- en sportondergronden en onbegroeid terreindelen inclusief fundering."
-#      "wfs_enable_request"  "*"
-      "gml_include_items"   "all"
-      "wms_title"           "Verhardingen"
-      "wms_enable_request"  "*"
-#      "wms_group_title"     "Verhardingen"
-      "wms_abstract"        "Verharde lagen van een weglichaam, speel- en sportondergronden en onbegroeid terreindelen inclusief fundering."
-      "wms_srs"             "EPSG:28992"
-      "wms_name"            "Verhardingen"
-      "wms_format"          "image/png"
-      "wms_server_version"  "1.1.1"
-      "wms_extent"          "100000 450000 150000 500000"
+        #      "wfs_title"           "verhardingen"
+        #      "wfs_srs"             "EPSG:28992"
+        #      "wfs_abstract"        "Verharde lagen van een weglichaam, speel- en sportondergronden en onbegroeid terreindelen inclusief fundering."
+        #      "wfs_enable_request"  "*"
+        "gml_include_items"   "all"
+        "wms_title"           "Verhardingen"
+        "wms_enable_request"  "*"
+        "wms_group_title"     "Objecten Openbare Ruimte"
+        "wms_abstract"        "Verharde lagen van een weglichaam, speel- en sportondergronden en onbegroeid terreindelen inclusief fundering."
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Verhardingen"
+        "wms_format"          "image/png"
+        "wms_server_version"  "1.1.1"
+        "wms_extent"          "100000 450000 150000 500000"
     END
 
     CLASS
@@ -186,3 +186,4 @@ END
       END
     END
   END
+END
