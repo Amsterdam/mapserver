@@ -15,6 +15,15 @@ repos:
         args:
           - --no-expand
           - --version=7.6
+  - repo: local
+    hooks:
+      - id: check_ows_onlineresource_url
+        name: check ows_onlineresource url
+        entry: python3 tools/check_ows_onlineresource_url.py
+        language: python
+        additional_dependencies: [mappyfile]
+        types: [ map ]
+        pass_filenames: true
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
