@@ -208,10 +208,13 @@ async def get_jwk():
         return cached_jwk
 
 
-async def check_protection(path):
+async def check_protection(path, method):
     app_logger.debug("Checking protection for `%s`", path)
     if PRIVATE_MAPS_RE_PATTERN.match(path) is not None:
-        raise web.HTTPForbidden(reason=f"Accessing `{path}` without a JWT token is not allowed.")
+        if method == "OPTIONS":
+            return web.Response(text="Status OK")
+        else:
+            raise web.HTTPForbidden(reason=f"Accessing `{path}` without a JWT token is not allowed.")
 
 
 async def handle(req: web.Request):
@@ -219,14 +222,14 @@ async def handle(req: web.Request):
     token = await fetch_token(req)
     proxy_url = env["PRIVATE_PROXY_URL"]
     if token is None:
-        await check_protection(path)
+        await check_protection(path, req.method)
         proxy_url = env["PUBLIC_PROXY_URL"]
     target_url = URL("".join([proxy_url.rstrip("/"), "/", path.lstrip("/")]))
 
     app_logger.debug("Proxy-URL: \n%s", target_url)
     app_logger.debug("Request params: \n %s", req.rel_url.query)
     app_logger.debug("Request headers: \n %s", req.headers)
-    
+
 
     if token is not None:
         await audit(req, token)
