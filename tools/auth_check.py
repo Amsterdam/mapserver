@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Optional
+from schematools.loaders import get_schema_loader
 
 import mappyfile as mf
 from mappyfile.parser import Parser
@@ -15,7 +16,6 @@ from mappyfile.pprint import PrettyPrinter
 from mappyfile.transformer import MapfileToDict
 from schematools.types import DatasetSchema
 
-from utils import dataset_schemas_from_url
 
 SCHEMA_URL = "https://schemas.data.amsterdam.nl/datasets"
 ACC_SCHEMA_URL = "https://acc.schemas.data.amsterdam.nl/datasets"
@@ -172,7 +172,8 @@ def run_check(
     logger.info("Using %s as repository root", repo_root)
 
     logger.info("Loading schemas from %s", schema_url)
-    schemas = dataset_schemas_from_url(schema_url)
+    loader = get_schema_loader(schema_url)
+    schemas = loader.get_all_datasets()
 
     prohibited_queries = []
     check_failed = False
