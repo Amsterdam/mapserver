@@ -1,0 +1,113 @@
+MAP
+    NAME                      "klic_buffers"
+    INCLUDE                   "header.inc"
+    WEB
+      METADATA
+        "ows_title"           "KLIC Buffers"
+        "ows_abstract"        "KLIC Buffers"
+        "ows_onlineresource"  "http://localhost:8383/maps/klic_buffers"
+      END
+    END
+  
+    #==============================================================================================
+  
+    LAYER
+      NAME                    "KLIC_buffer_1_5"
+      GROUP                   "klic_buffer"
+      INCLUDE                 "connection/dataservices.inc"
+      DATA                     "buffered_geom from (SELECT
+                                id, 
+                                ST_Buffer(
+                                    geometrie ,
+                                    CASE
+                                        WHEN class IN (
+                                            'Telecommunicatiekabel',
+                                            'Elektriciteitskabel',
+                                            'Kabelbed',
+                                            'Waterleiding',
+                                            'Riolering',
+                                            'ThermischePijpleiding'
+                                        ) THEN 1
+                                        WHEN class IN (
+                                            'OlieGasChemicalienPijpleiding'
+                                        ) THEN 5
+                                        ELSE 1  -- default buffer, adjust as needed
+                                    END
+                                ) AS buffered_geom
+                            FROM public.leidingeninfrastructuur_klic_kabels_en_leidingen_v1
+                            WHERE class IS NOT NULL) as subquery USING srid=28992 USING UNIQUE id"
+      TYPE                    POLYGON
+      TEMPLATE                "empty"
+      PROJECTION
+        "init=epsg:28992"
+      END
+  
+      METADATA
+        "ows_title"           "KLIC Buffer 1m en 5m"
+        "ows_abstract"        "KLIC Buffer 1m en 5m"
+        "wms_group_title"     "KLIC Buffer"
+        "gml_featureid"       "id"
+        "gml_geometries"      "geometry"
+        "gml_geometry_type"   "multipolygon"
+        "gml_include_items"   "all"
+        "gml_types"           "auto"
+        "wms_include_items"   "all"
+      END
+  
+      CLASS
+        NAME                  "buffers"
+        TITLE                 "Buffers"
+        STYLE
+          ANTIALIAS           true
+          COLOR               "#4CBC84"
+          OPACITY             20
+        END
+        STYLE
+          OUTLINECOLOR        "#4CBC84"
+          WIDTH               2
+        END
+      END
+    END
+  
+    LAYER
+        NAME                    "KLIC_buffer_1_5_NO_BUFFER"
+        GROUP                   "klic_buffer"
+        INCLUDE                 "connection/dataservices.inc"
+        DATA                     "geometrie from (SELECT
+                                  id,
+                                      geometrie
+                              FROM public.leidingeninfrastructuur_klic_kabels_en_leidingen_v1) as subquery USING srid=28992 USING UNIQUE id"
+        TYPE                    LINE
+        TEMPLATE                "empty"
+        PROJECTION
+          "init=epsg:28992"
+        END
+    
+        METADATA
+          "ows_title"           "KLIC Buffer 1m en 5m NO BUFFER"
+          "ows_abstract"        "KLIC Buffer 1m en 5m"
+          "wms_group_title"     "KLIC Buffer"
+          "gml_featureid"       "id"
+          "gml_geometries"      "geometry"
+          "gml_include_items"   "all"
+          "gml_types"           "auto"
+          "wms_include_items"   "all"
+        END
+    
+        CLASS
+          NAME                  "line"
+          TITLE                 "line"
+          STYLE
+            ANTIALIAS           true
+            COLOR               "#4CBC84"
+            OPACITY             20
+          END
+          STYLE
+            OUTLINECOLOR        "#4CBC84"
+            WIDTH               2
+          END
+        END
+      END
+  
+  END
+  
