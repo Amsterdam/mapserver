@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:22.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y \
@@ -13,14 +13,12 @@ RUN apt-get update -y \
         wget \
     && apt-get clean
 
+
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-COPY mapserver.conf /usr/local/etc/
-RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /etc/apache2/apache2.conf
- 
 RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
