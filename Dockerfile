@@ -13,8 +13,6 @@ RUN apt-get update -y \
         wget \
     && apt-get clean
 
-RUN python -m pip install --upgrade pip setuptools
-
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
 
@@ -22,18 +20,18 @@ RUN a2enmod actions cgid headers rewrite
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 COPY mapserver.conf /usr/local/etc/
 RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /etc/apache2/apache2.conf
- 
+
 RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 
-COPY . /srv/mapserver/ 
+COPY . /srv/mapserver/
 COPY epsg /usr/share/proj
 
 # set apache user id matching ctr user id
 RUN usermod --non-unique --uid 999 www-data
 RUN groupmod -o -g 999 www-data
-RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2 
+RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2
 RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && chown -R 999:999 /var/log/apache2/
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
 RUN rm -rf /srv/mapserver/private
