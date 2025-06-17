@@ -61,9 +61,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run MapServer
-      run: docker compose build map &&
-           docker compose run -d -p "8383:80" map &&
+      run: docker compose up -d public &&
            sleep 3
     - name: Projection test
-      run: curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491' |
+      run: |
+        curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491';
+        curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491' |
                jq '.features | if length > 0 then . else halt_error(1) end'
