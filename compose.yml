@@ -52,16 +52,13 @@ services:
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "${MAP_URL:-http://localhost:8383}"
       LEGEND_URL: "${LEGEND_URL:-http://localhost:8383}"
 
-    volumes:
-      - .:/srv/mapserver/
-
-  privatemap:
+  private:
     build:
       context: .
       dockerfile: Dockerfile.private
@@ -82,21 +79,13 @@ services:
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "${MAP_URL:-http://localhost:8384}"
       LEGEND_URL: "${LEGEND_URL:-http://localhost:8384}"
 
-    volumes:
-      - ./tools/:/srv/mapserver/tools/
-      - ./symbols/:/srv/mapserver/symbols/
-      - ./fonts/:/srv/mapserver/fonts/
-      - ./sld/:/srv/mapserver/sld/
-      - ./connection/:/srv/mapserver/connection/
-      - ./private:/srv/mapserver/
-
-  topomap:
+  topografie:
     build:
       context: .
       dockerfile: Dockerfile.topografie
@@ -117,16 +106,8 @@ services:
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "${MAP_URL:-http://localhost:8385}"
       LEGEND_URL: "${LEGEND_URL:-http://localhost:8385}"
-
-    volumes:
-      - ./tools/:/srv/mapserver/tools/
-      - ./symbols/:/srv/mapserver/symbols/
-      - ./fonts/:/srv/mapserver/fonts/
-      - ./sld/:/srv/mapserver/sld/
-      - ./connection/:/srv/mapserver/connection/
-      - ./referentiekaarten/:/srv/mapserver/
