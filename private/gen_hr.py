@@ -15,11 +15,13 @@ sbi = {
     "A Landbouw, bosbouw en visserij": [
         ("01", "Landbouw, jacht en dienstverlening voor de landbouw en jacht", "#FF0000"),
         ("02", "Bosbouw, exploitatie van bossen en dienstverlening voor de bosbouw", "#00FF00"),
-        ("03", "Visserij en kweken van vis en schaaldieren", "#0000FF")
+        ("03", "Visserij en aquacultuur", "#0000FF")
     ],
     "B Winning van delfstoffen": [
+        ("05", "Winning van steenkool en bruinkool", "#FFFF00"),
         ("06", "Winning van aardolie en aardgas", "#FFFF00"),
-        ("08", "Winning van delfstoffen (geen olie en gas)", "#FF00FF"),
+        ("07", "Winning van metaalertsen", "#FFFF00"),
+        ("08", "Overige winning van delfstoffen", "#FF00FF"),
         ("09", "Dienstverlening voor de winning van delfstoffen", "#00FFFF")
     ],
     "C Industrie": [
@@ -28,117 +30,118 @@ sbi = {
         ("12", "Vervaardiging van tabaksproducten", "#FF4500"),
         ("13", "Vervaardiging van textiel", "#228B22"),
         ("14", "Vervaardiging van kleding", "#4169E1"),
-        ("15", "Vervaardiging van leer, lederwaren en schoenen", "#FF69B4"),
-        ("16", "Primaire houtbewerking en vervaardiging van artikelen van hout, kurk, riet en vlechtwerk (geen meubels)", "#32CD32"),
-        ("17", "Vervaardiging van papier, karton en papier- en kartonwaren", "#8A2BE2"),
-        ("18", "Drukkerijen, reproductie van opgenomen media", "#DC143C"),
-        ("19", "Vervaardiging van cokesovenproducten en aardolieverwerking", "#00CED1"),
-        ("20", "Vervaardiging van chemische producten", "#FFD700"),
+        ("15", "Vervaardiging van leer, lederwaren en soortgelijke producten van andere materialen", "#FF69B4"),
+        ("16", "Houtindustrie en vervaardiging van artikelen van hout en kurk, met uitzondering van meubelen; vervaardiging van artikelen van riet en van vlechtwerk", "#32CD32"),
+        ("17", "Vervaardiging van papier en papierwaren", "#8A2BE2"),
+        ("18", "Activiteiten op het gebied van drukwerk en reproductie van opgenomen media", "#DC143C"),
+        ("19", "Vervaardiging van cokes en van geraffineerde aardolieproducten", "#00CED1"),
+        ("20", "Vervaardiging van chemicaliën en chemische producten", "#FFD700"),
         ("21", "Vervaardiging van farmaceutische grondstoffen en producten", "#808000"),
         ("22", "Vervaardiging van producten van rubber en kunststof", "#4682B4"),
         ("23", "Vervaardiging van overige niet-metaalhoudende minerale producten", "#00FF7F"),
-        ("24", "Vervaardiging van metalen in primaire vorm", "#8B008B"),
-        ("25", "Vervaardiging van producten van metaal (geen machines en apparaten)", "#FF6347"),
+        ("24", "Vervaardiging van basismetalen", "#8B008B"),
+        ("25", "Vervaardiging van producten van metaal, met uitzondering van machines en apparatuur", "#FF6347"),
         ("26", "Vervaardiging van computers en van elektronische en optische apparatuur", "#556B2F"),
         ("27", "Vervaardiging van elektrische apparatuur", "#800000"),
-        ("28", "Vervaardiging van overige machines en apparaten", "#9932CC"),
-        ("29", "Vervaardiging van auto's, aanhangwagens en opleggers", "#20B2AA"),
-        ("30", "Vervaardiging van overige transportmiddelen", "#FA8072"),
-        ("31", "Vervaardiging van meubels", "#2E8B57"),
+        ("28", "Vervaardiging van machines en apparaten, n.e.g.", "#9932CC"),
+        ("29", "Vervaardiging van motorvoertuigen, aanhangwagens en opleggers", "#20B2AA"),
+        ("30", "Vervaardiging van overige vervoermiddelen", "#FA8072"),
+        ("31", "Vervaardiging van meubelen", "#2E8B57"),
         ("32", "Vervaardiging van overige goederen", "#6A5ACD"),
-        ("33", "Reparatie en installatie van machines en apparaten", "#B22222")
+        ("33", "Reparatie, onderhoud en installatie van machines en apparaten", "#B22222")
     ],
     "D Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht": [
         ("35", "Productie en distributie van en handel in elektriciteit, aardgas, stoom en gekoelde lucht", "#4682B4")
     ],
     "E Winning en distributie van water; afval- en afvalwaterbeheer en sanering": [
-        ("36", "Winning en distributie van water", "#FF5733"),
+        ("36", "Winning, behandeling en distributie van water", "#FF5733"),
         ("37", "Afvalwaterinzameling en -behandeling", "#33FF57"),
-        ("38", "Afvalinzameling en -behandeling; voorbereiding tot recycling", "#3377FF"),
+        ("38", "Afvalinzameling, voorbereiding tot recycling, en verwijdering", "#3377FF"),
         ("39", "Sanering en overig afvalbeheer", "#FF33FF")
     ],
     "F Bouwnijverheid": [
-        ("41", "Algemene burgerlijke en utiliteitsbouw en projectontwikkeling", "#FF5733"),
-        ("42", "Grond-, water- en wegenbouw (geen grondverzet)", "#33FF57"),
+        ("41", "Burgerlijke en utiliteitsbouw", "#FF5733"),
+        ("42", "Grond-, water- en wegenbouw", "#33FF57"),
         ("43", "Gespecialiseerde werkzaamheden in de bouw", "#3377FF") 
     ],
-    "G Groot- en detailhandel; reparatie van auto's": [
-        ("45", "Handel in en reparatie van auto's, motorfietsen en aanhangers", "#FF5733"),
-        ("46", "Groothandel en handelsbemiddeling (niet in auto's en motorfietsen)", "#33FF57"),
-        ("47", "Detailhandel (niet in auto's)", "#3366FF")
+    "G Groot- en detailhandel": [
+        ("46", "Groothandel", "#33FF57"),
+        ("47", "Detailhandel", "#3366FF")
     ],
     "H Vervoer en opslag": [
-        ("49", "Vervoer over land", "#FF5733"),
+        ("49", "Vervoer over land en via pijpleidingen", "#FF5733"),
         ("50", "Vervoer over water", "#33FF57"),
         ("51", "Luchtvaart", "#3366FF"),
         ("52", "Opslag en dienstverlening voor vervoer", "#FF33FF"),
-        ("53", "Post en koeriers", "#FFFF33")
+        ("53", "Post- en koeriersdiensten", "#FFFF33")
     ],
     "I Logies-, maaltijd- en drankverstrekking": [
-        ("55", "Logiesverstrekking", "#BF8080"),
-        ("56", "Eet- en drinkgelegenheden", "#BFBFBF")
+        ("55", "Logiesverstrekking en -bemiddeling", "#BF8080"),
+        ("56", "Exploitatie van eet- en drinkgelegenheden", "#BFBFBF")
     ],
     "J Informatie en communicatie": [
         ("58", "Uitgeverijen", "#BF80FD"),
         ("59", "Productie en distributie van films en televisieprogramma's; maken en uitgeven van geluidsopnamen", "#BF80BF"),
-        ("60", "Verzorgen en uitzenden van radio- en televisieprogramma's", "#BF8040"),
+        ("60", "Verzorgen en uitzenden van radio- en televisieprogramma's", "#BF8040")
+        ],
+    "K Telecommunciatie, computerprogrammering en consultancy, informatica-infrastructuur en overige activiteiten op het gebied van informatiediensten": [
         ("61", "Telecommunicatie", "#BFBF80"),
-        ("62", "Dienstverlenende activiteiten op het gebied van informatietechnologie", "#BFBFBF"),
+        ("62", "Computerprogrammering, consultancy en aanverwante activiteiten", "#BFBFBF"),
         ("63", "Dienstverlenende activiteiten op het gebied van informatie", "#BF8080")
         ],
-    "K Financiële instellingen": [
-        ("64", "Financiële instellingen (geen verzekeringen en pensioenfondsen)", "#FF6347"),
-        ("65", "Verzekeringen en pensioenfondsen (geen verplichte sociale verzekeringen)", "#4682B4"),
-        ("66", "Overige financiële dienstverlening", "#9400D3")
+    "L Activiteiten op het gebied van financiële dienstverlening en verzekeringen": [
+        ("64", "Financiële dienstverlening, met uitzondering van verzekeringen en pensioenfondsen", "#FF6347"),
+        ("65", "Activiteiten op het gebied van verzekeringen en pensioenfondsen, met uitzondering van verplichte sociale verzekeringen", "#4682B4"),
+        ("66", "Ondersteunende activiteiten voor financiële diensten, verzekeringen en pensioenen", "#9400D3")
     ],
-    "L Verhuur van en handel in onroerend goed": [
-        ("68", "Verhuur van en handel in onroerend goed", "#00FF00")
+    "M Exploitatie van en handel in onroerend goed": [
+        ("68", "Exploitatie van en handel in onroerend goed", "#00FF00")
     ],
-    "M Advisering, onderzoek en overige specialistische zakelijke dienstverlening": [
-        ("69", "Rechtskundige dienstverlening, accountancy, belastingadvisering en administratie", "#FF00FF"),
-        ("70", "Holdings (geen financiële), concerndiensten binnen eigen concern en managementadvisering", "#00FF7F"),
-        ("71", "Architecten, ingenieurs en technisch ontwerp en advies; keuring en controle", "#000080"),
-        ("72", "Speur- en ontwikkelingswerk", "#8B0000"),
-        ("73", "Reclame en marktonderzoek", "#FFA500"),
-        ("74", "Industrieel ontwerp en vormgeving, fotografie, vertaling en overige consultancy", "#4B0082"),
+    "N Wetenschappelijke en technische activiteiten en specialistische zakelijke dienstverlening": [
+        ("69", "Rechtskundige en boekhoudkundige dienstverlening", "#FF00FF"),
+        ("70", "Activiteiten van hoofdkantoren, interne concerndiensten en managementadvisering", "#00FF7F"),
+        ("71", "Activiteiten van architecten en ingenieurs; technisch ontwerp en advies, keuring en controle", "#000080"),
+        ("72", "Wetenschappelijk onderzoek en ontwikkeling", "#8B0000"),
+        ("73", "Reclameactiviteiten, marktonderzoek en public relations", "#FFA500"),
+        ("74", "Overige wetenschappelijke en technische activiteiten en overige specialistische zakelijke dienstverlening", "#4B0082"),
         ("75", "Veterinaire dienstverlening", "#FFD700")
     ],
-    "N Verhuur van roerende goederen en overige zakelijke dienstverlening": [
-        ("77", "Verhuur en lease van auto's, consumentenartikelen, machines en overige roerende goederen", "#008000"),
-        ("78", "Arbeidsbemiddeling, uitzendbureaus en personeelsbeheer", "#FF4500"),
-        ("79", "Reisbemiddeling, reisorganisatie, toeristische informatie en reserveringsbureaus", "#00FFFF"),
-        ("80", "Beveiliging en opsporing", "#0000FF"),
-        ("81", "Facility management, reiniging en landschapsverzorging", "#FF00FF"),
+    "O Verhuur van roerende goederen en overige zakelijke dienstverlening": [
+        ("77", "Verhuur en lease", "#008000"),
+        ("78", "Arbeidsbemiddeling, activiteiten van uitzendbureaus en personeelsbeheer", "#FF4500"),
+        ("79", "Activiteiten van reisbureaus, reisorganisatoren, reserveringsbureaus en aanverwante activiteiten", "#00FFFF"),
+        ("80", "Opsporings- en beveiligingsdiensten", "#0000FF"),
+        ("81", "Diensten in verband met gebouwen; landschapsverzorging", "#FF00FF"),
         ("82", "Overige zakelijke dienstverlening", "#FFFF00")
     ],
-    "O Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen": [
+    "P Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen": [
         ("84", "Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen", "#808080")
     ],
-    "P Onderwijs": [
+    "Q Onderwijs": [
         ("85", "Onderwijs", "#008080")
     ],
-    "Q Gezondheids- en welzijnszorg": [
+    "R Gezondheids- en welzijnszorg": [
         ("86", "Gezondheidszorg", "#800000"),
-        ("87", "Verpleging, verzorging en begeleiding met overnachting", "#FF00FF"),
-        ("88", "Maatschappelijke dienstverlening zonder overnachting", "#00FFFF")
+        ("87", "Verpleging, verzorging en begeleiding met verblijf", "#FF00FF"),
+        ("88", "Maatschappelijke dienstverlening zonder verblijf", "#00FFFF")
     ],
-    "R Cultuur, sport en recreatie": [
-        ("90", "Kunst", "#008000"),
-        ("91", "Culturele uitleencentra, openbare archieven, musea, dieren- en plantentuinen, natuurbehoud", "#800080"),
-        ("92", "Loterijen en kansspelen", "#000080"),
-        ("93", "Sport en recreatie", "#FFA500")
+    "S Cultuur, sport en recreatie": [
+        ("90", "Activiteiten op het gebied van scheppende en uitvoerende kunst", "#008000"),
+        ("91", "Activiteiten van bibliotheken, archieven, musea en overige culturele activiteiten", "#800080"),
+        ("92", "Exploitatie van loterijen, kansspelen en kansspelautomaten", "#000080"),
+        ("93", "Sport, ontspanning en recreatie", "#FFA500")
     ],
-    "S Overige dienstverlening": [
-        ("94", "Levensbeschouwelijke en politieke organisaties, belangen- en ideële organisaties, hobbyclubs", "#FF00FF"),
-        ("95", "Reparatie van computers en consumentenartikelen", "#00FFFF"),
-        ("96", "Wellness en overige dienstverlening; uitvaartbranche", "#0000FF")
+    "T Overige dienstverlening": [
+        ("94", "Activiteiten van ledenorganisaties", "#FF00FF"),
+        ("95", "Reparatie en onderhoud van computers, consumentenartikelen, auto’s en motorfietsen", "#00FFFF"),
+        ("96", "Persoonlijke dienstverlening", "#0000FF")
     ],
-    "T Huishoudens als werkgever; niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik": [
-        ("97", "Huishoudens als werkgever van huishoudelijk personeel", "#800080"),
-        ("98", "Niet-gespecificeerde productie van goederen en diensten door particuliere huishoudens voor eigen gebruik", "#FFA500")
+    "U Activiteiten van huishoudens als werkgever en niet-gedifferentieerde productie van goederen en diensten door huishoudens voor eigen gebruik": [
+        ("97", "Activiteiten van huishoudens als werkgever van huishoudelijk personeel", "#800080"),
+        ("98", "Niet-gedifferentieerde productie van goederen en diensten door particuliere huishoudens voor eigen gebruik", "#FFA500")
     ],
-    "U Extraterritoriale organisaties en lichamen": [
-        ("99", "Extraterritoriale organisaties en lichamen", "#008080")
+    "V Activiteiten van extraterritoriale organisaties en instanties": [
+        ("99", "Activiteiten van extraterritoriale organisaties en instanties", "#008080")
     ]
 }
 
