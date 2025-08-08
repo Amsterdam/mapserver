@@ -37,7 +37,7 @@ sbi = {
         ("19", "Vervaardiging van cokes en van geraffineerde aardolieproducten", "#00CED1"),
         ("20", "Vervaardiging van chemicaliën en chemische producten", "#FFD700"),
         ("21", "Vervaardiging van farmaceutische grondstoffen en producten", "#808000"),
-        ("22", "Vervaardiging van producten van rubber en kunststof", "#4682B4"),
+        ("22", "Vervaardiging van producten van rubber of kunststof", "#4682B4"),
         ("23", "Vervaardiging van overige niet-metaalhoudende minerale producten", "#00FF7F"),
         ("24", "Vervaardiging van basismetalen", "#8B008B"),
         ("25", "Vervaardiging van producten van metaal, met uitzondering van machines en apparatuur", "#FF6347"),
@@ -79,10 +79,10 @@ sbi = {
         ("55", "Logiesverstrekking en -bemiddeling", "#BF8080"),
         ("56", "Exploitatie van eet- en drinkgelegenheden", "#BFBFBF")
     ],
-    "J Informatie en communicatie": [
-        ("58", "Uitgeverijen", "#BF80FD"),
-        ("59", "Productie en distributie van films en televisieprogramma's; maken en uitgeven van geluidsopnamen", "#BF80BF"),
-        ("60", "Verzorgen en uitzenden van radio- en televisieprogramma's", "#BF8040")
+    "J Activiteiten van uitgeverijen, omroepactiviteiten, en activiteiten op het gebied van productie en distributie van inhoud": [
+        ("58", "Activiteiten van uitgeverijen", "#BF80FD"),
+        ("59", "Productie en distributie van films en video- en televisieprogramma’s en audio, maken van geluidsopnamen en uitgeven van muziekopnamen", "#BF80BF"),
+        ("60", "Programmering, uitzending, perssagentschappen en overige activiteiten op het gebied van de verspreiding van inhoud", "#BF8040")
         ],
     "K Telecommunciatie, computerprogrammering en consultancy, informatica-infrastructuur en overige activiteiten op het gebied van informatiediensten": [
         ("61", "Telecommunicatie", "#BFBF80"),
@@ -112,7 +112,7 @@ sbi = {
         ("79", "Activiteiten van reisbureaus, reisorganisatoren, reserveringsbureaus en aanverwante activiteiten", "#00FFFF"),
         ("80", "Opsporings- en beveiligingsdiensten", "#0000FF"),
         ("81", "Diensten in verband met gebouwen; landschapsverzorging", "#FF00FF"),
-        ("82", "Overige zakelijke dienstverlening", "#FFFF00")
+        ("82", "Administratieve en ondersteunende activiteiten ten behoeve van kantoren en overige zakelijke dienstverlening", "#FFFF00")
     ],
     "P Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen": [
         ("84", "Openbaar bestuur, overheidsdiensten en verplichte sociale verzekeringen", "#808080")
@@ -125,7 +125,7 @@ sbi = {
         ("87", "Verpleging, verzorging en begeleiding met verblijf", "#FF00FF"),
         ("88", "Maatschappelijke dienstverlening zonder verblijf", "#00FFFF")
     ],
-    "S Cultuur, sport en recreatie": [
+    "S Kunst, cultuur, sport en recreatie activiteiten": [
         ("90", "Activiteiten op het gebied van scheppende en uitvoerende kunst", "#008000"),
         ("91", "Activiteiten van bibliotheken, archieven, musea en overige culturele activiteiten", "#800080"),
         ("92", "Exploitatie van loterijen, kansspelen en kansspelautomaten", "#000080"),
