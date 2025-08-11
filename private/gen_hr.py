@@ -82,7 +82,7 @@ sbi = {
     "J Activiteiten van uitgeverijen, omroepactiviteiten, en activiteiten op het gebied van productie en distributie van inhoud": [
         ("58", "Activiteiten van uitgeverijen", "#BF80FD"),
         ("59", "Productie en distributie van films en video- en televisieprogramma’s en audio, maken van geluidsopnamen en uitgeven van muziekopnamen", "#BF80BF"),
-        ("60", "Programmering, uitzending, perssagentschappen en overige activiteiten op het gebied van de verspreiding van inhoud", "#BF8040")
+        ("60", "Programmering, uitzending, persagentschappen en overige activiteiten op het gebied van de verspreiding van inhoud", "#BF8040")
         ],
     "K Telecommunciatie, computerprogrammering en consultancy, informatica-infrastructuur en overige activiteiten op het gebied van informatiediensten": [
         ("61", "Telecommunicatie", "#BFBF80"),
