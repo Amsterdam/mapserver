@@ -15,13 +15,10 @@ MAP
       "ows_title"           "Objecten Openbare Ruimte"
       "ows_abstract"        "Objecten in de openbare ruimte die beheerd worden door de Gemeente Amsterdam"
       "wms_extent"          "100000 450000 150000 500000"
-    "ows_onlineresource"  "MAP_URL_REPLACE/maps/objecten_openbare_ruimte"
+    "ows_onlineresource"  "http://localhost:8383/maps/objecten_openbare_ruimte"
     END
   END
 
-  #-----------------------------------------------------------------------------
-  # Multiple layers with a filter are supported but we now have only one class
-  # per layer
   #-----------------------------------------------------------------------------
   # GROENOBJECTEN
   #-----------------------------------------------------------------------------    
@@ -71,10 +68,55 @@ MAP
     END
   END
 
+
   #-----------------------------------------------------------------------------
-  # Multiple layers with a filter are supported but we now have only one class
-  # per layer
+  # TERREINDELEN - APPTIMIZE
   #-----------------------------------------------------------------------------
+  LAYER
+    NAME                    "groenobjecten_bloemrijkgras"
+    GROUP                   "groenobjecten"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "geometrie FROM (
+            SELECT * from objectenopenbareruimte_groenobjecten_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type_plus] = 'Bloemrijk gras')
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           72224
+
+
+    METADATA
+        "gml_include_items"   "all"
+        "wms_title"           "Groenobjecten Bloemrijk Gras"
+        "wms_enable_request"  "*"
+        "wms_group_title"     "Groenobjecten"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Terreindelen"
+        "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME          "Bloemrijk gras"
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        227 164 174
+          OPACITY      80
+      END
+      STYLE
+          OUTLINECOLOR        155 111 118
+          OPACITY      100
+          WIDTH        2
+      END
+    END
+  END
+
+    #-----------------------------------------------------------------------------
   # TERREINDELEN
   #-----------------------------------------------------------------------------
   LAYER
@@ -98,7 +140,7 @@ MAP
         "gml_include_items"   "all"
         "wms_title"           "Terreindelen"
         "wms_enable_request"  "*"
-            "wms_group_title"     "Objecten Openbare Ruimte"
+        "wms_group_title"     "Objecten Openbare Ruimte"
         "wms_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein, dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met of zonder aaneengesloten vegetatie."
         "wms_srs"             "EPSG:28992"
         "wms_name"            "Terreindelen"
@@ -174,4 +216,52 @@ MAP
       END
     END
   END
+
+  #-----------------------------------------------------------------------------
+  # VERHARDINGEN - APPTIMIZE
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME                    "verhardingen_asfaltverharding"
+    GROUP                   "verhardingen "
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "geometrie FROM (
+            SELECT * from objectenopenbareruimte_verhardingen_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type_object] = 'Asfaltverharding')
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           72224
+
+
+    METADATA
+        "gml_include_items"   "all"
+        "wms_title"           "Verhardingen Asfaltverharding"
+        "wms_enable_request"  "*"
+        "wms_group_title"     "Verhardingen"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Verhardingen"
+        "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME          "Asfaltverharding"
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        227 164 174
+          OPACITY      80
+      END
+      STYLE
+          OUTLINECOLOR        155 111 118
+          OPACITY      100
+          WIDTH        2
+      END
+    END
+  END
+  
 END
