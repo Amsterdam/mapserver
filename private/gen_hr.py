@@ -18,9 +18,9 @@ sbi = {
         ("03", "Visserij en aquacultuur", "#0000FF")
     ],
     "B Winning van delfstoffen": [
-        ("05", "Winning van steenkool en bruinkool", "#FFFF00"),
+        ("05", "Winning van steenkool en bruinkool", "#FFB000"),
         ("06", "Winning van aardolie en aardgas", "#FFFF00"),
-        ("07", "Winning van metaalertsen", "#FFFF00"),
+        ("07", "Winning van metaalertsen", "#CCFF00"),
         ("08", "Overige winning van delfstoffen", "#FF00FF"),
         ("09", "Dienstverlening voor de winning van delfstoffen", "#00FFFF")
     ],
@@ -166,20 +166,21 @@ with block("MAP"):
         with block("LAYER"):
             #ik moest hier helaas de hele data in 1x ophalen en dan later een expression met een filter op de SBI code doen.. 
             sql = f"""
-                SELECT
-                    naam, vestigingsnummer, bezoek_geopunt, substring(sbi_code FROM 1 FOR 2) as sbi_code_group, omschrijving
-                FROM
-                    hr_ves hv
-                    INNER JOIN hr_ves_activiteiten hva
-                    ON hva.parent_id = hv.vestigingsnummer
-                WHERE
-                    bezoek_geopunt IS NOT NULL
-                    AND is_hoofdactiviteit = 'Ja'
+                SELECT 
+                    volledige_naam,
+                    vestigingsnummer,
+                    geometrie_rd,
+                    substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group,
+                    activiteiten_ves[1]::json ->> 'omschrijving'    AS omschrijving,
+                    activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit
+                FROM benkagg_handelsregisterkvk_v3
+                WHERE geometrie_rd IS NOT NULL
+                AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';
             """
 
             sql = " ".join(sql.split())  # Normalize whitespace.
             sql = (
-                f"bezoek_geopunt FROM ({sql}) AS sub"
+                f"geometrie_rd FROM ({sql}) AS sub"
                 + " USING srid=28992 USING UNIQUE vestigingsnummer"
             )
 
@@ -227,7 +228,7 @@ with block("MAP"):
                         p("SIZE 14")
                         p(f"COLOR '{color}'")
                         p('OUTLINECOLOR 255 255 255')
-                        p ('WIDTH 1.5')
+                        p('WIDTH 1.5')
 
                     with block("LABEL"):
                         p("MINSCALEDENOM 100")
