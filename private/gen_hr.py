@@ -175,7 +175,7 @@ with block("MAP"):
                     activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit
                 FROM benkagg_handelsregisterkvk_v3
                 WHERE geometrie_rd IS NOT NULL
-                AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';
+                AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja'
             """
 
             sql = " ".join(sql.split())  # Normalize whitespace.
@@ -196,7 +196,7 @@ with block("MAP"):
             p("TEMPLATE", "fooOnlyForWMSGetFeatureInfo.html")
             p("PROCESSING", "CLOSE_CONNECTION=DEFER")
             p("STATUS OFF")
-            p("LABELITEM", "naam")
+            p("LABELITEM", "volledige_naam")
 
             with block("PROJECTION"):
                 q("init=epsg:28992")
