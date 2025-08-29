@@ -15,13 +15,13 @@ MAP
   LAYER
     NAME 'a_landbouw_bosbouw_en_visserij'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -116,13 +116,13 @@ EXPRESSION ("[sbi_code_group]" eq "03")
   LAYER
     NAME 'b_winning_van_delfstoffen'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -267,13 +267,13 @@ EXPRESSION ("[sbi_code_group]" eq "09")
   LAYER
     NAME 'c_industrie'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -541,7 +541,7 @@ EXPRESSION ("[sbi_code_group]" eq "19")
     END
     CLASS
       NAME 'vervaardiging_van_chemicalien_en_chemische_producten'
-      TITLE 'Vervaardiging van chemicali�n en chemische producten'
+      TITLE 'Vervaardiging van chemicaliën en chemische producten'
 EXPRESSION ("[sbi_code_group]" eq "20")
       STYLE
         SYMBOL 'stip'
@@ -893,13 +893,13 @@ EXPRESSION ("[sbi_code_group]" eq "33")
   LAYER
     NAME 'd_productie_en_distributie_van_en_handel_in_elektriciteit_aardgas_stoom_en_gekoelde_lucht'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -944,13 +944,13 @@ EXPRESSION ("[sbi_code_group]" eq "35")
   LAYER
     NAME 'e_winning_en_distributie_van_water_afval_en_afvalwaterbeheer_en_sanering'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1070,13 +1070,13 @@ EXPRESSION ("[sbi_code_group]" eq "39")
   LAYER
     NAME 'f_bouwnijverheid'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1171,13 +1171,13 @@ EXPRESSION ("[sbi_code_group]" eq "43")
   LAYER
     NAME 'g_groot_en_detailhandel'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1247,13 +1247,13 @@ EXPRESSION ("[sbi_code_group]" eq "47")
   LAYER
     NAME 'h_vervoer_en_opslag'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1398,13 +1398,13 @@ EXPRESSION ("[sbi_code_group]" eq "53")
   LAYER
     NAME 'i_logies_maaltijd_en_drankverstrekking'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1474,13 +1474,13 @@ EXPRESSION ("[sbi_code_group]" eq "56")
   LAYER
     NAME 'j_activiteiten_van_uitgeverijen_omroepactiviteiten_en_activiteiten_op_het_gebied_van_productie_en_distributie_van_inhoud'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1523,7 +1523,7 @@ EXPRESSION ("[sbi_code_group]" eq "58")
     END
     CLASS
       NAME 'productie_en_distributie_van_films_en_video_en_televisieprogramma_s_en_audio_maken_van_geluidsopnamen_en_uitgeven_van_muziekopnamen'
-      TITLE 'Productie en distributie van films en video- en televisieprogramma�s en audio, maken van geluidsopnamen en uitgeven van muziekopnamen'
+      TITLE "Productie en distributie van films en video- en televisieprogramma's en audio, maken van geluidsopnamen en uitgeven van muziekopnamen"
 EXPRESSION ("[sbi_code_group]" eq "59")
       STYLE
         SYMBOL 'stip'
@@ -1575,13 +1575,13 @@ EXPRESSION ("[sbi_code_group]" eq "60")
   LAYER
     NAME 'k_telecommunciatie_computerprogrammering_en_consultancy_informatica_infrastructuur_en_overige_activiteiten_op_het_gebied_van_informatiediensten'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1676,18 +1676,18 @@ EXPRESSION ("[sbi_code_group]" eq "63")
   LAYER
     NAME 'l_activiteiten_op_het_gebied_van_financiele_dienstverlening_en_verzekeringen'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
     METADATA
-      'ows_title' 'L Activiteiten op het gebied van financi�le dienstverlening en verzekeringen'
+      'ows_title' 'L Activiteiten op het gebied van financiële dienstverlening en verzekeringen'
       'ows_group_title' 'Handelsregister'
       'gml_include_items' 'all'
       'wms_enable_request' '*'
@@ -1700,7 +1700,7 @@ EXPRESSION ("[sbi_code_group]" eq "63")
     END
     CLASS
       NAME 'financiele_dienstverlening_met_uitzondering_van_verzekeringen_en_pensioenfondsen'
-      TITLE 'Financi�le dienstverlening, met uitzondering van verzekeringen en pensioenfondsen'
+      TITLE 'Financiële dienstverlening, met uitzondering van verzekeringen en pensioenfondsen'
 EXPRESSION ("[sbi_code_group]" eq "64")
       STYLE
         SYMBOL 'stip'
@@ -1750,7 +1750,7 @@ EXPRESSION ("[sbi_code_group]" eq "65")
     END
     CLASS
       NAME 'ondersteunende_activiteiten_voor_financiele_diensten_verzekeringen_en_pensioenen'
-      TITLE 'Ondersteunende activiteiten voor financi�le diensten, verzekeringen en pensioenen'
+      TITLE 'Ondersteunende activiteiten voor financiële diensten, verzekeringen en pensioenen'
 EXPRESSION ("[sbi_code_group]" eq "66")
       STYLE
         SYMBOL 'stip'
@@ -1777,13 +1777,13 @@ EXPRESSION ("[sbi_code_group]" eq "66")
   LAYER
     NAME 'm_exploitatie_van_en_handel_in_onroerend_goed'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -1828,13 +1828,13 @@ EXPRESSION ("[sbi_code_group]" eq "68")
   LAYER
     NAME 'n_wetenschappelijke_en_technische_activiteiten_en_specialistische_zakelijke_dienstverlening'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2029,13 +2029,13 @@ EXPRESSION ("[sbi_code_group]" eq "75")
   LAYER
     NAME 'o_verhuur_van_roerende_goederen_en_overige_zakelijke_dienstverlening'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2205,13 +2205,13 @@ EXPRESSION ("[sbi_code_group]" eq "82")
   LAYER
     NAME 'p_openbaar_bestuur_overheidsdiensten_en_verplichte_sociale_verzekeringen'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2256,13 +2256,13 @@ EXPRESSION ("[sbi_code_group]" eq "84")
   LAYER
     NAME 'q_onderwijs'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2307,13 +2307,13 @@ EXPRESSION ("[sbi_code_group]" eq "85")
   LAYER
     NAME 'r_gezondheids_en_welzijnszorg'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2408,13 +2408,13 @@ EXPRESSION ("[sbi_code_group]" eq "88")
   LAYER
     NAME 's_kunst_cultuur_sport_en_recreatie_activiteiten'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2534,13 +2534,13 @@ EXPRESSION ("[sbi_code_group]" eq "93")
   LAYER
     NAME 't_overige_dienstverlening'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2583,7 +2583,7 @@ EXPRESSION ("[sbi_code_group]" eq "94")
     END
     CLASS
       NAME 'reparatie_en_onderhoud_van_computers_consumentenartikelen_auto_s_en_motorfietsen'
-      TITLE 'Reparatie en onderhoud van computers, consumentenartikelen, auto�s en motorfietsen'
+      TITLE "Reparatie en onderhoud van computers, consumentenartikelen, auto's en motorfietsen"
 EXPRESSION ("[sbi_code_group]" eq "95")
       STYLE
         SYMBOL 'stip'
@@ -2635,13 +2635,13 @@ EXPRESSION ("[sbi_code_group]" eq "96")
   LAYER
     NAME 'u_activiteiten_van_huishoudens_als_werkgever_en_niet_gedifferentieerde_productie_van_goederen_en_diensten_door_huishoudens_voor_eigen_gebruik'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
@@ -2711,13 +2711,13 @@ EXPRESSION ("[sbi_code_group]" eq "98")
   LAYER
     NAME 'v_activiteiten_van_extraterritoriale_organisaties_en_instanties'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja';) AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
+    DATA "geometrie_rd FROM (SELECT volledige_naam, vestigingsnummer, geometrie_rd, substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group, activiteiten_ves[1]::json ->> 'omschrijving' AS omschrijving, activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit FROM benkagg_handelsregisterkvk_v3 WHERE geometrie_rd IS NOT NULL AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja') AS sub USING srid=28992 USING UNIQUE vestigingsnummer"
     TYPE POINT
     GROUP 'handelsregister'
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
     PROCESSING 'CLOSE_CONNECTION=DEFER'
     STATUS OFF
-    LABELITEM 'naam'
+    LABELITEM 'volledige_naam'
     PROJECTION
       'init=epsg:28992'
     END
