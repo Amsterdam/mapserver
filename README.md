@@ -15,8 +15,8 @@ MapServer-configuratie voor map.data.amsterdam.nl.
   * het wachtwoord om je database te verbinden
 * Start de database: ``docker-compose up -d database``.
 * Vul de gewenste tabellen in de database, die woont op localhost, poort 5403. 
-* Bouw Docker image met MapServer: ``docker-compose build map``.
-* Start de map met: ``docker-compose up -d map``.
+* Bouw Docker image met MapServer: ``docker-compose build public``.
+* Start de map met: ``docker-compose up -d public``.
 * Vervang het password in ``dataservices.inc`` naar ``insecure``
 
 
