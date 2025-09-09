@@ -170,7 +170,7 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-  # TERREINDELEN - APPTIMIZE
+  # groenobjecten - APPTIMIZE
   #-----------------------------------------------------------------------------
   LAYER
     NAME                    "groenobjecten_geclassificeerd"
@@ -211,28 +211,29 @@ MAP
           WIDTH 0.5
       END
 
-      # # Diagonal magenta line (hatch effect)
-      STYLE
-          COLOR "#d92853"
-          WIDTH 1
-          ANGLE 135
-          PATTERN 2 2 END   # repeat line pattern
-      END
+      # # # cant figure this out yet
+      # STYLE
+      #     SYMBOL 'hatchsymbol'
+      #     COLOR "#d92853"
+      #     WIDTH 1
+      #     ANGLE 45
+      #     PATTERN 20 20 END   # repeat line pattern
+      # END
     END
 
     # CLASS
-    #   NAME          "Bodembedekkers"
+    #     NAME          "Bodembedekkers"
     #   EXPRESSION      ("[type_object]" eq "Bodembedekkers")
 
+    #   # Purple fill
     #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
+    #       COLOR "#7230FF"
     #   END
+
+    #   # Purple outline
     #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
+    #       OUTLINECOLOR "#7230FF"
+    #       WIDTH 0.5
     #   END
     # END
 
@@ -241,15 +242,15 @@ MAP
     #   NAME          "Bosplantsoen"
     #   EXPRESSION      ("[type_object]" eq "Bosplantsoen")
 
+    #   # Dark grey fill
     #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
+    #       COLOR "#5E5555"
     #   END
+
+    #   # Dark grey outline
     #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
+    #       OUTLINECOLOR "#5E5555"
+    #       WIDTH 0.5
     #   END
     # END
 
@@ -257,95 +258,103 @@ MAP
     #   NAME          "Gazon"
     #   EXPRESSION      ("[type_object_plus]" eq "Gazon")
 
-    #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
-    #   END
-    #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
-    #   END
+    #     # Bright green fill
+    #     STYLE
+    #         COLOR "#48D451"
+    #     END
+
+    #     # Bright green outline
+    #     STYLE
+    #         OUTLINECOLOR "#48D451"
+    #         WIDTH 0.5
+    #     END
     # END
 
-    # CLASS
-    #   NAME          "Grasveld"
-    #   EXPRESSION      ("[type_object_plus]" eq "Grasveld")
+    # # CLASS
+    # #   NAME          "Grasveld"
+    # #   EXPRESSION      ("[type_object_plus]" eq "Grasveld")
 
-    #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
-    #   END
-    #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
-    #   END
-    # END
+    # #   STYLE
+    # #       ANTIALIAS    true
+    # #       COLOR        227 164 174
+    # #       OPACITY      80
+    # #   END
+    # #   STYLE
+    # #       OUTLINECOLOR        155 111 118
+    # #       OPACITY      100
+    # #       WIDTH        2
+    # #   END
+    # # END
 
     # CLASS
     #   NAME          "Hagen"
     #   EXPRESSION      ("[type_object]" eq "Haag")
+        
+    #     # Red fill
+    #     STYLE
+    #         COLOR "#FF0000"
+    #     END
 
-    #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
-    #   END
-    #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
-    #   END
+    #     # Red outline
+    #     STYLE
+    #         OUTLINECOLOR "#FF0000"
+    #         WIDTH 0.5
+    #     END
     # END
+
 
     # CLASS
     #   NAME          "Heesters"
     #   EXPRESSION      ("[type_object]" eq "Heesters")
 
+    #   # Orange-red fill
     #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
+    #       COLOR "#FD7D4E"
     #   END
+
+    #   # Orange-red outline
     #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
+    #       OUTLINECOLOR "#FD7D4E"
+    #       WIDTH 0.5
     #   END
     # END
 
     # CLASS
     #   NAME          "Ruigte"
     #   EXPRESSION      ("[type_object_plus]" eq "Ruigte")
+    #   # Light green fill
+    #   STYLE
+    #       COLOR "#D3FFBE"
+    #   END
 
+    #   # Grey outline
     #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
+    #       OUTLINECOLOR "#6E6E6E"
+    #       WIDTH 0.5
     #   END
-    #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
-    #   END
+
+    #   # Grey diagonal hatch lines
+    #   # STYLE
+    #   #     COLOR "#6E6E6E"
+    #   #     WIDTH 1
+    #   #     ANGLE 135
+    #   #     PATTERN 10 10 END   # adjust pattern spacing for hatch density
+    #   # END
     # END
 
     # CLASS
     #   NAME          "Ruw gras"
     #   EXPRESSION      ("[type_object_plus]" eq "Ruw gras")
 
+    #   # Dark green fill
     #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
+    #       COLOR "#267300"
     #   END
+
+    #   # Grey outline
     #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
+    #       OUTLINECOLOR "#6E6E6E"
+    #       WIDTH 0.5
     #   END
     # END
 
@@ -353,15 +362,15 @@ MAP
     #   NAME          "Struikrozen"
     #   EXPRESSION      ("[type_object]" eq "Struikrozen")
 
+    #   # Hot pink fill
     #   STYLE
-    #       ANTIALIAS    true
-    #       COLOR        227 164 174
-    #       OPACITY      80
+    #       COLOR "#FF69B4"
     #   END
+
+    #   # Hot pink outline
     #   STYLE
-    #       OUTLINECOLOR        155 111 118
-    #       OPACITY      100
-    #       WIDTH        2
+    #       OUTLINECOLOR "#FF69B4"
+    #       WIDTH 0.5
     #   END
     # END
 
@@ -369,21 +378,19 @@ MAP
     #   NAME          "Vaste planten"
     #     EXPRESSION      ("[type_object_plus]" eq "Vaste planten")
 
+    #     # Light green fill
     #     STYLE
-    #         ANTIALIAS    true
-    #         COLOR        227 164 174
-    #         OPACITY      80
+    #         COLOR "#AAFFAA"
     #     END
+
+    #     # Light green outline
     #     STYLE
-    #         OUTLINECOLOR        155 111 118
-    #         OPACITY      100
-    #         WIDTH        2
+    #         OUTLINECOLOR "#AAFFAA"
+    #         WIDTH 0.5
     #     END
     #   END
-    # END
-  END
-
-
+    END
+  
 
 
   #-----------------------------------------------------------------------------
@@ -416,15 +423,15 @@ MAP
     CLASS
       NAME              "Asfaltverharding"
       EXPRESSION        ("[type_object]" eq 'Asfaltverharding')
+      # Black fill
       STYLE
-          ANTIALIAS    true
-          COLOR        227 164 174
-          OPACITY      80
+          COLOR "#000000"
       END
+
+      # Black outline
       STYLE
-          OUTLINECOLOR        155 111 118
-          OPACITY      100
-          WIDTH        2
+          OUTLINECOLOR "#000000"
+          WIDTH 0.5
       END
     END
 
@@ -433,74 +440,72 @@ MAP
       NAME              "Betonverharding"
       EXPRESSION        ("[type_object]" eq 'Betonverharding')
       STYLE
-          ANTIALIAS    true
-          COLOR        227 164 174
-          OPACITY      80
+          COLOR "#000000"
       END
+
       STYLE
-          OUTLINECOLOR        155 111 118
-          OPACITY      100
-          WIDTH        2
+          OUTLINECOLOR "#000000"
+          WIDTH 0.5
       END
     END
 
     CLASS
       NAME              "Elementenverharding"
       EXPRESSION        ("[type_object]" eq 'Elementenverharding')
+      # Light grey fill
       STYLE
-          ANTIALIAS    true
-          COLOR        227 164 174
-          OPACITY      80
+          COLOR "#CCCCCC"
       END
+
+      # Medium grey outline
       STYLE
-          OUTLINECOLOR        155 111 118
-          OPACITY      100
-          WIDTH        2
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
       END
     END
 
     CLASS
       NAME              "Halfverharding"
       EXPRESSION        ("[type_object]" eq 'Halfverharding')
+      # Orange fill
       STYLE
-          ANTIALIAS    true
-          COLOR        227 164 174
-          OPACITY      80
+          COLOR "#FFAD61"
       END
+
+      # Orange outline
       STYLE
-          OUTLINECOLOR        155 111 118
-          OPACITY      100
-          WIDTH        2
-      END
+          OUTLINECOLOR "#FFAD61"
+          WIDTH 0.5
+      END 
     END
 
     CLASS
       NAME              "Kunststofverharding"
       EXPRESSION        ("[type_object]" eq 'Kunststofverharding')
+      # Grey fill
       STYLE
-          ANTIALIAS    true
-          COLOR        227 164 174
-          OPACITY      80
+          COLOR "#90908E"
       END
+
+      # Grey outline
       STYLE
-          OUTLINECOLOR        155 111 118
-          OPACITY      100
-          WIDTH        2
+          OUTLINECOLOR "#90908E"
+          WIDTH 0.5
       END
     END
 
   CLASS
       NAME              "Onverhard"
       EXPRESSION        ("[type_object]" eq 'Onverhard')
+      # Orange fill
       STYLE
-          ANTIALIAS    true
-          COLOR        227 164 174
-          OPACITY      80
+          COLOR "#FFAD61"
       END
+
+      # Orange outline
       STYLE
-          OUTLINECOLOR        155 111 118
-          OPACITY      100
-          WIDTH        2
+          OUTLINECOLOR "#FFAD61"
+          WIDTH 0.5
       END
     END
 
