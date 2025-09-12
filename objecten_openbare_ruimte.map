@@ -15,7 +15,7 @@ MAP
       "ows_title"           "Objecten Openbare Ruimte"
       "ows_abstract"        "Objecten in de openbare ruimte die beheerd worden door de Gemeente Amsterdam"
       "wms_extent"          "100000 450000 150000 500000"
-    "ows_onlineresource"  "http://localhost:8383/maps/objecten_openbare_ruimte"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/objecten_openbare_ruimte"
     END
   END
 
@@ -173,7 +173,7 @@ MAP
   # groenobjecten - APPTIMIZE
   #-----------------------------------------------------------------------------
   LAYER
-    NAME                    "groenobjecten_geclassificeerd"
+    NAME                    "groenobjecten_apptimize"
     GROUP                   "apptimize"
     PROJECTION
       "init=epsg:28992"
@@ -181,6 +181,7 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie from objectenopenbareruimte_groenobjecten_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type_beheerder_plus] = 'R&E_VOR_Groen' )    
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           72224
@@ -188,7 +189,7 @@ MAP
 
     METADATA
         "gml_include_items"   "all"
-        "wms_title"           "Groenobjecten Geclassificeerd"
+        "wms_title"           "Groenobjecten Apptimize"
         "wms_enable_request"  "*"
         "wms_group_title"     "Apptimize"
         "wms_srs"             "EPSG:28992"
@@ -200,211 +201,185 @@ MAP
       NAME          "Bloemrijk gras"
       EXPRESSION      ("[type_object_plus]" eq "Bloemrijk gras")
 
-      # Green fill
       STYLE
           COLOR "#3C701A"
       END
 
-      # Grey outline (stroke around polygon)
       STYLE
           OUTLINECOLOR "#6E6E6E"
           WIDTH 0.5
       END
 
-      # # # cant figure this out yet
-      # STYLE
-      #     SYMBOL 'hatchsymbol'
-      #     COLOR "#d92853"
-      #     WIDTH 1
-      #     ANGLE 45
-      #     PATTERN 20 20 END   # repeat line pattern
-      # END
+      STYLE
+          SYMBOL 'hatchsymbol'
+          COLOR "#d92853"
+          WIDTH 1
+          ANGLE 45
+          PATTERN 2 10 END
+      END
     END
 
-    # CLASS
-    #     NAME          "Bodembedekkers"
-    #   EXPRESSION      ("[type_object]" eq "Bodembedekkers")
+    CLASS
+        NAME          "Bodembedekkers"
+      EXPRESSION      ("[type_object]" eq "Bodembedekkers")
 
-    #   # Purple fill
-    #   STYLE
-    #       COLOR "#7230FF"
-    #   END
+      STYLE
+          COLOR "#7230FF"
+      END
 
-    #   # Purple outline
-    #   STYLE
-    #       OUTLINECOLOR "#7230FF"
-    #       WIDTH 0.5
-    #   END
-    # END
+      STYLE
+          OUTLINECOLOR "#7230FF"
+          WIDTH 0.5
+      END
+    END
 
 
-    # CLASS
-    #   NAME          "Bosplantsoen"
-    #   EXPRESSION      ("[type_object]" eq "Bosplantsoen")
+    CLASS
+      NAME          "Bosplantsoen"
+      EXPRESSION      ("[type_object]" eq "Bosplantsoen")
 
-    #   # Dark grey fill
-    #   STYLE
-    #       COLOR "#5E5555"
-    #   END
+      STYLE
+          COLOR "#5E5555"
+      END
 
-    #   # Dark grey outline
-    #   STYLE
-    #       OUTLINECOLOR "#5E5555"
-    #       WIDTH 0.5
-    #   END
-    # END
+      STYLE
+          OUTLINECOLOR "#5E5555"
+          WIDTH 0.5
+      END
+    END
 
-    # CLASS
-    #   NAME          "Gazon"
-    #   EXPRESSION      ("[type_object_plus]" eq "Gazon")
+    CLASS
+      NAME          "Gazon"
+      EXPRESSION      ("[type_object_plus]" eq "Gazon")
 
-    #     # Bright green fill
-    #     STYLE
-    #         COLOR "#48D451"
-    #     END
+        STYLE
+            COLOR "#48D451"
+        END
 
-    #     # Bright green outline
-    #     STYLE
-    #         OUTLINECOLOR "#48D451"
-    #         WIDTH 0.5
-    #     END
-    # END
+        STYLE
+            OUTLINECOLOR "#48D451"
+            WIDTH 0.5
+        END
+    END
 
-    # # CLASS
-    # #   NAME          "Grasveld"
-    # #   EXPRESSION      ("[type_object_plus]" eq "Grasveld")
+    CLASS
+      NAME          "Grasveld"
+      EXPRESSION      ("[type_object_plus]" eq "Grasveld")
 
-    # #   STYLE
-    # #       ANTIALIAS    true
-    # #       COLOR        227 164 174
-    # #       OPACITY      80
-    # #   END
-    # #   STYLE
-    # #       OUTLINECOLOR        155 111 118
-    # #       OPACITY      100
-    # #       WIDTH        2
-    # #   END
-    # # END
+      STYLE
+          ANTIALIAS    true
+          COLOR       '#42A235'
+      END
+      STYLE
+          OUTLINECOLOR  '#42A235'
+          WIDTH        0.5
+      END
+    END
 
-    # CLASS
-    #   NAME          "Hagen"
-    #   EXPRESSION      ("[type_object]" eq "Haag")
+    CLASS
+      NAME          "Hagen"
+      EXPRESSION      ("[type_object]" eq "Haag")
         
-    #     # Red fill
-    #     STYLE
-    #         COLOR "#FF0000"
-    #     END
+        STYLE
+            COLOR "#FF0000"
+        END
 
-    #     # Red outline
-    #     STYLE
-    #         OUTLINECOLOR "#FF0000"
-    #         WIDTH 0.5
-    #     END
-    # END
+        STYLE
+            OUTLINECOLOR "#FF0000"
+            WIDTH 0.5
+        END
+      END
 
 
-    # CLASS
-    #   NAME          "Heesters"
-    #   EXPRESSION      ("[type_object]" eq "Heesters")
+    CLASS
+      NAME          "Heesters"
+      EXPRESSION      ("[type_object]" eq "Heesters")
 
-    #   # Orange-red fill
-    #   STYLE
-    #       COLOR "#FD7D4E"
-    #   END
+      STYLE
+          COLOR "#FD7D4E"
+      END
 
-    #   # Orange-red outline
-    #   STYLE
-    #       OUTLINECOLOR "#FD7D4E"
-    #       WIDTH 0.5
-    #   END
-    # END
-
-    # CLASS
-    #   NAME          "Ruigte"
-    #   EXPRESSION      ("[type_object_plus]" eq "Ruigte")
-    #   # Light green fill
-    #   STYLE
-    #       COLOR "#D3FFBE"
-    #   END
-
-    #   # Grey outline
-    #   STYLE
-    #       OUTLINECOLOR "#6E6E6E"
-    #       WIDTH 0.5
-    #   END
-
-    #   # Grey diagonal hatch lines
-    #   # STYLE
-    #   #     COLOR "#6E6E6E"
-    #   #     WIDTH 1
-    #   #     ANGLE 135
-    #   #     PATTERN 10 10 END   # adjust pattern spacing for hatch density
-    #   # END
-    # END
-
-    # CLASS
-    #   NAME          "Ruw gras"
-    #   EXPRESSION      ("[type_object_plus]" eq "Ruw gras")
-
-    #   # Dark green fill
-    #   STYLE
-    #       COLOR "#267300"
-    #   END
-
-    #   # Grey outline
-    #   STYLE
-    #       OUTLINECOLOR "#6E6E6E"
-    #       WIDTH 0.5
-    #   END
-    # END
-
-    # CLASS
-    #   NAME          "Struikrozen"
-    #   EXPRESSION      ("[type_object]" eq "Struikrozen")
-
-    #   # Hot pink fill
-    #   STYLE
-    #       COLOR "#FF69B4"
-    #   END
-
-    #   # Hot pink outline
-    #   STYLE
-    #       OUTLINECOLOR "#FF69B4"
-    #       WIDTH 0.5
-    #   END
-    # END
-
-    # CLASS
-    #   NAME          "Vaste planten"
-    #     EXPRESSION      ("[type_object_plus]" eq "Vaste planten")
-
-    #     # Light green fill
-    #     STYLE
-    #         COLOR "#AAFFAA"
-    #     END
-
-    #     # Light green outline
-    #     STYLE
-    #         OUTLINECOLOR "#AAFFAA"
-    #         WIDTH 0.5
-    #     END
-    #   END
+      STYLE
+          OUTLINECOLOR "#FD7D4E"
+          WIDTH 0.5
+      END
     END
-  
 
+    CLASS
+      NAME          "Ruigte"
+      EXPRESSION      ("[type_object_plus]" eq "Ruigte")
+      STYLE
+          COLOR "#D3FFBE"
+      END
+
+      STYLE
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
+      END
+
+      STYLE
+          SYMBOL 'hatchsymbol'
+          COLOR "#6E6E6E"
+          WIDTH 1
+          ANGLE 45
+          PATTERN 2 10 END
+      END
+    END
+
+    CLASS
+      NAME          "Ruw gras"
+      EXPRESSION      ("[type_object_plus]" eq "Ruw gras")
+
+      STYLE
+          COLOR "#267300"
+      END
+      STYLE
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME          "Struikrozen"
+      EXPRESSION      ("[type_object]" eq "Struikrozen")
+
+      STYLE
+          COLOR "#FF69B4"
+      END
+
+      STYLE
+          OUTLINECOLOR "#FF69B4"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME          "Vaste planten"
+      EXPRESSION      ("[type_object_plus]" eq "Vaste planten")
+      STYLE
+          COLOR "#AAFFAA"
+      END
+
+      STYLE
+          OUTLINECOLOR "#AAFFAA"
+          WIDTH 0.5
+      END
+      END
+  END
 
   #-----------------------------------------------------------------------------
   # VERHARDINGEN - APPTIMIZE
   #-----------------------------------------------------------------------------
   LAYER
-    NAME                    "verhardingen_geclassificeerd"
+    NAME                    "verhardingen_apptimize"
     GROUP                   "apptimize"
     PROJECTION
       "init=epsg:28992"
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                     "geometrie FROM objectenopenbareruimte_verhardingen_v1 USING srid=28992 USING UNIQUE id"              
+    DATA                     "geometrie FROM objectenopenbareruimte_verhardingen_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type_beheerder_plus] = 'R&E_VOR_Verhardingen' )               
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           72224
@@ -412,7 +387,7 @@ MAP
 
     METADATA
         "gml_include_items"   "all"
-        "wms_title"           "Verhardingen Geclassificeerd"
+        "wms_title"           "Verhardingen Apptimize"
         "wms_enable_request"  "*"
         "wms_group_title"     "Apptimize"
         "wms_srs"             "EPSG:28992"
@@ -423,12 +398,10 @@ MAP
     CLASS
       NAME              "Asfaltverharding"
       EXPRESSION        ("[type_object]" eq 'Asfaltverharding')
-      # Black fill
       STYLE
           COLOR "#000000"
       END
 
-      # Black outline
       STYLE
           OUTLINECOLOR "#000000"
           WIDTH 0.5
@@ -452,12 +425,10 @@ MAP
     CLASS
       NAME              "Elementenverharding"
       EXPRESSION        ("[type_object]" eq 'Elementenverharding')
-      # Light grey fill
       STYLE
           COLOR "#CCCCCC"
       END
 
-      # Medium grey outline
       STYLE
           OUTLINECOLOR "#6E6E6E"
           WIDTH 0.5
@@ -467,12 +438,10 @@ MAP
     CLASS
       NAME              "Halfverharding"
       EXPRESSION        ("[type_object]" eq 'Halfverharding')
-      # Orange fill
       STYLE
           COLOR "#FFAD61"
       END
 
-      # Orange outline
       STYLE
           OUTLINECOLOR "#FFAD61"
           WIDTH 0.5
@@ -482,27 +451,23 @@ MAP
     CLASS
       NAME              "Kunststofverharding"
       EXPRESSION        ("[type_object]" eq 'Kunststofverharding')
-      # Grey fill
       STYLE
           COLOR "#90908E"
       END
 
-      # Grey outline
       STYLE
           OUTLINECOLOR "#90908E"
           WIDTH 0.5
       END
     END
 
-  CLASS
+    CLASS
       NAME              "Onverhard"
       EXPRESSION        ("[type_object]" eq 'Onverhard')
-      # Orange fill
       STYLE
           COLOR "#FFAD61"
       END
 
-      # Orange outline
       STYLE
           OUTLINECOLOR "#FFAD61"
           WIDTH 0.5
