@@ -15,17 +15,14 @@ MAP
       "ows_title"           "Objecten Openbare Ruimte"
       "ows_abstract"        "Objecten in de openbare ruimte die beheerd worden door de Gemeente Amsterdam"
       "wms_extent"          "100000 450000 150000 500000"
-    "ows_onlineresource"  "MAP_URL_REPLACE/maps/objecten_openbare_ruimte"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/objecten_openbare_ruimte"
     END
   END
 
   #-----------------------------------------------------------------------------
-  # Multiple layers with a filter are supported but we now have only one class
-  # per layer
-  #-----------------------------------------------------------------------------
   # GROENOBJECTEN
   #-----------------------------------------------------------------------------    
-    LAYER
+  LAYER
     NAME                    "groenobjecten"
     GROUP                   "objecten_openbare_ruimte" 
     PROJECTION
@@ -71,10 +68,7 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
-  # Multiple layers with a filter are supported but we now have only one class
-  # per layer
-  #-----------------------------------------------------------------------------
+    #-----------------------------------------------------------------------------
   # TERREINDELEN
   #-----------------------------------------------------------------------------
   LAYER
@@ -98,7 +92,7 @@ MAP
         "gml_include_items"   "all"
         "wms_title"           "Terreindelen"
         "wms_enable_request"  "*"
-            "wms_group_title"     "Objecten Openbare Ruimte"
+        "wms_group_title"     "Objecten Openbare Ruimte"
         "wms_abstract"        "Kleinste functioneel onafhankelijk stukje van een terrein, dat er binnen het objecttype Terrein van NEN 3610 wordt onderscheiden, met of zonder aaneengesloten vegetatie."
         "wms_srs"             "EPSG:28992"
         "wms_name"            "Terreindelen"
@@ -123,7 +117,7 @@ MAP
     END
   END
 
-  #-----------------------------------------------------------------------------
+    #-----------------------------------------------------------------------------
   # Multiple layers with a filter are supported but we now have only one class
   # per layer
   #-----------------------------------------------------------------------------
@@ -174,4 +168,312 @@ MAP
       END
     END
   END
+
+  #-----------------------------------------------------------------------------
+  # groenobjecten - APPTIMIZE
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME                    "groenobjecten_apptimize"
+    GROUP                   "apptimize"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie from objectenopenbareruimte_groenobjecten_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type_beheerder_plus] = 'R&E_VOR_Groen' )    
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           72224
+
+
+    METADATA
+        "gml_include_items"   "all"
+        "wms_title"           "Groenobjecten Apptimize"
+        "wms_enable_request"  "*"
+        "wms_group_title"     "Apptimize"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Terreindelen"
+        "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME          "Bloemrijk gras"
+      EXPRESSION      ("[type_object_plus]" eq "Bloemrijk gras")
+
+      STYLE
+          COLOR "#3C701A"
+      END
+
+      STYLE
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
+      END
+
+      STYLE
+          SYMBOL 'hatchsymbol'
+          COLOR "#d92853"
+          WIDTH 1
+          ANGLE 45
+          PATTERN 2 10 END
+      END
+    END
+
+    CLASS
+        NAME          "Bodembedekkers"
+      EXPRESSION      ("[type_object]" eq "Bodembedekkers")
+
+      STYLE
+          COLOR "#7230FF"
+      END
+
+      STYLE
+          OUTLINECOLOR "#7230FF"
+          WIDTH 0.5
+      END
+    END
+
+
+    CLASS
+      NAME          "Bosplantsoen"
+      EXPRESSION      ("[type_object]" eq "Bosplantsoen")
+
+      STYLE
+          COLOR "#5E5555"
+      END
+
+      STYLE
+          OUTLINECOLOR "#5E5555"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME          "Gazon"
+      EXPRESSION      ("[type_object_plus]" eq "Gazon")
+
+        STYLE
+            COLOR "#48D451"
+        END
+
+        STYLE
+            OUTLINECOLOR "#48D451"
+            WIDTH 0.5
+        END
+    END
+
+    CLASS
+      NAME          "Grasveld"
+      EXPRESSION      ("[type_object_plus]" eq "Grasveld")
+
+      STYLE
+          ANTIALIAS    true
+          COLOR       '#42A235'
+      END
+      STYLE
+          OUTLINECOLOR  '#42A235'
+          WIDTH        0.5
+      END
+    END
+
+    CLASS
+      NAME          "Hagen"
+      EXPRESSION      ("[type_object]" eq "Haag")
+        
+        STYLE
+            COLOR "#FF0000"
+        END
+
+        STYLE
+            OUTLINECOLOR "#FF0000"
+            WIDTH 0.5
+        END
+      END
+
+
+    CLASS
+      NAME          "Heesters"
+      EXPRESSION      ("[type_object]" eq "Heesters")
+
+      STYLE
+          COLOR "#FD7D4E"
+      END
+
+      STYLE
+          OUTLINECOLOR "#FD7D4E"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME          "Ruigte"
+      EXPRESSION      ("[type_object_plus]" eq "Ruigte")
+      STYLE
+          COLOR "#D3FFBE"
+      END
+
+      STYLE
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
+      END
+
+      STYLE
+          SYMBOL 'hatchsymbol'
+          COLOR "#6E6E6E"
+          WIDTH 1
+          ANGLE 45
+          PATTERN 2 10 END
+      END
+    END
+
+    CLASS
+      NAME          "Ruw gras"
+      EXPRESSION      ("[type_object_plus]" eq "Ruw gras")
+
+      STYLE
+          COLOR "#267300"
+      END
+      STYLE
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME          "Struikrozen"
+      EXPRESSION      ("[type_object]" eq "Struikrozen")
+
+      STYLE
+          COLOR "#FF69B4"
+      END
+
+      STYLE
+          OUTLINECOLOR "#FF69B4"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME          "Vaste planten"
+      EXPRESSION      ("[type_object_plus]" eq "Vaste planten")
+      STYLE
+          COLOR "#AAFFAA"
+      END
+
+      STYLE
+          OUTLINECOLOR "#AAFFAA"
+          WIDTH 0.5
+      END
+      END
+  END
+
+  #-----------------------------------------------------------------------------
+  # VERHARDINGEN - APPTIMIZE
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME                    "verhardingen_apptimize"
+    GROUP                   "apptimize"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                     "geometrie FROM objectenopenbareruimte_verhardingen_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type_beheerder_plus] = 'R&E_VOR_Verhardingen' )               
+    TYPE                    POLYGON
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           72224
+
+
+    METADATA
+        "gml_include_items"   "all"
+        "wms_title"           "Verhardingen Apptimize"
+        "wms_enable_request"  "*"
+        "wms_group_title"     "Apptimize"
+        "wms_srs"             "EPSG:28992"
+        "wms_name"            "Verhardingen"
+        "wms_server_version"  "1.1.1"
+    END
+
+    CLASS
+      NAME              "Asfaltverharding"
+      EXPRESSION        ("[type_object]" eq 'Asfaltverharding')
+      STYLE
+          COLOR "#000000"
+      END
+
+      STYLE
+          OUTLINECOLOR "#000000"
+          WIDTH 0.5
+      END
+    END
+
+
+    CLASS
+      NAME              "Betonverharding"
+      EXPRESSION        ("[type_object]" eq 'Betonverharding')
+      STYLE
+          COLOR "#000000"
+      END
+
+      STYLE
+          OUTLINECOLOR "#000000"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME              "Elementenverharding"
+      EXPRESSION        ("[type_object]" eq 'Elementenverharding')
+      STYLE
+          COLOR "#CCCCCC"
+      END
+
+      STYLE
+          OUTLINECOLOR "#6E6E6E"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME              "Halfverharding"
+      EXPRESSION        ("[type_object]" eq 'Halfverharding')
+      STYLE
+          COLOR "#FFAD61"
+      END
+
+      STYLE
+          OUTLINECOLOR "#FFAD61"
+          WIDTH 0.5
+      END 
+    END
+
+    CLASS
+      NAME              "Kunststofverharding"
+      EXPRESSION        ("[type_object]" eq 'Kunststofverharding')
+      STYLE
+          COLOR "#90908E"
+      END
+
+      STYLE
+          OUTLINECOLOR "#90908E"
+          WIDTH 0.5
+      END
+    END
+
+    CLASS
+      NAME              "Onverhard"
+      EXPRESSION        ("[type_object]" eq 'Onverhard')
+      STYLE
+          COLOR "#FFAD61"
+      END
+
+      STYLE
+          OUTLINECOLOR "#FFAD61"
+          WIDTH 0.5
+      END
+    END
+
+  END
+  
 END
