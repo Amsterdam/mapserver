@@ -1,0 +1,81 @@
+#==============================================================================
+# canon_amsterdam_2025.map
+# doel: Een canon is een verzameling van 50 verhalen over de geschiedenis van Amsterdam die laten
+# zien hoe keuzes uit het verleden invloed hebben op de keuzes van nu en in de toekomst. Het is een
+# manier om met elkaar in gesprek te gaan en naar elkaars verhaal te luisteren. Dit helpt om elkaar
+# beter te begrijpen. Je hoeft het niet altijd met elkaar eens te zijn, maar het zorgt ervoor dat we
+# meer aandacht hebben voor elkaars verhalen.
+# De Canon van Amsterdam verandert mee met de tijd, zodat zo veel mogelijk Amsterdammers zich erin
+# kunnen blijven herkennen. Het jubileumjaar Amsterdam 750 is een mooie kans om de Canon te
+# vernieuwen. Op deze manier zorgen we ervoor dat het verleden toegankelijk blijft voor iedereen.
+# https://www.amsterdam.nl/stadsarchief/canon-amsterdam/
+#==============================================================================
+MAP
+    NAME "canon_amsterdam_2025"
+    INCLUDE "header.inc"
+
+
+    WEB 
+        METADATA
+        "ows_title" "Canon Amsterdam 2025"
+        "ows_abstract" "Op 21 januari heeft het college van B&W het Stadsarchief de opdracht gegeven om de
+                        Canon van Amsterdam te vernieuwen. Het Stadsarchief heeft een diverse commissie van experts
+                        samengesteld."
+            "ows_onlineresource"  "MAP_URL_REPLACE/maps/canon_amsterdam_2025"
+        END
+    END
+
+    #-----------------------------------------------------------------------------
+
+    LAYER
+        NAME "canon_amsterdam"
+        GROUP "canon_amsterdam_2025"
+        INCLUDE "connection/dataservices.inc"
+        DATA "geometrie FROM public.amsterdam_canon_canon_amsterdam_2025_v1 USING srid=28992 USING UNIQUE id"
+        TYPE POINT
+        TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+        PROJECTION 
+            "init=epsg:28992"
+        END
+        #-----------------------------------------------------------------------------
+
+        METADATA
+            "wfs_enable_request" "!*"
+            "ows_title"           "Canon Amsterdam 2025"
+            "ows_abstract"        "De vernieuwing van de Canon van Amsterdam"
+            "wms_group_title"     "Canon Amsterdam 2025"
+            "gml_featureid"       "id"
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "point"
+            "gml_include_items"   "all"
+            "gml_types"           "auto"
+            "wms_include_items"   "all"
+        END
+        LABELITEM "titel"
+        
+        CLASS
+            NAME "Canon Amsterdam 2025"
+
+            STYLE
+                SYMBOL 'canon_amsterdam_2025'
+                SIZE 24
+            END
+
+            LABEL
+                COLOR 0 0 0
+                OUTLINECOLOR 255 255 255
+                OUTLINEWIDTH 3
+                FONT "Ubuntu-MI"
+                TYPE truetype
+                SIZE 11
+                POSITION AUTO
+                PARTIALS FALSE
+                OFFSET -4 -5
+                ANTIALIAS true
+                ALIGN center
+            END
+        END
+
+    END
+
+END
