@@ -1,0 +1,441 @@
+MAP
+  NAME                      "eigendommen"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "Eigendommen"
+      "ows_abstract"        "Eigendommen"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/eigendommen"
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "gemeente_amsterdam"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Gemeente Amsterdam')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Gemeente Amsterdam" 
+      "ows_abstract"        "Gemeente Amsterdam" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "gemeente_amsterdam"
+      TITLE                 "Gemeente Amsterdam"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#004699"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#004699"
+        WIDTH               3
+      END
+    END
+  END
+
+    LAYER
+    NAME                    "overige_gemeenten"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Overige gemeenten')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Overige Gemeenten" 
+      "ows_abstract"        "Overige gemeenten" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "overige_gemeenten"
+      TITLE                 "Overige gemeenten"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#BED200"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#BED200"
+        WIDTH               3
+      END
+    END
+  END
+
+
+  LAYER
+    NAME                    "staat"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Staat')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Staat" 
+      "ows_abstract"        "Staat" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "staat"
+      TITLE                 "Staat"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#666666"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#666666"
+        WIDTH               3
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "provincies"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Provincies')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Provincies" 
+      "ows_abstract"        "Provincies" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "provincies"
+      TITLE                 "Provincies"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#00A03C"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#00A03C"
+        WIDTH               3
+      END
+    END
+  END
+
+  
+  LAYER
+    NAME                    "waterschappen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Waterschappen')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Waterschappen" 
+      "ows_abstract"        "Waterschappen" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "waterschappen"
+      TITLE                 "Waterschappen"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#009DE6"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#009DE6"
+        WIDTH               3
+      END
+    END
+  END
+
+
+  LAYER
+    NAME                    "woningbouwcorporaties"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Woningbouwcorporaties')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Woningbouwcorporaties" 
+      "ows_abstract"        "Woningbouwcorporaties" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "woningbouwcorporaties"
+      TITLE                 "Woningbouwcorporaties"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#FF9100"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#FF9100"
+        WIDTH               3
+      END
+    END
+  END
+
+
+    LAYER
+    NAME                    "verenigingen_van_eigenaren"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Verenigingen van eigenaren')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Verenigingen van eigenaren" 
+      "ows_abstract"        "Verenigingen van eigenaren" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "verenigingen_van_eigenaren"
+      TITLE                 "Verenigingen van eigenaren"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#00D2B4"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#00D2B4"
+        WIDTH               3
+      END
+    END
+  END
+ 
+  LAYER
+    NAME                    "spoorwegen_prorail"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Spoorwegen/ProRail')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Spoorwegen/ProRail" 
+      "ows_abstract"        "Spoorwegen/ProRail" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "spoorwegen_proRail"
+      TITLE                 "spoorwegen/ProRail"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#FFD700"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#FFD700"
+        WIDTH               3
+      END
+    END
+  END
+
+
+LAYER
+    NAME                    "overige_niet_natuurlijke_personen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Overige niet-natuurlijke personen')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Overige niet-natuurlijke personen" 
+      "ows_abstract"        "Overige niet-natuurlijke personen" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "overige_niet_natuurlijke_personen"
+      TITLE                 "Overige niet-natuurlijke personen"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#A00078"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#A00078"
+        WIDTH               3
+      END
+    END
+  END
+
+
+  LAYER
+    NAME                    "overige_natuurlijke_personen"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "eigendommen"                                 
+    DATA "geometrie_vlak FROM (
+        SELECT id, geometrie_vlak, indexletter, subject_categorie, erfpacht_uitgegeven_door from public.benkagg_brkbasisdataselectie_v1
+        )
+        AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([indexletter] = 'G' AND [subject_categorie] = 'Overige natuurlijke personen')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Overige natuurlijke personen" 
+      "ows_abstract"        "Overige natuurlijke personen" 
+      "wms_group_title"     "Eigendommen"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "overige_natuurlijke_personen"
+      TITLE                 "Overige natuurlijke personen"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#E50082"
+        OPACITY             50
+      END
+      STYLE
+        OUTLINECOLOR        "#E50082"
+        WIDTH               3
+      END
+    END
+  END
+
+END
+
