@@ -24,7 +24,7 @@ MAP
   LAYER
     NAME                    "historische_onderzoeken"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM ondergrond_historischeonderzoeken USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.historische_bodeminformatie_onderzoeken_v1 USING srid=28992 USING UNIQUE id"
     PROCESSING              "CLOSE_CONNECTION=DEFER" # Use the same connection for all queried layers because they reside in the same db
     TYPE                    POLYGON
     MINSCALEDENOM           10

@@ -63,7 +63,7 @@ with block("MAP"):
             p(
                 "DATA",
                 "geometrie FROM ("
-                "   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v1"
+                "   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2"
                 "   WHERE type_soortnaam = 'Bomen'"
                 f"  AND ({select_soort})"
                 ") AS sub"
