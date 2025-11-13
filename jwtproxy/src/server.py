@@ -9,7 +9,7 @@ from os import environ as env
 import re
 
 from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
-from jwcrypto.jwt import JWT, JWKSet
+from jwcrypto.jwt import JWT, JWKSet, JWTExpired
 from yarl import URL
 
 
@@ -126,7 +126,10 @@ async def audit(req: web.Request, token: str):
         j.deserialize(token, key=jwks)
     except Exception as e:
         app_logger.warning(e)
-        raise web.HTTPForbidden(reason="Invalid token")
+        raise web.HTTPUnauthorized(reason="Invalid token") from e
+    except JWTExpired as e:
+        app_logger.warning(e)
+        raise web.HTTPUnauthorized(reason="Token expired") from e
 
     claims = json.loads(j.claims)
     try:
@@ -139,7 +142,7 @@ async def audit(req: web.Request, token: str):
             claims.get("email"),
             claims.get("preferred_username"),
         )
-        raise web.HTTPUnauthorized(reason="Insufficient access privilege")
+        raise web.HTTPForbidden(reason="Insufficient access privilege") from None
 
     audit_logger.info(
         "Access to %s (%s) granted to subject %s (username: %s)",
@@ -238,7 +241,6 @@ async def handle(req: web.Request):
     if req.can_read_body:
         body = await req.text()
         app_logger.debug("Request body: \n %s", body)
-
     async with SessionManager.session().request(
         req.method, target_url, headers=req.headers, params=req.rel_url.query, data=body
     ) as resp:
@@ -267,7 +269,7 @@ parser.add_argument("--path")
 parser.add_argument("--port", default=8080, type=int)
 
 
-async def main(*argv):
+async def main(*argv) -> web.Application:
     app = web.Application()
     app.router.add_route("GET", "/status/health", health)
     app.router.add_route("OPTIONS", "/{path:.*?}", handle)

@@ -64,10 +64,11 @@ def generate_jwt(scopes, exp):
     token = JWT(header={"alg": "ES256", "kid": key.kid, "kty": "EC"}, claims=claims)
     token.make_signed_token(key)
 
-    sys.stdout.write(token.serialize())
-    sys.stdout.write("\n")
+    return token.serialize()
 
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    generate_jwt(args.scopes, args.exp)
+    token = generate_jwt(args.scopes, args.exp)
+    sys.stdout.write(token)
+    sys.stdout.write("\n")
