@@ -1,5 +1,4 @@
 import pytest
-from aioresponses import aioresponses
 
 from ..jwt_keygen import generate_jwt
 from ..server import PRIVATE_MAPS
@@ -10,7 +9,7 @@ PRIVATE_MAPS_PATHS = [f"maps/{m}" for m in PRIVATE_MAPS.split(" ")]
 
 
 async def test_health(client):
-    resp = await client.get('/status/health')
+    resp = await client.get("/status/health")
     assert resp.status == 200
 
 
@@ -62,7 +61,9 @@ async def test_private_map_without_token_get(client, private_path):
     """
     resp = await client.get(private_path)
     assert resp.status == 403
-    assert await resp.text() == f"403: Accessing `{private_path}` without a JWT token is not allowed."
+    assert (
+        await resp.text() == f"403: Accessing `{private_path}` without a JWT token is not allowed."
+    )
 
 
 @pytest.mark.parametrize("private_path", PRIVATE_MAPS_PATHS)
@@ -72,7 +73,9 @@ async def test_private_map_without_token_post(client, private_path):
     """
     resp = await client.post(private_path)
     assert resp.status == 403
-    assert await resp.text() == f"403: Accessing `{private_path}` without a JWT token is not allowed."
+    assert (
+        await resp.text() == f"403: Accessing `{private_path}` without a JWT token is not allowed."
+    )
 
 
 @pytest.mark.parametrize("private_path", PRIVATE_MAPS_PATHS)
@@ -130,7 +133,7 @@ async def test_private_map_with_invalid_scope_post(client, private_path):
 
 
 @pytest.mark.parametrize("private_path", PRIVATE_MAPS_PATHS)
-async def test_private_map_with_valid_token_post(client, private_path):
+async def test_private_map_with_expired_token_post(client, private_path):
     """
     Test to make sure a POST request with an expired token to a private map results
     in a 401 response.
