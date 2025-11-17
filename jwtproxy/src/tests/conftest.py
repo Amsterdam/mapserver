@@ -5,8 +5,6 @@ import pytest
 
 from ..server import main
 
-pytest_plugins = "aiohttp.pytest_plugin"
-
 PRIVATE_PROXY_URL = "http://private_proxy"
 PUBLIC_PROXY_URL = "http://public_proxy"
 

@@ -15,7 +15,7 @@ async def test_health(client):
 
 async def test_public_map_without_token_options(client, mock_upstream):
     """
-    Test to make sure a OPTIONS request without a token to a private map results
+    Test to make sure a OPTIONS request without a token to a public map results
     in a call to the upstream public server.
     """
     mock_upstream.options(f"{PUBLIC_PROXY_URL}/maps/luchtfoto", status=200)
@@ -25,7 +25,7 @@ async def test_public_map_without_token_options(client, mock_upstream):
 
 async def test_public_map_without_token_get(client, mock_upstream):
     """
-    Test to make sure a GET request without a token to a private map results
+    Test to make sure a GET request without a token to a public map results
     in a call to the upstream public server.
     """
     mock_upstream.get(f"{PUBLIC_PROXY_URL}/maps/luchtfoto", status=200)
@@ -35,7 +35,7 @@ async def test_public_map_without_token_get(client, mock_upstream):
 
 async def test_public_map_without_token_post(client, mock_upstream):
     """
-    Test to make sure a POST request without a token to a private map results
+    Test to make sure a POST request without a token to a public map results
     in a call to the upstream public server.
     """
     mock_upstream.post(f"{PUBLIC_PROXY_URL}/maps/luchtfoto", status=200)
