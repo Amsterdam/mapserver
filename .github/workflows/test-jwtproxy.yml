@@ -1,0 +1,34 @@
+name: Test jwtproxy
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  push:
+    branches:
+    - features/**
+  pull_request:
+    branches:
+    - main
+    - master
+
+jobs:
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    env:
+      INITIALIZE_DB: false
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: docker compose -f "compose.yml" up proxy -d --build
+
+    - name: Run tests
+      run: docker compose exec -T proxy pytest -v --show-capture=no
+
+    - name: Stop containers
+      if: always()
+      run: docker compose -f "compose.yml" down
