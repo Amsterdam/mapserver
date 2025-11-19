@@ -21,11 +21,9 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - 9191:8000
-    volumes:
-      - ./jwtproxy/src:/app/jwtproxy
     environment:
       PROXY_URL: http://map
-      JWKS_PATH: /app/jwtproxy/test_jwk.json
+      JWKS_PATH: /app/test_jwk.json
       LOG_LEVEL: DEBUG
       #JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
 
