@@ -4,14 +4,13 @@ import argparse
 import asyncio
 import json
 import logging
+import re
 from logging.config import dictConfig
 from os import environ as env
-import re
 
 from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
-from jwcrypto.jwt import JWT, JWKSet
+from jwcrypto.jwt import JWT, JWKSet, JWTExpired
 from yarl import URL
-
 
 LOG_LEVEL = env.get("LOG_LEVEL", "INFO")
 CHUNK_SIZE = 1024
@@ -91,6 +90,7 @@ app_logger = logging.getLogger("jwtproxy.applogs")
 audit_logger = logging.getLogger("jwtproxy.auditlogs")
 access_logger = logging.getLogger("jwtproxy.accesslogs")
 
+
 async def fetch_token(req: web.Request):
     """Fetch the token from the request.
 
@@ -124,14 +124,18 @@ async def audit(req: web.Request, token: str):
 
     try:
         j.deserialize(token, key=jwks)
-    except Exception as e:
+    except ValueError as e:
         app_logger.warning(e)
-        raise web.HTTPForbidden(reason="Invalid token")
+        raise web.HTTPUnauthorized(reason="Invalid token") from e
+    except JWTExpired as e:
+        app_logger.warning(e)
+        raise web.HTTPUnauthorized(reason="Token expired") from e
 
     claims = json.loads(j.claims)
     try:
-        assert "fp_mdw" in claims["realm_access"]["roles"]
-    except (KeyError, AssertionError):
+        if "fp_mdw" not in claims["realm_access"]["roles"]:
+            raise ValueError("Required scope not present in claims")
+    except (KeyError, ValueError):
         audit_logger.info(
             "Access to %s (%s) denied for subject %s (username: %s)",
             req.url,
@@ -139,7 +143,7 @@ async def audit(req: web.Request, token: str):
             claims.get("email"),
             claims.get("preferred_username"),
         )
-        raise web.HTTPUnauthorized(reason="Insufficient access privilege")
+        raise web.HTTPForbidden(reason="Insufficient access privilege") from None
 
     audit_logger.info(
         "Access to %s (%s) granted to subject %s (username: %s)",
@@ -203,7 +207,8 @@ async def get_jwk():
             ) as resp:
                 payload = await resp.text()
         else:
-            payload = open(env.get("JWKS_PATH")).read()
+            with open(env.get("JWKS_PATH")) as file:
+                payload = file.read()
         cached_jwk = JWKSet.from_json(payload)
         return cached_jwk
 
@@ -214,7 +219,10 @@ async def check_protection(path, method):
         if method == "OPTIONS":
             return web.Response(text="Status OK")
         else:
-            raise web.HTTPForbidden(reason=f"Accessing `{path}` without a JWT token is not allowed.")
+            raise web.HTTPForbidden(
+                reason=f"Accessing `{path}` without a JWT token is not allowed."
+            )
+    return None
 
 
 async def handle(req: web.Request):
@@ -230,7 +238,6 @@ async def handle(req: web.Request):
     app_logger.debug("Request params: \n %s", req.rel_url.query)
     app_logger.debug("Request headers: \n %s", req.headers)
 
-
     if token is not None:
         await audit(req, token)
 
@@ -238,7 +245,6 @@ async def handle(req: web.Request):
     if req.can_read_body:
         body = await req.text()
         app_logger.debug("Request body: \n %s", body)
-
     async with SessionManager.session().request(
         req.method, target_url, headers=req.headers, params=req.rel_url.query, data=body
     ) as resp:
@@ -267,7 +273,7 @@ parser.add_argument("--path")
 parser.add_argument("--port", default=8080, type=int)
 
 
-async def main(*argv):
+async def main(*argv) -> web.Application:
     app = web.Application()
     app.router.add_route("GET", "/status/health", health)
     app.router.add_route("OPTIONS", "/{path:.*?}", handle)
@@ -283,6 +289,6 @@ if __name__ == "__main__":
 
     # support listening on unix domain sockets and ports
     if args.path:
-        web.run_app(main(), host="0.0.0.0", path=args.path, access_log=access_logger)
+        web.run_app(main(), host="0.0.0.0", path=args.path, access_log=access_logger)  # noqa: S104
     else:
-        web.run_app(main(), host="0.0.0.0", port=args.port, access_log=access_logger)
+        web.run_app(main(), host="0.0.0.0", port=args.port, access_log=access_logger)  # noqa: S104
