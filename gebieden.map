@@ -2,6 +2,7 @@
 #
 # gebieden.map
 # doel: serveren van gebieden
+# Datateam: BenK
 #
 #==============================================================================
 #
@@ -9,6 +10,7 @@
 # ------------------    ----------    -----------------------------------------
 # Rob Kromwijk          21-10-2015    schepping
 # Rob Kromwijk          04-01-2016    aanpassing zoomniveaus labels
+# Ergu                  27-11-2025    aanpassing wegens api verioning
 #
 #==============================================================================
 
@@ -36,7 +38,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_buurten
+                    from public.gebieden_buurten_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -74,7 +76,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_wijken
+                    from public.gebieden_wijken_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -113,7 +115,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_ggwgebieden
+                    from public.gebieden_ggwgebieden_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -153,7 +155,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_stadsdelen
+                    from public.gebieden_stadsdelen_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -191,7 +193,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_bouwblokken
+                    from public.gebieden_bouwblokken_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -227,7 +229,7 @@ MAP
     NAME            "stedelijk_gebied_project_of_belang"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -262,7 +264,7 @@ MAP
     NAME            "unesco"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.monumenten_unesco USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.monumenten_unesco_v3  USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   20001
@@ -315,7 +317,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_buurten
+                    from public.gebieden_buurten_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -371,7 +373,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_wijken
+                    from public.gebieden_wijken_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   5000
@@ -427,7 +429,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_ggwgebieden
+                    from public.gebieden_ggwgebieden_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   4000
@@ -483,7 +485,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_stadsdelen
+                    from public.gebieden_stadsdelen_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   15000
@@ -539,7 +541,7 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         	          select *
-                    from public.gebieden_bouwblokken
+                    from public.gebieden_bouwblokken_v1
                     where eind_geldigheid ISNULL) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -593,7 +595,7 @@ MAP
     NAME            "stedelijk_gebied_project_of_belang_label"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   4000
     MAXSCALEDENOM   100001
@@ -646,7 +648,7 @@ MAP
     NAME            "unesco_label"
     GROUP           "gebieden"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.monumenten_unesco USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.monumenten_unesco_v3 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   20001
@@ -693,143 +695,11 @@ MAP
   END
 
   #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "grootstedelijk_regio_amsterdam"
-    GROUP           "grootstedelijkgebieden"
-    INCLUDE         "connection/dataservices.inc"
-
-    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Grootstedelijke regio Amsterdam"
-      "ows_group_title"     "gebieden"
-      "ows_abstract"        "Grootstedelijke Gebieden Regie Gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    FILTER  ("[type]" eq 'GSP')
-
-    CLASS
-      TEXT             '[naam]'
-      NAME              "Regie Gemeente Amsterdam"
-
-      STYLE
-        ANTIALIAS       true
-        OUTLINECOLOR    160 0 120
-        COLOR           160 0 120
-        OPACITY         35
-        WIDTH           2
-      END
-
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50001
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-      LABEL
-        MINSCALEDENOM  50001
-        MAXSCALEDENOM  100001
-        COLOR          160 0 120
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME            "grootstedelijk_regio_omgevingsdienst"
-    GROUP           "grootstedelijkgebieden"
-    INCLUDE         "connection/dataservices.inc"
-
-    DATA            "geometrie FROM public.gebieden_grootstedelijke_projecten USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   100001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Grootstedelijke regio omgevingsdienst"
-      "ows_group_title"     "gebieden"
-      "ows_abstract"        "Grootstedelijke Gebieden Regie Omgevingsdienst"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    FILTER  ("[type]" eq 'OD')
-
-    CLASS
-      TEXT             '[naam]'
-      NAME              "Regie Omgevingsdienst"
-
-      STYLE
-        ANTIALIAS       true
-        OUTLINECOLOR    0 160 60
-        COLOR           0 160 60
-        OPACITY         35
-        WIDTH           2
-      END
-
-      LABEL
-        MINSCALEDENOM  100
-        MAXSCALEDENOM  50001
-        COLOR          0 160 60
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-
-      LABEL
-        MINSCALEDENOM  50001
-        MAXSCALEDENOM  100001
-        COLOR          0 160 60
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-M"
-        TYPE           truetype
-        SIZE           8
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-  END
-
-  #-----------------------------------------------------------------------------
-
   LAYER
     NAME            "gsg4_phsod"
     GROUP           "gsg4"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -893,7 +763,7 @@ MAP
     NAME            "gsg4_phs"
     GROUP           "gsg4"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -957,7 +827,7 @@ MAP
     NAME            "gsg4_od"
     GROUP           "gsg4"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
@@ -1020,7 +890,7 @@ MAP
     NAME            "gsg4_gsp"
     GROUP           "gsg4"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.gebieden_stedelijkgebiedprojectofbelangen_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   100001
