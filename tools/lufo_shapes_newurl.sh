@@ -24,7 +24,7 @@ SCRIPTDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 #It's looking for the shapefiles in this folder, there in the main mapserver folder, you can move this file or move the shp files into this folder
 SHAPEDIR=$SCRIPTDIR/luchtfoto
 LEVELS="0 1 2 3 4 5"
-YEAR="2025"
+YEAR="2024"
 
 for j in $YEAR; do
     for i in $LEVELS; do
