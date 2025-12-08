@@ -1,0 +1,84 @@
+MAP
+  NAME                      "erfpacht"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "team" "BENK"
+      "ows_title"           "Erfpacht"
+      "ows_abstract"        "Erfpacht"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/erfpacht_v2"
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "gemeente_amsterdam"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "erfpacht"                                 
+    DATA                     "geometrie_vlak FROM public.benkagg_brkkaartlaagerfpachtuitgevers_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([erfpacht_uitgegeven_door] = 'Amsterdam')            
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Gemeente Amsterdam" 
+      "ows_abstract"        "Gemeente Amsterdam" 
+      "wms_group_title"     "Erfpacht"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "gemeente_amsterdam"
+      TITLE                 "Gemeente Amsterdam"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#004699"
+        OPACITY             70
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "overig"         
+    INCLUDE                 "connection/dataservices.inc"
+    GROUP                   "erfpacht"                                 
+    DATA                     "geometrie_vlak FROM public.benkagg_brkkaartlaagerfpachtuitgevers_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([erfpacht_uitgegeven_door] = 'Overige')                  
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Overig" 
+      "ows_abstract"        "Overig" 
+      "wms_group_title"     "Erfpacht"                                 
+      "gml_featureid"       "id"                                         
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "polygon"                                      
+      "gml_include_items"   "all"                                        
+      "gml_types"           "auto"
+      "wms_include_items"   "all"                                        
+    END
+
+    CLASS
+      NAME                  "overig"
+      TITLE                 "Overig"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#E50082"
+        OPACITY             70
+      END
+    END
+  END
+END

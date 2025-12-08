@@ -6,6 +6,5 @@ USER root
 # Copy referentiekaarten mapfiles into the root dir so they will be served
 
 RUN rm -rf /srv/mapserver/private
-COPY /referentiekaarten/ /srv/mapserver/
-RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+COPY --chown=999:999 /referentiekaarten/ /srv/mapserver/
 USER www-data

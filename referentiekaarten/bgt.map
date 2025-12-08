@@ -11,6 +11,7 @@ MAP
 
     WEB
         METADATA
+            "team" "BENK"
             "ows_title"           "bgt"
             "ows_abstract"        "Basisregistratie Grootschalige Topografie"
             "ows_onlineresource"  "MAP_URL_REPLACE/tiled/bgt"
@@ -29,7 +30,7 @@ MAP
         NAME                    waterdeel_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_waterdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_waterdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -57,7 +58,7 @@ MAP
         NAME                    ondersteunendewaterdelen_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewaterdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewaterdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -91,7 +92,7 @@ MAP
         NAME                    begroeideterreindelen_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_begroeideterreindelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_begroeideterreindelen_V2 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_fysiek_voorkomen"
         MAXSCALEDENOM           5000
@@ -172,7 +173,7 @@ MAP
         NAME                    onbegroeideterreindelen_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_onbegroeideterreindelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_onbegroeideterreindelen_v2 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_fysiek_voorkomen"
         MAXSCALEDENOM           5000
@@ -226,7 +227,7 @@ MAP
         NAME                    overbruggingsdelen_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_overbruggingsdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_overbruggingsdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -254,7 +255,7 @@ MAP
         NAME                    berm_achter_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -285,7 +286,7 @@ MAP
         NAME                    berm_voor_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_ondersteunendewegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -324,7 +325,7 @@ MAP
         NAME                    rijbanen_achter_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,baan voor vliegverkeer,parkeervlak")
         MAXSCALEDENOM           5000
@@ -356,7 +357,7 @@ MAP
         NAME                    rijbanen_voor_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,baan voor vliegverkeer,parkeervlak")
         MAXSCALEDENOM           5000
@@ -384,7 +385,7 @@ MAP
         NAME                    voetganers_achter_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -416,7 +417,7 @@ MAP
         NAME                    voetgangers_voor_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -444,7 +445,7 @@ MAP
         NAME                    inrichtingselement_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" ne "niet-bgt")
         CLASSITEM               "bgt_type"
@@ -498,7 +499,7 @@ MAP
         NAME                    scheiding_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_scheidingen where relatieve_hoogteligging = 0 and geometrie_vlak IS NOT NULL and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_scheidingen_v1 where relatieve_hoogteligging = 0 and geometrie_vlak IS NOT NULL and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" = "muur")
         MAXSCALEDENOM           5000
@@ -530,7 +531,7 @@ MAP
         NAME                    gebouw_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_type"
         MAXSCALEDENOM           5000
@@ -588,7 +589,7 @@ MAP
         NAME                    panden_vlak0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -619,7 +620,7 @@ MAP
         NAME                    metro_achter0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -661,7 +662,7 @@ MAP
         NAME                    metro_voor0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -711,7 +712,7 @@ MAP
         NAME                    tram0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "tram"
@@ -752,7 +753,7 @@ MAP
         NAME                    trein_achter0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -794,7 +795,7 @@ MAP
         NAME                    trein_voor0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -844,7 +845,7 @@ MAP
         NAME                    snelweg_achter_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -877,7 +878,7 @@ MAP
         NAME                    snelweg_voor_0
         GROUP                   hoogte0
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -905,7 +906,7 @@ MAP
         NAME                    "ligplaats"
         GROUP                   "hoogte0"
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_ligplaatsen where eind_geldigheid isnull and status_omschrijving != 'Plaats ingetrokken') As subquery USING srid=28992 USING UNIQUE identificatie"
+        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_ligplaatsen_v1 where eind_geldigheid isnull and status_omschrijving != 'Plaats ingetrokken') As subquery USING srid=28992 USING UNIQUE identificatie"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         PROJECTION
@@ -932,7 +933,7 @@ MAP
         NAME                    "standplaats"
         GROUP                   "hoogte0"
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_standplaatsen where eind_geldigheid isnull and status_omschrijving != 'Plaats ingetrokken') As subquery USING srid=28992 USING UNIQUE identificatie"
+        DATA                    "geometrie FROM (select geometrie, identificatie from public.bag_standplaatsen_v1 where eind_geldigheid isnull and status_omschrijving != 'Plaats ingetrokken') As subquery USING srid=28992 USING UNIQUE identificatie"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         PROJECTION
@@ -963,7 +964,7 @@ MAP
         NAME                    wegdeel_vlak_tunnel1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 0 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         PROJECTION
@@ -989,7 +990,7 @@ MAP
         NAME                    begroeideterreindelen_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_begroeideterreindelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_begroeideterreindelen_v2 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_fysiek_voorkomen"
         MAXSCALEDENOM           5000
@@ -1070,7 +1071,7 @@ MAP
         NAME                    onbegroeideterreindelen_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_onbegroeideterreindelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_onbegroeideterreindelen_v2 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_fysiek_voorkomen"
         MAXSCALEDENOM           5000
@@ -1123,7 +1124,7 @@ MAP
         NAME                    overbruggingsdelen_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_overbruggingsdelen where relatieve_hoogteligging = 1  and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_overbruggingsdelen_v1 where relatieve_hoogteligging = 1  and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -1151,7 +1152,7 @@ MAP
         NAME                    berm_achter_1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -1182,7 +1183,7 @@ MAP
         NAME                    berm_voor_1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_ondersteunendewegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -1221,7 +1222,7 @@ MAP
         NAME                    rijbanen_achter_1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,baan voor vliegverkeer,parkeervlak")
         MAXSCALEDENOM           5000
@@ -1252,7 +1253,7 @@ MAP
         NAME                    rijbanen_voor_1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,baan voor vliegverkeer,parkeervlak")
         MAXSCALEDENOM           5000
@@ -1280,7 +1281,7 @@ MAP
         NAME                    voetganers_achter_1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -1312,7 +1313,7 @@ MAP
         NAME                    voetgangers_voor_1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -1340,7 +1341,7 @@ MAP
         NAME                    inrichtingselement_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" ne "niet-bgt")
         CLASSITEM               "bgt_type"
@@ -1394,7 +1395,7 @@ MAP
         NAME                    scheiding_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen where geometrie_vlak IS NULL and relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen_v1 where geometrie_vlak IS NULL and relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" = "muur")
         MAXSCALEDENOM           5000
@@ -1426,7 +1427,7 @@ MAP
         NAME                    gebouw_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_type"
         MAXSCALEDENOM           5000
@@ -1483,7 +1484,7 @@ MAP
         NAME                    panden_vlak1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -1514,7 +1515,7 @@ MAP
         NAME                    metro_achter1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -1556,7 +1557,7 @@ MAP
         NAME                    metro_voor1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -1606,7 +1607,7 @@ MAP
         NAME                    tram1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "tram"
@@ -1648,7 +1649,7 @@ MAP
         NAME                    trein_achter1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -1690,7 +1691,7 @@ MAP
         NAME                    trein_voor1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -1740,7 +1741,7 @@ MAP
         NAME                    snelweg_achter1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -1773,7 +1774,7 @@ MAP
         NAME                    snelweg_voor1
         GROUP                   hoogte1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 1 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -1807,7 +1808,7 @@ MAP
         NAME                    begroeideterreindelen_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_begroeideterreindelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_begroeideterreindelen_v2 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_fysiek_voorkomen"
         MAXSCALEDENOM           5000
@@ -1888,7 +1889,7 @@ MAP
         NAME                    onbegroeideterreindelen_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_onbegroeideterreindelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_onbegroeideterreindelen_v2 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_fysiek_voorkomen"
         MAXSCALEDENOM           5000
@@ -1941,7 +1942,7 @@ MAP
         NAME                    overbruggingsdelen_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_overbruggingsdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_overbruggingsdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -1969,7 +1970,7 @@ MAP
         NAME                    berm_achter_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_ondersteunendewegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -2000,7 +2001,7 @@ MAP
         NAME                    berm_voor_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_ondersteunendewegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_fysiek_voorkomen, id from public.bgt_ondersteunendewegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -2039,7 +2040,7 @@ MAP
         NAME                    rijbanen_achter_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak")
         MAXSCALEDENOM           5000
@@ -2070,7 +2071,7 @@ MAP
         NAME                    rijbanen_voor_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak")
         MAXSCALEDENOM           5000
@@ -2098,7 +2099,7 @@ MAP
         NAME                    voetgangers_achter_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -2130,7 +2131,7 @@ MAP
         NAME                    voetgangers_voor_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         CLASSITEM               "bgt_functie"
@@ -2160,7 +2161,7 @@ MAP
         NAME                    inrichtingselement_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" ne "niet-bgt")
         CLASSITEM               "bgt_type"
@@ -2214,7 +2215,7 @@ MAP
         NAME                    scheiding_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_scheidingen where geometrie_vlak IS NOT NULL and relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_scheidingen_v1 where geometrie_vlak IS NOT NULL and relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" = "muur")
         MAXSCALEDENOM           5000
@@ -2246,7 +2247,7 @@ MAP
         NAME                    gebouw_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         CLASSITEM               "bgt_type"
         MAXSCALEDENOM           5000
@@ -2304,7 +2305,7 @@ MAP
         NAME                    panden_vlak2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -2335,7 +2336,7 @@ MAP
         NAME                    metro_achter2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -2377,7 +2378,7 @@ MAP
         NAME                    metro_voor2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -2427,7 +2428,7 @@ MAP
         NAME                    trein_achter2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -2469,7 +2470,7 @@ MAP
         NAME                    trein_voor2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
         TYPE                    LINE
@@ -2519,7 +2520,7 @@ MAP
         NAME                    snelweg_achter_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -2551,7 +2552,7 @@ MAP
         NAME                    snelweg_voor_2
         GROUP                   hoogte2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 2 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -2593,7 +2594,7 @@ MAP
         NAME                    rijbanen_achter_3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak")
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
@@ -2625,7 +2626,7 @@ MAP
         NAME                    rijbanen_voor_3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         FILTER                  ("[bgt_functie]" IN "fietspad,inrit,OV-baan,overweg,rijbaan autoweg,rijbaan lokale weg,rijbaan regionale weg,transitie,parkeervlak")
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
@@ -2653,7 +2654,7 @@ MAP
         NAME                    voetganers_achter_3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -2685,7 +2686,7 @@ MAP
         NAME                    voetgangers_voor_3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_functie]" IN "ruiterpad,voetpad,voetgangersgebied,voetpad op trap,woonerf")
         MAXSCALEDENOM           5000
@@ -2713,7 +2714,7 @@ MAP
         NAME                    inrichtingselement_vlak3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen where relatieve_hoogteligging = 3 and  eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_kunstwerkdelen_v1 where relatieve_hoogteligging = 3 and  eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" eq "perron")
         MAXSCALEDENOM           5000
@@ -2745,7 +2746,7 @@ MAP
         NAME                    gebouw_vlak3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" = "overkapping")
         MAXSCALEDENOM           5000
@@ -2778,7 +2779,7 @@ MAP
         NAME                    panden_vlak3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, id from public.bgt_panden_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         MAXSCALEDENOM           5000
         MINSCALEDENOM           0
@@ -2809,7 +2810,7 @@ MAP
         NAME                    metro_achter3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -2851,7 +2852,7 @@ MAP
         NAME                    metro_voor3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -2901,7 +2902,7 @@ MAP
         NAME                    snelweg_achter3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -2934,7 +2935,7 @@ MAP
         NAME                    snelweg_voor3
         GROUP                   hoogte3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_functie, id from public.bgt_wegdelen_v1 where relatieve_hoogteligging = 3 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTERITEM              "bgt_functie"
         FILTER                  "rijbaan autosnelweg"
@@ -2967,7 +2968,7 @@ MAP
         NAME                    gebouw_vlak4
         GROUP                   hoogte4
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken where relatieve_hoogteligging = 4 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_vlak AS geometrie, bgt_type, id from public.bgt_overigebouwwerken_v1 where relatieve_hoogteligging = 4 and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         FILTER                  ("[bgt_type]" = 'overkapping')
         MAXSCALEDENOM           5000
@@ -3004,7 +3005,7 @@ MAP
         NAME                    metro_3
         GROUP                   hoogte_3
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-3' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -3057,7 +3058,7 @@ MAP
         NAME                    metro_2
         GROUP                   hoogte_2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -3107,7 +3108,7 @@ MAP
         NAME                    trein_2
         GROUP                   hoogte_2
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-2' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -3162,7 +3163,7 @@ MAP
         NAME                    metro_achter_1
         GROUP                   hoogte_1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -3206,7 +3207,7 @@ MAP
         NAME                    metro_voor_1
         GROUP                   hoogte_1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "sneltram"
@@ -3258,7 +3259,7 @@ MAP
         NAME                    tram_1
         GROUP                   hoogte_1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "tram"
@@ -3310,7 +3311,7 @@ MAP
         NAME                    trein_achter_1
         GROUP                   hoogte_1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"
@@ -3354,7 +3355,7 @@ MAP
         NAME                    trein_voor_1
         GROUP                   hoogte_1
         INCLUDE                 "connection/dataservices.inc"
-        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
+        DATA                    "geometrie FROM (select geometrie_lijn AS geometrie, bgt_functie, id from public.bgt_sporen_v1 where relatieve_hoogteligging = '-1' and eind_registratie isnull) As subquery USING srid=28992 USING UNIQUE id"
         TYPE                    LINE
         FILTERITEM              "bgt_functie"
         FILTER                  "trein"

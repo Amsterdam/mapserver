@@ -28,10 +28,18 @@ YEAR="2024"
 
 for j in $YEAR; do
     for i in $LEVELS; do
-        ogrinfo -dialect SQLITE -sql "UPDATE 'imagery-$j-$i' SET location = '/vsicurl/https://stlandingdpgoontweu01.blob.core.windows.net.' || SUBSTR(location, 18)" $SHAPEDIR/imagery-$j-$i.shp
+        # Extract only the filename after the last '/' and prepend new URL
+        ogrinfo -dialect SQLITE -sql "
+            UPDATE 'imagery-$j-$i' 
+            SET location = '/vsicurl/https://basemaptilingappdatapi.blob.core.windows.net/tiles/luchtfoto/$j/pyramid/$i/' ||
+                           substr(location, instr(location, 'overview'))
+        " $SHAPEDIR/imagery-$j-$i.shp
         ogrinfo -sql "CREATE SPATIAL INDEX ON imagery-$j-$i" $SHAPEDIR/imagery-$j-$i.shp
     done
 done
+
+
+
 
 # SHAPEDIR=$SCRIPTDIR/infrarood
 # LEVELS="0 1 2 3 4 5"

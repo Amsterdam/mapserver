@@ -23,6 +23,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "SOEB")
             q("ows_title", BSD_LONG)
             q(
                 "ows_abstract",

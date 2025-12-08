@@ -8,6 +8,7 @@ MAP
   INCLUDE 'header.inc'
   WEB
     METADATA
+      'team' 'BOR'
       'ows_title' 'afvalcontainers'
       'ows_abstract' 'Kaart met gegevens over huishoudelijk afvalcontainers in Amsterdam'
       'wms_extent' '4.58565 52.03560 5.31360 52.48769'
@@ -27,7 +28,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id'
 FILTER ([fractie_omschrijving] = 'GFT' AND [status] = 1)
     TYPE POINT
     MINSCALEDENOM 10
@@ -67,7 +68,7 @@ FILTER ([fractie_omschrijving] = 'GFT' AND [status] = 1)
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id'
 FILTER ([fractie_omschrijving] = 'Textiel' AND [status] = 1)
     TYPE POINT
     MINSCALEDENOM 10
@@ -107,7 +108,7 @@ FILTER ([fractie_omschrijving] = 'Textiel' AND [status] = 1)
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id'
 FILTER ([fractie_omschrijving] = 'Papier' AND [status] = 1)
     TYPE POINT
     MINSCALEDENOM 10
@@ -147,7 +148,7 @@ FILTER ([fractie_omschrijving] = 'Papier' AND [status] = 1)
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id'
 FILTER ([fractie_omschrijving] = 'Glas' AND [status] = 1)
     TYPE POINT
     MINSCALEDENOM 10
@@ -187,7 +188,7 @@ FILTER ([fractie_omschrijving] = 'Glas' AND [status] = 1)
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id'
 FILTER ([fractie_omschrijving] = 'Rest' AND [status] = 1)
     TYPE POINT
     MINSCALEDENOM 10
@@ -227,7 +228,7 @@ FILTER ([fractie_omschrijving] = 'Rest' AND [status] = 1)
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id'
 FILTER ([fractie_omschrijving] = 'Brood' AND [status] = 1)
     TYPE POINT
     MINSCALEDENOM 10
@@ -267,7 +268,7 @@ FILTER ([fractie_omschrijving] = 'Brood' AND [status] = 1)
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM (select * FROM public.huishoudelijkafval_container where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM (select * FROM public.huishoudelijkafval_container_v2 where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id'
     TYPE POINT
     MINSCALEDENOM 10
     MAXSCALEDENOM 400000

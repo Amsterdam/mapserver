@@ -76,6 +76,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BOR")
             q("ows_title", "afvalcontainers")
             q("ows_abstract", "Kaart met gegevens over huishoudelijk afvalcontainers in Amsterdam")
             q("wms_extent", "4.58565 52.03560 5.31360 52.48769")
@@ -98,9 +99,9 @@ with block("MAP"):
 
                 p("INCLUDE", "connection/dataservices.inc")
                 if layer["name"] == 'onbekend_coordinaten':
-                    p("DATA", f"geometrie FROM (select * FROM public.huishoudelijkafval_container where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id")
+                    p("DATA", f"geometrie FROM (select * FROM public.huishoudelijkafval_container_v2 where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id")
                 else:
-                    p("DATA", f"geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id")
+                    p("DATA", f"geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id")
                     print(f"FILTER ({layer['filter']})")
                 p("TYPE POINT")
                 p("MINSCALEDENOM", 10) 

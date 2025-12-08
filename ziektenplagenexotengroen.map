@@ -8,6 +8,7 @@ MAP
   INCLUDE 'header.inc'
   WEB
     METADATA
+      'team' 'BOR'
       'ows_title' 'Ziekte, plagen, exoten, groen'
       'ows_abstract' 'Kaart met gegevens over ziekten, plagen en exoten in het groen in de gemeente Amsterdam'
       'wms_extent' '100000 450000 150000 500000'
@@ -36,7 +37,7 @@ MAP
       NAME 'Eikenprocessierups aanwezig (Laag)'
       EXPRESSION 'Eikenprocessierups aanwezig (Laag)'
       STYLE
-        SYMBOL 'caterpillar_blue'
+        SYMBOL 'aanwezig_laag'
         SIZE 20
       END
     END
@@ -64,7 +65,7 @@ MAP
       NAME 'Eikenprocessierups deels bestreden'
       EXPRESSION 'Eikenprocessierups deels bestreden'
       STYLE
-        SYMBOL 'tree_orange'
+        SYMBOL 'deels_bestreden'
         SIZE 20
       END
     END
@@ -92,7 +93,7 @@ MAP
       NAME 'Niet in beheergebied Gemeente Amsterdam'
       EXPRESSION 'Niet in beheergebied Gemeente Amsterdam'
       STYLE
-        SYMBOL 'flag_black'
+        SYMBOL 'niet_in_beheer'
         SIZE 20
       END
     END
@@ -120,7 +121,7 @@ MAP
       NAME 'Eikenprocessierups aanwezig (Urgent)'
       EXPRESSION 'Eikenprocessierups aanwezig (Urgent)'
       STYLE
-        SYMBOL 'caterpillar_red'
+        SYMBOL 'aanwezig_urgent'
         SIZE 20
       END
     END
@@ -148,7 +149,7 @@ MAP
       NAME 'Eikenprocessierups gemeld'
       EXPRESSION 'Gemeld'
       STYLE
-        SYMBOL 'speechbubble'
+        SYMBOL 'gemeld'
         SIZE 20
       END
     END
@@ -176,7 +177,7 @@ MAP
       NAME 'Eikenprocessierups bestreden'
       EXPRESSION 'Eikenprocessierups bestreden'
       STYLE
-        SYMBOL 'tree_green'
+        SYMBOL 'bestreden'
         SIZE 20
       END
     END
@@ -204,7 +205,7 @@ MAP
       NAME 'Geen Eikenprocessierups aanwezig'
       EXPRESSION 'Geen Eikenprocessierups aanwezig'
       STYLE
-        SYMBOL 'tree_black'
+        SYMBOL 'niet_aanwezig'
         SIZE 20
       END
     END
@@ -232,7 +233,7 @@ MAP
       NAME 'Niet bereikbaar voor bestrijding'
       EXPRESSION 'Niet bereikbaar voor bestrijding'
       STYLE
-        SYMBOL 'flag_red'
+        SYMBOL 'niet_bereikbaar'
         SIZE 20
       END
     END
@@ -260,7 +261,7 @@ MAP
       NAME 'Eikenprocessierups aanwezig (Standaard)'
       EXPRESSION 'Eikenprocessierups aanwezig (Standaard)'
       STYLE
-        SYMBOL 'caterpillar_orange'
+        SYMBOL 'aanwezig_standaard'
         SIZE 20
       END
     END
@@ -1050,7 +1051,7 @@ EXPRESSION ("[categorie]" = "Woningbouwcorporaties")
     CLASS
       NAME 'meerdere_categorieen'
       TITLE 'Meerdere Categorieën'
-      EXPRESSION ("[categorie]" = "meerdere categorieën")
+EXPRESSION ("[categorie]" = "meerdere categorieën")
       STYLE
         COLOR '#008080'
         OPACITY 20

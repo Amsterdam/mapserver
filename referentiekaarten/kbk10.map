@@ -65,6 +65,7 @@ MAP
 
   WEB
     METADATA
+      "team" "BENK"
       "ows_title"           "kbk10"
       "ows_abstract"        "Kleinschalige Basiskaart 10k"
       "ows_onlineresource"  "MAP_URL_REPLACE/tiled/kbk10"
@@ -81,7 +82,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[functie]" eq "overig" || "[functie]" eq "onbekend")
     TYPE                    POLYGON
     PROJECTION
@@ -110,7 +111,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[functie]" eq "haven")
     TYPE POLYGON
     PROJECTION
@@ -138,7 +139,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "aanlegsteiger")
     TYPE                    POLYGON
     PROJECTION
@@ -170,7 +171,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "basaltblokken, steenglooiing")
     TYPE                    POLYGON
     PROJECTION
@@ -198,7 +199,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "grasland")
     TYPE                    POLYGON
     PROJECTION
@@ -226,7 +227,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "akkerland")
     TYPE                    POLYGON
     PROJECTION
@@ -254,7 +255,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "overig")
     TYPE                    POLYGON
     PROJECTION
@@ -282,7 +283,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bedrijfsterrein")
     TYPE                    POLYGON
     PROJECTION
@@ -310,7 +311,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "openbaar groen")
     TYPE                    POLYGON
     PROJECTION
@@ -338,7 +339,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "zand")
     TYPE                    POLYGON
     PROJECTION
@@ -366,7 +367,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoofdverkeersgebruik, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoofdverkeersgebruik, geometrie_vlak AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[hoofdverkeersgebruik]" eq "vliegverkeer")
     TYPE                    POLYGON
     PROJECTION
@@ -394,7 +395,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "spoorbaanlichaam" AND [hoogteniveau] >= 0)
     TYPE                    POLYGON
     PROJECTION
@@ -422,7 +423,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: loofbos")
     TYPE                    POLYGON
     PROJECTION
@@ -450,7 +451,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: naaldbos")
     TYPE                    POLYGON
     PROJECTION
@@ -478,7 +479,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: gemengd bos")
     TYPE                    POLYGON
     PROJECTION
@@ -506,7 +507,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "bos: griend")
     TYPE                    POLYGON
     PROJECTION
@@ -534,7 +535,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "boomgaard")
     TYPE                    POLYGON
     PROJECTION
@@ -562,7 +563,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "boomkwekerij")
     TYPE                    POLYGON
     PROJECTION
@@ -590,7 +591,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "dodenakker")
     TYPE                    POLYGON
     PROJECTION
@@ -618,7 +619,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "dodenakker met bos")
     TYPE                    POLYGON
     PROJECTION
@@ -646,7 +647,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "fruitkwekerij")
     TYPE                    POLYGON
     PROJECTION
@@ -674,7 +675,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
@@ -702,7 +703,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "laagbouw" AND "[type]" ne "kas, warenhuis")
     TYPE                    POLYGON
     PROJECTION
@@ -734,7 +735,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteklasse, hoogteniveau, geometrie_vlak AS geom FROM brt_10_gebouwen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] >= 0 AND "[hoogteklasse]" eq "hoogbouw")
     TYPE                    POLYGON
     PROJECTION
@@ -766,7 +767,7 @@ MAP
     MAXSCALEDENOM           10000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_vlak AS geom FROM brt_10_gebouwen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] >= 0 AND "[type]" eq "kas, warenhuis")
     TYPE                    POLYGON
     PROJECTION
@@ -794,7 +795,7 @@ MAP
     MAXSCALEDENOM           10000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_vlak AS geom FROM brt_10_plusterreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "binnentuin")
     TYPE POLYGON
     PROJECTION
@@ -826,7 +827,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, functie, geometrie_vlak AS geom FROM brt_10_waterdelen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[functie]" eq "drinkwaterbekken" || "[functie]" eq "viskwekerij" || "[functie]" eq "waterzuivering" || "[functie]" eq "zwembad")
     TYPE                    POLYGON
     PROJECTION
@@ -854,7 +855,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[breedteklasse]" eq "3 - 6 meter" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -886,7 +887,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, breedteklasse, hoogteniveau, geometrie_lijn AS geom FROM brt_10_waterdelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[breedteklasse]" eq "0,5 - 3 meter" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -917,7 +918,7 @@ MAP
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ([hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
@@ -950,7 +951,7 @@ LAYER
   MAXSCALEDENOM           20000
   MINSCALEDENOM           5000
   INCLUDE                 "connection/dataservices.inc"
-  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, geometrie_vlak AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_vlak IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ([hoogteniveau] >= 0)
   TYPE                    POLYGON
   PROJECTION
@@ -979,7 +980,7 @@ LAYER
   MAXSCALEDENOM           20000
   MINSCALEDENOM           5000
   INCLUDE                 "connection/dataservices.inc"
-  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_vlak AS geom FROM brt_10_terreinen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ("[type]" eq "spoorbaanlichaam" AND [hoogteniveau] < 0)
   TYPE                    POLYGON
   PROJECTION
@@ -1011,7 +1012,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, type, geometrie_lijn AS geom FROM brt_10_inrichtingselementen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, type, geometrie_lijn AS geom FROM brt_10_inrichtingselementen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "aanlegsteiger")
     TYPE                    LINE
     PROJECTION
@@ -1041,7 +1042,7 @@ LAYER
   GROUP                   "lijnen"
   MAXSCALEDENOM           20000
   INCLUDE                 "connection/dataservices.inc"
-  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ("[type]" eq "veerverbinding")
   TYPE                    LINE
   PROJECTION
@@ -1067,7 +1068,7 @@ LAYER
   GROUP                   "lijnen"
   MAXSCALEDENOM           20000
   INCLUDE                 "connection/dataservices.inc"
-  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+  DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
   FILTER                  ("[type]" eq "veerverbinding")
   TYPE                    LINE
   PROJECTION
@@ -1098,7 +1099,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "overig" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -1129,7 +1130,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "overig" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -1160,7 +1161,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
@@ -1211,7 +1212,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
@@ -1260,7 +1261,7 @@ END
     MAXSCALEDENOM           10000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "tram" AND [hoogteniveau] < 0)
     TYPE                    LINE
     PROJECTION
@@ -1295,7 +1296,7 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1344,7 +1345,7 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1393,7 +1394,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" = "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1442,7 +1443,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND [hoogteniveau] < 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1491,7 +1492,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel" )
     TYPE                    LINE
     PROJECTION
@@ -1532,7 +1533,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1581,7 +1582,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1622,7 +1623,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "metro" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1671,7 +1672,7 @@ END
     MAXSCALEDENOM           10000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "tram" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -1702,7 +1703,7 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "nee" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -1743,7 +1744,7 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "nee" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -1792,7 +1793,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein"  AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -1833,7 +1834,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1874,7 +1875,7 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" eq "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1924,7 +1925,7 @@ END
     MAXSCALEDENOM           20000
 	  MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, aantal_sporen, elektrificatie, hoogteniveau, type, geometrie_lijn AS geom FROM brt_10_spoorbaandelen_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "trein" AND "[elektrificatie]" = "ja" AND [hoogteniveau] >= 0 AND "[aantal_sporen]" ne "enkel")
     TYPE                    LINE
     PROJECTION
@@ -1973,7 +1974,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "autosnelweg" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION
@@ -2014,7 +2015,7 @@ END
     MAXSCALEDENOM           20000
     MINSCALEDENOM           5000
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
+    DATA                    "geom FROM (SELECT identificatie, hoogteniveau, (string_to_array(type, '|'))[1] AS type, geometrie_lijn AS geom FROM brt_10_wegdeelhartlijnen_v1 WHERE geometrie_lijn IS NOT NULL) AS subquery USING srid=28992 USING UNIQUE identificatie"
     FILTER                  ("[type]" eq "autosnelweg" AND [hoogteniveau] >= 0)
     TYPE                    LINE
     PROJECTION

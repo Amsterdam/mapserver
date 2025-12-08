@@ -24,8 +24,6 @@ RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /et
 RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
-
-COPY . /srv/mapserver/
 COPY epsg /usr/share/proj
 
 # set apache user id matching ctr user id
@@ -34,6 +32,7 @@ RUN groupmod -o -g 999 www-data
 RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2
 RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && chown -R 999:999 /var/log/apache2/
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+COPY  --chown=999:999 . /srv/mapserver/
 RUN rm -rf /srv/mapserver/private
 
 EXPOSE 8080

@@ -11,13 +11,14 @@ RUN apt-get update && apt-get install nginx -y
 COPY supervisord.conf /etc
 
 WORKDIR /app
-COPY src jwtproxy
+COPY src ./
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/server.conf /etc/nginx/conf.d/server.conf
+COPY pyproject.toml .
 COPY requirements_dev.txt .
 COPY requirements.txt .
 
 RUN pip install supervisor
 RUN pip install -r requirements_dev.txt
 
-ENTRYPOINT [ "/bin/sh", "-c", "nginx -g 'daemon on;'; adev runserver /app/jwtproxy/server.py -p 8081 --app-factory main;"]
+ENTRYPOINT [ "/bin/sh", "-c", "nginx -g 'daemon on;'; adev runserver /app/server.py -p 8081 --app-factory main;"]
