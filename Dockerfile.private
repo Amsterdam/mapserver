@@ -9,7 +9,5 @@ USER root
 # Any maps that have a public and private variety will serve the
 # private variety.
 RUN rm -rf /srv/mapserver/private
-COPY /private/ /srv/mapserver/
-RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+COPY --chown=999:999 /private/ /srv/mapserver/
 USER www-data
-

@@ -12,6 +12,16 @@ DATASERVICES_DB_PORT=${DATASERVICES_DB_PORT:-5432}
 DATASERVICES_DB_NAME=${DATASERVICES_DB_NAME:-dataservices}
 DATASERVICES_DB_USER=${DATASERVICES_DB_USER:-${DATASERVICES_DB_NAME}}
 DATASERVICES_DB_PASSWORD_PATH=${DATASERVICES_DB_PASSWORD_PATH:-'/mnt/secrets-store/mapserver-public'}
+LOCAL=${LOCAL:-false}
+
+if [[ $LOCAL == "true" ]]
+then
+    echo 'Warning running in LOCAL development mode';
+    echo ${PANORAMA_DB_PASSWORD} > /srv/mapserver/connection/panorama_pw;
+    PANORAMA_DB_PASSWORD_PATH='/srv/mapserver/connection/panorama_pw';
+    echo ${DATASERVICES_DB_PASSWORD} > /srv/mapserver/connection/dataservices_pw;
+    DATASERVICES_DB_PASSWORD_PATH='/srv/mapserver/connection/dataservices_pw';
+fi
 
 echo Creating configuration files
 
@@ -40,7 +50,7 @@ sed -i 's/Timeout 300/Timeout 600/' /etc/apache2/apache2.conf
 sed -i '0,/Listen [0-9]*/s//Listen 8080/' /etc/apache2/ports.conf
 sed -i s/\<VirtualHost.*/\<VirtualHost\ \*\:8080\>/ /etc/apache2/sites-enabled/000-default.conf
 
-# Replace actual location of the mapserver depending on the environment   
+# Replace actual location of the mapserver depending on the environment
 shopt -s globstar nullglob
 
 for i in **/*.map; do

@@ -1,0 +1,74 @@
+# ==== pytest ====
+[tool.pytest.ini_options]
+minversion = "6.0"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+# ==== black ====
+[tool.black]
+line-length = 99
+target-version = ['py38']
+
+# ==== ruff ====
+[tool.ruff]
+line-length = 99
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+    "F", # pyflakes
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "I", # isort
+    "B", # flake8-bugbear
+    "C90", # mccabe
+    "BLE", # flake8-blind-except
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "T10", # flake8-debugger
+    "DJ", # flake8-django
+    "ISC", # flake8-implicit-str-concat
+    "G", # flake8-logging-format
+    "PIE", # flake8-pie
+    "PGH", # pygrep-hooks
+    "RET", # flake8-return (partially)
+    # "PT",  # flake8-pytest-style
+    # "TCH",  # flake8-type-checking (moves import to `if typing.TYPE_CHECKING`)
+    # "ERA",  # eradicate (commented out code)
+    # "TRY",  # tryceratops
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "INT", # flake8-gettext
+    "FLY", # flynt (fixes unneeded static string joins)
+    "UP", # pyupgrade
+    "S", # security (bugbear)
+    "RUF010", # ruff: fix f"{str(..)}" usage
+    "RUF013", # ruff: fix annotations for =None arguments
+]
+ignore = [
+    "S311", # allow random.randint()
+    "DJ001", # allow models.CharField(null=True)
+    "SIM105", # enforcing contextlib.suppress() instead of try..catch
+    "RET501", # unnecessary-return-none
+    "RET505", # superfluous-else-return
+    "RET505", # superfluous-else-return
+    "RET506", # superfluous-else-raise
+    "RET507", # superfluous-else-continue
+    "RET508", # superfluous-else-break
+    "S607", # subprocess partial path
+]
+
+[tool.ruff.lint.flake8-comprehensions]
+allow-dict-calls-with-keyword-arguments = true
+
+[tool.ruff.lint.flake8-gettext]
+extend-function-names = ["gettext_lazy", "ngettext_lazy", "pgettext", "pgettext_lazy", "npgettext", "npgettext_lazy"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["tests"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["DJ008", "S101", "S105", "S106", "S314", "S320", "S608"]  # allow asserts, hardcoded passwords, lxml parsing, SQL injection

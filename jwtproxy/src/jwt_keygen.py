@@ -20,20 +20,14 @@ The key used by the development configuration of the jwtproxy is stored in
 """
 
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    "scopes", nargs="*", help="Scopes added to the JWT as private claims"
-)
-parser.add_argument(
-    "--exp", default=None, type=int, help="Number of seconds to expiration"
-)
+parser.add_argument("scopes", nargs="*", help="Scopes added to the JWT as private claims")
+parser.add_argument("--exp", default=None, type=int, help="Number of seconds to expiration")
 
 JWK_PATH = pathlib.Path(__file__).parent / "test_jwk.json"
 
 
 def generate_jwk():
-    return JWK.generate(
-        kty="EC", crv="P-256", kid=str(uuid.uuid4()), key_ops=["verify", "sign"]
-    )
+    return JWK.generate(kty="EC", crv="P-256", kid=str(uuid.uuid4()), key_ops=["verify", "sign"])
 
 
 def generate_jwt(scopes, exp):
@@ -41,7 +35,8 @@ def generate_jwt(scopes, exp):
     If there is no JWKSet at this location, generate it and write it to
     the file as a JWKSet"""
     if JWK_PATH.exists():
-        key = JWK(**json.load(open(JWK_PATH))["keys"][0])
+        with open(JWK_PATH) as f:
+            key = JWK(**json.load(f)["keys"][0])
         if "d" not in key:
             raise ValueError("The configured JWK does not contain a private key")
     else:
@@ -53,9 +48,7 @@ def generate_jwt(scopes, exp):
     now = int(time.time())
     claims = {
         "iat": now,
-        "realm_access": {
-            "roles": scopes
-        },
+        "realm_access": {"roles": scopes},
         "sub": "test@tester.nl",
     }
     if exp is not None:
@@ -64,10 +57,11 @@ def generate_jwt(scopes, exp):
     token = JWT(header={"alg": "ES256", "kid": key.kid, "kty": "EC"}, claims=claims)
     token.make_signed_token(key)
 
-    sys.stdout.write(token.serialize())
-    sys.stdout.write("\n")
+    return token.serialize()
 
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    generate_jwt(args.scopes, args.exp)
+    token = generate_jwt(args.scopes, args.exp)
+    sys.stdout.write(token)
+    sys.stdout.write("\n")

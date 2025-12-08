@@ -11,15 +11,15 @@ def slugify(s: str) -> str:
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
 layers_EPR = [
-    ("Eikenprocessierups","Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
-    ("Eikenprocessierups","Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
-    ("Eikenprocessierups","Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
-    ("Eikenprocessierups","Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
-    ("Eikenprocessierups","Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
-    ("Eikenprocessierups","Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
-    ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
-    ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
-    ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "aanwezig_laag"),
+    ("Eikenprocessierups","Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "deels_bestreden"),
+    ("Eikenprocessierups","Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "niet_in_beheer"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "aanwezig_urgent"),
+    ("Eikenprocessierups","Eikenprocessierups gemeld", "Gemeld", "gemeld"),
+    ("Eikenprocessierups","Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "bestreden"),
+    ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "niet_aanwezig"),
+    ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "niet_bereikbaar"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "aanwezig_standaard"),
     ("Eikenprocessierups Preventief","Eikenprocessierups Preventief", "Eikenprocessierups Preventief", "preventief"),
 
 ]
