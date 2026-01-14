@@ -72,6 +72,7 @@ MAP
                         -- EXTRACT(year from timestamp) AS age
                       FROM public.panoramas_panorama pano
                       WHERE
+                      (mission_year >= 2023 OR 
                         NOT EXISTS (
                           SELECT *
                           FROM public.panoramas_panorama newer
@@ -96,7 +97,7 @@ MAP
                               newer._geolocation_2d_rd,
                               ST_Buffer(ST_Transform(!BOX!, 28992), pano.mission_distance)
                             )
-                        ) AND
+                        )) AND
                         (
                           length('%mission_type%') = 0 OR
                           '%mission_type%' = lower(mission_type)
@@ -139,6 +140,7 @@ MAP
       OPACITY 70
     END
 #================================== 2025 ==================================
+
     CLASS
       NAME "2025"
       EXPRESSION ([year] eq 2025)
@@ -147,8 +149,8 @@ MAP
         MAXSCALEDENOM   1001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          0 215 215
-        OUTLINECOLOR   0 130 130
+        COLOR          135 135 135
+        OUTLINECOLOR   70 70 70
         WIDTH          1
       END
       STYLE
@@ -156,8 +158,8 @@ MAP
         MAXSCALEDENOM   4001
         SYMBOL         'stip'
         SIZE           6
-        COLOR          0 215 215
-        OUTLINECOLOR   0 130 130
+        COLOR          135 135 135
+        OUTLINECOLOR   70 70 70
         WIDTH          1
       END
       STYLE
@@ -165,12 +167,14 @@ MAP
         MAXSCALEDENOM   10001
         SYMBOL         'stip'
         SIZE           3
-        COLOR          0 215 215
-        OUTLINECOLOR   0 130 130
+        COLOR          135 135 135
+        OUTLINECOLOR   70 70 70
         WIDTH          1
       END
     END
+
 #================================== 2024 ==================================
+
     CLASS
       NAME "2024"
       EXPRESSION ([year] eq 2024)
@@ -179,8 +183,8 @@ MAP
         MAXSCALEDENOM   1001
         SYMBOL         'stip'
         SIZE           10
-        COLOR          135 135 135
-        OUTLINECOLOR   70 70 70
+        COLOR          0 215 215
+        OUTLINECOLOR   0 130 130
         WIDTH          1
       END
       STYLE
@@ -188,8 +192,8 @@ MAP
         MAXSCALEDENOM   4001
         SYMBOL         'stip'
         SIZE           6
-        COLOR          135 135 135
-        OUTLINECOLOR   70 70 70
+        COLOR          0 215 215
+        OUTLINECOLOR   0 130 130
         WIDTH          1
       END
       STYLE
@@ -197,8 +201,8 @@ MAP
         MAXSCALEDENOM   10001
         SYMBOL         'stip'
         SIZE           3
-        COLOR          135 135 135
-        OUTLINECOLOR   70 70 70
+        COLOR          0 215 215
+        OUTLINECOLOR   0 130 130
         WIDTH          1
       END
     END
