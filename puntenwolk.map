@@ -1,0 +1,71 @@
+#====================================================================================
+#
+# Dataset: Puntenwolk
+# Doel: De publicatie van deze puntenwolk-data dient om de efficiëntie in de bouw en civiele techniek te verhogen door een nauwkeurige digitale basis te bieden voor ontwerp en uitvoering. Daarnaast ondersteunt de data geavanceerd asset management van de openbare ruimte en levert het cruciale inzichten voor vraagstukken rondom klimaat en veiligheid. Door deze informatie breed toegankelijk te maken, faciliteren we een slimmere en snellere inrichting van onze leefomgeving.
+#
+#====================================================================================
+MAP
+  NAME                      "puntenwolk"
+  INCLUDE                   "header.inc"
+
+  WEB
+    METADATA
+      "team"                "DPGEO"        
+      "ows_title"           "Metadata Puntenwolk Gemeente Amsterdam"
+      "ows_abstract"        "Metadata van puntenwolk"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/puntenwolk"
+    END
+  END
+
+  #-----------------------------------------------------------------------------
+  # Layers
+  #-----------------------------------------------------------------------------    
+  LAYER
+    NAME                    "metadata_2024"
+    GROUP                   "Puntenwolk" 
+    PROJECTION
+      "init=epsg:28992"
+    END
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie from public.puntenwolk_metadata_2024_v1 USING srid=28992 USING UNIQUE id"
+    TYPE                    POLYGON
+    TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+    MINSCALEDENOM           10
+    MAXSCALEDENOM           72224 
+
+
+    METADATA
+      "gml_include_items"   "all"
+      "wms_title"           "Metadata 2024"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Puntenwolk"
+      "wms_abstract"        "Metadata van de puntenwolk dataset 2024"
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Metadata 2024"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.3.0"
+      "wms_extent"          "100000 450000 150000 500000"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometrie"
+      "gml_geometry_type"   "point"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"      
+    END
+
+    CLASS
+      NAME          "Metadata 2024"
+
+      STYLE
+          ANTIALIAS    true
+          COLOR        248 153 0
+          OPACITY      30
+      END
+      STYLE
+          OUTLINECOLOR        35 35 35
+          OPACITY      100
+          WIDTH        0.5
+      END
+    END
+  END
+END
