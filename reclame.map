@@ -1,13 +1,43 @@
+#====================================================================================
+#
+# Dataset: Reclamebelasting
+# Doel:
+#====================================================================================
 MAP
-    NAME "reclamebelasting"
+    NAME        "reclamebelasting"
+    INCLUDE     "header.inc"
+
+    WEB
+        METADATA
+            "team" "DPGEO"
+            "ows_abstract" "Reclame"
+            "ows_title" "reclamebelasting"
+        END
+    END
+    #-----------------------------------------------------------------------------
+    # Layers
+    #-----------------------------------------------------------------------------
     LAYER
         NAME "reclamebelasting"
         TYPE POLYGON
         DATA "geometrie from belastingen_reclame USING srid=28992 USING UNIQUE id"
-
+        INCLUDE "connection/dataservices.inc"
+        TEMPLATE "fooOnlyForWMSGetFeatureInfo.html"
+        MINSCALEDENOM           10
+        MAXSCALEDENOM           72224
+        PROJECTION
+            "init=epsg:28992"
+        END
+        METADATA
+            "ows_title" "Reclame belastingtarieven"
+            "ows_group_title" "reclamebelasting"
+            "ows_abstract" "Reclame belastingtarieven"
+            "ows_enable_request" "*"
+            "wms_extent" "100000 450000 150000 500000"
+        END
         VALIDATION
-          "tarief"            "^[A-C]{1}$"
-          "default_tarief"    "all"
+            "tarief"            "^[A-C]{1}$"
+            "default_tarief"    "all"
         END
 
         CLASS
@@ -93,21 +123,6 @@ MAP
                 ALIGN          center
                 TEXT           "Tariefgebied C"
             END
-        END
-        INCLUDE "connection/dataservices.inc"
-        METADATA
-            "ows_title" "Reclame belastingtarieven"
-            "ows_group_title" "reclamebelasting"
-            "ows_abstract" "Reclame belastingtarieven"
-            "ows_enable_request" "*"
-            "wms_extent" "100000 450000 150000 500000"
-        END
-    END
-    INCLUDE "header.inc"
-    WEB
-        METADATA
-            "ows_abstract" "Reclame"
-            "ows_title" "reclamebelasting"
         END
     END
 END
