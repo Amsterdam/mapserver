@@ -29,6 +29,7 @@ with block("MAP"):
                 "Kaart met gegevens over beschermde stads- en dorpsgezichten in de gemeente Amsterdam",
             )
             q("wms_extent", "100000 450000 150000 500000")
+            q("team", "SOEB")
 
     for name, color in layers:
         with block("LAYER"):
