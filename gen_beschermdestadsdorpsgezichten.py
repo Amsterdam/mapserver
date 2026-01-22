@@ -23,13 +23,13 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "SOEB")
             q("ows_title", BSD_LONG)
             q(
                 "ows_abstract",
                 "Kaart met gegevens over beschermde stads- en dorpsgezichten in de gemeente Amsterdam",
             )
             q("wms_extent", "100000 450000 150000 500000")
-            q("team", "SOEB")
 
     for name, color in layers:
         with block("LAYER"):

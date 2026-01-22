@@ -33,6 +33,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BOR")
             q("ows_title", "Objecten openbare ruimte - bomen")
             q(
                 "ows_abstract",

@@ -76,6 +76,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BOR")
             q("ows_title", "afvalcontainers")
             q("ows_abstract", "Kaart met gegevens over huishoudelijk afvalcontainers in Amsterdam")
             q("wms_extent", "4.58565 52.03560 5.31360 52.48769")
