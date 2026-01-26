@@ -6,6 +6,7 @@ MAP
 
   WEB
     METADATA
+      "team" "SVD"
       "ows_title"           "Meldingen openbare ruimte, huidige jaar"
       "ows_abstract"        "Meldingen openbare ruimte van de gemeente Amsterdam"
     END
@@ -22,7 +23,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
       select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
-      from public.meldingen_meldingen 
+      from public.meldingen_meldingen_v2 
       where extract(year from datum_melding) = extract(year from current_date)
       and thema = 'Openbare orde en Veiligheid' 
       and externe_status = 'Afgesloten'
@@ -56,7 +57,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
       select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
-      from public.meldingen_meldingen 
+      from public.meldingen_meldingen_v2 
       where extract(year from datum_melding) = extract(year from current_date)
       and thema = 'Openbare orde en Veiligheid' 
       and externe_status = 'Open'
@@ -93,7 +94,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
       select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
-      from public.meldingen_meldingen 
+      from public.meldingen_meldingen_v2 
       where extract(year from datum_melding) = extract(year from current_date)
       and thema = 'Beheer en onderhoud openbare ruimte' 
       and externe_status = 'Afgesloten'
@@ -127,7 +128,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
       select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
-      from public.meldingen_meldingen 
+      from public.meldingen_meldingen_v2 
       where extract(year from datum_melding) = extract(year from current_date)
       and thema = 'Beheer en onderhoud openbare ruimte' 
       and externe_status = 'Open'
@@ -164,7 +165,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
       select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
-      from public.meldingen_meldingen 
+      from public.meldingen_meldingen_v2 
       where extract(year from datum_melding) = extract(year from current_date)
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
       and externe_status = 'Afgesloten'
@@ -201,7 +202,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie_visualisatie FROM (
       select id, hoofdcategorie, subcategorie, thema, datum_melding, tijdstip_melding, datum_overlast, tijdstip_overlast, externe_status, melding_type, melding_soort, gbd_buurt_naam, gbd_wijk_naam, gbd_ggwgebied_naam, gbd_stadsdeel_naam, bron, laatst_gezien_bron, geometrie_visualisatie
-      from public.meldingen_meldingen 
+      from public.meldingen_meldingen_v2 
       where extract(year from datum_melding) = extract(year from current_date)
       and thema = 'Ophalen van afval en reinigen openbare ruimte' 
       and externe_status = 'Open'

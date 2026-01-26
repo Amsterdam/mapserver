@@ -1,4 +1,7 @@
 name: Tests
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   pull_request:
@@ -52,7 +55,7 @@ jobs:
           adresseerbare_objecten bgt_inrichtingselementen \
           bomen brk2 ondergrond ziektenplagenexotengroen \
           meldingen_huidige_jaar meldingen_vorige_jaar meldingen_indicatoren \
-          monumenten hr handelsregister
+          monumenten hr handelsregister hr_kvk eigendommen_v2 erfpacht_v2
 
   # Regression test. Asserts that we don't suffer from the MapServer 7.x
   # bounding box bug https://github.com/MapServer/MapServer/issues/6478.
@@ -61,9 +64,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run MapServer
-      run: docker compose build map &&
-           docker compose run -d -p "8383:80" map &&
+      run: docker compose up -d public &&
            sleep 3
     - name: Projection test
-      run: curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491' |
+      run: |
+        curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491';
+        curl 'http://localhost:8383/maps/projectiontest?REQUEST=GetFeature&SERVICE=wfs&OUTPUTFORMAT=application/json;%20subtype=geojson;%20charset=utf-8&Typename=feature&version=1.1.0&srsname=urn:ogc:def:crs:EPSG::4326&bbox=4.89337404,52.36483743,4.89351768,52.36489491' |
                jq '.features | if length > 0 then . else halt_error(1) end'

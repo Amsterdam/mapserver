@@ -32,6 +32,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BOR")
             q("ows_title", "Huishoudelijkafval Servicegebieden")
             q("ows_onlineresource", "MAP_URL_REPLACE/maps/huishoudelijkafvalservicegebieden")
             q("ows_abstract", "Servicegebieden van huishoudelijkafvalcontainers",)

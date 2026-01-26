@@ -1,0 +1,65 @@
+# File format: https://pre-commit.com/#plugins
+# Supported hooks: https://pre-commit.com/hooks.html
+# Running "make format" fixes most issues for you
+default_language_version:
+  python: python3.13
+repos:
+  - repo: local
+    hooks:
+      - id: validate-maps
+        name: validate maps
+        entry: mappyfile validate
+        language: python
+        types: [ map ]
+        pass_filenames: true
+        args:
+          - --no-expand
+          - --version=7.6
+  - repo: local
+    hooks:
+      - id: check_ows_onlineresource_url
+        name: check ows_onlineresource url
+        entry: python3 tools/check_ows_onlineresource_url.py
+        language: python
+        additional_dependencies: [mappyfile]
+        types: [ map ]
+        pass_filenames: true
+  - repo: local
+    hooks:
+      - id: format-maps
+        name: check mapfile formatting
+        entry: python3 tools/check_map_formatting.py
+        language: python
+        additional_dependencies: [mappyfile]
+        types: [ map ]
+        pass_filenames: true
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-illegal-windows-names
+      - id: check-json
+      - id: check-toml
+      - id: check-yaml
+        args:
+          - --unsafe
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args:
+          - --markdown-linebreak-ext=md
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.11
+    hooks:
+      - id: ruff
+        files: ^jwtproxy/
+        args:
+          - --fix
+          - --show-fixes
+          - --config=jwtproxy/pyproject.toml
+          - --exit-non-zero-on-fix
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        files: ^jwtproxy/

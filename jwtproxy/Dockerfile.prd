@@ -3,7 +3,7 @@ FROM python:3.10-slim-bullseye
 COPY supervisord.conf /etc
 
 WORKDIR /app
-COPY src jwtproxy 
+COPY src ./
 COPY requirements.txt .
 
 RUN usermod --non-unique --uid 999 proxy

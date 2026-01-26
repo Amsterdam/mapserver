@@ -9,6 +9,7 @@ MAP
   DEBUG 5
   WEB
     METADATA
+      'team' 'BOR'
       'ows_title' 'Objecten openbare ruimte - bomen'
       'ows_abstract' 'Dataset met actuele informatie over de bomen in beheer van gemeente Amsterdam'
       'wms_extent' '100000 450000 150000 500000'
@@ -21,7 +22,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Iep (Ulmus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Iep (Ulmus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -58,7 +59,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Linde (Tilia)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Linde (Tilia)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -95,7 +96,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Esdoorn (Acer)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Esdoorn (Acer)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -132,7 +133,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Es (Fraxinus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Es (Fraxinus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -169,7 +170,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Plataan (Platanus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Plataan (Platanus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -206,7 +207,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Eik (Quercus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Eik (Quercus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -243,7 +244,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Populier (Populus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Populier (Populus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -280,7 +281,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Els (Alnus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Els (Alnus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -317,7 +318,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Wilg (Salix)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Wilg (Salix)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -354,7 +355,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Berk (Betula)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Berk (Betula)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -391,7 +392,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Kers (Prunus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Kers (Prunus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -428,7 +429,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Haagbeuk (Carpinus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Haagbeuk (Carpinus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -465,7 +466,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Meidoorn (Crataegus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Meidoorn (Crataegus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -502,7 +503,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Acacia (Robinia)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Acacia (Robinia)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -539,7 +540,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Paardenkastanje (Aesculus)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Paardenkastanje (Aesculus)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -576,7 +577,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Vleugelnoot (Pterocarya)')) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Vleugelnoot (Pterocarya)')) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -613,7 +614,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Onbekend' OR soortnaam_top IS NULL)) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top = 'Onbekend' OR soortnaam_top IS NULL)) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -650,7 +651,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top != 'Iep (Ulmus)' AND soortnaam_top != 'Linde (Tilia)' AND soortnaam_top != 'Esdoorn (Acer)' AND soortnaam_top != 'Es (Fraxinus)' AND soortnaam_top != 'Plataan (Platanus)' AND soortnaam_top != 'Eik (Quercus)' AND soortnaam_top != 'Populier (Populus)' AND soortnaam_top != 'Els (Alnus)' AND soortnaam_top != 'Wilg (Salix)' AND soortnaam_top != 'Berk (Betula)' AND soortnaam_top != 'Kers (Prunus)' AND soortnaam_top != 'Haagbeuk (Carpinus)' AND soortnaam_top != 'Meidoorn (Crataegus)' AND soortnaam_top != 'Acacia (Robinia)' AND soortnaam_top != 'Paardenkastanje (Aesculus)' AND soortnaam_top != 'Vleugelnoot (Pterocarya)' AND soortnaam_top IS NOT NULL)) AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie FROM (   SELECT id, geometrie, soortnaam_top FROM public.bomen_stamgegevens_v2   WHERE type_soortnaam = 'Bomen'  AND (soortnaam_top != 'Iep (Ulmus)' AND soortnaam_top != 'Linde (Tilia)' AND soortnaam_top != 'Esdoorn (Acer)' AND soortnaam_top != 'Es (Fraxinus)' AND soortnaam_top != 'Plataan (Platanus)' AND soortnaam_top != 'Eik (Quercus)' AND soortnaam_top != 'Populier (Populus)' AND soortnaam_top != 'Els (Alnus)' AND soortnaam_top != 'Wilg (Salix)' AND soortnaam_top != 'Berk (Betula)' AND soortnaam_top != 'Kers (Prunus)' AND soortnaam_top != 'Haagbeuk (Carpinus)' AND soortnaam_top != 'Meidoorn (Crataegus)' AND soortnaam_top != 'Acacia (Robinia)' AND soortnaam_top != 'Paardenkastanje (Aesculus)' AND soortnaam_top != 'Vleugelnoot (Pterocarya)' AND soortnaam_top IS NOT NULL)) AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'

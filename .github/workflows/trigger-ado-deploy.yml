@@ -1,4 +1,7 @@
 name: CI
+permissions:
+  contents: read
+  pull-requests: write
 
 # Run this workflow every time a commit is pushed to main
 # The `workflow_dispatch` had been added to be able to run the
@@ -6,7 +9,7 @@ name: CI
 on:
   push:
     branches:
-      - "main" 
+      - "main"
   workflow_dispatch:
 
 jobs:
@@ -21,4 +24,4 @@ jobs:
             organisation: ${{ secrets.AZURE_DEVOPS_ORG }}
             project: ${{ secrets.AZURE_DEVOPS_PROJECT }}
             pat-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-            template-params: '{"environments": "- dev\n- prd", "branch": "main", "includeApp": "private", "akscluster": "blue"}'
+            template-params: '{"environments": "- dev\n- acc\n- prd", "branch": "main", "includeApp": "private", "akscluster": "blue"}'

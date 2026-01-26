@@ -47,6 +47,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "SOEB")
             q("ows_title", "Historische Bodeminformatie")
             q("ows_onlineresource", "MAP_URL_REPLACE/maps/historischebodeminformatie")
             q("ows_abstract", "Historische Bodeminformatie",)

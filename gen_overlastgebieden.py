@@ -30,6 +30,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "SVD")
             q("ows_title", "Overlastgebieden")
             q("ows_abstract", "Overlastgebieden")
 

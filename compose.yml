@@ -21,11 +21,9 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - 9191:8000
-    volumes:
-      - ./jwtproxy/src:/app/jwtproxy
     environment:
       PROXY_URL: http://map
-      JWKS_PATH: /app/jwtproxy/test_jwk.json
+      JWKS_PATH: /app/test_jwk.json
       LOG_LEVEL: DEBUG
       #JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
 
@@ -36,9 +34,9 @@ services:
       - 8000:8000
     command: python3 -m http.server 8000
 
-  map:
-    build:
-      context: .
+  public:
+    build: .
+    image: mapserver/public
     ports:
       - "8383:8080"
     environment:
@@ -52,21 +50,20 @@ services:
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "${MAP_URL:-http://localhost:8383}"
       LEGEND_URL: "${LEGEND_URL:-http://localhost:8383}"
 
-    volumes:
-      - .:/srv/mapserver/
-
-  privatemap:
+  private:
     build:
       context: .
       dockerfile: Dockerfile.private
       args:
-        BASE_IMAGE: ${BASE_IMAGE}
+        BASE_IMAGE: mapserver/public
+    depends_on:
+    - public
     ports:
       - "8384:8080"
     environment:
@@ -80,26 +77,20 @@ services:
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "${MAP_URL:-http://localhost:8384}"
       LEGEND_URL: "${LEGEND_URL:-http://localhost:8384}"
 
-    volumes:
-      - ./tools/:/srv/mapserver/tools/
-      - ./symbols/:/srv/mapserver/symbols/
-      - ./fonts/:/srv/mapserver/fonts/
-      - ./sld/:/srv/mapserver/sld/
-      - ./connection/:/srv/mapserver/connection/
-      - ./private:/srv/mapserver/
-
-  topomap:
+  topografie:
     build:
       context: .
       dockerfile: Dockerfile.topografie
       args:
-        BASE_IMAGE: ${BASE_IMAGE}
+        BASE_IMAGE: mapserver/public
+    depends_on:
+    - public
     ports:
       - "8385:8080"
     environment:
@@ -113,16 +104,8 @@ services:
 
       DATASERVICES_DB_NAME: postgres
       DATASERVICES_DB_USER: postgres
-      DATASERVICES_DB_PASSWORD_PATH: insecure
+      DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
       MAP_URL: "${MAP_URL:-http://localhost:8385}"
       LEGEND_URL: "${LEGEND_URL:-http://localhost:8385}"
-
-    volumes:
-      - ./tools/:/srv/mapserver/tools/
-      - ./symbols/:/srv/mapserver/symbols/
-      - ./fonts/:/srv/mapserver/fonts/
-      - ./sld/:/srv/mapserver/sld/
-      - ./connection/:/srv/mapserver/connection/
-      - ./referentiekaarten/:/srv/mapserver/

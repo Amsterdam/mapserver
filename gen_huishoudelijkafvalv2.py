@@ -47,23 +47,23 @@ weight_ranges = [
 ]
 
 loopafstanden_ranges = [
-    {"name": "<= 30 m", "expression": "[loopafstand_categorie_omschrijving] eq '0 - 30 M'", "color": (50, 114, 48)},
-    {"name": "30 - 90 m", "expression": "[loopafstand_categorie_omschrijving] eq '30 - 90 M'", "color": (77, 175, 74)},
-    {"name": "90 - 120 m", "expression": "[loopafstand_categorie_omschrijving] eq '90 - 120 M'", "color": (157, 175, 157)},
-    {"name": "120 - 150 m", "expression": "[loopafstand_categorie_omschrijving] eq '120 - 150 M'", "color": (255, 127, 0)},
-    {"name": "150 - 210 m", "expression": "[loopafstand_categorie_omschrijving] eq '150 - 210 M'", "color": (255, 75, 0)},
-    {"name": "210 - 1000 m", "expression": "[loopafstand_categorie_omschrijving] eq '210 - 1000 M'", "color": (110, 110, 110)},
-    {"name": "vanaf 1000 m", "expression": "[loopafstand_categorie_omschrijving] eq 'Vanaf 1000 M'", "color": (204, 204, 204)}
+    {"name": "<= 30 m", "expression": "[loopafstand_categorie_omschrijving] eq '0 - 30 M'", "color":  '#5B8E59'},
+    {"name": "30 - 90 m", "expression": "[loopafstand_categorie_omschrijving] eq '30 - 90 M'", "color": '#5FA15C'},
+    {"name": "90 - 120 m", "expression": "[loopafstand_categorie_omschrijving] eq '90 - 120 M'", "color": '#71BF6E'},
+    {"name": "120 - 150 m", "expression": "[loopafstand_categorie_omschrijving] eq '120 - 150 M'", "color": '#8EF08A'},
+    {"name": "150 - 210 m", "expression": "[loopafstand_categorie_omschrijving] eq '150 - 210 M'", "color": '#FF9933'},
+    {"name": "210 - 1000 m", "expression": "[loopafstand_categorie_omschrijving] eq '210 - 1000 M'", "color": '#FF6F33'},
+    {"name": "vanaf 1000 m", "expression": "[loopafstand_categorie_omschrijving] eq 'Vanaf 1000 M'", "color": '#D6D6D6'}
 ]
 
 loopafstanden_ranges_textiel = [
-    {"name": "<= 90 m", "expression": "[loopafstand_categorie_omschrijving] eq '0 - 90 M'", "color": (50, 114, 48)},
-    {"name": "90 - 180 m", "expression": "[loopafstand_categorie_omschrijving] eq '90 - 180 M'", "color": (77, 175, 74)},
-    {"name": "180 - 350 m", "expression": "[loopafstand_categorie_omschrijving] eq '180 - 350 M'", "color": (157, 175, 157)},
-    {"name": "350 - 370 m", "expression": "[loopafstand_categorie_omschrijving] eq '350 - 370 M'", "color": (253, 191, 111)},
-    {"name": "370 - 480 m", "expression": "[loopafstand_categorie_omschrijving] eq '370 - 480 M'", "color": (255, 75, 0)},
-    {"name": "480 - 1500 m", "expression": "[loopafstand_categorie_omschrijving] eq '480 - 1500 M'", "color": (110, 110, 110)},
-    {"name": "vanaf 1500 m", "expression": "[loopafstand_categorie_omschrijving] eq 'Vanaf 1500 M'", "color": (204, 204, 204)}
+    {"name": "<= 90 m", "expression": "[loopafstand_categorie_omschrijving] eq '0 - 90 M'", "color":  '#5B8E59'},
+    {"name": "90 - 180 m", "expression": "[loopafstand_categorie_omschrijving] eq '90 - 180 M'", "color": '#5FA15C'},
+    {"name": "180 - 350 m", "expression": "[loopafstand_categorie_omschrijving] eq '180 - 350 M'", "color": '#71BF6E'},
+    {"name": "350 - 370 m", "expression": "[loopafstand_categorie_omschrijving] eq '350 - 370 M'", "color": '#FDCC8C'},
+    {"name": "370 - 480 m", "expression": "[loopafstand_categorie_omschrijving] eq '370 - 480 M'", "color": '#FF9933'},
+    {"name": "480 - 1500 m", "expression": "[loopafstand_categorie_omschrijving] eq '480 - 1500 M'", "color": '#FF6F33'},
+    {"name": "vanaf 1500 m", "expression": "[loopafstand_categorie_omschrijving] eq 'Vanaf 1500 M'", "color": '#D6D6D6'}
 ]
 
 
@@ -76,6 +76,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BOR")
             q("ows_title", "afvalcontainers")
             q("ows_abstract", "Kaart met gegevens over huishoudelijk afvalcontainers in Amsterdam")
             q("wms_extent", "4.58565 52.03560 5.31360 52.48769")
@@ -98,9 +99,9 @@ with block("MAP"):
 
                 p("INCLUDE", "connection/dataservices.inc")
                 if layer["name"] == 'onbekend_coordinaten':
-                    p("DATA", f"geometrie FROM (select * FROM public.huishoudelijkafval_container where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id")
+                    p("DATA", f"geometrie FROM (select * FROM public.huishoudelijkafval_container_v2 where fractie_omschrijving is null and status = 1) as subquery USING srid=28992 USING UNIQUE id")
                 else:
-                    p("DATA", f"geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id")
+                    p("DATA", f"geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id")
                     print(f"FILTER ({layer['filter']})")
                 p("TYPE POINT")
                 p("MINSCALEDENOM", 10) 
@@ -216,10 +217,10 @@ with block("MAP"):
                         p("TITLE", f"{range['name']}")
 
                         with block("STYLE"):
-                            p(f"COLOR {' '.join(map(str, range['color']))}")
+                            p(f"COLOR  '{range['color']}'")
                             p("WIDTH ", 2)
                             p ("OPACITY", 80)
-                            p (f"OUTLINECOLOR {' '.join(map(str, range['color']))}")
+                            p (f"OUTLINECOLOR '{range['color']}'")
 
                         with block("LABEL"):
                             p("MAXSCALEDENOM 500")

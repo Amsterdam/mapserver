@@ -11,15 +11,15 @@ def slugify(s: str) -> str:
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
 layers_EPR = [
-    ("Eikenprocessierups","Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "caterpillar_blue"),
-    ("Eikenprocessierups","Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "tree_orange"),
-    ("Eikenprocessierups","Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "flag_black"),
-    ("Eikenprocessierups","Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "caterpillar_red"),
-    ("Eikenprocessierups","Eikenprocessierups gemeld", "Gemeld", "speechbubble"),
-    ("Eikenprocessierups","Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "tree_green"),
-    ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "tree_black"),
-    ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "flag_red"),
-    ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "caterpillar_orange"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Laag)", "Eikenprocessierups aanwezig (Laag)", "aanwezig_laag"),
+    ("Eikenprocessierups","Eikenprocessierups deels bestreden", "Eikenprocessierups deels bestreden", "deels_bestreden"),
+    ("Eikenprocessierups","Niet in beheergebied Gemeente Amsterdam", "Niet in beheergebied Gemeente Amsterdam", "niet_in_beheer"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Urgent)", "Eikenprocessierups aanwezig (Urgent)", "aanwezig_urgent"),
+    ("Eikenprocessierups","Eikenprocessierups gemeld", "Gemeld", "gemeld"),
+    ("Eikenprocessierups","Eikenprocessierups bestreden", "Eikenprocessierups bestreden", "bestreden"),
+    ("Eikenprocessierups","Geen Eikenprocessierups aanwezig", "Geen Eikenprocessierups aanwezig", "niet_aanwezig"),
+    ("Eikenprocessierups","Niet bereikbaar voor bestrijding", "Niet bereikbaar voor bestrijding", "niet_bereikbaar"),
+    ("Eikenprocessierups","Eikenprocessierups aanwezig (Standaard)", "Eikenprocessierups aanwezig (Standaard)", "aanwezig_standaard"),
     ("Eikenprocessierups Preventief","Eikenprocessierups Preventief", "Eikenprocessierups Preventief", "preventief"),
 
 ]
@@ -63,6 +63,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BOR")
             q("ows_title", "Ziekte, plagen, exoten, groen")
             q(
                 "ows_abstract",
@@ -118,7 +119,7 @@ with block("MAP"):
                     "geometrie FROM"
                     # This subquery appears to do nothing, but it actually restricts
                     # the fields that mapserver sees.
-                    " (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief) AS sub"
+                    " (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief_v3) AS sub"
                     " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
@@ -156,7 +157,7 @@ with block("MAP"):
             if 'Meldingen' in group:
                 p(
                     "DATA",
-                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen USING srid=28992 USING UNIQUE id"
+                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_meldingen_v1 USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
 
@@ -183,7 +184,7 @@ with block("MAP"):
             if 'Inspecties' in group:
                 p(
                     "DATA",
-                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties USING srid=28992 USING UNIQUE id"
+                    "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_inspecties_v3 USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POLYGON")
 
@@ -223,7 +224,7 @@ with block("MAP"):
         p("INCLUDE", "connection/dataservices.inc") 
         p(
             "DATA",
-            "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_percelen USING srid=28992 USING UNIQUE id"
+            "geometrie FROM public.ziekte_plagen_exoten_groen_japanseduizendknoop_percelen_v2 USING srid=28992 USING UNIQUE id"
         )
         p("TYPE POLYGON")
 

@@ -23,6 +23,7 @@ MAP
 
   WEB
     METADATA
+      "team" "BOR"
       "ows_title"           "afvalcontainers"
       "ows_abstract"        "Afvalcontainers Amsterdam"
       "ows_srs"             "EPSG:4326 EPSG:3857 EPSG:28992"
@@ -43,7 +44,7 @@ MAP
     NAME                    "container_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -108,7 +109,7 @@ MAP
     NAME                    "gfe_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'GFT' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -171,7 +172,7 @@ MAP
     NAME                    "kca_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'KCA' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -237,7 +238,7 @@ MAP
     NAME                    "textiel_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=4326 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=4326 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Textiel' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -301,7 +302,7 @@ MAP
     NAME                    "papier_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Papier' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -364,7 +365,7 @@ MAP
     NAME                    "glas_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Glas' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -428,7 +429,7 @@ MAP
     NAME                    "plastic_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Plastic' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -492,7 +493,7 @@ MAP
     NAME                    "rest_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Rest' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -555,7 +556,7 @@ MAP
     NAME                    "brood_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Brood' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -618,7 +619,7 @@ MAP
     NAME                    "PMD_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'PMD' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -681,7 +682,7 @@ MAP
     NAME                    "grof_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'Grof' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
@@ -744,7 +745,7 @@ MAP
     NAME                    "onbekend_coordinaten"
     GROUP                   "afvalcontainers"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.huishoudelijkafval_container USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.huishoudelijkafval_container_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([fractie_omschrijving] = 'onbekend' AND [status] = 1)
     TYPE                    POINT
     MINSCALEDENOM           10
