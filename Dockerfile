@@ -13,11 +13,15 @@ RUN apt-get update -y \
         wget \
     && apt-get clean
 
+RUN python3 -m pip install --upgrade pip setuptools
+
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+#config file
 COPY mapserver.conf /usr/local/etc/
 RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /etc/apache2/apache2.conf
 
