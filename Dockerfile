@@ -24,10 +24,19 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 COPY mapserver.conf /usr/local/etc/
 RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /etc/apache2/apache2.conf
 
+# apache config
 RUN rm /etc/apache2/mods-enabled/alias.conf
+COPY docker/conf/*.conf /etc/apache2/conf-enabled/
+# rm 000-default.conf from repo
 COPY docker/000-default.conf /etc/apache2/sites-available/
+# COPY docker/sites/8080.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 COPY epsg /usr/share/proj
+
+# disable default site
+# RUN a2dissite 000-default.conf 
+# enable custom site
+# RUN a2ensite 8080.conf
 
 # set apache user id matching ctr user id
 RUN usermod --non-unique --uid 999 www-data
