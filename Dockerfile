@@ -45,11 +45,11 @@ COPY epsg /usr/share/proj
 
 RUN echo ${LEGEND_URL}
 RUN echo ${MAP_URL}
-RUN ls -al & ls -al /srv
+RUN pwd
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && find /srv/mapserver/ -type f -name '*.map' -print0 \
+ && find . -type f -name '*.map' -print0 \
     | xargs -0 sed -i \
         -e "s#MAP_URL_REPLACE#${MAP_URL}#g" \
         -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g"
