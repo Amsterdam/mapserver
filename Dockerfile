@@ -42,6 +42,9 @@ COPY epsg /usr/share/proj
 # enable custom site
 # RUN a2ensite 8080.conf
 
+RUN echo ${LEGEND_URL}
+RUN echo ${MAP_URL_REPLACE}
+
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
  && find /srv/mapserver/ -type f -name '*.map' -print0 \
