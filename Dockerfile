@@ -2,8 +2,9 @@ FROM ubuntu:24.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 # build-time inputs
-ARG MAP_URL
-ARG LEGEND_URL
+ARG EXTRA_ARG1
+ARG EXTRA_ARG2
+ENV MAP_URL="${EXTRA_ARG1}" LEGEND_URL="${EXTRA_ARG2}"
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
