@@ -1,6 +1,10 @@
 FROM ubuntu:24.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
+# build-time inputs
+ARG MAP_URL
+ARG LEGEND_URL
+
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         apache2 \
@@ -37,6 +41,13 @@ COPY epsg /usr/share/proj
 # RUN a2dissite 000-default.conf 
 # enable custom site
 # RUN a2ensite 8080.conf
+
+RUN : "${MAP_URL:?MAP_URL not set}" \
+ && : "${LEGEND_URL:?LEGEND_URL not set}" \
+ && find . -type f -name '*.map' -print0 \
+    | xargs -0 sed -i \
+        -e "s#MAP_URL_REPLACE#${MAP_URL}#g" \
+        -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g"
 
 # set apache user id matching ctr user id
 RUN usermod --non-unique --uid 999 www-data
