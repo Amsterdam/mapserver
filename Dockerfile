@@ -44,7 +44,7 @@ COPY epsg /usr/share/proj
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && find . -type f -name '*.map' -print0 \
+ && find /srv/mapserver/ -type f -name '*.map' -print0 \
     | xargs -0 sed -i \
         -e "s#MAP_URL_REPLACE#${MAP_URL}#g" \
         -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g"
