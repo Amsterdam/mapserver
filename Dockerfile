@@ -43,7 +43,7 @@ COPY epsg /usr/share/proj
 # RUN a2ensite 8080.conf
 
 RUN echo ${LEGEND_URL}
-RUN echo ${MAP_URL_REPLACE}
+RUN echo ${MAP_URL}
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
