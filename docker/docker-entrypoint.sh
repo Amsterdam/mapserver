@@ -58,11 +58,11 @@ for i in **/*.map; do
     sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i
 done
 
-mkdir -p /srv/mapserver/config
+# mkdir -p /srv/mapserver/config
 # python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
 
-echo Make JSON index of maps
-python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
+# echo Make JSON index of maps
+# python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
 
 echo Starting server
 # Apache gets grumpy about PID files pre-existing

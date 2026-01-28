@@ -46,6 +46,7 @@ RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && c
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
 COPY  --chown=999:999 . /srv/mapserver/
 RUN rm -rf /srv/mapserver/private
+RUN python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
 
 EXPOSE 8080
 
