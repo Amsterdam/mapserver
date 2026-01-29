@@ -53,10 +53,10 @@ EOF
 # Replace actual location of the mapserver depending on the environment
 shopt -s globstar nullglob
 
-for i in **/*.map; do
-    sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i
-    sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i
-done
+# for i in **/*.map; do
+#     sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i
+#     sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i
+# done
 
 # mkdir -p /srv/mapserver/config
 # python3 /srv/mapserver/tools/make_mapfile_config.py > /srv/mapserver/sld/config.json
