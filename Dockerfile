@@ -42,13 +42,6 @@ COPY epsg /usr/share/proj
 # RUN a2dissite 000-default.conf 
 # enable custom site
 # RUN a2ensite 8080.conf
-
-RUN pwd
-RUN ls -al .
-RUN for i in /srv/mapserver/*.map; do echo $i; done
-RUN : "${MAP_URL:?MAP_URL not set}" \
- && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && for i in /srv/mapserver/*.map; do sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i ;  sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i; done
  
 
 # set apache user id matching ctr user id
@@ -57,7 +50,12 @@ RUN groupmod -o -g 999 www-data
 RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2
 RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && chown -R 999:999 /var/log/apache2/
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+# maps
 COPY  --chown=999:999 . /srv/mapserver/
+RUN for i in /srv/mapserver/*.map; do echo $i; done
+RUN : "${MAP_URL:?MAP_URL not set}" \
+ && : "${LEGEND_URL:?LEGEND_URL not set}" \
+ && for i in /srv/mapserver/*.map; do sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i ;  sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i; done
 RUN rm -rf /srv/mapserver/private
 RUN python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
 
