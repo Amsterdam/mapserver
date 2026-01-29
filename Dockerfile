@@ -43,10 +43,11 @@ COPY epsg /usr/share/proj
 # enable custom site
 # RUN a2ensite 8080.conf
 
-RUN ls -al **/*
+RUN ls -al /srv/
+RUN for i in /srv/mapserver/*.map; do echo $i; done
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && for i in **/*.map; do sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i ;  sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i; done
+ && for i in /srv/mapserver/*.map; do sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i ;  sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i; done
  
 
 # set apache user id matching ctr user id
