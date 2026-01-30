@@ -66,6 +66,6 @@ shopt -s globstar nullglob
 
 echo Starting server
 # Apache gets grumpy about PID files pre-existing
-# rm -f /var/run/apache2/apache2.pid
+rm -f /var/run/apache2/apache2.pid
 
 apachectl -D FOREGROUND
