@@ -21,6 +21,8 @@ RUN apt-get update -y \
 
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
+# rm default access log
+RUN a2disconf other-vhosts-access-log
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
