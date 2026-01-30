@@ -37,17 +37,9 @@ RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/conf/custom.conf /etc/apache2/conf-enabled/
 COPY docker/conf/ports.conf /etc/apache2/ports.conf 
 
-# rm 000-default.conf from repo
 COPY docker/000-default.conf /etc/apache2/sites-available/
-# COPY docker/sites/8080.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 COPY epsg /usr/share/proj
-
-# disable default site
-# RUN a2dissite 000-default.conf 
-# enable custom site
-# RUN a2ensite 8080.conf
- 
 
 # set apache user id matching ctr user id
 RUN usermod --non-unique --uid 999 www-data
