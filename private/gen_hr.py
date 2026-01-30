@@ -2,6 +2,10 @@ import re
 import random
 
 from generate import block, header, p, q
+import sys
+import io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 
 def slugify(s: str) -> str:
@@ -153,6 +157,7 @@ with block("MAP"):
 
     with block("WEB"):
         with block("METADATA"):
+            q("team", "BENK")
             q("ows_title", "Handelsregister KVK")
             q("ows_onlineresource", "MAP_URL_REPLACE/maps/hr_kvk")
             q("ows_abstract", "Vestigingen in de gemeente Amsterdam uit het Handelsregister",)
@@ -166,16 +171,18 @@ with block("MAP"):
         with block("LAYER"):
             #ik moest hier helaas de hele data in 1x ophalen en dan later een expression met een filter op de SBI code doen.. 
             sql = f"""
-                SELECT 
-                    volledige_naam,
-                    vestigingsnummer,
-                    geometrie_rd,
-                    substring((activiteiten_ves[1]::json ->> 'sbi_code') FROM 1 FOR 2) AS sbi_code_group,
-                    activiteiten_ves[1]::json ->> 'omschrijving'    AS omschrijving,
-                    activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' as is_hoofdactiviteit
-                FROM benkagg_handelsregisterkvk_v3
-                WHERE geometrie_rd IS NOT NULL
-                AND activiteiten_ves[1]::json ->> 'is_hoofdactiviteit' = 'Ja'
+                    SELECT
+                        volledige_naam,
+                        vestigingsnummer,
+                        geometrie_rd,
+                        substring(a.act::json ->> 'sbi_code' FROM 1 FOR 2) AS sbi_code_group,
+                        a.act::json ->> 'omschrijving' AS omschrijving,
+                        a.act::json ->> 'is_hoofdactiviteit' AS is_hoofdactiviteit
+                    FROM benkagg_handelsregisterkvk_v3 b
+                    JOIN LATERAL unnest(activiteiten_ves) AS a(act) ON true
+                    WHERE geometrie_rd IS NOT NULL
+                    AND a.act::json ->> 'is_hoofdactiviteit' = 'Ja'
+
             """
 
             sql = " ".join(sql.split())  # Normalize whitespace.
