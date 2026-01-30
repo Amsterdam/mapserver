@@ -24,6 +24,7 @@ RUN a2enmod actions cgid headers rewrite
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN sed -i '/^Listen 80$/d' /etc/apache2/ports.conf
 
 #config file
 COPY mapserver.conf /usr/local/etc/
@@ -31,7 +32,9 @@ RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /et
 
 # apache config
 RUN rm /etc/apache2/mods-enabled/alias.conf
-COPY docker/conf/*.conf /etc/apache2/conf-enabled/
+COPY docker/conf/custom.conf /etc/apache2/conf-enabled/
+# COPY docker/conf/ports.conf /etc/apache2/ports.conf # TODO: rm conf related
+
 # rm 000-default.conf from repo
 COPY docker/000-default.conf /etc/apache2/sites-available/
 # COPY docker/sites/8080.conf /etc/apache2/sites-available/
