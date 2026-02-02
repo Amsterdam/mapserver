@@ -2,8 +2,9 @@ FROM ubuntu:24.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 # build-time inputs
-ARG EXTRA_ARG1
-ARG EXTRA_ARG2
+ARG EXTRA_ARG1=http://localhost:8383
+ARG EXTRA_ARG2=http://localhost:8383
+
 ENV MAP_URL="${EXTRA_ARG1}" LEGEND_URL="${EXTRA_ARG2}"
 
 RUN apt-get update -y \
