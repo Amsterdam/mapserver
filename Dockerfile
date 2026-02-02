@@ -1,6 +1,17 @@
 FROM ubuntu:24.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
+# build-time inputs
+ARG EXTRA_ARG1
+ARG EXTRA_ARG2
+
+ENV MAP_URL="${EXTRA_ARG1:-http://localhost:8383}" \
+    LEGEND_URL="${EXTRA_ARG2:-http://localhost:8383}"
+
+# echo domain variables used
+RUN echo "Using ARGS=$EXTRA_ARG1 LEGEND_URL=$EXTRA_ARG2"
+RUN echo "Using MAP_URL=$MAP_URL LEGEND_URL=$LEGEND_URL"
+
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         apache2 \
@@ -16,15 +27,22 @@ RUN apt-get update -y \
 
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
+# rm default access log
+RUN a2disconf other-vhosts-access-log
 
 # Configure localhost in Apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+RUN sed -i '/^Listen 80$/d' /etc/apache2/ports.conf
 
 #config file
 COPY mapserver.conf /usr/local/etc/
 RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /etc/apache2/apache2.conf
 
+# apache config
 RUN rm /etc/apache2/mods-enabled/alias.conf
+COPY docker/conf/custom.conf /etc/apache2/conf-enabled/
+COPY docker/conf/ports.conf /etc/apache2/ports.conf 
+
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
 COPY epsg /usr/share/proj
@@ -35,8 +53,14 @@ RUN groupmod -o -g 999 www-data
 RUN mkdir /var/lock/apache2 && mkdir /var/run/apache2
 RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && chown -R 999:999 /var/log/apache2/
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
+# maps
 COPY  --chown=999:999 . /srv/mapserver/
+RUN for i in /srv/mapserver/*.map; do echo $i; done
+RUN : "${MAP_URL:?MAP_URL not set}" \
+ && : "${LEGEND_URL:?LEGEND_URL not set}" \
+ && for i in /srv/mapserver/*.map; do sed -i 's#MAP_URL_REPLACE#'"$MAP_URL"'#g' $i ;  sed -i 's#LEGEND_URL_REPLACE#'"$LEGEND_URL"'#g' $i; done
 RUN rm -rf /srv/mapserver/private
+RUN python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
 
 EXPOSE 8080
 
