@@ -32,7 +32,7 @@ MAP
     GROUP           "bag"
     INCLUDE         "connection/dataservices.inc"
     DATA "geometrie FROM (
-        SELECT * FROM public.bag_openbareruimtes
+        SELECT * FROM public.bag_openbareruimtes_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -146,7 +146,7 @@ MAP
     GROUP           "bag"
     INCLUDE         "connection/dataservices.inc"
     DATA "geometrie FROM (
-        SELECT * FROM public.bag_panden
+        SELECT * FROM public.bag_panden_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -185,7 +185,7 @@ MAP
     GROUP           "bag"
     INCLUDE         "connection/dataservices.inc"
     DATA "geometrie FROM (
-        SELECT * FROM public.bag_ligplaatsen
+        SELECT * FROM public.bag_ligplaatsen_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -224,7 +224,7 @@ MAP
     GROUP           "bag"
     INCLUDE         "connection/dataservices.inc"
     DATA "geometrie FROM (
-        SELECT * FROM public.bag_standplaatsen
+        SELECT * FROM public.bag_standplaatsen_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -263,7 +263,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -311,7 +311,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -360,7 +360,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -408,7 +408,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -458,7 +458,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -506,7 +506,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -554,7 +554,7 @@ MAP
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
     DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
@@ -609,8 +609,9 @@ MAP
             ligging_omschrijving,
             type_woonobject,
             ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri
-        FROM public.bag_panden
+        FROM public.bag_panden_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
+        AND status_omschrijving NOT IN ('Niet gerealiseerd pand','Pand gesloopt','Pand ten onrechte opgevoerd')
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     CLASSITEM       "oorspronkelijk_bouwjaar"
