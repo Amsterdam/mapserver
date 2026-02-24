@@ -6,1214 +6,1215 @@
 #==============================================================================
 
 MAP
-  NAME "bagmap"  # Should differ from the group name!
-  INCLUDE "header.inc"
+    NAME "bagmap"  # Should differ from the group name!
+    INCLUDE "header.inc"
 
 
-  WEB
-    METADATA
-      "team" "BENK"
-      "ows_title"    "BAG"
-      "ows_abstract" "BAG objecten met een geografische component, waarvan Amsterdam de bronhouder is"
+    WEB
+        METADATA
+            "team" "BENK"
+            "ows_title"    "BAG"
+            "ows_abstract" "BAG objecten met een geografische component, waarvan Amsterdam de bronhouder is"
 
-      # Avoid top-level layer querying, exposes sublayers in QGis:
-      "wms_rootlayer_name" ""
+            # Avoid top-level layer querying, exposes sublayers in QGis:
+            "wms_rootlayer_name" ""
+        END
     END
-  END
 
 
 
-  #=============================================================================
-  # LAYERS
-  #=============================================================================
+    #=============================================================================
+    # LAYERS
+    #=============================================================================
 
-  LAYER
-    NAME            "openbareruimte"
-    GROUP           "bag"
-    INCLUDE         "connection/dataservices.inc"
-    DATA "geometrie FROM (
-        SELECT * FROM public.bag_openbareruimtes
+    LAYER
+        NAME            "openbareruimte"
+        GROUP           "bag"
+        INCLUDE         "connection/dataservices.inc"
+        DATA "geometrie FROM (
+        SELECT * FROM public.bag_openbareruimtes_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
-    ) AS subquery USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   40001
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
+        ) AS subquery USING srid=28992 USING UNIQUE id"
+        TYPE            POLYGON
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   40001
+        TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Openbareruimte"
+            "ows_group_title"     "BAG"
+            "ows_abstract"        "BAG openbare ruimtes van de gemeente Amsterdam"
+            "gml_featureid"       "ID"
+            "gml_include_items"   "all"
+            "ows_geomtype"        "Geometry"
+        END
+
+        CLASS
+            NAME       "Weg"
+            EXPRESSION ([type_code] = 1)
+            STYLE
+                ANTIALIAS      true
+                COLOR          200 200 200
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
+        CLASS
+            NAME       "Water"
+            EXPRESSION ([type_code] = 2)
+            STYLE
+                ANTIALIAS      true
+                COLOR          100 200 255
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
+        CLASS
+            NAME       "Spoorbaan"
+            EXPRESSION ([type_code] = 3)
+            STYLE
+                ANTIALIAS      true
+                COLOR          150 150 150
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
+        CLASS
+            NAME       "Terrein"
+            EXPRESSION ([type_code] = 4)
+            STYLE
+                ANTIALIAS      true
+                COLOR          100 255 100
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
+        CLASS
+            NAME       "Kunstwerk"
+            EXPRESSION ([type_code] = 5)
+            STYLE
+                ANTIALIAS      true
+                COLOR          255 175 100
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
+        CLASS
+            NAME       "Landschappelijk gebied"
+            EXPRESSION ([type_code] = 6)
+            STYLE
+                ANTIALIAS      true
+                COLOR          200 100 255
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
+        CLASS
+            NAME       "Administratief gebied"
+            EXPRESSION ([type_code] = 7)
+            STYLE
+                ANTIALIAS      true
+                COLOR          255 255 100
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+                OPACITY         50
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Openbareruimte"
-      "ows_group_title"     "BAG"
-      "ows_abstract"        "BAG openbare ruimtes van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-      "ows_geomtype"        "Geometry"
-    END
-
-    CLASS
-      NAME       "Weg"
-      EXPRESSION ([type_code] = 1)
-      STYLE
-        ANTIALIAS      true
-        COLOR          200 200 200
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50    
-      END
-    END
-
-    CLASS
-      NAME       "Water"
-      EXPRESSION ([type_code] = 2)
-      STYLE
-        ANTIALIAS      true
-        COLOR          100 200 255
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50
-      END
-    END
-
-    CLASS
-      NAME       "Spoorbaan"
-      EXPRESSION ([type_code] = 3)
-      STYLE
-        ANTIALIAS      true
-        COLOR          150 150 150
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50
-      END
-    END
-
-    CLASS
-      NAME       "Terrein"
-      EXPRESSION ([type_code] = 4)
-      STYLE
-        ANTIALIAS      true
-        COLOR          100 255 100
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50
-      END
-    END
-
-    CLASS
-      NAME       "Kunstwerk"
-      EXPRESSION ([type_code] = 5)
-      STYLE
-        ANTIALIAS      true
-        COLOR          255 175 100
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50
-      END
-    END
-
-    CLASS
-      NAME       "Landschappelijk gebied"
-      EXPRESSION ([type_code] = 6)
-      STYLE
-        ANTIALIAS      true
-        COLOR          200 100 255
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50
-      END
-    END
-
-    CLASS
-      NAME       "Administratief gebied"
-      EXPRESSION ([type_code] = 7)
-      STYLE
-        ANTIALIAS      true
-        COLOR          255 255 100
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-        OPACITY         50
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
+    #-----------------------------------------------------------------------------
 
 
-  LAYER
-    NAME            "pand"
-    GROUP           "bag"
-    INCLUDE         "connection/dataservices.inc"
-    DATA "geometrie FROM (
-        SELECT * FROM public.bag_panden
+    LAYER
+        NAME            "pand"
+        GROUP           "bag"
+        INCLUDE         "connection/dataservices.inc"
+        DATA "geometrie FROM (
+        SELECT * FROM public.bag_panden_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
-    ) AS subquery USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2501
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
+        ) AS subquery USING srid=28992 USING UNIQUE id"
+        TYPE            POLYGON
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   2501
+        TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Pand"
+            "ows_group_title"     "BAG"
+            "ows_abstract"        "BAG panden van de gemeente Amsterdam"
+            "gml_featureid"       "ID"
+            "gml_include_items"   "all"
+        END
+
+        CLASS
+            NAME            "Pand"
+            STYLE
+                ANTIALIAS      true
+                COLOR          236 230 220
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Pand"
-      "ows_group_title"     "BAG"
-      "ows_abstract"        "BAG panden van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME            "Pand"
-      STYLE
-        ANTIALIAS      true
-        COLOR          236 230 220
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
+    #-----------------------------------------------------------------------------
 
 
-  LAYER
-    NAME            "ligplaats"
-    GROUP           "bag"
-    INCLUDE         "connection/dataservices.inc"
-    DATA "geometrie FROM (
-        SELECT * FROM public.bag_ligplaatsen
+    LAYER
+        NAME            "ligplaats"
+        GROUP           "bag"
+        INCLUDE         "connection/dataservices.inc"
+        DATA "geometrie FROM (
+        SELECT * FROM public.bag_ligplaatsen_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
-    ) AS subquery USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2501
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
+        ) AS subquery USING srid=28992 USING UNIQUE id"
+        TYPE            POLYGON
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   2501
+        TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Ligplaats"
+            "ows_group_title"     "BAG"
+            "ows_abstract"        "BAG ligplaatsen van de gemeente Amsterdam"
+            "gml_featureid"       "ID"
+            "gml_include_items"   "all"
+        END
+
+        CLASS
+            NAME             "Ligplaats"
+            STYLE
+                ANTIALIAS      true
+                COLOR          200 200 240
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Ligplaats"
-      "ows_group_title"     "BAG"
-      "ows_abstract"        "BAG ligplaatsen van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    CLASS
-      NAME             "Ligplaats"
-      STYLE
-        ANTIALIAS      true
-        COLOR          200 200 240
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
+    #-----------------------------------------------------------------------------
 
 
-  LAYER
-    NAME            "standplaats"
-    GROUP           "bag"
-    INCLUDE         "connection/dataservices.inc"
-    DATA "geometrie FROM (
-        SELECT * FROM public.bag_standplaatsen
+    LAYER
+        NAME            "standplaats"
+        GROUP           "bag"
+        INCLUDE         "connection/dataservices.inc"
+        DATA "geometrie FROM (
+        SELECT * FROM public.bag_standplaatsen_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
-    ) AS subquery USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   2501
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-    "init=epsg:28992"
+        ) AS subquery USING srid=28992 USING UNIQUE id"
+        TYPE            POLYGON
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   2501
+        TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Standplaats"
+            "ows_group_title"     "BAG"
+            "ows_abstract"        "BAG standplaatsen van de gemeente Amsterdam"
+            "gml_featureid"       "ID"
+            "gml_include_items"   "all"
+        END
+
+        CLASS
+            NAME             "Standplaats"
+            STYLE
+                ANTIALIAS      true
+                COLOR          244 238 252
+                OUTLINECOLOR   172 172 172
+                WIDTH          1
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Standplaats"
-      "ows_group_title"     "BAG"
-      "ows_abstract"        "BAG standplaatsen van de gemeente Amsterdam"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
+    #-----------------------------------------------------------------------------
 
-    CLASS
-      NAME             "Standplaats"
-      STYLE
-        ANTIALIAS      true
-        COLOR          244 238 252
-        OUTLINECOLOR   172 172 172
-        WIDTH          1
-      END
-    END
-
-  END
-
-  #-----------------------------------------------------------------------------
-
-  LAYER
-    NAME                    "panden_naar_status_pand_in_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_pand_in_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Pand in gebruik')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Pand in gebruik')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Pand in gebruik" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Status Pand in gebruik" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "pand_in_gebruik"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Pand in gebruik"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#C1CDCD"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#C1CDCD"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Pand in gebruik" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Status Pand in gebruik" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "pand_in_gebruik"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Pand in gebruik"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#C1CDCD"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#C1CDCD"
-        WIDTH               2
-      END
-    END
-
-  END
-
-  LAYER
-    NAME                    "panden_naar_status_pand_in_gebruik_niet_ingemeten"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_pand_in_gebruik_niet_ingemeten"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Pand in gebruik (niet ingemeten)')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Pand in gebruik (niet ingemeten)')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Pand in gebruik (niet ingemeten)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Status Pand in gebruik (niet ingemeten)" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "pand_in_gebruik_niet_ingemeten"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Pand in gebruik (niet ingemeten)"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#838B8B"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#838B8B"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Pand in gebruik (niet ingemeten)" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Status Pand in gebruik (niet ingemeten)" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
 
-    CLASS
-      NAME                  "pand_in_gebruik_niet_ingemeten"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Pand in gebruik (niet ingemeten)"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#838B8B"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#838B8B"
-        WIDTH               2
-      END
-    END
-
-  END
-
-
-  LAYER
-    NAME                    "panden_naar_status_verbouwing_pand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_verbouwing_pand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Verbouwing pand')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Verbouwing pand')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Verbouwing pand" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Status Verbouwing pand" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "verbouwing_pand"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Verbouwing pand"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#FFA500"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#FFA500"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Verbouwing pand" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Status Verbouwing pand" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "verbouwing_pand"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Verbouwing pand"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#FFA500"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#FFA500"
-        WIDTH               2
-      END
-    END
-
-  END
-
-  LAYER
-    NAME                    "panden_naar_status_bouw_gestart"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_bouw_gestart"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Bouw gestart')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Bouw gestart')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Bouw gestart" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Bouw gestart" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "bouw_gestart"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Bouw gestart"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#8B5A00"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#8B5A00"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Bouw gestart" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Bouw gestart" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "bouw_gestart"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Bouw gestart"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#8B5A00"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#8B5A00"
-        WIDTH               2
-      END
-    END
-
-  END
 
 
-
-  LAYER
-    NAME                    "panden_naar_status_bouwvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_bouwvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Bouwvergunning verleend')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Bouwvergunning verleend')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Bouwvergunning Verleend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Status Bouwvergunning Verleend" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "bouwvergunning_verleend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Bouwvergunning verleend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#FFDAB9"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#FFDAB9"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Bouwvergunning Verleend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Status Bouwvergunning Verleend" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "bouwvergunning_verleend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Bouwvergunning verleend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#FFDAB9"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#FFDAB9"
-        WIDTH               2
-      END
-    END
-
-  END
-
-  LAYER
-    NAME                    "panden_naar_status_sloopvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_sloopvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Sloopvergunning verleend')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Sloopvergunning verleend')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Sloopvergunning verleend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Status Sloopvergunning verleend" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "Polyon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "sloopvergunning_verleend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Sloopvergunning verleend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#308014"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#308014"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Sloopvergunning verleend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Status Sloopvergunning verleend" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "Polyon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "sloopvergunning_verleend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Sloopvergunning verleend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#308014"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#308014"
-        WIDTH               2
-      END
-    END
-
-  END
-
-  LAYER
-    NAME                    "panden_naar_status_pand_buiten_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie,status_omschrijving FROM
-                public.bag_panden
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                ) AS sub
+    LAYER
+        NAME                    "panden_naar_status_pand_buiten_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie,status_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        ) AS sub
         USING srid=28992 USING UNIQUE id"
 
-    FILTER                  ([status_omschrijving] = 'Pand buiten gebruik')            # Dit wellicht in WHERE clause, uitzoeken
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        FILTER                  ([status_omschrijving] = 'Pand buiten gebruik')            # Dit wellicht in WHERE clause, uitzoeken
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar Status: Pand buiten gebruik" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Actieve BAG panden naar Status Pand buiten gebruik" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometry"
+            "gml_geometry_type"   "Polyon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "pand_buiten_gebruik"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Pand buiten gebruik"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#DC143C"
+                OPACITY             20
+            END
+            STYLE
+                OUTLINECOLOR        "#DC143C"
+                WIDTH               2
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar Status: Pand buiten gebruik" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Actieve BAG panden naar Status Pand buiten gebruik" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar Status"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometry"
-      "gml_geometry_type"   "Polyon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
 
-    CLASS
-      NAME                  "pand_buiten_gebruik"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Pand buiten gebruik"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#DC143C"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#DC143C"
-        WIDTH               2
-      END
-    END
-
-  END
-
-
-  LAYER
-    NAME            "pandleeftijden"
-    GROUP           "overig"
-    INCLUDE         "connection/dataservices.inc"
-    DATA "geometrie FROM (
+    LAYER
+        NAME            "pandleeftijden"
+        GROUP           "overig"
+        INCLUDE         "connection/dataservices.inc"
+        DATA "geometrie FROM (
         SELECT
-            id,
-            oorspronkelijk_bouwjaar,
-            geometrie,
-            ligging_omschrijving,
-            type_woonobject,
-            ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri
-        FROM public.bag_panden
+        id,
+        oorspronkelijk_bouwjaar,
+        geometrie,
+        ligging_omschrijving,
+        type_woonobject,
+        ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri
+        FROM public.bag_panden_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
-    ) AS subquery USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    CLASSITEM       "oorspronkelijk_bouwjaar"
-    LABELITEM       "oorspronkelijk_bouwjaar"
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:28992"
+        AND status_omschrijving NOT IN ('Niet gerealiseerd pand','Pand gesloopt','Pand ten onrechte opgevoerd')
+        ) AS subquery USING srid=28992 USING UNIQUE id"
+        TYPE            POLYGON
+        CLASSITEM       "oorspronkelijk_bouwjaar"
+        LABELITEM       "oorspronkelijk_bouwjaar"
+        MINSCALEDENOM   100
+        MAXSCALEDENOM   400000
+        TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar bouwjaar"
+            "ows_group_title"     "Overig"
+            "ows_abstract"        "BAG panden van de gemeente Amsterdam, met leeftijd codering"
+            "gml_featureid"       "ID"
+            "gml_include_items"   "all"
+        END
+
+        # 1005 is the conventional unknown year of construction.
+        CLASS
+            NAME            "onbekend"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] == 1005)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#767676"
+                OUTLINECOLOR   "#767676"
+                OPACITY        50
+                WIDTH          1
+            END
+        END
+
+        CLASS
+            NAME            "< 1800"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] < 1800 AND [oorspronkelijk_bouwjaar] != 1005)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#610000"
+                OUTLINECOLOR   "#610000"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1800-1850"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1800 AND [oorspronkelijk_bouwjaar] < 1850)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#A00000"
+                OUTLINECOLOR   "#A00000"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1850-1900"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1850 AND [oorspronkelijk_bouwjaar] < 1900)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#EC0000"
+                OUTLINECOLOR   "#EC0000"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1900-1930"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1900 AND [oorspronkelijk_bouwjaar] < 1930)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#F14600"
+                OUTLINECOLOR   "#F14600"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1930-1945"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1930 AND [oorspronkelijk_bouwjaar] < 1945)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#FBAA00"
+                OUTLINECOLOR   "#FBAA00"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1945-1960"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1945 AND [oorspronkelijk_bouwjaar] < 1960)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#FFE600"
+                OUTLINECOLOR   "#FFE600"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1960-1975"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1960 AND [oorspronkelijk_bouwjaar] < 1975)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#E5F2FC"
+                OUTLINECOLOR   "#E5F2FC"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1975-1985"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1975 AND [oorspronkelijk_bouwjaar] < 1985)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#B1D9F5"
+                OUTLINECOLOR   "#B1D9F5"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1985-1995"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1985 AND [oorspronkelijk_bouwjaar] < 1995)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#71BDEE"
+                OUTLINECOLOR   "#71BDEE"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            "1995-2005"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1995 AND [oorspronkelijk_bouwjaar] < 2005)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#007EC5"
+                OUTLINECOLOR   "#007EC5"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
+        CLASS
+            NAME            ">= 2005"
+            EXPRESSION      ([oorspronkelijk_bouwjaar] >= 2005)
+            STYLE
+                ANTIALIAS      true
+                COLOR          "#004699"
+                OUTLINECOLOR   "#004699"
+                OPACITY        50
+                WIDTH          1
+            END
+
+            LABEL
+                MINSCALEDENOM  10
+                MAXSCALEDENOM  1000
+                COLOR          0 0 0
+                OUTLINECOLOR   255 255 255
+                OUTLINEWIDTH   3
+                FONT           "Ubuntu-MI"
+                TYPE           truetype
+                SIZE           10
+                POSITION       AUTO
+                PARTIALS       FALSE
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar bouwjaar"
-      "ows_group_title"     "Overig"
-      "ows_abstract"        "BAG panden van de gemeente Amsterdam, met leeftijd codering"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    # 1005 is the conventional unknown year of construction.
-    CLASS
-      NAME            "onbekend"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] == 1005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#767676"
-        OUTLINECOLOR   "#767676"
-        OPACITY        50
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME            "< 1800"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] < 1800 AND [oorspronkelijk_bouwjaar] != 1005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#610000"
-        OUTLINECOLOR   "#610000"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1800-1850"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1800 AND [oorspronkelijk_bouwjaar] < 1850)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#A00000"
-        OUTLINECOLOR   "#A00000"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1850-1900"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1850 AND [oorspronkelijk_bouwjaar] < 1900)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#EC0000"
-        OUTLINECOLOR   "#EC0000"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1900-1930"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1900 AND [oorspronkelijk_bouwjaar] < 1930)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#F14600"
-        OUTLINECOLOR   "#F14600"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1930-1945"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1930 AND [oorspronkelijk_bouwjaar] < 1945)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#FBAA00"
-        OUTLINECOLOR   "#FBAA00"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1945-1960"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1945 AND [oorspronkelijk_bouwjaar] < 1960)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#FFE600"
-        OUTLINECOLOR   "#FFE600"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1960-1975"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1960 AND [oorspronkelijk_bouwjaar] < 1975)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#E5F2FC"
-        OUTLINECOLOR   "#E5F2FC"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1975-1985"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1975 AND [oorspronkelijk_bouwjaar] < 1985)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#B1D9F5"
-        OUTLINECOLOR   "#B1D9F5"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1985-1995"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1985 AND [oorspronkelijk_bouwjaar] < 1995)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#71BDEE"
-        OUTLINECOLOR   "#71BDEE"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1995-2005"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1995 AND [oorspronkelijk_bouwjaar] < 2005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#007EC5"
-        OUTLINECOLOR   "#007EC5"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            ">= 2005"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 2005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#004699"
-        OUTLINECOLOR   "#004699"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-  END
-
-#==================== BEGIN LIGGING PANDEN ===========================
-# Ligging 'Onebekend'
-  LAYER
-    NAME                    "ligging_panden_onbekend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie, ligging_omschrijving FROM
-                public.bag_panden_v1
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                AND ligging_omschrijving IS NULL
-                ) AS subquery
+    #==================== BEGIN LIGGING PANDEN ===========================
+    # Ligging 'Onebekend'
+    LAYER
+        NAME                    "ligging_panden_onbekend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie, ligging_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        AND ligging_omschrijving IS NULL
+        ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
-    END
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
 
-    METADATA
-      "ows_title"           "Panden naar ligging: Onbekend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Panden naar ligging: Ligging Onbekend" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometrie"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
+        METADATA
+            "ows_title"           "Panden naar ligging: Onbekend" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Panden naar ligging: Ligging Onbekend" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
 
-    CLASS
-      NAME                  "onbekend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Onbekend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#857A7A"
-        OPACITY             50
-      END
-      STYLE
-        OUTLINECOLOR        "#857A7A"
-        WIDTH               1
-      END
-    END
+        CLASS
+            NAME                  "onbekend"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Onbekend"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#857A7A"
+                OPACITY             50
+            END
+            STYLE
+                OUTLINECOLOR        "#857A7A"
+                WIDTH               1
+            END
+        END
 
-  END
+    END
   
-  # Ligging: 'Tussengebouw'
-  LAYER
-    NAME                    "ligging_panden_tussengebouw"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie, ligging_omschrijving FROM
-                public.bag_panden_v1
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                AND ligging_omschrijving = 'Tussengebouw'
-                ) AS subquery
+    # Ligging: 'Tussengebouw'
+    LAYER
+        NAME                    "ligging_panden_tussengebouw"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie, ligging_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        AND ligging_omschrijving = 'Tussengebouw'
+        ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar ligging: Tussengebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Panden naar ligging: Ligging Tussengebouw" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END
+
+        CLASS
+            NAME                  "tussengebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Tussengebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#53A0DA"
+                OPACITY             50
+            END
+            STYLE
+                OUTLINECOLOR        "#53A0DA"
+                WIDTH               1
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar ligging: Tussengebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Panden naar ligging: Ligging Tussengebouw" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometrie"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END
-
-    CLASS
-      NAME                  "tussengebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Tussengebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#53A0DA"
-        OPACITY             50
-      END
-      STYLE
-        OUTLINECOLOR        "#53A0DA"
-        WIDTH               1
-      END
-    END
-
-  END
-
-  # Ligging: 'Half vrijstaand gebouw'
-  LAYER
-    NAME                    "ligging_panden_half_vrijstaand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie, ligging_omschrijving FROM
-                public.bag_panden_v1
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                AND ligging_omschrijving = 'Half vrijstaand gebouw'
-                ) AS subquery
+    # Ligging: 'Half vrijstaand gebouw'
+    LAYER
+        NAME                    "ligging_panden_half_vrijstaand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie, ligging_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        AND ligging_omschrijving = 'Half vrijstaand gebouw'
+        ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
-    END
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
 
-    METADATA
-      "ows_title"           "Panden naar ligging: Half vrijstaand gebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Panden naar ligging: Ligging Half vrijstaand gebouw" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometrie"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END                                      # Toon alle attributen in het CSV antwoord (WMS)
+        METADATA
+            "ows_title"           "Panden naar ligging: Half vrijstaand gebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Panden naar ligging: Ligging Half vrijstaand gebouw" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END                                      # Toon alle attributen in het CSV antwoord (WMS)
   
-    CLASS
-      NAME                  "half_vrijstaand_gebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Half vrijstaand gebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#00A070"
-        OPACITY             50
-      END
-      STYLE
-        OUTLINECOLOR        "#00A070"
-        WIDTH               1
-      END
+        CLASS
+            NAME                  "half_vrijstaand_gebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Half vrijstaand gebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#00A070"
+                OPACITY             50
+            END
+            STYLE
+                OUTLINECOLOR        "#00A070"
+                WIDTH               1
+            END
+        END
+
     END
 
-  END  
-
-  # Ligging: 'Vrijstaand gebouw'
-  LAYER
-    NAME                    "ligging_panden_vrijstaand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-                SELECT id, geometrie, ligging_omschrijving FROM
-                public.bag_panden_v1
-                WHERE
-                    begin_geldigheid < now()
-                    AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                    AND ligging_omschrijving = 'Vrijstaand gebouw'
-                    ) AS subquery
-                    USING srid=28992 USING UNIQUE id"
-
-
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Panden naar ligging: Vrijstaand gebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Panden naar ligging: Ligging Half vrijstaand gebouw" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometrie"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END                                      # Toon alle attributen in het CSV antwoord (WMS)
-
-    CLASS
-      NAME                  "vrijstaand_gebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Vrijstaand gebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#F14600"
-        OPACITY             50
-      END
-      STYLE
-        OUTLINECOLOR        "#F14600"
-        WIDTH               1
-      END
-    END
-
-  END  
-
-  # Ligging: 'Anders'
-  LAYER
-    NAME                    "ligging_panden_anders"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie, ligging_omschrijving FROM
-                public.bag_panden_v1
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                AND ligging_omschrijving = 'Anders'
-                ) AS subquery
+    # Ligging: 'Vrijstaand gebouw'
+    LAYER
+        NAME                    "ligging_panden_vrijstaand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie, ligging_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        AND ligging_omschrijving = 'Vrijstaand gebouw'
+        ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar ligging: Vrijstaand gebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Panden naar ligging: Ligging Half vrijstaand gebouw" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END                                      # Toon alle attributen in het CSV antwoord (WMS)
+
+        CLASS
+            NAME                  "vrijstaand_gebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Vrijstaand gebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#F14600"
+                OPACITY             50
+            END
+            STYLE
+                OUTLINECOLOR        "#F14600"
+                WIDTH               1
+            END
+        END
+
     END
 
-    METADATA
-      "ows_title"           "Panden naar ligging: Anders" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Panden naar ligging: Ligging Anders" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometrie"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END                                      # Toon alle attributen in het CSV antwoord (WMS)
+    # Ligging: 'Anders'
+    LAYER
+        NAME                    "ligging_panden_anders"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie, ligging_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        AND ligging_omschrijving = 'Anders'
+        ) AS subquery
+        USING srid=28992 USING UNIQUE id"
+
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar ligging: Anders" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Panden naar ligging: Ligging Anders" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END                                      # Toon alle attributen in het CSV antwoord (WMS)
   
-    CLASS
-      NAME                  "anders"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Anders"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#333FB0"
-        OPACITY             50
-      END
-      STYLE
-        OUTLINECOLOR        "#333FB0"
-        WIDTH               1
-      END
+        CLASS
+            NAME                  "anders"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Anders"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#333FB0"
+                OPACITY             50
+            END
+            STYLE
+                OUTLINECOLOR        "#333FB0"
+                WIDTH               1
+            END
+        END
+
     END
 
-  END    
-
-  # Ligging: 'Kopgebouw'
-  LAYER
-    NAME                    "ligging_panden_kopgebouw"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-    INCLUDE                 "connection/dataservices.inc"
-    GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
-            SELECT id, geometrie, ligging_omschrijving FROM
-                public.bag_panden_v1
-            WHERE
-                begin_geldigheid < now()
-                AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
-                AND ligging_omschrijving = 'Kopgebouw'
-                ) AS subquery
+    # Ligging: 'Kopgebouw'
+    LAYER
+        NAME                    "ligging_panden_kopgebouw"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "panden_naar_ligging"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
+        DATA                    "geometrie FROM (
+        SELECT id, geometrie, ligging_omschrijving FROM
+        public.bag_panden_v1
+        WHERE
+        begin_geldigheid < now()
+        AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+        AND ligging_omschrijving = 'Kopgebouw'
+        ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
-    TYPE                    POLYGON
-    TEMPLATE                "empty"
-    PROJECTION
-      "init=epsg:28992"
+        TYPE                    POLYGON
+        TEMPLATE                "empty"
+        PROJECTION
+            "init=epsg:28992"
+        END
+
+        METADATA
+            "ows_title"           "Panden naar ligging: Kopgebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "ows_abstract"        "Panden naar ligging: Ligging Kopgebouw" # Door datateam aanleveren
+            "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
+            "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
+            "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
+            "gml_types"           "auto"
+            "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
+        END                                      # Toon alle attributen in het CSV antwoord (WMS)
+
+        CLASS
+            NAME                  "kopgebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
+            TITLE                 "Kopgebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
+            STYLE
+                ANTIALIAS           true
+                COLOR               "#FBAA00"
+                OPACITY             50
+            END
+            STYLE
+                OUTLINECOLOR        "#FBAA00"
+                WIDTH               1
+            END
+        END
+
     END
-
-    METADATA
-      "ows_title"           "Panden naar ligging: Kopgebouw" # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "ows_abstract"        "Panden naar ligging: Ligging Kopgebouw" # Door datateam aanleveren
-      "wms_group_title"     "Panden naar ligging"                                 # Sentence case naam in meervoud met eventuele afkorting in haakjes erachter
-      "gml_featureid"       "id"                                         # Unique ID volgens het Amsterdam Schema
-      "gml_geometries"      "geometrie"
-      "gml_geometry_type"   "multipolygon"                                      # Gelijk aan de TYPE van de LAYER
-      "gml_include_items"   "all"                                        # Toon alle attributen in het GML antwoord (WMS én WFS)
-      "gml_types"           "auto"
-      "wms_include_items"   "all"                                        # Toon alle attributen in het CSV antwoord (WMS)
-    END                                      # Toon alle attributen in het CSV antwoord (WMS)
-
-    CLASS
-      NAME                  "kopgebouw"           # Lowercase naam in enkelvoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
-      TITLE                 "Kopgebouw"    # Sentence case naam in enkelvoud met eventuele afkorting in haakjes erachter
-      STYLE
-        ANTIALIAS           true
-        COLOR               "#FBAA00"
-        OPACITY             50
-      END
-      STYLE
-        OUTLINECOLOR        "#FBAA00"
-        WIDTH               1
-      END
-    END
-
-  END     
-#==================== EINDE LIGGING PANDEN =========================== 
+    #==================== EINDE LIGGING PANDEN ===========================
 END
