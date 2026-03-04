@@ -59,7 +59,7 @@ RUN for i in /srv/mapserver/*.map; do echo $i; done
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && find /srv/mapserver /srv/mapserver/referentiekaarten -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
+ && find /srv/mapserver /srv/mapserver/referentiekaarten /srv/mapserver/private -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
 
 RUN rm -rf /srv/mapserver/private
 RUN python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
