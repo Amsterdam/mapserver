@@ -6,7 +6,7 @@
 version: 2
 updates:
   - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/src" # Location of package manifests
+    directories: ["/tools", "/jwtproxy"] # Location of package manifests
     schedule:
       interval: "weekly"
     groups:
@@ -16,6 +16,6 @@ updates:
         - "minor"
         - "patch"
   - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/src" # Location of package manifests
+    directories: ["/", "/jwtproxy"] # Location of package manifests
     schedule:
       interval: "weekly"
