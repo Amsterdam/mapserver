@@ -55,8 +55,10 @@ RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && c
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
 # maps
 COPY  --chown=999:999 . /srv/mapserver/
+
+RUN pwd && for i in *.map; do echo $i; done
 RUN for i in /srv/mapserver/*.map; do echo $i; done
-RUN for i in /srv/mapserver/private/*.map; do echo $i; done
+RUN for i in /srv/mapserver/private*.map; do echo $i; done
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
