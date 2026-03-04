@@ -2,6 +2,13 @@ ARG BASE_IMAGE
 
 FROM ${BASE_IMAGE}
 
+# build-time inputs
+ARG EXTRA_ARG1
+ARG EXTRA_ARG2
+
+ENV MAP_URL="${EXTRA_ARG1:-http://localhost:8383}" \
+    LEGEND_URL="${EXTRA_ARG2:-http://localhost:8383}"
+
 # used by make_mapfile_config.py to include private mapfiles in sld config
 ENV ACCESS_SCOPE private
 USER root
@@ -10,4 +17,8 @@ USER root
 # private variety.
 RUN rm -rf /srv/mapserver/private
 COPY --chown=999:999 /private/ /srv/mapserver/
+RUN : "${MAP_URL:?MAP_URL not set}" \
+ && : "${LEGEND_URL:?LEGEND_URL not set}" \
+ && find /srv/mapserver -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
+
 USER www-data

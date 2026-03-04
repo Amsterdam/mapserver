@@ -55,14 +55,11 @@ RUN chown -R 999:999 /var/lock/apache2 && chown -R 999:999 /var/run/apache2 && c
 RUN chown -R 999:999 /srv/ && chown -R 999:999 /etc/apache2/
 # maps
 COPY  --chown=999:999 . /srv/mapserver/
-
-RUN ls -al && for i in /private/*.map; do echo $i; done
 RUN for i in /srv/mapserver/*.map; do echo $i; done
-RUN for i in /srv/mapserver/private/*.map; do echo $i; done
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
  && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && find /srv/mapserver /srv/mapserver/referentiekaarten /srv/private -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
+ && find /srv/mapserver /srv/mapserver/referentiekaarten -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
 
 RUN rm -rf /srv/mapserver/private
 RUN python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
