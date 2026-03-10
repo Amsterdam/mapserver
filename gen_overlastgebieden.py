@@ -6,21 +6,21 @@ from generate import block, header, p, q
 
 # Name, basename of table, color
 layers = [
-    ("algemeen_overlastgebied", "algemeenoverlast", 0xd4212c),
-    ("cameratoezichtgebied", "cameratoezicht", 0x337229),
-    ("dealeroverlastgebied", "dealeroverlast", 0x3166bc),
-    ("uitgaansoverlastgebied", "uitgaansoverlast", 0xff8011),
-    ("alcoholverbodsgebied", "alcoholverbod", 0xa91ba9),
-    ("straatartiestverbod", "straatartiestverbod", 0x990033),
-    ("taxi-standplaatsgebied", "taxistandplaats", 0xecd316),
-    ("barbecueverbodsgebieden", "barbecueverbod", 0xa00078),
-    ("rondleidingverbodsgebieden", "rondleidingverbod", 0x00d2b4),
-    ("messenverbodgebieden", "messenverbod", 0xff0000),
-    ("groepsfietsverbodgebieden", "groepsfietsverbod", 0xffff00),
-    ("raamsluitingstijden", "sluitingstijdenkernwallen", 0x00a03c),
-    ("alcoholverkoopverbodgebied", "alcoholverkoopverbod", 0xe50082),
-    ("blowverbodsgebied", "blowverbodsgebied", 0x009dec),
-    ("bedelverbodgebied", "bedelverbod", 0xf96401)
+    ("algemeen_overlastgebied", "algemeenoverlast_v2", '#d4212c'),
+    ("cameratoezichtgebied", "cameratoezicht_v2", '#337229'),
+    ("dealeroverlastgebied", "dealeroverlast_v2", '#3166bc'),
+    ("uitgaansoverlastgebied", "uitgaansoverlast_v1", '#ff8011'),
+    ("alcoholverbodsgebied", "alcoholverbod_v2", '#a91ba9'),
+    ("straatartiestverbod", "straatartiestverbod_v2", '#990033'),
+    ("taxi-standplaatsgebied", "taxistandplaats_v1", '#ecd316'),
+    ("barbecueverbodsgebieden", "barbecueverbod_v2", '#a00078'),
+    ("rondleidingverbodsgebieden", "rondleidingverbod_v2", '#00d2b4'),
+    ("messenverbodgebieden", "messenverbod_v2", '#ff0000'),
+    ("groepsfietsverbodgebieden", "groepsfietsverbod_v2", '#ffff00'),
+    ("raamsluitingstijden", "sluitingstijdenkernwallen_v2", '#00a03c'),
+    ("alcoholverkoopverbodgebied", "alcoholverkoopverbod_v2", '#e50082'),
+    ("blowverbodsgebied", "blowverbodsgebied_v2", '#009dec'),
+    ("bedelverbodgebied", "bedelverbod_v2", "#fd4401")
 ]
 
 header()
@@ -60,10 +60,10 @@ with block("MAP"):
                 p("NAME", name.replace("-", "_").title().replace("_", ""))
                 with block("STYLE"):
                     p("ANTIALIAS true")
-                    p(f'COLOR "#{color:06x}"')
+                    p(f'COLOR "{color}"') # p(f'COLOR "#{color:06x}"')
                     p("OPACITY 20")
                 with block("STYLE"):
-                    p(f'OUTLINECOLOR "#{color:06x}"')
+                    p(f'OUTLINECOLOR "{color}"') # p(f'OUTLINECOLOR "#{color:06x}"')
                     p("WIDTH 2")
 
     for name, basename, color in layers:
@@ -73,7 +73,7 @@ with block("MAP"):
             p("NAME", name)
             p("GROUP", "overlastgebieden")
             p("INCLUDE", "connection/dataservices.inc")
-            p("DATA", f"geometry FROM public.overlastgebieden_{basename}_v2 USING srid=28992 USING UNIQUE id")
+            p("DATA", f"geometry FROM public.overlastgebieden_{basename} USING srid=28992 USING UNIQUE id")
             p("TYPE POLYGON")
 
             if name == "algemeen_overlastgebied":
@@ -104,7 +104,7 @@ with block("MAP"):
                         if minscale is not None:
                             p("MINSCALEDENOM", minscale)
                         p("MAXSCALEDENOM", maxscale)
-                        p(f'COLOR "#{color:06x}"')
+                        p(f'COLOR "{color}"') # p(f'COLOR "#{color:06x}"')
                         p("OUTLINECOLOR 255 255 255")
                         p("OUTLINEWIDTH 1")
                         p("FONT", "Ubuntu-M")
