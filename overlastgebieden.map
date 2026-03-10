@@ -15,7 +15,7 @@ MAP
     NAME 'algemeen_overlastgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_algemeenoverlast_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -29,7 +29,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'AlgemeenOverlastgebied'
@@ -48,7 +47,7 @@ MAP
     NAME 'cameratoezichtgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_cameratoezicht_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -62,7 +61,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Cameratoezichtgebied'
@@ -81,7 +79,7 @@ MAP
     NAME 'dealeroverlastgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_dealeroverlast_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -95,7 +93,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Dealeroverlastgebied'
@@ -114,7 +111,7 @@ MAP
     NAME 'uitgaansoverlastgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_uitgaansoverlast_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -128,7 +125,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Uitgaansoverlastgebied'
@@ -147,7 +143,7 @@ MAP
     NAME 'alcoholverbodsgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_alcoholverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -161,7 +157,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Alcoholverbodsgebied'
@@ -180,7 +175,7 @@ MAP
     NAME 'straatartiestverbod'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_straatartiestverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -194,7 +189,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Straatartiestverbod'
@@ -213,7 +207,7 @@ MAP
     NAME 'taxi-standplaatsgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_taxistandplaats_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -227,7 +221,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'TaxiStandplaatsgebied'
@@ -246,7 +239,7 @@ MAP
     NAME 'barbecueverbodsgebieden'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_barbecueverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -260,7 +253,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Barbecueverbodsgebieden'
@@ -279,7 +271,7 @@ MAP
     NAME 'rondleidingverbodsgebieden'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_rondleidingverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -293,7 +285,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Rondleidingverbodsgebieden'
@@ -312,7 +303,7 @@ MAP
     NAME 'messenverbodgebieden'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_messenverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -326,7 +317,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Messenverbodgebieden'
@@ -345,7 +335,7 @@ MAP
     NAME 'groepsfietsverbodgebieden'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_groepsfietsverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -359,7 +349,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Groepsfietsverbodgebieden'
@@ -378,7 +367,7 @@ MAP
     NAME 'raamsluitingstijden'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_sluitingstijdenkernwallen_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_sluitingstijdenkernwallen USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -392,7 +381,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Raamsluitingstijden'
@@ -411,7 +399,7 @@ MAP
     NAME 'alcoholverkoopverbodgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_alcoholverkoopverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -425,7 +413,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Alcoholverkoopverbodgebied'
@@ -444,7 +431,7 @@ MAP
     NAME 'blowverbodsgebied'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_blowverbodsgebied_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_blowverbodsgebied USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 400000
@@ -458,7 +445,6 @@ MAP
       'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
       'gml_featureid' 'ID'
       'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
     END
     CLASS
       NAME 'Blowverbodsgebied'
@@ -474,43 +460,10 @@ MAP
     END
   END
   LAYER
-    NAME 'bedelverbodgebied'
-    GROUP 'overlastgebieden'
-    INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_bedelverbod_v2 USING srid=28992 USING UNIQUE id'
-    TYPE POLYGON
-    MINSCALEDENOM 100
-    MAXSCALEDENOM 400000
-    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
-    PROJECTION
-      'init=epsg:28992'
-    END
-    METADATA
-      'ows_title' 'bedelverbodgebied'
-      'ows_group_title' 'overlastgebieden'
-      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
-      'gml_featureid' 'ID'
-      'gml_include_items' 'all'
-      'wms_extent' '100000 450000 150000 500000'
-    END
-    CLASS
-      NAME 'Bedelverbodgebied'
-      STYLE
-        ANTIALIAS true
-        COLOR "#f96401"
-        OPACITY 20
-      END
-      STYLE
-        OUTLINECOLOR "#f96401"
-        WIDTH 2
-      END
-    END
-  END
-  LAYER
     NAME 'algemeen_overlastgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_algemeenoverlast_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_algemeenoverlast USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -567,7 +520,7 @@ MAP
     NAME 'cameratoezichtgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_cameratoezicht_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_cameratoezicht USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -624,7 +577,7 @@ MAP
     NAME 'dealeroverlastgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_dealeroverlast_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_dealeroverlast USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -681,7 +634,7 @@ MAP
     NAME 'uitgaansoverlastgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_uitgaansoverlast_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_uitgaansoverlast USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -738,7 +691,7 @@ MAP
     NAME 'alcoholverbodsgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_alcoholverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -795,7 +748,7 @@ MAP
     NAME 'straatartiestverbod_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_straatartiestverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_straatartiestverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -852,7 +805,7 @@ MAP
     NAME 'taxi-standplaatsgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_taxistandplaats_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_taxistandplaats USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -909,7 +862,7 @@ MAP
     NAME 'barbecueverbodsgebieden_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_barbecueverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_barbecueverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -966,7 +919,7 @@ MAP
     NAME 'rondleidingverbodsgebieden_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_rondleidingverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_rondleidingverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -1023,7 +976,7 @@ MAP
     NAME 'messenverbodgebieden_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_messenverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_messenverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -1080,7 +1033,7 @@ MAP
     NAME 'groepsfietsverbodgebieden_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_groepsfietsverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_groepsfietsverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -1137,7 +1090,7 @@ MAP
     NAME 'raamsluitingstijden_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_sluitingstijdenkernwallen_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_sluitingstijdenkernwallen USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -1194,7 +1147,7 @@ MAP
     NAME 'alcoholverkoopverbodgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_alcoholverkoopverbod_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_alcoholverkoopverbod USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -1251,7 +1204,7 @@ MAP
     NAME 'blowverbodsgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_blowverbodsgebied_v2 USING srid=28992 USING UNIQUE id'
+    DATA 'geometry FROM public.overlastgebieden_blowverbodsgebied USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     MINSCALEDENOM 100
     MAXSCALEDENOM 8001
@@ -1294,63 +1247,6 @@ MAP
         MINSCALEDENOM 6000
         MAXSCALEDENOM 8000
         COLOR "#009dec"
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 1
-        FONT 'Ubuntu-M'
-        TYPE truetype
-        SIZE 10
-        POSITION AUTO
-        PARTIALS FALSE
-      END
-    END
-  END
-  LAYER
-    NAME 'bedelverbodgebied_label'
-    GROUP 'overlastgebieden'
-    INCLUDE 'connection/dataservices.inc'
-    DATA 'geometry FROM public.overlastgebieden_bedelverbod_v2 USING srid=28992 USING UNIQUE id'
-    TYPE POLYGON
-    MINSCALEDENOM 100
-    MAXSCALEDENOM 8001
-    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
-    PROJECTION
-      'init=epsg:28992'
-    END
-    METADATA
-      'ows_title' 'bedelverbodgebied_label'
-      'ows_group_title' 'overlastgebieden'
-      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
-    END
-    CLASS
-      TEXT '[oov_naam]'
-      NAME 'bedelverbodgebied_label'
-      LABEL
-        MAXSCALEDENOM 3000
-        COLOR "#f96401"
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 1
-        FONT 'Ubuntu-M'
-        TYPE truetype
-        SIZE 14
-        POSITION AUTO
-        PARTIALS FALSE
-      END
-      LABEL
-        MINSCALEDENOM 3000
-        MAXSCALEDENOM 6000
-        COLOR "#f96401"
-        OUTLINECOLOR 255 255 255
-        OUTLINEWIDTH 1
-        FONT 'Ubuntu-M'
-        TYPE truetype
-        SIZE 12
-        POSITION AUTO
-        PARTIALS FALSE
-      END
-      LABEL
-        MINSCALEDENOM 6000
-        MAXSCALEDENOM 8000
-        COLOR "#f96401"
         OUTLINECOLOR 255 255 255
         OUTLINEWIDTH 1
         FONT 'Ubuntu-M'
