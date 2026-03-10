@@ -19,7 +19,8 @@ layers = [
     ("groepsfietsverbodgebieden", "groepsfietsverbod", 0xffff00),
     ("raamsluitingstijden", "sluitingstijdenkernwallen", 0x00a03c),
     ("alcoholverkoopverbodgebied", "alcoholverkoopverbod", 0xe50082),
-    ("blowverbodsgebied", "blowverbodsgebied", 0x009dec)
+    ("blowverbodsgebied", "blowverbodsgebied", 0x009dec),
+    ("bedelverbodgebied", "bedelverbod", 0xf96401)
 ]
 
 header()
@@ -39,7 +40,7 @@ with block("MAP"):
             p("NAME", name)
             p("GROUP", "overlastgebieden")
             p("INCLUDE", "connection/dataservices.inc")
-            p("DATA", f"geometry FROM public.overlastgebieden_{basename} USING srid=28992 USING UNIQUE id")
+            p("DATA", f"geometry FROM public.overlastgebieden_{basename}_v2 USING srid=28992 USING UNIQUE id")
             p("TYPE POLYGON")
             p("MINSCALEDENOM 100")
             p("MAXSCALEDENOM 400000")
@@ -53,6 +54,7 @@ with block("MAP"):
                 q("ows_abstract", "Overlastgebieden van de gemeente Amsterdam")
                 q("gml_featureid", "ID")
                 q("gml_include_items", "all")
+                q("wms_extent", "100000 450000 150000 500000")
 
             with block("CLASS"):
                 p("NAME", name.replace("-", "_").title().replace("_", ""))
@@ -71,7 +73,7 @@ with block("MAP"):
             p("NAME", name)
             p("GROUP", "overlastgebieden")
             p("INCLUDE", "connection/dataservices.inc")
-            p("DATA", f"geometry FROM public.overlastgebieden_{basename} USING srid=28992 USING UNIQUE id")
+            p("DATA", f"geometry FROM public.overlastgebieden_{basename}_v2 USING srid=28992 USING UNIQUE id")
             p("TYPE POLYGON")
 
             if name == "algemeen_overlastgebied":
