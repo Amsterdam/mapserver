@@ -40,7 +40,7 @@ with block("MAP"):
             p("NAME", name)
             p("GROUP", "overlastgebieden")
             p("INCLUDE", "connection/dataservices.inc")
-            p("DATA", f"geometry FROM public.overlastgebieden_{basename}_v2 USING srid=28992 USING UNIQUE id")
+            p("DATA", f"geometry FROM public.overlastgebieden_{basename} USING srid=28992 USING UNIQUE id")
             p("TYPE POLYGON")
             p("MINSCALEDENOM 100")
             p("MAXSCALEDENOM 400000")
