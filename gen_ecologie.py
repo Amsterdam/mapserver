@@ -34,12 +34,12 @@ layers = [
     ("Faunavoorziening","Keienwal", "Keienwal", "preventief"),
     ("Faunavoorziening","Stobbenwal", "Stobbenwal", "preventief"),
     ("Faunavoorziening","Vispassage", "Vispassage", "preventief"),
-    ("Hekken","Amfibiënscherm", "Amfibiënscherm", "preventief"),
+    ("Hekken","Amfibieenscherm", "Amfibieënscherm", "preventief"),
     ("Hekken","Faunaraster", "Faunaraster", "preventief"),
     ("Wildroosters","Wildrooster", "Wildrooster", "preventief"),
-    ("Poelen","Poel", "Poel", "preventief"),
-    ("Ecologische gebieden","Verbindingszone", "Verbindingszone", "preventief"),
-    ("Ecologische gebieden","Kerngebied", "Kerngebied", "preventief")
+    ("Poelen","Poel", "Poel", "#FF9100"),
+    ("Ecologische gebieden","Verbindingszone", "Verbindingszone", "#FF9100"),
+    ("Ecologische gebieden","Kerngebied", "Kerngebied", "#FF9100")
         ]
 
 
@@ -69,71 +69,78 @@ with block("MAP"):
 
             p("INCLUDE", "connection/dataservices.inc")
 
-            #hier voor de gewone processierups
+            #niet echt trots op deze if statements, door deze aanpak is het heel makkelijk aanpasbaar, maar alle functies zijn anders.
             if group == "Faunameubilair":
                 p(
                     "DATA",
-                    "geometrie FROM"
+                    "geometrie_punt FROM"
                     f" (SELECT * FROM public.ecologie_faunameubilair_v1 where type = '{filter}') AS sub"
                     " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
+                type = 'point'
             if group == "Faunaverblijfplaatsen":
                 p(
                     "DATA",
-                    "geometrie FROM"
+                    "geometrie_punt FROM"
                     f" (SELECT * FROM public.ecologie_faunaverblijfplaatsen_v1 where type = '{filter}') AS sub"
                     " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
+                type = 'point'
             if group == "Faunavoorziening":
                 p(
                     "DATA",
-                    "geometrie FROM"
-                    f" (SELECT * FROM public.ecologie_Faunavoorziening_v1 where type = '{filter}') AS sub"
+                    "geometrie_punt FROM"
+                    f" (SELECT * FROM public.ecologie_faunavoorzieningen_v1 where type = '{filter}') AS sub"
                     " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
+                type = 'point'
             if group == "Hekken":
                 p(
                     "DATA",
-                    "geometrie FROM"
-                    f" (SELECT * FROM public.ecologie_roosters_v1 where type = '{filter}') AS sub"
+                    "geometrie_punt FROM"
+                    f" (SELECT * FROM objectenopenbareruimte_hekken_v1 where type = '{filter}') AS sub"
                     " USING srid=28992 USING UNIQUE id"
-                )
+                ) 
                 p("TYPE POINT")
-            if group == "Roosters":
+                type = 'point'
+            if group == "Wildroosters":
                 p(
                     "DATA",
-                    "geometrie FROM"
-                    f" (SELECT * FROM public.ecologie_roosters_v1 where type = '{filter}') AS sub"
+                    "geometrie_punt FROM"
+                    f" (SELECT * FROM public.objectenopenbareruimte_roosters_v1 where type = '{filter}') AS sub"
                     " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POINT")
+                type = 'point'
             if group == "Poelen":
                 p(
                     "DATA",
                     "geometrie FROM"
-                    f" (SELECT * FROM public.ecologie_waterobjecten_v1 where type = '{filter}') AS sub"
+                    f" (SELECT * FROM public.objectenopenbareruimte_waterobjecten_v1 where type_gedetailleerd = '{filter}') AS sub"
                     " USING srid=28992 USING UNIQUE id"
                 )
                 p("TYPE POLYGON")
+                type = 'polygon'
             if group == "Ecologische gebieden":
                 if name == 'Verbindingszone':
                     p(
                         "DATA",
                         "geometrie FROM"
-                        f" (SELECT * FROM public.ecologie_verbindingzones_v3 where type = '{filter}') AS sub"
+                        f" (SELECT * FROM public.ecologie_verbindingszones_v3) AS sub"
                         " USING srid=28992 USING UNIQUE id"
                     )
-                elif name == 'Kerngebied':
+                if name == 'Kerngebied':
                     p(
                         "DATA",
                         "geometrie FROM"
-                        f" (SELECT * FROM public.ecologie_kerngebieden_v3 where type = '{filter}') AS sub"
+                        f" (SELECT * FROM public.ecologie_kerngebieden_v3) AS sub"
                         " USING srid=28992 USING UNIQUE id"
                     )
                 p("TYPE POLYGON")
+                type = 'polygon'
 
             with block("METADATA"):
                 q("wfs_enable_request", "!*")
@@ -147,37 +154,16 @@ with block("MAP"):
             with block("CLASS"):
                 p("NAME", name)
 
-            with block("STYLE"):
-                p("SYMBOL", icon)
-                p("SIZE", 20)
-
-            #hier voor de preventief processierups
-            if group == "Eikenprocessierups Preventief":
-                p(
-                    "DATA",
-                    "geometrie FROM"
-                    # This subquery appears to do nothing, but it actually restricts
-                    # the fields that mapserver sees.
-                    " (select id, boom_id, gbd_buurt_id, geometrie, aantal_behandelingen_eikenprocessierups, geplande_uitvoeringsdatum_na, geplande_uitvoeringsdatum_voor,lastupdate, soortnaam, uiterste_uitvoeringsdatum_tweede_ronde, uitgevoerd_eerste_ronde_op, uitgevoerd_tweede_ronde_op from public.ziekte_plagen_exoten_groen_eikenprocessierups_preventief_v3) AS sub"
-                    " USING srid=28992 USING UNIQUE id"
-                )
-                p("TYPE POINT")
-
-                with block("METADATA"):
-                    q("wfs_enable_request", "!*")
-                    q("ows_title", name)
-                    q("wms_enable_request", "*")
-                    q("ows_abstract", "Eikenprocessierups Preventief in Amsterdam")
-                    q("wms_format", "image/png")
-                    q("ows_group_title", group)
-
-                with block("CLASS"):
-                    p("NAME", name)
+                if type == 'polygon':
+                    with block("STYLE"):
+                        p("COLOR", icon)
+                        p("OPACITY", 20) 
 
                     with block("STYLE"):
-                        p("SYMBOL", icon)
-                        p("SIZE", 24)
-                        p("OUTLINEWIDTH", 3)
-                        p("OUTLINECOLOR", "#ffffff")
+                        p("OUTLINECOLOR ", icon)
+                        p("WIDTH ", 2)
 
-    
+                else:
+                    with block("STYLE"):
+                        p("SYMBOL", icon)
+                        p("SIZE", 20)
