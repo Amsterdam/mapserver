@@ -5,7 +5,7 @@
 # For testing against the nginx-controller locally. A minikube setup can be used
 # in combination with manifest.yml
 
-FROM python:3.10-slim-bullseye
+FROM python:3.13-slim-bullseye
 
 RUN apt-get update && apt-get install nginx -y
 COPY supervisord.conf /etc
