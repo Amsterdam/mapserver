@@ -43,7 +43,7 @@ with block("MAP"):
         if group == 'Servicegebieden':
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
+                sql = f"geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_v1 where fractie_omschrijving = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
@@ -90,7 +90,7 @@ with block("MAP"):
         if group == 'Servicegebiedenlocatie':
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
+                sql = f"geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie_v1 where cluster_fractie_omschrijving = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
