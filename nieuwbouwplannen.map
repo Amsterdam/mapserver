@@ -16,7 +16,7 @@ MAP
     NAME                    "fase_1"
     GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 1: Verkenning')
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -57,7 +57,7 @@ MAP
     NAME                    "fase_2_3"
     GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 2&3: Haalbaarheid en ontwerp')
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -98,7 +98,7 @@ MAP
     NAME                    "fase_4"
     GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 4: Voorbereiding en uitvoering')
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -139,7 +139,7 @@ MAP
     NAME                    "fase_5"
     GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Fase 5: Gestart')
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -180,7 +180,7 @@ MAP
     NAME                    "onbekend"
     GROUP                   "woningbouwplannen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.nieuwbouwplannen_woningbouwplannen_openbaar_v2 USING srid=28992 USING UNIQUE id"
     FILTER                  ([plaberum_publicatie] = 'Onbekend')
     TYPE                    POLYGON
     TEMPLATE                "empty"
