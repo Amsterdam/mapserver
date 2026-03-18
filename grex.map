@@ -31,7 +31,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.grex_projecten USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.grex_projecten_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000

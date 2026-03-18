@@ -4,7 +4,7 @@
     TYPE                    LINE
     DATA                    "geometrie FROM (
                                 SELECT objectnummer, geometrie, status, jaar_gelegd, soort, type_leiding, vorm, diameter, breedte, hoogte, materiaal, funderingstype, COALESCE(stelsel_type, 'Onbekend') AS stelsel_type
-                                FROM leidingeninfrastructuur_waternet_rioolleidingen a
+                                FROM leidingeninfrastructuur_waternet_rioolleidingen_v2 a
                                 WHERE 
                                   ('%stelsel_type%' = 'Onbekend' AND a.stelsel_type ISNULL) OR
                                   a.stelsel_type = '%stelsel_type%'

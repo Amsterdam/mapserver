@@ -12,7 +12,7 @@ MAP
   LAYER
     NAME 'boerderij'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Boerderij') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Boerderij') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -56,7 +56,7 @@ MAP
   LAYER
     NAME 'defensieterrein'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Defensieterrein') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Defensieterrein') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -100,7 +100,7 @@ MAP
   LAYER
     NAME 'fabriek_bedrijventerrein'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Fabriek/bedrijventerrein') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Fabriek/bedrijventerrein') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -144,7 +144,7 @@ MAP
   LAYER
     NAME 'gebouw'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Gebouw') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Gebouw') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -188,7 +188,7 @@ MAP
   LAYER
     NAME 'glastuinbouw'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Glastuinbouw') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Glastuinbouw') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -232,7 +232,7 @@ MAP
   LAYER
     NAME 'object'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Object') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Object') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -276,7 +276,7 @@ MAP
   LAYER
     NAME 'overig'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Overig') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Overig') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -320,7 +320,7 @@ MAP
   LAYER
     NAME 'spoorwegemplacement'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Spoorwegemplacement') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Spoorwegemplacement') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -364,7 +364,7 @@ MAP
   LAYER
     NAME 'stookruimte_olietank'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Stookruimte/olietank') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Stookruimte/olietank') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -408,7 +408,7 @@ MAP
   LAYER
     NAME 'tram_en_busremises'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Tram- en busremises') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Tram- en busremises') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -452,7 +452,7 @@ MAP
   LAYER
     NAME 'volkstuinen'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = 'Volkstuinen') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = 'Volkstuinen') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'bodemgebruik_en_obstakels'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -496,7 +496,7 @@ MAP
   LAYER
     NAME 'gasbuis'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Gasbuis') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Gasbuis') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -540,7 +540,7 @@ MAP
   LAYER
     NAME 'grondkering'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Grondkering') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Grondkering') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -581,7 +581,7 @@ MAP
   LAYER
     NAME 'kabel'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Kabel') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Kabel') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -625,7 +625,7 @@ MAP
   LAYER
     NAME 'mantelbuis'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Mantelbuis') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Mantelbuis') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -669,7 +669,7 @@ MAP
   LAYER
     NAME 'persleiding'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Persleiding') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Persleiding') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -713,7 +713,7 @@ MAP
   LAYER
     NAME 'riool'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Riool') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Riool') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -757,7 +757,7 @@ MAP
   LAYER
     NAME 'spoorweg'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Spoorweg') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Spoorweg') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -801,7 +801,7 @@ MAP
   LAYER
     NAME 'waterleiding'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = 'Waterleiding') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = 'Waterleiding') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'lijnvormige_obstakels'
     TYPE LINE
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -845,7 +845,7 @@ MAP
   LAYER
     NAME 'demping'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Demping') as subquery USING srid=7415 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen_v1 where categorie = 'Demping') as subquery USING srid=7415 USING UNIQUE id"
     GROUP 'dempingen_en_ophogingen'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -915,7 +915,7 @@ MAP
   LAYER
     NAME 'depot_stort'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Depot/stort') as subquery USING srid=7415 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen_v1 where categorie = 'Depot/stort') as subquery USING srid=7415 USING UNIQUE id"
     GROUP 'dempingen_en_ophogingen'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -985,7 +985,7 @@ MAP
   LAYER
     NAME 'dijk'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Dijk') as subquery USING srid=7415 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen_v1 where categorie = 'Dijk') as subquery USING srid=7415 USING UNIQUE id"
     GROUP 'dempingen_en_ophogingen'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -1055,7 +1055,7 @@ MAP
   LAYER
     NAME 'ophoging'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = 'Ophoging') as subquery USING srid=7415 USING UNIQUE id"
+    DATA "geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen_v1 where categorie = 'Ophoging') as subquery USING srid=7415 USING UNIQUE id"
     GROUP 'dempingen_en_ophogingen'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'

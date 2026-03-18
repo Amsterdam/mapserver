@@ -3,7 +3,7 @@
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 SELECT *
-                                FROM leidingeninfrastructuur_klic_puntobjecten a
+                                FROM leidingeninfrastructuur_klic_puntobjecten_v1 a
                                 WHERE 
                                   a.thema = '%thema%'
                                 ) AS query 

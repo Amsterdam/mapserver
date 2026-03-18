@@ -32,7 +32,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.explosieven_bominslag USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.explosieven_bominslag_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -161,7 +161,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.explosieven_verdachtgebied USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.explosieven_verdachtgebied_1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10
@@ -256,7 +256,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.explosieven_gevrijwaardgebied USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.explosieven_gevrijwaardgebied_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MAXSCALEDENOM           400000
     MINSCALEDENOM           10

@@ -26,7 +26,7 @@ MAP
   LAYER
     NAME                    "maatgevendetoetshoogteschiphol"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.schiphol_maatgevendetoetshoogtes USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.schiphol_maatgevendetoetshoogtes_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -170,7 +170,7 @@ MAP
   LAYER
     NAME                    "toetshoogteradarschiphol"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.schiphol_hoogtebeperkingradar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.schiphol_hoogtebeperkingradar_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -315,7 +315,7 @@ MAP
   LAYER
     NAME                    "geluidszoneschiphol"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.schiphol_geluidzones USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.schiphol_geluidzones_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -367,7 +367,7 @@ MAP
   LAYER
     NAME                    "vogelvrijwaringsgebiedschiphol"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.schiphol_vogelvrijwaringsgebieden USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.schiphol_vogelvrijwaringsgebieden_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION

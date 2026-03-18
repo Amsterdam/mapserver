@@ -31,7 +31,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.aardgasvrijezones_buurt USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.aardgasvrijezones_buurt_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -390,7 +390,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.aardgasvrijezones_buurt USING srid=28992 USING UNIQUE id WHERE aandeel_kookgas IS NOT NULL"
+    DATA                    "geometry FROM public.aardgasvrijezones_buurt_v1 USING srid=28992 USING UNIQUE id WHERE aandeel_kookgas IS NOT NULL"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -438,7 +438,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.aardgasvrijezones_buurtinitiatief USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.aardgasvrijezones_buurtinitiatief_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
