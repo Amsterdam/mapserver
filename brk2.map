@@ -21,7 +21,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT identificatie, geometrie FROM public.brk_2_kadastraleobjecten
+                        SELECT identificatie, geometrie FROM public.brk_2_kadastraleobjecten_v2
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
@@ -56,7 +56,7 @@ MAP
     NAME            "kadastrale_sectie"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_kadastralesecties
+    DATA            "geometrie FROM public.brk_2_kadastralesecties_v1
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            LINE
     MINSCALEDENOM   2501
@@ -89,7 +89,7 @@ MAP
     NAME            "kadastrale_gemeente"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_kadastralegemeentes
+    DATA            "geometrie FROM public.brk_2_kadastralegemeentes_v1
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   12501
@@ -123,7 +123,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT * FROM public.brk_2_gemeentes
+                        SELECT * FROM public.brk_2_gemeentes_v1
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
@@ -162,7 +162,7 @@ MAP
   #specifieke kolommen verwijderd voor rechten.
   DATA            "geometrie FROM (
                       select id, identificatie, volgnummer, neuron_id, kadastrale_aanduiding, aangeduid_door_brk_gemeente_id, aangeduid_door_brk_gemeente_identificatie, aangeduid_door_brk_gemeente_volgnummer, aangeduid_door_brk_kadastralegemeente_id, aangeduid_door_brk_kadastralegemeentecode_id, aangeduid_door_brk_kadastralesectie_id, perceelnummer, indexletter, indexnummer, soort_grootte_code, soort_grootte_omschrijving, grootte, referentie, oudst_digitaal_bekend, mutatie_id, meettarief_verschuldigd, toelichting_bewaarder, tijdstip_ontstaan_object, hoofdsplitsing_identificatie, afwijking_lijst_rechthebbenden, geometrie, plaatscoordinaten, perceelnummer_rotatie, perceelnummer_verschuiving_x, perceelnummer_verschuiving_y, bijpijling_geometrie, indicatie_meer_objecten, toestandsdatum, begin_geldigheid, eind_geldigheid, in_onderzoek, datum_actueel_tot, indicatie_voorlopige_kadastrale_grens, geometrie_punt, geometrie_vlak 
-                      FROM public.brk_2_kadastraleobjecten bk
+                      FROM public.brk_2_kadastraleobjecten_v2  bk
                       WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL
                     ) AS sub
                    USING srid=28992 USING UNIQUE id"
@@ -205,7 +205,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT identificatie, geometrie, perceelnummer FROM public.brk_2_kadastraleobjecten
+                        SELECT identificatie, geometrie, perceelnummer FROM public.brk_2_kadastraleobjecten_v2
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
@@ -250,7 +250,7 @@ MAP
     NAME            "kadastrale_sectie_label"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_kadastralesecties
+    DATA            "geometrie FROM public.brk_2_kadastralesecties_v1
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   2501
@@ -293,7 +293,7 @@ MAP
     NAME            "kadastrale_gemeente_label"
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.brk_2_kadastralegemeentes
+    DATA            "geometrie FROM public.brk_2_kadastralegemeentes_v1
                      USING srid=28992 USING UNIQUE identificatie"
     TYPE            POLYGON
     MINSCALEDENOM   12501
@@ -337,7 +337,7 @@ MAP
     GROUP           "kadaster"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-                        SELECT * FROM public.brk_2_gemeentes
+                        SELECT * FROM public.brk_2_gemeentes_v1
                         WHERE coalesce(eind_geldigheid, now()) >= now()
                      ) AS sub
                      USING srid=28992 USING UNIQUE identificatie"
@@ -383,7 +383,7 @@ MAP
       GROUP           "kadaster"
       INCLUDE         "connection/dataservices.inc"
       DATA            "geometrie FROM (select id, identificatie, volgnummer, neuron_id, kadastrale_aanduiding, aangeduid_door_brk_gemeente_id, aangeduid_door_brk_gemeente_identificatie, aangeduid_door_brk_gemeente_volgnummer, aangeduid_door_brk_kadastralegemeente_id, aangeduid_door_brk_kadastralegemeentecode_id, aangeduid_door_brk_kadastralesectie_id, perceelnummer, indexletter, indexnummer, soort_grootte_code, soort_grootte_omschrijving, grootte, referentie, oudst_digitaal_bekend, mutatie_id, meettarief_verschuldigd, toelichting_bewaarder, tijdstip_ontstaan_object, hoofdsplitsing_identificatie, afwijking_lijst_rechthebbenden, geometrie, plaatscoordinaten, perceelnummer_rotatie, perceelnummer_verschuiving_x, perceelnummer_verschuiving_y, bijpijling_geometrie, indicatie_meer_objecten, toestandsdatum, begin_geldigheid, eind_geldigheid, in_onderzoek, datum_actueel_tot, indicatie_voorlopige_kadastrale_grens, geometrie_punt, geometrie_vlak 
-                        FROM public.brk_2_kadastraleobjecten bk
+                        FROM public.brk_2_kadastraleobjecten_v2 bk
                         WHERE bk.indexletter = 'A' and eind_geldigheid IS NULL) AS sub
                       USING srid=28992 USING UNIQUE id"
       TYPE            POINT

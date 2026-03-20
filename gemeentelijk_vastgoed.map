@@ -32,7 +32,7 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA "geometrie FROM (
-            SELECT * from gemeentelijk_vastgoed_gebouwobjecten
+            SELECT * from gemeentelijk_vastgoed_gebouwobjecten_v1
             WHERE eigendom = 'Volle eigendom'
             )
             AS sub USING srid=28992 USING UNIQUE object_id"
@@ -87,7 +87,7 @@ MAP
 
     INCLUDE                 "connection/dataservices.inc"
     DATA "geometrie FROM (
-            SELECT * from gemeentelijk_vastgoed_gebouwobjecten
+            SELECT * from gemeentelijk_vastgoed_gebouwobjecten_v1
             WHERE eigendom = 'Appartementsrecht'
             )
             AS sub USING srid=28992 USING UNIQUE object_id"
