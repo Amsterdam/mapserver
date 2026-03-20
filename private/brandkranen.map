@@ -31,7 +31,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.brandkranen_brandkranen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.brandkranen_brandkranen_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           500001

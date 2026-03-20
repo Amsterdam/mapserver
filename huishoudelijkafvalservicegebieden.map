@@ -12,7 +12,7 @@ MAP
   LAYER
     NAME 'servicegebieden_rest'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Rest') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_v1 where fractie_omschrijving = 'Rest') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebieden'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -135,7 +135,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebieden_glas'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Glas') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_v1 where fractie_omschrijving = 'Glas') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebieden'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -258,7 +258,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebieden_papier'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Papier') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_v1 where fractie_omschrijving = 'Papier') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebieden'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -381,7 +381,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebieden_textiel'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'Textiel') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_v1 where fractie_omschrijving = 'Textiel') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebieden'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -504,7 +504,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebieden_gft'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden where fractie_omschrijving = 'GFT') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(servicegebieden_locatie_id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_v1 where fractie_omschrijving = 'GFT') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebieden'
     TYPE POLYGON
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -627,7 +627,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebiedenlocatie_rest'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Rest') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie_v1 where cluster_fractie_omschrijving = 'Rest') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebiedenlocatie'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -891,7 +891,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebiedenlocatie_glas'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Glas') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie_v1 where cluster_fractie_omschrijving = 'Glas') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebiedenlocatie'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -1155,7 +1155,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebiedenlocatie_papier'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Papier') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie_v1 where cluster_fractie_omschrijving = 'Papier') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebiedenlocatie'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -1419,7 +1419,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebiedenlocatie_textiel'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'Textiel') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie_v1 where cluster_fractie_omschrijving = 'Textiel') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebiedenlocatie'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
@@ -1683,7 +1683,7 @@ EXPRESSION ("[last_numeric_digit]" eq "9")
   LAYER
     NAME 'servicegebiedenlocatie_gft'
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie where cluster_fractie_omschrijving = 'GFT') as subquery USING srid=28992 USING UNIQUE id"
+    DATA "geometrie from (SELECT *, (regexp_matches(id, '[0-9](?!.*[0-9])'))[1] AS last_numeric_digit FROM huishoudelijkafval_servicegebieden_locatie_v1 where cluster_fractie_omschrijving = 'GFT') as subquery USING srid=28992 USING UNIQUE id"
     GROUP 'servicegebiedenlocatie'
     TYPE POINT
     TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
