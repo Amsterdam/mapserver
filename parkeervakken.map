@@ -42,7 +42,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_taxistandplaats"
     GROUP           "regimes"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes_v1) pvr on ID = pvr.parent_id
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union
@@ -175,7 +175,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_laden_lossen"
     GROUP           "regimes"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes_v1) pvr on ID = pvr.parent_id
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union
@@ -306,7 +306,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_kiss_ride"
     GROUP           "regimes"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes_v1) pvr on ID = pvr.parent_id
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union
@@ -438,7 +438,7 @@ MAP
     NAME            "parkeervakken_tijdvakken_vrachtwagens"
     GROUP           "regimes"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes) pvr on ID = pvr.parent_id
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 inner join (select begin_tijd, eind_tijd, parent_id, bord from parkeervakken_parkeervakken_regimes_v1) pvr on ID = pvr.parent_id
                         inner join (
                               select '00:00:00_06:59:00' as tijdvak
                               union
@@ -571,7 +571,7 @@ MAP
     NAME            "alle_parkeervakken"
     GROUP           "parkeervakken"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   425001
@@ -615,7 +615,7 @@ MAP
     NAME            "parkeervakken_label"
     GROUP           "parkeervakken"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
     MAXSCALEDENOM   401
@@ -653,8 +653,8 @@ MAP
     NAME            "parkeervakken_bord"
     GROUP           "parkeervakken"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken
-                              join (select parent_id, string_agg(bord, ',') as bord from parkeervakken_parkeervakken_regimes
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1   
+                              join (select parent_id, string_agg(bord, ',') as bord from parkeervakken_parkeervakken_regimes_v1
                               where e_type <> 'E6b' and bord is not null and bord <> '' group by parent_id) pvr
                               on ID = pvr.parent_id USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
@@ -711,11 +711,11 @@ MAP
        'categorie'     '^[0-9a-z_,]{1,256}$'
     END
 
-    DATA            "geometry FROM public.parkeervakken_parkeervakken pv
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 pv
                               join (select parent_id
                                          , string_agg(nullif(opmerking, ''), ',') as opmerkingen
                                          , string_agg(nullif(bord, ''), ',') as bord
-                              from parkeervakken_parkeervakken_regimes pvr
+                              from parkeervakken_parkeervakken_regimes_v1 pvr
                               where (pvr.begin_datum is not null and current_date between pvr.begin_datum and pvr.eind_datum)
                               or (pvr.begin_datum is null and nullif(pvr.e_type,'') is not null)
                               group by parent_id) pvr1
@@ -937,7 +937,7 @@ MAP
     NAME            "fiscaal_parkeervakken"
     GROUP           "fiscaalparkeervakken"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -984,7 +984,7 @@ MAP
     NAME            "nietfiscaal_parkeervakken"
     GROUP           "nietfiscaalparkeervakken"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
@@ -1032,7 +1032,7 @@ MAP
     NAME            "embed_parkeervakken_label"
     GROUP           "embed_parkeervakken"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.parkeervakken_parkeervakken USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.parkeervakken_parkeervakken_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION

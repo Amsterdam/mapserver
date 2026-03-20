@@ -17,7 +17,7 @@ MAP
     NAME                    "binnenwater"
     GROUP                   "water"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.water_binnenwater USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.water_binnenwater_v3 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -55,7 +55,7 @@ MAP
     NAME                    "uitstootvrije_zone_pleziervaart"
     GROUP                   "water"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.water_uitstootvrije_zone_pleziervaart USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.water_uitstootvrije_zone_pleziervaar_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
