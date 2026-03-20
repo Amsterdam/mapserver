@@ -16,7 +16,7 @@ MAP
     NAME                    "milieuzone_personenauto"
     GROUP                   "milieuzones"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.milieuzones_2025_personenauto USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.milieuzones_2025_personenauto_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -56,7 +56,7 @@ MAP
     NAME                    "milieuzone_touringcar"
     GROUP                   "milieuzones"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.milieuzones_2025_touringcar USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.milieuzones_2025_touringcar_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -96,7 +96,7 @@ MAP
     NAME                    "milieuzone_taxi"
     GROUP                   "milieuzones"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.milieuzones_2025_taxi USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.milieuzones_2025_taxi_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -136,7 +136,7 @@ MAP
     NAME                    "milieuzone_vrachtenbestelauto"
     GROUP                   "milieuzones"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.milieuzones_2025_vracht_en_bestelauto USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.milieuzones_2025_vracht_en_bestelauto_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -176,7 +176,7 @@ MAP
     NAME                    "uitstootvrijezone_bromensnorfietsen"
     GROUP                   "uitstootvrijezones"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.uitstootvrije_zones_brom_en_snorfiets USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.uitstootvrije_zones_brom_en_snorfiets_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
@@ -216,7 +216,7 @@ MAP
     NAME                    "uitstootvrijezone_vrachtenbestelauto"
     GROUP                   "uitstootvrijezones"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.uitstootvrije_zones_vracht_en_bestelauto USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.uitstootvrije_zones_vracht_en_bestelauto_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
