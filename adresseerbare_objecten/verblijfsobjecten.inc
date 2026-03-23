@@ -21,14 +21,19 @@ DATA                    "geometrie FROM (
                               bv.geometrie AS geometrie,
                               bv.status_omschrijving AS status,
                               bvg.omschrijving AS gebruiksdoel
-                            FROM bag_verblijfsobjecten AS bv 
-                            INNER JOIN bag_verblijfsobjecten_gebruiksdoel AS bvg
+                            FROM bag_verblijfsobjecten_v1 AS bv 
+                            INNER JOIN bag_verblijfsobjecten_gebruiksdoel_v1 AS bvg
                             ON bv.id = bvg.parent_id
                             WHERE 
                               (lower(bv.status_omschrijving) = lower($1) OR $1 = 'all')
                               AND
                               (lower(bvg.omschrijving) = lower($2) OR $2 = 'all')
                               AND (bv.eind_geldigheid IS NULL OR bv.eind_geldigheid > now())
+                              and (bv.status_omschrijving = 'Verblijfsobject gevormd'
+                              or bv.status_omschrijving = 'Verblijfsobject in gebruik (niet ingemeten)'
+                              or bv.status_omschrijving = 'Verblijfsobject in gebruik'
+                              or bv.status_omschrijving = 'Verblijfsobject buiten gebruik'
+                              or bv.status_omschrijving = 'Verbouwing verblijfsobject')
                             ) AS query 
                           USING srid=28992 USING UNIQUE id"
 BINDVALS

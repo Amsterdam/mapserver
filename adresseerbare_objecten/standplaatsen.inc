@@ -18,12 +18,13 @@ DATA                    "geometrie FROM (
                               bv.id AS id,
                               bv.geometrie AS geometrie,
                               bvg.omschrijving AS gebruiksdoel
-                            FROM bag_standplaatsen AS bv 
-                            INNER JOIN bag_standplaatsen_gebruiksdoel AS bvg
+                            FROM bag_standplaatsen_v1 AS bv 
+                            INNER JOIN bag_standplaatsen_gebruiksdoel_v1 AS bvg
                             ON bv.id = bvg.parent_id
                             WHERE 
                               (lower(bvg.omschrijving) = lower($1) OR $1 = 'all')
-                              AND (bl.eind_geldigheid IS NULL OR bl.eind_geldigheid > now())
+                              AND (bv.eind_geldigheid IS NULL OR bv.eind_geldigheid > now())
+                              AND bv.status_omschrijving  = 'Plaats aangewezen'  
                             ) AS query 
                           USING srid=28992 USING UNIQUE id"
 BINDVALS
