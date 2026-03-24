@@ -58,7 +58,7 @@ with block("MAP"):
         if group == "Bodemgebruik en obstakels":
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
+                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_bodemgebruik_en_obstakels_v1 where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
@@ -110,7 +110,7 @@ with block("MAP"):
         if group == "Lijnvormige obstakels":
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
+                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_lijnvormige_obstakels_v1 where categorie = '{filter_value}') as subquery USING srid=28992 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
@@ -163,7 +163,7 @@ with block("MAP"):
         if group == "Dempingen en ophogingen":
 
             with block("LAYER"):
-                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen where categorie = '{filter_value}') as subquery USING srid=7415 USING UNIQUE id"
+                sql = f"geometrie from (SELECT * FROM public.historische_bodeminformatie_dempingen_en_ophogingen_v1 where categorie = '{filter_value}') as subquery USING srid=7415 USING UNIQUE id"
                 
 
                 layer_name_slug = slugify(layer_name)
