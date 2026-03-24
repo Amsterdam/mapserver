@@ -5,7 +5,7 @@ MAP
         METADATA
             "team"                "BOR"
             "ows_title"           "Onderhoudsplicht percelen"
-            "ows_abstract"        "Onderhoudsplicht Percelen t.b.v.de appliacatie GISIB"
+            "ows_abstract"        "Onderhoudsplicht percelen t.b.v.de applicatie GISIB"
             "ows_onlineresource"  "MAP_URL_REPLACE/maps/onderhoudsplicht_percelen"
         END
     END
@@ -34,7 +34,7 @@ MAP
         ) AS subq USING srid=28992 USING UNIQUE id"
         TYPE                    POLYGON
         TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
-        MINSCALEDENOM           10
+        MINSCALEDENOM           100
         MAXSCALEDENOM           15000
 
         METADATA
