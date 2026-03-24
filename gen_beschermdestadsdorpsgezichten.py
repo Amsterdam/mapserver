@@ -41,7 +41,7 @@ with block("MAP"):
             p("INCLUDE", "connection/dataservices.inc")
             p(
                 "DATA",
-                f"geometry FROM public.{BSD_SHORT}_{BSD_SHORT} USING UNIQUE id USING srid=28992",
+                f"geometry FROM public.{BSD_SHORT}_{BSD_SHORT}_v2 USING UNIQUE id USING srid=28992",
             )
             p("TYPE POLYGON")
 
