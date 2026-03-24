@@ -1,0 +1,70 @@
+MAP
+    NAME                      "onderhoudsplicht_percelen"
+    INCLUDE                   "header.inc"
+    WEB
+        METADATA
+            "team"                "BOR"
+            "ows_title"           "Onderhoudsplicht percelen"
+            "ows_abstract"        "Onderhoudsplicht Percelen t.b.v.de appliacatie GISIB"
+            "ows_onlineresource"  "MAP_URL_REPLACE/maps/onderhoudsplicht_percelen"
+        END
+    END
+
+#==============================================================================================
+
+    LAYER
+        NAME                    "onderhoudsplicht_percelen"
+        INCLUDE                 "connection/dataservices.inc"
+        GROUP                   "onderhoudsplicht_percelen"
+        STATUS                  ON
+        PROJECTION
+            "init=epsg:28992"
+        END
+        DATA                     "geometrie FROM (
+        SELECT
+        bbv.geometrie_vlak AS geometrie,
+        bbv.kadastraalobject_id AS id
+        FROM public.benkagg_brkkaartlaageigenaren_v1 bbv
+        WHERE bbv.subject_categorie = 'Gemeente Amsterdam'
+        AND NOT EXISTS (
+        SELECT 1
+        FROM public.benkagg_brkkaartlaagerfpachtuitgevers_v1 bbv2
+        WHERE bbv2.kadastraalobject_id = bbv.kadastraalobject_id
+        )
+        ) AS subq USING srid=28992 USING UNIQUE id"
+        TYPE                    POLYGON
+        TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+        MINSCALEDENOM           10
+        MAXSCALEDENOM           15000
+
+        METADATA
+            "gml_include_items"   "all"
+            "wms_title"           "Beheergebied Amsterdam"
+            "wms_enable_request"  "*"
+            "wms_group_title"     "Onderhoudsplicht Percelen"
+            "wms_abstract"        "Onderhoudsplicht Percelen t.b.v.de appliacatie GISIB"
+            "wms_srs"             "EPSG:28992"
+            "wms_name"            "Beheergebied Amsterdam"
+            "wms_format"          "image/png"
+            "wms_server_version"  "1.3.0"
+            "wms_extent"          "100000 450000 150000 500000"
+            "gml_featureid"       "id"
+            "gml_geometries"      "geometrie"
+            "gml_geometry_type"   "polygon"
+            "gml_include_items"   "all"
+            "gml_types"           "auto"
+            "wms_include_items"   "all"
+        END
+
+        CLASS
+            NAME "Beheergebied Amsterdam"
+            STYLE
+                COLOR "#c3aafb"
+                OPACITY 35
+                OUTLINECOLOR "#c3aafb"
+                WIDTH 1
+                LINEJOIN bevel
+            END
+        END
+    END
+END
