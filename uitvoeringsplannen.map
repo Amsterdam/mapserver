@@ -16,7 +16,7 @@ MAP
     NAME                    "civiel"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Civiel')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -55,7 +55,7 @@ MAP
     NAME                    "groen"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Groen')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -95,7 +95,7 @@ MAP
     NAME                    "water"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Water')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -135,7 +135,7 @@ MAP
     NAME                    "spelen_straatmeubilair"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Spelen & straatmeubilair')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -174,7 +174,7 @@ MAP
     NAME                    "tunnels"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Tunnels')      
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -213,7 +213,7 @@ MAP
     NAME                    "verhardingen"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Verhardingen')      
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -252,7 +252,7 @@ MAP
     NAME                    "verlichting"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'Verlichting')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -293,7 +293,7 @@ MAP
     NAME                    "verkeersinformatiesystemen"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'VIS')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -334,7 +334,7 @@ MAP
     NAME                    "verkeersregelinstallaties"         
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "uitvoeringsplannen"                                 
-    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.uitvoeringsplan_uitvoeringsplan_v3 USING srid=28992 USING UNIQUE id"
     FILTER                  ([asset] = 'VRI')            
     TYPE                    POLYGON
     TEMPLATE                "empty"
