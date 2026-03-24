@@ -38,7 +38,7 @@ MAP
     NAME            "peilmerk"
     GROUP           "NAP"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.nap_peilmerken USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.nap_peilmerken_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -56,9 +56,10 @@ MAP
     END
 
     CLASS
+      NAME 'Geen Eikenprocessierups aanwezig'
       STYLE
-        SYMBOL         'vierkant_trap5_geel'
-        SIZE           16
+        SYMBOL 'vierkant_trap1_donkerblauw'
+        SIZE 50
       END
     END
   END
@@ -70,7 +71,7 @@ MAP
     GROUP           "NAP"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken) AS query USING srid=28992 USING UNIQUE identificatie"
+      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken_v1) AS query USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -123,7 +124,7 @@ MAP
     GROUP           "NAP_hoogte"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken) AS query USING srid=28992 USING UNIQUE identificatie"
+      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken_v1) AS query USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
