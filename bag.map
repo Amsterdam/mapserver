@@ -23,9 +23,9 @@ MAP
 
 
 
-  #=============================================================================
-  # LAYERS
-  #=============================================================================
+  # #=============================================================================
+  # # LAYERS
+  # #=============================================================================
 
   LAYER
     NAME            "openbareruimte"
@@ -596,332 +596,642 @@ MAP
 
   END
 
+############### Everything under this is copied from the result of gen_panden_bouwjaar.py... Made it easier.
 
-  LAYER
-    NAME            "pandleeftijden"
-    GROUP           "overig"
-    INCLUDE         "connection/dataservices.inc"
-    DATA "geometrie FROM (
-        SELECT
-            id,
-            oorspronkelijk_bouwjaar,
-            geometrie,
-            ligging_omschrijving,
-            type_woonobject,
-            ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri
-        FROM public.bag_panden_v1
-        WHERE coalesce(eind_geldigheid, now()) >= now()
-        AND status_omschrijving NOT IN ('Niet gerealiseerd pand','Pand gesloopt','Pand ten onrechte opgevoerd')
-    ) AS subquery USING srid=28992 USING UNIQUE id"
-    TYPE            POLYGON
-    CLASSITEM       "oorspronkelijk_bouwjaar"
-    LABELITEM       "oorspronkelijk_bouwjaar"
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   400000
-    TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "ows_title"           "Panden naar bouwjaar"
-      "ows_group_title"     "Overig"
-      "ows_abstract"        "BAG panden van de gemeente Amsterdam, met leeftijd codering"
-      "gml_featureid"       "ID"
-      "gml_include_items"   "all"
-    END
-
-    # 1005 is the conventional unknown year of construction.
-    CLASS
-      NAME            "onbekend"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] == 1005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#767676"
-        OUTLINECOLOR   "#767676"
-        OPACITY        50
-        WIDTH          1
-      END
-    END
-
-    CLASS
-      NAME            "< 1800"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] < 1800 AND [oorspronkelijk_bouwjaar] != 1005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#610000"
-        OUTLINECOLOR   "#610000"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1800-1850"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1800 AND [oorspronkelijk_bouwjaar] < 1850)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#A00000"
-        OUTLINECOLOR   "#A00000"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1850-1900"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1850 AND [oorspronkelijk_bouwjaar] < 1900)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#EC0000"
-        OUTLINECOLOR   "#EC0000"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1900-1930"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1900 AND [oorspronkelijk_bouwjaar] < 1930)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#F14600"
-        OUTLINECOLOR   "#F14600"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1930-1945"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1930 AND [oorspronkelijk_bouwjaar] < 1945)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#FBAA00"
-        OUTLINECOLOR   "#FBAA00"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1945-1960"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1945 AND [oorspronkelijk_bouwjaar] < 1960)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#FFE600"
-        OUTLINECOLOR   "#FFE600"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1960-1975"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1960 AND [oorspronkelijk_bouwjaar] < 1975)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#E5F2FC"
-        OUTLINECOLOR   "#E5F2FC"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1975-1985"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1975 AND [oorspronkelijk_bouwjaar] < 1985)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#B1D9F5"
-        OUTLINECOLOR   "#B1D9F5"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1985-1995"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1985 AND [oorspronkelijk_bouwjaar] < 1995)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#71BDEE"
-        OUTLINECOLOR   "#71BDEE"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            "1995-2005"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 1995 AND [oorspronkelijk_bouwjaar] < 2005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#007EC5"
-        OUTLINECOLOR   "#007EC5"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
-    CLASS
-      NAME            ">= 2005"
-      EXPRESSION      ([oorspronkelijk_bouwjaar] >= 2005)
-      STYLE
-        ANTIALIAS      true
-        COLOR          "#004699"
-        OUTLINECOLOR   "#004699"
-        OPACITY        50
-        WIDTH          1
-      END
-
-      LABEL
-        MINSCALEDENOM  10
-        MAXSCALEDENOM  1000
-        COLOR          0 0 0
-        OUTLINECOLOR   255 255 255
-        OUTLINEWIDTH   3
-        FONT           "Ubuntu-MI"
-        TYPE           truetype
-        SIZE           10
-        POSITION       AUTO
-        PARTIALS       FALSE
-      END
-    END
-
+LAYER
+  NAME 'onbekend'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] == 1005)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
   END
+  METADATA
+    'ows_title' 'Onbekend'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME 'onbekend'
+    STYLE
+      COLOR '#767676'
+      OPACITY 50
+      OUTLINECOLOR '#767676'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME 'ouder_dan_1800'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] < 1800 AND [oorspronkelijk_bouwjaar] != 1005)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' 'Ouder dan 1800'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME 'Ouder dan 1800'
+    STYLE
+      COLOR '#610000'
+      OPACITY 50
+      OUTLINECOLOR '#610000'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1800_1850'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1800 AND [oorspronkelijk_bouwjaar] < 1850)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1800-1850'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1800-1850'
+    STYLE
+      COLOR '#A00000'
+      OPACITY 50
+      OUTLINECOLOR '#A00000'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1850_1900'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1850 AND [oorspronkelijk_bouwjaar] < 1900)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1850-1900'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1850-1900'
+    STYLE
+      COLOR '#EC0000'
+      OPACITY 50
+      OUTLINECOLOR '#EC0000'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1900_1930'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1900 AND [oorspronkelijk_bouwjaar] < 1930)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1900-1930'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1900-1930'
+    STYLE
+      COLOR '#F14600'
+      OPACITY 50
+      OUTLINECOLOR '#F14600'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1930_1945'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1930 AND [oorspronkelijk_bouwjaar] < 1945)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1930-1945'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1930-1945'
+    STYLE
+      COLOR '#FBAA00'
+      OPACITY 50
+      OUTLINECOLOR '#FBAA00'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1945_1960'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1945 AND [oorspronkelijk_bouwjaar] < 1960)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1945-1960'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1945-1960'
+    STYLE
+      COLOR '#FFE600'
+      OPACITY 50
+      OUTLINECOLOR '#FFE600'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1960_1975'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1960 AND [oorspronkelijk_bouwjaar] < 1975)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1960-1975'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1960-1975'
+    STYLE
+      COLOR '#E5F2FC'
+      OPACITY 50
+      OUTLINECOLOR '#E5F2FC'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1975_1985'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1975 AND [oorspronkelijk_bouwjaar] < 1985)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1975-1985'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1975-1985'
+    STYLE
+      COLOR '#B1D9F5'
+      OPACITY 50
+      OUTLINECOLOR '#B1D9F5'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1985_1995'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1985 AND [oorspronkelijk_bouwjaar] < 1995)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1985-1995'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1985-1995'
+    STYLE
+      COLOR '#71BDEE'
+      OPACITY 50
+      OUTLINECOLOR '#71BDEE'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '1995_2005'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 1995 AND [oorspronkelijk_bouwjaar] < 2005)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '1995-2005'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '1995-2005'
+    STYLE
+      COLOR '#007EC5'
+      OPACITY 50
+      OUTLINECOLOR '#007EC5'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '2005_2015'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 2005 AND [oorspronkelijk_bouwjaar] < 2015)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '2005-2015'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '2005-2015'
+    STYLE
+      COLOR '#005FA3'
+      OPACITY 50
+      OUTLINECOLOR '#005FA3'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '2015_2025'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 2015 AND [oorspronkelijk_bouwjaar] < 2025)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '2015-2025'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '2015-2025'
+    STYLE
+      COLOR '#00467A'
+      OPACITY 50
+      OUTLINECOLOR '#00467A'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
+LAYER
+  NAME '2025_of_nieuwer'
+  INCLUDE 'connection/dataservices.inc'
+  DATA "geometrie FROM (SELECT id, oorspronkelijk_bouwjaar, geometrie, ligging_omschrijving, type_woonobject, ('https://api.data.amsterdam.nl/v1/bag/panden/' || identificatie || '/?volgnummer=' || volgnummer::text) AS uri FROM public.bag_panden_v1 WHERE coalesce(eind_geldigheid, now()) >= now() AND status_omschrijving NOT IN ('Niet gerealiseerd pand', 'Pand gesloopt', 'Pand ten onrechte opgevoerd')) AS subquery USING srid=28992 USING UNIQUE id"
+FILTER ([oorspronkelijk_bouwjaar] >= 2025)
+  GROUP 'panden_naar_bouwjaar'
+  TYPE POLYGON
+  CLASSITEM       "oorspronkelijk_bouwjaar"
+  LABELITEM       "oorspronkelijk_bouwjaar"
+  TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+  PROJECTION
+    'init=epsg:28992'
+  END
+  METADATA
+    'ows_title' '2025 of nieuwer'
+    'ows_group_title' 'Panden naar bouwjaar'
+    'wms_include_items' 'all'
+    'ows_abstract' 'BAG panden van de gemeente Amsterdam, met leeftijd codering'
+    'gml_featureid' 'ID'
+    'gml_geometries' 'geometry'
+    'gml_geometry_type' 'polygon'
+    'gml_include_items' 'all'
+  END
+  CLASS
+    NAME '2025 of nieuwer'
+    STYLE
+      COLOR '#002D4F'
+      OPACITY 50
+      OUTLINECOLOR '#002D4F'
+      WIDTH  1
+    END
+    LABEL
+      MINSCALEDENOM 10
+      MAXSCALEDENOM 1000
+      COLOR 0 0 0
+      OUTLINECOLOR 255 255 255
+      OUTLINEWIDTH 3
+      FONT 'Ubuntu-M'
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO
+      PARTIALS FALSE
+    END
+  END
+END
 
-#==================== BEGIN LIGGING PANDEN ===========================
+
+
+# #==================== BEGIN LIGGING PANDEN ===========================
 # Ligging 'Onebekend'
   LAYER
     NAME                    "ligging_panden_onbekend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
