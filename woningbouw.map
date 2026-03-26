@@ -24,7 +24,7 @@ MAP
     DATA "
         geometrie FROM (
             SELECT identificatie, geometrie FROM
-                public.bag_panden
+                public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())

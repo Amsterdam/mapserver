@@ -36,7 +36,7 @@ MAP
         ligging_omschrijving ,
         type_woonobject,
         ('https://api.data.amsterdam.nl/bag/v1.1/pand/' || identificatie::text || '/'::text) AS uri
-        FROM public.bag_panden
+        FROM public.bag_panden_v1
         WHERE eind_geldigheid is null
       ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON

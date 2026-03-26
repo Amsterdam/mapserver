@@ -19,8 +19,8 @@ DATA                    "geometrie FROM (
                               bv.geometrie AS geometrie,
                               bv.status_omschrijving AS status,
                               bvg.omschrijving AS gebruiksdoel
-                            FROM bag_ligplaatsen AS bv 
-                            INNER JOIN bag_ligplaatsen_gebruiksdoel AS bvg
+                            FROM bag_ligplaatsen_v1 AS bv 
+                            INNER JOIN bag_ligplaatsen_gebruiksdoel_v1 AS bvg
                             ON bv.id = bvg.parent_id
                             WHERE 
                               (lower(bvg.omschrijving) = lower($1) OR $1 = 'all')

@@ -18,7 +18,7 @@ MAP
     NAME            "meetbouten_status"
     GROUP           "meetbouten"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.meetbouten_meetbouten USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.meetbouten_meetbouten_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -71,7 +71,7 @@ MAP
     NAME            "meetbouten_labels"
     GROUP           "meetbouten"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.meetbouten_meetbouten USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.meetbouten_meetbouten_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   1001
@@ -136,13 +136,13 @@ MAP
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
         SELECT mbt.*, mtn.zakkingssnelheid FROM
-            public.meetbouten_meetbouten mbt, public.meetbouten_metingen mtn
+            public.meetbouten_meetbouten_v1 mbt, public.meetbouten_metingen_v1 mtn
         WHERE
             mtn.hoort_bij_meetbout_id = mbt.identificatie
         AND
             (mtn.datum, mtn.hoort_bij_meetbout_id) IN (
                 SELECT max(datum), hoort_bij_meetbout_id FROM
-                    public.meetbouten_metingen
+                    public.meetbouten_metingen_v1
                 GROUP BY hoort_bij_meetbout_id
             )
         )
@@ -295,7 +295,7 @@ MAP
     NAME            "referentiepunt"
     GROUP           "referentiepunten"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.meetbouten_referentiepunten USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.meetbouten_referentiepunten_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   5001
@@ -333,7 +333,7 @@ MAP
     NAME            "referentiepunt_label"
     GROUP           "referentiepunten"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.meetbouten_referentiepunten USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM public.meetbouten_referentiepunten_v1 USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
