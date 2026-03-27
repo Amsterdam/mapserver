@@ -13,7 +13,7 @@ def slugify(s: str) -> str:
 ###WARNING, deze py file genereerd alleen een STUKJE van de bag.map file, handmatig plakken is vereist..
 
 layers = [
-    ("Panden naar bouwjaar", "onbekend", "([oorspronkelijk_bouwjaar] == 1005)", "#767676"),
+    ("Panden naar bouwjaar", "Onbekend", "([oorspronkelijk_bouwjaar] == 1005)", "#767676"),
     ("Panden naar bouwjaar", "Ouder dan 1800", "([oorspronkelijk_bouwjaar] < 1800 AND [oorspronkelijk_bouwjaar] != 1005)", "#610000"),
     ("Panden naar bouwjaar", "1800-1850", "([oorspronkelijk_bouwjaar] >= 1800 AND [oorspronkelijk_bouwjaar] < 1850)", "#A00000"),
     ("Panden naar bouwjaar", "1850-1900", "([oorspronkelijk_bouwjaar] >= 1850 AND [oorspronkelijk_bouwjaar] < 1900)", "#EC0000"),
