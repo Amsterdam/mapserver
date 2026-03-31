@@ -28,7 +28,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.hoofdroutes_routes_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.hoofdroutes_routes_gevaarlijke_stoffen_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -71,7 +71,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.hoofdroutes_tunnels_gevaarlijke_stoffen USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.hoofdroutes_tunnels_gevaarlijke_stoffen_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -127,7 +127,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.hoofdroutes_u_routes USING srid=28992 USING UNIQUE id"
+    DATA                    "geometry FROM public.hoofdroutes_u_routes_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    LINE
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000

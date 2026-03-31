@@ -32,7 +32,7 @@ MAP
   END
 
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.touringcars_doorrijhoogtes USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.touringcars_doorrijhoogtes_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
     MAXSCALEDENOM   400000
@@ -90,7 +90,7 @@ MAP
   END
 
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.touringcars_wegwerkzaamheden USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.touringcars_wegwerkzaamheden_v1 USING srid=28992 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   10
     MAXSCALEDENOM   400000
@@ -152,7 +152,7 @@ MAP
   END
 
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.touringcars_parkeerplaatsen USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.touringcars_parkeerplaatsen_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
     MAXSCALEDENOM   400000
@@ -213,7 +213,7 @@ MAP
   END
 
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.touringcars_haltes USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.touringcars_haltes_v1 USING srid=28992 USING UNIQUE id"
     TYPE            POINT
     MINSCALEDENOM   10
     MAXSCALEDENOM   400000
@@ -274,7 +274,7 @@ MAP
   END
 
     INCLUDE         "connection/dataservices.inc"   
-    DATA            "geometry FROM public.touringcars_aanbevolenroutes USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.touringcars_aanbevolenroutes_v1 USING srid=28992 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   10
     MAXSCALEDENOM   400000
@@ -342,7 +342,7 @@ MAP
   END
 
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometry FROM public.touringcars_verplichteroutes USING srid=28992 USING UNIQUE id"
+    DATA            "geometry FROM public.touringcars_verplichteroutes_v1 USING srid=28992 USING UNIQUE id"
     TYPE            LINE
     MINSCALEDENOM   10
     MAXSCALEDENOM   400000
