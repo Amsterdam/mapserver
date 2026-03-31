@@ -22,7 +22,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.vergunningen_omzetting USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.vergunningen_omzetting_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POLYGON
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
