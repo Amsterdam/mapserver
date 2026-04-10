@@ -29,6 +29,11 @@ DATA                    "geometrie FROM (
                               AND
                               (lower(bvg.omschrijving) = lower($2) OR $2 = 'all')
                               AND (bv.eind_geldigheid IS NULL OR bv.eind_geldigheid > now())
+                              and (bv.status_omschrijving = 'Verblijfsobject gevormd'
+                              or bv.status_omschrijving = 'Verblijfsobject in gebruik (niet ingemeten)'
+                              or bv.status_omschrijving = 'Verblijfsobject in gebruik'
+                              or bv.status_omschrijving = 'Verblijfsobject buiten gebruik'
+                              or bv.status_omschrijving = 'Verbouwing verblijfsobject')
                             ) AS query 
                           USING srid=28992 USING UNIQUE id"
 BINDVALS

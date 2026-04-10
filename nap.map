@@ -56,9 +56,12 @@ MAP
     END
 
     CLASS
+      NAME 'NAP'
       STYLE
-        SYMBOL         'vierkant_trap5_geel'
-        SIZE           16
+        SYMBOL 'vierkant'
+        SIZE 12
+        COLOR 0 70 153
+        OUTLINECOLOR 255 255 255 
       END
     END
   END
@@ -70,7 +73,7 @@ MAP
     GROUP           "NAP"
     INCLUDE         "connection/dataservices.inc"
     DATA            "geometrie FROM (
-      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken) AS query USING srid=28992 USING UNIQUE identificatie"
+      SELECT geometrie, identificatie, hoogte_tov_nap from public.nap_peilmerken_v1) AS query USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
     MINSCALEDENOM   100
     MAXSCALEDENOM   15001
@@ -142,8 +145,10 @@ MAP
       NAME "lager dan -1,5 m"
       EXPRESSION ([hoogte_tov_nap] < -1.5)
       STYLE
-        SYMBOL         'vierkant_trap1_donkerblauw'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          0 70 153
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -151,8 +156,10 @@ MAP
       NAME "-1,5 m tot -0,5 m"
       EXPRESSION (([hoogte_tov_nap] >= -1.5) AND ([hoogte_tov_nap] < -0.5))
       STYLE
-        SYMBOL         'vierkant_trap2_lichtblauw'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          0 157 230
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -160,8 +167,10 @@ MAP
       NAME "-0,5 m tot 0 m"
       EXPRESSION (([hoogte_tov_nap] >= -0.5) AND ([hoogte_tov_nap] < 0))
       STYLE
-        SYMBOL         'vierkant_trap3_lichtblauwgroen'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          0 210 180
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -169,8 +178,10 @@ MAP
       NAME "0 m tot 1 m"
       EXPRESSION (([hoogte_tov_nap] >= 0) AND ([hoogte_tov_nap] < 1))
       STYLE
-        SYMBOL         'vierkant_trap4_lichtgroen'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          190 210 0
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -178,8 +189,10 @@ MAP
       NAME "1 m tot 1,5 m"
       EXPRESSION (([hoogte_tov_nap] >= 1) AND ([hoogte_tov_nap] < 1.5))
       STYLE
-        SYMBOL         'vierkant_trap5_geel'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          255 230 0
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -187,8 +200,10 @@ MAP
       NAME "1,5 m tot 2 m"
       EXPRESSION (([hoogte_tov_nap] >= 1.5) AND ([hoogte_tov_nap] < 2))
       STYLE
-        SYMBOL         'vierkant_trap6_geeloranje'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          255 199 0
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -196,8 +211,10 @@ MAP
       NAME "2 m tot 3,5 m"
       EXPRESSION (([hoogte_tov_nap] >= 2) AND ([hoogte_tov_nap] < 3.5))
       STYLE
-        SYMBOL         'vierkant_trap7_oranje'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          255 145 0
+        OUTLINECOLOR     255 255 255
       END
     END
 
@@ -205,8 +222,10 @@ MAP
       NAME "hoger dan 3,5 m"
       EXPRESSION ([hoogte_tov_nap] >= 3.5)
       STYLE
-        SYMBOL         'vierkant_trap8_rood'
+        SYMBOL         'vierkant'
         SIZE           16
+        COLOR          236 0 0
+        OUTLINECOLOR     255 255 255
       END
     END
 

@@ -34,6 +34,7 @@ MAP
     DATA "geometrie FROM (
         SELECT * FROM public.bag_openbareruimtes_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
+        and status_omschrijving = 'Naamgeving uitgegeven'
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -146,8 +147,19 @@ MAP
     GROUP           "bag"
     INCLUDE         "connection/dataservices.inc"
     DATA "geometrie FROM (
-        SELECT * FROM public.bag_panden_v1
-        WHERE coalesce(eind_geldigheid, now()) >= now()
+            SELECT *
+            FROM public.bag_panden_v1
+                  WHERE COALESCE(eind_geldigheid, NOW()) >= NOW()
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+        )
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -187,6 +199,7 @@ MAP
     DATA "geometrie FROM (
         SELECT * FROM public.bag_ligplaatsen_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
+        AND status_omschrijving  = 'Plaats aangewezen'   
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -226,6 +239,7 @@ MAP
     DATA "geometrie FROM (
         SELECT * FROM public.bag_standplaatsen_v1
         WHERE coalesce(eind_geldigheid, now()) >= now()
+        AND status_omschrijving  = 'Plaats aangewezen'  
     ) AS subquery USING srid=28992 USING UNIQUE id"
     TYPE            POLYGON
     MINSCALEDENOM   100
@@ -261,12 +275,22 @@ MAP
     NAME                    "panden_naar_status_pand_in_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
+        DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
                 public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
 
@@ -315,6 +339,16 @@ MAP
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
 
@@ -358,15 +392,24 @@ MAP
     NAME                    "panden_naar_status_verbouwing_pand"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
+       DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
                 public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
-
     FILTER                  ([status_omschrijving] = 'Verbouwing pand')            # Dit wellicht in WHERE clause, uitzoeken
     TYPE                    POLYGON
     TEMPLATE                "empty"
@@ -406,12 +449,22 @@ MAP
     NAME                    "panden_naar_status_bouw_gestart"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
+        DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
                 public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
 
@@ -456,12 +509,22 @@ MAP
     NAME                    "panden_naar_status_bouwvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
+        DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
                 public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
 
@@ -504,12 +567,22 @@ MAP
     NAME                    "panden_naar_status_sloopvergunning_verleend"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
+        DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
                 public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
 
@@ -552,12 +625,22 @@ MAP
     NAME                    "panden_naar_status_pand_buiten_gebruik"         # Lowercase naam in meervoud zonder afkortingen, zonder spaties en zonder leestekens (apostrofe)
     INCLUDE                 "connection/dataservices.inc"
     GROUP                   "pand_naar_status"                                 # Minstens 1 zelfde naam als de mapfile, of meerdere (slugified)
-    DATA                    "geometrie FROM (
+        DATA                    "geometrie FROM (
             SELECT id, geometrie,status_omschrijving FROM
                 public.bag_panden_v1
             WHERE
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS sub
         USING srid=28992 USING UNIQUE id"
 
@@ -934,6 +1017,16 @@ MAP
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
                 AND ligging_omschrijving IS NULL
+                AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
@@ -983,6 +1076,16 @@ MAP
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
                 AND ligging_omschrijving = 'Tussengebouw'
+                AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
@@ -1032,6 +1135,16 @@ MAP
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
                 AND ligging_omschrijving = 'Half vrijstaand gebouw'
+                AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
@@ -1081,6 +1194,16 @@ MAP
                     begin_geldigheid < now()
                     AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
                     AND ligging_omschrijving = 'Vrijstaand gebouw'
+                    AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                     ) AS subquery
                     USING srid=28992 USING UNIQUE id"
 
@@ -1131,6 +1254,16 @@ MAP
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
                 AND ligging_omschrijving = 'Anders'
+                AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
@@ -1180,6 +1313,16 @@ MAP
                 begin_geldigheid < now()
                 AND (eind_geldigheid IS NULL OR eind_geldigheid > now())
                 AND ligging_omschrijving = 'Kopgebouw'
+                AND status_omschrijving IN (
+                      'Bouwaanvraag ontvangen',
+                      'Bouwaanvraag verleend',
+                      'Bouw gestart',
+                      'Pand in gebruik (niet ingemeten)',
+                      'Pand in gebruik',
+                      'Sloopvergunning verleend',
+                      'Pand buiten gebruik',
+                      'Verbouwing pand'
+                )
                 ) AS subquery
         USING srid=28992 USING UNIQUE id"
 
