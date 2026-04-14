@@ -11,35 +11,35 @@ def slugify(s: str) -> str:
     return re.sub(r"[^A-Za-z]+", "_", s).strip("_").lower()
 
 layers = [
-    ("Faunameubilair","Loopplank", "Loopplank", "aanwezig_laag"),
-    ("Faunameubilair","Vogelhut", "Vogelhut", "deels_bestreden"),
-    ("Faunameubilair","Vogelkijktoren", "Vogelkijktoren", "niet_in_beheer"),
-    ("Faunameubilair","Vogelscherm", "Vogelscherm", "aanwezig_urgent"),
-    ("Faunaverblijfplaatsen","Bijenwand", "Bijenwand", "gemeld"),
-    ("Faunaverblijfplaatsen","Broeihoop", "Broeihoop", "bestreden"),
-    ("Faunaverblijfplaatsen","Insectenhotel", "Insectenhotel", "niet_aanwezig"),
-    ("Faunaverblijfplaatsen","Ooievaarsnest", "Ooievaarsnest", "niet_bereikbaar"),
-    ("Faunaverblijfplaatsen","Vleermuiskast", "Vleermuiskast", "aanwezig_standaard"),
-    ("Faunaverblijfplaatsen","Vleermuiskelder", "Vleermuiskelder", "preventief"),
-    ("Faunaverblijfplaatsen","Vleermuistoren", "Vleermuistoren", "aanwezig_standaard"),
-    ("Faunaverblijfplaatsen","Winterverblijf", "Winterverblijf", "preventief"),
-    ("Faunavoorziening","Eekhoornbrug", "Eekhoornbrug", "preventief"),
-    ("Faunavoorziening","Faunaduiker", "Faunaduiker", "preventief"),
-    ("Faunavoorziening","Faunagoot", "Faunagoot", "preventief"),
-    ("Faunavoorziening","Faunapassage", "Faunapassage", "preventief"),
-    ("Faunavoorziening","Faunarichel", "Faunarichel", "preventief"),
-    ("Faunavoorziening","Faunatunnel", "Faunatunnel", "preventief"),
-    ("Faunavoorziening","Faunauittreedplaats", "Faunauittreedplaats", "preventief"),
-    ("Faunavoorziening","Faunawand", "Faunawand", "preventief"),
-    ("Faunavoorziening","Keienwal", "Keienwal", "preventief"),
-    ("Faunavoorziening","Stobbenwal", "Stobbenwal", "preventief"),
-    ("Faunavoorziening","Vispassage", "Vispassage", "preventief"),
-    ("Hekken","Amfibieenscherm", "Amfibieënscherm", "preventief"),
-    ("Hekken","Faunaraster", "Faunaraster", "preventief"),
-    ("Wildroosters","Wildrooster", "Wildrooster", "preventief"),
-    ("Poelen","Poel", "Poel", "#FF9100"),
-    ("Ecologische gebieden","Verbindingszone", "Verbindingszone", "#FF9100"),
-    ("Ecologische gebieden","Kerngebied", "Kerngebied", "#FF9100")
+    ("Faunameubilair","Loopplank", "Loopplank", "loopplank"),
+    ("Faunameubilair","Vogelhut", "Vogelhut", "vogelhut"),
+    ("Faunameubilair","Vogelkijktoren", "Vogelkijktoren", "vogelkijktoren"),
+    ("Faunameubilair","Vogelscherm", "Vogelscherm", "vogelscherm"),
+    ("Faunaverblijfplaatsen","Bijenwand", "Bijenwand", "bijenwand"),
+    ("Faunaverblijfplaatsen","Broeihoop", "Broeihoop", "broeihoop"),
+    ("Faunaverblijfplaatsen","Insectenhotel", "Insectenhotel", "insectenhotel"),
+    ("Faunaverblijfplaatsen","Ooievaarsnest", "Ooievaarsnest", "ooievaarsnest"),
+    ("Faunaverblijfplaatsen","Vleermuiskast", "Vleermuiskast", "vleermuiskast"),
+    ("Faunaverblijfplaatsen","Vleermuiskelder", "Vleermuiskelder", "vleermuiskelder"),
+    ("Faunaverblijfplaatsen","Vleermuistoren", "Vleermuistoren", "vleermuistoren"),
+    ("Faunaverblijfplaatsen","Winterverblijf", "Winterverblijf", "winterverblijf"),
+    ("Faunavoorziening","Eekhoornbrug", "Eekhoornbrug", "eekhoornbrug"),
+    ("Faunavoorziening","Faunaduiker", "Faunaduiker", "faunaduiker"),
+    ("Faunavoorziening","Faunagoot", "Faunagoot", "faunagoot"),
+    ("Faunavoorziening","Faunapassage", "Faunapassage", "faunapassage"),
+    ("Faunavoorziening","Faunarichel", "Faunarichel", "faunarichel"),
+    ("Faunavoorziening","Faunatunnel", "Faunatunnel", "faunatunnel"),
+    ("Faunavoorziening","Faunauittreedplaats", "Faunauittreedplaats", "faunauittreedplaats"),
+    ("Faunavoorziening","Faunawand", "Faunawand", "faunawand"),
+    ("Faunavoorziening","Keienwal", "Keienwal", "keienwal"),
+    ("Faunavoorziening","Stobbenwal", "Stobbenwal", "stobbenwal"),
+    ("Faunavoorziening","Vispassage", "Vispassage", "vispassage"),
+    ("Hekken","Amfibieenscherm", "Amfibieënscherm", "amfibieenscherm"),
+    ("Hekken","Faunaraster", "Faunaraster", "faunaraster"),
+    ("Wildroosters","Wildrooster", "Wildrooster", "wildrooster"),
+    ("Poelen","Poel", "Poel", "#56CCF2"),
+    ("Ecologische gebieden","Verbindingszone", "Verbindingszone", "#2F80ED"),
+    ("Ecologische gebieden","Kerngebied", "Kerngebied", "#F2C94C")
         ]
 
 
@@ -58,8 +58,11 @@ with block("MAP"):
                 "Deze collectie bevat ecologische voorzieningen binnen gemeente Amsterdam. Dit zijn zowel ecologische objecten als ecologische gebieden. De ecologische objecten, zoals eekhoornbruggen en vispassages, zijn bedoeld voor dieren in de stad en zorgen ervoor dat zij zich veilig kunnen verplaatsen tussen verschillende leefgebieden. De ecologische gebieden zijn gericht op het vergroten van de biodiversiteit en zijn onderverdeeld in kerngebieden en verbindingszones. Kerngebieden bieden geschikte omstandigheden voor de permanente vestiging van soorten. Verbindingszones bieden geschikte omstandigheden voor tijdelijk verblijf, verbinden de kerngebieden met elkaar waardoor het leefgebied vergroot",
             )
             q("wms_extent", "100000 450000 150000 500000")
+    with block("LEGEND"):
+        p("STATUS ON")
+        p("KEYSIZE 15 15")
 
-# dit stuk is voor de eikenprogressierups
+
     for group, name, filter, icon in layers:
         with block("LAYER"):
             p("NAME", name)

@@ -14,6 +14,10 @@ MAP
       'wms_extent' '100000 450000 150000 500000'
     END
   END
+  LEGEND
+    STATUS ON
+    KEYSIZE 15 15
+  END
   LAYER
     NAME 'Loopplank'
     GROUP 'faunameubilair'
@@ -34,7 +38,7 @@ MAP
     CLASS
       NAME 'Loopplank'
       STYLE
-        SYMBOL 'aanwezig_laag'
+        SYMBOL 'loopplank'
         SIZE 20
       END
     END
@@ -59,7 +63,7 @@ MAP
     CLASS
       NAME 'Vogelhut'
       STYLE
-        SYMBOL 'deels_bestreden'
+        SYMBOL 'vogelhut'
         SIZE 20
       END
     END
@@ -84,7 +88,7 @@ MAP
     CLASS
       NAME 'Vogelkijktoren'
       STYLE
-        SYMBOL 'niet_in_beheer'
+        SYMBOL 'vogelkijktoren'
         SIZE 20
       END
     END
@@ -109,7 +113,7 @@ MAP
     CLASS
       NAME 'Vogelscherm'
       STYLE
-        SYMBOL 'aanwezig_urgent'
+        SYMBOL 'vogelscherm'
         SIZE 20
       END
     END
@@ -134,7 +138,7 @@ MAP
     CLASS
       NAME 'Bijenwand'
       STYLE
-        SYMBOL 'gemeld'
+        SYMBOL 'bijenwand'
         SIZE 20
       END
     END
@@ -159,7 +163,7 @@ MAP
     CLASS
       NAME 'Broeihoop'
       STYLE
-        SYMBOL 'bestreden'
+        SYMBOL 'broeihoop'
         SIZE 20
       END
     END
@@ -184,7 +188,7 @@ MAP
     CLASS
       NAME 'Insectenhotel'
       STYLE
-        SYMBOL 'niet_aanwezig'
+        SYMBOL 'insectenhotel'
         SIZE 20
       END
     END
@@ -209,7 +213,7 @@ MAP
     CLASS
       NAME 'Ooievaarsnest'
       STYLE
-        SYMBOL 'niet_bereikbaar'
+        SYMBOL 'ooievaarsnest'
         SIZE 20
       END
     END
@@ -234,7 +238,7 @@ MAP
     CLASS
       NAME 'Vleermuiskast'
       STYLE
-        SYMBOL 'aanwezig_standaard'
+        SYMBOL 'vleermuiskast'
         SIZE 20
       END
     END
@@ -259,7 +263,7 @@ MAP
     CLASS
       NAME 'Vleermuiskelder'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'vleermuiskelder'
         SIZE 20
       END
     END
@@ -284,7 +288,7 @@ MAP
     CLASS
       NAME 'Vleermuistoren'
       STYLE
-        SYMBOL 'aanwezig_standaard'
+        SYMBOL 'vleermuistoren'
         SIZE 20
       END
     END
@@ -309,7 +313,7 @@ MAP
     CLASS
       NAME 'Winterverblijf'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'winterverblijf'
         SIZE 20
       END
     END
@@ -334,7 +338,7 @@ MAP
     CLASS
       NAME 'Eekhoornbrug'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'eekhoornbrug'
         SIZE 20
       END
     END
@@ -359,7 +363,7 @@ MAP
     CLASS
       NAME 'Faunaduiker'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunaduiker'
         SIZE 20
       END
     END
@@ -384,7 +388,7 @@ MAP
     CLASS
       NAME 'Faunagoot'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunagoot'
         SIZE 20
       END
     END
@@ -409,7 +413,7 @@ MAP
     CLASS
       NAME 'Faunapassage'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunapassage'
         SIZE 20
       END
     END
@@ -434,7 +438,7 @@ MAP
     CLASS
       NAME 'Faunarichel'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunarichel'
         SIZE 20
       END
     END
@@ -459,7 +463,7 @@ MAP
     CLASS
       NAME 'Faunatunnel'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunatunnel'
         SIZE 20
       END
     END
@@ -484,7 +488,7 @@ MAP
     CLASS
       NAME 'Faunauittreedplaats'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunauittreedplaats'
         SIZE 20
       END
     END
@@ -509,7 +513,7 @@ MAP
     CLASS
       NAME 'Faunawand'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunawand'
         SIZE 20
       END
     END
@@ -534,7 +538,7 @@ MAP
     CLASS
       NAME 'Keienwal'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'keienwal'
         SIZE 20
       END
     END
@@ -559,7 +563,7 @@ MAP
     CLASS
       NAME 'Stobbenwal'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'stobbenwal'
         SIZE 20
       END
     END
@@ -584,7 +588,7 @@ MAP
     CLASS
       NAME 'Vispassage'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'vispassage'
         SIZE 20
       END
     END
@@ -596,11 +600,11 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_punt FROM (SELECT * FROM objectenopenbareruimte_hekken_v1 where type = 'Amfibieënscherm') AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie_punt FROM (SELECT * FROM objectenopenbareruimte_hekken_v1 where type = 'Amfibiëenscherm') AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
-      'ows_title' 'Amfibienscherm'
+      'ows_title' 'Amfibieenscherm'
       'wms_enable_request' '*'
       'ows_abstract' 'Ecologie amsterdam'
       'wms_format' 'image/png'
@@ -609,7 +613,7 @@ MAP
     CLASS
       NAME 'Amfibieenscherm'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'amfibieenscherm'
         SIZE 20
       END
     END
@@ -634,7 +638,7 @@ MAP
     CLASS
       NAME 'Faunaraster'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'faunaraster'
         SIZE 20
       END
     END
@@ -659,7 +663,7 @@ MAP
     CLASS
       NAME 'Wildrooster'
       STYLE
-        SYMBOL 'preventief'
+        SYMBOL 'wildrooster'
         SIZE 20
       END
     END
@@ -684,11 +688,11 @@ MAP
     CLASS
       NAME 'Poel'
       STYLE
-        COLOR '#FF9100'
+        COLOR '#56CCF2'
         OPACITY 20
       END
       STYLE
-        OUTLINECOLOR  '#FF9100'
+        OUTLINECOLOR  '#56CCF2'
         WIDTH  2
       END
     END
@@ -713,11 +717,11 @@ MAP
     CLASS
       NAME 'Verbindingszone'
       STYLE
-        COLOR '#FF9100'
+        COLOR '#EB5757'
         OPACITY 20
       END
       STYLE
-        OUTLINECOLOR  '#FF9100'
+        OUTLINECOLOR  '#EB5757'
         WIDTH  2
       END
     END
@@ -742,11 +746,11 @@ MAP
     CLASS
       NAME 'Kerngebied'
       STYLE
-        COLOR '#FF9100'
+        COLOR '#F2C94C'
         OPACITY 20
       END
       STYLE
-        OUTLINECOLOR  '#FF9100'
+        OUTLINECOLOR  '#F2C94C'
         WIDTH  2
       END
     END
