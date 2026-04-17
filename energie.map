@@ -36,7 +36,7 @@ MAP
             WHERE primaire_functie = 'Markt'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}")
+    FILTER          ([capaciteit] = '{"3 x 80 A"}' or [capaciteit] = '{"3 x 160 A"}' or [capaciteit] = '{"3 x 250 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -54,6 +54,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Markt: groter of gelijk aan 3 x 80 A"    
+        "ows_title"           "Markt: groter of gelijk aan 3 x 80 A"
     END
 
   CLASS
@@ -79,7 +81,7 @@ MAP
             WHERE primaire_functie = 'Markt'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = "{3 x 160 A}")
+    FILTER          ([capaciteit] = '{"3 x 50 A"}' or [capaciteit] = '{"3 x 160 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -97,6 +99,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Markt: tot 3 x 63 A"
+        "ows_title"           "Markt: tot 3 x 63 A"
     END
 
     CLASS
@@ -123,7 +127,7 @@ MAP
             WHERE primaire_functie = 'Markt'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = "{3 x 40 A}")
+    FILTER          ([capaciteit] = '{"3 x 35 A"}' or [capaciteit] = '{"3 x 40 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -141,6 +145,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Markt: tot 3 x 40 A"
+        "ows_title"           "Markt: tot 3 x 40 A"
     END
 
     CLASS
@@ -167,7 +173,7 @@ MAP
             WHERE primaire_functie = 'Markt'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = "{3 x 25 A}")
+    FILTER          ([capaciteit] = '{"1 x 10 A"}' or [capaciteit] = '{"3 x 25 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -185,6 +191,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Markt: tot 3 x 25 A"
+        "ows_title"           "Markt: tot 3 x 25 A"
     END
 
     CLASS
@@ -210,7 +218,7 @@ MAP
             WHERE primaire_functie = 'Evenement'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = "{3 x 160 A}" or [capaciteit] = "{3 x 250 A}")
+    FILTER          ([capaciteit] = '{"3 x 80 A"}' or [capaciteit] = '{"3 x 160 A"}' or [capaciteit] = '{"3 x 250 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -228,6 +236,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Evenement: groter of gelijk aan 3 x 80 A"
+        "ows_title"           "Evenement: groter of gelijk aan 3 x 80 A"
     END
 
   CLASS
@@ -254,7 +264,7 @@ MAP
             WHERE primaire_functie = 'Evenement'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}')
+    FILTER          ([capaciteit] = '{"3 x 50 A"}' or [capaciteit] = '{"3 x 63 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -272,6 +282,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Evenement: tot 3 x 63 A"
+        "ows_title"           "Evenement: tot 3 x 63 A"
     END
 
     CLASS
@@ -298,7 +310,7 @@ MAP
             WHERE primaire_functie = 'Evenement'
         ) AS sub
         USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}')
+    FILTER          ([capaciteit] = '{"3 x 35 A"}' or [capaciteit] = '{"3 x 40 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -316,6 +328,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Evenement: tot 3 x 40 A"
+        "ows_title"           "Evenement: tot 3 x 40 A"
     END
 
     CLASS
@@ -343,7 +357,7 @@ MAP
         ) AS sub
         USING srid=28992 USING UNIQUE id"
     # Note: the middle value actually has to have 'X' instead of 'x'.
-    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 X 16 A}' or [capaciteit] = '{3 x 25 A}')
+    FILTER          ([capaciteit] = '{"1 x 10 A"}' or [capaciteit] = '{"3 X 16 A"}' or [capaciteit] = '{"3 x 25 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -361,6 +375,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Evenement: tot 3 x 25 A"
+        "ows_title"           "Evenement: tot 3 x 25 A"
     END
 
     CLASS
@@ -387,7 +403,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten_v1
                                 where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 80 A}' or [capaciteit] = '{3 x 160 A}' or [capaciteit] = '{3 x 250 A}')
+    FILTER          ([capaciteit] = '{"3 x 80 A"}' or [capaciteit] = '{"3 x 160 A"}' or [capaciteit] = '{"3 x 250 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -405,6 +421,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
+        "ows_title"           "Bouwstroompunt: groter of gelijk aan 3 x 80 A"
     END
 
   CLASS
@@ -431,7 +449,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten_v1
                                 where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 50 A}' or [capaciteit] = '{3 x 63 A}')
+    FILTER          ([capaciteit] = '{"3 x 50 A"}' or [capaciteit] = '{"3 x 63 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -449,6 +467,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Bouwstroompunt: tot 3 x 63 A"
+        "ows_title"           "Bouwstroompunt: tot 3 x 63 A"
     END
 
     CLASS
@@ -475,7 +495,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten_v1
                                 where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{3 x 35 A}' or [capaciteit] = '{3 x 40 A}')
+    FILTER          ([capaciteit] = '{"3 x 35 A"}' or [capaciteit] = '{"3 x 40 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -493,6 +513,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Bouwstroompunt: tot 3 x 40 A"
+        "ows_title"           "Bouwstroompunt: tot 3 x 40 A"        
     END
 
     CLASS
@@ -519,7 +541,7 @@ MAP
                                 from public.bouwstroompunten_bouwstroompunten_v1
                                 where primaire_functie = 'Bouw'
                               ) as subquery USING srid=28992 USING UNIQUE id"
-    FILTER          ([capaciteit] = '{1 x 10 A}' or [capaciteit] = '{3 x 25 A}')
+    FILTER          ([capaciteit] = '{"1 x 10 A"}' or [capaciteit] = '{"3 x 25 A"}')
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
     END
@@ -537,6 +559,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "Bouwstroompunt: tot 3 x 25 A"
+        "ows_title"           "Bouwstroompunt: tot 3 x 25 A"
     END
 
     CLASS
@@ -562,7 +586,7 @@ MAP
     DATA            "geometry FROM (
                                 select *
                                 from public.bouwstroompunten_bouwstroompunten_v1
-                                where capaciteit[1] is null
+                                where capaciteit is null
                               ) as subquery USING srid=28992 USING UNIQUE id"
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION      "init=epsg:28992"
@@ -581,6 +605,8 @@ MAP
         "wms_format"          "image/png"
         "wms_server_version"  "1.1.1"
         "wms_extent"          "100000 450000 150000 500000"
+        "wms_title"           "onbekend"
+        "ows_title"           "energie"
     END
 
   CLASS
@@ -597,6 +623,5 @@ MAP
 
 #=============================================================================
 END
-
 
 
