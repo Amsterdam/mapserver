@@ -30,6 +30,7 @@ base_log_fmt = {
 log_fmt = base_log_fmt.copy()
 audit_log_fmt = {"audit": True}
 audit_log_fmt.update(log_fmt)
+
 log_cfg = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -43,18 +44,6 @@ log_cfg = {
             "formatter": "json",
             "level": LOG_LEVEL,
         },
-        "appinsights": {
-            "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
-            "connection_string": AZURE_APPLICATIONINSIGHTS_CONNSTRING,
-            "formatter": "json-audit",
-            "level": "DEBUG",
-        },
-        "appinsightsaccess": {
-            "class": "opencensus.ext.azure.log_exporter.AzureLogHandler",
-            "connection_string": AZURE_APPLICATIONINSIGHTS_CONNSTRING,
-            "formatter": "json",
-            "level": "DEBUG",
-        },
     },
     "loggers": {
         "jwtproxy.applogs": {
@@ -64,26 +53,42 @@ log_cfg = {
         },
         "jwtproxy.auditlogs": {
             "propagate": False,
-            "handlers": ["appinsights"],
+            "handlers": ["console"], # changed below if Azure Connection string is set
             "level": "DEBUG",  # Send everything
         },
         "jwtproxy.accesslogs": {
             "propagate": False,
-            "handlers": ["appinsightsaccess"],
+            "handlers": ["console"], # changed below if Azure Connection string is set
             "level": "DEBUG",  # Send everything
         },
     },
 }
 
-if not AZURE_APPLICATIONINSIGHTS_CONNSTRING:
-    log_cfg["handlers"].pop("appinsights")
-    log_cfg["handlers"].pop("appinsightsaccess")
-    log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = [
-        "console",
-    ]
-    log_cfg["loggers"]["jwtproxy.accesslogs"]["handlers"] = [
-        "console",
-    ]
+if AZURE_APPLICATIONINSIGHTS_CONNSTRING:
+    from azure.monitor.opentelemetry.exporter import AzureMonitorLogExporter
+    from opentelemetry.sdk._logs import LoggerProvider
+    from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
+
+    logger_provider = LoggerProvider()
+    logger_provider.add_log_record_processor(
+        BatchLogRecordProcessor(
+            AzureMonitorLogExporter(connection_string=AZURE_APPLICATIONINSIGHTS_CONNSTRING)
+        )
+    )
+    log_cfg["handlers"]["appinsights"] = {
+        "class": "opentelemetry.sdk._logs.LoggingHandler",
+        "logger_provider": logger_provider,
+        "formatter": "json-audit",
+        "level": "DEBUG",
+    }
+    log_cfg["handlers"]["appinsightsaccess"] = {
+        "class": "opentelemetry.sdk._logs.LoggingHandler",
+        "logger_provider": logger_provider,
+        "formatter": "json",
+        "level": "DEBUG",
+    }
+    log_cfg["loggers"]["jwtproxy.auditlogs"]["handlers"] = ["appinsights"]
+    log_cfg["loggers"]["jwtproxy.accesslogs"]["handlers"] = ["appinsightsaccess"]
 dictConfig(log_cfg)
 
 app_logger = logging.getLogger("jwtproxy.applogs")
