@@ -600,7 +600,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA "geometrie_punt FROM (SELECT * FROM objectenopenbareruimte_hekken_v1 where type = 'Amfibiëenscherm') AS sub USING srid=28992 USING UNIQUE id"
+    DATA "geometrie_punt FROM (SELECT * FROM objectenopenbareruimte_hekken_v1 where type = 'Amfibieënscherm') AS sub USING srid=28992 USING UNIQUE id"
     TYPE POINT
     METADATA
       'wfs_enable_request' '!*'
@@ -717,11 +717,11 @@ MAP
     CLASS
       NAME 'Verbindingszone'
       STYLE
-        COLOR '#EB5757'
+        COLOR '#2F80ED'
         OPACITY 20
       END
       STYLE
-        OUTLINECOLOR  '#EB5757'
+        OUTLINECOLOR  '#2F80ED'
         WIDTH  2
       END
     END
