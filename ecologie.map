@@ -733,7 +733,7 @@ MAP
       'init=epsg:28992'
     END
     INCLUDE 'connection/dataservices.inc'
-    DATA 'geometrie FROM (SELECT * FROM public.ecologie_kerngebieden_v3) AS sub USING srid=28992 USING UNIQUE id'
+    DATA 'geometrie FROM (SELECT geometrie, id FROM public.ecologie_kerngebieden_v3) AS sub USING srid=28992 USING UNIQUE id'
     TYPE POLYGON
     METADATA
       'wfs_enable_request' '!*'
