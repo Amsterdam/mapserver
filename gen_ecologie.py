@@ -132,7 +132,7 @@ with block("MAP"):
                     p(
                         "DATA",
                         "geometrie FROM"
-                        f" (SELECT * FROM public.ecologie_verbindingszones_v3) AS sub"
+                        f" (SELECT geometrie, id FROM public.ecologie_verbindingszones_v3) AS sub"
                         " USING srid=28992 USING UNIQUE id"
                     )
                 if name == 'Kerngebied':
