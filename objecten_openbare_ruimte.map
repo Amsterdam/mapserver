@@ -20,6 +20,69 @@ MAP
     END
   END
 
+    #-----------------------------------------------------------------------------
+  # Afvalbakken
+  #-----------------------------------------------------------------------------    
+  LAYER
+    NAME                    "afvalbakken"
+    GROUP                   "objecten_openbare_ruimte" 
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    INCLUDE                 "connection/dataservices.inc"
+    DATA "geometrie FROM (
+            SELECT id, geometrie from objectenopenbareruimte_afvalbakken_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    MAXSCALEDENOM           72224 
+
+
+    METADATA
+      "gml_include_items"   "all"
+      "wms_title"           "Afvalbakken"
+      "wms_enable_request"  "*"
+      "wms_group_title"     "Objecten Openbare Ruimte"
+      "wms_abstract"        "In deze WMS vind je de afvalbakken die opgesteld staan op pleinen, straten en in parken van Amsterdam. Éen rij in de tabel vertegenwoordigt één afvalbak en eigenschappen van die afvalbak. Let op, dit zijn dus níet de ondergrondse containers. Onder andere vind je hier afmetingen, inhoud, type en locatie van de afvalbakken. De locatie is zowel administratief (nabij gelegen adres, buurt, wijk, stadsdeel etc.) als ruimtelijk (geometrie) geregistreerd."
+      "wms_srs"             "EPSG:28992"
+      "wms_name"            "Afvalbakken"
+      "wms_format"          "image/png"
+      "wms_server_version"  "1.1.1"
+      "wms_extent"          "100000 450000 150000 500000"
+    END
+
+    LABELITEM 'id'
+    CLASS
+      NAME 'Afvalbak'
+      TITLE 'Afvalbak'
+      MINSCALE 3000
+      STYLE
+        SYMBOL 'Afvalbak'
+        SIZE 16
+      END
+    END
+    CLASS
+      MAXSCALE 3000
+      STYLE
+        SYMBOL 'Afvalbak'
+        SIZE 26
+      END
+      LABEL
+        MAXSCALEDENOM 2000
+        COLOR 102 102 102
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 3
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+        OFFSET -50 5
+      END
+    END
+  END
+
   #-----------------------------------------------------------------------------
   # GROENOBJECTEN
   #-----------------------------------------------------------------------------    
