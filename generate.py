@@ -2,7 +2,7 @@
 
 from contextlib import contextmanager
 import sys
-
+sys.stdout.reconfigure(encoding='utf-8')
 
 _indent: int = 0
 
