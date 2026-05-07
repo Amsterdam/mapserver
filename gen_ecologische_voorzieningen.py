@@ -23,22 +23,22 @@ layers = [
     ("Faunaverblijfplaatsen","Vleermuiskelder", "Vleermuiskelder", "vleermuiskelder"),
     ("Faunaverblijfplaatsen","Vleermuistoren", "Vleermuistoren", "vleermuistoren"),
     ("Faunaverblijfplaatsen","Winterverblijf", "Winterverblijf", "winterverblijf"),
-    ("Faunavoorziening","Eekhoornbrug", "Eekhoornbrug", "eekhoornbrug"),
-    ("Faunavoorziening","Faunaduiker", "Faunaduiker", "faunaduiker"),
-    ("Faunavoorziening","Faunagoot", "Faunagoot", "faunagoot"),
-    ("Faunavoorziening","Faunapassage", "Faunapassage", "faunapassage"),
-    ("Faunavoorziening","Faunarichel", "Faunarichel", "faunarichel"),
-    ("Faunavoorziening","Faunatunnel", "Faunatunnel", "faunatunnel"),
-    ("Faunavoorziening","Faunauittreedplaats", "Faunauittreedplaats", "faunauittreedplaats"),
-    ("Faunavoorziening","Faunawand", "Faunawand", "faunawand"),
-    ("Faunavoorziening","Keienwal", "Keienwal", "keienwal"),
-    ("Faunavoorziening","Stobbenwal", "Stobbenwal", "stobbenwal"),
-    ("Faunavoorziening","Vispassage", "Vispassage", "vispassage"),
+    ("Faunavoorzieningen","Eekhoornbrug", "Eekhoornbrug", "eekhoornbrug"),
+    ("Faunavoorzieningen","Faunaduiker", "Faunaduiker", "faunaduiker"),
+    ("Faunavoorzieningen","Faunagoot", "Faunagoot", "faunagoot"),
+    ("Faunavoorzieningen","Faunapassage", "Faunapassage", "faunapassage"),
+    ("Faunavoorzieningen","Faunarichel", "Faunarichel", "faunarichel"),
+    ("Faunavoorzieningen","Faunatunnel", "Faunatunnel", "faunatunnel"),
+    ("Faunavoorzieningen","Faunauittreedplaats", "FaunaUittreedplaats", "faunauittreedplaats"),
+    ("Faunavoorzieningen","Faunawand", "Faunawand", "faunawand"),
+    ("Faunavoorzieningen","Keienwal", "Keienwal", "keienwal"),
+    ("Faunavoorzieningen","Stobbenwal", "Stobbenwal", "stobbenwal"),
+    ("Faunavoorzieningen","Vispassage", "Vispassage", "vispassage"),
     ("Hekken","Amfibieenscherm", "Amfibieënscherm", "amfibieenscherm"),
     ("Hekken","Faunaraster", "Faunaraster", "faunaraster"),
     ("Wildroosters","Wildrooster", "Wildrooster", "wildrooster"),
-    ("Poelen","Poel", "Poel", "#56CCF2"),
-    ("Ecologische gebieden","Verbindingszone", "Verbindingszone", "#2F80ED"),
+    ("Poelen","Poel", "Poel", "#392FC5"),
+    ("Ecologische gebieden","Verbindingszone", "Verbindingszone", "#27AE60"),
     ("Ecologische gebieden","Kerngebied", "Kerngebied", "#F2C94C")
         ]
 
@@ -46,13 +46,13 @@ layers = [
 header("Bor")
 
 with block("MAP"):
-    p("NAME", "ecologie")
+    p("NAME", "ecologische_voorzieningen")
     p("INCLUDE", "header.inc")
 
     with block("WEB"):
         with block("METADATA"):
             q("team", "BOR")
-            q("ows_title", "Ecologie")
+            q("ows_title", "Ecologische Voorzieningen")
             q(
                 "ows_abstract",
                 "Deze collectie bevat ecologische voorzieningen binnen gemeente Amsterdam. Dit zijn zowel ecologische objecten als ecologische gebieden. De ecologische objecten, zoals eekhoornbruggen en vispassages, zijn bedoeld voor dieren in de stad en zorgen ervoor dat zij zich veilig kunnen verplaatsen tussen verschillende leefgebieden. De ecologische gebieden zijn gericht op het vergroten van de biodiversiteit en zijn onderverdeeld in kerngebieden en verbindingszones. Kerngebieden bieden geschikte omstandigheden voor de permanente vestiging van soorten. Verbindingszones bieden geschikte omstandigheden voor tijdelijk verblijf, verbinden de kerngebieden met elkaar waardoor het leefgebied vergroot",
@@ -91,7 +91,7 @@ with block("MAP"):
                 )
                 p("TYPE POINT")
                 type = 'point'
-            if group == "Faunavoorziening":
+            if group == "Faunavoorzieningen":
                 p(
                     "DATA",
                     "geometrie_punt FROM"
@@ -149,7 +149,7 @@ with block("MAP"):
                 q("wfs_enable_request", "!*")
                 q("ows_title", name)
                 q("wms_enable_request", "*")
-                q("ows_abstract", "Ecologie amsterdam")
+                q("ows_abstract", "Ecologische voorzieningen amsterdam")
                 q("wms_format", "image/png")
                 q("ows_group_title", group)
 
