@@ -68,6 +68,7 @@
       "ows_accessconstraints"        "For internal use only"
     END
 
+    TEMPPATH                         "/tmp/"
     IMAGEPATH                        "/srv/mapserver/tmp_img/"
     IMAGEURL                         "/ms_tmp/"
     BROWSEFORMAT                     "image/svg+xml"
