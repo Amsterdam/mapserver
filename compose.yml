@@ -29,7 +29,7 @@ services:
 
   # Bare bones 'webserver' to behave as public loadbalancer
   publicdummy:
-    image: python:3.11-slim-bullseye
+    image: python:3.13-slim-bullseye
     ports:
       - 8000:8000
     command: python3 -m http.server 8000
