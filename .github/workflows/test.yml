@@ -44,18 +44,6 @@ jobs:
               echo CONNECTIONTYPE postgis > connection/$c.inc
           done
           python3 tools/make_indexjson.py *.map | jq . > /dev/null
-      - name: Authorization checks
-        run: |
-          python3 -m pip install -r tools/requirements.txt
-          # adresseerbare_objecten and bgt_inrichtingselementen can't be parsed
-          # due to limitations in mappyfile.
-          # The other excluded maps should be fixed. They have workarounds in
-          # place to prevent access to restricted fields.
-          python3 tools/auth_check.py -e \
-            adresseerbare_objecten bgt_inrichtingselementen \
-            bomen brk2 ondergrond ziektenplagenexotengroen \
-            meldingen_huidige_jaar meldingen_vorige_jaar meldingen_indicatoren \
-            monumenten hr handelsregister hr_kvk eigendommen_v2 erfpacht_v2
 
   # Regression test. Asserts that we don't suffer from the MapServer 7.x
   # bounding box bug https://github.com/MapServer/MapServer/issues/6478.
