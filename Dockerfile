@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 # build-time inputs
@@ -14,14 +14,14 @@ RUN echo "Using MAP_URL=$MAP_URL LEGEND_URL=$LEGEND_URL"
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
-        apache2 \
-        cgi-mapserver \
-        curl \
-        gdal-bin \
-        gdal-data \
-        mapserver-bin \
-        python3-pip \
-        wget \
+    apache2 \
+    cgi-mapserver \
+    curl \
+    gdal-bin \
+    gdal-data \
+    mapserver-bin \
+    python3-pip \
+    wget \
     && apt-get clean
 
 
@@ -58,8 +58,8 @@ COPY  --chown=999:999 . /srv/mapserver/
 RUN for i in /srv/mapserver/*.map; do echo $i; done
 
 RUN : "${MAP_URL:?MAP_URL not set}" \
- && : "${LEGEND_URL:?LEGEND_URL not set}" \
- && find /srv/mapserver /srv/mapserver/referentiekaarten -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
+    && : "${LEGEND_URL:?LEGEND_URL not set}" \
+    && find /srv/mapserver /srv/mapserver/referentiekaarten -maxdepth 1 -type f -name "*.map" -exec sed -i -e "s#MAP_URL_REPLACE#${MAP_URL}#g" -e "s#LEGEND_URL_REPLACE#${LEGEND_URL}#g" {} +
 
 RUN rm -rf /srv/mapserver/private
 RUN python3 /srv/mapserver/tools/make_indexjson.py /srv/mapserver/*.map > /srv/mapserver/index.json
