@@ -507,6 +507,39 @@ MAP
     END
   END
   LAYER
+    NAME 'fatbikerijverbod'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_fatbikerijverbod_v2 USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 400000
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'fatbikerijverbod'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Overlastgebieden van de gemeente Amsterdam'
+      'gml_featureid' 'ID'
+      'gml_include_items' 'all'
+      'wms_extent' '100000 450000 150000 500000'
+    END
+    CLASS
+      NAME 'Fatbikerijverbod'
+      STYLE
+        ANTIALIAS true
+        COLOR "#F09439"
+        OPACITY 20
+      END
+      STYLE
+        OUTLINECOLOR "#F09439"
+        WIDTH 2
+      END
+    END
+  END
+  LAYER
     NAME 'algemeen_overlastgebied_label'
     GROUP 'overlastgebieden'
     INCLUDE 'connection/dataservices.inc'
@@ -1351,6 +1384,63 @@ MAP
         MINSCALEDENOM 6000
         MAXSCALEDENOM 8000
         COLOR "#fd4401"
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 10
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+    END
+  END
+  LAYER
+    NAME 'fatbikerijverbod_label'
+    GROUP 'overlastgebieden'
+    INCLUDE 'connection/dataservices.inc'
+    DATA 'geometry FROM public.overlastgebieden_fatbikerijverbod_v2 USING srid=28992 USING UNIQUE id'
+    TYPE POLYGON
+    MINSCALEDENOM 100
+    MAXSCALEDENOM 8001
+    TEMPLATE 'fooOnlyForWMSGetFeatureInfo.html'
+    PROJECTION
+      'init=epsg:28992'
+    END
+    METADATA
+      'ows_title' 'fatbikerijverbod_label'
+      'ows_group_title' 'overlastgebieden'
+      'ows_abstract' 'Labels van de overlastgebieden van de gemeente Amsterdam'
+    END
+    CLASS
+      TEXT '[oov_naam]'
+      NAME 'fatbikerijverbod_label'
+      LABEL
+        MAXSCALEDENOM 3000
+        COLOR "#F09439"
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 14
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 3000
+        MAXSCALEDENOM 6000
+        COLOR "#F09439"
+        OUTLINECOLOR 255 255 255
+        OUTLINEWIDTH 1
+        FONT 'Ubuntu-M'
+        TYPE truetype
+        SIZE 12
+        POSITION AUTO
+        PARTIALS FALSE
+      END
+      LABEL
+        MINSCALEDENOM 6000
+        MAXSCALEDENOM 8000
+        COLOR "#F09439"
         OUTLINECOLOR 255 255 255
         OUTLINEWIDTH 1
         FONT 'Ubuntu-M'
