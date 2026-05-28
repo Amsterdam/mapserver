@@ -20,7 +20,8 @@ layers = [
     ("raamsluitingstijden", "sluitingstijdenkernwallen_v2", '#00a03c'),
     ("alcoholverkoopverbodgebied", "alcoholverkoopverbod_v2", '#e50082'),
     ("blowverbodsgebied", "blowverbodsgebied_v2", '#009dec'),
-    ("bedelverbodgebied", "bedelverbod_v2", "#fd4401")
+    ("bedelverbodgebied", "bedelverbod_v2", "#fd4401"),
+    ("fatbikerijverbod", "fatbikerijverbod_v2", "#F09439")
 ]
 
 header()
