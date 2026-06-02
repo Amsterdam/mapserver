@@ -1,0 +1,54 @@
+MAP
+  NAME                      "Ontplofbare Oorlogsresten"
+  STATUS                    ON
+  SIZE                      800 600
+  EXTENT                    -7000 289000 300000 629000
+  UNITS                     METERS
+  SHAPEPATH                 "../data"
+  IMAGECOLOR                255 255 255
+  CONFIG "MS_ERRORFILE"     "/tmp/mapserver.log"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "team"                "SOEB"
+      "ows_title"           "Ontplofbare Oorlogsresten"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "auth"                "OPENBAAR"
+    END
+  END
+  LAYER
+    NAME                    "Ontplofbare Oorlogsresten"
+    GROUP                   "Ontplofbare Oorlogsresten"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 USING UNIQUE id USING SRID=28992 WHERE detail_type = 'Blindganger'"
+    TYPE                    POLYGON
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Ontplofbare oorlogsresten"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Ontplofbare Oorlogsresten"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "Ontplofbare Oorlogsresten"
+      TITLE                 "Ontplofbare oorlogsresten"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#1F4892"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#1F4892"
+        WIDTH               2
+      END
+    END
+  END
+END
