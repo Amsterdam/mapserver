@@ -802,7 +802,7 @@ MAP
     GROUP                   bgt_label
     MAXSCALEDENOM           2500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabel_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
+    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabels_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
     FILTER                  ("[bgt_type]" eq "Weg")
     TYPE                    POINT
     PROJECTION
@@ -866,7 +866,7 @@ MAP
     GROUP                   bgt_label
     MAXSCALEDENOM           2500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabel_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
+    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabels_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
     FILTER                  ("[bgt_type]" eq "Water")
     TYPE                    POINT
     PROJECTION
@@ -930,7 +930,7 @@ MAP
     GROUP                   bgt_label
     MAXSCALEDENOM           2500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, naam AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabel_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
+    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, naam AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabels_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
     FILTER                  ("[bgt_type]" eq "Terrein")
     TYPE                    POINT
     PROJECTION
@@ -994,7 +994,7 @@ MAP
     GROUP                   bgt_label
     MAXSCALEDENOM           2500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, naam AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabel_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
+    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, naam AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabels_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
     FILTER                  ("[bgt_type]" eq "Kunstwerk")
     TYPE                    POINT
     PROJECTION
@@ -1058,7 +1058,7 @@ MAP
     GROUP                   bgt_label
     MAXSCALEDENOM           2500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabel_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
+    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabels_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
     FILTER                  ("[bgt_type]" eq "Administratief gebied")
     TYPE                    POINT
     PROJECTION
@@ -1133,7 +1133,7 @@ MAP
     GROUP                   bgt_label
     MAXSCALEDENOM           2500
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabel_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
+    DATA                    "geometrie FROM (SELECT bgt_type, geometrie_punt AS geometrie, upper(naam) AS tekst, (360 - label_hoek::numeric) as hoek, identificatie FROM bgt_openbareruimtelabels_v1 WHERE object_eindtijd IS NULL) AS data USING srid=28992 using unique identificatie"
     FILTER                  ("[bgt_type]" eq "Landschappelijk gebied")
     TYPE                    POINT
     PROJECTION
