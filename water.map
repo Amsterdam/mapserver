@@ -1,6 +1,10 @@
 MAP
   NAME                      "water"
   INCLUDE                   "header.inc"
+  EXTENT                    487000 6820000 558000 6870000
+  PROJECTION
+    "init=epsg:3857"
+  END
   WEB
     METADATA
       "team" "MOBI"
@@ -9,19 +13,27 @@ MAP
       #"ows_onlineresource"  "MAP_URL_REPLACE/maps/water"
 
     END
-  END
 
+
+  END
+  OUTPUTFORMAT
+    NAME "mvt"
+    DRIVER MVT
+    FORMATOPTION "EDGE_BUFFER=20"
+  END  
   #==============================================================================================
 
   LAYER
     NAME                    "binnenwater"
     GROUP                   "water"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometry FROM public.water_binnenwater_v3 USING srid=28992 USING UNIQUE id"
+    PROCESSING              "CLOSE_CONNECTION=DEFER"
+    PROCESSING              "LABEL_NO_CLIP=ON"
+    DATA                    "geometry FROM (SELECT id, ST_Transform(geometry, 3857) AS geometry FROM public.water_binnenwater_v3) AS subquery USING srid=3857 USING UNIQUE id"
     TYPE                    POLYGON
     TEMPLATE                "empty"
     PROJECTION
-      "init=epsg:28992"
+      "init=epsg:3857"
     END
 
     METADATA
