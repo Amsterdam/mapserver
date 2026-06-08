@@ -250,8 +250,11 @@ async def handle(req: web.Request):
     if req.can_read_body:
         body = await req.text()
         app_logger.debug("Request body: \n %s", body)
+
+    upstream_headers = req.headers.copy()
+    upstream_headers.pop("Host", None)
     async with SessionManager.session().request(
-        req.method, target_url, headers=req.headers, params=req.rel_url.query, data=body
+        req.method, target_url, headers=upstream_headers, params=req.rel_url.query, data=body
     ) as resp:
         app_logger.debug("Response status from upstream: %s", resp.status)
         app_logger.debug("Headers from upstream: \n %s", resp.headers)
