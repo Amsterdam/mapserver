@@ -1,6 +1,6 @@
 import os
 
-import aioresponses
+import aiointercept
 import pytest
 
 from ..server import main
@@ -29,6 +29,6 @@ def set_env():
 
 
 @pytest.fixture
-def mock_upstream():
-    with aioresponses.aioresponses(passthrough_unmatched=True) as m:
+async def mock_upstream():
+    async with aiointercept.aiointercept(mock_external_urls=True) as m:
         yield m
