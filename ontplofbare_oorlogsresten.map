@@ -1,13 +1,7 @@
 MAP
   NAME                      "Ontplofbare Oorlogsresten"
-  STATUS                    ON
-  SIZE                      800 600
-  EXTENT                    -7000 289000 300000 629000
-  UNITS                     METERS
-  SHAPEPATH                 "../data"
-  IMAGECOLOR                255 255 255
-  CONFIG "MS_ERRORFILE"     "/tmp/mapserver.log"
   INCLUDE                   "header.inc"
+  
   WEB
     METADATA
       "team"                "SOEB"
@@ -16,20 +10,22 @@ MAP
       "auth"                "OPENBAAR"
     END
   END
+
+
   LAYER
-    NAME                    "Ontplofbare Oorlogsresten"
-    GROUP                   "Ontplofbare Oorlogsresten"
+    NAME                    "Blindganger"
+    GROUP                   "inslagen"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 USING UNIQUE id USING SRID=28992 WHERE detail_type = 'Blindganger'"
+    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 WHERE detail_type = 'Blindganger' USING UNIQUE id USING SRID=28992"
     TYPE                    POLYGON
-    TEMPLATE                "empty"
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
     END
     METADATA
-      "ows_title"           "Ontplofbare oorlogsresten"
+      "ows_title"           "Blindganger"
       "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
-      "wms_group_title"     "Ontplofbare Oorlogsresten"
+      "wms_group_title"     "Inslagen"
       "gml_featureid"       "id"
       "gml_geometries"      "geometry"
       "gml_geometry_type"   "multipolygon"
@@ -38,8 +34,8 @@ MAP
       "wms_include_items"   "all"
     END
     CLASS
-      NAME                  "Ontplofbare Oorlogsresten"
-      TITLE                 "Ontplofbare oorlogsresten"
+      NAME                  "blindganger"
+      TITLE                 "Blindganer"
       STYLE
         ANTIALIAS           true
         COLOR               "#1F4892"
@@ -51,4 +47,375 @@ MAP
       END
     END
   END
+
+  LAYER
+    NAME                    "crashlocatie"
+    GROUP                   "inslagen"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 WHERE detail_type = 'Crashlocatie' USING UNIQUE id USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Crashlocatie"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Inslagen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "crashlocatie"
+      TITLE                 "Crashlocatie"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#00A03C"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#00A03C"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "gedetoneerde_vernielingslading"
+    GROUP                   "inslagen"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 WHERE detail_type = 'Gedetoneerde vernielingslading' USING UNIQUE id USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Gedetoneerde vernielingslading"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Inslagen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "gedetoneerde_vernielingslading"
+      TITLE                 "Gedetoneerde vernielingslading"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#92278F"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#92278F"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "geruimd_explosief"
+    GROUP                   "inslagen"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 WHERE detail_type = 'Geruimd explosief' USING UNIQUE id USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Geruimd explosief"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Inslagen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "geruimd_explosief"
+      TITLE                 "Geruimd explosief"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#F7941D"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#F7941D"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "niet_getoneerde_vernielingslading"
+    GROUP                   "inslagen"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.ontplofbare_oorlogsresten_inslagen_v1 WHERE detail_type = 'Niet getoneerde vernielingslading' USING UNIQUE id USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Niet getoneerde vernielingslading"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Inslagen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "niet_getoneerde_vernielingslading"
+      TITLE                 "Niet getoneerde vernielingslading"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#4D4D4F"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#4D4D4F"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "vermoedelijke_bominslagen"
+    GROUP                   "inslagen"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "SELECT geometrie
+                              FROM public.ontplofbare_oorlogsresten_inslagen_v1
+                              WHERE detail_type IN (
+                                  'Vermoedelijke bominslag(en)',
+                                  'Vermoedelijke inslag',
+                                  'Beschadiging door inslag',
+                                  'Duidelijke inslag',
+                                  'Mogelijke inslag',
+                                  'Krater',
+                                  'Bominslag'
+                              ) USING UNIQUE id USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Vermoedelijke bominslagen"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Inslagen"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "vermoedelijke_bominslagen"
+      TITLE                 "Vermoedelijke bominslagen"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#41B6E6"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#41B6E6"
+        WIDTH               2
+      END
+    END
+  END
+
+  ##### Verdachte gebieden group
+
+  LAYER
+    NAME                    "munities_en_granaten"
+    GROUP                   "verdachte_gebieden"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie
+                            FROM public.ontplofbare_oorlogsresten_verdachte_gebieden_v1
+                            WHERE hoofdgroep IN (
+                                'Geschutmunitie',
+                                'Kleinkalibermunitie',
+                                'Munitietoebehoren',
+                                'Handgranaten',
+                                'Geweergranaten',
+                                'Ontstekingsinrichtingen',
+                                'Munitie voor granaatwerpers'
+                            )
+                            USING UNIQUE id
+                            USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Munities en granaten"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Verdachte gebieden"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "munities_en_granaten"
+      TITLE                 "Munities en granaten"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#1F4892"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#1F4892"
+        WIDTH               2
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "vernielingsladingen"
+    GROUP                   "verdachte_gebieden"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie
+                            FROM public.ontplofbare_oorlogsresten_verdachte_gebieden_v1
+                            WHERE hoofdgroep IN (
+                                'Vernielingsmiddelen',
+                                'Onderwatermunitie',
+                                'Valstrikken'
+                            )
+                            USING UNIQUE id
+                            USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Vernielingsladingen"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Verdachte gebieden"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "vernielingsladingen"
+      TITLE                 "Vernielingsladingen"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#00A03C"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#00A03C"
+        WIDTH               2
+      END
+    END
+  END  
+
+  LAYER
+    NAME                    "afwerpmunitie"
+    GROUP                   "verdachte_gebieden"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie
+                            FROM public.ontplofbare_oorlogsresten_verdachte_gebieden_v1
+                            WHERE hoofdgroep IN (
+                                'Afwerpmunitie'
+                            )
+                            USING UNIQUE id
+                            USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Afwerpmunitie"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Verdachte gebieden"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "afwerpmunitie"
+      TITLE                 "Afwerpmunitie"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#92278F"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#92278F"
+        WIDTH               2
+      END
+    END
+  END
+
+  ##### Gevrijwaarde gebieden group
+
+  LAYER
+    NAME                    "gevrijwaarde_gebieden"
+    GROUP                   "gevrijwaarde_gebieden"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie
+                            FROM public.ontplofbare_oorlogsresten_verdachte_gebieden_v1
+                            WHERE hoofdgroep IN (
+                                'Afwerpmunitie'
+                            )
+                            USING UNIQUE id
+                            USING SRID=28992"
+    TYPE                    POLYGON
+    TEMPLATE                "fooOnlyForWMSGetFeatureInfo.html"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"           "Gevrijwaarde gebieden"
+      "ows_abstract"        "Informatie over bominslagen, gevrijwaarde gebieden, verdachte gebieden en uitgevoerde onderzoeken"
+      "wms_group_title"     "Gevrijwaarde gebieden"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+    CLASS
+      NAME                  "gevrijwaarde_gebieden"
+      TITLE                 "Gevrijwaarde gebieden"
+      STYLE
+        ANTIALIAS           true
+        COLOR               "#1F4892"
+        OPACITY             20
+      END
+      STYLE
+        OUTLINECOLOR        "#1F4892"
+        WIDTH               2
+      END
+    END
+  END
+
 END
