@@ -23,6 +23,12 @@ MAP
       "ows_abstract" "NAP gegevens van het grondgebied van de gemeente Amsterdam"
     END
   END
+  OUTPUTFORMAT
+    NAME "mvt"
+    DRIVER MVT
+    FORMATOPTION "EDGE_BUFFER=20"
+  END
+
 
 
   #=============================================================================
@@ -38,10 +44,10 @@ MAP
     NAME            "peilmerk"
     GROUP           "NAP"
     INCLUDE         "connection/dataservices.inc"
-    DATA            "geometrie FROM public.nap_peilmerken_v1 USING srid=28992 USING UNIQUE identificatie"
+    DATA            "geometrie FROM (SELECT identificatie,hoogte_tov_nap, geometrie AS geometrie FROM  public.nap_peilmerken_v1) AS subquery USING srid=28992 USING UNIQUE identificatie"
     TYPE            POINT
-    MINSCALEDENOM   100
-    MAXSCALEDENOM   15001
+    # MINSCALEDENOM   100
+    # MAXSCALEDENOM   15001
     TEMPLATE        "fooOnlyForWMSGetFeatureInfo.html"
     PROJECTION
       "init=epsg:28992"
