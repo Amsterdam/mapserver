@@ -810,7 +810,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Rest'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -1001,7 +1001,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                 select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Glas'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -1193,7 +1193,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Papier'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -1382,7 +1382,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
                                select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Plastic'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -1571,7 +1571,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Textiel'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -1760,7 +1760,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Grof'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -1949,7 +1949,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'PMD'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -2139,7 +2139,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'Brood'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -2329,7 +2329,7 @@ MAP
     INCLUDE                 "connection/dataservices.inc"
     DATA                    "geometrie FROM (
     			                      select * from
-                                public.huishoudelijkafval_weging
+                                public.huishoudelijkafval_weging_v2
                                 where fractie_omschrijving = 'onbekend'
                                 AND datum_weging > (NOW() - INTERVAL '6 months')
                                 ORDER BY datum_weging desc
@@ -2520,7 +2520,7 @@ MAP
                             SELECT bol.id
                             , bol.geometrie
                             , lac.loopafstand_categorie_omschrijving
-                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            FROM public.huishoudelijkafval_bag_object_loopafstand_v2_v2 bol
                             INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
                             ON bol.loopafstand_categorie_id = lac.id
                             WHERE 1=1 
@@ -2687,7 +2687,7 @@ MAP
                             SELECT bol.id
                             , bol.geometrie
                             , lac.loopafstand_categorie_omschrijving
-                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            FROM public.huishoudelijkafval_bag_object_loopafstand_v2_v2 bol
                             INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
                             ON bol.loopafstand_categorie_id = lac.id
                             WHERE 1=1 
@@ -2854,7 +2854,7 @@ MAP
                             SELECT bol.id
                             , bol.geometrie
                             , lac.loopafstand_categorie_omschrijving
-                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            FROM public.huishoudelijkafval_bag_object_loopafstand_v2_v2 bol
                             INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
                             ON bol.loopafstand_categorie_id = lac.id
                             WHERE 1=1 
@@ -3021,7 +3021,7 @@ MAP
                             SELECT bol.id
                             , bol.geometrie
                             , lac.loopafstand_categorie_omschrijving
-                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            FROM public.huishoudelijkafval_bag_object_loopafstand_v2_v2 bol
                             INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
                             ON bol.loopafstand_categorie_id = lac.id
                             WHERE 1=1 
@@ -3188,7 +3188,7 @@ MAP
                             SELECT bol.id
                             , bol.geometrie
                             , lac.loopafstand_categorie_omschrijving
-                            FROM public.huishoudelijkafval_bag_object_loopafstand bol
+                            FROM public.huishoudelijkafval_bag_object_loopafstand_v2_v2 bol
                             INNER JOIN public.huishoudelijkafval_loopafstand_categorie lac
                             ON bol.loopafstand_categorie_id = lac.id
                             WHERE 1=1 
