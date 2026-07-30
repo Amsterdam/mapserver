@@ -92,11 +92,11 @@ with block("MAP"):
 
                 with block("STYLE"):
                     p("SYMBOL", f"bomen_{shortname}")
-                    p("SIZE", 16)
+                    p("SIZE", 100)
 
 
             with block ("CLASS"):
                 p('MAXSCALE', 3000)
                 with block("STYLE"):
                     p("SYMBOL", f"bomen_{shortname}")
-                    p("SIZE", 26)
+                    p("SIZE", 130)
