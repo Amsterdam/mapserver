@@ -10,7 +10,6 @@ MAP
 
   WEB
     METADATA
-      "team" "SOEB"
       "ows_title"           "varen"
       "ows_abstract"        "varen"
       "wms_extent"          "100000 450000 150000 500000"
@@ -28,7 +27,7 @@ MAP
     END
 
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM varen_ligplaats_1 USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM public.vergunningen_varen_ligplaats_v1 USING srid=28992 USING UNIQUE id"
     TYPE                    POINT
     MINSCALEDENOM           10
     MAXSCALEDENOM           400000
@@ -52,12 +51,12 @@ MAP
       "wms_extent"          "100000 450000 150000 500000"
     END
 
-    LABELITEM               "ligplaats_segment"
+    LABELITEM               "categorie"
 
 
     CLASS
-      NAME                  "Groot:vanaf_16m"
-      EXPRESSION ("[ligplaats_segment]" eq "Groot [v.a. 16m]")
+      NAME                  "Lang"
+      EXPRESSION            ("[categorie]" eq "Lang")
       STYLE
         SYMBOL              'stip'
         SIZE                10
@@ -68,8 +67,8 @@ MAP
     END
 
      CLASS
-      NAME                  "Middel:10_tm_15,99m"
-      EXPRESSION ("[ligplaats_segment]" eq "Middel [10 t/m 15,99m]")
+      NAME                  "Middel"
+      EXPRESSION            ("[categorie]" eq "Middel")
       STYLE
         SYMBOL              'stip'
         SIZE                10
@@ -80,8 +79,8 @@ MAP
     END
 
      CLASS
-      NAME                  "Klein:<_10m"
-      EXPRESSION ("[ligplaats_segment]" eq "Klein [< 10m]")
+      NAME                  "Kort"
+      EXPRESSION            ("[categorie]" eq "Kort")
       STYLE
         SYMBOL              'stip'
         SIZE                10
@@ -93,7 +92,7 @@ MAP
 
      CLASS
       NAME                  "Onbemand"
-      EXPRESSION ("[ligplaats_segment]" eq "Onbemand")
+      EXPRESSION ("[categorie]" eq "Onbemand")
       STYLE
         SYMBOL              'stip'
         SIZE                10
@@ -104,8 +103,8 @@ MAP
     END
 
     CLASS
-      NAME                  "Waterfietsen"
-      EXPRESSION ("[ligplaats_segment]" eq "Waterfietsen")
+      NAME                  "Waterfiets"
+      EXPRESSION            ("[categorie]" eq "Waterfiets")
       STYLE
         SYMBOL              'stip'
         SIZE                10
