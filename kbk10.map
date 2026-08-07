@@ -1153,6 +1153,57 @@ END
     END
   END
 
+
+
+  LAYER
+    NAME                    GRO_plusplantopografie
+    GROUP                   "lijnen"
+    MAXSCALEDENOM           20000
+    MINSCALEDENOM           5000
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.brt_10_plusplantopografie_v1 USING srid=28992 USING UNIQUE identificatie"
+    TYPE                    LINE
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "wms_title"           "GRO_plusplantopografie"
+    END
+
+    CLASS
+      MAXSCALEDENOM 10000
+      MINSCALEDENOM 5000
+      STYLE
+        WIDTH 2
+        COLOR "#a9a9a9"
+        OPACITY 50
+        PATTERN
+          6
+          3
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+    CLASS
+      MAXSCALEDENOM 20000
+      MINSCALEDENOM 10000
+      STYLE
+        WIDTH 1
+        COLOR "#a9a9a9"
+        OPACITY 50
+        PATTERN
+          6
+          3
+        END
+        LINECAP BUTT
+        LINEJOIN MITER
+      END
+    END
+
+  END
 #-----------------------------------------------------------------------------
 
   LAYER
@@ -2047,48 +2098,6 @@ END
       END
     END
   END
-
-  LAYER
-    NAME                    plantopo
-    GROUP                   "lijnen"
-    INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.brt_10_plusplantopografie_v1 USING srid=28992 USING UNIQUE identificatie"
-    TYPE                    LINE
-    PROJECTION
-      "init=epsg:28992"
-    END
-
-    METADATA
-      "wms_title"           "plantopo"
-    END
-
-    CLASS
-      STYLE
-      WIDTH 1
-        COLOR "#a9a9a9"
-        OPACITY 50
-        PATTERN
-          6
-          3
-        END
-        LINECAP BUTT
-        LINEJOIN MITER
-      END
-    END
-    # CLASS
-    #   STYLE
-    #     WIDTH 2
-    #     COLOR "#a9a9a9"
-    #     PATTERN
-    #       8
-    #       8
-    #     END
-    #     LINECAP BUTT
-    #     LINEJOIN MITER
-    #   END
-    # END
-  END
-  
 
 
 
