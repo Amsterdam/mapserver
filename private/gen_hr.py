@@ -178,7 +178,7 @@ with block("MAP"):
                         substring(a.act::json ->> 'sbi_code' FROM 1 FOR 2) AS sbi_code_group,
                         a.act::json ->> 'omschrijving' AS omschrijving,
                         a.act::json ->> 'is_hoofdactiviteit' AS is_hoofdactiviteit
-                    FROM benkagg_handelsregisterkvk_v3 b
+                    FROM benkagg_handelsregisterkvk_v4 b
                     JOIN LATERAL unnest(activiteiten_ves) AS a(act) ON true
                     WHERE geometrie_rd IS NOT NULL
                     AND a.act::json ->> 'is_hoofdactiviteit' = 'Ja'
