@@ -1,4 +1,4 @@
-FROM ubuntu:25.04
+FROM ubuntu:25.10
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 # build-time inputs
