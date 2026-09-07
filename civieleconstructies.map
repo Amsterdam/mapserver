@@ -6,7 +6,7 @@ MAP
       "team" "MOBI"
       "ows_title"           "Civiele Constructies"
       "ows_abstract"        "Deze dataset bevat tabellen over civiele constructies en het onderhoud daaraan. Het gaat hier enerzijds om de paspoort- en decompositiegegevens uit GISIB. GISIB is het centrale asset managementsysteem van gemeente Amsterdam. De opgenomen civiele constructies zijn: damwanden, kademuren, beschooiingen, vaste bruggen, beweegbare bruggen, sluizen en viaducten. Anderzijds vind je hier inspectietabellen met data uit iAsset. iAsset is het uitvoeringssysteem voor beheer aan civiele constructies. Inspectietabellen bevatten data van van onderhoud, schouwen en losse opdrachten. Deze zijn dimensioneel gemodelleerd. Let op, de inspectiedata komt uit het beheersysteem iAsset en kan dus afwijken van GISIB."
-      #"ows_onlineresource"  "MAP_URL_REPLACE/maps/water"
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/civieleconstructies"
 
     END
   END
@@ -17,8 +17,11 @@ MAP
     NAME                    "vaste_brug"
     GROUP                   "civiele_constructies"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.civieleconstructies_brug_vast_v1 USING srid=28992 USING UNIQUE id"
-    TYPE                    POLYGON
+    DATA                    "geometrie FROM (
+            SELECT id, ST_PointOnSurface(geometrie) as geometrie from civieleconstructies_brug_vast_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
@@ -40,13 +43,11 @@ MAP
       NAME                  "vaste_brug"
       TITLE                 "Vaste Brug"
       STYLE
-        ANTIALIAS           true
+        SYMBOL              "stip"
         COLOR               "#0066ff"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#0066ff"
-        WIDTH               2
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
@@ -55,9 +56,12 @@ MAP
     NAME                    "beweegbare_brug"
     GROUP                   "civiele_constructies"
     INCLUDE                 "connection/dataservices.inc"
-    DATA                    "geometrie FROM public.civieleconstructies_brug_v1 USING srid=28992 USING UNIQUE id"
+    DATA                    "geometrie FROM (
+            SELECT id, type, ST_PointOnSurface(geometrie) as geometrie from civieleconstructies_brug_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
     FILTER                  ([type] = 'Beweegbare brug')   
-    TYPE                    POLYGON
+    TYPE                    POINT
     TEMPLATE                "empty"
     PROJECTION
       "init=epsg:28992"
@@ -79,13 +83,11 @@ MAP
       NAME                  "beweegbare_brug"
       TITLE                 "Beweegbare Brug"
       STYLE
-        ANTIALIAS           true
+        SYMBOL              "stip"
         COLOR               "#33cc33"
-        OPACITY             20
-      END
-      STYLE
-        OUTLINECOLOR        "#33cc33"
-        WIDTH               2
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
       END
     END
   END
