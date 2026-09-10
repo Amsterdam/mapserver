@@ -1,0 +1,95 @@
+MAP
+  NAME                      "civiele_constructies"
+  INCLUDE                   "header.inc"
+  WEB
+    METADATA
+      "team" "MOBI"
+      "ows_title"           "Civiele Constructies"
+      "ows_abstract"        "Deze dataset bevat tabellen over civiele constructies en het onderhoud daaraan. Het gaat hier enerzijds om de paspoort- en decompositiegegevens uit GISIB. GISIB is het centrale asset managementsysteem van gemeente Amsterdam. De opgenomen civiele constructies zijn: damwanden, kademuren, beschooiingen, vaste bruggen, beweegbare bruggen, sluizen en viaducten. Anderzijds vind je hier inspectietabellen met data uit iAsset. iAsset is het uitvoeringssysteem voor beheer aan civiele constructies. Inspectietabellen bevatten data van van onderhoud, schouwen en losse opdrachten. Deze zijn dimensioneel gemodelleerd. Let op, de inspectiedata komt uit het beheersysteem iAsset en kan dus afwijken van GISIB."
+      "ows_onlineresource"  "MAP_URL_REPLACE/maps/civieleconstructies"
+
+    END
+  END
+
+  #==============================================================================================
+
+  LAYER
+    NAME                    "vaste_brug"
+    GROUP                   "civiele_constructies"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+            SELECT id, ST_PointOnSurface(geometrie) as geometrie from civieleconstructies_brug_vast_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
+    TYPE                    POINT
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Vaste Brug"
+      "ows_abstract"        "Het object wordt gebruikt als, of heeft als onderdeel, een verbinding die een afstand tussen twee punten oversteekt. Let op: De tabel staat momenteel op 'freeze', wat betekent dat deze niet meer wordt bijgewerkt; de laatste update is uitgevoerd in december 2025 in het beheersysteem GISIB."
+      "wms_group_title"     "Civiele Constructies"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "vaste_brug"
+      TITLE                 "Vaste Brug"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#0066ff"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
+      END
+    END
+  END
+
+  LAYER
+    NAME                    "beweegbare_brug"
+    GROUP                   "civiele_constructies"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM (
+            SELECT id, type, ST_PointOnSurface(geometrie) as geometrie from civieleconstructies_brug_v1
+            )
+            AS sub USING srid=28992 USING UNIQUE id"
+    FILTER                  ([type] = 'Beweegbare brug')   
+    TYPE                    POINT
+    TEMPLATE                "empty"
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Beweegbare Brug"
+      "ows_abstract"        "Het object wordt gebruikt als, of heeft als onderdeel, een verbinding die een afstand tussen twee punten oversteekt. Let op: De tabel staat momenteel op 'freeze', wat betekent dat deze niet meer wordt bijgewerkt; de laatste update is uitgevoerd in december 2025 in het beheersysteem GISIB."
+      "wms_group_title"     "Civiele Constructies"
+      "gml_featureid"       "id"
+      "gml_geometries"      "geometry"
+      "gml_geometry_type"   "multipolygon"
+      "gml_include_items"   "all"
+      "gml_types"           "auto"
+      "wms_include_items"   "all"
+    END
+
+    CLASS
+      NAME                  "beweegbare_brug"
+      TITLE                 "Beweegbare Brug"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#33cc33"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
+      END
+    END
+  END
+
+END
