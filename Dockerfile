@@ -1,4 +1,4 @@
-FROM ubuntu:26.04
+FROM debian:trixie-backports
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 # build-time inputs
@@ -11,19 +11,17 @@ ENV MAP_URL="${EXTRA_ARG1:-http://localhost:8383}" \
 # echo domain variables used
 RUN echo "Using ARGS=$EXTRA_ARG1 LEGEND_URL=$EXTRA_ARG2"
 RUN echo "Using MAP_URL=$MAP_URL LEGEND_URL=$LEGEND_URL"
-
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
     apache2 \
-    cgi-mapserver \
+    cgi-mapserver/trixie-backports \
     curl \
     gdal-bin \
     gdal-data \
-    mapserver-bin \
+    mapserver-bin/trixie-backports \
     python3-pip \
     wget \
     && apt-get clean
-
 
 # Enable these Apache modules
 RUN a2enmod actions cgid headers rewrite
