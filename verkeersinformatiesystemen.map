@@ -477,4 +477,56 @@ MAP
     END
   END
 
+  #==============================================================================================
+
+  LAYER
+    NAME                    "bewegwijzering"
+    INCLUDE                 "connection/dataservices.inc"
+    DATA                    "geometrie FROM public.verkeersinformatiesystemen_verkeersinformatiesystemen_v1 USING srid=28992 USING UNIQUE id"
+    FILTER                  ([objecttype_vis_kaart] = 'Bewegwijzering')
+    TYPE                    POINT
+    PROJECTION
+      "init=epsg:28992"
+    END
+
+    METADATA
+      "ows_title"           "Bewegwijzering"
+      "ows_abstract"        "Bewegwijzering"
+    END
+
+    LABELITEM               objectnummer
+
+    CLASS
+      NAME                  "Bewegwijzering"
+      TITLE                 "Bewegwijzering"
+      STYLE
+        SYMBOL              "stip"
+        COLOR               "#E6B800"
+        SIZE                14
+        OUTLINECOLOR        "#ffffff"
+        WIDTH               1.5
+      END
+      LABEL
+        MAXSCALEDENOM       5000
+        COLOR               "#000000"
+        FONT                "Ubuntu-M"
+        TYPE                truetype
+        SIZE                10
+        POSITION            AUTO
+        PARTIALS            FALSE
+        OUTLINECOLOR        "#ffffff"
+        MINDISTANCE         100
+        BUFFER              1
+      END
+      LEADER
+        GRIDSTEP 1
+        MAXDISTANCE 100
+        STYLE
+          COLOR "#E6B800"
+          WIDTH 2
+        END
+      END
+    END
+  END
+
 END
