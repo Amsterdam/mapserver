@@ -121,8 +121,7 @@ async def fetch_token(req: web.Request):
 
 
 async def audit(req: web.Request, token: str):
-    # Note that this function only supports token formats issued by
-    # the iam KeyCloak server.
+    # This function now supports tokens issued by both Keycloak and Entra ID
 
     j = JWT()
     jwks = await get_jwk()
@@ -137,10 +136,10 @@ async def audit(req: web.Request, token: str):
         raise web.HTTPUnauthorized(reason="Token expired") from e
 
     claims = json.loads(j.claims)
-    try:
-        if "fp_mdw" not in claims["realm_access"]["roles"]:
-            raise ValueError("Required scope not present in claims")
-    except (KeyError, ValueError):
+
+    has_access = "fp_mdw" in claims.get("realm_access", {}).get("roles", []) or "FP/MDW" in claims.get("roles", [])
+    
+    if not has_access:
         audit_logger.info(
             "Access to %s (%s) denied for subject %s (username: %s)",
             req.url,
