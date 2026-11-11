@@ -9,7 +9,7 @@ from logging.config import dictConfig
 from os import environ as env
 
 from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
-from jwcrypto.jwt import JWT, JWKSet, JWTExpired
+from jwcrypto.jwt import JWT, JWKSet, JWTExpired, JWTMissingKey
 from yarl import URL
 
 LOG_LEVEL = env.get("LOG_LEVEL", "INFO")
@@ -123,22 +123,38 @@ async def fetch_token(req: web.Request):
 async def audit(req: web.Request, token: str):
     # This function now supports tokens issued by both Keycloak and Entra ID
 
-    j = JWT()
-    jwks = await get_jwk()
+    claims = None
+    for issuer, jwks in await get_jwks():
+        j = JWT()
+        try:
+            j.deserialize(token, key=jwks)
+        except JWTMissingKey:
+            continue
+        except JWTExpired as e:
+            app_logger.warning(e)
+            raise web.HTTPUnauthorized(reason="Token expired") from e
+        except ValueError as e:
+            app_logger.warning(e)
+            raise web.HTTPUnauthorized(reason="Invalid token") from e
 
-    try:
-        j.deserialize(token, key=jwks)
-    except ValueError as e:
-        app_logger.warning(e)
-        raise web.HTTPUnauthorized(reason="Invalid token") from e
-    except JWTExpired as e:
-        app_logger.warning(e)
-        raise web.HTTPUnauthorized(reason="Token expired") from e
+        candidate_claims = json.loads(j.claims)
+        if not isinstance(candidate_claims, dict) or (
+            issuer is not None and candidate_claims.get("iss") != issuer
+        ):
+            raise web.HTTPUnauthorized(reason="Invalid issuer")
+        claims = candidate_claims
+        break
 
-    claims = json.loads(j.claims)
+    if claims is None:
+        raise web.HTTPUnauthorized(reason="Invalid token")
 
-    has_access = "fp_mdw" in claims.get("realm_access", {}).get("roles", []) or "FP/MDW" in claims.get("roles", [])
-    
+    realm_access = claims.get("realm_access")
+    keycloak_roles = realm_access.get("roles") if isinstance(realm_access, dict) else None
+    entra_roles = claims.get("roles")
+    has_access = (
+        isinstance(keycloak_roles, list) and "fp_mdw" in keycloak_roles
+    ) or (isinstance(entra_roles, list) and "FP/MDW" in entra_roles)
+
     if not has_access:
         audit_logger.info(
             "Access to %s (%s) denied for subject %s (username: %s)",
@@ -190,31 +206,43 @@ async def on_shutdown(app):
 
 
 lock = asyncio.Lock()
-cached_jwk = None
+cached_jwks = None
 
-
-async def get_jwk():
-    """If we can get the pubkey from a URL, get it from there.
-    Otherwise, default to the filesystem."""
-    # https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys
+async def get_jwks():
+    """Load and cache the configured issuer/JWKS pairs."""
     async with lock:
-        global cached_jwk
-        if cached_jwk is not None:
-            return cached_jwk
+        global cached_jwks
+        if cached_jwks is not None:
+            return cached_jwks
 
-        url = env.get("JWKS_URL")
-        if url:
+        providers = (
+            (env.get("KEYCLOAK_ISSUER"), env.get("KEYCLOAK_JWKS_URL")),
+            (env.get("ENTRA_ISSUER"), env.get("ENTRA_JWKS_URL")),
+        )
+        keysets = []
+        for issuer, url in providers:
+            if issuer is None and url is None:
+                continue
+            if not issuer or not url:
+                raise RuntimeError("Each JWKS URL must have a matching issuer")
+
             async with SessionManager.session().get(
                 url,
                 timeout=ClientTimeout(sock_connect=3, sock_read=3),
                 skip_auto_headers=["Accept-Encoding"],  # we dont need a compressed jwks
             ) as resp:
-                payload = await resp.text()
-        else:
-            with open(env.get("JWKS_PATH")) as file:
-                payload = file.read()
-        cached_jwk = JWKSet.from_json(payload)
-        return cached_jwk
+                resp.raise_for_status()
+                keysets.append((issuer, JWKSet.from_json(await resp.text())))
+
+        if not keysets:
+            jwks_path = env.get("JWKS_PATH")
+            if not jwks_path:
+                raise RuntimeError("Configure issuer/JWKS URL pairs or JWKS_PATH")
+            with open(jwks_path) as file:
+                keysets.append((None, JWKSet.from_json(file.read())))
+
+        cached_jwks = keysets
+        return cached_jwks
 
 
 async def check_protection(path, method):
