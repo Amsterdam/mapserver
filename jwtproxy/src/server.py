@@ -233,48 +233,55 @@ async def get_jwks():
             (env.get("OAUTH_KEYCLOAK_CLAIMS"), env.get("OAUTH_KEYCLOAK_URL")),
             (env.get("OAUTH_ENTRA_CLAIMS"), env.get("OAUTH_ENTRA_URL")),
         )
-        keysets = []
-        for check_claims, url in providers:
-            if not check_claims and not url:
-                continue
-            if not check_claims or not url:
-                raise RuntimeError("Each provider must have a JWKS_URL and CHECK_CLAIMS var")
 
-            check_claims = dict(item.split("=", 1) for item in check_claims.split(","))
-            if not check_claims.get("iss"):
-                raise RuntimeError("check_claims must include an issuer (iss)")
+        # Try to load keysets for any configured provider
+        if any(claims or url for claims, url in providers):
+            keysets = []
+            for check_claims, url in providers:
+                if not check_claims and not url:
+                    continue
+                if not check_claims or not url:
+                    raise RuntimeError("Each provider must have a JWKS_URL and CHECK_CLAIMS var")
 
-            # Exp should be added explicitly when using check_claims
-            # https://github.com/latchset/jwcrypto/blob/v1.6.1/jwcrypto/jwt.py#L544
-            check_claims["exp"] = None
+                check_claims = dict(item.split("=", 1) for item in check_claims.split(","))
+                if not check_claims.get("iss"):
+                    raise RuntimeError("check_claims must include an issuer (iss)")
 
-            async with SessionManager.session().get(
-                url,
-                timeout=ClientTimeout(sock_connect=3, sock_read=3),
-                skip_auto_headers=["Accept-Encoding"],  # we dont need a compressed jwks
-            ) as resp:
-                resp.raise_for_status()
-                provider = {
-                    "check_claims": check_claims,
-                    "jwks": JWKSet.from_json(await resp.text()),
-                }
-                keysets.append(provider)
+                # Exp should be added explicitly when using check_claims
+                # https://github.com/latchset/jwcrypto/blob/v1.6.1/jwcrypto/jwt.py#L544
+                check_claims["exp"] = None
 
-        # Use TEST_JWKS only for tests without configured auth providers.
-        if not keysets:
-            jwks_path = env.get("TEST_JWKS")
-            if not jwks_path:
-                raise RuntimeError("Configure an OAuth provider; TEST_JWKS is for tests only")
+                async with SessionManager.session().get(
+                    url,
+                    timeout=ClientTimeout(sock_connect=3, sock_read=3),
+                    skip_auto_headers=["Accept-Encoding"],  # we dont need a compressed jwks
+                ) as resp:
+                    resp.raise_for_status()
+                    provider = {
+                        "check_claims": check_claims,
+                        "jwks": JWKSet.from_json(await resp.text()),
+                    }
+                    keysets.append(provider)
+
+            # Return valid keysets for each provider
+            cached_jwks = keysets
+            return cached_jwks
+
+        # USe TEST_JWKS if configured
+        elif jwks_path := env.get("TEST_JWKS"):
             with open(jwks_path) as file:
-                keysets.append(
+                cached_jwks = [(
                     {
                         "check_claims": {"exp": None},
                         "jwks": JWKSet.from_json(file.read()),
                     }
-                )
+                )]
+            return cached_jwks
+    
+    # Raise error when neither OAuth providers nor TEST_JWKS are configured
+    raise RuntimeError("Configure an OAuth provider")
 
-        cached_jwks = keysets
-        return cached_jwks
+ 
 
 
 async def check_protection(path, method):

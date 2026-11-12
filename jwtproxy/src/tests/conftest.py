@@ -26,13 +26,9 @@ def set_env():
     os.environ["PRIVATE_PROXY_URL"] = PRIVATE_PROXY_URL
     os.environ["PUBLIC_PROXY_URL"] = PUBLIC_PROXY_URL
     os.environ["TEST_JWKS"] = "test_jwk.json"
-    for name in (
-        "OAUTH_KEYCLOAK_CLAIMS",
-        "OAUTH_KEYCLOAK_URL",
-        "OAUTH_ENTRA_CLAIMS",
-        "OAUTH_ENTRA_URL",
-    ):
-        os.environ.pop(name, None)
+    for var in os.environ:
+        if var.startswith("OAUTH_"):
+            os.environ.pop(var, None)
 
 
 @pytest.fixture
