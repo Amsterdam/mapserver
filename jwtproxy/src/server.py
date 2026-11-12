@@ -9,6 +9,7 @@ from logging.config import dictConfig
 from os import environ as env
 
 from aiohttp import ClientSession, ClientTimeout, DummyCookieJar, TCPConnector, web
+from jwcrypto.common import JWException
 from jwcrypto.jwt import JWT, JWKSet, JWTExpired, JWTMissingKey
 from yarl import URL
 
@@ -123,31 +124,34 @@ async def fetch_token(req: web.Request):
 async def audit(req: web.Request, token: str):
     # This function now supports tokens issued by both Keycloak and Entra ID
 
+    # First check if the access token is valid
     claims = None
-    for issuer, jwks in await get_jwks():
-        j = JWT()
+    for provider in await get_jwks():
         try:
-            j.deserialize(token, key=jwks)
+            j = JWT(
+                jwt=token,
+                key=provider["jwks"],
+                check_claims=provider["check_claims"],
+            )
         except JWTMissingKey:
             continue
         except JWTExpired as e:
             app_logger.warning(e)
             raise web.HTTPUnauthorized(reason="Token expired") from e
-        except ValueError as e:
+        except (JWException, ValueError) as e:
             app_logger.warning(e)
-            raise web.HTTPUnauthorized(reason="Invalid token") from e
+            continue
 
         candidate_claims = json.loads(j.claims)
-        if not isinstance(candidate_claims, dict) or (
-            issuer is not None and candidate_claims.get("iss") != issuer
-        ):
-            raise web.HTTPUnauthorized(reason="Invalid issuer")
+        if not isinstance(candidate_claims, dict):
+            raise web.HTTPUnauthorized(reason="Invalid token")
         claims = candidate_claims
         break
 
     if claims is None:
         raise web.HTTPUnauthorized(reason="Invalid token")
 
+    # Then check is the validated access token contains the correct scope
     realm_access = claims.get("realm_access")
     keycloak_roles = realm_access.get("roles") if isinstance(realm_access, dict) else None
     entra_roles = claims.get("roles")
@@ -155,6 +159,7 @@ async def audit(req: web.Request, token: str):
         isinstance(keycloak_roles, list) and "fp_mdw" in keycloak_roles
     ) or (isinstance(entra_roles, list) and "FP/MDW" in entra_roles)
 
+    # Deny requests if no_access:
     if not has_access:
         audit_logger.info(
             "Access to %s (%s) denied for subject %s (username: %s)",
@@ -216,15 +221,22 @@ async def get_jwks():
             return cached_jwks
 
         providers = (
-            (env.get("KEYCLOAK_ISSUER"), env.get("KEYCLOAK_JWKS_URL")),
-            (env.get("ENTRA_ISSUER"), env.get("ENTRA_JWKS_URL")),
+            (env.get("OAUTH_KEYCLOAK_CLAIMS"), env.get("OAUTH_KEYCLOAK_URL")),
+            (env.get("OAUTH_ENTRA_CLAIMS"), env.get("OAUTH_ENTRA_URL")),
         )
         keysets = []
-        for issuer, url in providers:
-            if issuer is None and url is None:
+        for check_claims, url in providers:
+            if check_claims is None and url is None:
                 continue
-            if not issuer or not url:
-                raise RuntimeError("Each JWKS URL must have a matching issuer")
+            if not check_claims or not url:
+                raise RuntimeError("Each provider must have a JWKS_URL and CHECK_CLAIMS var")
+
+            check_claims = dict(item.split("=", 1) for item in check_claims.split(","))
+            if not check_claims.get("iss"):
+                raise RuntimeError("check_claims must include an issuer (iss)")
+
+            # 
+            check_claims["exp"] = None
 
             async with SessionManager.session().get(
                 url,
@@ -232,14 +244,23 @@ async def get_jwks():
                 skip_auto_headers=["Accept-Encoding"],  # we dont need a compressed jwks
             ) as resp:
                 resp.raise_for_status()
-                keysets.append((issuer, JWKSet.from_json(await resp.text())))
+                provider = {
+                    "check_claims": check_claims,
+                    "jwks": JWKSet.from_json(await resp.text()),
+                }
+                keysets.append(provider)
 
         if not keysets:
             jwks_path = env.get("JWKS_PATH")
             if not jwks_path:
                 raise RuntimeError("Configure issuer/JWKS URL pairs or JWKS_PATH")
             with open(jwks_path) as file:
-                keysets.append((None, JWKSet.from_json(file.read())))
+                keysets.append(
+                    {
+                        "check_claims": {"exp": None},
+                        "jwks": JWKSet.from_json(file.read()),
+                    }
+                )
 
         cached_jwks = keysets
         return cached_jwks
