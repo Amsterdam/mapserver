@@ -247,7 +247,7 @@ async def get_jwks():
                 if not check_claims.get("iss"):
                     raise RuntimeError("check_claims must include an issuer (iss)")
 
-                # Exp should be added explicitly when using check_claims
+                # Exp should be added explicitly and set to None when using check_claims
                 # https://github.com/latchset/jwcrypto/blob/v1.6.1/jwcrypto/jwt.py#L544
                 check_claims["exp"] = None
 
