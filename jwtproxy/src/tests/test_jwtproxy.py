@@ -1,5 +1,10 @@
-import pytest
+import json
+from pathlib import Path
 
+import pytest
+from jwcrypto.jwk import JWK
+
+from .. import server as server_module
 from ..jwt_keygen import generate_jwt
 from ..server import PRIVATE_MAPS
 
@@ -89,6 +94,60 @@ async def test_private_map_with_valid_token_get(client, mock_upstream, private_p
     token = generate_jwt(["fp_mdw"], exp=3600)
 
     resp = await client.get(private_path, headers={"Authorization": f"Bearer {token}"})
+    assert resp.status == 200
+
+
+async def test_keycloak_provider_token(client, mock_upstream, monkeypatch):
+    iss = "https://keycloak.test"
+    jwks_url = f"{iss}/jwks"
+
+    monkeypatch.setattr(server_module, "cached_jwks", None)
+    monkeypatch.setenv("OAUTH_KEYCLOAK_CLAIMS", f"iss={iss}")
+    monkeypatch.setenv("OAUTH_KEYCLOAK_URL", jwks_url)
+
+    # Create test JWKS to pretend it is from the auth provider
+    test_jwk_path = Path(__file__).parents[1] / "test_jwk.json"
+    test_key_data = json.loads(test_jwk_path.read_text())["keys"][0]
+    test_key = JWK(**test_key_data)
+    public_key = json.loads(test_key.export_public())
+    jwks = json.dumps({"keys": [public_key]})
+
+    # Mock request to the OAuth JWKS
+    mock_upstream.get(jwks_url, status=200, body=jwks)
+    mock_upstream.get(f"{PRIVATE_PROXY_URL}/maps/blackspots", status=200)
+
+    token = generate_jwt(["fp_mdw"], exp=3600, iss=iss)
+    resp = await client.get(
+        "maps/blackspots",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert resp.status == 200
+
+async def test_entra_provider_token(client, mock_upstream, monkeypatch):
+    iss = "https://entra.test"
+    aud = "AUD-ENTRA"
+    jwks_url = f"{iss}/jwks"
+
+    monkeypatch.setattr(server_module, "cached_jwks", None)
+    monkeypatch.setenv("OAUTH_ENTRA_CLAIMS", f"iss={iss},aud={aud}")
+    monkeypatch.setenv("OAUTH_ENTRA_URL", jwks_url)
+
+    # Create test JWKS to pretend it is from the auth provider
+    test_jwk_path = Path(__file__).parents[1] / "test_jwk.json"
+    test_key_data = json.loads(test_jwk_path.read_text())["keys"][0]
+    test_key = JWK(**test_key_data)
+    public_key = json.loads(test_key.export_public())
+    jwks = json.dumps({"keys": [public_key]})
+
+    # Mock request to the OAuth JWKS
+    mock_upstream.get(jwks_url, status=200, body=jwks)
+    mock_upstream.get(f"{PRIVATE_PROXY_URL}/maps/blackspots", status=200)
+
+    token = generate_jwt(["FP/MDW"], exp=3600, provider="entra", iss=iss, aud=aud)
+    resp = await client.get(
+        "maps/blackspots",
+        headers={"Authorization": f"Bearer {token}"},
+    )
     assert resp.status == 200
 
 

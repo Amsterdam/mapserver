@@ -49,6 +49,15 @@ We geven de voorkeur aan het gebruik van een ``Filter`` blok, dit is sneller lee
 Deze alinea zal worden uitgebreid met nieuwe Tips & Tricks wanneer deze uitgezocht zijn. 
 
 
+### Authorisatie testen
+Om de private maps op te vragen, moet er een Authorisatie Bearer token meegegeven worden.
+Dit wordt lokaal getest met een test-token te maken.
+Het is nu ook mogelijk om lokaal te testen met token die uitgegeven zijn door Keycloak of Entra ID.
+Om dit op te zetten, moeten de OAUTH-variabelen zoals in ``.env-example`` ingevuld worden met de juiste waarden.
+Tijdens het runnen van de test-suite wordt standaard een test token gebruikt.
+
+
+
 
 ## Gegenereerde mapfiles
 

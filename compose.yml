@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=insecure
       - POSTGRES_DB=postgres
 
-    command: ["postgres", "-c", "log_statement=all"]
+    command: [ "postgres", "-c", "log_statement=all" ]
     volumes:
       - "${POSTGRES_DATA_DIR:-/var/lib/postgresql/data}:/var/lib/postgresql/data"
 
@@ -22,12 +22,15 @@ services:
     ports:
       - 9191:8000
     environment:
-      PROXY_URL: http://map
-      JWKS_PATH: /app/test_jwk.json
+      PRIVATE_PROXY_URL: http://private:8080
+      PUBLIC_PROXY_URL: http://public:8080
       LOG_LEVEL: DEBUG
-      #JWKS_URL: "https://iam.amsterdam.nl/auth/realms/datapunt-ad-acc/protocol/openid-connect/certs"
-
-  # Bare bones 'webserver' to behave as public loadbalancer
+      TEST_JWKS: "/app/test_jwk.json"
+      OAUTH_KEYCLOAK_CLAIMS: "${OAUTH_KEYCLOAK_CLAIMS}"
+      OAUTH_KEYCLOAK_URL: "${OAUTH_KEYCLOAK_URL}"
+      OAUTH_ENTRA_CLAIMS: "${OAUTH_ENTRA_CLAIMS}"
+      OAUTH_ENTRA_URL: "${OAUTH_ENTRA_URL}"
+      # Bare bones 'webserver' to behave as public loadbalancer
   publicdummy:
     image: python:3.13-slim-bullseye
     ports:
@@ -63,7 +66,7 @@ services:
       args:
         BASE_IMAGE: mapserver/public
     depends_on:
-    - public
+      - public
     ports:
       - "8384:8080"
     environment:
@@ -90,7 +93,7 @@ services:
       args:
         BASE_IMAGE: mapserver/public
     depends_on:
-    - public
+      - public
     ports:
       - "8385:8080"
     environment:

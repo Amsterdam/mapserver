@@ -25,7 +25,10 @@ async def client(aiohttp_client):
 def set_env():
     os.environ["PRIVATE_PROXY_URL"] = PRIVATE_PROXY_URL
     os.environ["PUBLIC_PROXY_URL"] = PUBLIC_PROXY_URL
-    os.environ["JWKS_PATH"] = "test_jwk.json"
+    os.environ["TEST_JWKS"] = "test_jwk.json"
+    for var in os.environ:
+        if var.startswith("OAUTH_"):
+            os.environ.pop(var, None)
 
 
 @pytest.fixture
