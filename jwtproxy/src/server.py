@@ -234,9 +234,14 @@ async def get_jwks():
             (env.get("OAUTH_ENTRA_CLAIMS"), env.get("OAUTH_ENTRA_URL")),
         )
 
+        app_logger.debug("PROVIDERS:")
+        app_logger.debug(providers)
+        
+
         # Try to load keysets for any configured provider
         if any(claims or url for claims, url in providers):
             keysets = []
+            app_logger.debug("Found some provider info")
             for check_claims, url in providers:
                 if not check_claims and not url:
                     continue
@@ -265,6 +270,8 @@ async def get_jwks():
 
             # Return valid keysets for each provider
             cached_jwks = keysets
+            app_logger.debug("keysets:")
+            app_logger.debug(cached_jwks)
             return cached_jwks
 
         # USe TEST_JWKS if configured
@@ -282,8 +289,6 @@ async def get_jwks():
     raise RuntimeError("Configure an OAuth provider")
 
  
-
-
 async def check_protection(path, method):
     app_logger.debug("Checking protection for `%s`", path)
     if PRIVATE_MAPS_RE_PATTERN.match(path) is not None:
