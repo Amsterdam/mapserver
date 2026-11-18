@@ -102,7 +102,7 @@ async def test_keycloak_provider_token(client, mock_upstream, monkeypatch):
     jwks_url = f"{iss}/jwks"
 
     monkeypatch.setattr(server_module, "cached_jwks", None)
-    monkeypatch.setenv("OAUTH_KEYCLOAK_CLAIMS", f"iss={iss}")
+    monkeypatch.setenv("OAUTH_KEYCLOAK_CLAIMS", json.dumps({"iss": iss}))
     monkeypatch.setenv("OAUTH_KEYCLOAK_URL", jwks_url)
 
     # Create test JWKS to pretend it is from the auth provider
@@ -129,7 +129,7 @@ async def test_entra_provider_token(client, mock_upstream, monkeypatch):
     jwks_url = f"{iss}/jwks"
 
     monkeypatch.setattr(server_module, "cached_jwks", None)
-    monkeypatch.setenv("OAUTH_ENTRA_CLAIMS", f"iss={iss},aud={aud}")
+    monkeypatch.setenv("OAUTH_ENTRA_CLAIMS", json.dumps({"iss": iss, "aud": aud}))
     monkeypatch.setenv("OAUTH_ENTRA_URL", jwks_url)
 
     # Create test JWKS to pretend it is from the auth provider

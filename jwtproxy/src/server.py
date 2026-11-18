@@ -97,6 +97,18 @@ audit_logger = logging.getLogger("jwtproxy.auditlogs")
 access_logger = logging.getLogger("jwtproxy.accesslogs")
 
 
+def load_claims(name):
+    raw = env.get(name)
+    if raw is None:
+        return None
+
+    claims = json.loads(raw)
+    if not isinstance(claims, dict):
+        raise ValueError(f"{name} must contain a JSON object")
+
+    return claims
+
+
 async def fetch_token(req: web.Request):
     """Fetch the token from the request.
 
@@ -230,8 +242,8 @@ async def get_jwks():
 
         # Load env variables for authentication providers
         providers = (
-            (env.get("OAUTH_KEYCLOAK_CLAIMS"), env.get("OAUTH_KEYCLOAK_URL")),
-            (env.get("OAUTH_ENTRA_CLAIMS"), env.get("OAUTH_ENTRA_URL")),
+            (load_claims("OAUTH_KEYCLOAK_CLAIMS"), env.get("OAUTH_KEYCLOAK_URL")),
+            (load_claims("OAUTH_ENTRA_CLAIMS"), env.get("OAUTH_ENTRA_URL")),
         )
 
         app_logger.debug("PROVIDERS:")
@@ -248,7 +260,6 @@ async def get_jwks():
                 if not check_claims or not url:
                     raise RuntimeError("Each provider must have a JWKS_URL and CHECK_CLAIMS var")
 
-                check_claims = dict(item.split("=", 1) for item in check_claims.split(","))
                 if not check_claims.get("iss"):
                     raise RuntimeError("check_claims must include an issuer (iss)")
 
