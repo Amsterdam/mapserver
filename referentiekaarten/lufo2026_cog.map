@@ -43,9 +43,24 @@ MAP
   END
   #-----------------------------------------------------------------------------
   LAYER
+    NAME            "lufo2026-cog-index"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/srv/mapserver/luchtfoto/imagery-2026-cog.fgb" # 665 COG's van 1x1 km met interne overviews
+    DATA            "imagery-2026-cog"
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*" # alleen tile index voor lufo2026-cog, niet tonen in OWS
+    END
+  END
+  #-----------------------------------------------------------------------------
+  LAYER
     NAME          "lufo2026-cog"
     GROUP         "lufo2026"
-    TILEINDEX     "/srv/mapserver/luchtfoto/imagery-2026-cog.shp" # 665 COG's van 1x1 km met interne overviews
+    TILEINDEX     "lufo2026-cog-index"
     TILEITEM      "location"
     TYPE          RASTER
     MAXSCALEDENOM 4000
