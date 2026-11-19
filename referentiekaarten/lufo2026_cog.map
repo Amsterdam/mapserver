@@ -1,0 +1,61 @@
+MAP
+  NAME    "LUFO2026_COG"
+  INCLUDE "header.inc"
+  WEB
+    METADATA
+      "ows_title"           "LUFO'S 2026 (COG)"
+      "ows_abstract"        "Luchtfoto's van het grondgebied van de gemeente Amsterdam"
+      "ows_onlineresource"  "MAP_URL_REPLACE/tiled/lufo2026_cog"
+    END
+  END
+  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif"
+  CONFIG "GDAL_DISABLE_READDIR_ON_OPEN" "TRUE"
+  CONFIG "AZURE_STORAGE_ACCOUNT" "stlufoglfdpgoprdweu01"
+  # private container, inlog via de omgeving (niet in deze mapfile)
+  #-------------------------------------------------------------------
+  # UITVOERFORMATEN
+  #-------------------------------------------------------------------
+  OUTPUTFORMAT
+    NAME      "GTiff"
+    DRIVER    "GDAL/GTiff"
+    MIMETYPE  "image/tiff"
+    IMAGEMODE RGB
+    EXTENSION "tif"
+  END
+  #=============================================================================
+  # LAYERS
+  #=============================================================================
+  LAYER
+    NAME          "lufo2026-overview"
+    GROUP         "lufo2026"
+    DATA          "/vsiaz/bron/ortho/2026_RGB_COG_overview/2026_RGB_overview_1m.tif" # 1 m overview van de hele stad
+    TYPE          RASTER
+    MAXSCALEDENOM 400000
+    MINSCALEDENOM 4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+  #-----------------------------------------------------------------------------
+  LAYER
+    NAME          "lufo2026-cog"
+    GROUP         "lufo2026"
+    TILEINDEX     "/srv/mapserver/luchtfoto/imagery-2026-cog.shp" # 665 COG's van 1x1 km met interne overviews
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 4000
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+    END
+  END
+END
