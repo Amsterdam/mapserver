@@ -1,7 +1,6 @@
 MAP
-  NAME "LUFO2026"
+  NAME    "LUFO2026"
   INCLUDE "header.inc"
-
   WEB
     METADATA
       "ows_title"           "LUFO'S 2026"
@@ -9,154 +8,221 @@ MAP
       "ows_onlineresource"  "MAP_URL_REPLACE/tiled/lufo2026"
     END
   END
-
-  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif"
-  CONFIG "GDAL_DISABLE_READDIR_ON_OPEN"     "TRUE"
-
+  CONFIG "CPL_VSIL_CURL_ALLOWED_EXTENSIONS" ".tif,.fgb"
+  CONFIG "GDAL_DISABLE_READDIR_ON_OPEN" "TRUE"
+  CONFIG "AZURE_STORAGE_ACCOUNT" "stlufoglfdpgoprdweu01"
+  CONFIG "AZURE_NO_SIGN_REQUEST" "YES"
+  # container overview is nog openbaar; weghalen zodra MapServer een Azure-identity heeft
   #-------------------------------------------------------------------
   # UITVOERFORMATEN
   #-------------------------------------------------------------------
-
   OUTPUTFORMAT
-    NAME "GTiff"
-    DRIVER GDAL/GTiff
-    MIMETYPE "image/tiff"
+    NAME      "GTiff"
+    DRIVER    "GDAL/GTiff"
+    MIMETYPE  "image/tiff"
     IMAGEMODE RGB
     EXTENSION "tif"
   END
-
+  #=============================================================================
+  # TILE INDEX: alle levels van de piramide in één FlatGeobuf, filter op "level"
+  #=============================================================================
+  LAYER
+    NAME            "lufo2026-index-5"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/vsiaz/overview/2026/pyramid/imagery-2026.fgb"
+    DATA            "imagery-2026"
+    FILTER          ( [level] = 5 )
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*"
+    END
+  END
+  LAYER
+    NAME            "lufo2026-index-4"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/vsiaz/overview/2026/pyramid/imagery-2026.fgb"
+    DATA            "imagery-2026"
+    FILTER          ( [level] = 4 )
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*"
+    END
+  END
+  LAYER
+    NAME            "lufo2026-index-3"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/vsiaz/overview/2026/pyramid/imagery-2026.fgb"
+    DATA            "imagery-2026"
+    FILTER          ( [level] = 3 )
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*"
+    END
+  END
+  LAYER
+    NAME            "lufo2026-index-2"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/vsiaz/overview/2026/pyramid/imagery-2026.fgb"
+    DATA            "imagery-2026"
+    FILTER          ( [level] = 2 )
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*"
+    END
+  END
+  LAYER
+    NAME            "lufo2026-index-1"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/vsiaz/overview/2026/pyramid/imagery-2026.fgb"
+    DATA            "imagery-2026"
+    FILTER          ( [level] = 1 )
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*"
+    END
+  END
+  LAYER
+    NAME            "lufo2026-index-0"
+    TYPE            POLYGON
+    STATUS          OFF
+    CONNECTIONTYPE  OGR
+    CONNECTION      "/vsiaz/overview/2026/pyramid/imagery-2026.fgb"
+    DATA            "imagery-2026"
+    FILTER          ( [level] = 0 )
+    PROJECTION
+      "init=epsg:28992"
+    END
+    METADATA
+      "ows_enable_request"  "!*"
+    END
+  END
   #=============================================================================
   # LAYERS
   #=============================================================================
-
   LAYER
-    NAME                    "lufo2026-5"
-    GROUP                   "lufo2026"
-    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2026-5.shp"
-    TILEITEM                "location"
-    TYPE                    RASTER
-    # Zoom 5 - 10 RD
-    MAXSCALEDENOM           400000
-    MINSCALEDENOM           8000
+    NAME          "lufo2026-5"
+    GROUP         "lufo2026"
+    TILEINDEX     "lufo2026-index-5"
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 400000 # Zoom 5 - 10 RD
+    MINSCALEDENOM 8000
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
-      "ows_title"           "lufo's 2026"
-      "ows_group_title"     "lufo2026"
-      "ows_abstract"        "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
     END
   END
-
   #-----------------------------------------------------------------------------
-
   LAYER
-    NAME                    "lufo2026-4"
-    GROUP                   "lufo2026"
-    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2026-4.shp"
-    TILEITEM                "location"
-    TYPE                    RASTER
-    # Zoom 11 RD
-    MAXSCALEDENOM           8000
-    MINSCALEDENOM           4000
+    NAME          "lufo2026-4"
+    GROUP         "lufo2026"
+    TILEINDEX     "lufo2026-index-4"
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 8000 # Zoom 11 RD
+    MINSCALEDENOM 4000
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
-      "ows_title"           "lufo's 2026"
-      "ows_group_title"     "lufo2026"
-      "ows_abstract"        "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
     END
   END
-
   #-----------------------------------------------------------------------------
-
   LAYER
-    NAME                    "lufo2026-3"
-    GROUP                   "lufo2026"
-    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2026-3.shp"
-    TILEITEM                "location"
-    TYPE                    RASTER
-    # Zoom 12 RD
-    MAXSCALEDENOM           4000
-    MINSCALEDENOM           2000
+    NAME          "lufo2026-3"
+    GROUP         "lufo2026"
+    TILEINDEX     "lufo2026-index-3"
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 4000 # Zoom 12 RD
+    MINSCALEDENOM 2000
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
-      "ows_title"           "lufo's 2026"
-      "ows_group_title"     "lufo2026"
-      "ows_abstract"        "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
     END
   END
-
   #-----------------------------------------------------------------------------
-
   LAYER
-    NAME                    "lufo2026-2"
-    GROUP                   "lufo2026"
-    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2026-2.shp"
-    TILEITEM                "location"
-    TYPE                    RASTER
-    # Zoom 13 RD
-    MAXSCALEDENOM           2000
-    MINSCALEDENOM           1000
+    NAME          "lufo2026-2"
+    GROUP         "lufo2026"
+    TILEINDEX     "lufo2026-index-2"
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 2000 # Zoom 13 RD
+    MINSCALEDENOM 1000
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
-      "ows_title"           "lufo's 2026"
-      "ows_group_title"     "lufo2026"
-      "ows_abstract"        "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
     END
   END
-
   #-----------------------------------------------------------------------------
-
   LAYER
-    NAME                    "lufo2026-1"
-    GROUP                   "lufo2026"
-    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2026-1.shp"
-    TILEITEM                "location"
-    TYPE                    RASTER
-    # Zoom 14 RD
-    MAXSCALEDENOM           1000
-    MINSCALEDENOM           500
+    NAME          "lufo2026-1"
+    GROUP         "lufo2026"
+    TILEINDEX     "lufo2026-index-1"
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 1000 # Zoom 14 RD
+    MINSCALEDENOM 500
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
-      "ows_title"           "lufo's 2026"
-      "ows_group_title"     "lufo2026"
-      "ows_abstract"        "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
     END
   END
-
   #-----------------------------------------------------------------------------
-
   LAYER
-    NAME                    "lufo2026-0"
-    GROUP                   "lufo2026"
-    TILEINDEX               "/srv/mapserver/luchtfoto/imagery-2026-0.shp"
-    TILEITEM                "location"
-    TYPE                    RASTER
-    # Zoom 15-17 RD
-    MAXSCALEDENOM           500
+    NAME          "lufo2026-0"
+    GROUP         "lufo2026"
+    TILEINDEX     "lufo2026-index-0"
+    TILEITEM      "location"
+    TYPE          RASTER
+    MAXSCALEDENOM 500 # Zoom 15-17 RD
     PROJECTION
       "init=epsg:28992"
     END
-
     METADATA
-      "ows_title"           "lufo's 2026"
-      "ows_group_title"     "lufo2026"
-      "ows_abstract"        "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
+      "ows_title"       "lufo's 2026"
+      "ows_group_title" "lufo2026"
+      "ows_abstract"    "Luchtfoto's van 2026 van het grondgebied van de gemeente Amsterdam"
     END
   END
-
-#=============================================================================
 END
