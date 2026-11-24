@@ -30,7 +30,7 @@ def generate_jwk():
     return JWK.generate(kty="EC", crv="P-256", kid=str(uuid.uuid4()), key_ops=["verify", "sign"])
 
 
-def generate_jwt(scopes, exp):
+def generate_jwt(scopes, provider="keycloak", exp=None, iss=None, aud=None):
     """Generate a JWT, signed using the first key stored at test_jwk.json.
     If there is no JWKSet at this location, generate it and write it to
     the file as a JWKSet"""
@@ -46,13 +46,24 @@ def generate_jwt(scopes, exp):
 
     scopes = list(set(scopes))
     now = int(time.time())
-    claims = {
-        "iat": now,
-        "realm_access": {"roles": scopes},
-        "sub": "test@tester.nl",
-    }
+    if provider == "entra":
+        claims = {
+            "iat": now,
+            "roles": scopes,
+            "sub": "test@tester.nl",
+        }
+    else:
+        claims = {
+            "iat": now,
+            "realm_access": {"roles": scopes},
+            "sub": "test@tester.nl",
+        }
     if exp is not None:
         claims["exp"] = now + exp
+    if iss is not None:
+        claims["iss"] = iss
+    if aud is not None:
+        claims["aud"] = aud
 
     token = JWT(header={"alg": "ES256", "kid": key.kid, "kty": "EC"}, claims=claims)
     token.make_signed_token(key)
