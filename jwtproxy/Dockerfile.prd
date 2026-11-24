@@ -1,17 +1,17 @@
-FROM python:3.14-slim-trixie
+FROM ghcr.io/astral-sh/uv:0.13-python3.14-trixie-slim
 
 COPY supervisord.conf /etc
 
 WORKDIR /app
 COPY src ./
-COPY requirements.txt .
+COPY pyproject.toml uv.lock ./
 
 RUN usermod --non-unique --uid 999 proxy
 RUN groupmod -o -g 999 proxy
 RUN chown -R 999:999 /app
 
-RUN pip install supervisor
-RUN pip install -r requirements.txt
+RUN uv tool install supervisor
+RUN uv sync
 
 EXPOSE 8000
 

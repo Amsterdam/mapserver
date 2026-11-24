@@ -1,18 +1,53 @@
+[project]
+name = "jwtproxy"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "aiohttp==3.14.5",
+    "aiosignal==1.4.0",
+    "async-timeout==5.0.1",
+    "attrs==26.1.0",
+    "azure-monitor-opentelemetry==1.8.12",
+    "cffi>=2.1.1",
+    "charset-normalizer==3.5.2",
+    "cryptography==50.0.2",
+    "frozenlist==1.8.0",
+    "idna==3.20",
+    "jwcrypto==1.6.1",
+    "multidict==7.2.1",
+    "pycparser==3.12",
+    "yarl===1.25.1",
+]
+
+[dependency-groups]
+dev = [
+    "aiohttp-devtools==1.1.2",
+    "aiointercept==1.0.0",
+    "anyio==4.14.2",
+    "asttokens==2.4.1",
+    "ruff==0.17.5",
+    "click==8.5.1",
+    "devtools==0.13.0",
+    "executing==2.3.0",
+    "pre-commit==4.7.0",
+    "Pygments==2.21.0",
+    "pytest==9.2.0",
+    "pytest-aiohttp==1.1.1",
+    "six==1.17.0",
+    "sniffio==1.3.1",
+    "yarl==1.25.1",
+]
+
 # ==== pytest ====
 [tool.pytest.ini_options]
 minversion = "6.0"
 asyncio_mode = "auto"
 testpaths = ["tests"]
 
-# ==== black ====
-[tool.black]
-line-length = 99
-target-version = ['py38']
-
 # ==== ruff ====
 [tool.ruff]
 line-length = 99
-target-version = "py38"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = [
