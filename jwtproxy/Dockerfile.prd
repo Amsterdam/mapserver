@@ -3,17 +3,18 @@ FROM ghcr.io/astral-sh/uv:0.13-python3.14-trixie-slim
 COPY supervisord.conf /etc
 
 WORKDIR /app
-COPY src ./
+ENV PATH="/app/.venv/bin:$PATH"
 COPY pyproject.toml uv.lock ./
+
+RUN uv sync --frozen
+COPY src ./
 
 RUN usermod --non-unique --uid 999 proxy
 RUN groupmod -o -g 999 proxy
 RUN chown -R 999:999 /app
 
-RUN uv tool install supervisor
-RUN uv sync
 
 EXPOSE 8000
 
 USER proxy
-ENTRYPOINT [ "/bin/sh", "-c", "/usr/local/bin/supervisord -n"]
+ENTRYPOINT ["/bin/sh", "-c", "/usr/local/bin/supervisord -n"]
