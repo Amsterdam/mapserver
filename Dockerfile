@@ -20,7 +20,6 @@ RUN apt-get update -y \
     gdal-bin \
     gdal-data \
     mapserver-bin \
-    python3-pip \
     wget \
     && apt-get clean
 
@@ -41,7 +40,7 @@ RUN echo "SetEnv MAPSERVER_CONFIG_FILE \"/usr/local/etc/mapserver.conf\"" >> /et
 # apache config
 RUN rm /etc/apache2/mods-enabled/alias.conf
 COPY docker/conf/custom.conf /etc/apache2/conf-enabled/
-COPY docker/conf/ports.conf /etc/apache2/ports.conf 
+COPY docker/conf/ports.conf /etc/apache2/ports.conf
 
 COPY docker/000-default.conf /etc/apache2/sites-available/
 COPY docker/docker-entrypoint.sh /bin
