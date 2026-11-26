@@ -2,12 +2,12 @@ ARG BASE_IMAGE
 
 FROM ${BASE_IMAGE}
 
-# build-time inputs
+# build-time inputs, required: see Dockerfile
 ARG EXTRA_ARG1
 ARG EXTRA_ARG2
 
-ENV MAP_URL="${EXTRA_ARG1:-http://localhost:8383}" \
-    LEGEND_URL="${EXTRA_ARG2:-http://localhost:8383}"
+ENV MAP_URL="${EXTRA_ARG1}" \
+    LEGEND_URL="${EXTRA_ARG2}"
 
 # used by make_mapfile_config.py to include private mapfiles in sld config
 ENV ACCESS_SCOPE private
