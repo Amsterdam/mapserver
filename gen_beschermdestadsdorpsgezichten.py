@@ -29,6 +29,7 @@ with block("MAP"):
                 "ows_abstract",
                 "Kaart met gegevens over beschermde stads- en dorpsgezichten in de gemeente Amsterdam",
             )
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/beschermdestadsdorpsgezichten")
             q("wms_extent", "100000 450000 150000 500000")
 
     for name, color in layers:

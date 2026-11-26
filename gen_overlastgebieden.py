@@ -35,6 +35,7 @@ with block("MAP"):
             q("team", "SVD")
             q("ows_title", "Overlastgebieden")
             q("ows_abstract", "Overlastgebieden")
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/overlastgebieden")
 
     for name, basename, color in layers:
         with block("LAYER"):

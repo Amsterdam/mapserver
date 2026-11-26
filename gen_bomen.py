@@ -39,6 +39,7 @@ with block("MAP"):
                 "ows_abstract",
                 "Dataset met actuele informatie over de bomen in beheer van gemeente Amsterdam",
             )
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/bomen")
             q("wms_extent", "100000 450000 150000 500000")
 
     for name in layers:

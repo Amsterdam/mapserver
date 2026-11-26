@@ -69,6 +69,7 @@ with block("MAP"):
                 "ows_abstract",
                 "Kaart met gegevens over ziekten, plagen en exoten in het groen in de gemeente Amsterdam",
             )
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/ziektenplagenexotengroen")
             q("wms_extent", "100000 450000 150000 500000")
 
 # dit stuk is voor de eikenprogressierups

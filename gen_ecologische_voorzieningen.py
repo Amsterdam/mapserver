@@ -57,6 +57,7 @@ with block("MAP"):
                 "ows_abstract",
                 "Deze collectie bevat ecologische voorzieningen binnen gemeente Amsterdam. Dit zijn zowel ecologische objecten als ecologische gebieden. De ecologische objecten, zoals eekhoornbruggen en vispassages, zijn bedoeld voor dieren in de stad en zorgen ervoor dat zij zich veilig kunnen verplaatsen tussen verschillende leefgebieden. De ecologische gebieden zijn gericht op het vergroten van de biodiversiteit en zijn onderverdeeld in kerngebieden en verbindingszones. Kerngebieden bieden geschikte omstandigheden voor de permanente vestiging van soorten. Verbindingszones bieden geschikte omstandigheden voor tijdelijk verblijf, verbinden de kerngebieden met elkaar waardoor het leefgebied vergroot",
             )
+            q("ows_onlineresource", "MAP_URL_REPLACE/maps/ecologische_voorzieningen")
             q("wms_extent", "100000 450000 150000 500000")
     with block("LEGEND"):
         p("STATUS ON")
