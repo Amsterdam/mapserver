@@ -35,7 +35,13 @@ services:
     command: python3 -m http.server 8000
 
   public:
-    build: .
+    build:
+      context: .
+      # The Dockerfiles bake the advertised WMS address into the mapfiles at
+      # build time (MAP_URL_REPLACE). Rebuild after changing a port.
+      args:
+        EXTRA_ARG1: http://localhost:8383
+        EXTRA_ARG2: http://localhost:8383
     image: mapserver/public
     ports:
       - "8383:8080"
@@ -53,15 +59,14 @@ services:
       DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "${MAP_URL:-http://localhost:8383}"
-      LEGEND_URL: "${LEGEND_URL:-http://localhost:8383}"
-
   private:
     build:
       context: .
       dockerfile: Dockerfile.private
       args:
         BASE_IMAGE: mapserver/public
+        EXTRA_ARG1: http://localhost:8384
+        EXTRA_ARG2: http://localhost:8384
     depends_on:
     - public
     ports:
@@ -80,15 +85,14 @@ services:
       DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
 
-      MAP_URL: "${MAP_URL:-http://localhost:8384}"
-      LEGEND_URL: "${LEGEND_URL:-http://localhost:8384}"
-
   topografie:
     build:
       context: .
       dockerfile: Dockerfile.topografie
       args:
         BASE_IMAGE: mapserver/public
+        EXTRA_ARG1: http://localhost:8385
+        EXTRA_ARG2: http://localhost:8385
     depends_on:
     - public
     ports:
@@ -106,6 +110,3 @@ services:
       DATASERVICES_DB_USER: postgres
       DATASERVICES_DB_PASSWORD: insecure
       DATASERVICES_DB_HOST: database
-
-      MAP_URL: "${MAP_URL:-http://localhost:8385}"
-      LEGEND_URL: "${LEGEND_URL:-http://localhost:8385}"

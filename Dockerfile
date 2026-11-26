@@ -1,16 +1,23 @@
 FROM ubuntu:24.04
 LABEL maintainer="datapunt@amsterdam.nl"
 ARG DEBIAN_FRONTEND=noninteractive
-# build-time inputs
+# build-time inputs: the public address of this environment, e.g.
+# https://map.data.amsterdam.nl. It is baked into the mapfiles
+# (MAP_URL_REPLACE, LEGEND_URL_REPLACE) and advertised in GetCapabilities.
+# Required, with no default: a build without them fails, instead of producing
+# an image that sends clients to http://localhost:8383.
 ARG EXTRA_ARG1
 ARG EXTRA_ARG2
 
-ENV MAP_URL="${EXTRA_ARG1:-http://localhost:8383}" \
-    LEGEND_URL="${EXTRA_ARG2:-http://localhost:8383}"
+ENV MAP_URL="${EXTRA_ARG1}" \
+    LEGEND_URL="${EXTRA_ARG2}"
 
 # echo domain variables used
 RUN echo "Using ARGS=$EXTRA_ARG1 LEGEND_URL=$EXTRA_ARG2"
 RUN echo "Using MAP_URL=$MAP_URL LEGEND_URL=$LEGEND_URL"
+# Fail fast, before the package install, when the addresses are missing.
+RUN : "${MAP_URL:?build arg EXTRA_ARG1 (public map address) not set}" \
+    && : "${LEGEND_URL:?build arg EXTRA_ARG2 (legend address) not set}"
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
